@@ -1,0 +1,21 @@
+# Theros "Hero's Path" seeded prerelease pack -- Path of Ambition (Black).
+# Seeded booster favoring the destiny's color (id<=b), like the RTR/GTC guild
+# and BNG "Destined to" prereleases: 11 common + 3 uncommon + 1 rare/mythic = 15.
+# The foil promo (Abhorrent Overlord) and Hero's Path card (The Avenger) are fixed content on the
+# product in mtg-sealed-content.
+name: "Theros Prerelease Pack Path of Ambition"
+filter: "e:ths id<=b is:baseset"
+pack:
+  common: 11
+  uncommon: 3
+  rare_mythic: 1
+sheets:
+  common:
+    query: "r:c"
+    count: 23
+  uncommon:
+    query: "r:u"
+    count: 14
+  rare_mythic:
+    rawquery: "e:ths (r:r or r:m) id<=b is:baseset"
+    count: 12

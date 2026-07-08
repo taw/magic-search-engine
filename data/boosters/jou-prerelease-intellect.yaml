@@ -1,0 +1,21 @@
+# Journey into Nyx "Hero's Path" seeded prerelease pack -- Forged in Intellect (Blue).
+# Seeded booster favoring the destiny's color (id<=u), like the RTR/GTC guild
+# and BNG "Destined to" prereleases: 11 common + 3 uncommon + 1 rare/mythic = 15.
+# The foil promo (Scourge of Fleets) and Hero's Path card (Cloak of the Philosopher) are fixed content on the
+# product in mtg-sealed-content.
+name: "Journey into Nyx Prerelease Pack Forged in Intellect"
+filter: "e:jou id<=u is:baseset"
+pack:
+  common: 11
+  uncommon: 3
+  rare_mythic: 1
+sheets:
+  common:
+    query: "r:c"
+    count: 12
+  uncommon:
+    query: "r:u"
+    count: 14
+  rare_mythic:
+    rawquery: "e:jou (r:r or r:m) id<=u is:baseset"
+    count: 9

@@ -1,0 +1,21 @@
+# Theros "Hero's Path" seeded prerelease pack -- Path of Honor (White).
+# Seeded booster favoring the destiny's color (id<=w), like the RTR/GTC guild
+# and BNG "Destined to" prereleases: 11 common + 3 uncommon + 1 rare/mythic = 15.
+# The foil promo (Celestial Archon) and Hero's Path card (The Protector) are fixed content on the
+# product in mtg-sealed-content.
+name: "Theros Prerelease Pack Path of Honor"
+filter: "e:ths id<=w is:baseset"
+pack:
+  common: 11
+  uncommon: 3
+  rare_mythic: 1
+sheets:
+  common:
+    query: "r:c"
+    count: 23
+  uncommon:
+    query: "r:u"
+    count: 14
+  rare_mythic:
+    rawquery: "e:ths (r:r or r:m) id<=w is:baseset"
+    count: 13

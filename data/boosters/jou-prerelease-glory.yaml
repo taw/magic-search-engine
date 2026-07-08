@@ -1,0 +1,21 @@
+# Journey into Nyx "Hero's Path" seeded prerelease pack -- Forged in Glory (White).
+# Seeded booster favoring the destiny's color (id<=w), like the RTR/GTC guild
+# and BNG "Destined to" prereleases: 11 common + 3 uncommon + 1 rare/mythic = 15.
+# The foil promo (Dawnbringer Charioteers) and Hero's Path card (Spear of the General) are fixed content on the
+# product in mtg-sealed-content.
+name: "Journey into Nyx Prerelease Pack Forged in Glory"
+filter: "e:jou id<=w is:baseset"
+pack:
+  common: 11
+  uncommon: 3
+  rare_mythic: 1
+sheets:
+  common:
+    query: "r:c"
+    count: 12
+  uncommon:
+    query: "r:u"
+    count: 14
+  rare_mythic:
+    rawquery: "e:jou (r:r or r:m) id<=w is:baseset"
+    count: 9
