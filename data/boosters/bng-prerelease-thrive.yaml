@@ -1,0 +1,26 @@
+# Born of the Gods "Hero's Path" seeded prerelease pack -- Destined to Thrive (Green).
+# The 15-card seeded booster: 10 common + 3 uncommon + 1 rare/mythic favoring the
+# destiny's color (id<=g), plus the guaranteed stamped foil prerelease promo.
+# Modeled like the RTR/GTC guild prereleases. The Hero's Path card is separate
+# (oversized) and lives on the mtg-sealed-content product.
+name: "Born of the Gods Prerelease Pack Destined to Thrive"
+filter: "e:bng id<=g is:baseset"
+pack:
+  common: 10
+  uncommon: 3
+  rare_mythic: 1
+  promo: 1
+sheets:
+  common:
+    query: "r:c"
+    count: 12
+  uncommon:
+    query: "r:u"
+    count: 13
+  rare_mythic:
+    rawquery: "e:bng (r:r or r:m) id<=g is:baseset"
+    count: 8
+  promo:
+    foil: true
+    rawquery: "e:pbng promo:prerelease id<=g"
+    count: 1
