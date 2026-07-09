@@ -1,0 +1,26 @@
+# Journey into Nyx "Hero's Path" seeded prerelease pack -- Forged in Pursuit (Green).
+# The 15-card seeded booster: 10 common + 3 uncommon + 1 rare/mythic favoring the
+# destiny's color (id<=g), plus the guaranteed stamped foil prerelease promo.
+# Modeled like the RTR/GTC guild prereleases. The Hero's Path card is separate
+# (oversized) and lives on the mtg-sealed-content product.
+name: "Journey into Nyx Prerelease Pack Forged in Pursuit"
+filter: "e:jou id<=g is:baseset"
+pack:
+  common: 10
+  uncommon: 3
+  rare_mythic: 1
+  promo: 1
+sheets:
+  common:
+    query: "r:c"
+    count: 12
+  uncommon:
+    query: "r:u"
+    count: 14
+  rare_mythic:
+    rawquery: "e:jou (r:r or r:m) id<=g is:baseset"
+    count: 8
+  promo:
+    foil: true
+    rawquery: "e:pjou promo:prerelease id<=g"
+    count: 1
