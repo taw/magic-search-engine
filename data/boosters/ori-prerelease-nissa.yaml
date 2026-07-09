@@ -1,0 +1,28 @@
+# Magic Origins -- seeded prerelease Booster (Nissa, Green).
+# Magic Origins prerelease kits were seeded by planeswalker color (Gideon=White,
+# Jace=Blue, Liliana=Black, Chandra=Red, Nissa=Green). The seeded booster is a small
+# 7-card mono-color pile -- 4 common + 2 uncommon -- plus the folded, color-stamped
+# foil year-stamped promo (a rare, or occasionally a mythic planeswalker), matching
+# community teardowns ("seven cards, all of the color of the box you chose", incl. the
+# stamped foil rare). Cards are strictly on-color (c:<color> id<=<color>: has the color,
+# no off-color splash, no colorless). Same folded, seed-colored model as the
+# Khans/Fate Reforged/Dragons of Tarkir seeded packs.
+name: "{set_name} Seeded Prerelease Booster Nissa"
+filter: "e:ori c:g id<=g is:baseset"
+pack:
+  common: 4
+  uncommon: 2
+  promo: 1
+sheets:
+  common:
+    query: "r:c"
+    count: 19
+  promo:
+    foil: true
+    any:
+    - rawquery: "e:pori r:m c:g id<=g promo:prerelease"
+      count: 1
+      rate: 1
+    - rawquery: "e:pori r:r c:g id<=g promo:prerelease"
+      count: 7
+      rate: 2
