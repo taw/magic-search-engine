@@ -1,0 +1,24 @@
+# Ravnica Allegiance -- seeded prerelease Guild Booster (Orzhov).
+# Ravnica Allegiance prerelease kits were seeded by guild: a ~15-card guild-colored pile
+# (11 common + 3 uncommon) plus the folded, guild-colored foil year-stamped promo
+# (2:1 rare:mythic). Seeded via the wedge/guild idiom -- cards in the guild's colors carrying
+# the guild watermark or no watermark, excluding generic colorless. Matches the RTR/GTC model.
+name: "{set_name} Seeded Prerelease Booster Orzhov"
+filter: "e:rna id<=wb is:baseset (w:orzhov or -w:*) -(c:c -w:*)"
+pack:
+  common: 11
+  uncommon: 3
+  promo: 1
+sheets:
+  common:
+    query: "r:c"
+    count: 32
+  promo:
+    foil: true
+    any:
+    - rawquery: "e:prna r:m (w:orzhov or (id<=wb and -w:*)) promo:prerelease"
+      count: 1
+      rate: 1
+    - rawquery: "e:prna r:r (w:orzhov or (id<=wb and -w:*)) promo:prerelease"
+      count: 8
+      rate: 2

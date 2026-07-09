@@ -1,0 +1,23 @@
+# Strixhaven: School of Mages -- seeded prerelease College Booster (Silverquill).
+# STX prerelease kits were seeded by college. The College Booster is a 15-card
+# college-colored pile (10 common + 3 uncommon + 1 college-colored nonfoil rare/mythic)
+# plus a folded, ANY-color foil year-stamped promo. Modeled like Streets of New Capenna
+# (the next set): a seeded nonfoil rare_mythic slot AND a separate any-color prerelease_promo.
+# Seeded via the guild idiom -- cards in the college's colors carrying the college watermark
+# or no watermark, excluding generic colorless. The nonfoil rare slot and the promo both
+# use the shared rare_mythic weighting (2:1 rare:mythic).
+name: "{set_name} Seeded Prerelease Booster Silverquill"
+filter: "e:stx id<=wb is:baseset (w:silverquill or -w:*) -(c:c -w:*)"
+pack:
+  common: 10
+  uncommon: 3
+  rare_mythic: 1
+  prerelease_promo: 1
+sheets:
+  common:
+    query: "r:c"
+    count: 30
+  prerelease_promo:
+    filter: "e:pstx promo:prerelease"
+    use: rare_mythic
+    foil: true
