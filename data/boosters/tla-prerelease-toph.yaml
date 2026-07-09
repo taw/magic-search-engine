@@ -1,0 +1,27 @@
+# Magic: The Gathering | Avatar: The Last Airbender -- seeded prerelease Character Booster (Toph, Green).
+# Sources:
+# - https://magic.wizards.com/en/news/feature/avatar-the-last-airbender-prerelease-guide
+#   (character seed colors: Aang=White, Katara=Blue, Azula=Black, Zuko=Red, Toph=Green)
+# - https://draftsim.com/avatar-seeded-packs/ (seeded pack has "on-color rares, a dual land, plenty of uncommons")
+# 15-card seeded pile matching the RTR/GTC/SNC seeded-prerelease norm: 10 common, 3 uncommon,
+# 1 in-color dual land, 1 rare/mythic -- all seeded to the character's color via the pack filter.
+# The rare_mythic slot inherits the shared sheet (rare:mythic = 2:1). The guaranteed foil
+# year-stamped promo is a separate booster (tla-prerelease), added at the Prerelease Pack level.
+name: "Avatar: The Last Airbender Seeded Prerelease Pack Toph"
+filter: "e:tla id<=g is:baseset"
+pack:
+  common: 10
+  uncommon: 3
+  land: 1
+  rare_mythic: 1
+sheets:
+  common:
+    query: "r:c -t:land"
+    count: 18
+  uncommon:
+    query: "r:u -t:land"
+    count: 21
+  land:
+    # In-color dual lands from the base set (draftsim: "a dual land").
+    rawquery: "e:tla number:269,271,272,275"
+    count: 4
