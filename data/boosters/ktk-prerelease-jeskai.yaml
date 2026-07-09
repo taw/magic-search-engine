@@ -1,0 +1,25 @@
+# Khans of Tarkir -- seeded prerelease Clan Booster (Jeskai -- Blue/Red/White).
+# Matches the Dragons of Tarkir seeded-prerelease model (same block): a 15-card clan
+# pile (11 common + 4 uncommon) plus the folded, clan-colored foil year-stamped promo.
+# Seeded via the wedge idiom -- cards in the clan's colors that carry the clan watermark
+# or no watermark, excluding generic colorless. The promo is a rare/mythic in the clan's
+# colors (2:1 rare:mythic), which for this era is stamped in the clan's own colors.
+name: "{set_name} Seeded Prerelease Booster Jeskai"
+filter: "e:{set} id<=urw is:baseset (w:jeskai or -w:*) -(c:c -w:*)"
+pack:
+  common: 11
+  uncommon: 4
+  promo: 1
+sheets:
+  common:
+    query: "r:c"
+    count: 33
+  promo:
+    foil: true
+    any:
+    - rawquery: "e:pktk r:m (w:jeskai or (id<=urw and -w:*)) promo:prerelease"
+      count: 1
+      rate: 1
+    - rawquery: "e:pktk r:r (w:jeskai or (id<=urw and -w:*)) promo:prerelease"
+      count: 7
+      rate: 2
