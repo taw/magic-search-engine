@@ -1,0 +1,29 @@
+# Tarkir: Dragonstorm -- seeded prerelease Clan Booster (Jeskai -- Blue/Red/White).
+# Sources:
+# - https://magic.wizards.com/en/news/feature/tarkir-dragonstorm-prerelease-guide
+#   (5 clan-seeded prerelease kits: Abzan/Jeskai/Mardu/Sultai/Temur; 14-card seeded booster)
+# - https://draftsim.com/tarkir-dragonstorm-seeded-prerelease-kits/
+# WotC published only the 14-card seeded-booster total, not the slot breakdown, so this
+# reconstructs a 14-card clan-seeded pile: 9 common, 3 uncommon, 1 in-wedge fixing land,
+# 1 rare/mythic. Seeded via the DTK/SNC wedge idiom -- cards in the clan's colors that
+# carry the clan watermark or no watermark (excludes off-clan and generic colorless).
+# The rare_mythic slot inherits the shared sheet (rare:mythic = 2:1). The guaranteed foil
+# year-stamped promo is a separate booster (tdm-prerelease), added at the Prerelease Pack level.
+name: "Tarkir: Dragonstorm Seeded Prerelease Booster Jeskai"
+filter: "e:tdm id<=urw is:baseset (w:jeskai or -w:*) -(c:c -w:*)"
+pack:
+  common: 9
+  uncommon: 3
+  land: 1
+  rare_mythic: 1
+sheets:
+  common:
+    query: "r:c -t:land"
+    count: 35
+  uncommon:
+    query: "r:u -t:land"
+    count: 38
+  land:
+    # In-wedge common fixing lands (clan duals + Evolving Wilds).
+    rawquery: "e:tdm is:baseset t:land -t:basic r:c id<=urw"
+    count: 4
