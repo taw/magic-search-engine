@@ -3,14 +3,15 @@
 # - https://magic.wizards.com/en/news/feature/avatar-the-last-airbender-prerelease-guide
 #   (character seed colors: Aang=White, Katara=Blue, Azula=Black, Zuko=Red, Toph=Green)
 # - https://draftsim.com/avatar-seeded-packs/ (seeded pack has "on-color rares, a dual land, plenty of uncommons")
-# 15-card seeded pile matching the RTR/GTC/SNC seeded-prerelease norm: 10 common, 3 uncommon,
+# 14-card seeded pile (per WotC/retailer listings that state "a seeded character themed
+# booster full of 14 cards"): 9 common, 3 uncommon,
 # 1 in-color dual land, 1 rare/mythic -- all seeded to the character's color via the pack filter.
 # The rare_mythic slot inherits the shared sheet (rare:mythic = 2:1). The guaranteed foil
 # year-stamped promo is a separate booster (tla-prerelease), added at the Prerelease Pack level.
 name: "Avatar: The Last Airbender Seeded Prerelease Pack Katara"
 filter: "e:tla id<=u is:baseset"
 pack:
-  common: 10
+  common: 9
   uncommon: 3
   land: 1
   rare_mythic: 1
