@@ -4,10 +4,14 @@ pack:
   party_scene_promo: 1
 sheets:
   prerelease_promo:
-    filter: "e:pltr number<=260"
+    # number<261 (not <=260): the stamped promos are suffixed "s" (e.g. 260s),
+    # and "260s" sorts after bare "260", so number<=260 drops The Shire (pltr 260s).
+    filter: "e:pltr number<261"
     foil: true
     use: rare_mythic
+    count: 60 + 20 # rares + mythics
   party_scene_promo:
     foil: true
     filter: "e:pltr number:399-404"
     use: base_1248_by_rarity
+    count: 6
