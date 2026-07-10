@@ -1,0 +1,32 @@
+# Mirrodin Besieged Phyrexian faction booster. Cards with a Phyrexian watermark
+# appear only in Phyrexian packs (Mirran-watermarked cards only in Mirran packs);
+# neutral cards -- Tezzeret, Agent of Bolas and the basic lands -- appear in
+# both, so the non-foil slots use "-w:mirran" (own faction + neutrals).
+# Foils are unrestricted: a foil of either faction can appear in either pack, so
+# the foil slot keeps the default unfiltered foil sheet.
+# Source: https://mtg.fandom.com/wiki/Mirrodin_Besieged
+name: "{set_name} Phyrexian Faction Booster"
+pack:
+- basic: 1
+  common: 10
+  uncommon: 3
+  rare_mythic: 1
+  chance: 31
+- basic: 1
+  common: 9
+  uncommon: 3
+  rare_mythic: 1
+  foil: 1
+  chance: 9
+sheets:
+  common:
+    balanced: true
+    query: "r:c -w:mirran"
+  uncommon:
+    query: "r:u -w:mirran"
+  rare_mythic:
+    any:
+    - query: "r:r -w:mirran"
+      rate: 2
+    - query: "r:m -w:mirran"
+      rate: 1
