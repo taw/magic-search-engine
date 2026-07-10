@@ -20,7 +20,8 @@ pack:
   chance: 9
 sheets:
   common:
-    balanced: true
+    # Not color-balanced: a single faction's commons don't span all five colors,
+    # so ColorBalancedCardSheet can't be constructed over this filtered pool.
     query: "r:c -w:phyrexian"
   uncommon:
     query: "r:u -w:phyrexian"
