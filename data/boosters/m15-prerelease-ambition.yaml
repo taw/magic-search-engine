@@ -1,0 +1,25 @@
+# Magic 2015 "Hunt for the Rarest Beasts" seeded prerelease pack -- Hunt with Ambition (Black).
+# 15-card seeded booster: 10 common + 3 uncommon + 1 rare/mythic favoring the path's
+# color (id<=b), plus the guaranteed stamped foil prerelease promo (Indulgent Tormentor).
+# Modeled on the Theros "Hero's Path" seeded prereleases (same era, same mechanic).
+name: "{set_name} Seeded Prerelease Booster Ambition"
+filter: "e:m15 id<=b is:baseset"
+pack:
+  common: 10
+  uncommon: 3
+  rare_mythic: 1
+  promo: 1
+sheets:
+  common:
+    query: "r:c"
+    count: 25
+  uncommon:
+    query: "r:u"
+    count: 27
+  rare_mythic:
+    rawquery: "e:m15 (r:r or r:m) id<=b is:baseset"
+    count: 21
+  promo:
+    foil: true
+    rawquery: "e:pm15 promo:prerelease id<=b"
+    count: 1
