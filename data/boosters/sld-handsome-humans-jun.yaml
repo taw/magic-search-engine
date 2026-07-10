@@ -1,0 +1,28 @@
+# Secret Lair "Handsome Humans" bonus pool -- June 2026 wave.
+# The 2026 Secret Lair drops without a drop-exclusive bonus come with a random
+# foil retro-frame Human (Scryfall's "Handsome Humans" grouping); like the 2025
+# Zippy Zombies, each wave has its own pool. This is the June wave (5 Humans).
+# No market prices yet for these printings, so the pool is equal-weighted --
+# revisit the drop rates once price data exists.
+name: "SLD Handsome Humans (June 2026)"
+pack:
+  humans: 1
+sheets:
+  humans:
+    foil: true
+    any:
+    - rawquery: "e:sld number:7135" # Darien, King of Kjeldor
+      count: 1
+      chance: 1
+    - rawquery: "e:sld number:7138" # Glowrider
+      count: 1
+      chance: 1
+    - rawquery: "e:sld number:7139" # Knight of the White Orchid
+      count: 1
+      chance: 1
+    - rawquery: "e:sld number:7145" # Serra Ascendant
+      count: 1
+      chance: 1
+    - rawquery: "e:sld number:7152" # General's Enforcer
+      count: 1
+      chance: 1

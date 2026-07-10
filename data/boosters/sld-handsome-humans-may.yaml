@@ -1,0 +1,28 @@
+# Secret Lair "Handsome Humans" bonus pool -- May 2026.
+# The 2026 Secret Lair drops without a drop-exclusive bonus come with a random
+# foil retro-frame Human (Scryfall's "Handsome Humans" grouping). Like the 2025 Zippy Zombies,
+# each wave has its own pool. This is the May wave (5 Humans).
+# Drop rates estimated from foil price differences within the pool
+# (inverse-price, top chase normalized to 1).
+name: "SLD Handsome Humans (May 2026)"
+pack:
+  humans: 1
+sheets:
+  humans:
+    foil: true
+    any:
+    - rawquery: "e:sld number:7137" # Fiend Hunter
+      count: 1
+      chance: 136
+    - rawquery: "e:sld number:7143" # Scholar of New Horizons
+      count: 1
+      chance: 19
+    - rawquery: "e:sld number:7147" # Soul's Attendant
+      count: 1
+      chance: 9
+    - rawquery: "e:sld number:7144" # Seasoned Dungeoneer
+      count: 1
+      chance: 2
+    - rawquery: "e:sld number:7130" # Arena Rector
+      count: 1
+      chance: 1
