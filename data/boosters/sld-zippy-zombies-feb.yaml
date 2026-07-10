@@ -1,0 +1,55 @@
+# Secret Lair "Zippy Zombies" bonus pool -- February 2025 wave.
+# The 2025 Secret Lair drops came with a random foil retro-frame Zombie bonus
+# card; the pool grew with each superdrop wave (wave membership from mtgjson
+# per-card release dates, matching Scryfall's "Zippy Zombies" grouping).
+# Drop rates estimated from foil price differences within the pool
+# (inverse-price, chase card normalized to 1).
+name: "SLD Zippy Zombies (February 2025)"
+pack:
+  zombies: 1
+sheets:
+  zombies:
+    foil: true
+    any:
+    - rawquery: "e:sld number:858" # Diregraf Captain
+      count: 1
+      chance: 81
+    - rawquery: "e:sld number:838" # Corpse Connoisseur
+      count: 1
+      chance: 59
+    - rawquery: "e:sld number:849" # Ravenous Rotbelly
+      count: 1
+      chance: 51
+    - rawquery: "e:sld number:837" # Champion of the Perished
+      count: 1
+      chance: 47
+    - rawquery: "e:sld number:841" # Fleshbag Marauder
+      count: 1
+      chance: 32
+    - rawquery: "e:sld number:840" # Diregraf Colossus
+      count: 1
+      chance: 16
+    - rawquery: "e:sld number:848" # Pontiff of Blight
+      count: 1
+      chance: 13
+    - rawquery: "e:sld number:856" # Vindictive Lich
+      count: 1
+      chance: 12
+    - rawquery: "e:sld number:843" # Haakon, Stromgald Scourge
+      count: 1
+      chance: 11
+    - rawquery: "e:sld number:842" # Geralf's Messenger
+      count: 1
+      chance: 10
+    - rawquery: "e:sld number:850" # Relentless Dead
+      count: 1
+      chance: 6
+    - rawquery: "e:sld number:860" # Nekusar, the Mindrazer
+      count: 1
+      chance: 4
+    - rawquery: "e:sld number:844" # Headless Rider
+      count: 1
+      chance: 4
+    - rawquery: "e:sld number:862" # Wilhelt, the Rotcleaver
+      count: 1
+      chance: 1

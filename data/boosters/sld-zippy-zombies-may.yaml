@@ -1,0 +1,28 @@
+# Secret Lair "Zippy Zombies" bonus pool -- May 2025 wave.
+# The 2025 Secret Lair drops came with a random foil retro-frame Zombie bonus
+# card; the pool grew with each superdrop wave (wave membership from mtgjson
+# per-card release dates, matching Scryfall's "Zippy Zombies" grouping).
+# Drop rates estimated from foil price differences within the pool
+# (inverse-price, chase card normalized to 1).
+name: "SLD Zippy Zombies (May 2025)"
+pack:
+  zombies: 1
+sheets:
+  zombies:
+    foil: true
+    any:
+    - rawquery: "e:sld number:859" # Havengul Lich
+      count: 1
+      chance: 90
+    - rawquery: "e:sld number:852" # Rotting Regisaur
+      count: 1
+      chance: 67
+    - rawquery: "e:sld number:835" # Fatestitcher
+      count: 1
+      chance: 50
+    - rawquery: "e:sld number:836" # Undead Alchemist
+      count: 1
+      chance: 30
+    - rawquery: "e:sld number:846" # Mikaeus, the Unhallowed
+      count: 1
+      chance: 1
