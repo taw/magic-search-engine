@@ -1,0 +1,125 @@
+# Secret Lair "Surprise Slivers" bonus pool -- the 2022-2023 era.
+# The 2022-2023 Secret Lair drops came with a random foil extended-art Sliver
+# bonus card (Scryfall's "Surprise Slivers" grouping). This is the general pool:
+# slivers whose bonus assignment isn't tied to a specific drop (those keep their
+# per-product variable pools in mtg-sealed-content).
+# Drop rates estimated from foil price differences within the pool
+# (inverse-price, top chase normalized to 1).
+name: "SLD Surprise Slivers (2022-2023)"
+pack:
+  slivers: 1
+sheets:
+  slivers:
+    foil: true
+    any:
+    - rawquery: "e:sld number:620" # Mesmeric Sliver
+      count: 1
+      chance: 213
+    - rawquery: "e:sld number:633" # Plague Sliver
+      count: 1
+      chance: 143
+    - rawquery: "e:sld number:657" # Tempered Sliver
+      count: 1
+      chance: 129
+    - rawquery: "e:sld number:636" # Belligerent Sliver
+      count: 1
+      chance: 120
+    - rawquery: "e:sld number:638" # Fury Sliver
+      count: 1
+      chance: 110
+    - rawquery: "e:sld number:623" # Scuttling Sliver
+      count: 1
+      chance: 106
+    - rawquery: "e:sld number:635" # Toxin Sliver
+      count: 1
+      chance: 85
+    - rawquery: "e:sld number:646" # Two-Headed Sliver
+      count: 1
+      chance: 83
+    - rawquery: "e:sld number:628" # Winged Sliver
+      count: 1
+      chance: 73
+    - rawquery: "e:sld number:627" # Telekinetic Sliver
+      count: 1
+      chance: 61
+    - rawquery: "e:sld number:617" # Ward Sliver
+      count: 1
+      chance: 59
+    - rawquery: "e:sld number:632" # Leeching Sliver
+      count: 1
+      chance: 55
+    - rawquery: "e:sld number:651" # Megantic Sliver
+      count: 1
+      chance: 55
+    - rawquery: "e:sld number:613" # Pulmonic Sliver
+      count: 1
+      chance: 47
+    - rawquery: "e:sld number:659" # Virulent Sliver
+      count: 1
+      chance: 40
+    - rawquery: "e:sld number:647" # Brood Sliver
+      count: 1
+      chance: 33
+    - rawquery: "e:sld number:664" # Hibernation Sliver
+      count: 1
+      chance: 27
+    - rawquery: "e:sld number:660" # Cloudshredder Sliver
+      count: 1
+      chance: 24
+    - rawquery: "e:sld number:649" # Horned Sliver
+      count: 1
+      chance: 23
+    - rawquery: "e:sld number:612" # Essence Sliver
+      count: 1
+      chance: 22
+    - rawquery: "e:sld number:654" # Predatory Sliver
+      count: 1
+      chance: 22
+    - rawquery: "e:sld number:656" # Root Sliver
+      count: 1
+      chance: 16
+    - rawquery: "e:sld number:666" # Necrotic Sliver
+      count: 1
+      chance: 12
+    - rawquery: "e:sld number:634" # Syphon Sliver
+      count: 1
+      chance: 11
+    - rawquery: "e:sld number:631" # Dregscape Sliver
+      count: 1
+      chance: 10
+    - rawquery: "e:sld number:626" # Synapse Sliver
+      count: 1
+      chance: 9
+    - rawquery: "e:sld number:663" # Harmonic Sliver
+      count: 1
+      chance: 9
+    - rawquery: "e:sld number:661" # Crystalline Sliver
+      count: 1
+      chance: 9
+    - rawquery: "e:sld number:643" # Spiteful Sliver
+      count: 1
+      chance: 8
+    - rawquery: "e:sld number:644" # Striking Sliver
+      count: 1
+      chance: 4
+    - rawquery: "e:sld number:619" # Galerider Sliver
+      count: 1
+      chance: 3
+    - rawquery: "e:sld number:610" # Bonescythe Sliver
+      count: 1
+      chance: 2
+    - rawquery: "e:sld number:611" # Constricting Sliver
+      count: 1
+      chance: 2
+    - rawquery: "e:sld number:637" # Blur Sliver
+      count: 1
+      chance: 2
+    - rawquery: "e:sld number:648" # Gemhide Sliver
+      count: 1
+      chance: 2
+    - rawquery: "e:sld number:655" # Quick Sliver
+      count: 1
+      chance: 1
+    - rawquery: "e:sld number:668" # Sliver Hive
+      count: 1
+      chance: 1
