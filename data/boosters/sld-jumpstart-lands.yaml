@@ -1,0 +1,89 @@
+# Secret Lair "Foil Jumpstart Lands" bonus pool -- the 2021-2022 era.
+# The 2021 and early-2022 Secret Lair drops came with a random foil thematic
+# basic land from Jumpstart (Scryfall's "Foil Jumpstart Lands" grouping). This is
+# the general pool; lands whose bonus assignment is tied to a specific drop keep
+# their per-product entries in mtg-sealed-content.
+# Drop rates estimated from foil price differences within the pool
+# (inverse-price, top card normalized to 1).
+name: "SLD Foil Jumpstart Lands (2021-2022)"
+pack:
+  lands: 1
+sheets:
+  lands:
+    foil: true
+    any:
+    - rawquery: "e:sld number:569" # Mountain
+      count: 1
+      chance: 17
+    - rawquery: "e:sld number:568" # Mountain
+      count: 1
+      chance: 13
+    - rawquery: "e:sld number:549" # Island
+      count: 1
+      chance: 13
+    - rawquery: "e:sld number:548" # Island
+      count: 1
+      chance: 11
+    - rawquery: "e:sld number:577" # Forest
+      count: 1
+      chance: 8
+    - rawquery: "e:sld number:574" # Forest
+      count: 1
+      chance: 8
+    - rawquery: "e:sld number:559" # Swamp
+      count: 1
+      chance: 7
+    - rawquery: "e:sld number:546" # Plains
+      count: 1
+      chance: 7
+    - rawquery: "e:sld number:576" # Forest
+      count: 1
+      chance: 6
+    - rawquery: "e:sld number:579" # Forest
+      count: 1
+      chance: 6
+    - rawquery: "e:sld number:541" # Plains
+      count: 1
+      chance: 5
+    - rawquery: "e:sld number:554" # Island
+      count: 1
+      chance: 5
+    - rawquery: "e:sld number:550" # Island
+      count: 1
+      chance: 5
+    - rawquery: "e:sld number:544" # Plains
+      count: 1
+      chance: 5
+    - rawquery: "e:sld number:542" # Plains
+      count: 1
+      chance: 5
+    - rawquery: "e:sld number:578" # Forest
+      count: 1
+      chance: 4
+    - rawquery: "e:sld number:564" # Mountain
+      count: 1
+      chance: 4
+    - rawquery: "e:sld number:567" # Mountain
+      count: 1
+      chance: 3
+    - rawquery: "e:sld number:545" # Plains
+      count: 1
+      chance: 3
+    - rawquery: "e:sld number:575" # Forest
+      count: 1
+      chance: 3
+    - rawquery: "e:sld number:540" # Plains
+      count: 1
+      chance: 3
+    - rawquery: "e:sld number:565" # Mountain
+      count: 1
+      chance: 3
+    - rawquery: "e:sld number:543" # Plains
+      count: 1
+      chance: 2
+    - rawquery: "e:sld number:570" # Mountain
+      count: 1
+      chance: 1
+    - rawquery: "e:sld number:547" # Plains
+      count: 1
+      chance: 1
