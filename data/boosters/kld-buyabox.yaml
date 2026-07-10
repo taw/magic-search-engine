@@ -1,0 +1,37 @@
+# Kaladesh Holiday Buy-a-Box promo pack (2016). Contents per WotC:
+#   - 1 foil card from a then-Standard set, including Zendikar Expeditions and
+#     Kaladesh Inventions;
+#   - 2 non-foil rares or mythic rares from a then-Standard set.
+# Standard at Kaladesh's release was Battle for Zendikar, Oath of the Gatewatch,
+# Shadows over Innistrad, Eldritch Moon and Kaladesh, but the promo explicitly
+# EXCLUDES Oath of the Gatewatch cards and all double-faced (and meld) cards, so
+# the eligible sets are BFZ, SOI, EMN and KLD.
+# The masterpiece pool is all of Zendikar Expeditions (e:exp) plus the Kaladesh
+# Inventions only (e:mps number<=30; #31-54 are Aether Revolt, not yet released).
+# Exact odds are undocumented, so the foil slot reuses the booster foil rarity
+# mix (~12:5:3 common:uncommon:rare-mythic) and the same masterpiece weight as
+# the KLD/BFZ draft foil slot (5 of ~163, i.e. a masterpiece in ~3% of foils).
+# Source: https://mtg.wiki/wiki/Buy-a-Box
+name: "{set_name} Holiday Buy-a-Box Promo Pack"
+pack:
+  buyabox_foil: 1
+  standard_rare_mythic: 2
+sheets:
+  standard_rare_mythic:
+    filter: "(e:bfz or e:soi or e:emn or e:kld) is:baseset -is:dfc -is:meld"
+    any:
+    - query: "r:r"
+      rate: 2
+    - query: "r:m"
+      rate: 1
+  buyabox_foil:
+    foil: true
+    any:
+    - rawquery: "(e:bfz or e:soi or e:emn or e:kld) is:baseset -is:dfc -is:meld (r:r or r:m)"
+      chance: 24
+    - rawquery: "(e:bfz or e:soi or e:emn or e:kld) is:baseset -is:dfc -is:meld r:u"
+      chance: 40
+    - rawquery: "(e:bfz or e:soi or e:emn or e:kld) is:baseset -is:dfc -is:meld r<=c"
+      chance: 94
+    - rawquery: "e:exp or (e:mps number<=30)"
+      chance: 5
