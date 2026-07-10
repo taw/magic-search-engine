@@ -1,0 +1,104 @@
+# Secret Lair "Elusive Elves" bonus pool -- late, May 2024 onward.
+# The 2023-2024 Secret Lair drops came with a random foil extended-art Elf bonus
+# card (Scryfall's "Elusive Elves" grouping), with the Relentless Rats alternate-art
+# versions as the era's chase cards. The pool grew over time; this is the full pool
+# (25 Elves + 5 Rats, incl. the Elvish Champion chase).
+# Drop rates estimated from foil price differences within the pool
+# (inverse-price, chase normalized to 1).
+name: "SLD Elusive Elves (late, May 2024 onward)"
+pack:
+  elves: 1
+sheets:
+  elves:
+    foil: true
+    any:
+    - rawquery: "e:sld number:777" # Reclamation Sage
+      count: 1
+      chance: 529
+    - rawquery: "e:sld number:782" # Viridian Shaman
+      count: 1
+      chance: 488
+    - rawquery: "e:sld number:786" # Frilled Mystic
+      count: 1
+      chance: 461
+    - rawquery: "e:sld number:771" # Llanowar Visionary
+      count: 1
+      chance: 409
+    - rawquery: "e:sld number:763" # Elvish Visionary
+      count: 1
+      chance: 279
+    - rawquery: "e:sld number:776" # Pollenbright Druid
+      count: 1
+      chance: 264
+    - rawquery: "e:sld number:759" # Skemfar Shadowsage
+      count: 1
+      chance: 254
+    - rawquery: "e:sld number:779" # Sylvan Ranger
+      count: 1
+      chance: 215
+    - rawquery: "e:sld number:770" # Jaspera Sentinel
+      count: 1
+      chance: 195
+    - rawquery: "e:sld number:774" # Nullmage Shepherd
+      count: 1
+      chance: 195
+    - rawquery: "e:sld number:773" # Nettle Sentinel
+      count: 1
+      chance: 183
+    - rawquery: "e:sld number:767" # Fierce Empath
+      count: 1
+      chance: 179
+    - rawquery: "e:sld number:766" # Farhaven Elf
+      count: 1
+      chance: 141
+    - rawquery: "e:sld number:775" # Paradise Druid
+      count: 1
+      chance: 120
+    - rawquery: "e:sld number:762" # Elvish Vanguard
+      count: 1
+      chance: 108
+    - rawquery: "e:sld number:780" # Timberwatch Elf
+      count: 1
+      chance: 104
+    - rawquery: "e:sld number:788" # Poison-Tip Archer
+      count: 1
+      chance: 51
+    - rawquery: "e:sld number:769" # Ivy Lane Denizen
+      count: 1
+      chance: 43
+    - rawquery: "e:sld number:789" # Shaman of the Pack
+      count: 1
+      chance: 32
+    - rawquery: "e:sld number:772" # Lys Alana Huntmaster
+      count: 1
+      chance: 27
+    - rawquery: "e:sld number:785" # Wirewood Symbiote
+      count: 1
+      chance: 14
+    - rawquery: "e:sld number:783" # Wellwisher
+      count: 1
+      chance: 14
+    - rawquery: "e:sld number:765" # Evolution Sage
+      count: 1
+      chance: 6
+    - rawquery: "e:sld number:768" # Generous Patron
+      count: 1
+      chance: 6
+    - rawquery: "e:sld number:755" # Relentless Rats
+      count: 1
+      chance: 3
+    - rawquery: "e:sld number:754" # Relentless Rats
+      count: 1
+      chance: 3
+    - rawquery: "e:sld number:756" # Relentless Rats
+      count: 1
+      chance: 3
+    - rawquery: "e:sld number:752" # Relentless Rats
+      count: 1
+      chance: 3
+    - rawquery: "e:sld number:757" # Relentless Rats
+      count: 1
+      chance: 2
+    - rawquery: "e:sld number:761" # Elvish Champion
+      count: 1
+      chance: 1

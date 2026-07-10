@@ -1,0 +1,64 @@
+# Secret Lair "Elusive Elves" bonus pool -- early, through February 2024.
+# The 2023-2024 Secret Lair drops came with a random foil extended-art Elf bonus
+# card (Scryfall's "Elusive Elves" grouping), with the Relentless Rats alternate-art
+# versions as the era's chase cards. The pool grew over time; this is the pool as of the February 2024 wave (15 Elves + 2 Rats).
+# Drop rates estimated from foil price differences within the pool
+# (inverse-price, chase normalized to 1).
+name: "SLD Elusive Elves (early, through February 2024)"
+pack:
+  elves: 1
+sheets:
+  elves:
+    foil: true
+    any:
+    - rawquery: "e:sld number:771" # Llanowar Visionary
+      count: 1
+      chance: 220
+    - rawquery: "e:sld number:763" # Elvish Visionary
+      count: 1
+      chance: 150
+    - rawquery: "e:sld number:759" # Skemfar Shadowsage
+      count: 1
+      chance: 137
+    - rawquery: "e:sld number:779" # Sylvan Ranger
+      count: 1
+      chance: 116
+    - rawquery: "e:sld number:770" # Jaspera Sentinel
+      count: 1
+      chance: 105
+    - rawquery: "e:sld number:773" # Nettle Sentinel
+      count: 1
+      chance: 98
+    - rawquery: "e:sld number:766" # Farhaven Elf
+      count: 1
+      chance: 76
+    - rawquery: "e:sld number:775" # Paradise Druid
+      count: 1
+      chance: 64
+    - rawquery: "e:sld number:762" # Elvish Vanguard
+      count: 1
+      chance: 58
+    - rawquery: "e:sld number:780" # Timberwatch Elf
+      count: 1
+      chance: 56
+    - rawquery: "e:sld number:789" # Shaman of the Pack
+      count: 1
+      chance: 17
+    - rawquery: "e:sld number:772" # Lys Alana Huntmaster
+      count: 1
+      chance: 14
+    - rawquery: "e:sld number:785" # Wirewood Symbiote
+      count: 1
+      chance: 8
+    - rawquery: "e:sld number:783" # Wellwisher
+      count: 1
+      chance: 7
+    - rawquery: "e:sld number:768" # Generous Patron
+      count: 1
+      chance: 3
+    - rawquery: "e:sld number:756" # Relentless Rats
+      count: 1
+      chance: 1
+    - rawquery: "e:sld number:757" # Relentless Rats
+      count: 1
+      chance: 1
