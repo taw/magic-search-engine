@@ -1,0 +1,28 @@
+# Secret Lair "Zippy Zombies" bonus pool -- March 2025 wave.
+# The 2025 Secret Lair drops came with a random foil retro-frame Zombie bonus
+# card; the pool grew with each superdrop wave (wave membership from mtgjson
+# per-card release dates, matching Scryfall's "Zippy Zombies" grouping).
+# Drop rates estimated from foil price differences within the pool
+# (inverse-price, chase card normalized to 1).
+name: "SLD Zippy Zombies (March 2025)"
+pack:
+  zombies: 1
+sheets:
+  zombies:
+    foil: true
+    any:
+    - rawquery: "e:sld number:845" # Liliana's Standard Bearer
+      count: 1
+      chance: 22
+    - rawquery: "e:sld number:839" # Cryptbreaker
+      count: 1
+      chance: 7
+    - rawquery: "e:sld number:854" # Tomb Tyrant
+      count: 1
+      chance: 6
+    - rawquery: "e:sld number:855" # Tormod, the Desecrator
+      count: 1
+      chance: 2
+    - rawquery: "e:sld number:861" # Varina, Lich Queen
+      count: 1
+      chance: 1
