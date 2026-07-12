@@ -2629,16 +2629,39 @@
   },
   {
     "category": "multiple_decks",
-    "name": "Ninth Edition Fast Track Two Player Starter",
-    "subtype": "two_player_starter",
-    "uuid": "e7241b78-ff1f-5ce1-b643-5dc78f65c064",
-    "set_code": "9ed",
     "contents": [
       [
         1,
-        "unknown"
+        "deck",
+        "9ed",
+        "Demo Booster Player 1"
+      ],
+      [
+        1,
+        "deck",
+        "9ed",
+        "Demo Booster Player 2"
+      ],
+      [
+        1,
+        "other",
+        "Step-by-step instruction sheet"
+      ],
+      [
+        1,
+        "other",
+        "Playmat"
+      ],
+      [
+        1,
+        "other",
+        "CD-ROM"
       ]
-    ]
+    ],
+    "name": "Ninth Edition Fast Track Two Player Starter",
+    "subtype": "two_player_starter",
+    "uuid": "e7241b78-ff1f-5ce1-b643-5dc78f65c064",
+    "set_code": "9ed"
   },
   {
     "category": "bundle",
@@ -16706,16 +16729,18 @@
   },
   {
     "category": "limited_aid_case",
+    "contents": [
+      [
+        15,
+        "product",
+        "blb",
+        "Bloomburrow Prerelease Pack"
+      ]
+    ],
     "name": "Bloomburrow Prerelease Pack Case",
     "subtype": "prerelease_kit",
     "uuid": "88f922b5-5039-5f30-8cad-6d07aa5a752f",
-    "set_code": "blb",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "blb"
   },
   {
     "category": "multiple_decks",
@@ -16931,16 +16956,17 @@
   },
   {
     "category": "booster_pack",
-    "name": "Bloomburrow Value Booster",
-    "subtype": "other",
-    "uuid": "42a50f33-afad-519c-b8f1-ff978e8597a3",
-    "set_code": "blb",
     "contents": [
       [
         1,
-        "unknown"
+        "pack",
+        "blb-value"
       ]
-    ]
+    ],
+    "name": "Bloomburrow Value Booster",
+    "subtype": "other",
+    "uuid": "42a50f33-afad-519c-b8f1-ff978e8597a3",
+    "set_code": "blb"
   },
   {
     "category": "deck",
@@ -17126,68 +17152,194 @@
   },
   {
     "category": "deck",
+    "contents": [
+      [
+        1,
+        "other",
+        "Exclusive foil promo card"
+      ],
+      [
+        1,
+        "product",
+        "blc",
+        "Bloomburrow Commander Deck Animated Army"
+      ],
+      [
+        1,
+        "product",
+        "blb",
+        "Bloomburrow Play Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "eoe",
+        "Edge of Eternities Play Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "fdn",
+        "Foundations Play Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "dft",
+        "Aetherdrift Play Booster Pack"
+      ]
+    ],
     "name": "Bloomburrow Deluxe Commander Kit Animated Army",
     "subtype": "commander",
     "uuid": "7226347d-eec2-5060-87ad-80f67687209a",
-    "set_code": "blc",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "blc"
   },
   {
     "category": "deck",
+    "contents": [
+      [
+        1,
+        "other",
+        "Exclusive foil promo card"
+      ],
+      [
+        1,
+        "product",
+        "blc",
+        "Bloomburrow Commander Deck Family Matters"
+      ],
+      [
+        1,
+        "product",
+        "blb",
+        "Bloomburrow Play Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "eoe",
+        "Edge of Eternities Play Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "fdn",
+        "Foundations Play Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "dft",
+        "Aetherdrift Play Booster Pack"
+      ]
+    ],
     "name": "Bloomburrow Deluxe Commander Kit Family Matters",
     "subtype": "commander",
     "uuid": "7acd8a26-8171-5244-86b5-224f6c85287a",
-    "set_code": "blc",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "blc"
   },
   {
     "category": "deck",
+    "contents": [
+      [
+        1,
+        "other",
+        "Exclusive foil promo card"
+      ],
+      [
+        1,
+        "product",
+        "blc",
+        "Bloomburrow Commander Deck Peace Offering"
+      ],
+      [
+        1,
+        "product",
+        "blb",
+        "Bloomburrow Play Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "eoe",
+        "Edge of Eternities Play Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "fdn",
+        "Foundations Play Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "dft",
+        "Aetherdrift Play Booster Pack"
+      ]
+    ],
     "name": "Bloomburrow Deluxe Commander Kit Peace Offering",
     "subtype": "commander",
     "uuid": "f72484ac-ae3f-51f6-92bb-1d0fa120ea89",
-    "set_code": "blc",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "blc"
   },
   {
     "category": "deck",
+    "contents": [
+      [
+        1,
+        "other",
+        "Exclusive foil promo card"
+      ],
+      [
+        1,
+        "product",
+        "blc",
+        "Bloomburrow Commander Deck Squirreled Away"
+      ],
+      [
+        1,
+        "product",
+        "blb",
+        "Bloomburrow Play Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "eoe",
+        "Edge of Eternities Play Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "fdn",
+        "Foundations Play Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "dft",
+        "Aetherdrift Play Booster Pack"
+      ]
+    ],
     "name": "Bloomburrow Deluxe Commander Kit Squirreled Away",
     "subtype": "commander",
     "uuid": "b372567a-3bac-5ca0-8382-836e95760014",
-    "set_code": "blc",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "blc"
   },
   {
     "category": "deck",
+    "contents": [
+      [
+        1,
+        "deck",
+        "tbth",
+        "Battle the Horde"
+      ]
+    ],
     "name": "Battle the Horde Challenge Deck",
     "subtype": "challenge",
     "uuid": "c3139bdb-125e-5758-8554-9b1bca0fcbd4",
     "set_code": "bng",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2007-01-01"
   },
   {
@@ -17532,14 +17684,6 @@
       [
         1,
         "card",
-        "pbng",
-        "98★",
-        "Forgestoker Dragon",
-        true
-      ],
-      [
-        1,
-        "card",
         "thp2",
         "4d",
         "The Warmonger",
@@ -17572,14 +17716,6 @@
   {
     "category": "limited_aid_tool",
     "contents": [
-      [
-        1,
-        "card",
-        "pbng",
-        "66★",
-        "Eater of Hope",
-        true
-      ],
       [
         1,
         "card",
@@ -17618,14 +17754,6 @@
       [
         1,
         "card",
-        "pbng",
-        "26★",
-        "Silent Sentinel",
-        true
-      ],
-      [
-        1,
-        "card",
         "thp2",
         "4a",
         "The General",
@@ -17661,14 +17789,6 @@
       [
         1,
         "card",
-        "pbng",
-        "31★",
-        "Arbiter of the Ideal",
-        true
-      ],
-      [
-        1,
-        "card",
         "thp2",
         "4b",
         "The Savant",
@@ -17701,14 +17821,6 @@
   {
     "category": "limited_aid_tool",
     "contents": [
-      [
-        1,
-        "card",
-        "pbng",
-        "129★",
-        "Nessian Wilds Ravager",
-        true
-      ],
       [
         1,
         "card",
@@ -25707,16 +25819,43 @@
   },
   {
     "category": "bundle",
+    "contents": [
+      [
+        1,
+        "other",
+        "Dark Ascension Players Guide"
+      ],
+      [
+        1,
+        "other",
+        "70-card Basic Land Bundle"
+      ],
+      [
+        1,
+        "other",
+        "10 checklist cards"
+      ],
+      [
+        1,
+        "other",
+        "Dark Ascension Spindown Life Counter"
+      ],
+      [
+        1,
+        "other",
+        "Two 60-card Deck Boxes"
+      ],
+      [
+        9,
+        "product",
+        "dka",
+        "Dark Ascension Booster Pack"
+      ]
+    ],
     "name": "Dark Ascension Fat Pack",
     "subtype": "fat_pack",
     "uuid": "8aedcdac-4261-5578-8f17-e5810f5f2458",
     "set_code": "dka",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2012-02-03"
   },
   {
@@ -30471,16 +30610,38 @@
   },
   {
     "category": "bundle",
+    "contents": [
+      [
+        1,
+        "other",
+        "Eldritch Moon Player's Guide"
+      ],
+      [
+        1,
+        "other",
+        "Eldritch Moon Card Box"
+      ],
+      [
+        1,
+        "other",
+        "Eldritch Moon 80-card Basic Land Bundle"
+      ],
+      [
+        1,
+        "other",
+        "Eldritch Moon Spindown"
+      ],
+      [
+        9,
+        "product",
+        "emn",
+        "Eldritch Moon Booster Pack"
+      ]
+    ],
     "name": "Eldritch Moon Fat Pack",
     "subtype": "fat_pack",
     "uuid": "e5eda080-c7a2-5886-b1ce-d64bc54ebee1",
     "set_code": "emn",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2016-07-22"
   },
   {
@@ -30703,16 +30864,34 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "1 Eldritch Moon Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "emn-prerelease"
+      ],
+      [
+        4,
+        "product",
+        "emn",
+        "Eldritch Moon Booster Pack"
+      ],
+      [
+        2,
+        "product",
+        "soi",
+        "Shadows over Innistrad Booster Pack"
+      ]
+    ],
     "name": "Eldritch Moon Prerelease Pack",
     "subtype": "prerelease_kit",
     "uuid": "083ca310-ed1d-5b7f-9a76-8dca838d6cd3",
     "set_code": "emn",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2016-06-20"
   },
   {
@@ -32889,42 +33068,96 @@
   },
   {
     "category": "box_set",
+    "contents": [
+      [
+        1,
+        "deck",
+        "fin",
+        "Camp Comrades"
+      ],
+      [
+        1,
+        "other",
+        "6 Art-Only Scene Cards"
+      ],
+      [
+        1,
+        "other",
+        "Final Fantasy Display Easel"
+      ],
+      [
+        3,
+        "product",
+        "fin",
+        "Final Fantasy Play Booster Pack"
+      ]
+    ],
     "name": "Final Fantasy Scene Box Camp Comrades",
     "subtype": "other",
     "uuid": "ca562b44-04c6-56d4-8db5-22a6a70beeb5",
-    "set_code": "fin",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "fin"
   },
   {
     "category": "box_set",
+    "contents": [
+      [
+        1,
+        "deck",
+        "fin",
+        "Children of Fate"
+      ],
+      [
+        1,
+        "other",
+        "6 Art-Only Scene Cards"
+      ],
+      [
+        1,
+        "other",
+        "Final Fantasy Display Easel"
+      ],
+      [
+        3,
+        "product",
+        "fin",
+        "Final Fantasy Play Booster Pack"
+      ]
+    ],
     "name": "Final Fantasy Scene Box Children of Fate",
     "subtype": "other",
     "uuid": "aba02f54-a1e0-5e9b-a830-003d36fbaf66",
-    "set_code": "fin",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "fin"
   },
   {
     "category": "box_set",
-    "name": "Final Fantasy Scene Box Garland at the Chaos Shrine",
-    "subtype": "other",
-    "uuid": "aaf76b3e-95eb-5512-8276-bdf05e28f9a5",
-    "set_code": "fin",
     "contents": [
       [
         1,
-        "unknown"
+        "deck",
+        "fin",
+        "Garland at the Chaos Shrine"
+      ],
+      [
+        1,
+        "other",
+        "6 Art-Only Scene Cards"
+      ],
+      [
+        1,
+        "other",
+        "Final Fantasy Display Easel"
+      ],
+      [
+        3,
+        "product",
+        "fin",
+        "Final Fantasy Play Booster Pack"
       ]
-    ]
+    ],
+    "name": "Final Fantasy Scene Box Garland at the Chaos Shrine",
+    "subtype": "other",
+    "uuid": "aaf76b3e-95eb-5512-8276-bdf05e28f9a5",
+    "set_code": "fin"
   },
   {
     "category": "box_set",
@@ -32943,16 +33176,34 @@
   },
   {
     "category": "box_set",
-    "name": "Final Fantasy Scene Box The Siege of Alexandria",
-    "subtype": "other",
-    "uuid": "6de5115e-2880-547f-ad59-84c0783235e8",
-    "set_code": "fin",
     "contents": [
       [
         1,
-        "unknown"
+        "deck",
+        "fin",
+        "The Siege of Alexandria"
+      ],
+      [
+        1,
+        "other",
+        "6 Art-Only Scene Cards"
+      ],
+      [
+        1,
+        "other",
+        "Final Fantasy Display Easel"
+      ],
+      [
+        3,
+        "product",
+        "fin",
+        "Final Fantasy Play Booster Pack"
       ]
-    ]
+    ],
+    "name": "Final Fantasy Scene Box The Siege of Alexandria",
+    "subtype": "other",
+    "uuid": "6de5115e-2880-547f-ad59-84c0783235e8",
+    "set_code": "fin"
   },
   {
     "category": "multiple_decks",
@@ -33075,16 +33326,43 @@
   },
   {
     "category": "bundle",
+    "contents": [
+      [
+        1,
+        "other",
+        "Fate Reforged 80-card Basic Land Bundle"
+      ],
+      [
+        1,
+        "other",
+        "Fate Reforged Special Edition Spindown"
+      ],
+      [
+        1,
+        "other",
+        "Full Art Card Box"
+      ],
+      [
+        1,
+        "other",
+        "Two Deck Boxes"
+      ],
+      [
+        1,
+        "other",
+        "Player's Guide with Visual Encyclopedia"
+      ],
+      [
+        9,
+        "product",
+        "frf",
+        "Fate Reforged Booster Pack"
+      ]
+    ],
     "name": "Fate Reforged Fat Pack",
     "subtype": "fat_pack",
     "uuid": "1da4596f-30cf-5e60-bcc1-475c5b8277de",
     "set_code": "frf",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2015-01-21"
   },
   {
@@ -33302,42 +33580,81 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "pack",
+        "frf-prerelease-abzan"
+      ],
+      [
+        4,
+        "product",
+        "frf",
+        "Fate Reforged Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "ktk",
+        "Khans of Tarkir Booster Pack"
+      ]
+    ],
     "name": "Fate Reforged Prerelease Kit Abzan Battle with Endurance",
     "subtype": "prerelease_kit",
     "uuid": "26aa4f02-438c-5bf3-a113-f60744631855",
-    "set_code": "frf",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "frf"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "pack",
+        "frf-prerelease-jeskai"
+      ],
+      [
+        4,
+        "product",
+        "frf",
+        "Fate Reforged Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "ktk",
+        "Khans of Tarkir Booster Pack"
+      ]
+    ],
     "name": "Fate Reforged Prerelease Kit Jeskai Battle with Cunning",
     "subtype": "prerelease_kit",
     "uuid": "a4f3e1de-db9e-5b9b-b5b5-d521cb353afd",
-    "set_code": "frf",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "frf"
   },
   {
     "category": "limited_aid_tool",
-    "name": "Fate Reforged Prerelease Kit Mardu Battle with Speed",
-    "subtype": "prerelease_kit",
-    "uuid": "5ece4215-81c3-575c-8410-cfc0eb4cb401",
-    "set_code": "frf",
     "contents": [
       [
         1,
-        "unknown"
+        "pack",
+        "frf-prerelease-mardu"
+      ],
+      [
+        4,
+        "product",
+        "frf",
+        "Fate Reforged Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "ktk",
+        "Khans of Tarkir Booster Pack"
       ]
-    ]
+    ],
+    "name": "Fate Reforged Prerelease Kit Mardu Battle with Speed",
+    "subtype": "prerelease_kit",
+    "uuid": "5ece4215-81c3-575c-8410-cfc0eb4cb401",
+    "set_code": "frf"
   },
   {
     "category": "subset",
@@ -33381,29 +33698,55 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "pack",
+        "frf-prerelease-sultai"
+      ],
+      [
+        4,
+        "product",
+        "frf",
+        "Fate Reforged Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "ktk",
+        "Khans of Tarkir Booster Pack"
+      ]
+    ],
     "name": "Fate Reforged Prerelease Kit Sultai Battle with Ruthlessness",
     "subtype": "prerelease_kit",
     "uuid": "be78b299-2a2c-5282-a97d-f75a3a71d58e",
-    "set_code": "frf",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "frf"
   },
   {
     "category": "limited_aid_tool",
-    "name": "Fate Reforged Prerelease Kit Temur Battle with Savagery",
-    "subtype": "prerelease_kit",
-    "uuid": "8cd461f3-2d50-5a66-b18c-2cba4a56e3eb",
-    "set_code": "frf",
     "contents": [
       [
         1,
-        "unknown"
+        "pack",
+        "frf-prerelease-temur"
+      ],
+      [
+        4,
+        "product",
+        "frf",
+        "Fate Reforged Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "ktk",
+        "Khans of Tarkir Booster Pack"
       ]
-    ]
+    ],
+    "name": "Fate Reforged Prerelease Kit Temur Battle with Savagery",
+    "subtype": "prerelease_kit",
+    "uuid": "8cd461f3-2d50-5a66-b18c-2cba4a56e3eb",
+    "set_code": "frf"
   },
   {
     "category": "booster_pack",
@@ -34970,72 +35313,132 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Guilds of Ravnica Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "grn-prerelease-boros"
+      ],
+      [
+        5,
+        "product",
+        "grn",
+        "Guilds of Ravnica Booster Pack"
+      ]
+    ],
     "name": "Guilds of Ravnica Prerelease Pack Boros",
     "subtype": "prerelease_kit",
     "uuid": "abc588b8-47c8-5b5e-9320-4a24940a3350",
     "set_code": "grn",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2018-09-05"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Guilds of Ravnica Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "grn-prerelease-dimir"
+      ],
+      [
+        5,
+        "product",
+        "grn",
+        "Guilds of Ravnica Booster Pack"
+      ]
+    ],
     "name": "Guilds of Ravnica Prerelease Pack Dimir",
     "subtype": "prerelease_kit",
     "uuid": "ff9f024d-bc80-524a-a72b-d219f4c93472",
     "set_code": "grn",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2018-09-05"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Guilds of Ravnica Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "grn-prerelease-golgari"
+      ],
+      [
+        5,
+        "product",
+        "grn",
+        "Guilds of Ravnica Booster Pack"
+      ]
+    ],
     "name": "Guilds of Ravnica Prerelease Pack Golgari",
     "subtype": "prerelease_kit",
     "uuid": "37bd2de6-2067-592e-874e-c52e0f661455",
     "set_code": "grn",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2018-09-05"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Guilds of Ravnica Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "grn-prerelease-izzet"
+      ],
+      [
+        5,
+        "product",
+        "grn",
+        "Guilds of Ravnica Booster Pack"
+      ]
+    ],
     "name": "Guilds of Ravnica Prerelease Pack Izzet",
     "subtype": "prerelease_kit",
     "uuid": "55bbda3f-4d5d-56ce-9949-1266a12777b8",
     "set_code": "grn",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2018-09-05"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Guilds of Ravnica Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "grn-prerelease-selesnya"
+      ],
+      [
+        5,
+        "product",
+        "grn",
+        "Guilds of Ravnica Booster Pack"
+      ]
+    ],
     "name": "Guilds of Ravnica Prerelease Pack Selesnya",
     "subtype": "prerelease_kit",
     "uuid": "9ddfd965-24c5-5cdf-a430-a67ef93cf2bf",
     "set_code": "grn",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2018-09-05"
   },
   {
@@ -35485,16 +35888,18 @@
   },
   {
     "category": "deck_box",
+    "contents": [
+      [
+        12,
+        "product",
+        "gtc",
+        "Gatecrash Booster Battle Pack"
+      ]
+    ],
     "name": "Gatecrash Booster Battle Pack Display",
     "subtype": "battle_pack",
     "uuid": "cb74eb91-6ffd-5b20-a070-102caad5ec1a",
-    "set_code": "gtc",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "gtc"
   },
   {
     "category": "booster_box",
@@ -36711,16 +37116,43 @@
   },
   {
     "category": "bundle",
+    "contents": [
+      [
+        1,
+        "other",
+        "Hour of Devastation 80-card Basic Land Bundle"
+      ],
+      [
+        1,
+        "other",
+        "25 Double-sided Tokens"
+      ],
+      [
+        1,
+        "other",
+        "Hour of Devastation Reusable Card Storage Box"
+      ],
+      [
+        1,
+        "other",
+        "Hour of Devastation Bundle Spindown"
+      ],
+      [
+        1,
+        "other",
+        "Hour of Devastation Players Guide"
+      ],
+      [
+        10,
+        "product",
+        "hou",
+        "Hour of Devastation Booster Pack"
+      ]
+    ],
     "name": "Hour of Devastation Bundle",
     "subtype": "default",
     "uuid": "ef204ad4-19b5-50db-a21e-ff2f47367cf0",
     "set_code": "hou",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2016-09-07"
   },
   {
@@ -36753,16 +37185,24 @@
   },
   {
     "category": "deck_box",
+    "contents": [
+      [
+        3,
+        "product",
+        "hou",
+        "Hour of Devastation Planeswalker Deck Nicol Bolas"
+      ],
+      [
+        3,
+        "product",
+        "hou",
+        "Hour of Devastation Planeswalker Deck Nissa"
+      ]
+    ],
     "name": "Hour of Devastation Planeswalker Deck Display",
     "subtype": "planeswalker",
     "uuid": "82dbe9a2-dfc4-51af-ba47-d875c209611d",
-    "set_code": "hou",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "hou"
   },
   {
     "category": "deck",
@@ -36832,16 +37272,34 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "1 Hour of Devastation Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "hou-prerelease"
+      ],
+      [
+        4,
+        "product",
+        "hou",
+        "Hour of Devastation Booster Pack"
+      ],
+      [
+        2,
+        "product",
+        "akh",
+        "Amonkhet Booster Pack"
+      ]
+    ],
     "name": "Hour of Devastation Prerelease Pack",
     "subtype": "prerelease_kit",
     "uuid": "0fed5e3f-bee2-5508-8ce3-74ca0b21fae0",
     "set_code": "hou",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2017-07-07"
   },
   {
@@ -37904,6 +38362,11 @@
       [
         1,
         "other",
+        "10 checklist cards"
+      ],
+      [
+        1,
+        "other",
         "Innistrad Spindown Life Counter"
       ],
       [
@@ -38305,16 +38768,18 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        2,
+        "product",
+        "j25",
+        "Foundations Jumpstart Booster Pack"
+      ]
+    ],
     "name": "Foundations Jumpstart 2 Pack",
     "subtype": "draft_set",
     "uuid": "6e2a9c1b-c055-56e5-9314-65823d2a0437",
-    "set_code": "j25",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "j25"
   },
   {
     "category": "booster_box",
@@ -38426,16 +38891,18 @@
   },
   {
     "category": "deck",
-    "name": "Defeat a God Challenge Deck",
-    "subtype": "challenge",
-    "uuid": "57c78a40-b6ae-5a7f-9aea-e4c6da9790ba",
-    "set_code": "jou",
     "contents": [
       [
         1,
-        "unknown"
+        "deck",
+        "tdag",
+        "Defeat a God"
       ]
-    ]
+    ],
+    "name": "Defeat a God Challenge Deck",
+    "subtype": "challenge",
+    "uuid": "57c78a40-b6ae-5a7f-9aea-e4c6da9790ba",
+    "set_code": "jou"
   },
   {
     "category": "booster_box",
@@ -38516,16 +38983,43 @@
   },
   {
     "category": "bundle",
+    "contents": [
+      [
+        1,
+        "other",
+        "Player's guide with encyclopedia"
+      ],
+      [
+        1,
+        "other",
+        "Journey Into Nyx card box"
+      ],
+      [
+        1,
+        "other",
+        "80-card basic land pack"
+      ],
+      [
+        1,
+        "other",
+        "Special edition spindown life counter"
+      ],
+      [
+        1,
+        "other",
+        "Two deck boxes"
+      ],
+      [
+        9,
+        "product",
+        "jou",
+        "Journey Into Nyx Booster Pack"
+      ]
+    ],
     "name": "Journey Into Nyx Fat Pack",
     "subtype": "fat_pack",
     "uuid": "b02c5fd2-f06f-5413-a56b-08019af87228",
     "set_code": "jou",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2014-05-02"
   },
   {
@@ -38713,68 +39207,228 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "card",
+        "thp3",
+        "7a",
+        "Spear of the General",
+        false
+      ],
+      [
+        1,
+        "other",
+        "Spindown die"
+      ],
+      [
+        1,
+        "pack",
+        "jou-prerelease-glory"
+      ],
+      [
+        2,
+        "product",
+        "jou",
+        "Journey Into Nyx Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "bng",
+        "Born of the Gods Booster Pack"
+      ],
+      [
+        2,
+        "product",
+        "ths",
+        "Theros Booster Pack"
+      ]
+    ],
     "name": "Journey Into Nyx Prerelease Forged in Glory",
     "subtype": "prerelease_kit",
     "uuid": "90eabe22-5651-5988-9c22-5fec8dc95e2e",
-    "set_code": "jou",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "jou"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "card",
+        "thp3",
+        "7b",
+        "Cloak of the Philosopher",
+        false
+      ],
+      [
+        1,
+        "other",
+        "Spindown die"
+      ],
+      [
+        1,
+        "pack",
+        "jou-prerelease-intellect"
+      ],
+      [
+        2,
+        "product",
+        "jou",
+        "Journey Into Nyx Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "bng",
+        "Born of the Gods Booster Pack"
+      ],
+      [
+        2,
+        "product",
+        "ths",
+        "Theros Booster Pack"
+      ]
+    ],
     "name": "Journey Into Nyx Prerelease Forged in Intellect",
     "subtype": "prerelease_kit",
     "uuid": "84896144-1b61-58db-b63d-97a9a2f3de2e",
-    "set_code": "jou",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "jou"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "card",
+        "thp3",
+        "7e",
+        "Bow of the Hunter",
+        false
+      ],
+      [
+        1,
+        "other",
+        "Spindown die"
+      ],
+      [
+        1,
+        "pack",
+        "jou-prerelease-pursuit"
+      ],
+      [
+        2,
+        "product",
+        "jou",
+        "Journey Into Nyx Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "bng",
+        "Born of the Gods Booster Pack"
+      ],
+      [
+        2,
+        "product",
+        "ths",
+        "Theros Booster Pack"
+      ]
+    ],
     "name": "Journey Into Nyx Prerelease Forged in Pursuit",
     "subtype": "prerelease_kit",
     "uuid": "ba2b383c-9939-537a-b47e-a896228f6438",
-    "set_code": "jou",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "jou"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "card",
+        "thp3",
+        "7c",
+        "Lash of the Tyrant",
+        false
+      ],
+      [
+        1,
+        "other",
+        "Spindown die"
+      ],
+      [
+        1,
+        "pack",
+        "jou-prerelease-tyranny"
+      ],
+      [
+        2,
+        "product",
+        "jou",
+        "Journey Into Nyx Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "bng",
+        "Born of the Gods Booster Pack"
+      ],
+      [
+        2,
+        "product",
+        "ths",
+        "Theros Booster Pack"
+      ]
+    ],
     "name": "Journey Into Nyx Prerelease Forged in Tyranny",
     "subtype": "prerelease_kit",
     "uuid": "3f1acaa1-45ac-5d06-af8b-6b81b1e75e9d",
-    "set_code": "jou",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "jou"
   },
   {
     "category": "limited_aid_tool",
-    "name": "Journey Into Nyx Prerelease Forged in War",
-    "subtype": "prerelease_kit",
-    "uuid": "020643ce-9c35-5414-ae12-38cadb0de8cc",
-    "set_code": "jou",
     "contents": [
       [
         1,
-        "unknown"
+        "card",
+        "thp3",
+        "7d",
+        "Axe of the Warmonger",
+        false
+      ],
+      [
+        1,
+        "other",
+        "Spindown die"
+      ],
+      [
+        1,
+        "pack",
+        "jou-prerelease-war"
+      ],
+      [
+        2,
+        "product",
+        "jou",
+        "Journey Into Nyx Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "bng",
+        "Born of the Gods Booster Pack"
+      ],
+      [
+        2,
+        "product",
+        "ths",
+        "Theros Booster Pack"
       ]
-    ]
+    ],
+    "name": "Journey Into Nyx Prerelease Forged in War",
+    "subtype": "prerelease_kit",
+    "uuid": "020643ce-9c35-5414-ae12-38cadb0de8cc",
+    "set_code": "jou"
   },
   {
     "category": "subset",
@@ -39386,16 +40040,28 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Kaldheim Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "khm-prerelease"
+      ],
+      [
+        6,
+        "product",
+        "khm",
+        "Kaldheim Draft Booster Pack"
+      ]
+    ],
     "name": "Kaldheim Prerelease Pack",
     "subtype": "prerelease_kit",
     "uuid": "950a1927-2cbc-58ea-90c4-8da404ebd93b",
     "set_code": "khm",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2021-01-07"
   },
   {
@@ -49729,16 +50395,17 @@
   },
   {
     "category": "booster_pack",
+    "contents": [
+      [
+        1,
+        "pack",
+        "kld-buyabox"
+      ]
+    ],
     "name": "Kaladesh Holiday Buy a Box Promo Pack",
     "subtype": "default",
     "uuid": "ca847e9a-858c-5f34-9a97-b5cdfe719985",
     "set_code": "kld",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2016-11-21"
   },
   {
@@ -50158,16 +50825,43 @@
   },
   {
     "category": "bundle",
+    "contents": [
+      [
+        1,
+        "other",
+        "Khans of Tarkir 80-card Basic Land Bundle"
+      ],
+      [
+        1,
+        "other",
+        "Khans of Tarkir Special Edition Spindown"
+      ],
+      [
+        1,
+        "other",
+        "Full Art Card Box"
+      ],
+      [
+        1,
+        "other",
+        "Two Deck Boxes"
+      ],
+      [
+        1,
+        "other",
+        "Player's Guide with Visual Encyclopedia"
+      ],
+      [
+        9,
+        "product",
+        "ktk",
+        "Khans of Tarkir Booster Pack"
+      ]
+    ],
     "name": "Khans of Tarkir Fat Pack",
     "subtype": "fat_pack",
     "uuid": "9323195f-8623-52e6-a20f-9adf8c810f47",
     "set_code": "ktk",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2014-09-24"
   },
   {
@@ -50421,42 +51115,63 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "pack",
+        "ktk-prerelease-abzan"
+      ],
+      [
+        5,
+        "product",
+        "ktk",
+        "Khans of Tarkir Booster Pack"
+      ]
+    ],
     "name": "Khans of Tarkir Prerelease Kit Abzan Battle with Endurance",
     "subtype": "prerelease_kit",
     "uuid": "1459d88b-061f-5b6a-bc86-bab9314ef149",
-    "set_code": "ktk",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "ktk"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "pack",
+        "ktk-prerelease-jeskai"
+      ],
+      [
+        5,
+        "product",
+        "ktk",
+        "Khans of Tarkir Booster Pack"
+      ]
+    ],
     "name": "Khans of Tarkir Prerelease Kit Jeskai Battle with Cunning",
     "subtype": "prerelease_kit",
     "uuid": "734c77d4-d5f8-5521-875a-e68ead61f861",
-    "set_code": "ktk",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "ktk"
   },
   {
     "category": "limited_aid_tool",
-    "name": "Khans of Tarkir Prerelease Kit Mardu Battle with Speed",
-    "subtype": "prerelease_kit",
-    "uuid": "ce3e4377-9946-56d4-927c-de57a72fb1ee",
-    "set_code": "ktk",
     "contents": [
       [
         1,
-        "unknown"
+        "pack",
+        "ktk-prerelease-mardu"
+      ],
+      [
+        5,
+        "product",
+        "ktk",
+        "Khans of Tarkir Booster Pack"
       ]
-    ]
+    ],
+    "name": "Khans of Tarkir Prerelease Kit Mardu Battle with Speed",
+    "subtype": "prerelease_kit",
+    "uuid": "ce3e4377-9946-56d4-927c-de57a72fb1ee",
+    "set_code": "ktk"
   },
   {
     "category": "subset",
@@ -50500,29 +51215,43 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "pack",
+        "ktk-prerelease-sultai"
+      ],
+      [
+        5,
+        "product",
+        "ktk",
+        "Khans of Tarkir Booster Pack"
+      ]
+    ],
     "name": "Khans of Tarkir Prerelease Kit Sultai Battle with Ruthlessness",
     "subtype": "prerelease_kit",
     "uuid": "410aeb7e-c059-5565-8f46-e89f57ef2215",
-    "set_code": "ktk",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "ktk"
   },
   {
     "category": "limited_aid_tool",
-    "name": "Khans of Tarkir Prerelease Kit Temur Battle with Savagery",
-    "subtype": "prerelease_kit",
-    "uuid": "88923b53-5fa2-5ae1-9af2-29391add0156",
-    "set_code": "ktk",
     "contents": [
       [
         1,
-        "unknown"
+        "pack",
+        "ktk-prerelease-temur"
+      ],
+      [
+        5,
+        "product",
+        "ktk",
+        "Khans of Tarkir Booster Pack"
       ]
-    ]
+    ],
+    "name": "Khans of Tarkir Prerelease Kit Temur Battle with Savagery",
+    "subtype": "prerelease_kit",
+    "uuid": "88923b53-5fa2-5ae1-9af2-29391add0156",
+    "set_code": "ktk"
   },
   {
     "category": "deck",
@@ -51652,16 +52381,49 @@
   },
   {
     "category": "bundle",
-    "name": "Lorwyn Fat Pack",
-    "subtype": "fat_pack",
-    "uuid": "f10c00da-6199-58e8-bc03-ee504bcc39e8",
-    "set_code": "lrw",
     "contents": [
       [
         1,
-        "unknown"
+        "deck",
+        "lrw",
+        "Lorwyn Fat Pack Land Pack"
+      ],
+      [
+        1,
+        "other",
+        "2 Card Storage Boxes"
+      ],
+      [
+        1,
+        "other",
+        "Lorwyn Spindown"
+      ],
+      [
+        1,
+        "other",
+        "One random Pro Tour Player Card"
+      ],
+      [
+        1,
+        "other",
+        "The Lorwyn novel"
+      ],
+      [
+        1,
+        "other",
+        "Six color-coded plastic card dividers"
+      ],
+      [
+        6,
+        "product",
+        "lrw",
+        "Lorwyn Booster Pack"
       ]
-    ]
+    ],
+    "name": "Lorwyn Fat Pack",
+    "subtype": "fat_pack",
+    "uuid": "f10c00da-6199-58e8-bc03-ee504bcc39e8",
+    "set_code": "lrw"
   },
   {
     "category": "box_set",
@@ -73898,16 +74660,43 @@
   },
   {
     "category": "bundle",
-    "name": "2012 Core Set Fat Pack",
-    "subtype": "fat_pack",
-    "uuid": "f46a139b-610f-539d-8aa5-e3c6df3265db",
-    "set_code": "m12",
     "contents": [
       [
         1,
-        "unknown"
+        "other",
+        "Magic 2012 Card Box"
+      ],
+      [
+        1,
+        "other",
+        "Magic 2012 Player's Guide"
+      ],
+      [
+        1,
+        "other",
+        "Learn-to-Play Insert"
+      ],
+      [
+        1,
+        "other",
+        "80-card basic land pack"
+      ],
+      [
+        1,
+        "other",
+        "Magic 2012 Spindown Life Counter"
+      ],
+      [
+        9,
+        "product",
+        "m12",
+        "2012 Core Set Booster Pack"
       ]
-    ]
+    ],
+    "name": "2012 Core Set Fat Pack",
+    "subtype": "fat_pack",
+    "uuid": "f46a139b-610f-539d-8aa5-e3c6df3265db",
+    "set_code": "m12"
   },
   {
     "category": "deck",
@@ -74471,16 +75260,24 @@
   },
   {
     "category": "deck_box",
+    "contents": [
+      [
+        3,
+        "product",
+        "m13",
+        "2013 Core Set Event Deck Repeat Performance"
+      ],
+      [
+        3,
+        "product",
+        "m13",
+        "2013 Core Set Event Deck Sweet Revenge"
+      ]
+    ],
     "name": "2013 Core Set Event Deck Display",
     "subtype": "event",
     "uuid": "c3a1bfdf-14f7-544f-988b-a254f768d02d",
-    "set_code": "m13",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "m13"
   },
   {
     "category": "deck",
@@ -74535,16 +75332,43 @@
   },
   {
     "category": "bundle",
+    "contents": [
+      [
+        1,
+        "other",
+        "Magic 2013 Player's Guide"
+      ],
+      [
+        1,
+        "other",
+        "Magic 2013 Card Box"
+      ],
+      [
+        1,
+        "other",
+        "80-card basic land pack"
+      ],
+      [
+        1,
+        "other",
+        "Special edition spindown life counter"
+      ],
+      [
+        1,
+        "other",
+        "Two deck boxes"
+      ],
+      [
+        9,
+        "product",
+        "m13",
+        "2013 Core Set Booster Pack"
+      ]
+    ],
     "name": "2013 Core Set Fat Pack",
     "subtype": "fat_pack",
     "uuid": "2d25abec-901d-5d5b-bb7e-a162f717fa92",
     "set_code": "m13",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2012-07-13"
   },
   {
@@ -74948,16 +75772,43 @@
   },
   {
     "category": "bundle",
-    "name": "2014 Core Set Fat Pack",
-    "subtype": "fat_pack",
-    "uuid": "5cca5c30-8345-5c5c-a21f-09079ded0769",
-    "set_code": "m14",
     "contents": [
       [
         1,
-        "unknown"
+        "other",
+        "Magic 2014 Player's Guide"
+      ],
+      [
+        1,
+        "other",
+        "Magic 2014 Card Box"
+      ],
+      [
+        1,
+        "other",
+        "80-card basic land pack"
+      ],
+      [
+        1,
+        "other",
+        "Special edition spindown life counter"
+      ],
+      [
+        1,
+        "other",
+        "Two deck boxes"
+      ],
+      [
+        9,
+        "product",
+        "m14",
+        "2014 Core Set Booster Pack"
       ]
-    ]
+    ],
+    "name": "2014 Core Set Fat Pack",
+    "subtype": "fat_pack",
+    "uuid": "5cca5c30-8345-5c5c-a21f-09079ded0769",
+    "set_code": "m14"
   },
   {
     "category": "deck",
@@ -85598,68 +86449,128 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Spindown die"
+      ],
+      [
+        1,
+        "pack",
+        "m15-prerelease-ambition"
+      ],
+      [
+        5,
+        "product",
+        "m15",
+        "2015 Core Set Booster Pack"
+      ]
+    ],
     "name": "2015 Core Set Prerelease Hunt with Ambition",
     "subtype": "prerelease_kit",
     "uuid": "58a41feb-1665-5aac-aeef-5aa510e04d08",
-    "set_code": "m15",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "m15"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Spindown die"
+      ],
+      [
+        1,
+        "pack",
+        "m15-prerelease-ferocity"
+      ],
+      [
+        5,
+        "product",
+        "m15",
+        "2015 Core Set Booster Pack"
+      ]
+    ],
     "name": "2015 Core Set Prerelease Hunt with Ferocity",
     "subtype": "prerelease_kit",
     "uuid": "38e48e51-4cbc-5a51-a645-01fab1818896",
-    "set_code": "m15",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "m15"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Spindown die"
+      ],
+      [
+        1,
+        "pack",
+        "m15-prerelease-guile"
+      ],
+      [
+        5,
+        "product",
+        "m15",
+        "2015 Core Set Booster Pack"
+      ]
+    ],
     "name": "2015 Core Set Prerelease Hunt with Guile",
     "subtype": "prerelease_kit",
     "uuid": "dfe2c0ec-aac2-572a-8e64-24917eaa9c18",
-    "set_code": "m15",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "m15"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Spindown die"
+      ],
+      [
+        1,
+        "pack",
+        "m15-prerelease-strength"
+      ],
+      [
+        5,
+        "product",
+        "m15",
+        "2015 Core Set Booster Pack"
+      ]
+    ],
     "name": "2015 Core Set Prerelease Hunt with Strength",
     "subtype": "prerelease_kit",
     "uuid": "f226425f-7656-50b2-b1cf-929cece21c23",
-    "set_code": "m15",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "m15"
   },
   {
     "category": "limited_aid_tool",
-    "name": "2015 Core Set Prerelease Hunt with Valor",
-    "subtype": "prerelease_kit",
-    "uuid": "d0084be5-1f85-5577-91bb-3d42fdffc509",
-    "set_code": "m15",
     "contents": [
       [
         1,
-        "unknown"
+        "other",
+        "Spindown die"
+      ],
+      [
+        1,
+        "pack",
+        "m15-prerelease-valor"
+      ],
+      [
+        5,
+        "product",
+        "m15",
+        "2015 Core Set Booster Pack"
       ]
-    ]
+    ],
+    "name": "2015 Core Set Prerelease Hunt with Valor",
+    "subtype": "prerelease_kit",
+    "uuid": "d0084be5-1f85-5577-91bb-3d42fdffc509",
+    "set_code": "m15"
   },
   {
     "category": "subset",
@@ -85911,16 +86822,103 @@
   },
   {
     "category": "bundle",
+    "contents": [
+      [
+        1,
+        "card",
+        "g18",
+        "GP1",
+        "Angelic Guardian",
+        true
+      ],
+      [
+        1,
+        "card",
+        "g18",
+        "GP2",
+        "Angler Turtle",
+        true
+      ],
+      [
+        1,
+        "card",
+        "g18",
+        "GP3",
+        "Vengeant Vampire",
+        true
+      ],
+      [
+        1,
+        "card",
+        "g18",
+        "GP4",
+        "Immortal Phoenix",
+        true
+      ],
+      [
+        1,
+        "card",
+        "g18",
+        "GP5",
+        "Rampaging Brontodon",
+        true
+      ],
+      [
+        1,
+        "card",
+        "m19",
+        "261",
+        "Plains",
+        true
+      ],
+      [
+        1,
+        "card",
+        "m19",
+        "268",
+        "Island",
+        true
+      ],
+      [
+        1,
+        "card",
+        "m19",
+        "269",
+        "Swamp",
+        true
+      ],
+      [
+        1,
+        "card",
+        "m19",
+        "276",
+        "Mountain",
+        true
+      ],
+      [
+        1,
+        "card",
+        "m19",
+        "277",
+        "Forest",
+        true
+      ],
+      [
+        1,
+        "other",
+        "Spindown life counter"
+      ],
+      [
+        4,
+        "product",
+        "m19",
+        "Core Set 2019 Booster Pack"
+      ]
+    ],
     "name": "Core Set 2019 Gift Pack",
     "subtype": "gift_bundle",
     "uuid": "8c9a3afe-6d22-59be-a4d7-1cc66aef4949",
     "set_code": "m19",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2018-08-27"
   },
   {
@@ -87334,16 +88332,28 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Core Set 2021 Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "m21-prerelease"
+      ],
+      [
+        6,
+        "product",
+        "m21",
+        "Core Set 2021 Draft Booster Pack"
+      ]
+    ],
     "name": "Core Set 2021 Prerelease Pack",
     "subtype": "prerelease_kit",
     "uuid": "5e2d5a4e-6315-5dad-b157-3cec3efe50ed",
     "set_code": "m21",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2020-06-30"
   },
   {
@@ -88305,16 +89315,48 @@
   },
   {
     "category": "bundle",
-    "name": "Mirrodin Besieged Fat Pack",
-    "subtype": "fat_pack",
-    "uuid": "085408f3-eb28-504d-a834-ea12dd98e9a2",
-    "set_code": "mbs",
     "contents": [
       [
         1,
-        "unknown"
+        "other",
+        "80 basic land cards"
+      ],
+      [
+        1,
+        "other",
+        "Mirrodin Besieged spindown life counter"
+      ],
+      [
+        1,
+        "other",
+        "player's guide"
+      ],
+      [
+        1,
+        "other",
+        "learn-to-play insert"
+      ],
+      [
+        1,
+        "other",
+        "card storage box"
+      ],
+      [
+        1,
+        "other",
+        "two 60-card deck boxes"
+      ],
+      [
+        9,
+        "product",
+        "mbs",
+        "Mirrodin Besieged Booster Pack"
       ]
-    ]
+    ],
+    "name": "Mirrodin Besieged Fat Pack",
+    "subtype": "fat_pack",
+    "uuid": "085408f3-eb28-504d-a834-ea12dd98e9a2",
+    "set_code": "mbs"
   },
   {
     "category": "deck",
@@ -88463,29 +89505,31 @@
   },
   {
     "category": "booster_pack",
+    "contents": [
+      [
+        1,
+        "pack",
+        "mbs-mirran"
+      ]
+    ],
     "name": "Mirrodin Besieged Mirran Faction Booster Pack",
     "subtype": "other",
     "uuid": "7ad8e6d2-bdd1-5663-bbca-b38b32581b5a",
-    "set_code": "mbs",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "mbs"
   },
   {
     "category": "booster_pack",
-    "name": "Mirrodin Besieged Phyrexian Faction Booster Pack",
-    "subtype": "other",
-    "uuid": "a2124d73-1822-5b99-8724-e1b36dd695f5",
-    "set_code": "mbs",
     "contents": [
       [
         1,
-        "unknown"
+        "pack",
+        "mbs-phyrexian"
       ]
-    ]
+    ],
+    "name": "Mirrodin Besieged Phyrexian Faction Booster Pack",
+    "subtype": "other",
+    "uuid": "a2124d73-1822-5b99-8724-e1b36dd695f5",
+    "set_code": "mbs"
   },
   {
     "category": "booster_pack",
@@ -88748,16 +89792,38 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "5 Non-foil double-sided tokens"
+      ],
+      [
+        1,
+        "other",
+        "Deck box"
+      ],
+      [
+        1,
+        "other",
+        "Modern Horizons 2 Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "mh2-prerelease"
+      ],
+      [
+        6,
+        "product",
+        "mh2",
+        "Modern Horizons 2 Draft Booster Pack"
+      ]
+    ],
     "name": "Modern Horizons 2 Prerelease Pack",
     "subtype": "prerelease_kit",
     "uuid": "48a731ef-4d0f-51b0-8a07-7d3c0bbc1277",
     "set_code": "mh2",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2021-06-08"
   },
   {
@@ -89049,16 +90115,33 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Deck box"
+      ],
+      [
+        1,
+        "other",
+        "Modern Horizons 3 spindown"
+      ],
+      [
+        1,
+        "pack",
+        "mh3-prerelease"
+      ],
+      [
+        6,
+        "product",
+        "mh3",
+        "Modern Horizons 3 Play Booster Pack"
+      ]
+    ],
     "name": "Modern Horizons 3 Prerelease Pack",
     "subtype": "prerelease_kit",
     "uuid": "94448110-0697-57bc-bd4f-f64fffe1e3b7",
     "set_code": "mh3",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2024-06-14"
   },
   {
@@ -91877,29 +92960,144 @@
   },
   {
     "category": "box_set",
+    "contents": [
+      [
+        1,
+        "deck",
+        "msh",
+        "Beginner Box - Heroes"
+      ],
+      [
+        1,
+        "deck",
+        "msh",
+        "Beginner Box - Captain America Tutorial"
+      ],
+      [
+        1,
+        "deck",
+        "msh",
+        "Beginner Box - Artifacts"
+      ],
+      [
+        1,
+        "deck",
+        "msh",
+        "Beginner Box - Card Draw"
+      ],
+      [
+        1,
+        "deck",
+        "msh",
+        "Beginner Box - HYDRA"
+      ],
+      [
+        1,
+        "deck",
+        "msh",
+        "Beginner Box - Villains"
+      ],
+      [
+        1,
+        "deck",
+        "msh",
+        "Beginner Box - Iron Man Tutorial"
+      ],
+      [
+        1,
+        "deck",
+        "msh",
+        "Beginner Box - Young Avengers"
+      ],
+      [
+        1,
+        "deck",
+        "msh",
+        "Beginner Box - Counters"
+      ],
+      [
+        1,
+        "deck",
+        "msh",
+        "Beginner Box - Ramp"
+      ],
+      [
+        1,
+        "other",
+        "5 double-sided tokens"
+      ],
+      [
+        1,
+        "other",
+        "2 Gameboard playmats"
+      ],
+      [
+        1,
+        "other",
+        "2 How to Play guides"
+      ],
+      [
+        1,
+        "other",
+        "Reference guide booklet"
+      ],
+      [
+        1,
+        "other",
+        "2 Spindown life counters"
+      ]
+    ],
     "name": "Marvel Super Heroes Beginner Box",
     "subtype": "starter_deck",
     "uuid": "9d5d5c72-7aba-52ed-b950-d29b3ee605da",
-    "set_code": "msh",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "msh"
   },
   {
     "category": "box_set",
+    "contents": [
+      [
+        3,
+        "product",
+        "msh",
+        "Marvel Super Heroes Beginner Box"
+      ]
+    ],
     "name": "Marvel Super Heroes Beginner Box Case",
     "subtype": "starter_deck",
     "uuid": "486dd805-243d-500a-8ded-ceafb2417a5c",
-    "set_code": "msh",
+    "set_code": "msh"
+  },
+  {
+    "category": "box_set",
     "contents": [
       [
         1,
-        "unknown"
+        "deck",
+        "msh",
+        "Heroes United"
       ]
-    ]
+    ],
+    "name": "Marvel Super Heroes Box Set Heroes United",
+    "subtype": "other",
+    "uuid": "0b6823e2-60ad-52fc-89ea-2d076e4dfdbb",
+    "set_code": "msh",
+    "release_date": "2026-06-26"
+  },
+  {
+    "category": "box_set",
+    "contents": [
+      [
+        1,
+        "deck",
+        "msh",
+        "Villains Unleashed"
+      ]
+    ],
+    "name": "Marvel Super Heroes Box Set Villains Unleashed",
+    "subtype": "other",
+    "uuid": "58430bba-ec00-526c-ac83-7f4b495c896b",
+    "set_code": "msh",
+    "release_date": "2026-06-26"
   },
   {
     "category": "bundle",
@@ -91929,55 +93127,62 @@
   },
   {
     "category": "booster_box",
+    "contents": [
+      [
+        12,
+        "product",
+        "msh",
+        "Marvel Super Heroes Collector Booster Pack"
+      ]
+    ],
     "name": "Marvel Super Heroes Collector Booster Box",
     "subtype": "collector",
     "uuid": "5aa1ca1e-e5e4-5fbd-be40-a0aaee76c04e",
-    "set_code": "msh",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "msh"
   },
   {
     "category": "booster_case",
+    "contents": [
+      [
+        6,
+        "product",
+        "msh",
+        "Marvel Super Heroes Collector Booster Box"
+      ]
+    ],
     "name": "Marvel Super Heroes Collector Booster Box Case",
     "subtype": "collector",
     "uuid": "7ea2f344-7d44-52fd-84b1-b0aba90c913e",
-    "set_code": "msh",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "msh"
   },
   {
     "category": "booster_box",
+    "contents": [
+      [
+        24,
+        "product",
+        "msh",
+        "Marvel Super Heroes Collector Booster Box"
+      ]
+    ],
     "name": "Marvel Super Heroes Collector Booster Box Master Case",
     "subtype": "collector",
     "uuid": "eba0be03-a239-59f6-904c-daebe8f63764",
-    "set_code": "msh",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "msh"
   },
   {
     "category": "booster_pack",
-    "name": "Marvel Super Heroes Collector Booster Pack",
-    "subtype": "collector",
-    "uuid": "955729fe-e6e5-513f-ba6b-b7481974c8cd",
-    "set_code": "msh",
     "contents": [
       [
         1,
-        "unknown"
+        "pack",
+        "msh-collector"
       ]
-    ]
+    ],
+    "name": "Marvel Super Heroes Collector Booster Pack",
+    "subtype": "collector",
+    "uuid": "955729fe-e6e5-513f-ba6b-b7481974c8cd",
+    "set_code": "msh"
   },
   {
     "category": "limited_aid_tool",
@@ -92007,238 +93212,435 @@
   },
   {
     "category": "bundle",
+    "contents": [
+      [
+        1,
+        "card",
+        "msh",
+        "432",
+        "Daredevil, Man Without Fear",
+        true
+      ],
+      [
+        1,
+        "deck",
+        "msh",
+        "Marvel Super Heroes Bundle Land Pack"
+      ],
+      [
+        1,
+        "other",
+        "Spindown life counter"
+      ],
+      [
+        1,
+        "other",
+        "Foil card storage box"
+      ],
+      [
+        9,
+        "product",
+        "msh",
+        "Marvel Super Heroes Play Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "msh",
+        "Marvel Super Heroes Collector Booster Pack"
+      ]
+    ],
     "name": "Marvel Super Heroes Gift Bundle",
     "subtype": "gift_bundle",
     "uuid": "b9ab9fe7-fdab-5050-9245-17e93f68aa3f",
     "set_code": "msh",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2026-07-17"
   },
   {
     "category": "bundle_case",
+    "contents": [
+      [
+        6,
+        "product",
+        "msh",
+        "Marvel Super Heroes Gift Bundle"
+      ]
+    ],
     "name": "Marvel Super Heroes Gift Bundle Case",
     "subtype": "gift_bundle",
     "uuid": "ec8a6792-ba74-51fd-835a-48a8a0551c56",
-    "set_code": "msh",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "msh"
   },
   {
     "category": "booster_box",
+    "contents": [
+      [
+        24,
+        "product",
+        "msh",
+        "Marvel Super Heroes Jumpstart Booster Pack"
+      ]
+    ],
     "name": "Marvel Super Heroes Jumpstart Booster Box",
     "subtype": "jumpstart",
     "uuid": "fc92f5e4-94af-520a-b635-9403f7d8c26a",
-    "set_code": "msh",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "msh"
   },
   {
     "category": "booster_case",
+    "contents": [
+      [
+        6,
+        "product",
+        "msh",
+        "Marvel Super Heroes Jumpstart Booster Box"
+      ]
+    ],
     "name": "Marvel Super Heroes Jumpstart Booster Box Case",
     "subtype": "jumpstart",
     "uuid": "06698f17-0a8a-5635-9729-2146b8b1a23e",
-    "set_code": "msh",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "msh"
   },
   {
     "category": "booster_pack",
+    "contents": [
+      [
+        1,
+        "pack",
+        "msh-jumpstart"
+      ]
+    ],
     "name": "Marvel Super Heroes Jumpstart Booster Pack",
     "subtype": "jumpstart",
     "uuid": "0bb5957b-8ad9-5c83-a653-c37a18bf23fa",
-    "set_code": "msh",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "msh"
   },
   {
     "category": "booster_box",
+    "contents": [
+      [
+        30,
+        "product",
+        "msh",
+        "Marvel Super Heroes Play Booster Pack"
+      ]
+    ],
     "name": "Marvel Super Heroes Play Booster Box",
     "subtype": "play",
     "uuid": "1b6f6615-f599-5392-8825-f981c5f657b5",
-    "set_code": "msh",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "msh"
   },
   {
     "category": "booster_case",
+    "contents": [
+      [
+        6,
+        "product",
+        "msh",
+        "Marvel Super Heroes Play Booster Box"
+      ]
+    ],
     "name": "Marvel Super Heroes Play Booster Box Case",
     "subtype": "play",
     "uuid": "f1915383-5a20-5d4a-9d95-0b05c4c06300",
-    "set_code": "msh",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "msh"
   },
   {
     "category": "booster_pack",
+    "contents": [
+      [
+        1,
+        "pack",
+        "msh-play"
+      ]
+    ],
     "name": "Marvel Super Heroes Play Booster Pack",
     "subtype": "play",
     "uuid": "05938439-7258-5444-a3cd-225dfd424363",
-    "set_code": "msh",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "msh"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Deck box"
+      ],
+      [
+        1,
+        "other",
+        "Spindown die"
+      ],
+      [
+        1,
+        "pack",
+        "msh-prerelease"
+      ],
+      [
+        6,
+        "product",
+        "msh",
+        "Marvel Super Heroes Play Booster Pack"
+      ]
+    ],
     "name": "Marvel Super Heroes Prerelease Pack",
     "subtype": "prerelease_kit",
     "uuid": "572822ca-a409-5b34-85f3-0eca932f4aa2",
-    "set_code": "msh",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "msh"
   },
   {
     "category": "limited_aid_case",
+    "contents": [
+      [
+        15,
+        "product",
+        "msh",
+        "Marvel Super Heroes Prerelease Pack"
+      ]
+    ],
     "name": "Marvel Super Heroes Prerelease Pack Case",
     "subtype": "prerelease_kit",
     "uuid": "aa23cc01-c91d-55f3-b165-d56311c4afe7",
-    "set_code": "msh",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "msh"
   },
   {
     "category": "box_set",
+    "contents": [
+      [
+        2,
+        "product",
+        "msh",
+        "Marvel Super Heroes Scene Box Heroes United"
+      ],
+      [
+        2,
+        "product",
+        "msh",
+        "Marvel Super Heroes Scene Box Villains Unleashed"
+      ]
+    ],
     "name": "Marvel Super Heroes Scene Box Case",
     "subtype": "other",
     "uuid": "3ca4fbb4-66fe-5911-9c8a-f49312b788ff",
-    "set_code": "msh",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "msh"
   },
   {
     "category": "box_set",
+    "contents": [
+      [
+        1,
+        "deck",
+        "msh",
+        "Heroes United"
+      ],
+      [
+        1,
+        "other",
+        "6 Art-Only Scene Cards"
+      ],
+      [
+        1,
+        "other",
+        "Marvel Super Heroes Display Easel"
+      ],
+      [
+        3,
+        "product",
+        "msh",
+        "Marvel Super Heroes Play Booster Pack"
+      ]
+    ],
     "name": "Marvel Super Heroes Scene Box Heroes United",
     "subtype": "other",
     "uuid": "26d0ffd4-cce5-50f9-a98c-af8c31080bbc",
-    "set_code": "msh",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "msh"
   },
   {
     "category": "box_set",
+    "contents": [
+      [
+        1,
+        "deck",
+        "msh",
+        "Villains Unleashed"
+      ],
+      [
+        1,
+        "other",
+        "6 Art-Only Scene Cards"
+      ],
+      [
+        1,
+        "other",
+        "Marvel Super Heroes Display Easel"
+      ],
+      [
+        3,
+        "product",
+        "msh",
+        "Marvel Super Heroes Play Booster Pack"
+      ]
+    ],
     "name": "Marvel Super Heroes Scene Box Villains Unleashed",
     "subtype": "other",
     "uuid": "a66c0716-c63f-554e-9ffe-f8a37670b945",
-    "set_code": "msh",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "msh"
   },
   {
     "category": "deck",
+    "contents": [
+      [
+        1,
+        "deck",
+        "msh",
+        "Black Deck"
+      ]
+    ],
     "name": "Marvel Super Heroes Welcome Deck Black",
     "subtype": "welcome",
     "uuid": "ba5abb45-3d31-5906-ac94-5ebf2b440729",
-    "set_code": "msh",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "msh"
   },
   {
     "category": "deck",
+    "contents": [
+      [
+        1,
+        "deck",
+        "msh",
+        "Black Deck"
+      ]
+    ],
+    "name": "Marvel Super Heroes Welcome Deck Black Deck",
+    "subtype": "welcome",
+    "uuid": "ce8589a4-d3de-54f8-8eaa-2a16af286d20",
+    "set_code": "msh",
+    "release_date": "2026-06-26"
+  },
+  {
+    "category": "deck",
+    "contents": [
+      [
+        1,
+        "deck",
+        "msh",
+        "Blue Deck"
+      ]
+    ],
     "name": "Marvel Super Heroes Welcome Deck Blue",
     "subtype": "welcome",
     "uuid": "c9749464-e855-50d9-85f9-a097a919c6b3",
-    "set_code": "msh",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "msh"
   },
   {
     "category": "deck",
+    "contents": [
+      [
+        1,
+        "deck",
+        "msh",
+        "Blue Deck"
+      ]
+    ],
+    "name": "Marvel Super Heroes Welcome Deck Blue Deck",
+    "subtype": "welcome",
+    "uuid": "f48113ac-10f1-5f1a-acb3-039c7b7a1795",
+    "set_code": "msh",
+    "release_date": "2026-06-26"
+  },
+  {
+    "category": "deck",
+    "contents": [
+      [
+        1,
+        "deck",
+        "msh",
+        "Green Deck"
+      ]
+    ],
     "name": "Marvel Super Heroes Welcome Deck Green",
     "subtype": "welcome",
     "uuid": "13f59959-138b-5fcc-b072-6aaabdb45f3f",
-    "set_code": "msh",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "msh"
   },
   {
     "category": "deck",
+    "contents": [
+      [
+        1,
+        "deck",
+        "msh",
+        "Green Deck"
+      ]
+    ],
+    "name": "Marvel Super Heroes Welcome Deck Green Deck",
+    "subtype": "welcome",
+    "uuid": "d6ff4d69-3790-5724-9dfe-f5b8b3ddda7d",
+    "set_code": "msh",
+    "release_date": "2026-06-26"
+  },
+  {
+    "category": "deck",
+    "contents": [
+      [
+        1,
+        "deck",
+        "msh",
+        "Red Deck"
+      ]
+    ],
     "name": "Marvel Super Heroes Welcome Deck Red",
     "subtype": "welcome",
     "uuid": "031a0106-545c-564b-9d4b-4645049a4dec",
-    "set_code": "msh",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "msh"
   },
   {
     "category": "deck",
-    "name": "Marvel Super Heroes Welcome Deck White",
-    "subtype": "welcome",
-    "uuid": "e5e428cb-56ec-5279-b4aa-a19aa769502a",
-    "set_code": "msh",
     "contents": [
       [
         1,
-        "unknown"
+        "deck",
+        "msh",
+        "Red Deck"
       ]
-    ]
+    ],
+    "name": "Marvel Super Heroes Welcome Deck Red Deck",
+    "subtype": "welcome",
+    "uuid": "274ed6ca-05e2-5cb1-958a-1b80e632b187",
+    "set_code": "msh",
+    "release_date": "2026-06-26"
+  },
+  {
+    "category": "deck",
+    "contents": [
+      [
+        1,
+        "deck",
+        "msh",
+        "White Deck"
+      ]
+    ],
+    "name": "Marvel Super Heroes Welcome Deck White",
+    "subtype": "welcome",
+    "uuid": "e5e428cb-56ec-5279-b4aa-a19aa769502a",
+    "set_code": "msh"
+  },
+  {
+    "category": "deck",
+    "contents": [
+      [
+        1,
+        "deck",
+        "msh",
+        "White Deck"
+      ]
+    ],
+    "name": "Marvel Super Heroes Welcome Deck White Deck",
+    "subtype": "welcome",
+    "uuid": "1ffe0821-7601-5037-b36a-c8abbebec3ac",
+    "set_code": "msh",
+    "release_date": "2026-06-26"
   },
   {
     "category": "deck",
@@ -94203,30 +95605,39 @@
   },
   {
     "category": "bundle",
+    "contents": [
+      [
+        1,
+        "other",
+        "Oath of the Gatewatch Player's Guide"
+      ],
+      [
+        1,
+        "other",
+        "Oath of the Gatewatch Card Box"
+      ],
+      [
+        1,
+        "other",
+        "Oath of the Gatewatch Basic Land Bundle"
+      ],
+      [
+        1,
+        "other",
+        "Oath of the Gatewatch Premium Spindown"
+      ],
+      [
+        9,
+        "product",
+        "ogw",
+        "Oath of the Gatewatch Booster Pack"
+      ]
+    ],
     "name": "Oath of the Gatewatch Fat Pack",
     "subtype": "fat_pack",
     "uuid": "325c2832-9a28-51fc-8dd3-989e1a9d4519",
     "set_code": "ogw",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2016-01-22"
-  },
-  {
-    "category": "limited_aid_tool",
-    "name": "Oath of the Gatewatch Hedron Prerelease Box",
-    "subtype": "prerelease_kit",
-    "uuid": "594a7416-25df-5557-a23b-c066e449d391",
-    "set_code": "ogw",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
   },
   {
     "category": "deck",
@@ -94442,16 +95853,34 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "1 Oath of the Gatewatch Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "ogw-prerelease"
+      ],
+      [
+        4,
+        "product",
+        "ogw",
+        "Oath of the Gatewatch Booster Pack"
+      ],
+      [
+        2,
+        "product",
+        "bfz",
+        "Battle for Zendikar Booster Pack"
+      ]
+    ],
     "name": "Oath of the Gatewatch Prerelease Pack",
     "subtype": "prerelease_kit",
     "uuid": "4438e35a-f18c-5c7f-8e7a-7320ab397e44",
     "set_code": "ogw",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2015-12-22"
   },
   {
@@ -95312,16 +96741,38 @@
   },
   {
     "category": "bundle",
+    "contents": [
+      [
+        1,
+        "other",
+        "Magic Origins Player's Guide and Visual Encyclopedia"
+      ],
+      [
+        1,
+        "other",
+        "Magic Origins 80-card Land Bundle"
+      ],
+      [
+        1,
+        "other",
+        "Special Edition Life Counter"
+      ],
+      [
+        1,
+        "other",
+        "Two Deck Boxes"
+      ],
+      [
+        9,
+        "product",
+        "ori",
+        "Magic Origins Booster Pack"
+      ]
+    ],
     "name": "Magic Origins Fat Pack",
     "subtype": "fat_pack",
     "uuid": "472ec004-fc18-53ce-b6fe-4a9f3acf0353",
     "set_code": "ori",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2015-07-17"
   },
   {
@@ -95557,71 +97008,106 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "pack",
+        "ori-prerelease-chandra"
+      ],
+      [
+        6,
+        "product",
+        "ori",
+        "Magic Origins Booster Pack"
+      ]
+    ],
     "name": "Magic Origins Prerelease Kit Chandra",
     "subtype": "prerelease_kit",
     "uuid": "4dc06bf7-d1fe-5650-8f34-95ce73446632",
     "set_code": "ori",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2015-07-27"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "pack",
+        "ori-prerelease-gideon"
+      ],
+      [
+        6,
+        "product",
+        "ori",
+        "Magic Origins Booster Pack"
+      ]
+    ],
     "name": "Magic Origins Prerelease Kit Gideon",
     "subtype": "prerelease_kit",
     "uuid": "c2ccaf0c-a115-5d1b-b935-2efba125f8b4",
     "set_code": "ori",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2015-07-27"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "pack",
+        "ori-prerelease-jace"
+      ],
+      [
+        6,
+        "product",
+        "ori",
+        "Magic Origins Booster Pack"
+      ]
+    ],
     "name": "Magic Origins Prerelease Kit Jace",
     "subtype": "prerelease_kit",
     "uuid": "9823e19d-cba6-5ffa-8ea8-98126e0b0d7a",
     "set_code": "ori",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2015-07-27"
   },
   {
     "category": "limited_aid_tool",
-    "name": "Magic Origins Prerelease Kit Liliana",
-    "subtype": "prerelease_kit",
-    "uuid": "b567038a-2a78-5f92-a408-4559a2815654",
-    "set_code": "ori",
     "contents": [
       [
         1,
-        "unknown"
+        "pack",
+        "ori-prerelease-liliana"
+      ],
+      [
+        6,
+        "product",
+        "ori",
+        "Magic Origins Booster Pack"
       ]
-    ]
+    ],
+    "name": "Magic Origins Prerelease Kit Liliana",
+    "subtype": "prerelease_kit",
+    "uuid": "b567038a-2a78-5f92-a408-4559a2815654",
+    "set_code": "ori"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "pack",
+        "ori-prerelease-nissa"
+      ],
+      [
+        6,
+        "product",
+        "ori",
+        "Magic Origins Booster Pack"
+      ]
+    ],
     "name": "Magic Origins Prerelease Kit Nissa",
     "subtype": "prerelease_kit",
     "uuid": "0a673cb1-1938-595d-9824-b02ee14f52ca",
     "set_code": "ori",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2015-07-27"
   },
   {
@@ -97004,16 +98490,62 @@
   },
   {
     "category": "box_set",
-    "name": "The Helvault Promo Box",
-    "subtype": "promotional",
-    "uuid": "b58c40f3-8841-5760-bf89-9962d1741a04",
-    "set_code": "phel",
     "contents": [
       [
         1,
-        "unknown"
+        "card",
+        "phel",
+        "6",
+        "Avacyn, Angel of Hope",
+        false
+      ],
+      [
+        1,
+        "card",
+        "phel",
+        "106",
+        "Griselbrand",
+        false
+      ],
+      [
+        1,
+        "card",
+        "phel",
+        "208",
+        "Bruna, Light of Alabaster",
+        false
+      ],
+      [
+        1,
+        "card",
+        "phel",
+        "209",
+        "Gisela, Blade of Goldnight",
+        false
+      ],
+      [
+        1,
+        "card",
+        "phel",
+        "210",
+        "Sigarda, Host of Herons",
+        false
+      ],
+      [
+        1,
+        "other",
+        "Double-faced Angel/Demon tokens"
+      ],
+      [
+        1,
+        "other",
+        "Avacyn Restored Spindown life counter"
       ]
-    ]
+    ],
+    "name": "The Helvault Promo Box",
+    "subtype": "promotional",
+    "uuid": "b58c40f3-8841-5760-bf89-9962d1741a04",
+    "set_code": "phel"
   },
   {
     "category": "booster_box",
@@ -97929,16 +99461,41 @@
   },
   {
     "category": "box_set",
+    "contents": [
+      [
+        1,
+        "card",
+        "pmei",
+        "2023-1",
+        "Mental Misstep",
+        true
+      ],
+      [
+        1,
+        "other",
+        "2 packs of Elesh Norn card sleeves"
+      ],
+      [
+        1,
+        "other",
+        "Tolarian Academy Phyrexian translation journal"
+      ],
+      [
+        1,
+        "other",
+        "Phyrexian artifact deck box"
+      ],
+      [
+        1,
+        "other",
+        "4 metal Phyrexian D10 spindown dice"
+      ]
+    ],
     "name": "Behold New Phyrexia Limited Edition Set",
     "subtype": "secret_lair",
     "uuid": "590fd5f4-2d83-53e5-97c6-2c7fb07eacf6",
     "set_code": "prm",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "release_date": "2023-02-18"
   },
   {
     "category": "deck",
@@ -99910,16 +101467,49 @@
   },
   {
     "category": "bundle",
-    "name": "Ravnica Fat Pack",
-    "subtype": "fat_pack",
-    "uuid": "f987f61b-218e-5e36-9570-46db49dcf373",
-    "set_code": "rav",
     "contents": [
       [
         1,
-        "unknown"
+        "deck",
+        "rav",
+        "Ravnica Fat Pack Land Pack"
+      ],
+      [
+        1,
+        "other",
+        "2 Card Storage Boxes"
+      ],
+      [
+        1,
+        "other",
+        "One random Pro Tour Player Card"
+      ],
+      [
+        1,
+        "other",
+        "The Ravnica City of Guilds novel"
+      ],
+      [
+        1,
+        "other",
+        "Six color-coded plastic card dividers"
+      ],
+      [
+        1,
+        "other",
+        "Ravnica Life Counter"
+      ],
+      [
+        6,
+        "product",
+        "rav",
+        "Ravnica Booster Pack"
       ]
-    ]
+    ],
+    "name": "Ravnica Fat Pack",
+    "subtype": "fat_pack",
+    "uuid": "f987f61b-218e-5e36-9570-46db49dcf373",
+    "set_code": "rav"
   },
   {
     "category": "deck",
@@ -100257,16 +101847,48 @@
   },
   {
     "category": "bundle",
+    "contents": [
+      [
+        1,
+        "other",
+        "1 Card box"
+      ],
+      [
+        1,
+        "other",
+        "1 Player’s Guide with visual encyclopedia for Rivals of Ixalan"
+      ],
+      [
+        1,
+        "other",
+        "80 Basic land cards"
+      ],
+      [
+        1,
+        "other",
+        "1 Magic learn-to-play guide"
+      ],
+      [
+        1,
+        "other",
+        "1 Spindown life counter"
+      ],
+      [
+        1,
+        "other",
+        "2 Deck boxes"
+      ],
+      [
+        10,
+        "product",
+        "rix",
+        "Rivals of Ixalan Booster Pack"
+      ]
+    ],
     "name": "Rivals of Ixalan Bundle",
     "subtype": "default",
     "uuid": "4c446b5e-d1fb-5cca-b673-e0b142cc7000",
     "set_code": "rix",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2018-01-19"
   },
   {
@@ -100386,16 +102008,34 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "1 Rivals of Ixalan Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "rix-prerelease"
+      ],
+      [
+        4,
+        "product",
+        "rix",
+        "Rivals of Ixalan Booster Pack"
+      ],
+      [
+        2,
+        "product",
+        "xln",
+        "Ixalan Booster Pack"
+      ]
+    ],
     "name": "Rivals of Ixalan Prerelease Pack",
     "subtype": "prerelease_kit",
     "uuid": "4501ff6e-f81b-5d08-9f79-1fac2f2a4c51",
     "set_code": "rix",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2018-01-12"
   },
   {
@@ -100782,58 +102422,106 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Ravnica Allegiance Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "rna-prerelease-azorius"
+      ],
+      [
+        5,
+        "product",
+        "rna",
+        "Ravnica Allegiance Booster Pack"
+      ]
+    ],
     "name": "Ravnica Allegiance Prerelease Pack Azorius",
     "subtype": "prerelease_kit",
     "uuid": "c2655f35-703f-5c4f-9d81-6397a59d19e7",
     "set_code": "rna",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2019-01-18"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Ravnica Allegiance Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "rna-prerelease-gruul"
+      ],
+      [
+        5,
+        "product",
+        "rna",
+        "Ravnica Allegiance Booster Pack"
+      ]
+    ],
     "name": "Ravnica Allegiance Prerelease Pack Gruul",
     "subtype": "prerelease_kit",
     "uuid": "a88e15ef-accc-5d00-aeca-594b9e911408",
     "set_code": "rna",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2019-01-18"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Ravnica Allegiance Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "rna-prerelease-orzhov"
+      ],
+      [
+        5,
+        "product",
+        "rna",
+        "Ravnica Allegiance Booster Pack"
+      ]
+    ],
     "name": "Ravnica Allegiance Prerelease Pack Orzhov",
     "subtype": "prerelease_kit",
     "uuid": "a0210dab-2dc6-5634-9d26-e17799cbfc18",
     "set_code": "rna",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2019-01-18"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Ravnica Allegiance Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "rna-prerelease-rakdos"
+      ],
+      [
+        5,
+        "product",
+        "rna",
+        "Ravnica Allegiance Booster Pack"
+      ]
+    ],
     "name": "Ravnica Allegiance Prerelease Pack Rakdos",
     "subtype": "prerelease_kit",
     "uuid": "fd0012dc-5489-5438-b092-41ca5a183e53",
     "set_code": "rna",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2019-01-18"
   },
   {
@@ -100877,16 +102565,28 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Ravnica Allegiance Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "rna-prerelease-simic"
+      ],
+      [
+        5,
+        "product",
+        "rna",
+        "Ravnica Allegiance Booster Pack"
+      ]
+    ],
     "name": "Ravnica Allegiance Prerelease Pack Simic",
     "subtype": "prerelease_kit",
     "uuid": "7c405c7a-f2bb-5fbe-9e72-a902245a16ab",
     "set_code": "rna",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2019-01-18"
   },
   {
@@ -101620,16 +103320,43 @@
   },
   {
     "category": "bundle",
+    "contents": [
+      [
+        1,
+        "other",
+        "Return to Ravnica themed card box"
+      ],
+      [
+        1,
+        "other",
+        "Return to Ravnica player's guide"
+      ],
+      [
+        1,
+        "other",
+        "Two deck boxes"
+      ],
+      [
+        1,
+        "other",
+        "80-card basic land pack"
+      ],
+      [
+        1,
+        "other",
+        "Return to Ravnica spindown"
+      ],
+      [
+        9,
+        "product",
+        "rtr",
+        "Return to Ravnica Booster Pack"
+      ]
+    ],
     "name": "Return to Ravnica Fat Pack",
     "subtype": "fat_pack",
     "uuid": "6e6b09b4-3760-5890-9299-bb3ae5420b54",
     "set_code": "rtr",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2012-10-05"
   },
   {
@@ -103121,16 +104848,44 @@
   },
   {
     "category": "bundle",
-    "name": "Shadowmoor Fat Pack",
-    "subtype": "fat_pack",
-    "uuid": "c393c68c-3c99-5f6a-9dec-3b0c048e0f63",
-    "set_code": "shm",
     "contents": [
       [
         1,
-        "unknown"
+        "deck",
+        "shm",
+        "Shadowmoor Fat Pack Land Pack"
+      ],
+      [
+        1,
+        "other",
+        "Shadowmoor Spindown"
+      ],
+      [
+        1,
+        "other",
+        "Card storage box"
+      ],
+      [
+        1,
+        "other",
+        "Shadowmoor Novel"
+      ],
+      [
+        1,
+        "other",
+        "Random Pro Tour Player Card"
+      ],
+      [
+        8,
+        "product",
+        "shm",
+        "Shadowmoor Booster Pack"
       ]
-    ]
+    ],
+    "name": "Shadowmoor Fat Pack",
+    "subtype": "fat_pack",
+    "uuid": "c393c68c-3c99-5f6a-9dec-3b0c048e0f63",
+    "set_code": "shm"
   },
   {
     "category": "box_set",
@@ -103545,16 +105300,18 @@
   },
   {
     "category": "subset",
+    "contents": [
+      [
+        2,
+        "product",
+        "slc",
+        "Secret Lair Countdown An Encyclopedia of Magic"
+      ]
+    ],
     "name": "Secret Lair Countdown An Encyclopedia of Magic Set of 2",
     "subtype": "secret_lair_bundle",
     "uuid": "6b2b605a-9632-54ab-b60e-e49d69b32425",
-    "set_code": "slc",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "slc"
   },
   {
     "category": "box_set",
@@ -111405,14 +113162,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Back in My Day!"
+        "7070",
+        "Utopia Sprawl",
+        false
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Back in My Day!"
       ]
     ],
     "name": "Secret Lair Drop Back in My Day!",
@@ -111426,14 +113186,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Back in My Day! Foil Edition"
+        "7070",
+        "Utopia Sprawl",
+        true
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Back in My Day! Foil Edition"
       ]
     ],
     "name": "Secret Lair Drop Back in My Day! Foil",
@@ -111757,8 +113520,65 @@
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "variable",
+        [
+          {
+            "chance": 49,
+            "subproduct": [
+              [
+                1,
+                "card",
+                "sld",
+                "7107",
+                "Invasion Plans",
+                true
+              ]
+            ],
+            "total": 100
+          },
+          {
+            "chance": 25,
+            "subproduct": [
+              [
+                1,
+                "card",
+                "sld",
+                "7105",
+                "Tidal Barracuda",
+                true
+              ]
+            ],
+            "total": 100
+          },
+          {
+            "chance": 25,
+            "subproduct": [
+              [
+                1,
+                "card",
+                "sld",
+                "7106",
+                "Master of the Feast",
+                true
+              ]
+            ],
+            "total": 100
+          },
+          {
+            "chance": 1,
+            "subproduct": [
+              [
+                1,
+                "card",
+                "sld",
+                "7108",
+                "Miren, the Moaning Well",
+                true
+              ]
+            ],
+            "total": 100
+          }
+        ]
       ]
     ],
     "name": "Secret Lair Drop Brain Dead New Earth Mentality",
@@ -111778,8 +113598,65 @@
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "variable",
+        [
+          {
+            "chance": 49,
+            "subproduct": [
+              [
+                1,
+                "card",
+                "sld",
+                "7107",
+                "Invasion Plans",
+                true
+              ]
+            ],
+            "total": 100
+          },
+          {
+            "chance": 25,
+            "subproduct": [
+              [
+                1,
+                "card",
+                "sld",
+                "7105",
+                "Tidal Barracuda",
+                true
+              ]
+            ],
+            "total": 100
+          },
+          {
+            "chance": 25,
+            "subproduct": [
+              [
+                1,
+                "card",
+                "sld",
+                "7106",
+                "Master of the Feast",
+                true
+              ]
+            ],
+            "total": 100
+          },
+          {
+            "chance": 1,
+            "subproduct": [
+              [
+                1,
+                "card",
+                "sld",
+                "7108",
+                "Miren, the Moaning Well",
+                true
+              ]
+            ],
+            "total": 100
+          }
+        ]
       ]
     ],
     "name": "Secret Lair Drop Brain Dead New Earth Mentality Foil",
@@ -113356,14 +115233,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Dungeons & Dragons: Black Lights & Dark Dungeons"
+        "7103",
+        "Dungeon Delver",
+        false
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Dungeons & Dragons: Black Lights & Dark Dungeons"
       ]
     ],
     "name": "Secret Lair Drop Dungeons & Dragons Black Lights & Dark Dungeons",
@@ -113377,14 +115257,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Dungeons & Dragons: Black Lights & Dark Dungeons Foil Edition"
+        "7103",
+        "Dungeon Delver",
+        true
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Dungeons & Dragons: Black Lights & Dark Dungeons Foil Edition"
       ]
     ],
     "name": "Secret Lair Drop Dungeons & Dragons Black Lights & Dark Dungeons Foil",
@@ -113398,14 +115281,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Dungeons & Dragons: Gale's Ambition"
+        "7099",
+        "Secrets of the Dead",
+        false
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Dungeons & Dragons: Gale's Ambition"
       ]
     ],
     "name": "Secret Lair Drop Dungeons & Dragons Gales Ambition",
@@ -113419,14 +115305,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Dungeons & Dragons: Gale's Ambition Foil Edition"
+        "7099",
+        "Secrets of the Dead",
+        true
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Dungeons & Dragons: Gale's Ambition Foil Edition"
       ]
     ],
     "name": "Secret Lair Drop Dungeons & Dragons Gales Ambition Foil",
@@ -113440,14 +115329,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Dungeons & Dragons: Lands of the Forgotten Realms"
+        "7104",
+        "Reliquary Tower",
+        false
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Dungeons & Dragons: Lands of the Forgotten Realms"
       ]
     ],
     "name": "Secret Lair Drop Dungeons & Dragons Lands of the Forgotten Realms",
@@ -113461,14 +115353,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Dungeons & Dragons: Lands of the Forgotten Realms Foil Edition"
+        "7104",
+        "Reliquary Tower",
+        true
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Dungeons & Dragons: Lands of the Forgotten Realms Foil Edition"
       ]
     ],
     "name": "Secret Lair Drop Dungeons & Dragons Lands of the Forgotten Realms Foil",
@@ -113482,14 +115377,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Dungeons & Dragons: Shadowheart's Devotion"
+        "7098",
+        "Pride of the Perfect",
+        false
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Dungeons & Dragons: Shadowheart's Devotion"
       ]
     ],
     "name": "Secret Lair Drop Dungeons & Dragons Shadowhearts Devotion",
@@ -113503,14 +115401,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Dungeons & Dragons: Shadowheart's Devotion Foil Edition"
+        "7098",
+        "Pride of the Perfect",
+        true
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Dungeons & Dragons: Shadowheart's Devotion Foil Edition"
       ]
     ],
     "name": "Secret Lair Drop Dungeons & Dragons Shadowhearts Devotion Foil",
@@ -113524,14 +115425,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Dungeons & Dragons: Shadows Over Baldur's Gate"
+        "7100",
+        "You Find Some Prisoners",
+        false
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Dungeons & Dragons: Shadows Over Baldur's Gate"
       ]
     ],
     "name": "Secret Lair Drop Dungeons & Dragons Shadows Over Baldurs Gate",
@@ -113545,14 +115449,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Dungeons & Dragons: Shadows Over Baldur's Gate Foil Edition"
+        "7100",
+        "You Find Some Prisoners",
+        true
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Dungeons & Dragons: Shadows Over Baldur's Gate Foil Edition"
       ]
     ],
     "name": "Secret Lair Drop Dungeons & Dragons Shadows Over Baldurs Gate Foil",
@@ -113566,14 +115473,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Dungeons & Dragons: Strahd's Descent"
+        "7102",
+        "Bloody Betrayal",
+        false
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Dungeons & Dragons: Strahd's Descent"
       ]
     ],
     "name": "Secret Lair Drop Dungeons & Dragons Strahds Descent",
@@ -113587,14 +115497,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Dungeons & Dragons: Strahd's Descent Foil Edition"
+        "7102",
+        "Bloody Betrayal",
+        true
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Dungeons & Dragons: Strahd's Descent Foil Edition"
       ]
     ],
     "name": "Secret Lair Drop Dungeons & Dragons Strahds Descent Foil",
@@ -113608,14 +115521,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Dungeons & Dragons: Whispers in Candlekeep"
+        "7101",
+        "Scaled Nurturer",
+        false
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Dungeons & Dragons: Whispers in Candlekeep"
       ]
     ],
     "name": "Secret Lair Drop Dungeons & Dragons Whispers in Candlekeep",
@@ -113629,14 +115545,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Dungeons & Dragons: Whispers in Candlekeep Foil Edition"
+        "7101",
+        "Scaled Nurturer",
+        true
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Dungeons & Dragons: Whispers in Candlekeep Foil Edition"
       ]
     ],
     "name": "Secret Lair Drop Dungeons & Dragons Whispers in Candlekeep Foil",
@@ -113656,8 +115575,37 @@
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "variable",
+        [
+          {
+            "chance": 99,
+            "subproduct": [
+              [
+                1,
+                "card",
+                "sld",
+                "7162",
+                "Crucible of Worlds",
+                false
+              ]
+            ],
+            "total": 100
+          },
+          {
+            "chance": 1,
+            "subproduct": [
+              [
+                1,
+                "card",
+                "sld",
+                "7161",
+                "Glorious End",
+                false
+              ]
+            ],
+            "total": 100
+          }
+        ]
       ]
     ],
     "name": "Secret Lair Drop Dwarf Fortress Create New World",
@@ -113677,8 +115625,37 @@
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "variable",
+        [
+          {
+            "chance": 99,
+            "subproduct": [
+              [
+                1,
+                "card",
+                "sld",
+                "7162",
+                "Crucible of Worlds",
+                true
+              ]
+            ],
+            "total": 100
+          },
+          {
+            "chance": 1,
+            "subproduct": [
+              [
+                1,
+                "card",
+                "sld",
+                "7161",
+                "Glorious End",
+                true
+              ]
+            ],
+            "total": 100
+          }
+        ]
       ]
     ],
     "name": "Secret Lair Drop Dwarf Fortress Create New World Foil",
@@ -114227,14 +116204,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Fallout: Beyond Vault 33"
+        "7094",
+        "Academy Manufactor",
+        false
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Fallout: Beyond Vault 33"
       ]
     ],
     "name": "Secret Lair Drop Fallout Beyond Vault 33",
@@ -114248,14 +116228,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Fallout: Beyond Vault 33 Foil Edition"
+        "7094",
+        "Academy Manufactor",
+        true
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Fallout: Beyond Vault 33 Foil Edition"
       ]
     ],
     "name": "Secret Lair Drop Fallout Beyond Vault 33 Foil",
@@ -114269,14 +116252,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Fallout: Greet the Dog"
+        "7097",
+        "Command Tower",
+        false
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Fallout: Greet the Dog"
       ]
     ],
     "name": "Secret Lair Drop Fallout Greet the Dog",
@@ -114290,14 +116276,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Fallout: Greet the Dog Foil Edition"
+        "7097",
+        "Command Tower",
+        true
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Fallout: Greet the Dog Foil Edition"
       ]
     ],
     "name": "Secret Lair Drop Fallout Greet the Dog Foil",
@@ -114311,14 +116300,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Fallout: Rad"
+        "7095",
+        "Ruin Crab",
+        false
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Fallout: Rad"
       ]
     ],
     "name": "Secret Lair Drop Fallout Rad",
@@ -114332,14 +116324,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Fallout: Rad Foil Edition"
+        "7095",
+        "Ruin Crab",
+        true
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Fallout: Rad Foil Edition"
       ]
     ],
     "name": "Secret Lair Drop Fallout Rad Foil",
@@ -114353,14 +116348,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Fallout: Welcome to New Vegas"
+        "7096",
+        "Big Score",
+        false
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Fallout: Welcome to New Vegas"
       ]
     ],
     "name": "Secret Lair Drop Fallout Welcome to New Vegas",
@@ -114374,14 +116372,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Fallout: Welcome to New Vegas Foil Edition"
+        "7096",
+        "Big Score",
+        true
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Fallout: Welcome to New Vegas Foil Edition"
       ]
     ],
     "name": "Secret Lair Drop Fallout Welcome to New Vegas Foil",
@@ -114903,14 +116904,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Featuring: Kevin Eastman (Colors)"
+        "7072",
+        "Butcher of Malakir",
+        false
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Featuring: Kevin Eastman (Colors)"
       ]
     ],
     "name": "Secret Lair Drop Featuring Kevin Eastman (Colors)",
@@ -114924,14 +116928,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Featuring: Kevin Eastman (Colors) Foil Edition"
+        "7072",
+        "Butcher of Malakir",
+        true
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Featuring: Kevin Eastman (Colors) Foil Edition"
       ]
     ],
     "name": "Secret Lair Drop Featuring Kevin Eastman (Colors) Foil",
@@ -114945,14 +116952,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Featuring: Kevin Eastman (Inks)"
+        "7071",
+        "Butcher of Malakir",
+        false
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Featuring: Kevin Eastman (Inks)"
       ]
     ],
     "name": "Secret Lair Drop Featuring Kevin Eastman (Inks)",
@@ -114966,14 +116976,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Featuring: Kevin Eastman (Inks) Foil Edition"
+        "7071",
+        "Butcher of Malakir",
+        true
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Featuring: Kevin Eastman (Inks) Foil Edition"
       ]
     ],
     "name": "Secret Lair Drop Featuring Kevin Eastman (Inks) Foil",
@@ -115299,14 +117312,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Felix the Cat: Magic Bag of Tricks"
+        "7172",
+        "Warp World",
+        false
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Felix the Cat: Magic Bag of Tricks"
       ]
     ],
     "name": "Secret Lair Drop Felix the Cat Magic Bag of Tricks",
@@ -115320,14 +117336,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Felix the Cat: Magic Bag of Tricks Foil Edition"
+        "7172",
+        "Warp World",
+        true
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Felix the Cat: Magic Bag of Tricks Foil Edition"
       ]
     ],
     "name": "Secret Lair Drop Felix the Cat Magic Bag of Tricks Foil",
@@ -115668,14 +117687,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Garfield: As Intended"
+        "7164",
+        "Clone",
+        false
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Garfield: As Intended"
       ]
     ],
     "name": "Secret Lair Drop Garfield As Intended",
@@ -115689,14 +117711,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Garfield: As Intended Foil Edition"
+        "7164",
+        "Clone",
+        true
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Garfield: As Intended Foil Edition"
       ]
     ],
     "name": "Secret Lair Drop Garfield As Intended Foil",
@@ -115710,14 +117735,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Garfield: Motivationally Challenged"
+        "7165",
+        "Shiny Impetus",
+        false
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Garfield: Motivationally Challenged"
       ]
     ],
     "name": "Secret Lair Drop Garfield Motivationally Challenged",
@@ -115731,14 +117759,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Garfield: Motivationally Challenged Foil Edition"
+        "7165",
+        "Shiny Impetus",
+        true
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Garfield: Motivationally Challenged Foil Edition"
       ]
     ],
     "name": "Secret Lair Drop Garfield Motivationally Challenged Foil",
@@ -115752,14 +117783,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Garfield: Our Only Thought is to Entertain You"
+        "7166",
+        "Shoot the Sheriff",
+        false
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Garfield: Our Only Thought is to Entertain You"
       ]
     ],
     "name": "Secret Lair Drop Garfield Our Only Thought is to Entertain You",
@@ -115773,14 +117807,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Garfield: Our Only Thought is to Entertain You Foil Edition"
+        "7166",
+        "Shoot the Sheriff",
+        true
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Garfield: Our Only Thought is to Entertain You Foil Edition"
       ]
     ],
     "name": "Secret Lair Drop Garfield Our Only Thought is to Entertain You Foil",
@@ -117574,8 +119611,37 @@
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "variable",
+        [
+          {
+            "chance": 99,
+            "subproduct": [
+              [
+                1,
+                "card",
+                "sld",
+                "7126",
+                "Mountain",
+                false
+              ]
+            ],
+            "total": 100
+          },
+          {
+            "chance": 1,
+            "subproduct": [
+              [
+                1,
+                "card",
+                "sld",
+                "7127",
+                "Deadpool, Trading Card",
+                false
+              ]
+            ],
+            "total": 100
+          }
+        ]
       ]
     ],
     "name": "Secret Lair Drop Marvels Deadpool I Fixed It (Youre Welcome)",
@@ -117595,8 +119661,37 @@
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "variable",
+        [
+          {
+            "chance": 99,
+            "subproduct": [
+              [
+                1,
+                "card",
+                "sld",
+                "7126",
+                "Mountain",
+                true
+              ]
+            ],
+            "total": 100
+          },
+          {
+            "chance": 1,
+            "subproduct": [
+              [
+                1,
+                "card",
+                "sld",
+                "7127",
+                "Deadpool, Trading Card",
+                true
+              ]
+            ],
+            "total": 100
+          }
+        ]
       ]
     ],
     "name": "Secret Lair Drop Marvels Deadpool I Fixed It (Youre Welcome) Foil",
@@ -117616,8 +119711,37 @@
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "variable",
+        [
+          {
+            "chance": 99,
+            "subproduct": [
+              [
+                1,
+                "card",
+                "sld",
+                "7128",
+                "Mountain",
+                true
+              ]
+            ],
+            "total": 100
+          },
+          {
+            "chance": 1,
+            "subproduct": [
+              [
+                1,
+                "card",
+                "sld",
+                "7129",
+                "Deadpool, Trading Card",
+                true
+              ]
+            ],
+            "total": 100
+          }
+        ]
       ]
     ],
     "name": "Secret Lair Drop Marvels Deadpool I Fixed It (Youre Welcome) Pool Party Dazzle Foil",
@@ -118120,14 +120244,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "My Little Pony: Friendship is Magic"
+        "7109",
+        "Relic of Legends",
+        false
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "My Little Pony: Friendship is Magic"
       ]
     ],
     "name": "Secret Lair Drop My Little Pony Friendship is Magic",
@@ -118141,14 +120268,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "My Little Pony: Friendship is Magic Foil Edition"
+        "7109",
+        "Relic of Legends",
+        true
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "My Little Pony: Friendship is Magic Foil Edition"
       ]
     ],
     "name": "Secret Lair Drop My Little Pony Friendship is Magic Foil",
@@ -118162,14 +120292,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "My Little Pony: The Lands of Equestria"
+        "7110",
+        "Night's Whisper",
+        false
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "My Little Pony: The Lands of Equestria"
       ]
     ],
     "name": "Secret Lair Drop My Little Pony The Lands of Equestria",
@@ -118183,14 +120316,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "My Little Pony: The Lands of Equestria Foil Edition"
+        "7110",
+        "Night's Whisper",
+        true
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "My Little Pony: The Lands of Equestria Foil Edition"
       ]
     ],
     "name": "Secret Lair Drop My Little Pony The Lands of Equestria Foil",
@@ -119398,14 +121534,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Purr Majesty"
+        "7171",
+        "Hellish Rebuke",
+        false
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Purr Majesty"
       ]
     ],
     "name": "Secret Lair Drop Purr Majesty",
@@ -119419,14 +121558,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Purr Majesty Foil Edition"
+        "7171",
+        "Hellish Rebuke",
+        true
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Purr Majesty Foil Edition"
       ]
     ],
     "name": "Secret Lair Drop Purr Majesty Foil",
@@ -119560,14 +121702,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Return to Mystical Archive"
+        "7080",
+        "Return the Favor",
+        false
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Return to Mystical Archive"
       ]
     ],
     "name": "Secret Lair Drop Return to Mystical Archive",
@@ -119581,14 +121726,17 @@
     "contents": [
       [
         1,
-        "deck",
+        "card",
         "sld",
-        "Return to Mystical Archive Foil Edition"
+        "7080",
+        "Return the Favor",
+        true
       ],
       [
         1,
-        "other",
-        "Bonus card unknown"
+        "deck",
+        "sld",
+        "Return to Mystical Archive Foil Edition"
       ]
     ],
     "name": "Secret Lair Drop Return to Mystical Archive Foil",
@@ -130121,6 +132269,20 @@
   },
   {
     "category": "box_set",
+    "name": "Secret Lair Festival in a Box Amsterdam 2026 Bundle",
+    "subtype": "secret_lair_bundle",
+    "uuid": "079afeee-9345-5b19-b902-d8d1725bfa45",
+    "set_code": "sld",
+    "contents": [
+      [
+        1,
+        "unknown"
+      ]
+    ],
+    "release_date": "2026-07-17"
+  },
+  {
+    "category": "box_set",
     "contents": [
       [
         1,
@@ -131641,16 +133803,42 @@
   },
   {
     "category": "subset",
-    "name": "Secrets of Strixhaven Commander Deck Set of 5",
-    "subtype": "commander",
-    "uuid": "752834be-8c25-54e7-9f6b-ed9b0c9e7f40",
-    "set_code": "soc",
     "contents": [
       [
         1,
-        "unknown"
+        "product",
+        "soc",
+        "Secrets of Strixhaven Commander Deck Lorehold Spirit"
+      ],
+      [
+        1,
+        "product",
+        "soc",
+        "Secrets of Strixhaven Commander Deck Prismari Artistry"
+      ],
+      [
+        1,
+        "product",
+        "soc",
+        "Secrets of Strixhaven Commander Deck Quandrix Unlimited"
+      ],
+      [
+        1,
+        "product",
+        "soc",
+        "Secrets of Strixhaven Commander Deck Silverquill Influence"
+      ],
+      [
+        1,
+        "product",
+        "soc",
+        "Secrets of Strixhaven Commander Deck Witherbloom Pestilence"
       ]
-    ]
+    ],
+    "name": "Secrets of Strixhaven Commander Deck Set of 5",
+    "subtype": "commander",
+    "uuid": "752834be-8c25-54e7-9f6b-ed9b0c9e7f40",
+    "set_code": "soc"
   },
   {
     "category": "deck",
@@ -131747,16 +133935,38 @@
   },
   {
     "category": "bundle",
+    "contents": [
+      [
+        1,
+        "other",
+        "Shadows over Innistrad Player's Guide"
+      ],
+      [
+        1,
+        "other",
+        "Shadows over Innistrad Card Box"
+      ],
+      [
+        1,
+        "other",
+        "Shadows over Innistrad 80-card Basic Land Bundle"
+      ],
+      [
+        1,
+        "other",
+        "Shadows over Innistrad Spindown"
+      ],
+      [
+        9,
+        "product",
+        "soi",
+        "Shadows over Innistrad Booster Pack"
+      ]
+    ],
     "name": "Shadows over Innistrad Fat Pack",
     "subtype": "fat_pack",
     "uuid": "d0ff0f5e-a2cc-5b10-950c-917fb455d86b",
     "set_code": "soi",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2016-04-08"
   },
   {
@@ -132018,16 +134228,28 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "1 Shadows over Innistrad Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "soi-prerelease"
+      ],
+      [
+        6,
+        "product",
+        "soi",
+        "Shadows over Innistrad Booster Pack"
+      ]
+    ],
     "name": "Shadows over Innistrad Prerelease Pack",
     "subtype": "prerelease_kit",
     "uuid": "b5615598-e1ab-57b5-a937-b637716d7202",
     "set_code": "soi",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2016-03-07"
   },
   {
@@ -132319,16 +134541,43 @@
   },
   {
     "category": "bundle",
-    "name": "Scars of Mirrodin Fat Pack",
-    "subtype": "fat_pack",
-    "uuid": "c21ba9ec-f9cc-52c6-a2b5-24e32c0bbcd5",
-    "set_code": "som",
     "contents": [
       [
         1,
-        "unknown"
+        "other",
+        "40 basic land cards"
+      ],
+      [
+        1,
+        "other",
+        "Scars of Mirrodin spindown life counter"
+      ],
+      [
+        1,
+        "other",
+        "player's guide"
+      ],
+      [
+        1,
+        "other",
+        "card storage box"
+      ],
+      [
+        1,
+        "other",
+        "two 60-card deck boxes"
+      ],
+      [
+        8,
+        "product",
+        "som",
+        "Scars of Mirrodin Booster Pack"
       ]
-    ]
+    ],
+    "name": "Scars of Mirrodin Fat Pack",
+    "subtype": "fat_pack",
+    "uuid": "c21ba9ec-f9cc-52c6-a2b5-24e32c0bbcd5",
+    "set_code": "som"
   },
   {
     "category": "deck",
@@ -132562,7 +134811,7 @@
         4,
         "product",
         "sos",
-        "Secrets of Strixhaven 60-Card Theme Deck Set of 2"
+        "Secrets of Strixhaven Theme Decks Set of 2"
       ]
     ],
     "name": "Secrets of Strixhaven 60-Card Theme Deck Display",
@@ -132793,16 +135042,18 @@
   },
   {
     "category": "booster_box",
+    "contents": [
+      [
+        4,
+        "product",
+        "sos",
+        "Secrets of Strixhaven Collector Booster Box Case"
+      ]
+    ],
     "name": "Secrets of Strixhaven Collector Booster Box Master Case",
     "subtype": "collector",
     "uuid": "10de5ce5-a44c-56db-b3b1-41f19123db70",
-    "set_code": "sos",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "sos"
   },
   {
     "category": "booster_pack",
@@ -133099,16 +135350,24 @@
   },
   {
     "category": "subset",
-    "name": "Secrets of Strixhaven Theme Decks Set of 2",
-    "subtype": "theme",
-    "uuid": "c2873789-277d-59ce-b2c9-8d91dda934c6",
-    "set_code": "sos",
     "contents": [
       [
         1,
-        "unknown"
+        "product",
+        "sos",
+        "Secrets of Strixhaven 60-Card Theme Deck Eerie"
+      ],
+      [
+        1,
+        "product",
+        "sos",
+        "Secrets of Strixhaven 60-Card Theme Deck Lifegain"
       ]
-    ]
+    ],
+    "name": "Secrets of Strixhaven Theme Decks Set of 2",
+    "subtype": "theme",
+    "uuid": "c2873789-277d-59ce-b2c9-8d91dda934c6",
+    "set_code": "sos"
   },
   {
     "category": "deck",
@@ -133192,81 +135451,117 @@
   },
   {
     "category": "deck",
+    "contents": [
+      [
+        1,
+        "deck",
+        "sos",
+        "Black Deck"
+      ]
+    ],
     "name": "Welcome Deck 2026 Black Deck",
     "subtype": "welcome",
     "uuid": "c82a76bd-724f-5de0-ae15-6ff580b005bf",
-    "set_code": "sos",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "sos"
   },
   {
     "category": "deck",
+    "contents": [
+      [
+        1,
+        "deck",
+        "sos",
+        "Blue Deck"
+      ]
+    ],
     "name": "Welcome Deck 2026 Blue Deck",
     "subtype": "welcome",
     "uuid": "0013ffba-835f-535f-8b61-e8546b264669",
-    "set_code": "sos",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "sos"
   },
   {
     "category": "deck",
+    "contents": [
+      [
+        1,
+        "deck",
+        "sos",
+        "Green Deck"
+      ]
+    ],
     "name": "Welcome Deck 2026 Green Deck",
     "subtype": "welcome",
     "uuid": "ea378ca0-c472-582a-b1ed-cd93d4bd6d79",
-    "set_code": "sos",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "sos"
   },
   {
     "category": "deck",
+    "contents": [
+      [
+        1,
+        "deck",
+        "sos",
+        "Red Deck"
+      ]
+    ],
     "name": "Welcome Deck 2026 Red Deck",
     "subtype": "welcome",
     "uuid": "327b7749-926e-5543-a492-8e76c003ac47",
-    "set_code": "sos",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "sos"
   },
   {
     "category": "deck",
+    "contents": [
+      [
+        1,
+        "product",
+        "sos",
+        "Welcome Deck 2026 Black Deck"
+      ],
+      [
+        1,
+        "product",
+        "sos",
+        "Welcome Deck 2026 Blue Deck"
+      ],
+      [
+        1,
+        "product",
+        "sos",
+        "Welcome Deck 2026 Green Deck"
+      ],
+      [
+        1,
+        "product",
+        "sos",
+        "Welcome Deck 2026 Red Deck"
+      ],
+      [
+        1,
+        "product",
+        "sos",
+        "Welcome Deck 2026 White Deck"
+      ]
+    ],
     "name": "Welcome Deck 2026 Set of 5",
     "subtype": "welcome",
     "uuid": "859cc373-2859-529a-8dda-6f535b4fc770",
-    "set_code": "sos",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "sos"
   },
   {
     "category": "deck",
-    "name": "Welcome Deck 2026 White Deck",
-    "subtype": "welcome",
-    "uuid": "839c8849-22df-5af8-96e0-159f4af526c1",
-    "set_code": "sos",
     "contents": [
       [
         1,
-        "unknown"
+        "deck",
+        "sos",
+        "White Deck"
       ]
-    ]
+    ],
+    "name": "Welcome Deck 2026 White Deck",
+    "subtype": "welcome",
+    "uuid": "839c8849-22df-5af8-96e0-159f4af526c1",
+    "set_code": "sos"
   },
   {
     "category": "bundle",
@@ -133551,16 +135846,18 @@
   },
   {
     "category": "box_set",
+    "contents": [
+      [
+        4,
+        "product",
+        "spm",
+        "Marvels Spider Man Scene Box"
+      ]
+    ],
     "name": "Marvels Spider Man Scene Box Case",
     "subtype": "other",
     "uuid": "1c254a50-51af-5d7a-86b3-4ae3328deb37",
-    "set_code": "spm",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "spm"
   },
   {
     "category": "deck",
@@ -133678,68 +135975,124 @@
   },
   {
     "category": "box_set",
+    "contents": [
+      [
+        1,
+        "card",
+        "lmar",
+        "1",
+        "Anti-Venom, Horrifying Healer",
+        true
+      ],
+      [
+        1,
+        "other",
+        "Marvel Legends Agent Anti-Venom action figure"
+      ]
+    ],
     "name": "Marvels Spider-Man Marvel Legends Figure Set Agent Anti-Venom",
     "subtype": "promotional",
     "uuid": "1ca44139-92b4-5ff4-b7f1-5ba0a82109e5",
-    "set_code": "spm",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "spm"
   },
   {
     "category": "box_set",
+    "contents": [
+      [
+        1,
+        "card",
+        "lmar",
+        "3",
+        "Huntmaster of the Fells // Ravager of the Fells",
+        true
+      ],
+      [
+        1,
+        "other",
+        "Marvel Legends Man-Wolf action figure"
+      ]
+    ],
     "name": "Marvels Spider-Man Marvel Legends Figure Set Man-Wolf",
     "subtype": "promotional",
     "uuid": "808be514-85f2-5fcc-946a-6374cccef31b",
-    "set_code": "spm",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "spm"
   },
   {
     "category": "box_set",
+    "contents": [
+      [
+        1,
+        "card",
+        "lmar",
+        "4",
+        "Iron Spider, Stark Upgrade",
+        true
+      ],
+      [
+        1,
+        "other",
+        "Marvel Legends Mary Jane Watson (Iron Spider) action figure"
+      ]
+    ],
     "name": "Marvels Spider-Man Marvel Legends Figure Set Mary Jane Watson Iron Spider",
     "subtype": "promotional",
     "uuid": "0be1105c-05f6-58c4-9c80-9e2a5f640bf4",
-    "set_code": "spm",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "spm"
   },
   {
     "category": "box_set",
+    "contents": [
+      [
+        1,
+        "card",
+        "lmar",
+        "2",
+        "Spectacular Spider-Man",
+        true
+      ],
+      [
+        1,
+        "other",
+        "Marvel Legends Battle-Damaged Spider-Man action figure"
+      ]
+    ],
     "name": "Marvels Spider-Man Marvel Legends Figure Set Spider-Man Battle-Damaged",
     "subtype": "promotional",
     "uuid": "1e09ba77-9a10-54e9-8eb7-17f3b45fb914",
-    "set_code": "spm",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "spm"
   },
   {
     "category": "unknown",
-    "name": "Marvels Spider-Man Web-Slingers Kit",
-    "subtype": "unknown",
-    "uuid": "a990f0fd-4acd-5496-a94b-140b58be2942",
-    "set_code": "spm",
     "contents": [
       [
         1,
-        "unknown"
+        "card",
+        "pmei",
+        "2025-23",
+        "Spider-Man, Miles Morales",
+        true
+      ],
+      [
+        1,
+        "other",
+        "15 traditional foil basic lands"
+      ],
+      [
+        1,
+        "other",
+        "30 regular basic lands"
+      ],
+      [
+        6,
+        "product",
+        "spm",
+        "Marvels Spider Man Play Booster Pack"
       ]
-    ]
+    ],
+    "name": "Marvels Spider-Man Web-Slingers Kit",
+    "subtype": "unknown",
+    "uuid": "a990f0fd-4acd-5496-a94b-140b58be2942",
+    "set_code": "spm"
   },
   {
     "category": "box_set",
@@ -134508,44 +136861,80 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Strixhaven Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "stx-prerelease-lorehold"
+      ],
+      [
+        5,
+        "product",
+        "stx",
+        "Strixhaven School of Mages Draft Booster Pack"
+      ]
+    ],
     "name": "Strixhaven School of Mages Prerelease Pack Lorehold",
     "subtype": "prerelease_kit",
     "uuid": "ddd23f7c-6dc1-54ed-a51a-913555562823",
     "set_code": "stx",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2021-02-19"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Strixhaven Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "stx-prerelease-prismari"
+      ],
+      [
+        5,
+        "product",
+        "stx",
+        "Strixhaven School of Mages Draft Booster Pack"
+      ]
+    ],
     "name": "Strixhaven School of Mages Prerelease Pack Prismari",
     "subtype": "prerelease_kit",
     "uuid": "2a0933e3-9f0d-50e5-98e0-ee0608213ca2",
     "set_code": "stx",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2021-02-19"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Strixhaven Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "stx-prerelease-quandrix"
+      ],
+      [
+        5,
+        "product",
+        "stx",
+        "Strixhaven School of Mages Draft Booster Pack"
+      ]
+    ],
     "name": "Strixhaven School of Mages Prerelease Pack Quandrix",
     "subtype": "prerelease_kit",
     "uuid": "2305776d-6bdb-576e-8d10-c99b736bb7ad",
     "set_code": "stx",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2021-02-19"
   },
   {
@@ -134589,30 +136978,54 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Strixhaven Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "stx-prerelease-silverquill"
+      ],
+      [
+        5,
+        "product",
+        "stx",
+        "Strixhaven School of Mages Draft Booster Pack"
+      ]
+    ],
     "name": "Strixhaven School of Mages Prerelease Pack Silverquill",
     "subtype": "prerelease_kit",
     "uuid": "e3b9199c-cec4-5d0b-889f-39383b4137da",
     "set_code": "stx",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2021-02-19"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Strixhaven Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "stx-prerelease-witherbloom"
+      ],
+      [
+        5,
+        "product",
+        "stx",
+        "Strixhaven School of Mages Draft Booster Pack"
+      ]
+    ],
     "name": "Strixhaven School of Mages Prerelease Pack Witherbloom",
     "subtype": "prerelease_kit",
     "uuid": "5d98467a-9fae-54cf-afb2-9755c4934527",
     "set_code": "stx",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2021-02-19"
   },
   {
@@ -135253,151 +137666,297 @@
   },
   {
     "category": "booster_pack",
+    "contents": [
+      [
+        1,
+        "pack",
+        "tdm-prerelease-abzan"
+      ]
+    ],
     "name": "Tarkir Dragonstorm Prerelease Booster Abzan",
     "subtype": "prerelease_kit",
     "uuid": "5f739b5e-2960-5ef5-b971-0154b43d1c60",
     "set_code": "tdm",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2025-03-26"
   },
   {
     "category": "booster_pack",
+    "contents": [
+      [
+        1,
+        "pack",
+        "tdm-prerelease-jeskai"
+      ]
+    ],
     "name": "Tarkir Dragonstorm Prerelease Booster Jeskai",
     "subtype": "prerelease_kit",
     "uuid": "91c06ed4-1c4c-521d-b8f5-c51bf4cdf068",
     "set_code": "tdm",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2025-03-26"
   },
   {
     "category": "booster_pack",
+    "contents": [
+      [
+        1,
+        "pack",
+        "tdm-prerelease-mardu"
+      ]
+    ],
     "name": "Tarkir Dragonstorm Prerelease Booster Mardu",
     "subtype": "prerelease_kit",
     "uuid": "2610db25-b666-5d10-a48a-2ea3ed4135f0",
     "set_code": "tdm",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2025-03-26"
   },
   {
     "category": "booster_pack",
+    "contents": [
+      [
+        1,
+        "pack",
+        "tdm-prerelease-sultai"
+      ]
+    ],
     "name": "Tarkir Dragonstorm Prerelease Booster Sultai",
     "subtype": "prerelease_kit",
     "uuid": "a3d5f08a-ac27-5b10-a327-e39d02389993",
     "set_code": "tdm",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2025-03-26"
   },
   {
     "category": "booster_pack",
+    "contents": [
+      [
+        1,
+        "pack",
+        "tdm-prerelease-temur"
+      ]
+    ],
     "name": "Tarkir Dragonstorm Prerelease Booster Temur",
     "subtype": "prerelease_kit",
     "uuid": "9d229363-e895-5aae-a827-86f5fc5a39ce",
     "set_code": "tdm",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2025-03-26"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Deck box"
+      ],
+      [
+        1,
+        "other",
+        "Tarkir Dragonstorm Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "tdm-prerelease"
+      ],
+      [
+        5,
+        "product",
+        "tdm",
+        "Tarkir Dragonstorm Play Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "tdm",
+        "Tarkir Dragonstorm Prerelease Booster Abzan"
+      ]
+    ],
     "name": "Tarkir Dragonstorm Prerelease Pack Abzan",
     "subtype": "prerelease_kit",
     "uuid": "e44390d9-355c-531b-9495-f61c3a547e47",
-    "set_code": "tdm",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "tdm"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Deck box"
+      ],
+      [
+        1,
+        "other",
+        "Tarkir Dragonstorm Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "tdm-prerelease"
+      ],
+      [
+        5,
+        "product",
+        "tdm",
+        "Tarkir Dragonstorm Play Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "tdm",
+        "Tarkir Dragonstorm Prerelease Booster Jeskai"
+      ]
+    ],
     "name": "Tarkir Dragonstorm Prerelease Pack Jeskai",
     "subtype": "prerelease_kit",
     "uuid": "fecbb5d0-246f-59fd-ad2b-c2be127bda5c",
-    "set_code": "tdm",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "tdm"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Deck box"
+      ],
+      [
+        1,
+        "other",
+        "Tarkir Dragonstorm Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "tdm-prerelease"
+      ],
+      [
+        5,
+        "product",
+        "tdm",
+        "Tarkir Dragonstorm Play Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "tdm",
+        "Tarkir Dragonstorm Prerelease Booster Mardu"
+      ]
+    ],
     "name": "Tarkir Dragonstorm Prerelease Pack Mardu",
     "subtype": "prerelease_kit",
     "uuid": "7c52e625-9c1e-5abc-8025-8bd825d9e9c1",
-    "set_code": "tdm",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "tdm"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Deck box"
+      ],
+      [
+        1,
+        "other",
+        "Tarkir Dragonstorm Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "tdm-prerelease"
+      ],
+      [
+        5,
+        "product",
+        "tdm",
+        "Tarkir Dragonstorm Play Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "tdm",
+        "Tarkir Dragonstorm Prerelease Booster Sultai"
+      ]
+    ],
     "name": "Tarkir Dragonstorm Prerelease Pack Sultai",
     "subtype": "prerelease_kit",
     "uuid": "aa4b1d6c-bbc4-5a7b-b840-bf8d47e89792",
-    "set_code": "tdm",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "tdm"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Deck box"
+      ],
+      [
+        1,
+        "other",
+        "Tarkir Dragonstorm Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "tdm-prerelease"
+      ],
+      [
+        5,
+        "product",
+        "tdm",
+        "Tarkir Dragonstorm Play Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "tdm",
+        "Tarkir Dragonstorm Prerelease Booster Temur"
+      ]
+    ],
     "name": "Tarkir Dragonstorm Prerelease Pack Temur",
     "subtype": "prerelease_kit",
     "uuid": "10836926-ac1a-55d1-9531-d9ea5fc7caec",
-    "set_code": "tdm",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "tdm"
   },
   {
     "category": "subset",
-    "name": "Tarkir Dragonstorm Prerelease Packs Set of 5",
-    "subtype": "prerelease_kit",
-    "uuid": "5cc2fde8-58a6-530e-856f-b34d2a7225b8",
-    "set_code": "tdm",
     "contents": [
       [
         1,
-        "unknown"
+        "product",
+        "tdm",
+        "Tarkir Dragonstorm Prerelease Pack Abzan"
+      ],
+      [
+        1,
+        "product",
+        "tdm",
+        "Tarkir Dragonstorm Prerelease Pack Jeskai"
+      ],
+      [
+        1,
+        "product",
+        "tdm",
+        "Tarkir Dragonstorm Prerelease Pack Mardu"
+      ],
+      [
+        1,
+        "product",
+        "tdm",
+        "Tarkir Dragonstorm Prerelease Pack Sultai"
+      ],
+      [
+        1,
+        "product",
+        "tdm",
+        "Tarkir Dragonstorm Prerelease Pack Temur"
       ]
-    ]
+    ],
+    "name": "Tarkir Dragonstorm Prerelease Packs Set of 5",
+    "subtype": "prerelease_kit",
+    "uuid": "5cc2fde8-58a6-530e-856f-b34d2a7225b8",
+    "set_code": "tdm"
   },
   {
     "category": "bundle",
@@ -135664,30 +138223,44 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "Theros Beyond Death Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "thb-prerelease"
+      ],
+      [
+        6,
+        "product",
+        "thb",
+        "Theros Beyond Death Draft Booster Pack"
+      ]
+    ],
     "name": "Theros Beyond Death Prerelease Pack",
     "subtype": "prerelease_kit",
     "uuid": "7ac66561-d040-5c16-ba37-0115d2a673de",
     "set_code": "thb",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2020-01-17"
   },
   {
     "category": "limited_aid_case",
+    "contents": [
+      [
+        18,
+        "product",
+        "thb",
+        "Theros Beyond Death Prerelease Pack"
+      ]
+    ],
     "name": "Theros Beyond Death Prerelease Pack Case",
     "subtype": "prerelease_kit",
     "uuid": "2b1655a3-9582-5008-9c53-e896be72eaf5",
-    "set_code": "thb",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "thb"
   },
   {
     "category": "booster_box",
@@ -135905,16 +138478,18 @@
   },
   {
     "category": "deck",
-    "name": "Theros Challenge Deck Face the Hydra",
-    "subtype": "challenge",
-    "uuid": "0ed0b2a5-08bd-544b-b6e0-ecf5919b7765",
-    "set_code": "ths",
     "contents": [
       [
         1,
-        "unknown"
+        "deck",
+        "tfth",
+        "Face the Hydra"
       ]
-    ]
+    ],
+    "name": "Theros Challenge Deck Face the Hydra",
+    "subtype": "challenge",
+    "uuid": "0ed0b2a5-08bd-544b-b6e0-ecf5919b7765",
+    "set_code": "ths"
   },
   {
     "category": "deck",
@@ -135933,16 +138508,43 @@
   },
   {
     "category": "bundle",
-    "name": "Theros Fat Pack",
-    "subtype": "fat_pack",
-    "uuid": "c6e08377-1c47-58e7-9c31-e7c4b091345e",
-    "set_code": "ths",
     "contents": [
       [
         1,
-        "unknown"
+        "other",
+        "Player's guide with encyclopedia"
+      ],
+      [
+        1,
+        "other",
+        "Theros card box"
+      ],
+      [
+        1,
+        "other",
+        "80-card basic land pack"
+      ],
+      [
+        1,
+        "other",
+        "Special edition spindown life counter"
+      ],
+      [
+        1,
+        "other",
+        "Two deck boxes"
+      ],
+      [
+        9,
+        "product",
+        "ths",
+        "Theros Booster Pack"
       ]
-    ]
+    ],
+    "name": "Theros Fat Pack",
+    "subtype": "fat_pack",
+    "uuid": "c6e08377-1c47-58e7-9c31-e7c4b091345e",
+    "set_code": "ths"
   },
   {
     "category": "bundle",
@@ -136245,68 +138847,168 @@
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "card",
+        "thp1",
+        "1c",
+        "The Avenger",
+        false
+      ],
+      [
+        1,
+        "other",
+        "Spindown die"
+      ],
+      [
+        1,
+        "pack",
+        "ths-prerelease-ambition"
+      ],
+      [
+        5,
+        "product",
+        "ths",
+        "Theros Booster Pack"
+      ]
+    ],
     "name": "Theros Prerelease Kit Path of Ambition",
     "subtype": "prerelease_kit",
     "uuid": "c68f384c-3f97-5abe-a5e1-eda2d4c9453b",
-    "set_code": "ths",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "ths"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "card",
+        "thp1",
+        "1d",
+        "The Warrior",
+        false
+      ],
+      [
+        1,
+        "other",
+        "Spindown die"
+      ],
+      [
+        1,
+        "pack",
+        "ths-prerelease-battle"
+      ],
+      [
+        5,
+        "product",
+        "ths",
+        "Theros Booster Pack"
+      ]
+    ],
     "name": "Theros Prerelease Kit Path of Battle",
     "subtype": "prerelease_kit",
     "uuid": "745a9744-7ed1-552a-a8d7-b3cae00bd44e",
-    "set_code": "ths",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "ths"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "card",
+        "thp1",
+        "1a",
+        "The Protector",
+        false
+      ],
+      [
+        1,
+        "other",
+        "Spindown die"
+      ],
+      [
+        1,
+        "pack",
+        "ths-prerelease-honor"
+      ],
+      [
+        5,
+        "product",
+        "ths",
+        "Theros Booster Pack"
+      ]
+    ],
     "name": "Theros Prerelease Kit Path of Honor",
     "subtype": "prerelease_kit",
     "uuid": "2db7e9f1-f51a-5603-829d-f46e44117b87",
-    "set_code": "ths",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "ths"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "card",
+        "thp1",
+        "1e",
+        "The Hunter",
+        false
+      ],
+      [
+        1,
+        "other",
+        "Spindown die"
+      ],
+      [
+        1,
+        "pack",
+        "ths-prerelease-might"
+      ],
+      [
+        5,
+        "product",
+        "ths",
+        "Theros Booster Pack"
+      ]
+    ],
     "name": "Theros Prerelease Kit Path of Might",
     "subtype": "prerelease_kit",
     "uuid": "4d215870-d408-56c2-b1bf-f6d0f2e16902",
-    "set_code": "ths",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "ths"
   },
   {
     "category": "limited_aid_tool",
-    "name": "Theros Prerelease Kit Path of Wisdom",
-    "subtype": "prerelease_kit",
-    "uuid": "68c79ca4-9647-5c1d-ba88-edca30153c1c",
-    "set_code": "ths",
     "contents": [
       [
         1,
-        "unknown"
+        "card",
+        "thp1",
+        "1b",
+        "The Philosopher",
+        false
+      ],
+      [
+        1,
+        "other",
+        "Spindown die"
+      ],
+      [
+        1,
+        "pack",
+        "ths-prerelease-wisdom"
+      ],
+      [
+        5,
+        "product",
+        "ths",
+        "Theros Booster Pack"
       ]
-    ]
+    ],
+    "name": "Theros Prerelease Kit Path of Wisdom",
+    "subtype": "prerelease_kit",
+    "uuid": "68c79ca4-9647-5c1d-ba88-edca30153c1c",
+    "set_code": "ths"
   },
   {
     "category": "subset",
@@ -136350,29 +139052,117 @@
   },
   {
     "category": "box_set",
+    "contents": [
+      [
+        1,
+        "deck",
+        "tla",
+        "Beginner Box - Aang Tutorial"
+      ],
+      [
+        1,
+        "deck",
+        "tla",
+        "Beginner Box - Allies"
+      ],
+      [
+        1,
+        "deck",
+        "tla",
+        "Beginner Box - Attacking"
+      ],
+      [
+        1,
+        "deck",
+        "tla",
+        "Beginner Box - Big Creatures"
+      ],
+      [
+        1,
+        "deck",
+        "tla",
+        "Beginner Box - Counters"
+      ],
+      [
+        1,
+        "deck",
+        "tla",
+        "Beginner Box - Earthbending"
+      ],
+      [
+        1,
+        "deck",
+        "tla",
+        "Beginner Box - Firebending"
+      ],
+      [
+        1,
+        "deck",
+        "tla",
+        "Beginner Box - Spells"
+      ],
+      [
+        1,
+        "deck",
+        "tla",
+        "Beginner Box - Waterbending"
+      ],
+      [
+        1,
+        "deck",
+        "tla",
+        "Beginner Box - Zuko Tutorial"
+      ],
+      [
+        1,
+        "other",
+        "5 Non-foil tokens"
+      ],
+      [
+        1,
+        "other",
+        "2 Gameboard playmats"
+      ],
+      [
+        1,
+        "other",
+        "2 How to Play guides"
+      ],
+      [
+        1,
+        "other",
+        "2 Reference cards"
+      ],
+      [
+        1,
+        "other",
+        "2 Spindown dice"
+      ],
+      [
+        1,
+        "other",
+        "Reference guide booklet"
+      ]
+    ],
     "name": "Avatar The Last Airbender Beginner Box",
     "subtype": "starter_deck",
     "uuid": "5b6b7530-2c49-5b83-a632-46660b62c0ac",
-    "set_code": "tla",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "tla"
   },
   {
     "category": "box_set",
+    "contents": [
+      [
+        3,
+        "product",
+        "tla",
+        "Avatar The Last Airbender Beginner Box"
+      ]
+    ],
     "name": "Avatar The Last Airbender Beginner Box Case",
     "subtype": "starter_deck",
     "uuid": "ada10d57-7928-5e0f-8997-e1ccfe4455d1",
-    "set_code": "tla",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "tla"
   },
   {
     "category": "bundle",
@@ -136478,16 +139268,50 @@
   },
   {
     "category": "bundle",
-    "name": "Avatar The Last Airbender Commanders Bundle",
-    "subtype": "gift_bundle",
-    "uuid": "e0bf7700-212c-58a0-b684-0aa9e4677ddf",
-    "set_code": "tla",
     "contents": [
       [
         1,
-        "unknown"
+        "deck",
+        "tla",
+        "Commander's Bundle"
+      ],
+      [
+        1,
+        "other",
+        "15 Traditional Foil Land cards"
+      ],
+      [
+        1,
+        "other",
+        "15 Land cards"
+      ],
+      [
+        1,
+        "other",
+        "Click Wheel life counter"
+      ],
+      [
+        1,
+        "other",
+        "Card storage box"
+      ],
+      [
+        9,
+        "product",
+        "tla",
+        "Avatar The Last Airbender Play Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "tla",
+        "Avatar The Last Airbender Collector Booster Pack"
       ]
-    ]
+    ],
+    "name": "Avatar The Last Airbender Commanders Bundle",
+    "subtype": "gift_bundle",
+    "uuid": "e0bf7700-212c-58a0-b684-0aa9e4677ddf",
+    "set_code": "tla"
   },
   {
     "category": "bundle_case",
@@ -136549,225 +139373,360 @@
     "set_code": "tla"
   },
   {
-    "category": "unknown",
+    "category": "box_set",
+    "contents": [
+      [
+        1,
+        "card",
+        "pmei",
+        "2025-25",
+        "Aang, Air Nomad",
+        true
+      ],
+      [
+        3,
+        "product",
+        "tla",
+        "Avatar The Last Airbender Play Booster Pack"
+      ]
+    ],
     "name": "Avatar The Last Airbender Play Pack",
-    "subtype": "unknown",
+    "subtype": "other",
     "uuid": "4574ff51-5808-588c-acbf-da3cc63a8528",
-    "set_code": "tla",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
-  },
-  {
-    "category": "booster_pack",
-    "name": "Avatar The Last Airbender Prerelease Booster Aang",
-    "subtype": "prerelease_kit",
-    "uuid": "c92863f0-0f36-5814-ad83-f995a15e75c3",
-    "set_code": "tla",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
-  },
-  {
-    "category": "booster_pack",
-    "name": "Avatar The Last Airbender Prerelease Booster Azula",
-    "subtype": "prerelease_kit",
-    "uuid": "719c4c8c-d3e1-5deb-ada2-762b1ed506bf",
-    "set_code": "tla",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
-  },
-  {
-    "category": "booster_pack",
-    "name": "Avatar The Last Airbender Prerelease Booster Katara",
-    "subtype": "prerelease_kit",
-    "uuid": "b61508c4-5e45-5ced-aae5-047868d6a66b",
-    "set_code": "tla",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
-  },
-  {
-    "category": "booster_pack",
-    "name": "Avatar The Last Airbender Prerelease Booster Toph",
-    "subtype": "prerelease_kit",
-    "uuid": "30c9c6da-fd39-5ce0-b53b-ed5b4348f52d",
-    "set_code": "tla",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
-  },
-  {
-    "category": "booster_pack",
-    "name": "Avatar The Last Airbender Prerelease Booster Zuko",
-    "subtype": "prerelease_kit",
-    "uuid": "3ddbabae-4f19-5c05-9cd9-c5641611a0d1",
-    "set_code": "tla",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "tla"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "2 Non-foil double-sided tokens"
+      ],
+      [
+        1,
+        "other",
+        "Avatar The Last Airbender Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "tla-prerelease"
+      ],
+      [
+        1,
+        "pack",
+        "tla-prerelease-aang"
+      ],
+      [
+        5,
+        "product",
+        "tla",
+        "Avatar The Last Airbender Play Booster Pack"
+      ]
+    ],
     "name": "Avatar The Last Airbender Prerelease Pack Aang",
     "subtype": "prerelease_kit",
     "uuid": "3231a0db-f846-55ff-8229-21bcba290236",
-    "set_code": "tla",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "tla"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "2 Non-foil double-sided tokens"
+      ],
+      [
+        1,
+        "other",
+        "Avatar The Last Airbender Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "tla-prerelease"
+      ],
+      [
+        1,
+        "pack",
+        "tla-prerelease-azula"
+      ],
+      [
+        5,
+        "product",
+        "tla",
+        "Avatar The Last Airbender Play Booster Pack"
+      ]
+    ],
     "name": "Avatar The Last Airbender Prerelease Pack Azula",
     "subtype": "prerelease_kit",
     "uuid": "04b664ca-189f-5281-b831-6f109a51b77d",
-    "set_code": "tla",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "tla"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "2 Non-foil double-sided tokens"
+      ],
+      [
+        1,
+        "other",
+        "Avatar The Last Airbender Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "tla-prerelease"
+      ],
+      [
+        1,
+        "pack",
+        "tla-prerelease-katara"
+      ],
+      [
+        5,
+        "product",
+        "tla",
+        "Avatar The Last Airbender Play Booster Pack"
+      ]
+    ],
     "name": "Avatar The Last Airbender Prerelease Pack Katara",
     "subtype": "prerelease_kit",
     "uuid": "ad05da46-ad73-5115-bd03-158da5d3c775",
-    "set_code": "tla",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "tla"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "2 Non-foil double-sided tokens"
+      ],
+      [
+        1,
+        "other",
+        "Avatar The Last Airbender Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "tla-prerelease"
+      ],
+      [
+        1,
+        "pack",
+        "tla-prerelease-toph"
+      ],
+      [
+        5,
+        "product",
+        "tla",
+        "Avatar The Last Airbender Play Booster Pack"
+      ]
+    ],
     "name": "Avatar The Last Airbender Prerelease Pack Toph",
     "subtype": "prerelease_kit",
     "uuid": "b79e1365-9528-523b-ab98-785720168cf9",
-    "set_code": "tla",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "tla"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        1,
+        "other",
+        "2 Non-foil double-sided tokens"
+      ],
+      [
+        1,
+        "other",
+        "Avatar The Last Airbender Spindown"
+      ],
+      [
+        1,
+        "pack",
+        "tla-prerelease"
+      ],
+      [
+        1,
+        "pack",
+        "tla-prerelease-zuko"
+      ],
+      [
+        5,
+        "product",
+        "tla",
+        "Avatar The Last Airbender Play Booster Pack"
+      ]
+    ],
     "name": "Avatar The Last Airbender Prerelease Pack Zuko",
     "subtype": "prerelease_kit",
     "uuid": "24d7cfa7-980e-53bb-bb39-6f281d55a2f7",
-    "set_code": "tla",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "tla"
   },
   {
     "category": "subset",
+    "contents": [
+      [
+        1,
+        "product",
+        "tla",
+        "Avatar The Last Airbender Prerelease Pack Aang"
+      ],
+      [
+        1,
+        "product",
+        "tla",
+        "Avatar The Last Airbender Prerelease Pack Azula"
+      ],
+      [
+        1,
+        "product",
+        "tla",
+        "Avatar The Last Airbender Prerelease Pack Katara"
+      ],
+      [
+        1,
+        "product",
+        "tla",
+        "Avatar The Last Airbender Prerelease Pack Toph"
+      ],
+      [
+        1,
+        "product",
+        "tla",
+        "Avatar The Last Airbender Prerelease Pack Zuko"
+      ]
+    ],
     "name": "Avatar The Last Airbender Prerelease Packs Set of 5",
     "subtype": "prerelease_kit",
     "uuid": "85b71603-bd98-5559-b413-f75ce6e04c8e",
-    "set_code": "tla",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "tla"
   },
   {
     "category": "box_set",
+    "contents": [
+      [
+        2,
+        "product",
+        "tla",
+        "Avatar The Last Airbender Scene Box Tea Time at the Jasmine Dragon"
+      ],
+      [
+        2,
+        "product",
+        "tla",
+        "Avatar The Last Airbender Scene Box The Black Sun Invasion"
+      ]
+    ],
     "name": "Avatar The Last Airbender Scene Box Case",
     "subtype": "other",
     "uuid": "f18ddd57-bf6f-57f7-9e6a-db99410774d6",
-    "set_code": "tla",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "tla"
   },
   {
     "category": "subset",
+    "contents": [
+      [
+        1,
+        "product",
+        "tla",
+        "Avatar The Last Airbender Scene Box Tea Time at the Jasmine Dragon"
+      ],
+      [
+        1,
+        "product",
+        "tla",
+        "Avatar The Last Airbender Scene Box The Black Sun Invasion"
+      ]
+    ],
     "name": "Avatar The Last Airbender Scene Box Set of 2",
     "subtype": "other",
     "uuid": "52cd70e5-7392-57c5-aa95-537e13924992",
-    "set_code": "tla",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "tla"
   },
   {
     "category": "box_set",
+    "contents": [
+      [
+        1,
+        "deck",
+        "tla",
+        "Tea Time at the Jasmine Dragon"
+      ],
+      [
+        1,
+        "other",
+        "6 Art-only scene cards"
+      ],
+      [
+        1,
+        "other",
+        "Paper display easel"
+      ],
+      [
+        3,
+        "product",
+        "tla",
+        "Avatar The Last Airbender Play Booster Pack"
+      ]
+    ],
     "name": "Avatar The Last Airbender Scene Box Tea Time at the Jasmine Dragon",
     "subtype": "other",
     "uuid": "03fe952d-d3f9-5547-a933-d2adb060c6e3",
-    "set_code": "tla",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "tla"
   },
   {
     "category": "box_set",
+    "contents": [
+      [
+        1,
+        "deck",
+        "tla",
+        "The Black Sun Invasion"
+      ],
+      [
+        1,
+        "other",
+        "6 Art-only scene cards"
+      ],
+      [
+        1,
+        "other",
+        "Paper display easel"
+      ],
+      [
+        3,
+        "product",
+        "tla",
+        "Avatar The Last Airbender Play Booster Pack"
+      ]
+    ],
     "name": "Avatar The Last Airbender Scene Box The Black Sun Invasion",
     "subtype": "other",
     "uuid": "938ccd9e-a0a1-595f-ae88-068cda3f13da",
-    "set_code": "tla",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "tla"
   },
   {
     "category": "limited_aid_tool",
+    "contents": [
+      [
+        2,
+        "product",
+        "tle",
+        "Avatar The Last Airbender Jumpstart Booster Pack"
+      ]
+    ],
     "name": "Avatar The Last Airbender Jumpstart Booster 2 Pack",
     "subtype": "draft_set",
     "uuid": "8ab520a9-9632-567e-89df-a25ba5907daa",
-    "set_code": "tle",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "tle"
   },
   {
     "category": "booster_box",
@@ -137139,16 +140098,18 @@
   },
   {
     "category": "booster_case",
+    "contents": [
+      [
+        4,
+        "product",
+        "tmt",
+        "Teenage Mutant Ninja Turtles Collector Booster Box Case"
+      ]
+    ],
     "name": "Teenage Mutant Ninja Turtles Collector Booster Box Master Case",
     "subtype": "collector",
     "uuid": "52ef2421-ab1f-5a76-8da1-54f386975800",
     "set_code": "tmt",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2026-03-06"
   },
   {
@@ -137246,30 +140207,60 @@
   },
   {
     "category": "bundle",
+    "contents": [
+      [
+        1,
+        "other",
+        "5 traditional foil full-art pizza basic land cards"
+      ],
+      [
+        1,
+        "other",
+        "25 non-foil full-art pizza basic land cards"
+      ],
+      [
+        1,
+        "other",
+        "2 of 6 pizza-themed promo cards"
+      ],
+      [
+        1,
+        "other",
+        "Oversized Pizza Bundle Spindown life counter"
+      ],
+      [
+        9,
+        "product",
+        "tmt",
+        "Teenage Mutant Ninja Turtles Play Booster Pack"
+      ],
+      [
+        1,
+        "product",
+        "tmt",
+        "Teenage Mutant Ninja Turtles Collector Booster Pack"
+      ]
+    ],
     "name": "Teenage Mutant Ninja Turtles Pizza Bundle",
     "subtype": "default",
     "uuid": "179d628c-d5cd-5800-acef-6dfd8bcb5000",
     "set_code": "tmt",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2026-03-27"
   },
   {
     "category": "bundle_case",
+    "contents": [
+      [
+        6,
+        "product",
+        "tmt",
+        "Teenage Mutant Ninja Turtles Pizza Bundle"
+      ]
+    ],
     "name": "Teenage Mutant Ninja Turtles Pizza Bundle Case",
     "subtype": "default",
     "uuid": "2b795feb-fd0b-5f48-ad5f-35c1877128b2",
     "set_code": "tmt",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ],
     "release_date": "2026-03-27"
   },
   {
@@ -137331,6 +140322,11 @@
         1,
         "other",
         "Spindown die"
+      ],
+      [
+        1,
+        "pack",
+        "tmt-prerelease"
       ],
       [
         6,
@@ -137912,29 +140908,78 @@
   },
   {
     "category": "bundle",
+    "contents": [
+      [
+        1,
+        "other",
+        "2 card deck boxes"
+      ],
+      [
+        1,
+        "other",
+        "Player's Guide"
+      ],
+      [
+        1,
+        "other",
+        "40 basic land cards"
+      ],
+      [
+        1,
+        "other",
+        "Time Spiral Spindown Life Counter"
+      ],
+      [
+        1,
+        "other",
+        "1 Random Pro Tour player card"
+      ],
+      [
+        1,
+        "other",
+        "Time Spiral novel"
+      ],
+      [
+        6,
+        "product",
+        "tsp",
+        "Time Spiral Booster Pack"
+      ]
+    ],
     "name": "Time Spiral Fat Pack",
     "subtype": "fat_pack",
     "uuid": "34e2948b-e2e8-5308-b421-334cbea4b9d5",
-    "set_code": "tsp",
-    "contents": [
-      [
-        1,
-        "unknown"
-      ]
-    ]
+    "set_code": "tsp"
   },
   {
     "category": "bundle",
-    "name": "Time Spiral Gift Box",
-    "subtype": "gift_bundle",
-    "uuid": "bcb49c0a-d311-50a7-a2f7-c02bf2bf9e6a",
-    "set_code": "tsp",
     "contents": [
       [
         1,
-        "unknown"
+        "other",
+        "5 exclusive card dividers"
+      ],
+      [
+        1,
+        "other",
+        "Metal mana symbol pendant and necklace"
+      ],
+      [
+        1,
+        "other",
+        "Magic: The Gathering T-shirt"
+      ],
+      [
+        3,
+        "product",
+        "tsp",
+        "Time Spiral Booster Pack"
       ]
-    ]
+    ],
+    "name": "Time Spiral Gift Box",
+    "subtype": "gift_bundle",
+    "uuid": "bcb49c0a-d311-50a7-a2f7-c02bf2bf9e6a",
+    "set_code": "tsp"
   },
   {
     "category": "box_set",
