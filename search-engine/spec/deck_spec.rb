@@ -99,6 +99,7 @@ describe Deck do
       ["eternal", "Box Set"],
       ["standard", "Bundle Land Pack"],
       ["modern", "Bundle Land Pack"],
+      ["commander", "Bundle Land Pack"],
     ]
 
     db.sets.each do |set_code, set|
