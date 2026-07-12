@@ -105,6 +105,17 @@ class PatchMtgjsonVersions < Patch
       end
     end
 
+    # unilaterally decided that all of these are cards
+    # mtgjson has them as some cards and some tokens, and that's just nonsense, it needs to be consistent
+    each_set do |set|
+      next unless ["TBTH", "TDAG", "TFTH"].include?(set["official_code"])
+      tokens = set.delete("tokens")
+      tokens.each do |token|
+        token["rarity"] = "common"
+        (@cards[token["name"]] ||= []) << token
+      end
+    end
+
     # https://github.com/mtgjson/mtgjson/issues/1335
     each_printing do |card|
       case card["name"]

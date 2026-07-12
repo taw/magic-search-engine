@@ -80,6 +80,7 @@ describe Deck do
       ["starter", "Demo Deck"],
       ["expansion", "Enemy Deck"],
       ["sld", "Dandan Deck"],
+      ["memorabilia", "Challenge Deck"],
       # Non-decks, this needs to be sorted out at some point
       ["box", "Box"],
       ["sld", "Secret Lair Drop"],
