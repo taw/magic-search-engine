@@ -43,9 +43,12 @@ class PatchProducts < Patch
           foil = v["foil"] || v["finishes"] == ["foil"]
           set_code = v["set"]
           number = v["number"]
-          name = v["name"]
+          # only take first part of a DFC
+          name = v["name"].split(" // ").first
+
           if !@cards[name]
             # Fail, but allow for now
+            warn "Product has unknown card #{name} [#{set_code}:#{number}]"
             result << [1, "card", set_code, number, name, !!foil]
           elsif @cards[name].find{|p| p["set_code"] == set_code and p["number"] == number}
             result << [1, "card", set_code, number, name, !!foil]
@@ -56,6 +59,7 @@ class PatchProducts < Patch
             result << [1, "card", set_code, number.downcase, name, !!foil]
           else
             # Fail, but allow for now
+            warn "Product has unknown card #{name} [#{set_code}:#{number}]"
             result << [1, "card", set_code, number, name, !!foil]
           end
         end
