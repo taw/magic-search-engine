@@ -9,12 +9,17 @@ class PatchXmage < Patch
         .readlines
         .map(&:chomp)
         .map{|line| line.split("\t",3)[0,2]}
+        .map{|set, name| [set, strip_accents(name)] }
         .to_set
     end
   end
 
+  # Decompose to NFD and drop the combining marks, so any diacritic is stripped
+  # (the old hand-maintained tr list missed some, e.g. ï). Both the card names
+  # and the XMage names are run through this, so accented cards match instead of
+  # being reported as typos.
   def strip_accents(str)
-    str.tr("äàáââééíöóûûúÉ", "aaaaaeeioouuuE")
+    str.unicode_normalize(:nfd).gsub(/\p{Mn}/, "")
   end
 
   def card_names(card)
