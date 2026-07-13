@@ -10,32 +10,8 @@ CARDS_NAME_FIXES = {
   "Garbage Elemental" => "Garbage Elemental (a) // Garbage Elemental (c) // Garbage Elemental (d) // Garbage Elemental (f)",
   "Very Cryptic Command" => "Very Cryptic Command (b) // Very Cryptic Command (c) // Very Cryptic Command (d) // Very Cryptic Command (e)",
   "Everythingamajig" => "Everythingamajig (a) // Everythingamajig (b) // Everythingamajig (c) // Everythingamajig (d) // Everythingamajig (e) // Everythingamajig (f)",
-  # shouldn't indexer handle these?
-  "Tura Kennerud, Skyknight" => "Tura Kennerüd, Skyknight",
-  "Arna Kennerud, Skycaptain" => "Arna Kennerüd, Skycaptain",
-  "Clavileno, First of the Blessed" => "Clavileño, First of the Blessed",
-  "Altair Ibn-La'Ahad" => "Altaïr Ibn-La'Ahad",
-  "Arana, Heart of the Spider" => "Araña, Heart of the Spider",
-  "Hamato Ninpo" => "Hamato Ninpō",
-  "Bespoke Bo" => "Bespoke Bō",
+  # random spelling differences
   "With Great Power..." => "With Great Power . . .",
-  # DA1
-  "More of That Strange Oil" => "More of That Strange Oil...",
-  # flavor names they didn't fix yet
-  "Doric, Nature's Warden" => "Casal, Lurkwood Pathfinder",
-  "Doric, Owlbear Avenger" => "Casal, Pathbreaker Owlbear",
-  "Edgin, Larcenous Lutenist" => "Bohn, Beguiling Balladeer",
-  "Forge, Neverwinter Charlatan" => "Evin, Waterdeep Opportunist",
-  "Holga, Relentless Rager" => "Jurin, Leading the Charge",
-  "Simon, Wild Magic Sorcerer" => "Mathise, Surge Channeler",
-  "Xenk, Paladin Unbroken" => "Rashel, Fist of Torm",
-  "Kongming, Sleeping Dragon" => 'Kongming, "Sleeping Dragon"',
-  "Pang Tong, Young Phoenix" => 'Pang Tong, "Young Phoenix"',
-  "Henzie Toolbox Torre" => 'Henzie "Toolbox" Torre',
-  # confusing unicode
-  "Ratonhnhaketon" => "Ratonhnhakéton",
-  # random typos
-  "Aurelia the Warleader" => "Aurelia, the Warleader",
 }
 
 class ExtractXmageCardList
