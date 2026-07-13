@@ -5,11 +5,11 @@ describe "product queries" do
   # most of this mapping is already done in Product, so just report results here
   it "all linked cards, products, packs, and decks exist" do
     db.products.each do |product|
-      verify_contents(product.name, product.contents)
+      verify_contents(product.set, product.name, product.contents)
     end
   end
 
-  def verify_contents(product_name, contents)
+  def verify_contents(product_set, product_name, contents)
     contents.each do |count, item|
       case item
       when Product, Pack, Deck
@@ -24,12 +24,13 @@ describe "product queries" do
         end
       when String # other, variable, unknown contents, or unknown <type>
         if item.start_with?("unknown") and item != "unknown contents"
+          # Ignore unknown contents in partial previews, they are unavoidable
+          next if product_set.types.include?("preview")
           warn "Product #{product_name} contains #{item}"
         end
       when ProductVariableContents
-        # p product_name
         item.options.each do |option|
-          verify_contents(product_name, option[:subproduct])
+          verify_contents(product_set, product_name, option[:subproduct])
         end
       else
         raise "Unknown content type: #{item.class}"
