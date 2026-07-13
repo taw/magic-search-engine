@@ -25,30 +25,38 @@ describe PackFactory do
     db.sets.each do |set_code, set|
       set_pp = "#{set.name} [#{set.code}]"
       # Indexer responsibility to set this flag
-      if %W[akr klr].include?(set_code)
+      case set_code
+      when "akr", "klr"
         db.supported_booster_types["#{set_code}"].should eq(nil), "#{set_pp} should not have regular packs"
         db.supported_booster_types["#{set_code}-arena"].should_not eq(nil), "#{set_pp} should have Arena packs"
-      elsif set_code == "sir"
+      when "sir", "pio"
         db.supported_booster_types["#{set_code}"].should eq(nil), "#{set_pp} should not have regular packs"
         db.supported_booster_types["#{set_code}-arena-1"].should_not eq(nil), "#{set_pp} should have Arena packs"
-      elsif set_code == "jmp" or set_code == "j22"
+      when "jmp", "j22", "j25", "tle"
         db.supported_booster_types["#{set_code}"].should eq(nil), "#{set_pp} should not have regular packs"
         db.supported_booster_types["#{set_code}-jumpstart"].should_not eq(nil), "#{set_pp} should have Jumpstart packs"
-      elsif set_code == "zne"
+      when "zne"
         db.supported_booster_types["#{set_code}"].should eq(nil), "#{set_pp} should not have regular packs"
         db.supported_booster_types["#{set_code}-box-topper"].should_not eq(nil), "#{set_pp} should have box topper packs"
-      elsif set_code == "who"
+      when "who", "pip"
         db.supported_booster_types["#{set_code}"].should eq(nil), "#{set_pp} should not have regular packs"
         db.supported_booster_types["#{set_code}-collector"].should_not eq(nil), "#{set_pp} should have collector packs"
-      elsif set.has_boosters?
-        pack = db.supported_booster_types[set_code]
-        if pack
-          pack.should be_a(Pack), "#{set_pp} should have packs"
-        else
-          warn "#{set_pp} should have packs" # TODO: pending
-        end
+      when "ugin"
+        db.supported_booster_types["#{set_code}"].should eq(nil), "#{set_pp} should not have regular packs"
+        db.supported_booster_types["#{set_code}-fate"].should_not eq(nil), "#{set_pp} should have Fate Event packs"
+      when "sld"
+        db.supported_booster_types["#{set_code}"].should eq(nil), "#{set_pp} should not have regular packs"
       else
-        pack.should eq(nil), "#{set_pp} should not have packs"
+        if set.has_boosters?
+          pack = db.supported_booster_types[set_code]
+          if pack
+            pack.should be_a(Pack), "#{set_pp} should have packs"
+          else
+            warn "#{set_pp} should have packs" # TODO: pending
+          end
+        else
+          pack.should eq(nil), "#{set_pp} should not have packs"
+        end
       end
     end
   end
