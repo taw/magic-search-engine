@@ -1,4 +1,16 @@
 class PatchXmage < Patch
+  # Known XMage typos / spoiler entries that never match a real card.
+  # These are stable long-term problems, so we silence the warning for them
+  # rather than reporting them on every index build.
+  KNOWN_ISSUES = Set[
+    ["atc", "Blinding Radiance"],
+    ["atc", "Goblin Bruiser"],
+    ["atc", "Ogre Painbringer"],
+    ["atc", "Titanic Pelagosaur"],
+    ["atc", "Treetop Recluse"],
+    ["calc", "C-Pillar of the Paruns"],
+  ]
+
   def xmage_cards_path
     Pathname(__dir__) + "../../../data/xmage_cards.txt"
   end
@@ -58,7 +70,9 @@ class PatchXmage < Patch
     likely_typos = missed_cards.map(&:last) - all_card_names
     unless likely_typos.empty?
       likely_typos.each do |name|
-        puts "Likely typo or spoiler card in XMage card list: #{name} (#{xmage_card_name_to_sets[name].join(", ")})"
+        sets = xmage_card_name_to_sets[name]
+        next if sets.all?{|set| KNOWN_ISSUES.include?([set, name]) }
+        puts "Likely typo or spoiler card in XMage card list: #{name} (#{sets.join(", ")})"
       end
     end
   end
