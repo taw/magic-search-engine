@@ -21,11 +21,16 @@ class PatchArtistNames < Patch
     ]
   end
 
+  def partial_preview_sets
+    @partial_preview_sets ||= @sets.select{|s| s["partial_preview"]}.map{|s| s["code"]}.to_set
+  end
+
   def call
     # Prevent slug conflicts
     each_printing do |card|
       unless card["artist"]
-        unless card["set_code"] == "unk" or card["set_code"] == "punk" or valid_no_art.include?([card["name"], card["set_code"], card["number"]])
+        # Missing artists are unavoidable for sets with only a partial spoiler available
+        unless card["set_code"] == "unk" or card["set_code"] == "punk" or partial_preview_sets.include?(card["set_code"]) or valid_no_art.include?([card["name"], card["set_code"], card["number"]])
           warn "No artist for #{card["name"]} #{card["set_code"]} #{card["number"]}"
         end
         card["artist"] = "unknown"
