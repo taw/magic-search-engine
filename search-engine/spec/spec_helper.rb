@@ -77,12 +77,19 @@ RSpec::Matchers.define :return_cards do |*cards|
   end
 
   failure_message do |query_string|
-    results = search(query_string)
+    results = search_names(query_string)
+    # Collect all printing codes per card name so matching cards show
+    # like `[*][*] Misty Rainforest [exp/25] [mh2/250]` on a single line.
+    printings_for = Hash.new{|h, k| h[k] = []}
+    search(query_string).each do |c|
+      name = c.sub(/ \[[^\]]*\]\z/, "")
+      printings_for[name] << c[/\[[^\]]*\]\z/]
+    end
     "Expected `#{query_string}' to return:\n" +
       (cards | results).sort.map{|c|
         (cards.include?(c) ? "[*]" : "[ ]") +
         (results.include?(c) ? "[*]" : "[ ]") +
-        "#{c}\n"
+        " #{[c, *printings_for[c]].join(" ")}\n"
       }.join
   end
 end
