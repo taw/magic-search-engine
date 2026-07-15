@@ -9,26 +9,29 @@ class PatchXmage < Patch
         .readlines
         .map(&:chomp)
         .map{|line| line.split("\t",3)[0,2]}
-        .map{|set, name| [set, strip_accents(name)] }
+        .map{|set, name| [set, normalize_name(name)] }
         .to_set
     end
   end
 
-  # Decompose to NFD and drop the combining marks, so any diacritic is stripped
-  # (the old hand-maintained tr list missed some, e.g. ï). Both the card names
-  # and the XMage names are run through this, so accented cards match instead of
-  # being reported as typos.
-  def strip_accents(str)
-    str.unicode_normalize(:nfd).gsub(/\p{Mn}/, "")
+  # Normalize a card name so equivalent XMage / mtgjson spellings match:
+  # - Decompose to NFD and drop combining marks, so any diacritic is stripped
+  #   (the old hand-maintained tr list missed some, e.g. ï).
+  # - Collapse ellipsis spacing, so XMage's "Foo . . ." matches mtgjson's "Foo..."
+  #   without per-card overrides.
+  # Both the card names and the XMage names are run through this.
+  def normalize_name(str)
+    str = str.unicode_normalize(:nfd).gsub(/\p{Mn}/, "")
+    str.gsub(/\s*\.(?:\s*\.)+/) { |run| run.gsub(/\s+/, "") }
   end
 
   def card_names(card)
     names = card["names"] || [card["name"]]
-    names.map{|n| strip_accents(n) }
+    names.map{|n| normalize_name(n) }
   end
 
   def all_card_names
-    @all_card_names ||= @cards.keys.map{|n| strip_accents(n)}
+    @all_card_names ||= @cards.keys.map{|n| normalize_name(n)}
   end
 
   def xmage_card_name_to_sets
