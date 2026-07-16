@@ -3,34 +3,9 @@
 # This patch ended up as dumping ground for far too much random stuff
 
 class PatchMtgjsonVersions < Patch
-  # This can go away once mtgjson fixes their bugs
-  def calculate_cmc(mana_cost)
-    mana_cost.split(/[\{\}]+/).reject(&:empty?).map{|c|
-      case c
-      when /\A[WUBRGCS]\z/, /\A[WUBRG]\/[WUBRGP]\z/
-        1
-      when "X", "Y", "Z"
-        0
-      when "HW"
-        0.5
-      when /\d+/
-        c.to_i
-      else
-        warn "Cannot calculate cmc of #{c} mana symbol"
-        0
-      end
-    }.sum
-  end
-
   def get_cmc(card)
     cmc = [card.delete("convertedManaCost"), card.delete("cmc")].compact.first
     fcmc = card.delete("faceConvertedManaCost")
-
-    # mtgjson bug
-    # https://github.com/mtgjson/mtgjson/issues/818
-    if card["layout"] == "modal_dfc" or card["layout"] == "reversible_card"
-      return calculate_cmc(card["manaCost"] || "")
-    end
 
     if fcmc
       case card["layout"]
