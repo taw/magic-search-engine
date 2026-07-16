@@ -6,7 +6,7 @@ require "json"
 # Debug tool to recreate single AllSets-x.json mtgjson file from multiple .json files
 
 class MergeMtgjson
-  SETS_DIR = Pathname(__dir__) + "../../data/sets"
+  SETS_DIR = Pathname(__dir__) + "../../../magic-search-engine-data/data/sets"
 
   # It doesn't remove any extra files
   def call

@@ -1,15 +1,13 @@
 #!/usr/bin/env ruby
 
-require "open-uri"
 require "pathname"
 require "json"
-require "pry"
 
 class SplitMtgjson
   SETS_DIR = Pathname(__dir__) + "../../../magic-search-engine-data/data/sets"
 
   def initialize(path, output_dir=SETS_DIR)
-    @data = JSON.parse(open(path).read)
+    @data = JSON.parse(Pathname(path).read)
     @output_dir = Pathname(output_dir)
   end
 
@@ -66,9 +64,7 @@ end
 
 unless ARGV.size == 1 or ARGV.size == 2
   STDERR.puts "Usage: #{$0} /path/to/AllSets.json"
-  STDERR.puts "   or: #{$0} http://url.to/AllSets.json"
   STDERR.puts "   or: #{$0} /path/to/AllSets.json /output/directory"
-  STDERR.puts "   or: #{$0} http://url.to/AllSets.json /output/directory"
   exit 1
 end
 

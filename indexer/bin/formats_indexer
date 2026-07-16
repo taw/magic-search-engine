@@ -2,7 +2,7 @@
 
 require "json"
 require "yaml"
-require "pry"
+require "pathname"
 
 class FormatsIndexer
   def input_path
