@@ -25,6 +25,7 @@ describe "Card nicknames" do
       "Arid Mesa",
       "Marsh Flats",
       "Misty Rainforest",
+      "Scalding Tarn",
       "Verdant Catacombs",
       "Bloodstained Mire",
       "Flooded Strand",
