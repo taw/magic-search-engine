@@ -376,7 +376,7 @@ BanList.for_format("legacy") do
     "Fight the _____ Fight" => "banned",
     "Finishing Move" => "banned",
     "Glitterflitter" => "banned",
-    "________ Goblin" => "banned",
+    "_____ Goblin" => "banned",
     '"Name Sticker" Goblin' => "banned", # not explicitly, it's just MTGO variant
     "Last Voyage of the _____" => "banned",
     "Lineprancers" => "banned",
