@@ -49,10 +49,6 @@ class DeckPrintingResolver
     @deck["name"]
   end
 
-  def card_name
-    @card["name"]
-  end
-
   def etched
     @card["etched"]
   end

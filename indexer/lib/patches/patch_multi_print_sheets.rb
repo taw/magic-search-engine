@@ -37,6 +37,6 @@ class PatchMultiPrintSheets < Patch
   end
 
   def data_root
-    Pathname(__dir__).parent.parent.parent + "data/print_sheets_multi"
+    Indexer::ROOT + "print_sheets_multi"
   end
 end

@@ -36,7 +36,7 @@ class PatchABUR < Patch
       sheet_assignments = {}
       sheets.each do |file_name, set_code, sheet_name|
         sheet_assignments[set_code] ||= {}
-        path = (data_root + "print_sheets/abur" + file_name)
+        path = (Indexer::ROOT + "print_sheets/abur" + file_name)
         cards = path.readlines.map(&:chomp).map{|c| c.split("/")[1] }
         cards.each do |c|
           sheet_assignments[set_code][c] ||= Hash.new(0)
@@ -45,10 +45,6 @@ class PatchABUR < Patch
       end
     end
     sheet_assignments
-  end
-
-  def data_root
-    Pathname(__dir__).parent.parent.parent + "data"
   end
 
   # Most sheets are frow http://www.lethe.xyz/mtg/collation/lea.html

@@ -39,6 +39,6 @@ class PatchNewPrintSheets < Patch
   end
 
   def data_root
-    Pathname(__dir__).parent.parent.parent + "data/print_sheets_new"
+    Indexer::ROOT + "print_sheets_new"
   end
 end

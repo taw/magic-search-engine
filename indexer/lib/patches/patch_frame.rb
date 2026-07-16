@@ -9,8 +9,8 @@ class PatchFrame < Patch
     each_printing do |card|
       card["frame"] = card.delete("frameVersion")
       unless KNOWN_FRAMES.include?(card["frame"])
+        warn "Unknown frame version: #{card["frame"].inspect}"
         card["frame"] = "2015"
-        puts "Unknown frame version: #{fv.inspect}"
       end
     end
   end

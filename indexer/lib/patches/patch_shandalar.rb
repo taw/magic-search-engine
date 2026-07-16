@@ -28,7 +28,7 @@ class PatchShandalar < Patch
   end
 
   def shandalar_cards_path
-    Pathname(__dir__) + "../../../data/shandalar.txt"
+    Indexer::ROOT + "shandalar.txt"
   end
 
   def shandalar_cards

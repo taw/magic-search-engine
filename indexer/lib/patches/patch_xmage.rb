@@ -12,7 +12,7 @@ class PatchXmage < Patch
   ]
 
   def xmage_cards_path
-    Pathname(__dir__) + "../../../data/xmage_cards.txt"
+    Indexer::ROOT + "xmage_cards.txt"
   end
 
   def xmage_cards

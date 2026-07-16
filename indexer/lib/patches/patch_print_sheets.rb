@@ -160,10 +160,6 @@ class PatchPrintSheets < Patch
     }
   end
 
-  def data_root
-    Pathname(__dir__).parent.parent.parent + "data"
-  end
-
   # There's some incorrect information on official checklists
   # http://www.magiclibrarities.net/forum/viewtopic.php?t=9906 for correction
   #
@@ -174,7 +170,7 @@ class PatchPrintSheets < Patch
   # Legends: Unholy Citadel: U2 -> U1
   # Legends: Seafarer's Quay: U2 -> U1
   def checklist_for(set_code)
-    path = data_root + "print_sheets/#{sources.fetch(set_code)}"
+    path = Indexer::ROOT + "print_sheets/#{sources.fetch(set_code)}"
     path
       .readlines
       .map(&:chomp)
