@@ -8,7 +8,7 @@ class ConditionFlavorName < ConditionSimple
   def match?(card)
     return false unless card.flavor_name
     return true if @flavor_name == "*"
-    card.flavor_name =~ @flavor_name_rx
+    card.flavor_name.normalize_accents =~ @flavor_name_rx
   end
 
   def to_s

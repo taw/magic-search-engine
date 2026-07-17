@@ -16,7 +16,7 @@ format_change_dates = (all_printing_dates | rotation_dates | banlist_dates).sort
 
 # codes = Format.formats_index.uniq(&:last).map(&:first)
 codes = ["legacy"]
-code.each do |code|
+codes.each do |code|
   next unless code == "legacy"
   info = []
 

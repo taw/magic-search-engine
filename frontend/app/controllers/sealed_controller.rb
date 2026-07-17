@@ -1,8 +1,8 @@
 class SealedController < ApplicationController
   # Controller supports >3 pack types
   def index
-    counts = params[:count].to_a.map(&:to_i)
-    set_codes = params[:set].to_a
+    counts = Array(params[:count]).map(&:to_i)
+    set_codes = Array(params[:set])
     @fixed = params[:fixed]
     @warnings = []
 

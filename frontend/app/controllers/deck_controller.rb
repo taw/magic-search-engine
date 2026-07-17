@@ -56,7 +56,8 @@ class DeckController < ApplicationController
     @title = "Deck Visualizer"
 
     if params[:deck_upload]
-      @deck = params[:deck_upload].read
+      upload = params[:deck_upload]
+      @deck = upload.respond_to?(:read) ? upload.read : upload.to_s
       parser = UserDeckParser.new(@deck)
       if parser.valid?
         @deck = parser.deck

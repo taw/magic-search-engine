@@ -226,7 +226,8 @@ class CardDatabase
     @sets.each do |set_code, set|
       normalized_set_name     = set.normalized_name
       normalized_set_name_alt = set.normalized_name_alt
-      matching_primary_code     << set if set_code == edition
+      # Exact primary-code matches are already handled by the early return above,
+      # so we only need to accumulate the lower-priority matches here.
       matching_alternative_code << set if set.alternative_code&.downcase == edition
       matching_name          << set if normalized_set_name == normalized_edition or normalized_set_name_alt == normalized_edition_alt
       matching_name_part     << set if normalized_set_name.include?(normalized_edition) or normalized_set_name_alt.include?(normalized_edition_alt)
