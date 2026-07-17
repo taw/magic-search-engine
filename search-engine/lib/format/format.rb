@@ -202,8 +202,6 @@ class Format
         # at some point it might be worth resurrecting the format
         # "brawl"                      => FormatBrawl,
         "modern"                     => FormatModern,
-        # I think the format is just dead
-        # "frontier"                   => FormatFrontier,
         "pioneer"                    => FormatPioneer,
         "legacy"                     => FormatLegacy,
         "vintage"                    => FormatVintage,
