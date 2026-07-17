@@ -29,7 +29,7 @@ class Sealed
 
   def add_card(count, description)
     set_code, number, foil = description.split("/", 3)
-    set = @db.sets[set_code.downcase] or caise "Can't find set #{set_code}"
+    set = @db.sets[set_code.downcase] or raise "Can't find set #{set_code}"
     card = set.printings.find{|c| c.number.downcase == number.downcase} or raise "Can't find card #{set_code}/#{number}"
     @fixed << PhysicalCard.for(card, foil == "foil")
   end

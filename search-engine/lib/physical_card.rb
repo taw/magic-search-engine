@@ -124,7 +124,7 @@ class PhysicalCard
   # as does any non-nil @front[i]
   # @back[0] doesn't, as two different meld cards can have same CardPrinting on the back
   def ==(other)
-    other.instance_of?(PhysicalCard) and main_front == other.main_front and foil == other.foil
+    other.instance_of?(PhysicalCard) and main_front == other.main_front and foil == other.foil and etched == other.etched
   end
 
   def eql?(other)
@@ -133,7 +133,7 @@ class PhysicalCard
 
   include Comparable
   def <=>(other)
-    [main_front, foil ? 1 : 0] <=> [other.main_front, other.foil ? 1 : 0, other.etched ? 1 : 0]
+    [main_front, foil ? 1 : 0, etched ? 1 : 0] <=> [other.main_front, other.foil ? 1 : 0, other.etched ? 1 : 0]
   end
 
   def self.for(card, foil=false, etched=false)

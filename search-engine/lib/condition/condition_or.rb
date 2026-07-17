@@ -39,4 +39,8 @@ class ConditionOr < Condition
     self.class == other.class and
       conds.sort_by(&:to_s) == other.conds.sort_by(&:to_s)
   end
+
+  def hash
+    [self.class, conds.sort_by(&:to_s)].hash
+  end
 end

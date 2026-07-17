@@ -13,5 +13,9 @@ class PatchBaseSize < Patch
       end
       set_by_code(code)["base_set_size"] = size
     end
+
+    each_set do |set|
+      set["base_set_size"] ||= 0
+    end
   end
 end

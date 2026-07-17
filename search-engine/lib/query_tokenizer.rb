@@ -401,7 +401,7 @@ class QueryTokenizer
         tokens << [:test, ConditionFrame.new(s[2].downcase)]
       elsif s.scan(/light\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+|\*))/i)
         light = (s[1]||s[2])
-        @warnings << "Attraction light only take values from 1 to 6" unless (1..6).include?(light)
+        @warnings << "Attraction light only take values from 1 to 6 and *" unless ["1", "2", "3", "4", "5", "6", "*"].include?(light)
         tokens << [:test, ConditionLight.new(light)]
       elsif s.scan(/frame\s*[:=]\s*(?:"(.*?)"|([\.\p{L}\p{Digit}_]+))/i)
         frame = (s[1]||s[2]).downcase

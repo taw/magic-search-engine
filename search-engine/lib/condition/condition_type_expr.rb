@@ -12,6 +12,7 @@ class ConditionTypeExpr < ConditionSimple
       .gsub("new phyrexia", "new-phyrexia")
       .gsub("serra realm", "serra-realm")
       .gsub("bolas meditation realm", "bolas-meditation-realm")
+      .gsub("tribal", "kindred")
     @types = types.split.to_set
   end
 
