@@ -1,36 +1,14 @@
-# This is a convoluted process due to v3 to v4 migration
-# We'll be able to clean it up (and just load from file) at some point
-
 class PatchSetCodes < Patch
   def call
-    # Forced lower case for all codes
     each_set do |set|
-      set["mci_code"] = set["mci_code"]&.downcase
-      set["official_code"] = set["official_code"]&.downcase
-    end
+      set["code"] = set["official_code"]&.downcase
 
-    each_set do |set|
-      if %W[cm1 cma mps mp2 cp1 cp2 cp3 pgtw pwpn].include?(set["official_code"])
-        set.delete("mci_code")
+      # magiccards.info uses different codes for some sets, expose them as alternative_code
+      alternative_code = mci_codes[set["code"]]
+      if alternative_code and alternative_code != set["code"]
+        set["alternative_code"] = alternative_code
       end
 
-      set["code"] = set["official_code"] || set["mci_code"]
-
-      # v4 killed mci codes, so reapply them
-      mci_code = mci_codes[set["code"]]
-      if mci_code
-        if set["mci_code"] and set["mci_code"] != mci_code
-          warn "Mismatching MCI code for #{set["code"]}: #{set["mci_code"].inspect} != #{mci_code.inspect}"
-        end
-        set["mci_code"] = mci_code
-      end
-
-      set["alternative_code"] = set.delete("mci_code")
-
-      # Delete if redundant
-      set.delete("alternative_code") if set["alternative_code"] == set["code"]
-
-      # Delete ones conflicting with official or alternative codes for different sets
       set.delete("official_code")
     end
 
