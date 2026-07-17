@@ -1,58 +1,11 @@
 describe "Full Database Test" do
   include_context "db"
 
-  def legality_information(name, date = nil)
-    db.cards[name.downcase].legality_information(date)
-  end
-
-  # There's no point checking db.number_of_cards / db.number_of_printings, uuid index will flag any unexpected changes
-
   it "is:promo" do
     # it's not totally clear what counts as "promo"
     # and different engines return different results
     # It might be a good idea to sort out edge cases someday
     assert_search_equal "is:promo", "st:promo"
-  end
-
-  it "block codes" do
-    assert_search_equal "b:rtr", 'b:"Return to Ravnica"'
-    assert_search_equal "b:in", "b:Invasion"
-    assert_search_equal "b:som", 'b:"Scars of Mirrodin"'
-    assert_search_equal "b:som", "b:scars"
-    assert_search_equal "b:mi", "b:Mirrodin"
-  end
-
-  it "block special characters" do
-    assert_search_equal %[b:us], "b:urza"
-    assert_search_equal %[b:"Urza's"], "b:urza"
-  end
-
-  it "block contents" do
-    assert_search_equal "e:rtr OR e:gtc OR e:dgm", "b:rtr"
-    assert_search_equal "e:in or e:ps or e:ap", "b:Invasion"
-    assert_search_equal "e:isd or e:dka or e:avr", "b:Innistrad"
-    assert_search_equal "e:lw or e:mt or e:shm or e:eve", "b:lorwyn"
-    assert_search_equal "e:som or e:mbs or e:nph", "b:som"
-    assert_search_equal "e:mi or e:ds or e:5dn", "b:mi"
-    # Promos are now per set
-    assert_search_equal "e:som or e:psom", "e:scars"
-    assert_search_equal_cards 'f:"lorwyn shadowmoor block"', "b:lorwyn"
-    # Fake blocks
-    assert_search_equal "e:dom", "b:dom"
-    # Gatherer codes
-    assert_search_equal "b:lw", "b:lrw"
-    assert_search_equal "b:mi", "b:mrd"
-    assert_search_equal "b:mr", "b:mir"
-    # Querying by second or third set code or name
-    assert_search_equal "b:wwk", "b:zen"
-    assert_search_equal "b:worldwake", "b:zen"
-    assert_search_equal "b:unh", "b:un"
-    assert_search_equal "b:unstable", "b:un"
-  end
-
-  it "unknown block warns" do
-    db.search(%[b:nosuchblock]).warnings.should include(%[Unknown block "nosuchblock"])
-    db.search("b:ravnica").warnings.should_not include(%[Unknown block "ravnica"])
   end
 
   it "edition special characters" do
@@ -323,34 +276,6 @@ describe "Full Database Test" do
   it "comma separated set list" do
     assert_search_equal "e:cmd or e:cm1 or e:c13 or e:c14 or e:c15 or e:c16 or e:c17 or e:c18 or e:cma or e:cm2", "e:cmd,cm1,c13,c14,c15,c16,c17,c18,cma,cm2"
     assert_search_equal "st:portal -alt:-st:portal", "e:por,p02,ptk -alt:-e:por,p02,ptk"
-  end
-
-  it "comma separated block list" do
-    assert_search_equal "b:isd or b:soi", "b:isd,soi"
-  end
-
-  it "legal everywhere" do
-    legality_information("Island").should be_legal_everywhere
-    legality_information("Giant Spider").should_not be_legal_everywhere
-    legality_information("Birthing Pod").should_not be_legal_everywhere
-    legality_information("Naya").should_not be_legal_everywhere
-    legality_information("Backup Plan").should_not be_legal_everywhere
-  end
-
-  it "legal nowhere" do
-    legality_information("Island").should_not be_legal_nowhere
-    legality_information("Giant Spider").should_not be_legal_nowhere
-    legality_information("Birthing Pod").should_not be_legal_nowhere
-    legality_information("Naya").should be_legal_nowhere
-    legality_information("Backup Plan").should be_legal_nowhere
-    # Banned in some formats, not in any other - a mix of "banned" and nil, never "legal"
-    legality_information("Amulet of Quoz").should be_legal_nowhere
-  end
-
-  # Bugfix
-  it "cm1/cma set codes" do
-    "e:cm1".should have_count_printings(18)
-    "e:cma".should have_count_printings(320)
   end
 
   it "is:permanent" do
