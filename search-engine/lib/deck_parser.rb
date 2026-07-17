@@ -22,7 +22,6 @@ class DeckParser
     current = @main
     @lines.each do |line|
       foil = nil
-      set = nil
       number = nil
       next if line =~ /\A\s*[#\/]/
       # In some decklist formats empty line separates sideboard

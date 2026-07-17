@@ -30,7 +30,7 @@ class ConditionTypeExpr < ConditionSimple
     when "<"
       card_types < @types
     else
-      raise "Expr comparison parse error: #{op}"
+      raise "Expr comparison parse error: #{@op}"
     end
   end
 

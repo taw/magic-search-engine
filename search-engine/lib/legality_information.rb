@@ -12,11 +12,11 @@ class LegalityInformation
   end
 
   def legal_everywhere?
-    @result.values.all?
+    @result.values.all?{|status| status == "legal"}
   end
 
   def legal_nowhere?
-    @result.values.none?
+    @result.values.all?{|status| status.nil? or status == "banned"}
   end
 
   def to_h

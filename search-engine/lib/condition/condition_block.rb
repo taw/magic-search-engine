@@ -22,11 +22,11 @@ class ConditionBlock < Condition
       if db.blocks[block]
         sets += db.blocks[block]
       else
-        matching = db.blocks.select{|name, sets| name.include?(block) }.values.sum(Set[])
-        if matching
-          sets += matching
-        else
+        matching = db.blocks.select{|name, _| name.include?(block) }.values.sum(Set[])
+        if matching.empty?
           warning %[Unknown block "#{block}"]
+        else
+          sets += matching
         end
       end
     end

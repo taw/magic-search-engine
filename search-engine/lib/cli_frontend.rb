@@ -30,7 +30,7 @@ class CLIFrontend
     results.printings.each do |card_printing|
       (cards[card_printing.name] ||= []) << card_printing
     end
-    cards.each_with_index do |(card_name, printings), i|
+    cards.each_with_index do |(_card_name, printings), i|
       card = printings[0].card
       sorted_printings = card.printings.sort_by{|c| [c.release_date, c.default_sort_index] }
       if printings.size == card.printings.size

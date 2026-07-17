@@ -47,11 +47,10 @@ class PackFactory
     data = data.dup
     foil = false
     balanced = false
-    coout = nil
     fixed = false
 
     # etched flag isn't propagated anywhere yet
-    etched = data.delete("etched") if data.has_key?("etched")
+    data.delete("etched") if data.has_key?("etched")
     foil = data.delete("foil") if data.has_key?("foil")
     balanced = data.delete("balanced") if data.has_key?("balanced")
     duplicates = data.delete("duplicates") if data.has_key?("duplicates")

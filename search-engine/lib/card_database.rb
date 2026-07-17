@@ -101,7 +101,6 @@ class CardDatabase
   # but this is no longer the case
   def decks_containing(card_printing)
     set_code = card_printing.set_code
-    name = card_printing.name
     decks.select do |deck|
       next unless deck.all_set_codes.include?(set_code)
       [*deck.cards, *deck.sideboard, *deck.commander].any? do |_, physical_card|

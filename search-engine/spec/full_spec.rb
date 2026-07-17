@@ -50,6 +50,11 @@ describe "Full Database Test" do
     assert_search_equal "b:unstable", "b:un"
   end
 
+  it "unknown block warns" do
+    db.search(%[b:nosuchblock]).warnings.should include(%[Unknown block "nosuchblock"])
+    db.search("b:ravnica").warnings.should_not include(%[Unknown block "ravnica"])
+  end
+
   it "edition special characters" do
     assert_search_equal "e:us", %[e:"Urza's Saga"]
     assert_search_equal "e:us", %[e:"Urza’s Saga"]
@@ -338,6 +343,8 @@ describe "Full Database Test" do
     legality_information("Birthing Pod").should_not be_legal_nowhere
     legality_information("Naya").should be_legal_nowhere
     legality_information("Backup Plan").should be_legal_nowhere
+    # Banned in some formats, not in any other - a mix of "banned" and nil, never "legal"
+    legality_information("Amulet of Quoz").should be_legal_nowhere
   end
 
   # Bugfix
