@@ -69,11 +69,20 @@ describe "CLI Frontend" do
       verbose: true,
       output: <<-EOF,
         Jace Beleren {1}{u}{u}
-        [lrw dd2 dd2 pmei m10 m11 prm jvc ss1 cmm sld sld sld sld mb2]
+        [lrw dd2 dd2 pmei m10 m11 prm jvc ss1 cmm sld sld sld sld mb2 pspl]
         Legendary Planeswalker - Jace
         [+2]: Each player draws a card.
         [−1]: Target player draws a card.
         [−10]: Target player mills twenty cards.
+        Loyalty: 3
+
+        The Theorist, Jace Beleren {2}{u}{u}
+        [fra fra fra fra fra]
+        Legendary Planeswalker - Jace
+        At the beginning of each opponent's draw step, you draw a card.
+        [+1]: Create a 1/1 blue Illusion creature token.
+        [−2]: For each opponent, return up to one target artifact or creature that player controls to its owner's hand.
+        [−6]: Draw three cards. Then put X +1/+1 counters on each creature you control, where X is the number of cards in your hand.
         Loyalty: 3
         EOF
       error: ""

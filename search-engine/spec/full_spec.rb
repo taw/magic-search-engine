@@ -37,6 +37,7 @@ describe "Full Database Test" do
       "Infirmary Healer", "Stream of Life (Prepared)",
       "Kellan, Daring Traveler", "Journey On",
       "Leech Collector", "Bloodletting",
+      "Paradox Shaper", "Omit Variables",
       "Pollen-Shield Hare", "Hare Raising",
       "Rimrock Knight", "Boulder Rush",
       "Shepherd of the Flock", "Usher to Safety",
@@ -45,6 +46,7 @@ describe "Full Database Test" do
       "Studious First-Year", "Rampant Growth (Prepared)",
       "Tear", "Wear",
       "Their", "There", "They're",
+      "Vigorbloom Vanguard", "Seed Suture",
       "What", "When", "Where", "Who", "Why"
     # Semantics of that changed
     # it used to match a lot of double-faced cards

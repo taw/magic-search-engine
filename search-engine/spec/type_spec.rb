@@ -47,6 +47,7 @@ describe "Type expr" do
       "Sheltered Thicket",
       "Stomping Ground",
       "Taiga",
+      "The Lonely Mountain",
       "Wastes",
       "Wooded Ridgeline"
   end
