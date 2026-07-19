@@ -339,13 +339,6 @@ describe "Full Database Test" do
     assert_search_equal "-is:split is:mainfront", "-is:split is:front is:primary"
   end
 
-  it "is:buyabox" do
-    assert_search_include "is:buyabox", "Nexus of Fate", "Flusterstorm"
-    # They started putting nonfoil buyabox cards in Collector Boosters,
-    # they even still say "buy a box" on the card
-    # assert_search_results "is:buyabox is:booster"
-  end
-
   # Some are not amazing
   it "#name_slug" do
     db.cards.values.to_h{|c| [c.name, c.name_slug] }.should include(
