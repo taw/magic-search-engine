@@ -1,6 +1,18 @@
 describe "Expressions Test" do
   include_context "db"
 
+  it "warns about values it cannot parse" do
+    db.search("pow>=1.2.3").warnings.should include(%[Unknown value "1.2.3" in "pow>=1.2.3"])
+    db.search("cmc>=2+2").warnings.should include(%[Unknown value "2+2" in "cmc>=2+2"])
+    db.search("pow>=xx").warnings.should include(%[Unknown value "xx" in "pow>=xx"])
+    # Values which are perfectly fine, just no card matches them
+    db.search("pow>=1d4+1").warnings.should be_empty
+    db.search("pow>=∞").warnings.should be_empty
+    db.search("pow>=*2").warnings.should be_empty
+    db.search("tou<=1½").warnings.should be_empty
+    db.search("cmc>=2 pow>tou loy>=5 year>=2000 decklimit>=4").warnings.should be_empty
+  end
+
   it "year" do
     "t:planeswalker year = 2010".should have_count_printings 16
     "t:planeswalker year < 2013".should have_count_printings 72

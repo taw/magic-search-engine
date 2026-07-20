@@ -360,7 +360,7 @@ class PatchMtgjsonVersions < Patch
           # 100% of this is garbage
           card.delete("facePrintedName")
           card.delete("printedName")
-          card.delete("faceFlaverName")
+          card.delete("faceFlavorName")
           card.delete("flavorName")
         end
       end

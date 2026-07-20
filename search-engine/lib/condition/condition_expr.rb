@@ -1,8 +1,22 @@
 class ConditionExpr < ConditionSimple
+  # Everything eval_expr knows how to look up on a card, anything else is a plain value
+  Variables = %W[pow tou cmc mv loy sets papersets prints paperprints year defense defence life hand decklimit]
+
   def initialize(a, op, b)
     @a = a
     @op = op
     @b = b
+  end
+
+  # warning needs @logger, which we only get here, not in initialize
+  def metadata!(key, value)
+    super
+    return unless key == :logger
+    [@a, @b].each do |expr|
+      next if Variables.include?(expr)
+      next unless eval_card_value(expr) == [nil, nil]
+      warning %[Unknown value "#{expr}" in "#{self}"]
+    end
   end
 
   def match?(card)
@@ -98,7 +112,7 @@ class ConditionExpr < ConditionSimple
     when "1d4+1"
       [:"1d4", 1]
     else
-      warn "Expr variable parse error: #{expr.inspect}"
+      # Nothing sensible to compare with, the warning comes from metadata!
       [nil, nil]
     end
   end
