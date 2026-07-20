@@ -49,4 +49,18 @@ describe "devotion queries" do
     assert_search_include "devotion={rg}{rg}",
       "Reaper King" # twobrid and some others
   end
+
+  it "warns about generic mana, but otherwise ignores it" do
+    generic_ignored = %[Generic mana in "devotion>=2ww" is ignored, devotion only counts colored mana symbols]
+    db.search("devotion>=2ww").warnings.should include(generic_ignored)
+    assert_search_equal "devotion>=2ww", "devotion>=ww"
+    assert_search_equal "devotion>={2}{w}{w}", "devotion>=ww"
+
+    # warning also has to reach queries where devotion is just one of the conditions
+    db.search("devotion>=2ww t:creature").warnings.should include(generic_ignored)
+
+    # {2/w} is a hybrid symbol, not generic mana, so no warning for it
+    db.search("devotion>={2/w}").warnings.should be_empty
+    db.search("devotion>=ww").warnings.should be_empty
+  end
 end

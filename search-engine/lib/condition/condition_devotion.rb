@@ -8,6 +8,14 @@ class ConditionDevotion < ConditionSimple
     # warning %[devotion: query must only use same monocolored or hybrid mana symbol"]
   end
 
+  # warning needs @logger, which we only get here, not in initialize
+  def metadata!(key, value)
+    super
+    if key == :logger and @generic_mana
+      warning %[Generic mana in "#{self}" is ignored, devotion only counts colored mana symbols]
+    end
+  end
+
   def match?(card)
     return false if card.types.include?("instant") or card.types.include?("sorcery")
 
@@ -60,10 +68,15 @@ class ConditionDevotion < ConditionSimple
       if $1
         m = $1.downcase.tr("/{}ph", "").gsub(/\d/, "")
         if m != ""
+          # {2/w} etc. still counts as one devotion to its color
           pool[m.chars.sort.join] += 1
+        else
+          @generic_mana = true
         end
       elsif $2
         pool[$2] += 1
+      else
+        @generic_mana = true
       end
       ""
     end
