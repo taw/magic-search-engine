@@ -62,17 +62,25 @@ sheets:
           count: 12
           rate: 3
         chance: 20
-      # Only the 8 new-to-Commander cards designed for Set Boosters appear
-      # here (VOC #31-38: 6 rares + 2 mythics -- the Soulbonders cycle,
-      # Hollowhenge Overlord, Wedding Ring, Umbris). The rest of VOC (the
-      # Commander-deck cards) are NOT in Set Boosters. Per-card weight kept
-      # at rare 2 : mythic 1, matching the main-set R/M tier.
+      # Two groups of Commander cards show up in this slot. First, the 8
+      # new-to-Commander cards designed for Set Boosters (VOC #31-38: 6 rares
+      # + 2 mythics -- the Soulbonders cycle, Hollowhenge Overlord, Wedding
+      # Ring, Umbris); these are not in the Commander decks at all.
       - rawquery: "e:voc number:31-38 r:r"
         count: 6
         chance: 6*2
       - rawquery: "e:voc number:31-38 r:m"
         count: 2
         chance: 2
+      # Second, the four Commander-deck face commanders (VOC #1-4, all mythic),
+      # which the decks include in traditional foil: "Set Boosters also have
+      # the four traditional foil cards from the Commander decks available in
+      # the wildcard slot in a non-foil version." This sheet is non-foil, so
+      # the query resolves to exactly those non-foil printings.
+      # Per-card weight kept at rare 2 : mythic 1, matching the main-set R/M tier.
+      - rawquery: "e:voc number:1-4"
+        count: 4
+        chance: 4
       chance: 125
   the_list:
     any:
