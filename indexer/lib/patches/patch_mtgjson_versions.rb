@@ -381,13 +381,13 @@ class PatchMtgjsonVersions < Patch
       # We need to move that RZ15b away to something else
       # And same shit for CU12a, CU12b
       if card["set"]["official_code"] == "UNK"
-        if card["number"] == "RZ15b" and
+        if card["number"] == "RZ15b"
           card["number"] = "RZ15x"
         end
-        if card["number"] == "CU12a" and
+        if card["number"] == "CU12a"
           card["number"] = "CU12x"
         end
-        if card["number"] == "CU12b" and
+        if card["number"] == "CU12b"
           card["number"] = "CU12y"
         end
       end

@@ -18,7 +18,9 @@ class PatchAssignPrioritiesToSets < Patch
     return 1000 if set["custom"]
 
     if set.dig("meta", "date")
-      # Automatically make more recent sets take priority
+      # Automatically make sets from more recent mtgjson builds take priority
+      # This is important when some sets need to be locked and prevented from updating
+      # due to mtgjson bugs. Cards in unlocked sets need to take precedence.
       date = set.dig("meta", "date")
       return 10 + @versions.index(date)
     end
