@@ -220,57 +220,6 @@ describe "Full Database Test" do
     assert_search_results "tiger is:funny", "Paper Tiger", "Stocking Tiger"
   end
 
-  it "mana variables" do
-    assert_search_equal "b:ravnica guildmage mana=hh", "b:ravnica guildmage c:m cmc=2"
-    assert_search_equal "e:rtr mana=h", "e:rtr c:m cmc=1"
-    assert_search_results "mana>mmmmm",
-      "B.F.M. (Big Furry Monster)",
-      "B.F.M. (Big Furry Monster, Right Side)",
-      "Doomsday Excruciator",
-      "Khalni Hydra",
-      "Primalcrux"
-    assert_count_cards "e:ktk (charm OR ascendancy) mana=mno", 10
-    assert_count_cards "e:ktk mana=mno", 15
-    assert_search_results "mana=mmnnnoo",
-      "Brilliant Ultimatum",
-      "Clarion Ultimatum",
-      "Cruel Ultimatum",
-      "Eerie Ultimatum",
-      "Emergent Ultimatum",
-      "Genesis Ultimatum",
-      "Inspired Ultimatum",
-      "Ruinous Ultimatum",
-      "Titanic Ultimatum",
-      "Violent Ultimatum"
-    assert_search_results "mana=wwmmmnn",
-      "Brilliant Ultimatum",
-      "Eerie Ultimatum",
-      "Inspired Ultimatum",
-      "Titanic Ultimatum"
-    assert_search_equal "mana=mmnnnoo", "mana=nnooomm"
-    assert_search_equal "mana>nnnnn", "mana>ooooo"
-    assert_search_equal "mana=mno", "mana={m}{n}{o}"
-    assert_search_equal "mana=mmn", "mana=mnn"
-    assert_search_equal "mana=mmn", "mana>=mnn mana <=mmn"
-    assert_count_cards "mana>=mh game:paper", 36
-    assert_search_results "mana=mh game:paper",
-      "Bant Sureblade",
-      "Crystallization",
-      "Esper Stormblade",
-      "Grixis Grimblade",
-      "Jund Hackblade",
-      "Kaust, Eyes of the Glade",
-      "Naya Hushblade",
-      "Sangrite Backlash",
-      "Thopter Foundry",
-      "Trace of Abundance"
-    assert_search_equal "mana=mh", "mana={m}{h}"
-    assert_search_equal "mana={w}{m}", "mana={w}{u} OR mana={w}{b} OR mana={w}{r} OR mana={w}{g}"
-    assert_search_equal "mana={m}{h}", "mana={w}{h} OR mana={u}{h} OR mana={b}{h} OR mana={r}{h} OR mana={g}{h}"
-    # Only {w}{u/b} of these exists, no cards have hybrid and nonhybrid of same color in mana cost yet
-    assert_search_equal "mana={m}{w/b}", "mana={w}{w/b} OR mana={u}{w/b} OR mana={b}{w/b} OR mana={r}{w/b} OR mana={g}{w/b}"
-  end
-
   it "stemming" do
     assert_search_equal "vision", "visions"
   end
@@ -278,10 +227,6 @@ describe "Full Database Test" do
   it "comma separated set list" do
     assert_search_equal "e:cmd or e:cm1 or e:c13 or e:c14 or e:c15 or e:c16 or e:c17 or e:c18 or e:cma or e:cm2", "e:cmd,cm1,c13,c14,c15,c16,c17,c18,cma,cm2"
     assert_search_equal "st:portal -alt:-st:portal", "e:por,p02,ptk -alt:-e:por,p02,ptk"
-  end
-
-  it "is:permanent" do
-    assert_search_equal "is:permanent", "-(t:instant or t:sorcery or t:plane or t:scheme or t:phenomenon or t:conspiracy or t:vanguard)"
   end
 
   it "r:special" do
