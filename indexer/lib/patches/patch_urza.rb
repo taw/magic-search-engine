@@ -23,10 +23,10 @@ class PatchUrza < Patch
       "Target land you control becomes a 4/4 Elemental creature with trample. It's still a land.",
       "Draw a card, then add one mana of any color.",
       "Until end of turn, Urza becomes a legendary 4/4 red Dragon creature with flying, indestructible, and haste. (He doesn't lose loyalty while he's not a planeswalker.)",
-      "Until your next turn,creatures you control get +1/+0 and gain lifelink.",
+      "Until your next turn, creatures you control get +1/+0 and gain lifelink.",
       "Look at the top five cards of your library. You may reveal an artifact card from among them and put it into your hand. Put the rest on the bottom of your library in any order.",
       "Urza deals 3 damage to any target.",
-      "Until your next turn,whenever a creature deals combat damage to Urza, destroy that creature.",
+      "Until your next turn, whenever a creature deals combat damage to Urza, destroy that creature.",
       "Add X mana in any combination of colors, where X is the number of creatures you control."
     ],
     [
@@ -49,7 +49,7 @@ class PatchUrza < Patch
       "Destroy target nonland permanent.",
       "Return target permanent from a graveyard to the battlefield under your control.",
       "Create two 3/3 green Beast creature tokens.",
-      "Draw four cards,then discard two cards."
+      "Draw four cards, then discard two cards."
     ],
     [
       "Urza deals 7 damage to target player or planeswalker. That player or that planeswalker's controller discards seven cards, then sacrifices seven permanents.",

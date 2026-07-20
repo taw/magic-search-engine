@@ -149,7 +149,7 @@ class SingleSetUpdater
       puts "  BASE SET SIZE: #{current_base_set_size} -> #{incoming_base_set_size}"
     end
 
-    if incoming_name != current_name
+    if incoming_code != current_code
       puts "  CODE: #{current_code} -> #{incoming_code}"
     end
 

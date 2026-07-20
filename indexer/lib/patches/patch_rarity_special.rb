@@ -34,8 +34,7 @@ class PatchRaritySpecial < Patch
         # wtf now mtgjson...
         card["rarity"] = "special"
       else
-        warn "Unknown rarity: #{card["rarity"]}"
-        binding.pry
+        raise "Unknown rarity: #{card["rarity"]}"
       end
     end
   end

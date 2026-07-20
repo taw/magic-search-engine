@@ -23,10 +23,6 @@ class PatchSetTypes < Patch
         set_types << "custom"
       end
 
-      if set_types.include?("promos")
-        set_types = set_types - ["promos"] + ["promo"]
-      end
-
       case set_code
       # early jXX are Judge Gift cards, late jXX are Jumpstarts, so no regexp here
       when "jmp", "j21", "j22", "ajmp", "j25"
@@ -57,35 +53,18 @@ class PatchSetTypes < Patch
         set_types << "modern"
       when "ocmd", /\Aoc\d\d\z/, "cmr", "clb", "cmm", "who"
         set_types << "commander" << "multiplayer"
-      when "pwpn", /\Apwp\d+\z/
-        set_types << "wpn"
-      when "parl", /\Apal\d+\z/
-        set_types << "arena league"
-      when "jgp", /\A[gj]\d\d\z/
-        set_types << "judge gift"
       when "pdtp", /\Apdp\d\d\z/
         set_types << "duels"
-      when /\Apmps\d\d\z/
-        set_types << "premiere shop"
-      when "mpr", /\Ap0[3-9]\z/, /\Ap[1-9]\d\z/
-        set_types << "player rewards"
-      when "pgtw", /\Apg\d\d\z/
-        set_types << "gateway"
-      when "fnm", /\Af\d\d\z/, "pdom", "pgrn", "pm19", "prna", "pwar"
-        set_types << "fnm" << "promo"
+      when "pdom", "pgrn", "pm19", "prna", "pwar"
+        set_types << "fnm"
       when "q06", "q08"
         set_types << "pioneer"
       when "scd"
         set_types = ["box", "commander"]
-      when "phed"
-        # OK, technically this is Commander deck, but I really don't want to deal with it
-        set_types = ["box", "promo", "commander"]
       when "sld", "slc", "slu"
         set_types << "promo" << "sld"
       when "past"
         set_types << "shandalar"
-      when /\Aps\d\d\z/, "psdc"
-        set_types << "promo" << "box" << "sdcc"
       when "pz2", /\Ap...\z/
         set_types << "promo"
       when /\Ass\d/
@@ -96,10 +75,29 @@ class PatchSetTypes < Patch
         set_types << "commander" << "multiplayer"
       end
 
+      # mtgjson keeps reshuffling set codes for these promo series,
+      # but the names are stable, so match on them instead
+      case set["name"]
+      when /\AJudge Gift Cards /
+        set_types << "judge gift"
+      when /\AMagic Player Rewards /
+        set_types << "player rewards"
+      when /\AArena League /
+        set_types << "arena league"
+      when /\AMagic Premiere Shop /
+        set_types << "premiere shop"
+      when /\AFriday Night Magic /
+        set_types << "fnm"
+      when /\AWizards Play Network /
+        set_types << "wpn"
+      when /\ASan Diego Comic-Con /
+        set_types << "box" << "sdcc"
+      end
+
       # Some of these are not actually funny sets, just promo sets mixing funny and regular cards (like plst)
       # sch is here only due to spoiled Moonshaker Cavalry with incorrect date, remove it past WOE (or in 2024)
-      funny_sets = %W[unh ugl pcel hho parl prel ust pust ppc1 htr htr16 htr17 htr18 htr19 htr20 pal04 h17 j17 tbth tdag tfth thp1 thp2 thp3 ptg cmb1 cmb2 htr18 und punh plst o90p olep p30a ulst phtr ph17 ph18 ph19 ph20 ph21 ph22 p30m sch mb2 unk punk pf24 pf25 past]
-      if funny_sets.include?(set_code)
+      funny_sets = %W[unh ugl pcel hho parl ust pust ppc1 pal04 h17 j17 tbth tdag tfth thp1 thp2 thp3 ptg cmb1 cmb2 und punh plst o90p olep p30a ulst p30m sch mb2 unk punk pf24 pf25 past]
+      if funny_sets.include?(set_code) or set["name"] =~ /Heroes of the Realm/
         set_types << "funny"
         set["funny"] = true
       end

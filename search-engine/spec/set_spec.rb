@@ -48,6 +48,7 @@ describe "Sets" do
       "two-headed giant",
       "un",
       "vanguard",
+      "wpn",
     ].to_set
   end
 
