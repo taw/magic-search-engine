@@ -14,6 +14,12 @@ class ConditionLore < ConditionSimple
     }
   end
 
+  # Subconditions need :fuzzy for spelling suggestions, and :logger to report them
+  def metadata!(key, value)
+    super
+    @conds.each{|cond| cond.metadata!(key, value)}
+  end
+
   def to_s
     "lore:#{maybe_quote(@query)}"
   end
