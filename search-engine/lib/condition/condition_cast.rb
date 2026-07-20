@@ -1,4 +1,6 @@
 class ConditionCast < ConditionSimple
+  include QueryManaToS
+
   def initialize(mana)
     @query_mana = parse_query_mana(mana.downcase)
   end

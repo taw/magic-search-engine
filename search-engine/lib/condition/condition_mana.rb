@@ -1,4 +1,6 @@
 class ConditionMana < ConditionSimple
+  include QueryManaToS
+
   def initialize(op, mana)
     @op = op
     @query_mana = parse_query_mana(mana.downcase)
@@ -51,33 +53,6 @@ class ConditionMana < ConditionSimple
   end
 
   private
-
-  def query_mana_to_s
-    res = []
-    @query_mana.each do |m,c|
-      c = c.to_i if c == c.to_i
-      case m
-      when "?"
-        res << "#{c}"
-      else
-        if m =~ /\A[wubrgc]\z/
-          mx = m
-        else
-          mx = "{#{m}}"
-        end
-        if c.is_a?(Integer)
-          c.times{ res << mx }
-        elsif c % 1 == 0.5
-          c.floor.times{ res << mx }
-          res << "{h#{m}}"
-        else
-          # TOTALLY BOGUS
-          res << "{#{m}=#{c}}"
-        end
-      end
-    end
-    res.sort.join
-  end
 
   def parse_query_mana(mana)
     pool = Hash.new(0)

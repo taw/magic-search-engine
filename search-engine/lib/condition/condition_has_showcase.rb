@@ -11,4 +11,8 @@ class ConditionHasShowcase < Condition
     end
     results
   end
+
+  def to_s
+    "has:showcase"
+  end
 end

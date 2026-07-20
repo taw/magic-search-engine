@@ -1,5 +1,6 @@
 # Where's autoloader when we need it
 require_relative "condition/condition"
+require_relative "condition/query_mana_to_s"
 require_relative "condition/condition_simple"
 require_relative "condition/condition_format"
 require_relative "condition/condition_print"

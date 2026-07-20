@@ -13,7 +13,7 @@ class ConditionOracle < ConditionSimple
       # This speeds it up a lot
       return false unless card.text_normalized =~ @regexp_prefilter
       base_rx_str = Regexp.escape(normalize_text(@text))
-      tilde_rx_str = "(?:" + Regexp.escape(normalize_text(card.name)) + "|this (?:land|artifact|creature|enchantment|Aura|Vehicle|Equipment|Case|permanent|Class|Siege|Spacecraft|Attraction|card|scheme|contraption|sorcery|battle|dungeon|spell|planeswalker|plane|scheme|door|room|saga|phenomenon|conspiracy))"
+      tilde_rx_str = "(?:" + Regexp.escape(normalize_text(card.name)) + "|this (?:land|artifact|creature|enchantment|Aura|Vehicle|Equipment|Case|permanent|Class|Siege|Spacecraft|Attraction|card|scheme|contraption|sorcery|battle|dungeon|spell|planeswalker|plane|door|room|saga|phenomenon|conspiracy))"
       full_rx = Regexp.new(base_rx_str.gsub("~", tilde_rx_str), Regexp::IGNORECASE)
 
       card.text_normalized =~ full_rx

@@ -55,14 +55,15 @@ class ConditionDevotion < ConditionSimple
 
   def parse_query_mana(mana)
     pool = Hash.new(0)
-    mana = mana.gsub(/\{(.*?)\}|(\d+)|([wubrgc])/) do
+    # generic mana doesn't count for devotion
+    mana = mana.gsub(/\{(.*?)\}|\d+|([wubrgc])/) do
       if $1
         m = $1.downcase.tr("/{}ph", "").gsub(/\d/, "")
         if m != ""
           pool[m.chars.sort.join] += 1
         end
-      elsif $3
-        pool[$3] += 1
+      elsif $2
+        pool[$2] += 1
       end
       ""
     end
