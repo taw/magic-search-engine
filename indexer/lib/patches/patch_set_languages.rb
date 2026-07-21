@@ -2,8 +2,8 @@ class PatchSetLanguages < Patch
   LANGUAGES = {
     # "Ancient Greek",
     # "Arabic",
-    "Chinese Simplified" => "cn",
-    "Chinese Traditional" => "cs",
+    "Chinese Simplified" => "cs",
+    "Chinese Traditional" => "ct",
     "English" => "en",
     "French" => "fr",
     "German" => "de",

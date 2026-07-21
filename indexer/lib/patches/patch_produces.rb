@@ -29,7 +29,6 @@ class PatchProduces < Patch
 
   def call
     each_printing do |card|
-      text = card["text"] or next
       name = card["name"]
 
       if OVERRIDES.key?(name)
@@ -37,7 +36,10 @@ class PatchProduces < Patch
         next
       end
 
-      mana_from_types = card["types"].map{|t| TYPES[t] }.compact
+      # Basic land types are subtypes, not types
+      mana_from_types = (card["subtypes"] || []).map{|t| TYPES[t] }.compact
+
+      text = card["text"] || ""
 
       # annoyingly ' is sometimes terminator and sometimes apostrophy 's or s'
       add_mana_lines = text.scan(/adds? [^\n\."]+/i)
