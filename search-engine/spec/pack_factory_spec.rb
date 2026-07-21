@@ -314,7 +314,7 @@ describe PackFactory do
       let(:foil) { true }
       it do
         # Numbers based on "non-foil power 9 twice as frequent as a mythic"
-        # Actuall they say "about as", so these probably should definitely be rounded
+        # Actually they say "about as", so these probably should definitely be rounded
         # in some sensible way
         #
         # Then again, it's a digital-only product, so normal print sheet constraints

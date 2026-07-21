@@ -29,8 +29,8 @@ describe "is:commander" do
   end
 
   it "is:commander" do
-    # Some C14 commanders got reprited
-    # Why "Minsc Boo, Timeless Heroes (Alchemy)" doesnt't have "Minsc & Boo, Timeless Heroes can be your commander."? No idea
+    # Some C14 commanders got reprinted
+    # Why "Minsc Boo, Timeless Heroes (Alchemy)" doesn't have "Minsc & Boo, Timeless Heroes can be your commander."? No idea
     assert_search_equal_cards "is:commander (is:primary t:legendary t:creature)", "is:primary t:legendary, t:creature"
     assert_search_equal_cards "is:commander -(is:primary t:legendary t:creature)",
       "(is:primary t:legendary t:vehicle) OR (is:primary t:legendary t:spacecraft tou>0) OR (t:planeswalker e:c14,c18,bbd,cmr,dmc) OR (t:saga e:htr18) OR (Grand Calcutron) OR (Grist Hunger Tide) OR (Shorikai, Genesis Engine) OR (Tasha, the Witch Queen) OR (Minsc Boo, Timeless Heroes -is:alchemy) OR (Elminster t:planeswalker) OR (Byode, Inverse Sun) OR (Ersta, Friend to All) OR (The Legend of Arena) OR (Commodore Guff) OR (Heroes of Kamigawa) or (Svega, the Unconventional) or (Wizard from Beyond) OR (The Vegetable Car) OR (The Waffle Restaurant) or (Quintorius, History Chaser) or (The Goblin Sparring Grounds)"

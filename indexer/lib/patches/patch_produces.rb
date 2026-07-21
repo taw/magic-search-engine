@@ -14,9 +14,9 @@ class PatchProduces < Patch
   }
   LEGAL_SYMBOLS = %w[w u b r g c]
   # This is better than making the parser crazy complicated
-  # especially various uncards wouldh be causing problems
+  # especially various uncards would be causing problems
   OVERRIDES = {
-    # Normal ards with weird templating
+    # Normal cards with weird templating
     "Old-Growth Troll" => "g",
     "Rhystic Cave" => "bgruw",
     "Tundra Fumarole" => "c",

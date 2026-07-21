@@ -10,7 +10,7 @@
 # but it's not a huge deal.
 #
 # By the way ordering by multiverseid would probably be more sensible
-# (alpha starts with Ankh of Mishra, not Animate Dead), but compatibilty etc.
+# (alpha starts with Ankh of Mishra, not Animate Dead), but compatibility etc.
 
 class PatchVerifyCollectorNumbers < Patch
   def call

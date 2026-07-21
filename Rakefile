@@ -132,7 +132,7 @@ task "pics:dup" do
   sh "./bin/cards_with_dup_pics"
 end
 
-desc "Clanup Rails files"
+desc "Cleanup Rails files"
 task "clean" do
   [
     "frontend/Gemfile.lock",

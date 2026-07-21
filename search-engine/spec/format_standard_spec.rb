@@ -150,7 +150,7 @@ describe "Formats - Standard" do
     assert_block_composition "standard", "8ed",  ["ody", "tor", "jud", "ons", "lgn", "scg", "8ed"]
 
     # Weird things happening from this point back..., ap came after 7e but will rotate earlier if I understand correctly
-    # It's not guarenteed to be correct
+    # It's not guaranteed to be correct
 
     assert_block_composition "standard", "scg",  ["7ed", "ody", "tor", "jud", "ons", "lgn", "scg"]
     assert_block_composition "standard", "lgn",  ["7ed", "ody", "tor", "jud", "ons", "lgn"]

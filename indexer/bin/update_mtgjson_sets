@@ -68,7 +68,7 @@ class SingleSetUpdater
     incoming_data["baseSetSize"]
   end
 
-  def bad_foregin_only_sets
+  def bad_foreign_only_sets
     %W[FBB FWB 4BB BCHR]
   end
 
@@ -83,7 +83,7 @@ class SingleSetUpdater
   def handle_new
     if incoming_data["isPartialPreview"]
       command_spoiler
-    elsif incoming_data["isForeignOnly"] and bad_foregin_only_sets.include?(incoming_code)
+    elsif incoming_data["isForeignOnly"] and bad_foreign_only_sets.include?(incoming_code)
       # We're actually OK with foreign promo sets
       command_drop
     elsif %W[BCHR FWB].include?(incoming_code)

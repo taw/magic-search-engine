@@ -24,7 +24,7 @@ describe "Conspiracy" do
   end
 
   # this is testing a system that no longer exists
-  it "! search doesnt require explicit flags" do
+  it "! search doesn't require explicit flags" do
     assert_search_results "!Secrets of Paradise", "Secrets of Paradise"
   end
 

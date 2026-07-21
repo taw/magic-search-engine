@@ -11,9 +11,9 @@ class FormatVintage < Format
     # * sets which exist only in other digital games (Shandalar or Sega)
     # * token Dungeon sets (this is somewhat questionable if they should be included or not)
     #
-    # This could be done programatically instead
+    # This could be done programmatically instead
     #
-    # Pauper fomat needs it for defining what counts as a "common"
+    # Pauper format needs it for defining what counts as a "common"
 
     excluded_sets = Set[*%w[
       30a

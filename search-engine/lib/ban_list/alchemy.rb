@@ -112,7 +112,7 @@ BanList.for_format("alchemy") do
     "Hag of Syphoned Breath" => "restricted",
     "Hag of Twisted Visions" => "restricted",
     # Now this is fun, HBG cards 900+ are conjure only, but some of these have other historic legal printings
-    # It would be better to move these to a separete set
+    # It would be better to move these to a separate set
     "Archipelagore" => "restricted",
     "Junk Winder" => "restricted",
     "Moat Piranhas" => "restricted",
@@ -133,7 +133,7 @@ BanList.for_format("alchemy") do
     # "Plummet" => "restricted", # also in MID (rotates with HBG)
   )
 
-  # YDMU - it would be better to move these to a separete set
+  # YDMU - it would be better to move these to a separate set
   change(
     "2022-10-05",
     nil,

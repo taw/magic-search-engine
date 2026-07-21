@@ -14,7 +14,7 @@ class IndexSerializer
         [name, index_card(card_data, set_order)]
       }.sort.to_h,
     }
-    # Keep set index order as is, normalize eveything else
+    # Keep set index order as is, normalize everything else
     index_data["cards"] = json_normalize(index_data["cards"])
     index_data["sets"].each do |set_code, set|
       index_data["sets"][set_code] = set

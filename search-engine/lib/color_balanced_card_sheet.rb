@@ -55,7 +55,7 @@ class ColorBalancedCardSheet < CardSheet
     @color_subsheets = [w, u, b, r, g, c]
     @subsheet_weights = [ww, uw, bw, rw, gw, cw].map(&:sum)
     @subsheet_total_weight = @subsheet_weights.sum
-    # Empty colorles is fine
+    # Empty colorless is fine
     raise "#{set_code}/#{name} some colors don't have any cards, this sheet cannot be constructed" if [w, u, b, r, g].any?{|cs| cs.elements.empty?}
   end
 

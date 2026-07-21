@@ -64,7 +64,7 @@ private
     # Merge direction with sort
     case @metadata.delete(:direction)
     when "asc"
-      # alredy fine
+      # already fine
     when "desc"
       sort_order = sort_order.map do |s|
         s.start_with?("-") ? s[1..] : "-#{s}"

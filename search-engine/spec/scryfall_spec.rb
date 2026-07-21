@@ -288,7 +288,7 @@ describe "Scryfall" do
     # ++ is display control directive, and right now they live on frontend side,
     # not on search engine side (except sort:, which lives in between)
     # It shouldn't affect the results
-    # (but maybe we shuld pass it as flag to frontend?)
+    # (but maybe we should pass it as flag to frontend?)
 
     assert_search_equal '++!"Lightning Bolt"', '!"Lightning Bolt"'
     assert_search_equal '++t:forest a:"john avon"', 't:forest a:"john avon"'

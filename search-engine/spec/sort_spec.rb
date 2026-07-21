@@ -1,4 +1,4 @@
-# Digital sets often have BS realese date
+# Digital sets often have BS release date
 describe "Sorting" do
   include_context "db"
 

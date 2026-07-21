@@ -1,4 +1,4 @@
-# Inclruding Specialized / Spellbooks here is arguably redundant with their special fields
+# Including Specialized / Spellbooks here is arguably redundant with their special fields
 
 class PatchLinkRelated < Patch
   attr_reader :links

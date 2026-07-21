@@ -795,7 +795,7 @@ describe "Banlist" do
   it "format_legality_changes" do
     # Starter Level sets Starter 1999, Starter 2000, Portal, Portal Second Age, and Portal Three Kingdoms become legal in Legacy and Vintage in October.
     # assert false, "This should go to another test"
-    # Also all Exended variants etc. None of that belongs here
+    # Also all Extended variants etc. None of that belongs here
   end
 
   ##################################################

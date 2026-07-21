@@ -79,10 +79,10 @@ class CardPrinting
     @language = data["l"]
     @mtgo = data["m"]
     @nontournament = data["nt"]
-    @others = data["o"] # overriden by CardDatabase
+    @others = data["o"] # overridden by CardDatabase
     @oversized = data["os"]
     @paper = data["p"]
-    @partner = data["pr"] # overriden by CardDatabase
+    @partner = data["pr"] # overridden by CardDatabase
     @print_sheet = data["ps"]
     @promo_types = data["pt"]
     @shandalar = data["sh"]

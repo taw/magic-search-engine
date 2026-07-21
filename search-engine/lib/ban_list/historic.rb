@@ -233,7 +233,7 @@ BanList.for_format("historic") do
     "Hag of Syphoned Breath" => "restricted",
     "Hag of Twisted Visions" => "restricted",
     # Now this is fun, HBG cards 900+ are conjure only, but some of these have other historic legal printings
-    # It would be better to move these to a separete set
+    # It would be better to move these to a separate set
     # "Archipelagore" => "restricted", # also in IKO
     # "Junk Winder" => "restricted", # also in J21
     # "Moat Piranhas" => "restricted", # also in M20

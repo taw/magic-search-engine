@@ -7,7 +7,7 @@ class Patch
   end
 
   def each_card(&block)
-    # A bit of a hack, but state management of printing renames got too compilcated,
+    # A bit of a hack, but state management of printing renames got too complicated,
     # so for now just recalculate grouping by name whenever it's called
     update_names_index
 

@@ -147,7 +147,7 @@ class CardDatabase
     @supported_booster_types
   end
 
-  # Whetever we list supported booster types, skip aliases
+  # Whenever we list supported booster types, skip aliases
   def unique_supported_booster_types
     @unique_supported_booster_types ||= supported_booster_types.select{|code, booster| code == booster.code}
   end

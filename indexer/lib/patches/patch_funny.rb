@@ -2,7 +2,7 @@ class PatchFunny < Patch
   def call
     # additional funny cards that don't follow the rules
     funny_cards = [
-      "Blacker Lotus", # SLD printing with triagle stamp for some reason
+      "Blacker Lotus", # SLD printing with triangle stamp for some reason
     ].to_set
 
     errata_sets = @sets.select{|set| set["types"].include?("errata")}.map{|set| set["code"].downcase}
