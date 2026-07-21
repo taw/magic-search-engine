@@ -29,21 +29,13 @@ describe "is:booster" do
           !%W[ced cei tsb itp s00 cp1 cp2 cp3 w16 w17 gk1 ppod ana oana fmb1 anb plst slx ulst sis md1 big h2r].include?(set.code)
         )
       )
-      should_be_in_other_boosters = (
-        %W[tsb exp mps mp2 fmb1 plst sta sunf brr sis slx h2r big].include?(set.code)
-      )
       if %W[j21 ajmp].include?(set_code)
         # Arena extras
-        set.should_not have_boosters, "#{set_pp} should not have boosters"
+        set.types.should_not include("booster"), "#{set_pp} should not have boosters"
       elsif should_have_boosters
-        set.should have_boosters, "#{set_pp} should have boosters"
+        set.types.should include("booster"), "#{set_pp} should have boosters"
       else
-        set.should_not have_boosters, "#{set_pp} should not have boosters"
-      end
-      if should_be_in_other_boosters
-        set.should be_in_other_boosters, "#{set_pp} should be included in other boosters"
-      else
-        set.should_not be_in_other_boosters, "#{set_pp} should not be included in other boosters"
+        set.types.should_not include("booster"), "#{set_pp} should not have boosters"
       end
     end
   end

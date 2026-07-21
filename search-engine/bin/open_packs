@@ -53,7 +53,7 @@ class OpenPacks
 
   def show_unsupported
     db.sets.values.select{|set|
-      set.has_boosters? and !factory.for(set.code)
+      set.types.include?("booster") and !factory.for(set.code)
     }.each do |set|
       puts "%3s %s" % [set.code.upcase, set.name]
     end

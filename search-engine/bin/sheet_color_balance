@@ -8,7 +8,7 @@ require "pry"
 db = CardDatabase.load
 factory = PackFactory.new(db)
 
-sets = db.sets.values.select(&:has_boosters?)
+sets = db.sets.values.select{|set| set.types.include?("booster")}
 
 sets.each do |set|
   # This ignores any special considerations

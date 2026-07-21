@@ -20,8 +20,6 @@ class CardSet
     @release_date  = data["release_date"] && Date.parse(data["release_date"])
     @printings     = Set[]
     @online_only   = !!data["online_only"]
-    @has_boosters  = !!data["has_boosters"]
-    @in_other_boosters = !!data["in_other_boosters"]
     @custom        = !!data["custom"]
     @funny         = !!data["funny"]
     @decks         = []
@@ -46,14 +44,6 @@ class CardSet
 
   def cards_in_precons
     @db.cards_in_precons[@code]
-  end
-
-  def has_boosters?
-    @has_boosters
-  end
-
-  def in_other_boosters?
-    @in_other_boosters
   end
 
   def online_only?

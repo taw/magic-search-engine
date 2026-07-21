@@ -47,7 +47,7 @@ describe PackFactory do
       when "sld"
         db.supported_booster_types["#{set_code}"].should eq(nil), "#{set_pp} should not have regular packs"
       else
-        if set.has_boosters?
+        if set.types.include?("booster")
           pack = db.supported_booster_types[set_code]
           if pack
             pack.should be_a(Pack), "#{set_pp} should have packs"

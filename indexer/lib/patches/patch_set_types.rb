@@ -3,6 +3,15 @@
 # but I actually rely on these set types for a lot of logic
 
 class PatchSetTypes < Patch
+  def boosters_root
+    Indexer::ROOT + "boosters"
+  end
+
+  def has_own_boosters?(set_code)
+    boosters_root.glob("#{set_code}.yaml").any? or
+      boosters_root.glob("#{set_code}-*.yaml").any?
+  end
+
   def call
     each_set do |set|
       set_code = set["code"]
@@ -121,9 +130,8 @@ class PatchSetTypes < Patch
         set_types << "fixed"
       end
 
-      # st:booster is based on having boosters not on inference
-      # (included in other boosters too?)
-      if set["has_boosters"] or set["in_other_boosters"]
+      # st:booster is based on the set having its own boosters, not on inference
+      if has_own_boosters?(set_code)
         set_types << "booster"
       end
 

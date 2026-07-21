@@ -56,8 +56,6 @@ class IndexSerializer
       "custom",
       "foiling",
       "funny",
-      "has_boosters",
-      "in_other_boosters",
       "languages",
       "name",
       "online_only",

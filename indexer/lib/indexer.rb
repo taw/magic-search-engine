@@ -92,7 +92,6 @@ class Indexer
       # Calculate extra fields
       PatchAlchemy,
       PatchBlocks,
-      PatchHasBoosters,
       PatchSecondary,
       PatchVariantMisprint,
       PatchVariantForeign,
