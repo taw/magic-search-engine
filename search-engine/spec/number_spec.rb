@@ -6,7 +6,7 @@ describe "number: queries" do
   end
 
   it ">set" do
-    assert_search_equal "e:m20 number>set", "e:m20 number>set"
+    assert_search_equal "e:m20 number>set", "e:m20 number>280"
   end
 
   it "ranges" do

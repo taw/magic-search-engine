@@ -26,11 +26,11 @@ describe "in queries" do
   end
 
   it "in:foil" do
-    assert_search_equal "in:foil", "alt:in:foil"
+    assert_search_equal "in:foil", "alt:is:foil"
   end
 
   it "in:nonfoil" do
-    assert_search_equal "in:nonfoil", "alt:in:nonfoil"
+    assert_search_equal "in:nonfoil", "alt:is:nonfoil"
   end
 
   it "in:rarity" do

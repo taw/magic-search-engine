@@ -276,6 +276,7 @@ describe "Full Database Test" do
   end
 
   it "is:custom" do
+    # is:custom is used only by forks, there shouldn't be any custom cards in the database
     assert_search_results "is:custom"
   end
 
