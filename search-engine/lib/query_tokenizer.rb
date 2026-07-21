@@ -432,9 +432,9 @@ class QueryTokenizer
         tokens << [:metadata, {direction: (s[1]).downcase}]
       elsif s.scan(/(?:view|display)\s*[:=]\s*(?:"(.*?)"|([\.\p{L}\p{Digit}_]+))/i)
         view = (s[1]||s[2]).downcase
-        known_views = ["checklist", "full", "images", "text"]
+        known_views = ["checklist", "full", "images", "text", "default"]
         unless known_views.include?(view)
-          @warnings << "Unknown view: #{view}. Known options are: #{known_views.join(", ")}, and default."
+          @warnings << "Unknown view: #{view}. Known options are: #{known_views.join(", ")}."
         end
         tokens << [:metadata, {view: view}]
       elsif s.scan(/\+\+|unique\s*:\s*prints\b/i)
