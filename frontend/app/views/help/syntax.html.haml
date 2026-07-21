@@ -538,6 +538,25 @@
       = search_help 'rulings:/twitter/', "cards with twitter mentioned in rulings"
       = search_help "e:war number:/★/", "WAR cards with numbers containing ★ character (in this case, Japanese alt versions)"
 
+    %h5 Special regular expression shortcuts
+    %div
+      Matching mana symbols and similar Magic notation with plain regular expressions is painful,
+      so there are a few shortcuts which expand to the appropriate pattern.
+      They work in every regular expression search except foreign name ones,
+      but as they mostly match mana symbols, they're most useful with <code>o:</code> and <code>fo:</code>.
+    %ul
+      = search_help 'o:/\ss/', "any symbol in curly braces, like {W}, {T}, or {E}"
+      = search_help 'o:/\sm/', "any mana symbol"
+      = search_help 'o:/\sc/', "any colored mana symbol, including hybrid and Phyrexian ones"
+      = search_help 'o:/\smh/', "any hybrid mana symbol, like {W/U}, {2/R}, or {G/W/P}"
+      = search_help 'o:/\smp/', "any Phyrexian mana symbol, like {U/P}"
+      = search_help 'o:/\smr/', "same mana symbol repeated, like {G}{G}"
+      = search_help 'o:/\spt/', "power/toughness, like 2/2 or X/X"
+      = search_help 'o:/\spp/', "power/toughness bonus, like +1/+1"
+      = search_help 'o:/\smm/', "power/toughness penalty, like -2/-2"
+      = search_help 'o:/add \sm\sm/', "cards which add two mana of any kind"
+      = search_help 'o:/\spp counter/ o:/\smm counter/', "cards mentioning both +N/+N and -N/-N counters"
+
     %h4 Search by keyword
     %div It will generally return creatures and vehicles who have given keyword, and skip cards which merely interact with that keyword without having it themselves.
     %ul
