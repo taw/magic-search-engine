@@ -361,7 +361,7 @@ class CardDatabase
       # Indexer removes most tokens, we allow only a very selected group of very special ones
       # next if card_data["layout"] == "token"
       normalized_name = card_name.downcase.normalize_accents
-      card = @cards[normalized_name] = Card.new(card_data.reject{|k,_| k == "*"})
+      card = @cards[normalized_name] = Card.new(card_name, card_data)
       card_data["*"].each do |set_code, printing_data|
         printing = CardPrinting.new(
           card,
