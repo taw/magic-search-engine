@@ -41,6 +41,6 @@ class ConditionOr < Condition
   end
 
   def hash
-    [self.class, conds.sort_by(&:to_s)].hash
+    [self.class, conds.map(&:hash).sort].hash
   end
 end
