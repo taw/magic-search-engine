@@ -42,7 +42,7 @@ class ConditionAny < ConditionOr
     when "checkland"
       @conds << ConditionIsCheckland.new
     when "colorshifted"
-      @conds << ConditionIsColorshifted.new
+      @conds << ConditionFrameEffect.new("colorshifted")
     when "commander" # ???
       @conds << ConditionIsCommander.new
     when "digital"
@@ -88,7 +88,7 @@ class ConditionAny < ConditionOr
     when "booster"
       @conds << ConditionIsBooster.new
     when "promo"
-      @conds << ConditionIsPromo.new
+      @conds << ConditionSetType.new("promo")
     when "reprint"
       @conds << ConditionIsReprint.new
     when "reserved"
