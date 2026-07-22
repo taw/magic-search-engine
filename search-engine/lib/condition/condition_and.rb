@@ -2,7 +2,7 @@ class ConditionAnd < Condition
   attr_reader :conds
 
   def initialize(*conds)
-    @conds = conds.compact.uniq.map do |c|
+    @conds = conds.compact.map do |c|
       if c.is_a?(ConditionAnd)
         c.conds
       else
