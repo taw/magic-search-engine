@@ -93,7 +93,9 @@ class Condition
     return subresults[0].to_set if subresults.size == 1
 
     result = Set[]
-    result.merge(*subresults)
+    subresults.each do |subresult|
+      result.merge(subresult)
+    end
     result
   end
 end
