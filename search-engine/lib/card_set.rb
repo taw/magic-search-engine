@@ -32,7 +32,10 @@ class CardSet
     # caches
     @normalized_name = normalize_set_name(@name)
     @normalized_name_alt = normalize_set_name_alt(@name)
-    @printing_by_number = @printings.to_h{|printing| [printing.number, printing] }
+  end
+
+  def printing_by_number
+    @printing_by_number ||= @printings.to_h{|printing| [printing.number, printing] }
   end
 
   def has_individual_card_release_dates?
