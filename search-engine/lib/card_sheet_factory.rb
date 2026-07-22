@@ -28,7 +28,7 @@ class CardSheetFactory
     else
       base_query += " is:nonfoil"
     end
-    full_query = "#{base_query} (#{query})"
+    full_query = "(#{query}) #{base_query}"
     cards = @db.search(full_query).printings.map{|c| PhysicalCard.for(c, foil)}.uniq
     if assert_count and assert_count != cards.size
       warn "Expected query #{full_query} to return #{assert_count}, got #{cards.size}"
@@ -36,14 +36,18 @@ class CardSheetFactory
     cards
   end
 
+  # print_sheet is a list of space separated codes like "U1 LL3",
+  # and we want the ones whose letter part is exactly print_sheet_code
   def explicit_sheet(set_code, print_sheet_code, foil: false, count: nil, kind: CardSheet)
+    match_rx = /(?<![A-Z])#{Regexp.escape(print_sheet_code)}(?![A-Z])/
+    mult_rx = /#{print_sheet_code}(\d+)/
     cards = @db.sets[set_code].printings.select{|c|
-      c.print_sheet and c.print_sheet.scan(/[A-Z]+/).include?(print_sheet_code)
+      c.print_sheet and match_rx.match?(c.print_sheet)
     }
     if count and count != cards.size
       warn "Expected sheet #{set_code}/#{print_sheet_code} to return #{count}, got #{cards.size}"
     end
-    groups = cards.group_by{|c| c.print_sheet[/#{print_sheet_code}(\d+)/, 1].to_i }
+    groups = cards.group_by{|c| c.print_sheet[mult_rx, 1].to_i }
     subsheets = groups.map{|mult,cards| [kind.new(cards.map{|c| PhysicalCard.for(c, foil) }.uniq), mult] }
     mix_sheets(*subsheets, kind: kind)
   end
