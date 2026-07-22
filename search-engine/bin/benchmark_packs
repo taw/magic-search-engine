@@ -3,8 +3,7 @@
 require_relative "../lib/card_database"
 require "benchmark"
 
-@db = CardDatabase.load
-
 puts Benchmark.measure{
-  @db.supported_booster_types
+  # This automatically loads all packs
+  @db = CardDatabase.load
 }
