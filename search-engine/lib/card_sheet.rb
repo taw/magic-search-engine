@@ -56,23 +56,27 @@ class CardSheet
   # Also used by booster: queries
 
   def cards
-    @elements.flat_map do |element|
-      if element.is_a?(CardSheet)
-        element.cards
-      else
-        [element]
-      end
-    end.uniq
+    @cards ||= begin
+      @elements.flat_map do |element|
+        if element.is_a?(CardSheet)
+          element.cards
+        else
+          [element]
+        end
+      end.uniq
+    end
   end
 
   def source_set_codes
-    @elements.flat_map do |element|
-      if element.is_a?(CardSheet)
-        element.source_set_codes
-      else
-        [element.set_code]
-      end
-    end.uniq
+    @source_set_codes ||= begin
+      @elements.flat_map do |element|
+        if element.is_a?(CardSheet)
+          element.source_set_codes
+        else
+          [element.set_code]
+        end
+      end.uniq
+    end
   end
 
   def probabilities
