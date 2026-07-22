@@ -39,16 +39,16 @@ module Enumerable
 end
 
 class String
+  LIGATURES = {"Æ" => "Ae", "æ" => "ae", "Œ" => "Oe", "œ" => "oe"}.freeze
+  LIGATURES_RX = /[ÆæŒœ]/
+
   # This is a much longer list than just what's on cards as:
   # * it's also artist names
   # * everything is both upper and lower case,
   #   even if only one case is actually in print
   #   (except Turkish ı)
   def normalize_accents
-    result = gsub("Æ", "Ae")
-      .gsub("æ", "ae")
-      .gsub("Œ", "Oe")
-      .gsub("œ", "oe")
+    result = gsub(LIGATURES_RX, LIGATURES)
       .tr(
         "ÀÁÂÄẤÃĀàáâäãấãāĆČÇćčçÈËÊÉĖèéêëēėǵÍÏĪÎíïīîıŁłÑñńÓÖŌØõöóøōÛÜÚúûüŠšÝýŻżˣ’\u2212",
         "AAAAAAAaaaaaaaaCCCcccEEEEEeeeeeegIIIIiiiiiLlNnnOOOOoooooUUUuuuSsYyZzx'-")
