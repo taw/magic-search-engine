@@ -66,12 +66,10 @@ class Condition
   end
 
   def merge_into_set(subresults)
+    return subresults[0] if subresults.size == 1
+
     result = Set[]
-    subresults.each do |subresult|
-      subresult.each do |item|
-        result << item
-      end
-    end
+    result.merge(*subresults)
     result
   end
 end
