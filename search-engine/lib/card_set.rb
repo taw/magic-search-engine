@@ -5,7 +5,7 @@ class CardSet
   attr_reader :decks, :base_set_size
   attr_reader :products, :subsets, :languages
   attr_reader :token_set_code
-  attr_reader :normalized_name, :normalized_name_alt, printing_by_number
+  attr_reader :normalized_name, :normalized_name_alt, :printing_by_number
 
   def initialize(db, data)
     @db = db
