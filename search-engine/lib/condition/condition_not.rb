@@ -4,8 +4,12 @@ class ConditionNot < Condition
     @simple = @cond.simple?
   end
 
-  def search(db)
-    db.printings - @cond.search(db)
+  def search(db, candidates=db.printings)
+    if @simple
+      candidates.reject{|card| @cond.match?(card)}.to_set
+    else
+      candidates - @cond.search(db, candidates)
+    end
   end
 
   def metadata!(key, value)
@@ -20,6 +24,10 @@ class ConditionNot < Condition
 
   def simple?
     @simple
+  end
+
+  def uses_candidates?
+    true
   end
 
   def to_s

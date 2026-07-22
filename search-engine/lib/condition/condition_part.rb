@@ -3,7 +3,7 @@ class ConditionPart < Condition
     @cond = cond
   end
 
-  def search(db)
+  def search_all(db)
     result = Set[]
     @cond.search(db).each do |c|
       if c.others

@@ -5,7 +5,7 @@ class ConditionFormat < Condition
     @format_name = format_name.downcase.gsub(/\s|-|_/, "")
   end
 
-  def search(db)
+  def search_all(db)
     @format = Format[@format_name].new(db.resolve_time(@time))
     # This is just performance hack - Standard/Modern can use this hack
     # Legacy/Vintage/Commander/etc. don't want it

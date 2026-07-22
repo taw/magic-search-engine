@@ -1,5 +1,5 @@
 class ConditionInSetType < ConditionSetType
-  def search(db)
+  def search_all(db)
     printings_in_selected_sets = merge_into_set matching_sets(db).map(&:printings)
     matching_cards = printings_in_selected_sets.map(&:card).to_set
     merge_into_set matching_cards.map(&:printings)

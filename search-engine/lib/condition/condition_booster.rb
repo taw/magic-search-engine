@@ -10,7 +10,7 @@ class ConditionBooster < Condition
     @codes_star = @codes.include?("*")
   end
 
-  def search(db)
+  def search_all(db)
     if @codes_star
       db.printings.select(&:in_boosters).to_set
     else

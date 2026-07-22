@@ -3,7 +3,7 @@ class ConditionRelated < Condition
     @cond = cond
   end
 
-  def search(db)
+  def search_all(db)
     results = Set[]
     @cond.search(db).each do |card|
       next unless card.related

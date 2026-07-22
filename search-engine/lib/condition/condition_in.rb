@@ -1,5 +1,5 @@
 class ConditionIn < Condition
-  def search(db)
+  def search_all(db)
     results = Set[]
     db.cards.each do |name, card|
       if card.printings.any?{|cp| match?(cp)}

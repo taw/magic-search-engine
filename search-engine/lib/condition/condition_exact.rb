@@ -4,7 +4,7 @@ class ConditionExact < Condition
     @normalized_name = normalize_name(@name)
   end
 
-  def search(db)
+  def search_all(db)
     card = db.cards[@normalized_name]
     if card
       card.printings.to_set

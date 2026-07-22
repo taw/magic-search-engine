@@ -106,7 +106,7 @@ class ConditionAny < ConditionOr
     when "vanilla"
       @conds << ConditionIsVanilla.new
     end
-    @simple = @conds.all?(&:simple?)
+    setup_conds!
   end
 
   def to_s

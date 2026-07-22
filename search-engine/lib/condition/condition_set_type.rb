@@ -21,7 +21,7 @@ class ConditionSetType < Condition
     @set_type = TypeAliases[set_type] || set_type
   end
 
-  def search(db)
+  def search_all(db)
     merge_into_set matching_sets(db).map(&:printings)
   end
 

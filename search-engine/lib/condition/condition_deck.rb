@@ -14,7 +14,7 @@ class ConditionDeck < Condition
     @deck_name = deck_name
   end
 
-  def search(db)
+  def search_all(db)
     decks = db.resolve_deck_name(@deck_name)
     if decks.empty?
       warning %[No deck matching "#{@deck_name}"]

@@ -3,7 +3,7 @@ class ConditionEdition < Condition
     @editions = editions.map{|e| normalize_name(e)}
   end
 
-  def search(db)
+  def search_all(db)
     matching_sets = merge_into_set( @editions.map{|e| db.resolve_editions(e)} )
     merge_into_set matching_sets.map(&:printings)
   end

@@ -11,14 +11,18 @@ class ConditionPrint < Condition
     end
   end
 
-  def search(db)
+  def search(db, candidates=db.printings)
     query_date, precision = parse_query_date(db)
     if query_date
       max_date = db.resolve_time(@time)
-      db.printings.select{|card| match_date?(get_date(card, max_date), query_date, precision)}.to_set
+      candidates.select{|card| match_date?(get_date(card, max_date), query_date, precision)}.to_set
     else
-      db.printings.to_set
+      candidates.to_set
     end
+  end
+
+  def uses_candidates?
+    true
   end
 
   def to_s
