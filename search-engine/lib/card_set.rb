@@ -4,8 +4,8 @@ class CardSet
   attr_reader :border, :release_date, :printings, :types
   attr_reader :decks, :base_set_size
   attr_reader :products, :subsets, :languages
-  attr_reader :normalized_name, :normalized_name_alt
   attr_reader :token_set_code
+  attr_reader :normalized_name, :normalized_name_alt, printing_by_number
 
   def initialize(db, data)
     @db = db
@@ -29,9 +29,10 @@ class CardSet
     @languages = data["languages"]
     @token_set_code = data["token_set_code"]
 
-    # cache for better performance of e:
+    # caches
     @normalized_name = normalize_set_name(@name)
     @normalized_name_alt = normalize_set_name_alt(@name)
+    @printing_by_number = @printings.to_h{|printing| [printing.number, printing] }
   end
 
   def has_individual_card_release_dates?

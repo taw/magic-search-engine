@@ -426,12 +426,12 @@ class CardDatabase
     @sets.each do |set_code, set|
       set.printings.each do |card|
         if card.partner
-          partner = set.printings.find{|c| c.number == card.partner} or raise "Bad partner number #{partner}"
+          partner = set.printing_by_number[card.partner] or raise "Bad partner number #{partner}"
           card.partner = partner
         end
         if card.others
           card.others = card.others.map{|other|
-            set.printings.find{|c| c.number == other} or raise "Bad other number #{other}"
+            set.printing_by_number[other] or raise "Bad other number #{other}"
           }
         end
       end
