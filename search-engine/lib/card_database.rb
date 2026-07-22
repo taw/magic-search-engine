@@ -324,27 +324,6 @@ class CardDatabase
 
   private
 
-  def freeze_strings!(data)
-    case data
-    when Array
-      data.each_with_index do |v,i|
-        if v.is_a?(Array) or v.is_a?(Hash)
-          freeze_strings!(v)
-        elsif v.is_a?(String)
-          data[i] = -v
-        end
-      end
-    when Hash
-      data.each do |k,v|
-        if v.is_a?(Array) or v.is_a?(Hash)
-          freeze_strings!(v)
-        elsif v.is_a?(String)
-          data[k] = -v
-        end
-      end
-    end
-  end
-
   def load_from_subset!(db, set_codes)
     @blocks = db.blocks
     db.sets.each do |set_code, set|
@@ -362,8 +341,7 @@ class CardDatabase
   end
 
   def load_from_json!(path)
-    data = JSON.parse(path.open.read)
-    freeze_strings!(data)
+    data = JSON.parse(path.open.read, freeze: true)
     data["sets"].each do |set_code, set_data|
       @sets[set_code] = CardSet.new(self, set_data)
       block_code = set_data["block_code"]
