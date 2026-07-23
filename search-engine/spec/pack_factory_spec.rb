@@ -24,7 +24,6 @@ describe PackFactory do
   it "Only sets of appropriate types have sealed packs" do
     db.sets.each do |set_code, set|
       set_pp = "#{set.name} [#{set.code}]"
-      # Indexer responsibility to set this flag
       case set_code
       when "akr", "klr"
         db.supported_booster_types["#{set_code}"].should eq(nil), "#{set_pp} should not have regular packs"
@@ -46,16 +45,15 @@ describe PackFactory do
         db.supported_booster_types["#{set_code}-fate"].should_not eq(nil), "#{set_pp} should have Fate Event packs"
       when "sld"
         db.supported_booster_types["#{set_code}"].should eq(nil), "#{set_pp} should not have regular packs"
+      when "tsb", "big"
+        # Bonus sheets, they're only ever opened as part of their parent set's packs
       else
-        if set.types.include?("booster")
-          pack = db.supported_booster_types[set_code]
-          if pack
-            pack.should be_a(Pack), "#{set_pp} should have packs"
-          else
-            warn "#{set_pp} should have packs" # TODO: pending
-          end
-        else
-          pack.should eq(nil), "#{set_pp} should not have packs"
+        # "booster" set type is derived from booster data, so checking it here would be circular.
+        # Standard and Modern sets are the ones which definitely ought to have regular boosters,
+        # except for products like Welcome Decks or gift boxes which merely happen to be Standard legal.
+        # Everything else is too much of a mess to check.
+        if set.regular? and (set.types & ["box", "deck", "starter", "promo", "preview"]).empty?
+          db.supported_booster_types[set_code].should be_a(Pack), "#{set_pp} should have regular packs"
         end
       end
     end

@@ -62,7 +62,7 @@ describe "deck: search" do
     assert_search_equal "deck:Kröger", "deck:Kroger"
     assert_search_equal "deck:KRÖGER", "deck:kroger"
 
-    assert_search_equal "deck:Kühn", "deck:Kühn"
+    assert_search_equal "deck:Kühn", "deck:Kuhn"
     assert_search_equal "deck:KÜHN", "deck:kühn"
 
     assert_search_equal "deck:Romão", "deck:Romao"

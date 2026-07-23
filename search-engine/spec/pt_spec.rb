@@ -32,7 +32,7 @@ describe "P/T queries" do
     assert_search_results "tou=7-*", "Shapeshifter"
     assert_search_results "tou>8-*"
     assert_search_results "tou>2-*", "Shapeshifter"
-    assert_search_results "tou>8-*"
+    assert_search_results "tou<8-*", "Shapeshifter"
     assert_search_results "tou<=8-*", "Shapeshifter"
     assert_search_results "tou<=2-*"
   end
