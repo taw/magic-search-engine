@@ -30,7 +30,7 @@ describe "Full Database Test" do
       "Emeritus of Conflict", "Lightning Bolt (Prepared)",
       "Faerie Guidemother", "Gift of the Fae",
       "Failure", "Comply",
-      "Fear (Not the Alpha One)", "Loathing",
+      "Fear (split card)", "Loathing",
       "Ghost Lantern", "Bind Spirit",
       "Goblin Glasswright", "Craft with Pride",
       "Heaven", "Earth",

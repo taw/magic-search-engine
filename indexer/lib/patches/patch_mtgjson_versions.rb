@@ -450,6 +450,23 @@ class PatchMtgjsonVersions < Patch
         card["name"] = "Human-Time Lord Meta-Crisis"
       end
 
+      # mtgjson used to disambiguate these, then dropped the disambiguation,
+      # so we need to do it ourselves now
+      # PUNK planes conflict with UNK "Artist Alley" and MID/DBL "No Way Out"
+      if card["set"]["official_code"] == "PUNK"
+        case card["number"]
+        when "PLA001", "PLA001a"
+          card["name"] = "Artist Alley (Plane)"
+        when "PLA031"
+          card["name"] = "No Way Out (Playtest)"
+        end
+      end
+
+      # UNK playtest card conflicts with MBC "Joven and Chandler"
+      if card["set"]["official_code"] == "UNK" and card["number"] == "UR05"
+        card["name"] = "Joven and Chandler (Playtest)"
+      end
+
       # Rename prepared spells to keep them unique
       # only those that also exist as standalone cards need special handling
       if card["layout"] == "prepare"
