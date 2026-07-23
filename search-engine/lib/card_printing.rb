@@ -4,6 +4,7 @@ class CardPrinting
   # Boolean flags packed into the "!" string, see IndexFormat::FLAGS
   ARENA_FLAG            = IndexFormat::FLAGS.fetch("arena")
   DIGITAL_FLAG          = IndexFormat::FLAGS.fetch("digital")
+  DREAMCAST_FLAG        = IndexFormat::FLAGS.fetch("dreamcast")
   ETCHED_FLAG           = IndexFormat::FLAGS.fetch("etched")
   FULLART_FLAG          = IndexFormat::FLAGS.fetch("fullart")
   NONTOURNAMENT_FLAG    = IndexFormat::FLAGS.fetch("nontournament")
@@ -103,6 +104,7 @@ class CardPrinting
     flags = data["!"] || ""
     @arena = flags.include?(ARENA_FLAG)
     @digital = flags.include?(DIGITAL_FLAG)
+    @dreamcast = flags.include?(DREAMCAST_FLAG)
     @etched = flags.include?(ETCHED_FLAG)
     @fullart = flags.include?(FULLART_FLAG)
     @nontournament = flags.include?(NONTOURNAMENT_FLAG)
@@ -142,6 +144,10 @@ class CardPrinting
 
   def shandalar?
     !!@shandalar
+  end
+
+  def dreamcast?
+    !!@dreamcast
   end
 
   def xmage?

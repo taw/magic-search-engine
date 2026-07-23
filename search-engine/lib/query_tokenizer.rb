@@ -1,6 +1,11 @@
 require "strscan"
 
 class QueryTokenizer
+  # The game was only ever released for the Sega Dreamcast, so people call it either way
+  GAME_ALIASES = {
+    "sega" => "dreamcast",
+  }.freeze
+
   def tokenize(str)
     # Undo Unicode substitutions phones and such make
     str = str.tr('“”', '""')
@@ -309,16 +314,16 @@ class QueryTokenizer
         tokens << [:not] if s[1].downcase == "not"
         kind = s[2].downcase
         tokens << [:test, ConditionStamp.new(kind)]
-      elsif s.scan(/(is|not|game)\s*[:=]\s*(paper|arena|mtgo|shandalar|xmage)\b/i)
+      elsif s.scan(/(is|not|game)\s*[:=]\s*(paper|arena|mtgo|shandalar|dreamcast|sega|xmage)\b/i)
         tokens << [:not] if s[1].downcase == "not"
-        cond = s[2].capitalize
+        cond = GAME_ALIASES.fetch(s[2].downcase, s[2].downcase).capitalize
         klass = Kernel.const_get("ConditionIs#{cond}")
         tokens << [:test, klass.new]
       elsif s.scan(/in\s*[:=]\s*(cs|ct|de|fr|it|jp|kr|pt|ru|sp|tw|zht|zhs)\b/i)
         # cn used to alias cs, but it's number: now
         tokens << [:test, ConditionInForeign.new(s[1].downcase)]
-      elsif s.scan(/in\s*[:=]\s*(paper|arena|mtgo|shandalar|xmage|foil|nonfoil|booster)\b/i)
-        cond = s[1].capitalize
+      elsif s.scan(/in\s*[:=]\s*(paper|arena|mtgo|shandalar|dreamcast|sega|xmage|foil|nonfoil|booster)\b/i)
+        cond = GAME_ALIASES.fetch(s[1].downcase, s[1].downcase).capitalize
         klass = Kernel.const_get("ConditionIn#{cond}")
         tokens << [:test, klass.new]
       elsif s.scan(/in\s*[:=]\s*(basic|common|uncommon|rare|mythic|special)\b/i)

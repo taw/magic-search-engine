@@ -24,6 +24,7 @@ module IndexFormat
   FLAGS = {
     "arena"            => "a",
     "digital"          => "g",
+    "dreamcast"        => "d",
     "etched"           => "e",
     "fullart"          => "f",
     "nontournament"    => "n",

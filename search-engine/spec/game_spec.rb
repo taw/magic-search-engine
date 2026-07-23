@@ -33,5 +33,27 @@
     assert_search_equal "is:shandalar", "game:shandalar"
   end
 
-  # TODO: "is:sega"
+  # The Dreamcast game's pool was all 335 cards of 6th Edition,
+  # 9 cards reprinted from older sets, and 10 cards exclusive to the game
+  it "is:dreamcast" do
+    assert_search_equal "is:dreamcast", "game:dreamcast"
+    assert_search_equal "is:dreamcast", "is:sega"
+    assert_search_equal "in:dreamcast", "in:sega"
+    assert_count_cards "is:dreamcast", 354
+    assert_count_cards "e:6ed", 335
+    assert_count_cards "e:psdg is:dreamcast", 10
+    assert_search_results "is:dreamcast -e:6ed,psdg",
+      "Bad Moon",
+      "Death Pits of Rath",
+      "Icy Manipulator",
+      "Mox Diamond",
+      "Nevinyrral's Disk",
+      "Swords to Plowshares",
+      "Thawing Glaciers",
+      "Tradewind Rider",
+      "Winter Orb"
+    # Cards exclusive to the game got reprinted eventually, only the original is in the pool
+    assert_search_equal "Arden Angel is:dreamcast", "Arden Angel e:psdg"
+    assert_count_printings "Arden Angel", 2
+  end
 end

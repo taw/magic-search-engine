@@ -112,6 +112,7 @@ class Indexer
       PatchUnfinity, # before Unstable
       PatchUnstable,
       PatchShandalar,
+      PatchIsDreamcast,
       PatchXmage,
       PatchCommander,
       PatchMultipart,
