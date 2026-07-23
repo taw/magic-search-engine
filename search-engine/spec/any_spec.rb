@@ -131,13 +131,21 @@ describe "Any queries" do
     end
   end
 
-  # TODO: maybe do weird ones like Tarmogoyf's */1+* too
   context "p/t" do
     it do
       assert_search_equal %[any:"2/4" any:spider], "pow=2 tou=4 (t:spider OR o:spider)"
       assert_search_equal %[any:"-1/3"], "pow=-1 tou=3"
       # This is very problematic as -1/-1 is very common in Oracle text
       assert_search_equal %[any:"-1/-1"], %[(pow=-1 tou=-1) or o:"-1/-1"]
+    end
+
+    it "weird power/toughness" do
+      assert_search_equal %[any:"*/1+*"], %[pow=* tou="1+*"]
+      assert_search_equal %[any:"*/*"], %[pow=* tou=*]
+      # Like -1/-1, ½/½ also shows up in Oracle text
+      assert_search_equal %[any:"½/½"], %[(pow=½ tou=½) or o:"½/½"]
+      assert_search_equal %[any:"*²/*²"], %[pow="*²" tou="*²"]
+      assert_search_include %[any:"*/1+*"], "Tarmogoyf"
     end
   end
 

@@ -26,7 +26,8 @@ class ConditionAny < ConditionOr
       @conds << ConditionColorExpr.new("c", "=", "")
     when "common", "uncommon", "rare", "mythic", "mythic rare", "special", "basic"
       @conds << ConditionRarity.new("=", @query)
-    when %r[\A(-?\d+)/(-?\d+)\z]
+    # Same value syntax as pow=/tou= accepts, so weird ones like Tarmogoyf's */1+* work too
+    when %r[\A([²\d\.\-\*\+½x∞\?]+)/([²\d\.\-\*\+½x∞\?]+)\z]
       @conds << ConditionAnd.new(
         ConditionExpr.new("pow", "=", $1),
         ConditionExpr.new("tou", "=", $2),

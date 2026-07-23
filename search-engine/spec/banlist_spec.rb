@@ -799,9 +799,8 @@ describe "Banlist" do
   end
 
   ##################################################
-  # Formats in mtgjson are verified by indexer
-  # Formats not in mtgjson should all be listed here
-  # FIXME: (that was with v3, no longer true)
+  # Since mtgjson v5 the indexer doesn't handle legalities at all,
+  # so every format's banlist needs to be covered here
 
   it "pauper_banlist_now" do
     assert_full_banlist "pauper", "1 October 2015", [
