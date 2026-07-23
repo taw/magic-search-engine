@@ -403,6 +403,9 @@ class PatchMtgjsonVersions < Patch
         card["text"] = card["text"].gsub(/^Escape—/, "Escape — ")
       end
 
+      # mtgjson uses a language code here, unlike every other language which gets a name
+      card["language"] = "Dwarvish" if card["language"] == "dw"
+
       card.delete("language") if card["language"] == "English"
 
       if card["finishes"]&.include?("etched")

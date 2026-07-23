@@ -22,6 +22,7 @@ class PatchSetLanguages < Patch
   # Weird promo languages for single cards in otherwise normal sets, intentionally ignored
   IGNORE_LANGUAGES = [
     "Ancient Greek",
+    "Dwarvish",
     "Phyrexian",
     "Quenya",
   ]

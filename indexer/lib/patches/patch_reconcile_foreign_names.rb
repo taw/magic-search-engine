@@ -18,6 +18,7 @@ class PatchReconcileForeignNames < Patch
     @known_promo_language ||= Set[
       "Ancient Greek",
       "Arabic",
+      "Dwarvish",
       "Hebrew",
       "Latin",
       "Phyrexian",

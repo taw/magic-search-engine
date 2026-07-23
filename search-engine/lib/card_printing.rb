@@ -154,6 +154,18 @@ class CardPrinting
     !!@xmage
   end
 
+  # Same games as game: queries know about
+  def games
+    @games ||= [
+      ("paper" if @paper),
+      ("mtgo" if @mtgo),
+      ("arena" if @arena),
+      ("shandalar" if @shandalar),
+      ("dreamcast" if @dreamcast),
+      ("xmage" if @xmage),
+    ].compact.freeze
+  end
+
   def in_boosters?
     @in_boosters
   end

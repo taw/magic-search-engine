@@ -280,6 +280,14 @@ class QueryTokenizer
         cond = "Alchemy" if cond == "Rebalanced"
         klass = Kernel.const_get("ConditionHas#{cond}")
         tokens << [:test, klass.new]
+      elsif s.scan(/new\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
+        property = (s[1]||s[2]).downcase
+        property = ConditionNew::ALIASES.fetch(property, property)
+        if ConditionNew::PROPERTIES.include?(property)
+          tokens << [:test, ConditionNew.new(property)]
+        else
+          @warnings << "Unknown new: #{property}. Known options are: #{ConditionNew::PROPERTIES.join(", ")}."
+        end
       elsif s.scan(/(is|not|layout)\s*[:=]\s*(normal|leveler|vanguard|modal-dfc|modaldfc|mdfc|transform|split|flip|plane|scheme|phenomenon|meld|aftermath|adventure|saga|planar|augment|host|class|dungeon|prototype|mutate|token|case|prepare)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         kind = s[2].downcase

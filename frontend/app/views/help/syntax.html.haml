@@ -295,6 +295,22 @@
       = search_help "has:signature", "cards with any signature"
       = search_help "-sig:*", "cards with no signature"
 
+    %h4 Search for printings which introduced something
+    %div <code>new:</code> queries return printings which were the first ones for their card to have some property, like the first printing with a given artist. Printings released the same day all count as new, as there's no order between them, and printings with nothing to say about the property (like one with no watermark for <code>new:watermark</code>) never count.
+    %ul
+      = search_help "new:artist", "first printing of a card by a given artist (also <code>new:illustrator</code>)"
+      = search_help "new:rarity", "first printing of a card at a given rarity"
+      = search_help "new:frame", "first printing of a card with a given frame style"
+      = search_help "new:frameeffect", "first printing of a card with a given frame effect, like showcase or extended art"
+      = search_help "new:border", "first printing of a card with a given border color"
+      = search_help "new:flavor", "first printing of a card with a given flavor text (also <code>new:ft</code>, <code>new:flavortext</code>)"
+      = search_help "new:watermark", "first printing of a card with a given watermark"
+      = search_help "new:foil", "first printing of a card available in foil"
+      = search_help "new:nonfoil", "first printing of a card available in nonfoil"
+      = search_help "new:game", "first printing of a card available in a given game, as in <code>game:</code> queries"
+      = search_help "e:m19 new:artist", "cards which got a new artist in Magic 2019"
+      = search_help "-new:artist new:frame", "printings which changed frame, but kept an artist the card already had"
+
     %h4 Search by card features
     %div For each of these you can use not: as opposite of is:
     %ul
