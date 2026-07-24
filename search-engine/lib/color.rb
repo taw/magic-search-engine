@@ -18,6 +18,12 @@ module Color
     "izzet" => "ru",
     "golgari" => "gb",
 
+    "lorehold" => "wr",
+    "quandrix" => "ug",
+    "silverquill" => "bw",
+    "prismari" => "ru",
+    "witherbloom" => "gb",
+
     "bant" => "gwu",
     "esper" => "wub",
     "grixis" => "ubr",

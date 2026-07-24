@@ -58,6 +58,11 @@ describe "QueryParser" do
     assert_search_parse "pow=5", "pow:5"
     assert_search_parse "tou=5", "tou:5"
     assert_search_parse "cmc=5", "cmc:5"
+    assert_search_parse "mv=5", "mv:5"
+    assert_search_parse "mv=5", "manavalue=5"
+    assert_search_parse "mv=5", "manavalue:5"
+    assert_search_parse "mv=5", "MANAVALUE=5"
+    assert_search_parse "pow=mv", "pow=manavalue"
     assert_search_parse "loy=5", "loy:5"
     assert_search_parse "year=2000", "year:2000"
     assert_search_parse "pow=5", "power=5"
@@ -136,6 +141,12 @@ describe "QueryParser" do
     assert_search_parse "c=bw", "c=orzhov"
     assert_search_parse "c=ru", "c=izzet"
     assert_search_parse "c=gb", "c=golgari"
+    # Colleges
+    assert_search_parse "c=wr", "c=lorehold"
+    assert_search_parse "c=ug", "c=quandrix"
+    assert_search_parse "c=bw", "c=silverquill"
+    assert_search_parse "c=ru", "c=prismari"
+    assert_search_parse "c=gb", "c=witherbloom"
     # Shards
     assert_search_parse "c=gwu", "c=bant"
     assert_search_parse "c=wub", "c=esper"
@@ -181,6 +192,12 @@ describe "QueryParser" do
     assert_search_parse "c:bw", "c>=orzhov"
     assert_search_parse "c:ru", "c>=izzet"
     assert_search_parse "c:gb", "c>=golgari"
+    # Colleges
+    assert_search_parse "c:wr", "c>=lorehold"
+    assert_search_parse "c:ug", "c>=quandrix"
+    assert_search_parse "c:bw", "c>=silverquill"
+    assert_search_parse "c:ru", "c>=prismari"
+    assert_search_parse "c:gb", "c>=witherbloom"
     # Shards
     assert_search_parse "c:gwu", "c>=bant"
     assert_search_parse "c:wub", "c>=esper"
