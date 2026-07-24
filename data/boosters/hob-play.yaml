@@ -1,0 +1,219 @@
+# The Hobbit
+# Play Booster
+# Sources:
+# - https://magic.wizards.com/en/news/feature/collecting-the-hobbit
+# - https://magic.wizards.com/en/products/the-hobbit/card-image-gallery
+# - https://scryfall.com/sets/hob
+#
+# ############################################################################
+# STATUS: DRAFT — NOT YET VALIDATED
+# The set releases 2026-08-14 and is still preview-only in the index
+# (base_set_size 108, ~54 cards ingested). The slot structure and drop rates
+# below are transcribed from the collecting article and are correct, but every
+# `count:` and every collector-number range in `queries:` is a TODO that must
+# be verified once the full "Data update" for `hob` lands. Do not add this to
+# booster_index.json until then.
+# ############################################################################
+#
+# Play Booster = 14 cards + 1 non-foil double-sided token:
+#   7 common      : 60 commons + 2 scene cards (scene 7.8%)
+#   3 uncommon    : 55 uncommons + 4 scene (5.5%) + 6 Dragon hoard (10.9%)
+#   1 wildcard    : any rarity, main set + scene/hoard/book cover
+#   1 rare_mythic : rare/mythic + scene/hoard/book cover
+#   1 foil        : any rarity, main set + scene/hoard/book cover
+#   1 land        : common dual / default basic / Middle-earth journey basic
+
+# superfilter: "-is:reversibleback" # TODO
+pack:
+  common: 7
+  uncommon: 3
+  wildcard: 1
+  rare_mythic_boosterfun: 1
+  foil: 1
+  land:
+    - non_foil_land: 1
+      chance: 80
+    - foil_land: 1
+      chance: 20
+
+queries:
+  # TODO: fill exact collector-number ranges once the full hob data is ingested.
+  # Only the default-frame basics (194-198) are confirmed from current data.
+  basic_land: "e:{set} number:194-198"            # Default frame basic land
+  journey_land: "e:{set} number:TODO"             # Middle-earth journey basic land
+  dual_land: "e:{set} number:TODO"                # Common dual land
+  scene: "e:{set} number:TODO"                    # Scene cards (c/u/r/m)
+  dragon_hoard: "e:{set} number:TODO"             # Dragon hoard cards (u/r/m)
+  book_cover: "e:{set} number:TODO"               # Book cover cards (r/m)
+  boosterfun: "{scene} or {dragon_hoard} or {book_cover}"
+
+sheets:
+  # Scene commons are boosterfun (alt-art) versions of existing commons. Folded
+  # into the common sheet msh-play style so every common is equiprobable and the
+  # ones that have a scene version appear less often as regular cards. With 2
+  # scene commons the 1:2:3 rate gives ~7.78% scene appearance across the 7
+  # common slots (article: 7.8%). See the note at the bottom of msh-play.yaml.
+  common:
+    any:
+      - rawquery: "{scene} r:c" # Scene (boosterfun) common
+        rate: 1
+        count: 2
+      - query: "r:c alt:({scene})" # Regular version of commons that have a scene
+        rate: 2
+        count: 2
+      - query: "r:c -alt:({scene}) -{dual_land} -t:basic" # Regular commons with no scene
+        rate: 3
+        count: 60 - 2
+
+  # 3 uncommon slots: scene (4) and Dragon hoard (6) uncommons are boosterfun
+  # alt-art versions of main-set uncommons, so the uncommons that have one appear
+  # less often as regular cards (msh-play style), keeping all 55 uncommons
+  # equiprobable. Per-card total weight T = 12:
+  #   Dragon hoard alt = T/3 (rate 4, regular 8) -> 10.9% over 3 slots (article 10.9%)
+  #   scene alt        = T/4 (rate 3, regular 9) ->  5.5% over 3 slots (article 5.5%)
+  uncommon:
+    # Assumes scene and dragon_hoard are on different underlying cards (no single
+    # card has both a scene and a Dragon hoard version). TODO: validate once data lands.
+    any:
+      - rawquery: "{scene} r:u" # Scene uncommon (boosterfun)
+        rate: 3
+        count: 4
+      - rawquery: "{dragon_hoard} r:u" # Dragon hoard uncommon (boosterfun)
+        rate: 4
+        count: 6
+      - query: "r:u alt:({scene})" # Regular version of scene uncommons
+        rate: 9
+        count: 4
+      - query: "r:u alt:({dragon_hoard})" # Regular version of hoard uncommons
+        rate: 8
+        count: 6
+      - query: "r:u -alt:({scene}) -alt:({dragon_hoard})" # Regular uncommons, no boosterfun
+        rate: 12
+        count: 55 - 4 - 6
+
+  # All boosterfun (scene / Dragon hoard / book cover) across rarities.
+  # Assumes the usual 2:1 rare:mythic-style weighting; TODO: tune to final counts.
+  boosterfun:
+    any:
+      - rawquery: "{scene} r:u"
+        rate: 6
+        count: 4
+      - rawquery: "{dragon_hoard} r:u"
+        rate: 6
+        count: 6
+      - rawquery: "{scene} r:r"
+        rate: 2
+        count: 0 # TODO
+      - rawquery: "{scene} r:m"
+        rate: 1
+        count: 0 # TODO
+      - rawquery: "{dragon_hoard} r:r"
+        rate: 2
+        count: 0 # TODO
+      - rawquery: "{dragon_hoard} r:m"
+        rate: 1
+        count: 0 # TODO
+      - rawquery: "{book_cover} r:r"
+        rate: 2
+        count: 0 # TODO
+      - rawquery: "{book_cover} r:m"
+        rate: 1
+        count: 0 # TODO
+
+  boosterfun_without_uncommons:
+    any:
+      - rawquery: "{scene} r:r"
+        rate: 2
+        count: 0 # TODO
+      - rawquery: "{scene} r:m"
+        rate: 1
+        count: 0 # TODO
+      - rawquery: "{dragon_hoard} r:r"
+        rate: 2
+        count: 0 # TODO
+      - rawquery: "{dragon_hoard} r:m"
+        rate: 1
+        count: 0 # TODO
+      - rawquery: "{book_cover} r:r"
+        rate: 2
+        count: 0 # TODO
+      - rawquery: "{book_cover} r:m"
+        rate: 1
+        count: 0 # TODO
+
+  # Article wildcard rates: common 74.17%, uncommon 3.9%, rare 17.3%, mythic 2.3%,
+  # plus <1% each for scene (c/u/r), Dragon hoard (u/r/m) and book cover (r/m).
+  # Lumped remainder -> boosterfun.
+  wildcard:
+    any:
+      - use: common
+        chance: 7417 # 74.17%
+      - use: uncommon
+        chance: 390 # 3.9%
+      - use: rare
+        chance: 1730 # 17.3%
+      - use: mythic
+        chance: 230 # 2.3%
+      - use: boosterfun
+        chance: 233 # 100% - 97.67% = 2.33%
+
+  rare:
+    query: "r:r -{boosterfun}" # Regular rare
+    count: 0 # TODO: verify count of main-set rares
+
+  mythic:
+    query: "r:m -{boosterfun}" # Regular mythic
+    count: 0 # TODO: verify count of main-set mythics
+
+  rare_mythic:
+    any:
+      - use: rare
+        rate: 2
+      - use: mythic
+        rate: 1
+
+  # Article rare/mythic slot: rare 82.9%, mythic 11.1%, rare scene 1.8%,
+  # Dragon hoard rare 2.3% / mythic <1%, book cover r/m <1%. Remainder -> boosterfun.
+  rare_mythic_boosterfun:
+    any:
+      - use: rare_mythic
+        chance: 940 # 82.9% + 11.1% = 94.0%
+      - use: boosterfun_without_uncommons
+        chance: 60 # 100% - 94.0% = 6.0%
+
+  # Article foil slot: common 59.8%, uncommon 29.3%, rare 7.1%, mythic 1.0%,
+  # plus <1% each scene / Dragon hoard / book cover. Remainder -> boosterfun.
+  foil:
+    foil: true
+    any:
+      - use: common
+        chance: 598 # 59.8%
+      - use: uncommon
+        chance: 293 # 29.3%
+      - use: rare
+        chance: 71 # 7.1%
+      - use: mythic
+        chance: 10 # 1.0%
+      - use: boosterfun
+        chance: 28 # 100% - 97.2% = 2.8%
+
+  # Article land slot (non-foil / foil):
+  #   common dual land          40% / 10%   -> 50% of land slot
+  #   default frame basic land  26.7% / 6.7% -> 33.3%
+  #   Middle-earth journey land 13.3% / 3.3% -> 16.7%
+  # Within the land slot that is a 3 : 2 : 1 split.
+  non_foil_land:
+    any:
+      - rawquery: "{dual_land}" # Common dual land
+        rate: 3
+        count: 0 # TODO
+      - rawquery: "{basic_land}" # Default frame basic land
+        rate: 2
+        count: 5
+      - rawquery: "{journey_land}" # Middle-earth journey basic land
+        rate: 1
+        count: 5 # TODO: verify
+
+  foil_land:
+    foil: true
+    use: non_foil_land
