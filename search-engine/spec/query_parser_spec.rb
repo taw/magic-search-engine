@@ -289,6 +289,38 @@ describe "QueryParser" do
     assert_search_parse "is:alchemy", "is:rebalanced"
     assert_search_parse "has:alchemy", "has:rebalanced"
     assert_search_parse "kw:flying", "keyword:flying"
+    assert_search_parse "is:transform", "is:tdfc"
+    assert_search_parse "layout:transform", "layout:tdfc"
+    assert_search_parse "is:bounceland", "is:karoo"
+    assert_search_parse "is:manland", "is:creatureland"
+    assert_search_parse "is:battleland", "is:tangoland"
+    assert_search_parse "is:canopyland", "is:canland"
+    assert_search_parse "is:fullart", "is:full"
+    assert_search_parse "is:cycleland", "is:bicycleland"
+    assert_search_parse "is:cycleland", "is:bikeland"
+    assert_search_parse "is:spotlight", "is:story"
+    assert_search_parse "is:triome", "is:tricycleland"
+    assert_search_parse "is:triome", "is:trikeland"
+    assert_search_parse "view:images", "display:grid"
+    assert_search_parse "view:images", "view:grid"
+    # Grouping printings together is the default, so this is a no-op
+    assert_search_parse "t:goblin", "t:goblin unique:cards"
+    assert_search_parse "t:goblin", "unique:cards t:goblin"
+    refute_search_parse "t:goblin unique:prints", "t:goblin unique:cards"
+  end
+
+  # Scryfall spells these with underscores, we accept both
+  it "promo types with underscores" do
+    assert_search_parse "promo:intropack", "is:intro_pack"
+    assert_search_parse "promo:judgegift", "is:judge_gift"
+    assert_search_parse "promo:arenaleague", "is:arena_league"
+    assert_search_parse "promo:playerrewards", "is:player_rewards"
+    assert_search_parse "promo:mediainsert", "is:media_insert"
+    assert_search_parse "promo:setpromo", "is:set_promo"
+    assert_search_parse "promo:setpromo", "promo:set_promo"
+    assert_search_parse "-promo:setpromo", "not:set_promo"
+    # Underscores don't turn a non-promo-type into one
+    Query.new("is:set_promos").warnings.should eq(["Unrecognized token: is:set_promos"])
   end
 
   it "star" do

@@ -6,6 +6,35 @@ class QueryTokenizer
     "sega" => "dreamcast",
   }.freeze
 
+  # Nicknames for conditions we already have, keyed by the name as typed
+  IS_ALIASES = {
+    "karoo" => "bounceland",
+    "creatureland" => "manland",
+    "tangoland" => "battleland",
+    "canland" => "canopyland",
+    "full" => "fullart",
+    "tricycleland" => "triome",
+    "trikeland" => "triome",
+    "bicycleland" => "cycleland",
+    "bikeland" => "cycleland",
+    "story" => "spotlight",
+    "rebalanced" => "alchemy",
+  }.freeze
+
+  LAYOUT_ALIASES = {
+    "tdfc" => "transform",
+    "modal-dfc" => "modaldfc",
+    "mdfc" => "modaldfc",
+    # mtgjson v3 vs v4+ differences
+    "plane" => "planar",
+    "phenomenon" => "planar",
+  }.freeze
+
+  # No promo type contains punctuation, so we scan the whole word and match it against
+  # this list. Accept aliases for compatibility with other search engines.
+  PROMO_TYPE_QUERY = /(is|promo|not)\s*[:=]\s*([\p{L}\p{Digit}_]+|\*)/i
+  PROMO_TYPE = /\A(?:alchemy|ampersand|arenaleague|boosterfun|boxtopper|brawldeck|bringafriend|bundle|buyabox|commanderparty|concept|convention|datestamped|draculaseries|draftweekend|duels|event|fnm|galaxyfoil|gameday|giftbox|gilded|glossy|godzillaseries|instore|intropack|jpwalker|judgegift|league|mediainsert|neonink|oilslick|openhouse|planeswalkerstamped|playerrewards|playpromo|premiereshop|prerelease|promopack|rebalanced|release|schinesealtart|setextension|setpromo|stamped|stepandcompleat|surgefoil|textured|themepack|thick|tourney|wizardsplaynetwork|serialized|halofoil|doublerainbow|moonlitland|confettifoil|starterdeck|storechampionship|silverfoil|embossed|poster|scroll|invisibleink|dossier|magnified|ravnicacity|rainbow|reversiblefront|reversibleback|vault|raisedfoil|rainbowfoil|ripplefoil|portrait|imagine|playtest|upsidedown|upsidedownback|fracturefoil|doubleexposure|sldbonus|manafoil|resale|startercollection|beginnerbox|firstplacefoil|dragonscalefoil|commanderpromo|ff[ivx]*|singularityfoil|headliner|cosmicfoil|universesbeyond|chocobotrackfoil|metal|sourcematerial|neonink\S+|japanshowcase|standardshowdown|silverscroll|emeraldcyan|emeraldyellow|emeraldwhite|emeraldblue|emeraldgreen|emeraldred|emeraldpurple|facetfoil|dazzlefoil)\z/i
+
   # These aren't color sets, they're color count queries, so they don't belong in Color::Names.
   # They also fix their own comparison operator - "at most multicolor" isn't a thing.
   SPECIAL_COLORS = {
@@ -277,19 +306,10 @@ class QueryTokenizer
       elsif s.scan(/(is|not)\s*[:=]\s*(masterpiece|promo)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionSetType.new(s[2].downcase)]
-      elsif s.scan(/(is|not)\s*[:=]\s*(vanilla|spell|permanent|funny|timeshifted|reserved|multipart|primary|secondary|front|back|commander|digital|reprint|fetchland|shockland|dual|fastland|bounceland|gainland|filterland|checkland|manland|creatureland|scryland|battleland|guildgate|karoo|painland|triland|canopyland|shadowland|storageland|tangoland|canland|phyrexian|hybrid|augment|unique|booster|draft|historic|holofoil|foilonly|nonfoilonly|foil|nonfoil|foilboth|brawler|keywordsoup|partner|oversized|tournament|spotlight|story|modal|textless|fullart|full|ante|custom|mainfront|tricycleland|triome|racist|cycleland|bikeland|bicycleland|horizontal|vertical|baseset|basictype|foreign|etched|hero|maindeck|alchemy|rebalanced|specialized|spellbook|card|token|stickers|attraction)\b/i)
+      elsif s.scan(/(is|not)\s*[:=]\s*(vanilla|spell|permanent|funny|timeshifted|reserved|multipart|primary|secondary|front|back|commander|digital|reprint|fetchland|shockland|dual|fastland|bounceland|gainland|filterland|checkland|manland|creatureland|scryland|battleland|guildgate|karoo|painland|triland|canopyland|shadowland|storageland|tangoland|canland|phyrexian|hybrid|augment|unique|booster|draft|historic|holofoil|foilonly|nonfoilonly|foil|nonfoil|foilboth|brawler|keywordsoup|partner|oversized|tournament|spotlight|story|modal|textless|fullart|full|ante|custom|mainfront|tricycleland|trikeland|triome|racist|cycleland|bikeland|bicycleland|horizontal|vertical|baseset|basictype|foreign|etched|hero|maindeck|alchemy|rebalanced|specialized|spellbook|card|token|stickers|attraction)\b/i)
         tokens << [:not] if s[1].downcase == "not"
-        cond = s[2].capitalize
-        cond = "Bounceland" if cond == "Karoo"
-        cond = "Manland" if cond == "Creatureland"
-        cond = "Battleland" if cond == "Tangoland"
-        cond = "Canopyland" if cond == "Canland"
-        cond = "Fullart" if cond == "Full"
-        cond = "Triome" if cond == "Tricycleland"
-        cond = "Cycleland" if cond == "Bicycleland"
-        cond = "Cycleland" if cond == "Bikeland"
-        cond = "Spotlight" if cond == "Story"
-        cond = "Alchemy" if cond == "Rebalanced"
+        kind = s[2].downcase
+        cond = IS_ALIASES.fetch(kind, kind).capitalize
         klass = Kernel.const_get("ConditionIs#{cond}")
         tokens << [:test, klass.new]
       elsif s.scan(/has:(partner|watermark|indicator|showcase|signature|flavor|alchemy|rebalanced|specialized|spellbook)\b/)
@@ -305,17 +325,10 @@ class QueryTokenizer
         else
           @warnings << "Unknown new: #{property}. Known options are: #{ConditionNew::PROPERTIES.join(", ")}."
         end
-      elsif s.scan(/(is|not|layout)\s*[:=]\s*(normal|leveler|vanguard|modal-dfc|modaldfc|mdfc|transform|split|flip|plane|scheme|phenomenon|meld|aftermath|adventure|saga|planar|augment|host|class|dungeon|prototype|mutate|token|case|prepare)\b/i)
+      elsif s.scan(/(is|not|layout)\s*[:=]\s*(normal|leveler|vanguard|modal-dfc|modaldfc|mdfc|tdfc|transform|split|flip|plane|scheme|phenomenon|meld|aftermath|adventure|saga|planar|augment|host|class|dungeon|prototype|mutate|token|case|prepare)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         kind = s[2].downcase
-        kind = "transform" if kind == "double-faced"
-        kind = "double-faced" if kind == "dfc"
-        kind = "modaldfc" if kind == "modal-dfc"
-        kind = "modaldfc" if kind == "mdfc"
-        # mtgjson v3 vs v4+ differences
-        kind = "planar" if kind == "plane"
-        kind = "planar" if kind == "phenomenon"
-        tokens << [:test, ConditionLayout.new(kind)]
+        tokens << [:test, ConditionLayout.new(LAYOUT_ALIASES.fetch(kind, kind))]
       elsif s.scan(/(is|not|layout)\s*[:=]\s*(sfc|dfc|double-faced|single-faced)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         kind = s[2].downcase
@@ -426,9 +439,10 @@ class QueryTokenizer
       elsif s.scan(/(is|frame|not)\s*[:=]\s*(compasslanddfc|colorshifted|devoid|extendedart|legendary|miracle|mooneldrazidfc|enchantment|originpwdfc|sunmoondfc|tombstone|inverted|etched|draft|showcase|snow|fullart|companion|waxingandwaningmoondfc|nyxborn|lesson|fandfc|upsidedowndfc|convertdfc|storyspotlight|shatteredglass|burstfoil|vehicle|stamped|promo|spree|placeholderimage|wanted|artistmisprint|poster|translucent|dazzlefoil|surgefoil)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionFrameEffect.new(s[2].downcase)]
-      elsif s.scan(/(is|promo|not)\s*[:=]\s*((?:alchemy|ampersand|arenaleague|boosterfun|boxtopper|brawldeck|bringafriend|bundle|buyabox|commanderparty|concept|convention|datestamped|draculaseries|draftweekend|duels|event|fnm|galaxyfoil|gameday|giftbox|gilded|glossy|godzillaseries|instore|intropack|jpwalker|judgegift|league|mediainsert|neonink|oilslick|openhouse|planeswalkerstamped|playerrewards|playpromo|premiereshop|prerelease|promopack|rebalanced|release|schinesealtart|setextension|setpromo|stamped|stepandcompleat|surgefoil|textured|themepack|thick|tourney|wizardsplaynetwork|serialized|halofoil|doublerainbow|moonlitland|confettifoil|starterdeck|storechampionship|silverfoil|embossed|poster|scroll|invisibleink|dossier|magnified|ravnicacity|rainbow|reversiblefront|reversibleback|vault|raisedfoil|rainbowfoil|ripplefoil|portrait|imagine|playtest|upsidedown|upsidedownback|fracturefoil|doubleexposure|sldbonus|manafoil|resale|startercollection|beginnerbox|firstplacefoil|dragonscalefoil|commanderpromo|ff[ivx]*|singularityfoil|headliner|cosmicfoil|universesbeyond|chocobotrackfoil|metal|sourcematerial|neonink\S+|japanshowcase|standardshowdown|silverscroll|emeraldcyan|emeraldyellow|emeraldwhite|emeraldblue|emeraldgreen|emeraldred|emeraldpurple|facetfoil|dazzlefoil)\b|\*)/i)
+      elsif s.check(PROMO_TYPE_QUERY) and (promo_type = parse_promo_type(s[2]))
+        s.scan(PROMO_TYPE_QUERY)
         tokens << [:not] if s[1].downcase == "not"
-        tokens << [:test, ConditionPromoType.new(s[2].downcase)]
+        tokens << [:test, ConditionPromoType.new(promo_type)]
       elsif s.scan(/(is|frame|not)\s*[:=]\s*(old|new|future|modern|m15|1993|1997|2003|2015)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionFrame.new(s[2].downcase)]
@@ -465,6 +479,7 @@ class QueryTokenizer
         tokens << [:metadata, {direction: (s[1]).downcase}]
       elsif s.scan(/(?:view|display)\s*[:=]\s*(?:"(.*?)"|([\.\p{L}\p{Digit}_]+))/i)
         view = (s[1]||s[2]).downcase
+        view = "images" if view == "grid"
         known_views = ["checklist", "full", "images", "text", "default"]
         unless known_views.include?(view)
           @warnings << "Unknown view: #{view}. Known options are: #{known_views.join(", ")}."
@@ -472,6 +487,8 @@ class QueryTokenizer
         tokens << [:metadata, {view: view}]
       elsif s.scan(/\+\+|unique\s*:\s*prints\b/i)
         tokens << [:metadata, {ungrouped: true}]
+      elsif s.scan(/unique\s*:\s*cards\b/i)
+        # Grouping printings of the same card together is what we do anyway
       elsif s.scan(/time\s*[:=]\s*(?:"(.*?)"|([\.\p{L}\p{Digit}_\-]+))/i)
         # Parsing is downstream responsibility
         tokens << [:time, parse_time(s[1] || s[2])]
@@ -514,6 +531,11 @@ class QueryTokenizer
   end
 
 private
+
+  def parse_promo_type(promo_type)
+    promo_type = promo_type.downcase.delete("_")
+    promo_type if promo_type == "*" or promo_type =~ PROMO_TYPE
+  end
 
   def parse_color(color_text)
     color_text = color_text.downcase
