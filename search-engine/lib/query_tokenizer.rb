@@ -6,6 +6,14 @@ class QueryTokenizer
     "sega" => "dreamcast",
   }.freeze
 
+  # These aren't color sets, they're color count queries, so they don't belong in Color::Names.
+  # They also fix their own comparison operator - "at most multicolor" isn't a thing.
+  SPECIAL_COLORS = {
+    "colorless" => ["=", "0"],
+    "multicolor" => [">=", "2"],
+    "multicolored" => [">=", "2"],
+  }.freeze
+
   def tokenize(str)
     # Undo Unicode substitutions phones and such make
     str = str.tr('“”', '""')
@@ -185,34 +193,43 @@ class QueryTokenizer
         kind = "ind" if kind == "indicator"
         cmp = s[2]
         raw_color = s[3] || s[4]
-        color = parse_color(raw_color)
-        # This is for compatibility with MCI, which mtg.wtf and scryfall both follow
-        # c:r means c>=r
-        # c:2 means c=2
-        # ci:r means ci<=r
-        #
-        # But also:
-        # ind:r means ind=r - we never did anything else
-        #
-        # in general mtg.wtf does not advertise : syntax anywhere as it's confusing, and >= vs = is unambiguous
-        if cmp == "!"
-          cmp = "="
-        elsif cmp == ":"
-          if kind == "ind" or raw_color =~ /[^wubrgm]/i
-            # all c:3, c:boros, c:ally, c:red etc. are treated as =
-            # but so is c:c
-            # tbh I'm leaning towards removing MCI style logic
-            cmp = "="
-          elsif kind == "ci"
-            # MCI style queries only
-            cmp = "<="
-          else
-            # MCI style queries only
-            cmp = ">="
-          end
-        end
         cmp = ">=" if cmp == "≥"
         cmp = "<=" if cmp == "≤"
+        if (special = SPECIAL_COLORS[raw_color.downcase])
+          # Only "is it colorless / is it multicolored" makes any sense here,
+          # so anything but :, =, and ! gets a warning and the same treatment
+          unless cmp == ":" or cmp == "=" or cmp == "!"
+            @warnings << "Only = is supported for #{raw_color.downcase} queries, ignoring #{cmp}"
+          end
+          cmp, color = special
+        else
+          color = parse_color(raw_color)
+          # This is for compatibility with MCI, which mtg.wtf and scryfall both follow
+          # c:r means c>=r
+          # c:2 means c=2
+          # ci:r means ci<=r
+          #
+          # But also:
+          # ind:r means ind=r - we never did anything else
+          #
+          # in general mtg.wtf does not advertise : syntax anywhere as it's confusing, and >= vs = is unambiguous
+          if cmp == "!"
+            cmp = "="
+          elsif cmp == ":"
+            if kind == "ind" or raw_color =~ /[^wubrgm]/i
+              # all c:3, c:boros, c:ally, c:red etc. are treated as =
+              # but so is c:c
+              # tbh I'm leaning towards removing MCI style logic
+              cmp = "="
+            elsif kind == "ci"
+              # MCI style queries only
+              cmp = "<="
+            else
+              # MCI style queries only
+              cmp = ">="
+            end
+          end
+        end
         tokens << [:test, ConditionColorExpr.new(kind, cmp, color)]
       elsif s.scan(/(print|firstprint|lastprint)\s*(>=|>|<=|<|=|≥|≤|:)\s*(?:"(.*?)"|([\-[\p{L}\p{Digit}_]+]+))/i)
         op = s[2]

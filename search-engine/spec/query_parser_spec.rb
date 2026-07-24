@@ -173,6 +173,28 @@ describe "QueryParser" do
     assert_search_parse "ind=wu", "ind=azorius"
   end
 
+  # These are color count queries, not color set queries
+  it "colorless and multicolor" do
+    assert_search_parse "c=0", "c=colorless"
+    assert_search_parse "c=0", "c:colorless"
+    assert_search_parse "c=0", "c!colorless"
+    assert_search_parse "c=0", "c=COLORLESS"
+    assert_search_parse "c>=2", "c=multicolor"
+    assert_search_parse "c>=2", "c:multicolor"
+    assert_search_parse "c>=2", "c!multicolor"
+    assert_search_parse "c>=2", "c=multicolored"
+    # ci: and ind: get no MCI treatment either
+    assert_search_parse "ci=0", "ci:colorless"
+    assert_search_parse "ci>=2", "ci:multicolor"
+    assert_search_parse "ind=0", "ind:colorless"
+    assert_search_parse "ind>=2", "ind:multicolor"
+    # Everything else is meaningless, so it warns and falls back to the same thing
+    assert_search_parse_except_warning "c=colorless", "c>colorless"
+    assert_search_parse_except_warning "c=multicolor", "c<=multicolor"
+    Query.new("c>multicolor").warnings.should eq(["Only = is supported for multicolor queries, ignoring >"])
+    Query.new("ci≤colorless").warnings.should eq(["Only = is supported for colorless queries, ignoring <="])
+  end
+
   # All the weird MCI logic, but only with MCI color names
   it "color aliases with :" do
     # Single colors
