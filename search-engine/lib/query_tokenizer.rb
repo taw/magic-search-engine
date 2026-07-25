@@ -37,7 +37,7 @@ class QueryTokenizer
   # No promo type contains punctuation, so we scan the whole word and match it against
   # this list. Accept aliases for compatibility with other search engines.
   PROMO_TYPE_QUERY = /(is|promo|not)\s*[:=]\s*([\p{L}\p{Digit}_]+|\*)/i
-  PROMO_TYPE = /\A(?:alchemy|ampersand|arenaleague|beginnerbox|boosterfun|boxtopper|brawldeck|bringafriend|bundle|buyabox|chocobotrackfoil|commanderparty|commanderpromo|concept|confettifoil|convention|cosmicfoil|datestamped|dazzlefoil|dossier|doubleexposure|doublerainbow|draculaseries|draftweekend|dragonscalefoil|duels|embossed|emeraldblue|emeraldcyan|emeraldgreen|emeraldpurple|emeraldred|emeraldwhite|emeraldyellow|event|facetfoil|ff[ivx]*|firstplacefoil|fnm|fracturefoil|galaxyfoil|gameday|giftbox|gilded|glossy|godzillaseries|halofoil|headliner|imagine|instore|intropack|invisibleink|japanshowcase|jpwalker|judgegift|league|magnified|manafoil|mediainsert|metal|moonlitland|neonink|neonink\S+|oilslick|openhouse|planeswalkerstamped|playerrewards|playpromo|playtest|portrait|poster|premiereshop|prerelease|promopack|rainbow|rainbowfoil|raisedfoil|ravnicacity|rebalanced|release|resale|reversibleback|reversiblefront|ripplefoil|schinesealtart|scroll|serialized|setextension|setpromo|silverfoil|silverscroll|singularityfoil|sldbonus|sourcematerial|stamped|standardshowdown|startercollection|starterdeck|stepandcompleat|storechampionship|surgefoil|textured|themepack|thick|tourney|universesbeyond|upsidedown|upsidedownback|vault|wizardsplaynetwork)\z/i
+  PROMO_TYPE = /\A(?:alchemy|arenaleague|beginnerbox|boosterfun|boxtopper|brawldeck|bringafriend|bundle|buyabox|chocobotrackfoil|commanderparty|commanderpromo|concept|confettifoil|convention|cosmicfoil|datestamped|dazzlefoil|dossier|doubleexposure|doublerainbow|draculaseries|draftweekend|dragonscalefoil|duels|embossed|emeraldblue|emeraldcyan|emeraldgreen|emeraldpurple|emeraldred|emeraldwhite|emeraldyellow|event|facetfoil|ff[ivx]*|firstplacefoil|fnm|fracturefoil|galaxyfoil|gameday|giftbox|gilded|glossy|godzillaseries|halofoil|headliner|imagine|instore|intropack|invisibleink|japanshowcase|jpwalker|judgegift|league|magnified|manafoil|mediainsert|metal|moonlitland|neonink|neonink\S+|oilslick|openhouse|planeswalkerstamped|playerrewards|playpromo|playtest|portrait|poster|premiereshop|prerelease|promopack|rainbowfoil|raisedfoil|ravnicacity|rebalanced|release|resale|reversibleback|reversiblefront|ripplefoil|schinesealtart|scroll|serialized|setextension|setpromo|silverfoil|silverscroll|singularityfoil|sldbonus|sourcematerial|stamped|standardshowdown|startercollection|starterdeck|stepandcompleat|storechampionship|surgefoil|textured|themepack|thick|tourney|universesbeyond|upsidedown|upsidedownback|vault|wizardsplaynetwork)\z/i
 
   # These aren't color sets, they're color count queries, so they don't belong in Color::Names.
   # They also fix their own comparison operator - "at most multicolor" isn't a thing.
@@ -445,9 +445,9 @@ class QueryTokenizer
         else
           tokens << [:test, ConditionInEdition.new(*sets)]
         end
-      # is:companion / not:companion mean the ability and are handled by the nickname branch above,
-      # only frame:companion reaches the frame effect here
-      elsif s.scan(/(is|frame|not)\s*[:=]\s*(artistmisprint|burstfoil|colorshifted|companion|compasslanddfc|convertdfc|dazzlefoil|devoid|draft|enchantment|etched|extendedart|fandfc|fullart|inverted|legendary|lesson|miracle|mooneldrazidfc|nyxborn|originpwdfc|placeholderimage|poster|promo|shatteredglass|showcase|snow|spree|stamped|storyspotlight|sunmoondfc|surgefoil|tombstone|translucent|upsidedowndfc|vehicle|wanted|waxingandwaningmoondfc)\b/i)
+     # is:companion / not:companion mean the ability and are handled by the nickname branch above,
+     # only frame:companion reaches the frame effect here
+     elsif s.scan(/(is|frame|not)\s*[:=]\s*(colorshifted|companion|compasslanddfc|convertdfc|devoid|draft|enchantment|etched|extendedart|fandfc|fullart|inverted|legendary|lesson|miracle|mooneldrazidfc|originpwdfc|shatteredglass|showcase|snow|spree|sunmoondfc|tombstone|upsidedowndfc|wanted|waxingandwaningmoondfc)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionFrameEffect.new(s[2].downcase)]
       elsif s.check(PROMO_TYPE_QUERY) and (promo_type = parse_promo_type(s[2]))
@@ -464,7 +464,7 @@ class QueryTokenizer
       elsif s.scan(/frame\s*[:=]\s*(?:"(.*?)"|([\.\p{L}\p{Digit}_]+))/i)
         frame = (s[1]||s[2]).downcase
         frame_types = %W[old new future modern m15 1993 1997 2003 2015]
-        frame_effects = %W[artistmisprint burstfoil colorshifted companion compasslanddfc convertdfc dazzlefoil devoid draft enchantment etched extendedart fandfc fullart inverted legendary lesson miracle mooneldrazidfc nyxborn originpwdfc placeholderimage poster promo shatteredglass showcase snow spree stamped storyspotlight sunmoondfc surgefoil tombstone translucent upsidedowndfc vehicle wanted waxingandwaningmoondfc]
+        frame_effects = %W[colorshifted companion compasslanddfc convertdfc devoid draft enchantment etched extendedart fandfc fullart inverted legendary lesson miracle mooneldrazidfc originpwdfc shatteredglass showcase snow spree sunmoondfc tombstone upsidedowndfc wanted waxingandwaningmoondfc]
         @warnings << "Unknown frame: #{frame}. Known frame types are: #{frame_types.sort.join(", ")}. Known frame effects are: #{frame_effects.sort.join(", ")}."
       elsif s.scan(/(is|not)\s*[:=]\s*(black-bordered|silver-bordered|white-bordered|gold-bordered)\b/i)
         tokens << [:not] if s[1].downcase == "not"
