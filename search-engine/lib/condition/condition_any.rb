@@ -62,6 +62,8 @@ class ConditionAny < ConditionOr
       @conds << ConditionIsFunny.new
     when "gainland"
       @conds << ConditionIsGainland.new
+    when "gamechanger"
+      @conds << ConditionIsGamechanger.new
     when "keywordsoup"
       @conds << ConditionIsKeywordsoup.new
     when "manland", "creatureland"

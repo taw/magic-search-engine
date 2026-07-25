@@ -44,4 +44,34 @@ describe "is:commander" do
     assert_search_include "is:commander", "Grist, the Hunger Tide", "The Legend of Arena", "The Grand Calcutron"
     assert_search_include "is:brawler", "Grist, the Hunger Tide", "The Legend of Arena", "The Grand Calcutron"
   end
+
+  # The list is maintained by WotC and changes every now and then,
+  # so these tests only check a few cards which are unlikely to move
+  it "is:gamechanger" do
+    assert_search_include "is:gamechanger",
+      "Ancient Tomb",
+      "Cyclonic Rift",
+      "Demonic Tutor",
+      "Mana Vault",
+      "Rhystic Study",
+      "The One Ring",
+      "Thassa's Oracle"
+  end
+
+  it "not:gamechanger" do
+    assert_search_exclude "is:gamechanger",
+      "Black Lotus",
+      "Grizzly Bears",
+      "Sol Ring",
+      "Sensei's Divining Top"
+    assert_search_include "not:gamechanger", "Black Lotus", "Sol Ring"
+  end
+
+  it "both sides of a double-faced game changer" do
+    assert_search_include "is:gamechanger", "Tergrid, God of Fright", "Tergrid's Lantern"
+  end
+
+  it "any:gamechanger" do
+    assert_search_include "any:gamechanger", "Rhystic Study"
+  end
 end

@@ -31,6 +31,7 @@ class Card
     :fulltext_normalized,
     :fulltext,
     :funny,
+    :game_changer,
     :hand,
     :has_alchemy,
     :in_spellbook,
@@ -80,6 +81,7 @@ class Card
     @augment = !!(@text =~ /augment \{/i)
     @mana_cost = data["m"]
     @reserved = data["rs"] || false
+    @game_changer = data["gc"] || false
     types = data["t"]
     subtypes = data["tb"]
     supertypes = data["tp"]

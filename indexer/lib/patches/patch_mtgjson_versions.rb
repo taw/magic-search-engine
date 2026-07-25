@@ -313,6 +313,12 @@ class PatchMtgjsonVersions < Patch
         end
       end
 
+      if card.has_key?("isGameChanger")
+        if card.delete("isGameChanger")
+          card["game_changer"] = true
+        end
+      end
+
       if card["promoTypes"]
         card["promo_types"] = card["promoTypes"]
       end

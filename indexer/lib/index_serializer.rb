@@ -120,6 +120,7 @@ class IndexSerializer
         "dt" => printing["display_toughness"],
         "f" => index_foreign_names(printing["foreign_names"]),
         "fu" => printing["funny"],
+        "gc" => printing["game_changer"],
         "ha" => printing["has_alchemy"],
         "hd" => printing["hand"], # vanguard
         "hm" => printing["hide_mana_cost"],

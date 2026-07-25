@@ -232,6 +232,7 @@ class CardPrinting
     fulltext
     fulltext_normalized
     funny
+    game_changer
     hand
     has_alchemy
     has_multiple_parts?
