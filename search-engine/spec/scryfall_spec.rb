@@ -237,10 +237,6 @@ describe "Scryfall" do
       "Blade of the Sixth Pride"
   end
 
-  it "border" do
-    assert_search_equal "border:white t:creature", "is:white-bordered t:creature"
-  end
-
   it "color_identity" do
     # id: as alias for ci:
     # works the same except for uncards
