@@ -18,6 +18,7 @@ class QueryTokenizer
     "bicycleland" => "cycleland",
     "bikeland" => "cycleland",
     "story" => "spotlight",
+    "snarl" => "shadowland",
     "rebalanced" => "alchemy",
   }.freeze
 
@@ -306,7 +307,7 @@ class QueryTokenizer
       elsif s.scan(/(is|not)\s*[:=]\s*(masterpiece|promo)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionSetType.new(s[2].downcase)]
-      elsif s.scan(/(is|not)\s*[:=]\s*(vanilla|spell|permanent|funny|timeshifted|reserved|multipart|primary|secondary|front|back|commander|gamechanger|meldpart|meldresult|party|outlaw|digital|reprint|fetchland|shockland|dual|fastland|bounceland|gainland|filterland|checkland|manland|creatureland|scryland|battleland|guildgate|karoo|painland|triland|canopyland|shadowland|storageland|tangoland|canland|phyrexian|hybrid|augment|unique|booster|draft|historic|holofoil|foilonly|nonfoilonly|foil|nonfoil|foilboth|brawler|keywordsoup|partner|oversized|tournament|spotlight|story|modal|textless|fullart|full|ante|custom|mainfront|tricycleland|trikeland|triome|racist|cycleland|bikeland|bicycleland|horizontal|vertical|baseset|basictype|foreign|etched|hero|maindeck|alchemy|rebalanced|specialized|spellbook|card|token|stickers|attraction)\b/i)
+      elsif s.scan(/(is|not)\s*[:=]\s*(vanilla|spell|permanent|funny|timeshifted|reserved|multipart|primary|secondary|front|back|commander|gamechanger|meldpart|meldresult|party|outlaw|digital|reprint|fetchland|shockland|dual|fastland|bounceland|gainland|filterland|checkland|manland|creatureland|scryland|battleland|guildgate|karoo|painland|pathway|triland|canopyland|shadowland|snarl|storageland|tangoland|canland|phyrexian|hybrid|augment|unique|booster|draft|historic|holofoil|foilonly|nonfoilonly|foil|nonfoil|foilboth|brawler|keywordsoup|partner|oversized|tournament|spotlight|story|modal|textless|fullart|full|ante|custom|mainfront|tricycleland|trikeland|triome|racist|cycleland|bikeland|bicycleland|horizontal|vertical|baseset|basictype|foreign|etched|hero|maindeck|alchemy|rebalanced|specialized|spellbook|card|token|stickers|attraction)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         kind = s[2].downcase
         cond = IS_ALIASES.fetch(kind, kind).capitalize

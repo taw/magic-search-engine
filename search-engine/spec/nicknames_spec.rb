@@ -362,6 +362,32 @@ describe "Card nicknames" do
     assert_search_equal "is:tricycleland", "is:triome"
   end
 
+  # Both faces are lands, which no other modal double-faced card does
+  it "is:pathway" do
+    assert_search_results "is:pathway",
+      "Barkchannel Pathway",
+      "Tidechannel Pathway",
+      "Blightstep Pathway",
+      "Searstep Pathway",
+      "Branchloft Pathway",
+      "Boulderloft Pathway",
+      "Brightclimb Pathway",
+      "Grimclimb Pathway",
+      "Clearwater Pathway",
+      "Murkwater Pathway",
+      "Cragcrown Pathway",
+      "Timbercrown Pathway",
+      "Darkbore Pathway",
+      "Slitherbore Pathway",
+      "Hengegate Pathway",
+      "Mistgate Pathway",
+      "Needleverge Pathway",
+      "Pillarverge Pathway",
+      "Riverglide Pathway",
+      "Lavaglide Pathway"
+    assert_search_equal "is:pathway", "layout:modaldfc t:land other:t:land"
+  end
+
   it "is:canopyland" do
     assert_search_results "is:canopyland",
       "Fiery Islet",
@@ -389,6 +415,8 @@ describe "Card nicknames" do
       "Vineglimmer Snarl"
     assert_search_equal "is:shadowland",
       %q[t:land o:/As this land enters, you may reveal an? \S+ or \S+/ o:"If you don't, this land enters tapped"]
+    # Scryfall's is:snarl returns the Innistrad shadowlands as well, so it's the same cycle
+    assert_search_equal "is:snarl", "is:shadowland"
   end
 
   # This is quite questionable

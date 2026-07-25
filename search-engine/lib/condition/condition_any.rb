@@ -78,6 +78,8 @@ class ConditionAny < ConditionOr
       @conds << ConditionIsOutlaw.new
     when "painland"
       @conds << ConditionIsPainland.new
+    when "pathway"
+      @conds << ConditionIsPathway.new
     when "party"
       @conds << ConditionIsParty.new
     when "permanent"
@@ -86,7 +88,7 @@ class ConditionAny < ConditionOr
       @conds << ConditionIsPrimary.new
     when "secondary"
       @conds << ConditionIsSecondary.new
-    when "shadowland"
+    when "shadowland", "snarl"
       @conds << ConditionIsShadowland.new
     when "storageland"
       @conds << ConditionIsStorageland.new
