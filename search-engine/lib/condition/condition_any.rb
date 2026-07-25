@@ -48,6 +48,8 @@ class ConditionAny < ConditionOr
       @conds << ConditionFrameEffect.new("colorshifted")
     when "commander" # ???
       @conds << ConditionIsCommander.new
+    when "companion"
+      @conds << ConditionIsCompanion.new
     when "digital"
       @conds << ConditionIsDigital.new
     when "dual"

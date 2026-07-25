@@ -312,7 +312,7 @@ class QueryTokenizer
       elsif s.scan(/(is|not)\s*[:=]\s*(masterpiece|promo)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionSetType.new(s[2].downcase)]
-      elsif s.scan(/(is|not)\s*[:=]\s*(alchemy|ante|attraction|augment|back|baseset|basictype|battleland|bear|bicycleland|bikeland|booster|bounceland|brawler|canland|canopyland|card|checkland|commander|creatureland|custom|cycleland|digital|draft|dual|etched|fastland|fetchland|filterland|foil|foilboth|foilonly|foreign|front|full|fullart|funny|gainland|gamechanger|guildgate|hero|historic|holofoil|horizontal|hybrid|karoo|keywordsoup|maindeck|mainfront|manland|meldpart|meldresult|modal|multipart|nonfoil|nonfoilonly|outlaw|oversized|painland|partner|party|pathway|permanent|phyrexian|primary|racist|rebalanced|reprint|reserved|scryland|secondary|shadowland|shockland|slowland|snarl|specialized|spell|spellbook|spotlight|stickers|storageland|story|surveilland|tangoland|textless|timeshifted|token|tournament|tricycleland|trikeland|triland|triome|unique|vanilla|vertical)\b/i)
+      elsif s.scan(/(is|not)\s*[:=]\s*(alchemy|ante|attraction|augment|back|baseset|basictype|battleland|bear|bicycleland|bikeland|booster|bounceland|brawler|canland|canopyland|card|checkland|commander|companion|creatureland|custom|cycleland|digital|draft|dual|etched|fastland|fetchland|filterland|foil|foilboth|foilonly|foreign|front|full|fullart|funny|gainland|gamechanger|guildgate|hero|historic|holofoil|horizontal|hybrid|karoo|keywordsoup|maindeck|mainfront|manland|meldpart|meldresult|modal|multipart|nonfoil|nonfoilonly|outlaw|oversized|painland|partner|party|pathway|permanent|phyrexian|primary|racist|rebalanced|reprint|reserved|scryland|secondary|shadowland|shockland|slowland|snarl|specialized|spell|spellbook|spotlight|stickers|storageland|story|surveilland|tangoland|textless|timeshifted|token|tournament|tricycleland|trikeland|triland|triome|unique|vanilla|vertical)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         kind = s[2].downcase
         cond = IS_ALIASES.fetch(kind, kind).capitalize
@@ -442,6 +442,8 @@ class QueryTokenizer
         else
           tokens << [:test, ConditionInEdition.new(*sets)]
         end
+      # is:companion / not:companion mean the ability and are handled by the nickname branch above,
+      # only frame:companion reaches the frame effect here
       elsif s.scan(/(is|frame|not)\s*[:=]\s*(artistmisprint|burstfoil|colorshifted|companion|compasslanddfc|convertdfc|dazzlefoil|devoid|draft|enchantment|etched|extendedart|fandfc|fullart|inverted|legendary|lesson|miracle|mooneldrazidfc|nyxborn|originpwdfc|placeholderimage|poster|promo|shatteredglass|showcase|snow|spree|stamped|storyspotlight|sunmoondfc|surgefoil|tombstone|translucent|upsidedowndfc|vehicle|wanted|waxingandwaningmoondfc)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionFrameEffect.new(s[2].downcase)]

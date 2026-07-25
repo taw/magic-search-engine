@@ -492,6 +492,32 @@ describe "Card nicknames" do
       "Tarmogoyf"
   end
 
+  # The ability, not the frame effect - the 3 funny cards which have it never got the companion frame
+  # The Companion of the Wilds spells its keyword "Old Companion —"
+  it "is:companion" do
+    assert_search_results "is:companion",
+      "Gyruda, Doom of Depths",
+      "Jegantha, the Wellspring",
+      "Kaheera, the Orphanguard",
+      "Keruga, the Macrosage",
+      "Lurrus of the Dream-Den",
+      "Lutri, Pauper Otter",
+      "Lutri, the Spellchaser",
+      "Obosh, the Preypiercer",
+      "The Companion of the Wilds",
+      "Treizeci, Sun of Serra",
+      "Umori, the Collector",
+      "Yorion, Sky Nomad",
+      "Zirda, the Dawnwaker"
+    assert_search_equal "is:companion", %[o:"Companion —"]
+    # frame:companion is the per-printing frame effect, so it misses the 3 funny cards
+    # (and the Ikoria cards' own Multiverse Legends etc. printings)
+    assert_search_exclude "frame:companion",
+      "Lutri, Pauper Otter",
+      "The Companion of the Wilds",
+      "Treizeci, Sun of Serra"
+  end
+
   # A card that lists a lot of keywords in a single list, in an order that's different from the canonical keyword order
   # This definition is more strict than some people use the term “keyword soup”, but it is useful for figuring out relative order of keywords by filtering these cards out
   it "is:keywordsoup" do
