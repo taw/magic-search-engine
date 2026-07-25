@@ -34,7 +34,7 @@ class QueryTokenizer
   # No promo type contains punctuation, so we scan the whole word and match it against
   # this list. Accept aliases for compatibility with other search engines.
   PROMO_TYPE_QUERY = /(is|promo|not)\s*[:=]\s*([\p{L}\p{Digit}_]+|\*)/i
-  PROMO_TYPE = /\A(?:alchemy|ampersand|arenaleague|boosterfun|boxtopper|brawldeck|bringafriend|bundle|buyabox|commanderparty|concept|convention|datestamped|draculaseries|draftweekend|duels|event|fnm|galaxyfoil|gameday|giftbox|gilded|glossy|godzillaseries|instore|intropack|jpwalker|judgegift|league|mediainsert|neonink|oilslick|openhouse|planeswalkerstamped|playerrewards|playpromo|premiereshop|prerelease|promopack|rebalanced|release|schinesealtart|setextension|setpromo|stamped|stepandcompleat|surgefoil|textured|themepack|thick|tourney|wizardsplaynetwork|serialized|halofoil|doublerainbow|moonlitland|confettifoil|starterdeck|storechampionship|silverfoil|embossed|poster|scroll|invisibleink|dossier|magnified|ravnicacity|rainbow|reversiblefront|reversibleback|vault|raisedfoil|rainbowfoil|ripplefoil|portrait|imagine|playtest|upsidedown|upsidedownback|fracturefoil|doubleexposure|sldbonus|manafoil|resale|startercollection|beginnerbox|firstplacefoil|dragonscalefoil|commanderpromo|ff[ivx]*|singularityfoil|headliner|cosmicfoil|universesbeyond|chocobotrackfoil|metal|sourcematerial|neonink\S+|japanshowcase|standardshowdown|silverscroll|emeraldcyan|emeraldyellow|emeraldwhite|emeraldblue|emeraldgreen|emeraldred|emeraldpurple|facetfoil|dazzlefoil)\z/i
+  PROMO_TYPE = /\A(?:alchemy|ampersand|arenaleague|beginnerbox|boosterfun|boxtopper|brawldeck|bringafriend|bundle|buyabox|chocobotrackfoil|commanderparty|commanderpromo|concept|confettifoil|convention|cosmicfoil|datestamped|dazzlefoil|dossier|doubleexposure|doublerainbow|draculaseries|draftweekend|dragonscalefoil|duels|embossed|emeraldblue|emeraldcyan|emeraldgreen|emeraldpurple|emeraldred|emeraldwhite|emeraldyellow|event|facetfoil|ff[ivx]*|firstplacefoil|fnm|fracturefoil|galaxyfoil|gameday|giftbox|gilded|glossy|godzillaseries|halofoil|headliner|imagine|instore|intropack|invisibleink|japanshowcase|jpwalker|judgegift|league|magnified|manafoil|mediainsert|metal|moonlitland|neonink|neonink\S+|oilslick|openhouse|planeswalkerstamped|playerrewards|playpromo|playtest|portrait|poster|premiereshop|prerelease|promopack|rainbow|rainbowfoil|raisedfoil|ravnicacity|rebalanced|release|resale|reversibleback|reversiblefront|ripplefoil|schinesealtart|scroll|serialized|setextension|setpromo|silverfoil|silverscroll|singularityfoil|sldbonus|sourcematerial|stamped|standardshowdown|startercollection|starterdeck|stepandcompleat|storechampionship|surgefoil|textured|themepack|thick|tourney|universesbeyond|upsidedown|upsidedownback|vault|wizardsplaynetwork)\z/i
 
   # These aren't color sets, they're color count queries, so they don't belong in Color::Names.
   # They also fix their own comparison operator - "at most multicolor" isn't a thing.
@@ -132,7 +132,7 @@ class QueryTokenizer
         ranges = s[1] || s[2]
         tokens << [:test, ConditionNumberRange.new(ranges)]
       elsif s.scan(%r[
-        (tw|fr|de|it|jp|kr|pt|ru|sp|cs|ct|zhs|zht|foreign)
+        (cs|ct|de|foreign|fr|it|jp|kr|pt|ru|sp|tw|zhs|zht)
         \s*[:=]\s*
         /(
           (?:[^\\/]|\\.)*
@@ -168,7 +168,7 @@ class QueryTokenizer
         tokens << [:test, ConditionArtist.new(s[1] || s[2])]
       elsif s.scan(/(?:rulings)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionRulings.new(s[1] || s[2])]
-      elsif s.scan(/(tw|fr|de|it|jp|kr|pt|ru|sp|cs|ct|zhs|zht|foreign)\s*[:=]\s*(?:"(.*?)"|([^\s\)]+))/i)
+      elsif s.scan(/(cs|ct|de|foreign|fr|it|jp|kr|pt|ru|sp|tw|zhs|zht)\s*[:=]\s*(?:"(.*?)"|([^\s\)]+))/i)
         tokens << [:test, ConditionForeign.new(s[1], s[2] || s[3])]
       elsif s.scan(/any\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionAny.new(s[1] || s[2])]
@@ -307,13 +307,13 @@ class QueryTokenizer
       elsif s.scan(/(is|not)\s*[:=]\s*(masterpiece|promo)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionSetType.new(s[2].downcase)]
-      elsif s.scan(/(is|not)\s*[:=]\s*(vanilla|spell|permanent|funny|timeshifted|reserved|multipart|primary|secondary|front|back|commander|gamechanger|meldpart|meldresult|party|outlaw|digital|reprint|fetchland|shockland|dual|fastland|bounceland|gainland|filterland|checkland|manland|creatureland|scryland|battleland|guildgate|karoo|painland|pathway|triland|canopyland|shadowland|snarl|storageland|surveilland|tangoland|canland|phyrexian|hybrid|augment|unique|booster|draft|historic|holofoil|foilonly|nonfoilonly|foil|nonfoil|foilboth|brawler|keywordsoup|partner|oversized|tournament|spotlight|story|modal|textless|fullart|full|ante|custom|mainfront|tricycleland|trikeland|triome|racist|cycleland|bikeland|bicycleland|horizontal|vertical|baseset|basictype|foreign|etched|hero|maindeck|alchemy|rebalanced|specialized|spellbook|card|token|stickers|attraction)\b/i)
+      elsif s.scan(/(is|not)\s*[:=]\s*(alchemy|ante|attraction|augment|back|baseset|basictype|battleland|bicycleland|bikeland|booster|bounceland|brawler|canland|canopyland|card|checkland|commander|creatureland|custom|cycleland|digital|draft|dual|etched|fastland|fetchland|filterland|foil|foilboth|foilonly|foreign|front|full|fullart|funny|gainland|gamechanger|guildgate|hero|historic|holofoil|horizontal|hybrid|karoo|keywordsoup|maindeck|mainfront|manland|meldpart|meldresult|modal|multipart|nonfoil|nonfoilonly|outlaw|oversized|painland|partner|party|pathway|permanent|phyrexian|primary|racist|rebalanced|reprint|reserved|scryland|secondary|shadowland|shockland|snarl|specialized|spell|spellbook|spotlight|stickers|storageland|story|surveilland|tangoland|textless|timeshifted|token|tournament|tricycleland|trikeland|triland|triome|unique|vanilla|vertical)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         kind = s[2].downcase
         cond = IS_ALIASES.fetch(kind, kind).capitalize
         klass = Kernel.const_get("ConditionIs#{cond}")
         tokens << [:test, klass.new]
-      elsif s.scan(/has:(partner|watermark|indicator|showcase|signature|flavor|alchemy|rebalanced|specialized|spellbook)\b/)
+      elsif s.scan(/has:(alchemy|flavor|indicator|partner|rebalanced|showcase|signature|specialized|spellbook|watermark)\b/)
         cond = s[1].capitalize
         cond = "Alchemy" if cond == "Rebalanced"
         klass = Kernel.const_get("ConditionHas#{cond}")
@@ -326,7 +326,7 @@ class QueryTokenizer
         else
           @warnings << "Unknown new: #{property}. Known options are: #{ConditionNew::PROPERTIES.join(", ")}."
         end
-      elsif s.scan(/(is|not|layout)\s*[:=]\s*(normal|leveler|vanguard|modal-dfc|modaldfc|mdfc|tdfc|transform|split|flip|plane|scheme|phenomenon|meld|aftermath|adventure|saga|planar|augment|host|class|dungeon|prototype|mutate|token|case|prepare)\b/i)
+      elsif s.scan(/(is|not|layout)\s*[:=]\s*(adventure|aftermath|augment|case|class|dungeon|flip|host|leveler|mdfc|meld|modal-dfc|modaldfc|mutate|normal|phenomenon|planar|plane|prepare|prototype|saga|scheme|split|tdfc|token|transform|vanguard)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         kind = s[2].downcase
         tokens << [:test, ConditionLayout.new(LAYOUT_ALIASES.fetch(kind, kind))]
@@ -339,7 +339,7 @@ class QueryTokenizer
         tokens << [:test, klass.new]
       elsif s.scan(/layout\s*[:=]\s*(?:"(.*?)"|([\.\p{L}\p{Digit}_]+))/i)
         layout = (s[1]||s[2]).downcase
-        layouts = %W[normal leveler vanguard dfc double-faced mdfc modal-dfc modaldfc transform split flip plane scheme phenomenon meld aftermath adventure saga planar augment host class dungeon prototype mutate]
+        layouts = %W[adventure aftermath augment case class dfc double-faced dungeon flip host leveler mdfc meld modal-dfc modaldfc mutate normal phenomenon planar plane prepare prototype saga scheme sfc single-faced split tdfc token transform vanguard]
         @warnings << "Unknown layout: #{layout}. Known layout types are: #{layouts.join(", ")}."
       elsif s.scan(/stamp\s*[:=]\s*(?:"(.*?)"|([\.\*\p{L}\p{Digit}_]+))/i)
         kind = (s[1]||s[2]).downcase
@@ -353,15 +353,15 @@ class QueryTokenizer
         tokens << [:not] if s[1].downcase == "not"
         kind = s[2].downcase
         tokens << [:test, ConditionStamp.new(kind)]
-      elsif s.scan(/(is|not|game)\s*[:=]\s*(paper|arena|mtgo|shandalar|dreamcast|sega|xmage)\b/i)
+      elsif s.scan(/(is|not|game)\s*[:=]\s*(arena|dreamcast|mtgo|paper|sega|shandalar|xmage)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         cond = GAME_ALIASES.fetch(s[2].downcase, s[2].downcase).capitalize
         klass = Kernel.const_get("ConditionIs#{cond}")
         tokens << [:test, klass.new]
-      elsif s.scan(/in\s*[:=]\s*(cs|ct|de|fr|it|jp|kr|pt|ru|sp|tw|zht|zhs)\b/i)
+      elsif s.scan(/in\s*[:=]\s*(cs|ct|de|fr|it|jp|kr|pt|ru|sp|tw|zhs|zht)\b/i)
         # cn used to alias cs, but it's number: now
         tokens << [:test, ConditionInForeign.new(s[1].downcase)]
-      elsif s.scan(/in\s*[:=]\s*(paper|arena|mtgo|shandalar|dreamcast|sega|xmage|foil|nonfoil|booster)\b/i)
+      elsif s.scan(/in\s*[:=]\s*(arena|booster|dreamcast|foil|mtgo|nonfoil|paper|sega|shandalar|xmage)\b/i)
         cond = GAME_ALIASES.fetch(s[1].downcase, s[1].downcase).capitalize
         klass = Kernel.const_get("ConditionIn#{cond}")
         tokens << [:test, klass.new]
@@ -437,7 +437,7 @@ class QueryTokenizer
         else
           tokens << [:test, ConditionInEdition.new(*sets)]
         end
-      elsif s.scan(/(is|frame|not)\s*[:=]\s*(compasslanddfc|colorshifted|devoid|extendedart|legendary|miracle|mooneldrazidfc|enchantment|originpwdfc|sunmoondfc|tombstone|inverted|etched|draft|showcase|snow|fullart|companion|waxingandwaningmoondfc|nyxborn|lesson|fandfc|upsidedowndfc|convertdfc|storyspotlight|shatteredglass|burstfoil|vehicle|stamped|promo|spree|placeholderimage|wanted|artistmisprint|poster|translucent|dazzlefoil|surgefoil)\b/i)
+      elsif s.scan(/(is|frame|not)\s*[:=]\s*(artistmisprint|burstfoil|colorshifted|companion|compasslanddfc|convertdfc|dazzlefoil|devoid|draft|enchantment|etched|extendedart|fandfc|fullart|inverted|legendary|lesson|miracle|mooneldrazidfc|nyxborn|originpwdfc|placeholderimage|poster|promo|shatteredglass|showcase|snow|spree|stamped|storyspotlight|sunmoondfc|surgefoil|tombstone|translucent|upsidedowndfc|vehicle|wanted|waxingandwaningmoondfc)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionFrameEffect.new(s[2].downcase)]
       elsif s.check(PROMO_TYPE_QUERY) and (promo_type = parse_promo_type(s[2]))
@@ -454,7 +454,7 @@ class QueryTokenizer
       elsif s.scan(/frame\s*[:=]\s*(?:"(.*?)"|([\.\p{L}\p{Digit}_]+))/i)
         frame = (s[1]||s[2]).downcase
         frame_types = %W[old new future modern m15 1993 1997 2003 2015]
-        frame_effects = %W[compasslanddfc colorshifted devoid extendedart legendary miracle mooneldrazidfc enchantment originpwdfc sunmoondfc tombstone inverted etched draft showcase snow fullart companion waxingandwaningmoondfc nyxborn stamped promo spree wanted artistmisprint poster].sort
+        frame_effects = %W[artistmisprint burstfoil colorshifted companion compasslanddfc convertdfc dazzlefoil devoid draft enchantment etched extendedart fandfc fullart inverted legendary lesson miracle mooneldrazidfc nyxborn originpwdfc placeholderimage poster promo shatteredglass showcase snow spree stamped storyspotlight sunmoondfc surgefoil tombstone translucent upsidedowndfc vehicle wanted waxingandwaningmoondfc]
         @warnings << "Unknown frame: #{frame}. Known frame types are: #{frame_types.sort.join(", ")}. Known frame effects are: #{frame_effects.sort.join(", ")}."
       elsif s.scan(/(is|not)\s*[:=]\s*(black-bordered|silver-bordered|white-bordered|gold-bordered)\b/i)
         tokens << [:not] if s[1].downcase == "not"
