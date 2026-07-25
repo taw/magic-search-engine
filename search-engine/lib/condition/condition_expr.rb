@@ -1,6 +1,6 @@
 class ConditionExpr < ConditionSimple
   # Everything eval_expr knows how to look up on a card, anything else is a plain value
-  Variables = %W[pow tou cmc mv loy sets papersets prints paperprints year defense defence life hand decklimit]
+  Variables = %W[pow tou pt cmc mv loy sets papersets prints paperprints year defense defence life hand decklimit]
 
   def initialize(a, op, b)
     @a = a
@@ -41,11 +41,16 @@ class ConditionExpr < ConditionSimple
     end
   end
 
+  # "pt" is printed as "powtou", as pt=* would otherwise come back as a Portuguese name search
   def to_s
-    "#{@a}#{@op}#{@b}"
+    "#{unambiguous(@a)}#{@op}#{unambiguous(@b)}"
   end
 
   private
+
+  def unambiguous(expr)
+    expr == "pt" ? "powtou" : expr
+  end
 
   def eval_expr(card, expr)
     case expr
@@ -53,6 +58,8 @@ class ConditionExpr < ConditionSimple
       eval_card_value(card.power)
     when "tou"
       eval_card_value(card.toughness)
+    when "pt"
+      eval_sum(eval_card_value(card.power), eval_card_value(card.toughness))
     when "cmc", "mv"
       eval_card_value(card.cmc)
     when "loy"
@@ -77,6 +84,20 @@ class ConditionExpr < ConditionSimple
       eval_card_value(card.decklimit || 4)
     else
       eval_card_value(expr)
+    end
+  end
+
+  # Adding a number to a star keeps the star, so Tarmogoyf's */1+* adds up to 1+*,
+  # and anything weirder than that (X, ?, *², 1d4+1) has no sensible total
+  def eval_sum(a, b)
+    ac, av = a
+    bc, bv = b
+    if ac == bc and (ac == :number or ac == :star)
+      [ac, av + bv]
+    elsif (ac == :number and bc == :star) or (ac == :star and bc == :number)
+      [:star, av + bv]
+    else
+      [nil, nil]
     end
   end
 

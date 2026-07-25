@@ -168,6 +168,23 @@ class QueryTokenizer
         tokens << [:test, ConditionArtist.new(s[1] || s[2])]
       elsif s.scan(/(?:rulings)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionRulings.new(s[1] || s[2])]
+      # pt:* is "has a Portuguese name", which beats "power plus toughness is *" (use powtou:* for that)
+      elsif s.scan(/(cs|ct|de|foreign|fr|it|jp|kr|pt|ru|sp|tw|zhs|zht)\s*[:=]\s*(?:\*|"\*")(?=$|[\s&\/()])/i)
+        tokens << [:test, ConditionForeign.new(s[1], "*")]
+      # Before the foreign name search, as pt: is both "power plus toughness" and Portuguese.
+      # Values here are numbers and such, so pt:goblin is still a Portuguese name search.
+      elsif s.scan(/(pow|power|pt|powtou|loy|loyalty|tou|toughness|cmc|manavalue|mv|year|sets|papersets|prints|paperprints|defen[cs]e|hand|life|decklimit)\s*(>=|>|<=|<|=|≥|≤|:)\s*(pow\b|power\b|pt\b|powtou\b|tou\b|toughness\b|cmc\b|manavalue\b|mv\b|loy\b|loyalty\b|year\b|defen[cs]e\b|hand\b|life\b|decklimit\b|any\b|[²\d\.\-\*\+½x∞\?]+|"[²\d\.\-\*\+½x∞\?]+")/i)
+        aliases = {"power" => "pow", "loyalty" => "loy", "toughness" => "tou", "manavalue" => "mv", "powtou" => "pt"}
+        a = s[1].downcase
+        a = aliases[a] || a
+        op = s[2]
+        op = "=" if op == ":"
+        op = ">=" if op == "≥"
+        op = "<=" if op == "≤"
+        b = s[3].downcase
+        b = b[1..-2] if b =~ /\A"(.*)"\z/
+        b = aliases[b] || b
+        tokens << [:test, ConditionExpr.new(a, op, b)]
       elsif s.scan(/(cs|ct|de|foreign|fr|it|jp|kr|pt|ru|sp|tw|zhs|zht)\s*[:=]\s*(?:"(.*?)"|([^\s\)]+))/i)
         tokens << [:test, ConditionForeign.new(s[1], s[2] || s[3])]
       elsif s.scan(/any\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
@@ -279,18 +296,6 @@ class QueryTokenizer
         rescue
           @warnings << "unknown rarity: #{rarity}"
         end
-      elsif s.scan(/(pow|power|loy|loyalty|tou|toughness|cmc|manavalue|mv|year|sets|papersets|prints|paperprints|defen[cs]e|hand|life|decklimit)\s*(>=|>|<=|<|=|≥|≤|:)\s*(pow\b|power\b|tou\b|toughness\b|cmc\b|manavalue\b|mv\b|loy\b|loyalty\b|year\b|defen[cs]e\b|hand\b|life\b|decklimit\b|any\b|[²\d\.\-\*\+½x∞\?]+|"[²\d\.\-\*\+½x∞\?]+")/i)
-        aliases = {"power" => "pow", "loyalty" => "loy", "toughness" => "tou", "manavalue" => "mv"}
-        a = s[1].downcase
-        a = aliases[a] || a
-        op = s[2]
-        op = "=" if op == ":"
-        op = ">=" if op == "≥"
-        op = "<=" if op == "≤"
-        b = s[3].downcase
-        b = b[1..-2] if b =~ /\A"(.*)"\z/
-        b = aliases[b] || b
-        tokens << [:test, ConditionExpr.new(a, op, b)]
       elsif s.scan(/(mana|m|devotion|produces)\s*(>=|>|<=|<|=|:|≥|≤|!=)\s*((?:[\dwubrgxyzchmnos]|\{.*?\})*)/i)
         cond = {
           "devotion" => ConditionDevotion,

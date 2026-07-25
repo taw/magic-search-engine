@@ -13,6 +13,44 @@ describe "Expressions Test" do
     db.search("cmc>=2 pow>tou loy>=5 year>=2000 decklimit>=4").warnings.should be_empty
   end
 
+  it "pt" do
+    assert_search_equal "pt=4", "(pow=0 tou=4) or (pow=1 tou=3) or (pow=2 tou=2) or (pow=3 tou=1) or (pow=4 tou=0)"
+    assert_search_equal "powtou=4", "pt=4"
+    assert_search_equal "pt:4", "pt=4"
+    assert_search_equal "pt=cmc", "cmc=pt"
+    db.search("pt>=4 powtou<=8").warnings.should be_empty
+  end
+
+  # pt: is also Portuguese name search, and it stays that way for anything but numbers and such
+  it "pt does not break Portuguese search" do
+    assert_search_equal "pt:goblin", "pt=goblin"
+    # Manoplas de Couro de Goblin, no goblin anywhere in the English name
+    assert_search_include "pt:goblin", "Golem-Skin Gauntlets"
+    assert_search_exclude "pt:4", "Golem-Skin Gauntlets"
+  end
+
+  it "pt of star power and toughness" do
+    # A bare * belongs to the Portuguese wildcard, so the star total needs the long name here
+    assert_search_equal "powtou=*", "(pow=* tou=*) or (pow=* tou=0) or (pow=0 tou=*)"
+    assert_search_equal "pt=*", "in:pt"
+    assert_search_equal "pt=1+*", "(pow=* tou=1+*) or (pow=1+* tou=*) or (pow=* tou=1) or (pow=1 tou=*)"
+    assert_search_equal "pt=2+*",
+      "(pow=1+* tou=1+*) or (pow=* tou=2+*) or (pow=2+* tou=*) or (pow=* tou=2) or (pow=2 tou=*) or (pow=1+* tou=1) or (pow=1 tou=1+*)"
+    assert_search_include "pt=1+*", "Tarmogoyf"
+    # Star totals are not numbers, so they don't answer numeric questions
+    assert_search_exclude "pt>=0", "Tarmogoyf", "Nameless Race"
+  end
+
+  it "pt of everything else weird" do
+    assert_search_results "pt=∞", "Infinity Elemental"
+    assert_search_results "pt=1 pow=½", "Little Girl"
+    assert_search_results "pt=-1", "Half-Squirrel, Half-"
+    # *², ?, and X have no sensible total, so those cards match no pt query at all
+    assert_search_exclude "pt>=0", "S.N.O.T.", "Catch of the Day"
+    assert_search_results "pt=x"
+    assert_search_results "pt=*2"
+  end
+
   it "year" do
     "t:planeswalker year = 2010".should have_count_printings 16
     "t:planeswalker year < 2013".should have_count_printings 72
