@@ -90,6 +90,8 @@ class ConditionAny < ConditionOr
       @conds << ConditionIsParty.new
     when "permanent"
       @conds << ConditionIsPermanent.new
+    when "power9", "p9"
+      @conds << ConditionIsPower9.new
     when "primary"
       @conds << ConditionIsPrimary.new
     when "secondary"
@@ -102,6 +104,8 @@ class ConditionAny < ConditionOr
       @conds << ConditionIsSurveilland.new
     when "triland"
       @conds << ConditionIsTriland.new
+    when "vergeland"
+      @conds << ConditionIsVergeland.new
     when "front"
       @conds << ConditionIsFront.new
     when "back"

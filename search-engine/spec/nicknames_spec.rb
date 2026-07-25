@@ -475,6 +475,41 @@ describe "Card nicknames" do
       %[t:land o:"This land enters tapped." o:"When this land enters, surveil 1."]
   end
 
+  # Other lands gated on controlling a land type only ever name one, not a pair
+  # Krosan Verge and Sandstorm Verge are named Verge but aren't part of the cycle
+  it "is:vergeland" do
+    assert_search_results "is:vergeland",
+      "Blazemire Verge",
+      "Bleachbone Verge",
+      "Floodfarm Verge",
+      "Gloomlake Verge",
+      "Hushwood Verge",
+      "Riverpyre Verge",
+      "Sunbillow Verge",
+      "Thornspire Verge",
+      "Wastewood Verge",
+      "Willowrush Verge"
+    assert_search_equal "is:vergeland",
+      %q[t:land o:/Activate only if you control an? \w+ or an? \w+\./]
+  end
+
+  # A curated list, not a functional cycle - Vintage Masters is the only set that printed
+  # exactly these nine and nothing else at its "special" rarity
+  it "is:power9" do
+    assert_search_results "is:power9",
+      "Ancestral Recall",
+      "Black Lotus",
+      "Mox Emerald",
+      "Mox Jet",
+      "Mox Pearl",
+      "Mox Ruby",
+      "Mox Sapphire",
+      "Time Walk",
+      "Timetwister"
+    assert_search_equal_cards "is:power9", "e:vma r:special"
+    assert_search_equal "is:p9", "is:power9"
+  end
+
   # This is quite questionable
   it "is:storageland" do
     assert_search_results "is:storageland",
