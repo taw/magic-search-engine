@@ -1,0 +1,17 @@
+%p
+  %em Future Standard
+  is not a real format you can play. It's a preview of what
+  = succeed "," do
+    = link_to "Standard", action: "show", id: "standard"
+  is going to look like after the next rotation, so it drops the sets which are about to rotate out, and it includes sets which aren't released yet.
+
+%p
+  Ban list is just current Standard ban list, as nobody knows yet what is going to be banned after the rotation.
+
+%p
+  For official rotation schedule, check <a href="http://whatsinstandard.com/">what's in Standard</a> site.
+
+%ul
+  = search_help "f:future", "cards which will be in Standard after the next rotation"
+  = search_help "f:standard -f:future", "cards rotating out of Standard at the next rotation"
+  = search_help "f:future -f:standard", "cards which will join Standard at the next rotation"

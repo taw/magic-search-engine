@@ -1,22 +1,24 @@
 class FormatStandard < Format
   def build_included_sets
-    last_rotation = rotation_schedule.map do |rotation_time, rotation_sets|
-      rotation_time = Date.parse(rotation_time)
-      if !@time or @time >= rotation_time
-        [rotation_time, rotation_sets]
-      else
-        nil
-      end
-    end.compact.max_by(&:first)
-    if last_rotation
-      last_rotation.last.to_set
-    else
-      Set[]
-    end
+    rotation_sets rotations.select{|rotation_time, _| rotation_time <= rotation_reference_time}.max_by(&:first)
   end
 
   def format_pretty_name
     "Standard"
+  end
+
+  # Schedule also contains rotations which didn't happen yet, so FormatFuture can use them.
+  # They're relative to the time we traveled to, or to today if we're not time traveling.
+  def rotation_reference_time
+    @time || Date.today
+  end
+
+  def rotations
+    rotation_schedule.map{|rotation_time, rotation_sets| [Date.parse(rotation_time), rotation_sets]}
+  end
+
+  def rotation_sets(rotation)
+    rotation ? rotation.last.to_set : Set[]
   end
 
   def rotation_schedule
@@ -27,6 +29,12 @@ class FormatStandard < Format
     # says Coldsnap rotates out with Time Spiral block
 
     {
+      # Rotation moves to the first premier set of the calendar year, so 2026 gets no rotation at all,
+      # and the next one happens with Nauctis: The Sunken Realm, so Standard becomes 2025+2026+2027 sets.
+      # https://magic.wizards.com/en/news/announcements/everything-announced-for-the-magic-multiverse-in-2027
+      # Sets released in 2027 will be added here as they come out.
+      # This rotation didn't happen yet, only f:future looks at it.
+      "2027-02-05" => ["fdn", "dft", "tdm", "fin", "eoe", "spm", "tla", "ecl", "tmt", "sos", "msh", "hob", "fra", "trk"],
       "2025-07-29" => ["woe", "lci", "mkm", "otj", "big", "blb", "dsk", "fdn", "dft", "tdm", "fin", "eoe", "spm", "tla", "ecl", "tmt", "sos", "msh"],
       # FDN has special rotation
       "2024-08-02" => ["dmu", "bro", "one", "mom", "mat", "woe", "lci", "mkm", "otj", "big", "blb", "dsk", "fdn", "dft", "tdm", "fin"],
