@@ -89,9 +89,9 @@ describe "Type expr" do
   # Rogues and changelings are both, and so is anything like a Pirate Warrior
   it "is:party and is:outlaw overlap" do
     assert_search_include "is:party is:outlaw",
-      "Ambitious Aetherborn",
-      "Kitesail Freebooter",
-      "Woodland Changeling"
+      "Siren Stormtamer",
+      "Woodland Changeling",
+      "Zulaport Cutthroat"
     assert_search_equal "is:party is:outlaw -t:rogue -keyword:changeling",
       "t:creature (t:cleric or t:warrior or t:wizard) (t:assassin or t:mercenary or t:pirate or t:warlock) -t:rogue -keyword:changeling"
   end
