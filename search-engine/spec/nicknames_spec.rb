@@ -419,6 +419,23 @@ describe "Card nicknames" do
     assert_search_equal "is:snarl", "is:shadowland"
   end
 
+  # Only the Karlov Manor cycle, other lands which surveil do it for a price
+  it "is:surveilland" do
+    assert_search_results "is:surveilland",
+      "Commercial District",
+      "Elegant Parlor",
+      "Hedge Maze",
+      "Lush Portico",
+      "Meticulous Archive",
+      "Raucous Theater",
+      "Shadowy Backstreet",
+      "Thundering Falls",
+      "Undercity Sewers",
+      "Underground Mortuary"
+    assert_search_equal "is:surveilland",
+      %[t:land o:"This land enters tapped." o:"When this land enters, surveil 1."]
+  end
+
   # This is quite questionable
   it "is:storageland" do
     assert_search_results "is:storageland",

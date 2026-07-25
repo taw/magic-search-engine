@@ -92,6 +92,8 @@ class ConditionAny < ConditionOr
       @conds << ConditionIsShadowland.new
     when "storageland"
       @conds << ConditionIsStorageland.new
+    when "surveilland"
+      @conds << ConditionIsSurveilland.new
     when "triland"
       @conds << ConditionIsTriland.new
     when "front"
