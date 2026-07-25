@@ -112,6 +112,8 @@ class ConditionAny < ConditionOr
       @conds << ConditionIsScryland.new
     when "shockland"
       @conds << ConditionIsShockland.new
+    when "slowland"
+      @conds << ConditionIsSlowland.new
     when "spell"
       @conds << ConditionIsSpell.new
     when "timeshifted"

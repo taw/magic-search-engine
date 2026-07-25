@@ -104,6 +104,25 @@ describe "Card nicknames" do
       }
   end
 
+  # Fastlands with the condition the other way round
+  it "is:slowland" do
+    assert_search_results "is:slowland",
+      "Deathcap Glade",
+      "Deserted Beach",
+      "Dreamroot Cascade",
+      "Haunted Ridge",
+      "Overgrown Farmland",
+      "Rockfall Vale",
+      "Shattered Sanctum",
+      "Shipwreck Marsh",
+      "Stormcarved Coast",
+      "Sundown Pass"
+    assert_search_results "is:slowland",
+      *cards_matching{|c|
+        c.text =~ %r[This land enters tapped unless you control two or more other lands.\n\{T\}: Add \{.\} or \{.\}.]
+      }
+  end
+
   # The name is unique
   # Some cards are duplicated
   # There are some other lands that give you land when they etb
