@@ -253,6 +253,78 @@ describe "CLI Frontend" do
     )
   end
 
+  # view:checklist prints one tab separated "SET<TAB>number<TAB>name" line per printing.
+  # Heredocs would turn the tabs into something unreadable, so build the expected output by hand.
+  def checklist(*lines)
+    lines.map{|line| "#{line}\n"}.join
+  end
+
+  it "checklist view" do
+    assert_cli(
+      search: "view:checklist e:ust Ineffable Blessing",
+      verbose: false,
+      output: checklist(
+        "UST\t113a\tIneffable Blessing (a)",
+        "UST\t113b\tIneffable Blessing (b)",
+        "UST\t113c\tIneffable Blessing (c)",
+        "UST\t113d\tIneffable Blessing (d)",
+        "UST\t113e\tIneffable Blessing (e)",
+        "UST\t113f\tIneffable Blessing (f)",
+      ),
+      error: ""
+    )
+  end
+
+  it "checklist view lists every printing, with set codes upcased" do
+    assert_cli(
+      search: "view:checklist !Siege Rhino",
+      verbose: false,
+      output: checklist(
+        "KTK\t200\tSiege Rhino",
+        "SLC\t2014\tSiege Rhino",
+        "CP3\t5\tSiege Rhino",
+        "PKTK\t200s\tSiege Rhino",
+        "EA1\t16\tSiege Rhino",
+        "PRM\t57602\tSiege Rhino",
+      ),
+      error: ""
+    )
+  end
+
+  it "checklist view with no results" do
+    assert_cli(
+      search: "view:checklist e:lea t:legendary",
+      verbose: false,
+      output: "",
+      error: ""
+    )
+  end
+
+  it "display: is an alias for view:" do
+    assert_cli(
+      search: "display:checklist e:ust cn:113a",
+      verbose: false,
+      output: checklist("UST\t113a\tIneffable Blessing (a)"),
+      error: ""
+    )
+  end
+
+  it "verbose takes precedence over checklist view" do
+    assert_cli(
+      search: "view:checklist siege rhino",
+      verbose: true,
+      output: <<-EOF,
+        Siege Rhino {1}{w}{b}{g}
+        [ktk pktk cp3 prm ea1 slc]
+        Creature - Rhino
+        Trample
+        When this creature enters, each opponent loses 3 life and you gain 3 life.
+        4/5
+        EOF
+      error: ""
+    )
+  end
+
   # The interface could be extended to support things like:
   # * syntax error reporting
   # * spelling suggestions
