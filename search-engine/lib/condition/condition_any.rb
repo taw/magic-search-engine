@@ -36,6 +36,8 @@ class ConditionAny < ConditionOr
       @conds << ConditionIsAugment.new
     when "battleland", "tangoland"
       @conds << ConditionIsBattleland.new
+    when "bear"
+      @conds << ConditionIsBear.new
     when "bounceland", "karoo"
       @conds << ConditionIsBounceland.new
     when "canopyland", "canland"

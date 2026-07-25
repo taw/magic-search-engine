@@ -474,6 +474,24 @@ describe "Card nicknames" do
       't:land o:"Remove" o:"storage counters from" -o:"you may"'
   end
 
+  # 2/2 for 2 mana, and there's no type check, so a few Vehicles and a Spacecraft qualify
+  it "is:bear" do
+    assert_search_equal "is:bear", "pow=2 tou=2 mv=2"
+    assert_search_include "is:bear",
+      "Balduvian Bears",
+      "Grizzly Bears",
+      "Runeclaw Bear"
+    assert_search_results "is:bear -t:creature",
+      "High-Speed Hoverbike",
+      "Shadowed Caravel",
+      "Soul Shredder",
+      "Wurmwall Sweeper"
+    assert_search_exclude "is:bear",
+      "Ambush Viper",
+      "Sengir Vampire",
+      "Tarmogoyf"
+  end
+
   # A card that lists a lot of keywords in a single list, in an order that's different from the canonical keyword order
   # This definition is more strict than some people use the term “keyword soup”, but it is useful for figuring out relative order of keywords by filtering these cards out
   it "is:keywordsoup" do
