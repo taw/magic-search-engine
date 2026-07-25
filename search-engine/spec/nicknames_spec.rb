@@ -420,6 +420,26 @@ describe "Card nicknames" do
     assert_search_equal "is:canland", "is:canopyland"
   end
 
+  # 5 from Battlebond, 5 from Commander Legends, so they're named after either set or the crowd
+  it "is:bondland" do
+    assert_search_results "is:bondland",
+      "Bountiful Promenade",
+      "Luxury Suite",
+      "Morphic Pool",
+      "Rejuvenating Springs",
+      "Sea of Clouds",
+      "Spectator Seating",
+      "Spire Garden",
+      "Training Center",
+      "Undergrowth Stadium",
+      "Vault of Champions"
+    assert_search_equal "is:bondland",
+      't:land o:"This land enters tapped unless you have two or more opponents." o:/\{T\}: Add \{.\} or \{.\}/'
+    assert_search_equal "is:battlebondland", "is:bondland"
+    assert_search_equal "is:bbdland", "is:bondland"
+    assert_search_equal "is:crowdland", "is:bondland"
+  end
+
   it "is:shadowland" do
     assert_search_results "is:shadowland",
       "Choked Estuary",

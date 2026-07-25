@@ -38,6 +38,8 @@ class ConditionAny < ConditionOr
       @conds << ConditionIsBattleland.new
     when "bear"
       @conds << ConditionIsBear.new
+    when "bondland", "battlebondland", "bbdland", "crowdland"
+      @conds << ConditionIsBondland.new
     when "bounceland", "karoo"
       @conds << ConditionIsBounceland.new
     when "canopyland", "canland"
