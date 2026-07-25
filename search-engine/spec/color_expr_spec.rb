@@ -106,4 +106,22 @@ describe "Color Expr Test" do
   it "Fallaji" do
     assert_search_equal "ci=1 c=5", "Fallaji Wayfarer"
   end
+
+  # A color query which isn't a color name keeps only the letters which happen to be color letters.
+  # That's nonsense, but there's nothing better to do with such queries, so at least warn about it.
+  it "unrecognized color queries warn" do
+    Query.new("c:goblin").warnings.should == [%[Unrecognized color query: "goblin", correcting to "gb"]]
+    Query.new("ci:zombie").warnings.should == [%[Unrecognized color query: "zombie", correcting to "mb"]]
+    Query.new("ind:goblin").warnings.should == [%[Unrecognized color query: "goblin", correcting to "gb"]]
+    # Nothing color-like left at all, so it ends up asking for colorless
+    Query.new("c:elf").warnings.should == [%[Unrecognized color query: "elf", correcting to ""]]
+    assert_search_equal "c:goblin", "c=gb"
+    assert_search_equal "c:elf", "c=c"
+
+    # Color names, guild/shard/wedge names, letters, counts, and the special values are all fine
+    ["c:red", "c:boros", "c:abzan", "c:wu", "c:c", "c:m", "c:3", "c:ally", "c:allied", "c:enemy",
+     "c:shard", "c:wedge", "c:*", "c:colorless", "c:multicolor", "c:multicolored"].each do |query|
+      Query.new(query).warnings.should eq([]), "#{query} should not warn"
+    end
+  end
 end
