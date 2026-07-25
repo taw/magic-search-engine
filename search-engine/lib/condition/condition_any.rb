@@ -74,8 +74,12 @@ class ConditionAny < ConditionOr
       @conds << ConditionIsMeldresult.new
     when "multipart"
       @conds << ConditionIsMultipart.new
+    when "outlaw"
+      @conds << ConditionIsOutlaw.new
     when "painland"
       @conds << ConditionIsPainland.new
+    when "party"
+      @conds << ConditionIsParty.new
     when "permanent"
       @conds << ConditionIsPermanent.new
     when "primary"

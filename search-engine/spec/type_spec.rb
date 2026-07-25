@@ -55,4 +55,44 @@ describe "Type expr" do
   it "Kindred and Tribal" do
     assert_search_equal "t:tribal", "t:kindred"
   end
+
+  # Party members are creatures only, outlaws can be any card with those creature types
+  it "is:party" do
+    assert_search_equal "is:party",
+      "t:creature (t:cleric or t:rogue or t:warrior or t:wizard or keyword:changeling)"
+    assert_search_include "is:party",
+      "Dark Confidant",
+      "Woodland Changeling"
+    assert_search_exclude "is:party",
+      "Cloak and Dagger",
+      "Grizzly Bears",
+      "Ragavan, Nimble Pilferer",
+      "Serra Angel"
+  end
+
+  it "is:outlaw" do
+    assert_search_equal "is:outlaw",
+      "t:assassin or t:mercenary or t:pirate or t:rogue or t:warlock or keyword:changeling"
+    assert_search_include "is:outlaw",
+      "Cloak and Dagger",
+      "Nameless Inversion",
+      "Notorious Throng",
+      "Ragavan, Nimble Pilferer",
+      "Royal Assassin",
+      "Woodland Changeling"
+    assert_search_exclude "is:outlaw",
+      "Dark Confidant",
+      "Grizzly Bears",
+      "Prophetic Prism"
+  end
+
+  # Rogues and changelings are both, and so is anything like a Pirate Warrior
+  it "is:party and is:outlaw overlap" do
+    assert_search_include "is:party is:outlaw",
+      "Ambitious Aetherborn",
+      "Kitesail Freebooter",
+      "Woodland Changeling"
+    assert_search_equal "is:party is:outlaw -t:rogue -keyword:changeling",
+      "t:creature (t:cleric or t:warrior or t:wizard) (t:assassin or t:mercenary or t:pirate or t:warlock) -t:rogue -keyword:changeling"
+  end
 end
