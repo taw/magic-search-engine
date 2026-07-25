@@ -18,7 +18,7 @@ class ConditionOr < Condition
   def search(db, candidates=db.printings)
     subresults = @special_conds.map{|cond| cond.search(db, candidates)}
     unless @simple_conds.empty?
-      subresults << candidates.select{|card| @simple_conds.any?{|cond| cond.match?(card)} }.to_set
+      subresults << candidates.to_a.select{|card| @simple_conds.any?{|cond| cond.match?(card)} }.to_set
     end
     merge_into_set subresults
   end

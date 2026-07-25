@@ -13,11 +13,9 @@ class Card
     :augment,
     :brawler,
     :cmc,
-    :color_identity_set,
     :color_identity,
-    :color_indicator_set,
+    :color_indicator_colors,
     :color_indicator,
-    :colors_set,
     :colors,
     :commander,
     :decklimit,
@@ -68,9 +66,7 @@ class Card
     @names = data["ns"]
     @layout = data["l"]
     @colors = data["c"] || ""
-    @colors_set = @colors.chars.to_set
     @color_identity = data["ci"]
-    @color_identity_set = @color_identity.chars.to_set
     @funny = data["fu"]
     @fulltext = -(data["o"] || "")
     @fulltext_normalized = -@fulltext.normalize_accents
@@ -350,7 +346,7 @@ class Card
       @color_indicator = Color.color_indicator_name(actual_colors)
     end
     if @color_indicator
-      @color_indicator_set = actual_colors.to_set
+      @color_indicator_colors = @colors
     end
   end
 

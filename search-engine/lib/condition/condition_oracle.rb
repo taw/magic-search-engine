@@ -1,9 +1,15 @@
 class ConditionOracle < ConditionSimple
+  # Ways a card can refer to itself other than by name
+  SELF_REFERENCE = "this (?:land|artifact|creature|enchantment|Aura|Vehicle|Equipment|Case|permanent|Class|Siege|Spacecraft|Attraction|card|scheme|contraption|sorcery|battle|dungeon|spell|planeswalker|plane|door|room|saga|phenomenon|conspiracy)"
+
   def initialize(text)
     @text = text
     @has_cardname = !!(@text =~ /~/)
     if @has_cardname
       @regexp_prefilter = Regexp.new(Regexp.escape(text).gsub("~", ".*"), Regexp::IGNORECASE)
+      @base_rx_str = Regexp.escape(normalize_text(@text))
+      # Cards which refer to themselves without naming themselves don't need a per-card regexp
+      @self_reference_regexp = Regexp.new(@base_rx_str.gsub("~", "(?:#{SELF_REFERENCE})"), Regexp::IGNORECASE)
     end
     @regexp = build_regexp(normalize_mana(normalize_text(@text)))
   end
@@ -11,12 +17,11 @@ class ConditionOracle < ConditionSimple
   def match?(card)
     if @has_cardname
       # This speeds it up a lot
-      return false unless card.text_normalized =~ @regexp_prefilter
-      base_rx_str = Regexp.escape(normalize_text(@text))
-      tilde_rx_str = "(?:" + Regexp.escape(normalize_text(card.name)) + "|this (?:land|artifact|creature|enchantment|Aura|Vehicle|Equipment|Case|permanent|Class|Siege|Spacecraft|Attraction|card|scheme|contraption|sorcery|battle|dungeon|spell|planeswalker|plane|door|room|saga|phenomenon|conspiracy))"
-      full_rx = Regexp.new(base_rx_str.gsub("~", tilde_rx_str), Regexp::IGNORECASE)
-
-      card.text_normalized =~ full_rx
+      text = card.text_normalized
+      return false unless text =~ @regexp_prefilter
+      return true if text =~ @self_reference_regexp
+      tilde_rx_str = "(?:" + Regexp.escape(normalize_text(card.name)) + "|" + SELF_REFERENCE + ")"
+      text =~ Regexp.new(@base_rx_str.gsub("~", tilde_rx_str), Regexp::IGNORECASE)
     else
       card.text_normalized =~ @regexp
     end

@@ -59,7 +59,7 @@ class CardPrinting
   )
 
   # Performance cache of derived information
-  attr_reader :stemmed_name, :set_code, :release_date_i, :number_i
+  attr_reader :stemmed_name, :set_code, :release_date_i, :number_i, :types
 
   # Set by CardDatabase initialization
   attr_accessor :others, :artist, :default_sort_index, :partner, :in_boosters
@@ -125,6 +125,7 @@ class CardPrinting
     # Performance cache
     @stemmed_name = @card.stemmed_name
     @set_code = @set.code
+    @types = @card.types
 
     # Initialized after boosters are loaded
     @in_boosters = false
@@ -207,11 +208,9 @@ class CardPrinting
     brawler?
     cmc
     color_identity
-    color_identity_set
     color_indicator
-    color_indicator_set
+    color_indicator_colors
     colors
-    colors_set
     commander?
     count_paperprints
     count_papersets
@@ -264,7 +263,6 @@ class CardPrinting
     text_normalized
     toughness
     typeline
-    types
   ].each do |m|
     eval("def #{m}; @card.#{m}; end")
   end

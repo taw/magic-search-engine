@@ -157,7 +157,7 @@ describe "Color Comparison Unit Test" do
   end
 
   def expect_color(op, s, *expected)
-    expected = expected.flat_map{|c| [*c]}.map{|c| c.chars.to_set}.to_set
+    expected = expected.flat_map{|c| [*c]}.map{|c| c.chars.sort.join}.to_set
     Color.matching(op, s).should eq(expected)
   end
 

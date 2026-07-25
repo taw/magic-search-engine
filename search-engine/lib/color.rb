@@ -43,7 +43,10 @@ module Color
     "zagoth" => "bgu",
   }
 
-  ColorCombinations = ["", "b", "bg", "bgr", "bgru", "bgruw", "bgrw", "bgu", "bguw", "bgw", "br", "bru", "bruw", "brw", "bu", "buw", "bw", "g", "gr", "gru", "gruw", "grw", "gu", "guw", "gw", "r", "ru", "ruw", "rw", "u", "uw", "w"].map{|c| c.chars.to_set}.to_set
+  # Colors are always stored as alphabetically sorted strings, so these double
+  # as the canonical form of every color combination a card can have.
+  # Comparing them as strings is a lot faster than comparing sets of letters.
+  ColorCombinations = ["", "b", "bg", "bgr", "bgru", "bgruw", "bgrw", "bgu", "bguw", "bgw", "br", "bru", "bruw", "brw", "bu", "buw", "bw", "g", "gr", "gru", "gruw", "grw", "gu", "guw", "gw", "r", "ru", "ruw", "rw", "u", "uw", "w"].map(&:freeze).to_set.freeze
 
   def self.color_indicator_name(indicator)
     names = {"w" => "white", "u" => "blue", "b" => "black", "r" => "red", "g" => "green"}
@@ -120,26 +123,31 @@ module Color
       matching(op, "gwb")
     else
       # we can safely ignore c (colorless), c=c and c="" are the same thing
-      target = (expr.chars & %W[w u b r g]).to_set
+      target = (expr.chars & %W[w u b r g]).uniq.sort.join
       if expr.include?("m")
-        return matching(op, target.to_a.join).select{|c| c.size >= 2}.to_set
+        return matching(op, target).select{|c| c.size >= 2}.to_set
       end
       ColorCombinations.select{|color|
         case op
         when "="
           color == target
         when ">="
-          color >= target
+          superset?(color, target)
         when ">"
-          color > target
+          color != target and superset?(color, target)
         when "<="
-          color <= target
+          superset?(target, color)
         when "<"
-          color < target
+          color != target and superset?(target, color)
         else
           raise "Expr comparison parse error: #{op}"
         end
       }.to_set
     end
+  end
+
+  # Both arguments are alphabetically sorted color strings
+  def self.superset?(a, b)
+    b.each_char.all?{|c| a.include?(c)}
   end
 end
