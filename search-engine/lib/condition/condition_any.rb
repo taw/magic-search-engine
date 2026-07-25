@@ -68,6 +68,10 @@ class ConditionAny < ConditionOr
       @conds << ConditionIsKeywordsoup.new
     when "manland", "creatureland"
       @conds << ConditionIsManland.new
+    when "meldpart"
+      @conds << ConditionIsMeldpart.new
+    when "meldresult"
+      @conds << ConditionIsMeldresult.new
     when "multipart"
       @conds << ConditionIsMultipart.new
     when "painland"

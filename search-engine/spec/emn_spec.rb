@@ -50,6 +50,28 @@ describe "Eldrich Moon" do
     assert_search_equal "layout:meld", "is:meld"
   end
 
+  it "is:meldpart" do
+    assert_search_results "is:meldpart",
+      "Bruna, the Fading Light",
+      "Gisela, the Broken Blade",
+      "Graf Rats",
+      "Hanweir Battlements",
+      "Hanweir Garrison",
+      "Midnight Scavengers"
+  end
+
+  it "is:meldresult" do
+    assert_search_results "is:meldresult",
+      "Brisela, Voice of Nightmares",
+      "Chittering Host",
+      "Hanweir, the Writhing Township"
+  end
+
+  it "meld parts and results together are all meld cards" do
+    assert_search_equal "is:meldpart or is:meldresult", "is:meld"
+    assert_search_results "is:meldpart is:meldresult"
+  end
+
   it "is:primary" do
     assert_search_results "is:primary layout:meld",
       "Bruna, the Fading Light",
