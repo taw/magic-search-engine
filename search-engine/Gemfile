@@ -11,3 +11,7 @@ gem "memory_profiler", require: false, group: :test
 gem "fastimage"
 gem "calc"
 gem "optimist"
+
+# Demoted from default to bundled gem in Ruby 3.4, so it's no longer on the load
+# path under bundler. Conditional for the same reason as in frontend/Gemfile.
+gem "csv" if RUBY_VERSION >= "3.4"

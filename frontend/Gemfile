@@ -26,6 +26,21 @@ gem "net-smtp", require: false # Ruby 3.1 issue
 gem "concurrent-ruby", "1.3.4" # 1.3.5 has some dependency issues
 gem "ffi", "1.16.3" # 1.17 doesn't work on old ruby
 
+# Ruby 3.4 demoted these from default gems to bundled gems, so they're no longer
+# on the load path of a bundled app, but Rails 6.1 still requires them implicitly.
+# Must stay conditional: on older rubies the default gems already work, and asking
+# for them by name resolves to versions that need a newer ruby (drb 2.0.6 calls
+# ruby2_keywords, which 2.6 doesn't have).
+if RUBY_VERSION >= "3.4"
+  gem "mutex_m"
+  gem "drb"
+  gem "base64"
+  gem "bigdecimal"
+  gem "observer"
+  gem "abbrev"
+  gem "benchmark" # not a default gem from Ruby 4.0, warns under 3.4
+end
+
 # Use ActiveModel has_secure_password
 # gem "bcrypt", "~> 3.1.7"
 
