@@ -105,8 +105,9 @@ class QueryTokenizer
           rx = rx.gsub('\smm', '(?:-(?:X|\d+)\/-(?:X|\d+))')
           rx = rx.gsub('\smp', '(?:\{(?:[WUBRG]\/P|H)\})')
           rx = rx.gsub('\smh', '(?:\{(?:[WUBRGC2])\/(?:[WUBRGC])(?:\/P)?\})')
-          rx = rx.gsub('\smr', '(?:(?<smr>\{[WUBRGCXSPH0-9½∞\/]+\})\\\\k<smr>+)')
-          rx = rx.gsub('\sm', '(?:\{[WUBRGCXSPH0-9½∞\/]+\})')
+          # {P} is paw print, not a mana symbol - unlike scryfall we don't match it
+          rx = rx.gsub('\smr', '(?:(?<smr>\{(?!P\})[WUBRGCXSPH0-9½∞\/]+\})\\\\k<smr>+)')
+          rx = rx.gsub('\sm', '(?:\{(?!P\})[WUBRGCXSPH0-9½∞\/]+\})')
           rx = rx.gsub('\sc', '(?:\{[WUBRGP\/\d]*[WUBRG][WUBRGP\/\d]*\})')
           rx = rx.gsub('\ss', '(?:\{[^\}]+\})')
 

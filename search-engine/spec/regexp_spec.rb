@@ -116,17 +116,16 @@ describe "Regexp" do
     assert_search_include 'rulings:/\d{5,}/', "Bloodletter"
   end
 
-  # Just some scryfall compatibility
-  # TODO: this also copies scryfall bug where {P} matches as mana symbol even though it shouldn't (it's paw symbol)
+  # Compatibility with Scryfall regexp extensions (except {P} is fixed here)
   it "regexp extensions" do
     # Short-hand for any mana symbol
-    assert_search_equal 'o:/\sm/', 'o:/\{[WUBRGCXSPH0-9½∞\/]+\}/'
+    assert_search_equal 'o:/\sm/', 'o:/\{(?!P\})[WUBRGCXSPH0-9½∞\/]+\}/'
     # Short-hand for any colored mana symbol
     assert_search_equal 'o:/\sc/', 'o:/\{[WUBRGP\/\d]*[WUBRG][WUBRGP\/\d]*\}/'
     # Short-hand for any card symbol
     assert_search_equal 'o:/\ss/', 'o:/\{[^\}]+\}/'
     # Short-hand for any repeated mana symbol. For example, {G}{G} matches \smr
-    assert_search_equal 'o:/\smr/', 'o:/(?<smr>\{[WUBRGCXSPH0-9½∞\/]+\})\k<smr>+/'
+    assert_search_equal 'o:/\smr/', 'o:/(?<smr>\{(?!P\})[WUBRGCXSPH0-9½∞\/]+\})\k<smr>+/'
     # Short-hand for any hybrid card symbol. Note that monocolor Phyrexian symbols aren’t considered hybrid.
     assert_search_equal 'o:/\smh/', 'o:/\{(?:[WUBRGC2])\/(?:[WUBRGC])(?:\/P)?\}/'
     # Short-hand for any Phyrexian card symbol, e.g. {P}, {W/P}, or {G/W/P}.
@@ -146,5 +145,25 @@ describe "Regexp" do
       "Meeting of the Five",
       "Ramos, Dragon Engine",
       "The World Tree"
+  end
+
+  # Intentional scryfall incompatibility.
+  # WotC changed Phyrexian mana symbol from {P} to {H}, and
+  # made {P} be the paw print symbol.
+  # Scryfall never updated their regexps, so they still treat {P}
+  # as if it was a mana symbol.
+  # It's fixed here.
+  it "regexp extensions treat {P} as paw print, not as mana" do
+    # Only matches because of unrelated {5} in its Channelstorm cost
+    assert_search_results 'o:/\{P\}/ o:/\sm/',
+      "Blustering Barnyard"
+    # Repeated paw prints such as {P}{P} are not repeated mana symbols
+    assert_search_results 'o:/\{P\}\{P\}/ o:/\smr/'
+    assert_search_results 'o:/\{P\}/ o:/\sc/'
+    assert_search_results 'o:/\{P\}/ o:/\smp/'
+    # It's still a card symbol, just not a mana one
+    assert_search_equal 'o:/\{P\}/', 'o:/\{P\}/ o:/\ss/'
+    # And our generic Phyrexian mana symbol {H} is still mana
+    assert_search_include 'o:/\sm/ o:/\smp/', "Rage Extractor"
   end
 end
