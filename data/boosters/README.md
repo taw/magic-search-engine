@@ -25,7 +25,7 @@ If you are using a non-standard variant, you can add a `name:` parameter to the 
 
 ## Contents
 
-A booster YAML contains two core components: the `pack`, which lists what sheets constitute each slot of the booster; and the `sheets`, which detail which cards are available on each sheet. A third `queries` section is optional and can help reduce the overhead related to sheet queries. Here is a simple example file:
+A booster YAML contains two core components: the `pack`, which lists what sheets constitute each slot of the booster; and the `sheets`, which detail which cards are available on each sheet. A third `queries` section is optional and can help reduce the overhead related to sheet queries. A handful of other top-level keys are available, listed under [Top-level keys](#top-level-keys). Here is a simple example file:
 
 ```yaml
 # The top comment is where most information about the booster goes, including key
@@ -63,6 +63,28 @@ sheets:
       rate: 1
 ```
 
+### Top-level keys
+
+These are the only keys allowed at the top level of a booster file. Anything else is rejected by the indexer as a typo.
+
+| Key | Description |
+| --- | --- |
+| `pack` | The slots in the booster. See [Pack](#pack) |
+| `packs` | A list of alternative whole-pack layouts. See [Multiple pack layouts](#multiple-pack-layouts) |
+| `sheets` | The cards available on each sheet. See [Sheets](#sheets) |
+| `name` | Booster name, for variants outside the standard list. `{set_name}` is substituted |
+| `queries` | Re-usable query fragments. See [Queries](#queries) |
+| `filter` | Overrides the default filter applied to every `query`. See [Filter](#filter) |
+| `superfilter` | Applied to every `query` **and** every `rawquery`. See [Superfilter](#superfilter) |
+| `languages` | Overrides the set's language list, for boosters printed in fewer languages than the set |
+
+`languages` takes one language code, or several separated by commas:
+
+```yaml
+languages: en
+languages: fr, de
+```
+
 ### Pack
 
 `pack` is a mapping of sheet names to the number of times that slot appears. Sheets can be listed multiple times, or variable slots can create different booster variations.
@@ -89,6 +111,24 @@ There are some useful features of variable slots:
 
 The `chance` parameter correlates to the relative rarity of each version. So for common draft foils, which appear in 1/3 packs, the `common` sheet would have `chance: 2` and the `foil` sheet would have `chance: 1`. The total number of variations is 3, and 1 of those variations is the `foil` sheet.
 
+#### Multiple pack layouts
+
+Variable slots work well when a booster varies one slot at a time. When a booster is really several completely different packs sharing one product, use `packs` instead, which takes a list of whole pack layouts rather than a single one.
+
+This suits things like Jumpstart, where each pack is a themed deck. Example from [dmu-jumpstart.yaml](dmu-jumpstart.yaml):
+
+```yaml
+packs:
+- arcane_mischief: 17
+  arcane_mischief_foils: 2
+  rare_mythic_blue: 1
+- beast_territory: 17
+  beast_territory_foils: 2
+  rare_mythic_green: 1
+```
+
+Each entry can carry its own `chance` to make some layouts rarer than others. Without one, all layouts are equally likely. `pack` and `packs` can both appear in the same file, in which case their layouts are pooled.
+
 ### Queries
 
 The `queries` section allows you to pre-define a set of re-useable query tags. These tags can be used to simplify the text in the `sheets` section. A query is defined using the following syntax:
@@ -104,6 +144,10 @@ sheets:
     rawquery: "{retro_frame} rarity:mythic"
 ```
 
+`{set}` is always available without being defined, and expands to the set code from the file name. Prefer it over hardcoding the code, so files survive a set code change. Queries can reference other queries, as `{retro_frame}` does above.
+
+If you misspell a template name, the indexer warns about the unresolved template rather than silently searching for the literal text.
+
 ### Sheets
 
 `sheets` is a mapping that connects the sheet names to the cards that can appear on that sheet.
@@ -111,6 +155,49 @@ sheets:
 Sheets and subsheets can always include a `count` variable to assist in troubleshooting. This will warn the user if the number of cards returned by a query does not match the expected `count` value.
 
 Parent sheets can also include a `foil` boolean to indicate if the sheet is foil. You cannot mix foil/non-foil cards in the same sheet. To achieve this, use a [Variable slot](#variable-slots)
+
+Sheets can also be marked `etched: true` to record that the cards are etched foils. Currently this is just for documentation, and nothing uses this flag yet. An etched sheet still needs `foil: true` if its cards are foil. Example from [cmr-collector.yaml](cmr-collector.yaml):
+
+```yaml
+  etched_uncommon:
+    foil: true
+    etched: true
+    rawquery: "e:cmr is:etched (r:u or r:s) -is:reprint"
+```
+
+#### Sheet kinds
+
+By default, a slot draws one card from its sheet, with every card equally likely, and a booster never contains the same card twice from one sheet. Three booleans change that behaviour. **They are mutually exclusive** - setting more than one on a sheet is an error.
+
+##### Balanced
+
+`balanced: true` splits the sheet by color identity and draws so that the colors come out evenly, rather than letting chance clump them. This is how real commons slots work, so most `common` sheets in [common.yaml](common.yaml) set it.
+
+A balanced sheet needs enough slots in the pack to spread across five colors. The indexer warns if a balanced sheet is used in a slot of 6 cards or fewer, since that cannot be balanced in practice. Set `balanced: false` to opt a set out of a balanced common sheet it inherits from [common.yaml](common.yaml), as [ala-draft.yaml](ala-draft.yaml) does.
+
+##### Duplicates
+
+`duplicates: true` allows the same card to be drawn more than once from a single sheet. Old starter decks worked this way, since they were cut from print sheets with no dedup. Example from [2ed-starter.yaml](2ed-starter.yaml):
+
+```yaml
+  common_with_duplicates:
+    duplicates: true
+    code: "C"
+```
+
+##### Fixed
+
+`fixed: true` means the sheet isn't random at all - every card on it appears, every time. Use it for guaranteed contents rather than a random draw. Here `count` is not just a check: it must equal the number of cards on the sheet.
+
+Example from [one-compleat.yaml](one-compleat.yaml), where all 5 oil slick basics are always present:
+
+```yaml
+  oil_slick_basics_1:
+    fixed: true
+    rawquery: "e:one promo:oilslick t:basic"
+    count: 5
+    foil: true
+```
 
 #### Common sheets
 
@@ -120,7 +207,7 @@ Many sheets are predefined, and do not need to be specifically listed in the ind
 
 Simple sheets can be defined using a `query` tag. These queries only return standard-frame, core set cards from the set listed in the file name, and use the same formatting for the mtg.wtf search bar.
 
-Example from [war.yaml](war.yaml) that returns all core set uncommon planeswalkers:
+Example from [war-draft.yaml](war-draft.yaml) that returns all core set uncommon planeswalkers:
 
 ```yaml
   planeswalker_uncommon:
@@ -137,7 +224,7 @@ Example from [cmr-collector.yaml](cmr-collector.yaml) that returns uncommon or s
 ```yaml
   etched_uncommon:
     foil: true
-    rawquery: "e:cmr frame:etched (r:u or r:s) -is:reprint"
+    rawquery: "e:cmr is:etched (r:u or r:s) -is:reprint"
 ```
 
 #### Any
@@ -148,7 +235,7 @@ Sheets can use the `any` tag to combine different subsheets together. Each subsh
 
 By defining the `rate` for each sheet, you define the relative rarity of each card independent of the number of cards. Rare cards are often twice as common as mythic cards in the same sheet, so you can use `rate: 2` for the rare cards, and `rate: 1` for the mythic cards.
 
-Example from [dmu.yaml](dmu.yaml) to track the rare/mythic legendary cards:
+Example from [dmu-draft.yaml](dmu-draft.yaml) to track the rare/mythic legendary cards:
 
 ```yaml
   legendary_rare_mythic:
@@ -163,7 +250,7 @@ Example from [dmu.yaml](dmu.yaml) to track the rare/mythic legendary cards:
 
 By defining the `chance` for each sheet, you define the relative rarity of that subsheet as a whole. Each card within that sheet is adjusted to match the total chance. You can also use math expressions to determine the chance of a specific sheet.
 
-Example from [tsr.yaml](tsr.yaml) to include the timeshifted cards in the foil sheet (the `use` parameter will be explained later):
+Example from [tsr-draft.yaml](tsr-draft.yaml) to include the timeshifted cards in the foil sheet (the `use` parameter will be explained later):
 
 ```yaml
   foil:
@@ -183,7 +270,7 @@ Example from [tsr.yaml](tsr.yaml) to include the timeshifted cards in the foil s
 
 Sheets can `use` a previously defined sheet to replicate all aspects of that sheet in a new context. Often this is used as a subsheet in a larger sheet, but can also replicate a previous query using new context.
 
-Example from [afr.yaml](afr.yaml) to define the rare/mythic slot with showcase cards:
+Example from [afr-draft.yaml](afr-draft.yaml) to define the rare/mythic slot with showcase cards:
 
 ```yaml
   rare_mythic_with_showcase:
@@ -231,6 +318,36 @@ An example from [znr-set.yaml](znr-set.yaml) to define The List cards:
   the_list:
     set: plst
     code: "ZNR"
+```
+
+#### Deck
+
+Where `set`/`code` pulls from a print sheet document, `deck` pulls from a decklist already in the card data. This is how Jumpstart-style products are built, where a pack is simply a preconstructed deck.
+
+The value is `{set_code}/{deck_name}`, and the name must match the deck exactly. Because a sheet cannot mix foil and non-foil, a deck that contains both is referenced twice, once per foiling. Example from [dmu-jumpstart.yaml](dmu-jumpstart.yaml):
+
+```yaml
+  arcane_mischief:
+    deck: "dmu/Arcane Mischief"
+    count: 17
+  arcane_mischief_foils:
+    deck: "dmu/Arcane Mischief"
+    count: 2
+    foil: true
+```
+
+Deck sheets always deliver their full contents, so `count` must match the number of cards of that foiling in the deck. They do not support `balanced` or `duplicates`.
+
+#### Superfilter
+
+`filter` only applies to `query`, which is what makes `rawquery` useful for escaping it. A `superfilter` applies to both, so use it for exclusions that must hold across the entire file no matter how a sheet is written.
+
+This is only used as last resort.
+
+Example from [ecl-play.yaml](ecl-play.yaml), keeping the backs of reversible cards out of every sheet:
+
+```yaml
+superfilter: "-is:reversibleback"
 ```
 
 #### Queries to avoid

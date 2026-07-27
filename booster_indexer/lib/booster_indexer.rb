@@ -14,17 +14,56 @@ class Hash
   end
 end
 
+# Typo protection. Unlike data problems (missing cards, bad counts), which are
+# routine during spoiler season, an unknown key is always an authoring mistake,
+# so it's worth failing on.
+module ValidateKeys
+  TOP_LEVEL_KEYS = %W[
+    name pack packs sheets queries filter superfilter languages
+  ].to_set
+
+  SHEET_KEYS = %W[
+    query rawquery use any set code deck
+    filter foil etched balanced fixed duplicates
+    count chance rate
+  ].to_set
+
+  def validate_keys(keys, allowed, where)
+    unknown = keys.to_set - allowed
+    return if unknown.empty?
+    raise "Unknown #{where}: #{unknown.sort.join(", ")} (known keys: #{allowed.sort.join(", ")})"
+  end
+
+  # Subsheets under `any` take the same keys as their parent
+  def validate_sheet_keys(sheet, where)
+    return unless sheet.is_a?(Hash)
+    validate_keys(sheet.keys, SHEET_KEYS, "key in #{where}")
+    sheet["any"].each_with_index do |subsheet, i|
+      validate_sheet_keys(subsheet, "#{where} any[#{i}]")
+    end if sheet["any"].is_a?(Array)
+  end
+end
+
 class PreprocessBooster
+  include ValidateKeys
+
   def initialize(indexer, code, data)
     @indexer = indexer
     @code = code
     @set_code, @variant = code.split("-", 2)
     @variant ||= "default"
+    validate_keys(data.keys, TOP_LEVEL_KEYS, "key in #{code}.yaml")
+    (data["sheets"] || {}).each do |sheet_name, sheet|
+      validate_sheet_keys(sheet, "#{code}.yaml sheet #{sheet_name}")
+    end
     @data = data
     @superfilter = @data["superfilter"] || ""
     @filter = @data["filter"] || "e:#{@set_code} is:baseset"
     @name = data["name"]
-    @languages = data.delete("languages")
+    # "en" or "fr, de", normalized to a list to match set languages
+    languages = data.delete("languages")
+    languages = languages.split(",").map(&:strip) if languages.is_a?(String)
+    @languages = languages
   end
 
   def common
@@ -255,6 +294,8 @@ class PreprocessBooster
 end
 
 class BoosterIndexer
+  include ValidateKeys
+
   ROOT = Pathname(__dir__).parent.parent
   BOOSTER_DATA_ROOT = ROOT + "data/boosters"
   BOOSTER_INDEX_PATH = ROOT + "index/booster_index.json"
@@ -270,7 +311,11 @@ class BoosterIndexer
     BOOSTER_DATA_ROOT.glob("*.yaml").each do |path|
       basename = path.basename(".yaml").to_s.delete("_")
       if basename == "common"
+        # common.yaml is a bare sheet map, with no top level keys of its own
         @common = YAML.load_file(path)
+        @common.each do |sheet_name, sheet|
+          validate_sheet_keys(sheet, "common.yaml sheet #{sheet_name}")
+        end
       else
         @boosters[basename] = YAML.load_file(path)
       end
