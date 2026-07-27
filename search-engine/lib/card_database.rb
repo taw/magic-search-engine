@@ -30,14 +30,6 @@ require_relative "unknown_card"
 require_relative "user_deck_parser"
 require_relative "weighted_pack"
 
-# Backport from >=2.4 to 2.3
-module Enumerable
-  def sum(accumulator = 0, &block)
-    values = block_given? ? map(&block) : self
-    values.inject(accumulator, :+)
-  end unless method_defined? :sum
-end
-
 class String
   LIGATURES = {"Æ" => "Ae", "æ" => "ae", "Œ" => "Oe", "œ" => "oe"}.freeze
   LIGATURES_RX = /[ÆæŒœ]/
