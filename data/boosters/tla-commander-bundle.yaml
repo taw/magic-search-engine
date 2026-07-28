@@ -1,0 +1,17 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-avatar-the-last-airbender
+# The Commander's Bundle includes "5 Non-foil promo cards. Three (3) of these
+# promo cards are the same in each Commander's Bundle." The three fixed staples
+# are Arcane Signet, Sol Ring and Swiftfoot Boots (TLE #315-317); the other two
+# are drawn from the ten tutor / free-spell reprints (TLE #305-314). All promos
+# are non-foil only.
+name: "{set_name} Commander's Bundle Promos"
+pack:
+  fixed_staple: 3
+  reprint: 2
+sheets:
+  fixed_staple:
+    rawquery: "e:tle number:315-317"
+    count: 3
+  reprint:
+    rawquery: "e:tle number:305-314"
+    count: 10
