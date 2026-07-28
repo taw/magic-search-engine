@@ -1,4 +1,8 @@
 # Data from https://magic.gg/news/streets-of-new-capenna-prerelease-primer
+# Languages, per https://wpn.wizards.com/en/news/streets-of-new-capenna-preview-retail-guide:
+# "Prerelease Packs ... Languages available: English, Chinese (Simplified), German, French, Italian, Spanish, Japanese, Portuguese, Russian"
+languages: cs, de, en, fr, it, jp, pt, ru, sp
+
 name: "{set_name} Seeded Prerelease Pack Brokers"
 filter: "e:{set} id<=bant (w:Brokers or -w:*) is:baseset"
 pack:

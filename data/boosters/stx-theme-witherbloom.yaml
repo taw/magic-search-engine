@@ -1,4 +1,8 @@
 # Data from youtube, e.g. https://www.youtube.com/watch?v=gnq3xpi0qWs&ab_channel=BadBoyGaming
+# Languages, per https://wpn.wizards.com/en/news/whats-inside-each-strixhaven-product:
+# "Strixhaven Theme Boosters are available in English, French, and German."
+languages: de, en, fr
+
 name: "{set_name} Theme Booster Witherbloom"
 filter: "e:{set} id<=golgari (is:baseset or promo:themepack) (w:Witherbloom or -w:*)"
 pack:

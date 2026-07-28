@@ -5,6 +5,11 @@
 # We can make this deviation go on rares on uncommons, either way it's too tiny to notice
 # Japanese planeswalkers appear at same rate as regular planeswalkers
 # per https://magic.wizards.com/en/news/announcements/japanese-alternate-art-planeswalkers-2019-04-22
+# Languages, per https://magic.wizards.com/en/news/announcements/japanese-alternate-art-planeswalkers-2019-04-22:
+# "The alternate-art planeswalkers have only been printed in Japanese, but will appear in promo packs around the world."
+# This file models the Japanese-language booster; war-draft is the rest, but no official source lists its languages.
+languages: jp
+
 filter: "e:war number:1-264"
 pack:
 - basic: 1

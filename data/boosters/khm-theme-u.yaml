@@ -1,4 +1,8 @@
 # data collected from youtube, e.g. https://www.youtube.com/watch?v=sUTpE4cZEM4&ab_channel=TolarianCommunityCollege
+# Languages, per https://wpn.wizards.com/en/news/inside-each-kaldheim-product:
+# "Kaldheim Theme Boosters are available in English, German, and French."
+languages: de, en, fr
+
 name: "{set_name} Theme Booster Blue"
 filter: "e:{set} id<=u (is:baseset or promo:themepack)"
 pack:

@@ -6,6 +6,10 @@
 # Seeded via the guild idiom -- cards in the college's colors carrying the college watermark
 # or no watermark, excluding generic colorless. The nonfoil rare slot and the promo both
 # use the shared rare_mythic weighting (2:1 rare:mythic).
+# Languages, per https://wpn.wizards.com/en/news/whats-inside-each-strixhaven-product:
+# "Strixhaven Prerelease Packs are available in English, Chinese Simplified, Chinese Traditional, French, German, Italian, Japanese, Korean, Portuguese, Russian, and Spanish."
+languages: cs, ct, de, en, fr, it, jp, kr, pt, ru, sp
+
 name: "{set_name} Seeded Prerelease Booster Prismari"
 filter: "e:stx id<=ur is:baseset (w:prismari or -w:*) -(c:c -w:*)"
 pack:

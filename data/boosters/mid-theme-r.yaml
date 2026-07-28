@@ -1,4 +1,8 @@
 # data collected from youtube, e.g. https://www.youtube.com/watch?v=sUTpE4cZEM4&ab_channel=TolarianCommunityCollege
+# Languages, per https://wpn.wizards.com/en/news/look-inside-innistrad-midnight-hunt-products:
+# "Theme Boosters are available in English only."
+languages: en
+
 name: "{set_name} Theme Booster Red"
 filter: "e:{set} id<=r (is:baseset or promo:themepack)"
 pack:

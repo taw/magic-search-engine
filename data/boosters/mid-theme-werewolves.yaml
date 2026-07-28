@@ -1,4 +1,8 @@
 # data collected from youtube, e.g. https://www.youtube.com/watch?v=sUTpE4cZEM4&ab_channel=TolarianCommunityCollege
+# Languages, per https://wpn.wizards.com/en/news/look-inside-innistrad-midnight-hunt-products:
+# "Theme Boosters are available in English only."
+languages: en
+
 name: "{set_name} Theme Booster Werewolves"
 filter: "e:{set} (is:baseset or promo:themepack) (o:wolf or o:werewolf or t:wolf or t:werewolf or (id<=gruul (t:instant or t:sorcery or t:artifact)))"
 pack:
