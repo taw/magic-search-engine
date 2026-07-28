@@ -14,7 +14,7 @@ File names should follow the following formatting:
   - `{set_code}-prerelease.yaml` - prerelease promo pack
   - `{set_code}-arena.yaml` - arena booster
   - `{set_code}-mtgo.yaml` - magic online booster
-- deprecated variants:
+- common historical variants:
   - `{set_code}-draft.yaml` - draft booster
   - `{set_code}-set.yaml` - set booster
   - `{set_code}-six.yaml` - six card booster
@@ -76,14 +76,7 @@ These are the only keys allowed at the top level of a booster file. Anything els
 | `queries` | Re-usable query fragments. See [Queries](#queries) |
 | `filter` | Overrides the default filter applied to every `query`. See [Filter](#filter) |
 | `superfilter` | Applied to every `query` **and** every `rawquery`. See [Superfilter](#superfilter) |
-| `languages` | Overrides the set's language list, for boosters printed in fewer languages than the set |
-
-`languages` takes one language code, or several separated by commas:
-
-```yaml
-languages: en
-languages: fr, de
-```
+| `languages` | List of languages the booster is available in. |
 
 ### Pack
 
@@ -349,6 +342,17 @@ Example from [ecl-play.yaml](ecl-play.yaml), keeping the backs of reversible car
 ```yaml
 superfilter: "-is:reversibleback"
 ```
+
+### Languages
+
+`languages` takes one language code, or several separated by commas:
+
+```yaml
+languages: en
+languages: fr, de
+```
+
+Boosters that mix multiple langugaes in the same pack (for example Kaladesh came out in 11 languages, but Masterpieces were always in English) only mark their main one.
 
 #### Queries to avoid
 
