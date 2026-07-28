@@ -142,6 +142,12 @@ class PackFactory
     pack.code = booster_code
     pack.name = data["name"]&.gsub("{set_name}", set.name) || booster_code
     pack.languages = data["languages"] || set.languages
+    # Sanity check against mtgjson - a booster can be printed in fewer languages
+    # than its set, never in more. Report only, as mtgjson set data changes too.
+    extra_languages = pack.languages - set.languages
+    unless extra_languages.empty?
+      warn "#{booster_code}: languages #{extra_languages.join(", ")} not printed for set #{set_code} (#{set.languages.join(", ")})"
+    end
     pack
   end
 end
