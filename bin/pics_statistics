@@ -48,7 +48,7 @@ class PrintPicsStatistics
   def same_lq_hq
     @same_lq_hq ||= begin
       db.printings.select{|c|
-        c.path_lq.exist? and c.path_hq.exist? and c.path_lq.size == c.path_hq.size and c.path_lq.read == c.path_lq.read
+        c.path_lq.exist? and c.path_hq.exist? and c.path_lq.size == c.path_hq.size and c.path_lq.read == c.path_hq.read
       }
     end
   end

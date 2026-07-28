@@ -56,7 +56,7 @@ class GenerateSetRedemptionDecklists
   end
 
   def foil_query
-    DB.search("e:#{@set_code} is:baseset game:mtgo #{@query} is:nonfoil").printings
+    DB.search("e:#{@set_code} is:baseset game:mtgo #{@query} is:foil").printings
   end
 
   def regular_number_range
