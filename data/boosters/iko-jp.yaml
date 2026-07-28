@@ -3,6 +3,12 @@
 # gainlands x6, basics x4
 # U and R sheets have showcases, but not on Arena
 # Godzilla treatments exist, so default sheets are fine
+# Languages, per https://magic.wizards.com/en/news/card-preview/collecting-ikoria-2020-04-02:
+# "In Japanese boosters, there are 18 different box topper cards in foil (three found
+# only in Japanese language). In all other languages there are 15 box toppers."
+# This file models the Japanese-language booster.
+languages: jp
+
 pack:
   basic_or_gainland: 1
   common_with_showcase: 9
