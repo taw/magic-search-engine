@@ -918,7 +918,7 @@ describe "Banlist" do
       format_class.new.ban_events.each do |_, _, cards|
         cards.each do |card|
           name = card[:name]
-          db.has_card_named?(name).should eq(true), "Card named `#{name}' should exist"
+          db.has_card_named?(name).should eq(true), "Card named `#{name}' in banlist for #{format_class} is a typo"
         end
       end
     end

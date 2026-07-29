@@ -602,4 +602,12 @@ BanList.for_format("duel commander") do
     "Najeela, the Blade-Blossom" => "legal",
     "Winota, Joiner of Forces" => "legal",
   )
+
+  change(
+    "2026-07-27",
+    "https://www.duelcommander.org/announcements/2026/07/27/",
+    "Spider-Man 2099" => "restricted",
+    "Lumra, Bellow of the Woods" => "restricted",
+    "The Fantasticar" => "restricted",
+  )
 end

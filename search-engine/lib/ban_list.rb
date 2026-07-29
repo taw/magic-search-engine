@@ -1,6 +1,8 @@
 class BanList
   START = Date.parse("1900-01-01")
 
+  attr_reader :format
+
   def initialize(format)
     @format = format
     @events = []
@@ -50,6 +52,10 @@ class BanList
     @events.map{|d,_,_| d}
   end
 
+  def to_s
+    "BanList[#{@format}]"
+  end
+
   private
 
   def format_start(url, legalities)
@@ -76,10 +82,6 @@ class BanList
       raise "#{self} for #{card_name} starts with legal, which is redundant" if status[0] == "legal"
       raise "#{self} for #{card_name} has transition to same status" if status.each_cons(2).any?{|before, after| before==after}
     end
-  end
-
-  def to_s
-    "BanList[#{@format}]"
   end
 
   class << self
