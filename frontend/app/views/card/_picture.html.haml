@@ -3,7 +3,7 @@
   - card = card.main_front
 - else
   - foil = false
-- if card_picture_path(card)
+- if card.image_path
   .card_picture_container
     - if card.layout == "flip"
       - if card.secondary?

@@ -63,6 +63,8 @@ class CardPrinting
 
   # Set by CardDatabase initialization
   attr_accessor :others, :artist, :default_sort_index, :partner, :in_boosters
+  # Set by the frontend
+  attr_accessor :image_path
 
   def initialize(card, set, data)
     @card = card

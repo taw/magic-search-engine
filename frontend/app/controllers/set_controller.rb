@@ -48,7 +48,7 @@ class SetController < ApplicationController
     @cards = @set
       .printings
       .sort_by{|cp| [cp.name, cp.number_i, cp.number]}
-      .select{|cp| !ApplicationHelper.card_picture_path(cp) }
+      .reject(&:image_path)
 
     render :verify_scans
   end

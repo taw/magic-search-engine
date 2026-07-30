@@ -39,8 +39,7 @@ class ApiController < ApplicationController
   private
 
   def choose_best_printing(printings)
-    best_printing = printings.find{|cp| ApplicationHelper.card_picture_path(cp) } || printings[0]
-    best_printing
+    printings.find(&:image_path) || printings[0]
   end
 
   def card_as_json(card)
@@ -52,7 +51,7 @@ class ApiController < ApplicationController
       power: card.power,
       toughness: card.toughness,
       loyalty: card.loyalty,
-      image_path: helpers.card_picture_path(card),
+      image_path: card.image_path,
       card_path: helpers.url_for_card(card),
     }
   end
