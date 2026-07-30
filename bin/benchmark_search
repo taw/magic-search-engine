@@ -1,0 +1,111 @@
+#!/usr/bin/env ruby
+
+# Benchmark the search pipeline the way CardController#index actually runs it:
+#   parse -> search -> sort -> group -> choose_best_printing -> paginate
+# so we can see which stage is eating the server.
+#
+# Image paths are precomputed at app boot (see frontend/config/boot.rb), so this
+# does the same up front and the "best" stage measures only the pick, not I/O.
+#
+# Usage:
+#   bin/benchmark_search                      # built-in set of queries seen in production
+#   bin/benchmark_search "sort:rand" "is:foil"
+#   bin/benchmark_search --page 1319 "in:paper"
+#   bin/benchmark_search --repeat 3 --queries-from queries.txt
+
+require_relative "../search-engine/lib/card_database"
+require "optparse"
+require "benchmark"
+require "pathname"
+
+options = { page: 1, per_page: 25, repeat: 1, file: nil }
+OptionParser.new do |o|
+  o.banner = "Usage: benchmark_search [options] [QUERY...]"
+  o.on("--page N", Integer) { |v| options[:page] = v }
+  o.on("--per-page N", Integer) { |v| options[:per_page] = v }
+  o.on("--repeat N", Integer) { |v| options[:repeat] = v }
+  o.on("--queries-from FILE", "one query per line") { |v| options[:file] = v }
+end.parse!
+
+DEFAULT_QUERIES = [
+  "sort:rand",
+  "sort:random",
+  "is:foil",
+  "in:paper",
+  "layout:normal",
+  "sort:-number",
+  "sort:name",
+  "st:booster",
+  "devotion<uuu",
+  "goblin",
+  "e:war",
+  "t:creature c:r",
+]
+
+queries = ARGV.dup
+queries += File.readlines(options[:file]).map(&:strip).reject(&:empty?) if options[:file]
+queries = DEFAULT_QUERIES if queries.empty?
+
+t0 = Time.now
+db = CardDatabase.load
+$stderr.puts "Loaded db in #{format('%.1f', Time.now - t0)}s: #{db.printings.size} printings, #{db.cards.size} cards"
+
+# Same precomputation the frontend does at boot
+t0 = Time.now
+public_root = Pathname(__dir__) + "../frontend/public"
+db.printings.each do |card|
+  path_hq = "cards_hq/#{card.set_code}/#{card.number}.png"
+  path_lq = "cards/#{card.set_code}/#{card.number}.png"
+  if (public_root + path_hq).exist?
+    card.image_path = "/#{path_hq}"
+  elsif (public_root + path_lq).exist?
+    card.image_path = "/#{path_lq}"
+  end
+end
+$stderr.puts "Precomputed image paths in #{format('%.1f', Time.now - t0)}s: " \
+             "#{db.printings.count(&:image_path)} printings have one"
+
+def choose_best_printing(printings)
+  best = printings.find(&:image_path) || printings[0]
+  [best, printings]
+end
+
+Row = Struct.new(:q, :results, :parse, :search, :group, :best, :paginate, :total)
+
+def ms(t) = format("%8.1f", t * 1000)
+
+rows = []
+queries.each do |q|
+  options[:repeat].times do
+    t_parse = t_search = t_group = t_best = t_page = 0.0
+    query = nil
+    results = nil
+    groups = nil
+    cards = nil
+
+    t_parse = Benchmark.realtime { query = Query.new(q) }
+    t_search = Benchmark.realtime { results = db.search(query) }
+    t_group = Benchmark.realtime { groups = results.card_groups }
+    t_best = Benchmark.realtime { cards = groups.map { |ps| choose_best_printing(ps) } }
+    t_page = Benchmark.realtime {
+      cards.each_slice(options[:per_page]).first(options[:page]).last
+    }
+
+    rows << Row.new(q, results.size, t_parse, t_search, t_group, t_best, t_page,
+                    t_parse + t_search + t_group + t_best + t_page)
+  end
+end
+
+puts
+printf("%-24s %9s %8s %8s %8s %9s %8s %9s\n",
+       "query", "results", "parse", "search", "group", "best", "page", "TOTAL")
+puts "-" * 92
+rows.sort_by { |r| -r.total }.each do |r|
+  printf("%-24s %9d %s %s %s %s %s %s\n",
+         r.q[0, 24], r.results, ms(r.parse), ms(r.search), ms(r.group),
+         ms(r.best), ms(r.paginate), ms(r.total))
+end
+puts "-" * 92
+printf("%-24s %9s %s %s %s %s %s %s\n", "TOTAL", "",
+       ms(rows.sum(&:parse)), ms(rows.sum(&:search)), ms(rows.sum(&:group)),
+       ms(rows.sum(&:best)), ms(rows.sum(&:paginate)), ms(rows.sum(&:total)))

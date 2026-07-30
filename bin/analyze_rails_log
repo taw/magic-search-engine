@@ -1,0 +1,459 @@
+#!/usr/bin/env ruby
+
+# Parse a Rails production log and report on traffic and slowness.
+#
+# Usage:
+#   bin/analyze_rails_log production.log            # full report
+#   bin/analyze_rails_log production.log --top 40   # more rows per table
+#   bin/analyze_rails_log production.log --slow 5000 --dump-slow
+#
+# Requests are correlated by the [request-id] tag Rails puts on every line.
+
+require "json"
+require "optparse"
+require "time"
+require "uri"
+require "cgi"
+
+class RequestRecord
+  attr_accessor :id, :started_at, :verb, :path, :ip, :controller, :action,
+                :format, :status, :duration, :view_time, :db_time, :allocations,
+                :redirected, :user_agent, :cache, :results, :stages
+
+  def initialize(id)
+    @id = id
+    @stages = {}
+  end
+
+  # Crude bot classification from the user agent, good enough to separate
+  # "someone is browsing the site" from "something is crawling it".
+  BOTS = /bot\b|bot\/|spider|crawl|slurp|bingpreview|headless|python-requests|
+          curl\/|wget|scrapy|go-http-client|java\/|okhttp|libwww|axios|http_get/xi
+  BROWSERS = /Mozilla|Safari|Chrome|Firefox|Edg\//i
+
+  def client_kind
+    return "unknown (no UA)" if user_agent.nil? || user_agent.empty?
+    return named_bot if user_agent =~ BOTS
+    return "browser" if user_agent =~ BROWSERS
+    "other"
+  end
+
+  def named_bot
+    n = user_agent[/([A-Za-z0-9_.-]*(?:bot|spider|crawler|slurp|scrapy|requests|curl|wget)[A-Za-z0-9_.-]*)/i]
+    n ? n.downcase : "bot"
+  end
+
+  def endpoint
+    controller && action ? "#{controller}##{action}" : "?"
+  end
+
+  def complete?
+    !duration.nil?
+  end
+
+  # Query string params, for search traffic analysis
+  def query_params
+    return @query_params if defined?(@query_params)
+    @query_params =
+      if path && path.include?("?")
+        CGI.parse(path.split("?", 2)[1]) rescue {}
+      else
+        {}
+      end
+  end
+
+  def search_query
+    (query_params["q"] || []).first
+  end
+end
+
+class LogAnalysis
+  LINE = /
+    \A[A-Z],\s\[(?<ts>[^\s\]]+)\s\#(?<pid>\d+)\]\s+(?<sev>\w+)\s--\s:\s
+    (?:\[(?<rid>[0-9a-f-]+)\]\s?)?
+    (?<msg>.*)
+  /xm
+
+  attr_reader :requests, :unparsed, :errors, :pids
+
+  def initialize
+    @requests = {}
+    @unparsed = 0
+    @errors = []
+    @pids = Hash.new(0)
+    @orphan_completions = 0
+  end
+
+  def parse_file(path)
+    File.foreach(path) do |line|
+      m = LINE.match(line)
+      unless m
+        @unparsed += 1
+        next
+      end
+      @pids[m[:pid]] += 1
+      rid = m[:rid]
+      next unless rid
+      handle(rid, m[:msg], m[:ts], m[:sev])
+    end
+    self
+  end
+
+  private
+
+  def req(rid)
+    @requests[rid] ||= RequestRecord.new(rid)
+  end
+
+  # key=value key="quoted value" ...
+  FIELD = /(?<k>[\w.]+)=(?:"(?<qv>(?:[^"\\]|\\.)*)"|(?<v>\S*))/
+
+  def apply_metrics(r, fields)
+    fields.scan(FIELD) do
+      k = $~[:k]
+      v = $~[:qv] ? $~[:qv].gsub(/\\(.)/, '\1') : $~[:v]
+      case k
+      when "ua" then r.user_agent = v
+      when "ip" then r.ip ||= v
+      when "path" then r.path ||= v
+      when "cache" then r.cache = v
+      when "results" then r.results = v.to_i
+      when "status" then r.status ||= v.to_i
+      when /\At\.(.+)/ then r.stages[$1] = v.to_i
+      end
+    end
+  end
+
+  def handle(rid, msg, ts, sev)
+    case msg
+    when /\AStarted (?<verb>[A-Z]+) "(?<path>[^"]*)" for (?<ip>\S+) at /
+      r = req(rid)
+      r.started_at = Time.parse(ts) rescue nil
+      r.verb = $~[:verb]
+      r.path = $~[:path]
+      r.ip = $~[:ip]
+    when /\AProcessing by (?<ctrl>[\w:]+)#(?<action>\w+) as (?<fmt>\S+)/
+      r = req(rid)
+      r.controller = $~[:ctrl]
+      r.action = $~[:action]
+      r.format = $~[:fmt]
+    when /\ARedirected to /
+      req(rid).redirected = true
+    when /\AMETRICS (?<fields>.*)/
+      apply_metrics(req(rid), $~[:fields])
+    when /\ASLOW /
+      # duplicate of METRICS, already counted
+    when /\APAGINATED .* BY USERAGENT: (?<ua>.*)/
+      # older log format, before RequestMetrics
+      req(rid).user_agent = $~[:ua].strip
+    when /\ACompleted (?<status>\d+) .* in (?<ms>\d+)ms(?<rest>.*)/
+      r = req(rid)
+      @orphan_completions += 1 unless r.path
+      r.status = $~[:status].to_i
+      r.duration = $~[:ms].to_i
+      rest = $~[:rest]
+      r.view_time = $1.to_f if rest =~ /Views: ([\d.]+)ms/
+      r.db_time = $1.to_f if rest =~ /ActiveRecord: ([\d.]+)ms/
+      r.allocations = $1.to_i if rest =~ /Allocations: (\d+)/
+    else
+      if sev != "INFO" || msg =~ /\A\s*\w*Error|\A\s*Errno|Exception/
+        @errors << [rid, msg.strip[0, 200]]
+      end
+    end
+  end
+end
+
+# ---------------------------------------------------------------- reporting
+
+class Report
+  def initialize(reqs, top: 20)
+    @reqs = reqs
+    @top = top
+  end
+
+  def pct(v, total)
+    total.zero? ? "0.0%" : format("%.1f%%", 100.0 * v / total)
+  end
+
+  def fmt_ms(ms)
+    return "-" if ms.nil?
+    ms >= 1000 ? format("%.1fs", ms / 1000.0) : format("%dms", ms.round)
+  end
+
+  def quantile(sorted, q)
+    return nil if sorted.empty?
+    sorted[[(sorted.size * q).ceil - 1, 0].max]
+  end
+
+  def table(title, rows, headers)
+    puts
+    puts "=== #{title} ==="
+    return puts("  (none)") if rows.empty?
+    widths = headers.each_with_index.map { |h, i|
+      [h.length, *rows.map { |r| r[i].to_s.length }].max
+    }
+    fmt = widths.each_with_index.map { |w, i| i.zero? ? "%-#{w}s" : "%#{w}s" }.join("  ")
+    puts "  " + format(fmt, *headers)
+    puts "  " + widths.map { |w| "-" * w }.join("  ")
+    rows.each { |r| puts "  " + format(fmt, *r.map(&:to_s)) }
+  end
+
+  # group -> aggregate timing stats
+  def stats_for(groups)
+    groups.map do |key, rs|
+      durs = rs.map(&:duration).compact.sort
+      total = durs.sum
+      {
+        key: key,
+        count: rs.size,
+        total_ms: total,
+        mean: durs.empty? ? 0 : total.to_f / durs.size,
+        p50: quantile(durs, 0.50),
+        p95: quantile(durs, 0.95),
+        p99: quantile(durs, 0.99),
+        max: durs.last,
+      }
+    end
+  end
+
+  def timing_table(title, groups, total_time)
+    rows = stats_for(groups).sort_by { |s| -s[:total_ms] }.first(@top).map do |s|
+      [s[:key], s[:count], fmt_ms(s[:total_ms]), pct(s[:total_ms], total_time),
+       fmt_ms(s[:mean]), fmt_ms(s[:p50]), fmt_ms(s[:p95]), fmt_ms(s[:p99]), fmt_ms(s[:max])]
+    end
+    table(title, rows, ["key", "count", "total", "%time", "mean", "p50", "p95", "p99", "max"])
+  end
+
+  def run
+    done = @reqs.select(&:complete?)
+    total_time = done.sum { |r| r.duration.to_i }
+
+    overview(done, total_time)
+    timing_table("Time by endpoint", done.group_by(&:endpoint), total_time)
+    timing_table("Time by format", done.group_by { |r| r.format || "?" }, total_time)
+    clients_by_kind(done, total_time)
+    stage_breakdown(done)
+    cache_effectiveness(done)
+    slowest(done)
+    search_queries(done, total_time)
+    heavy_clients(done, total_time)
+    status_codes(done)
+    concurrency(done)
+  end
+
+  # Needs METRICS lines (RequestMetrics concern); silently skipped on old logs.
+  def clients_by_kind(done, total_time)
+    with_ua = done.select(&:user_agent)
+    return if with_ua.empty?
+    puts
+    puts "=== User agents known for #{with_ua.size}/#{done.size} requests ==="
+    timing_table("Time by client kind", with_ua.group_by(&:client_kind), total_time)
+    rows = stats_for(with_ua.group_by { |r| truncate(r.user_agent, 70) })
+           .sort_by { |s| -s[:total_ms] }.first(@top)
+           .map { |s| [s[:key], s[:count], fmt_ms(s[:total_ms]), pct(s[:total_ms], total_time), fmt_ms(s[:mean])] }
+    table("Heaviest user agents", rows, ["ua", "count", "total", "%time", "mean"])
+  end
+
+  def stage_breakdown(done)
+    staged = done.reject { |r| r.stages.empty? }
+    return if staged.empty?
+    names = staged.flat_map { |r| r.stages.keys }.uniq
+    rows = names.map { |n|
+      rs = staged.select { |r| r.stages.key?(n) }
+      t = rs.sum { |r| r.stages[n] }
+      [n, rs.size, fmt_ms(t), fmt_ms(t.to_f / rs.size), fmt_ms(rs.map { |r| r.stages[n] }.max)]
+    }.sort_by { |r| r[1] }
+    measured = staged.sum { |r| r.stages.values.sum }
+    total = staged.sum(&:duration)
+    table("Where time goes inside instrumented actions", rows, ["stage", "n", "total", "mean", "max"])
+    puts "  unaccounted (routing, views, framework): #{fmt_ms(total - measured)} of #{fmt_ms(total)}"
+  end
+
+  def cache_effectiveness(done)
+    cached = done.select(&:cache)
+    return if cached.empty?
+    rows = cached.group_by(&:cache).map { |k, rs|
+      [k, rs.size, pct(rs.size, cached.size), fmt_ms(rs.sum(&:duration)),
+       fmt_ms(rs.sum(&:duration).to_f / rs.size)]
+    }
+    table("Search cache", rows, ["", "count", "%", "total", "mean"])
+  end
+
+  def overview(done, total_time)
+    durs = done.map(&:duration).sort
+    times = done.map(&:started_at).compact.sort
+    span = times.empty? ? 0 : times.last - times.first
+    puts "=== Overview ==="
+    puts "  requests completed : #{done.size}"
+    if span > 0
+      puts "  time span          : #{times.first} .. #{times.last} (#{format('%.1f', span / 60)} min)"
+      puts "  request rate       : #{format('%.1f', done.size / span)} req/s"
+      puts "  server busy-time   : #{format('%.1f', total_time / 1000.0)}s of wall #{format('%.1f', span)}s " \
+           "(#{format('%.2f', total_time / 1000.0 / span)}x = effective concurrent workers)"
+    end
+    puts "  latency mean/p50/p90/p95/p99/max : " +
+         [durs.sum.to_f / [durs.size, 1].max, quantile(durs, 0.5), quantile(durs, 0.9),
+          quantile(durs, 0.95), quantile(durs, 0.99), durs.last].map { |v| fmt_ms(v) }.join(" / ")
+    slow = done.count { |r| r.duration >= 1000 }
+    vslow = done.count { |r| r.duration >= 10_000 }
+    puts "  >=1s: #{slow} (#{pct(slow, done.size)})   >=10s: #{vslow} (#{pct(vslow, done.size)})"
+    time_in_slow = done.select { |r| r.duration >= 1000 }.sum(&:duration)
+    puts "  share of total server time spent in >=1s requests: #{pct(time_in_slow, total_time)}"
+  end
+
+  def slowest(done)
+    rows = done.sort_by { |r| -r.duration }.first(@top).map do |r|
+      [fmt_ms(r.duration), r.endpoint, r.status, r.allocations || "-", truncate(r.path, 90)]
+    end
+    table("Slowest individual requests", rows, ["time", "endpoint", "st", "allocs", "path"])
+  end
+
+  def search_queries(done, total_time)
+    searches = done.select { |r| r.search_query }
+    return if searches.empty?
+    puts
+    puts "=== Search traffic: #{searches.size} requests, #{fmt_ms(searches.sum(&:duration))} " \
+         "(#{pct(searches.sum(&:duration), total_time)} of server time) ==="
+
+    by_q = searches.group_by { |r| r.search_query }
+    rows = stats_for(by_q).sort_by { |s| -s[:total_ms] }.first(@top).map do |s|
+      [truncate(s[:key], 60), s[:count], fmt_ms(s[:total_ms]), fmt_ms(s[:mean]), fmt_ms(s[:max])]
+    end
+    table("Most expensive search queries (by total time)", rows, ["q", "count", "total", "mean", "max"])
+
+    # Which search operators are involved in expensive queries?
+    op_time = Hash.new(0)
+    op_count = Hash.new(0)
+    searches.each do |r|
+      ops = r.search_query.scan(/(-?!?\b[a-z]+)\s*[:><=]/i).flatten.map(&:downcase).uniq
+      ops << "(no operator)" if ops.empty?
+      ops.each { |o| op_time[o] += r.duration; op_count[o] += 1 }
+    end
+    rows = op_time.sort_by { |_, v| -v }.first(@top).map do |op, t|
+      [op, op_count[op], fmt_ms(t), fmt_ms(t.to_f / op_count[op])]
+    end
+    table("Search operators by total time (a query can use several)", rows,
+          ["op", "queries", "total", "mean"])
+  end
+
+  def heavy_clients(done, total_time)
+    by_ip = done.group_by { |r| r.ip || "?" }
+    rows = stats_for(by_ip).sort_by { |s| -s[:total_ms] }.first(@top).map do |s|
+      rs = by_ip[s[:key]]
+      [s[:key], s[:count], fmt_ms(s[:total_ms]), pct(s[:total_ms], total_time),
+       fmt_ms(s[:mean]), top_endpoint(rs)]
+    end
+    table("Heaviest client IPs", rows, ["ip", "count", "total", "%time", "mean", "top endpoint"])
+
+    # /24 aggregation catches distributed crawlers
+    by_net = done.group_by { |r| (r.ip || "?").split(".")[0, 3].join(".") + ".0/24" }
+    rows = stats_for(by_net).sort_by { |s| -s[:total_ms] }.first(@top).map do |s|
+      [s[:key], s[:count], by_net[s[:key]].map(&:ip).uniq.size,
+       fmt_ms(s[:total_ms]), pct(s[:total_ms], total_time), top_endpoint(by_net[s[:key]])]
+    end
+    table("Heaviest client /24 networks", rows, ["net", "count", "ips", "total", "%time", "top endpoint"])
+  end
+
+  def top_endpoint(rs)
+    e = rs.group_by(&:endpoint).max_by { |_, v| v.size }
+    "#{e[0]} (#{pct(e[1].size, rs.size)})"
+  end
+
+  def status_codes(done)
+    rows = done.group_by(&:status).sort_by { |k, _| k.to_i }.map do |code, rs|
+      [code, rs.size, pct(rs.size, done.size)]
+    end
+    table("Status codes", rows, ["status", "count", "%"])
+  end
+
+  # Bucket per second: how many requests were in flight, to spot saturation
+  def concurrency(done)
+    with_time = done.select(&:started_at)
+    return if with_time.empty?
+    per_sec = Hash.new(0)
+    busy = Hash.new(0.0)
+    with_time.each do |r|
+      s = r.started_at.to_i
+      per_sec[s] += 1
+      # spread duration over the seconds it covers
+      finish = r.started_at + r.duration / 1000.0
+      t = r.started_at
+      while t < finish
+        sec = t.to_i
+        nxt = [Time.at(sec + 1), finish].min
+        busy[sec] += (nxt - t)
+        t = nxt
+      end
+    end
+    secs = busy.keys.sort
+    vals = busy.values.sort
+    puts
+    puts "=== Load over time ==="
+    puts "  in-flight request-seconds per wall second: " \
+         "mean #{format('%.1f', vals.sum / vals.size)}, " \
+         "p50 #{format('%.1f', quantile(vals, 0.5))}, " \
+         "p95 #{format('%.1f', quantile(vals, 0.95))}, " \
+         "max #{format('%.1f', vals.last)}"
+    # 60s buckets
+    rows = with_time.group_by { |r| r.started_at.to_i / 60 * 60 }.sort_by { |k, _| k }.map do |bucket, rs|
+      t = rs.sum { |r| r.duration.to_i }
+      [Time.at(bucket).utc.strftime("%H:%M"), rs.size, fmt_ms(t),
+       format("%.1fx", t / 1000.0 / 60), fmt_ms(rs.map(&:duration).max)]
+    end
+    table("Per-minute load", rows, ["minute", "reqs", "server time", "concurrency", "slowest"])
+  end
+
+  def truncate(s, n)
+    s = s.to_s
+    s.length > n ? s[0, n - 1] + "\u2026" : s
+  end
+end
+
+# ---------------------------------------------------------------- main
+
+options = { top: 20, slow: nil, dump_slow: false, json: nil }
+OptionParser.new do |o|
+  o.banner = "Usage: analyze_rails_log LOGFILE [options]"
+  o.on("--top N", Integer, "rows per table (default 20)") { |v| options[:top] = v }
+  o.on("--slow MS", Integer, "threshold for --dump-slow (default 1000)") { |v| options[:slow] = v }
+  o.on("--dump-slow", "print every request slower than --slow") { options[:dump_slow] = true }
+  o.on("--json FILE", "also write parsed requests as JSONL") { |v| options[:json] = v }
+end.parse!
+
+file = ARGV.shift or abort("Usage: analyze_rails_log LOGFILE [options]")
+
+analysis = LogAnalysis.new.parse_file(file)
+reqs = analysis.requests.values
+
+incomplete = reqs.reject(&:complete?)
+puts "Parsed #{reqs.size} requests from #{file} " \
+     "(#{analysis.unparsed} unparsed lines, #{incomplete.size} without a Completed line, " \
+     "#{analysis.pids.size} worker pid(s): #{analysis.pids.keys.join(', ')})"
+unless analysis.errors.empty?
+  puts "#{analysis.errors.size} non-INFO/error lines; first few:"
+  analysis.errors.first(5).each { |rid, m| puts "  [#{rid}] #{m}" }
+end
+
+Report.new(reqs, top: options[:top]).run
+
+if options[:dump_slow]
+  threshold = options[:slow] || 1000
+  puts
+  puts "=== All requests >= #{threshold}ms ==="
+  reqs.select { |r| r.complete? && r.duration >= threshold }.sort_by { |r| -r.duration }.each do |r|
+    puts format("%8dms  %-28s %-16s %s", r.duration, r.endpoint, r.ip, r.path)
+  end
+end
+
+if options[:json]
+  File.open(options[:json], "w") do |f|
+    reqs.each do |r|
+      next unless r.complete?
+      f.puts JSON.generate(
+        id: r.id, at: r.started_at&.iso8601(3), verb: r.verb, path: r.path, ip: r.ip,
+        endpoint: r.endpoint, format: r.format, status: r.status, ms: r.duration,
+        views_ms: r.view_time, allocations: r.allocations, q: r.search_query)
+    end
+  end
+  puts "\nWrote #{options[:json]}"
+end

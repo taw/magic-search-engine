@@ -1,0 +1,131 @@
+#!/usr/bin/env ruby
+
+# Replay request paths taken from a production log against the local app, so
+# changes can be measured against traffic that actually happened rather than
+# against guesses about it.
+#
+# Boots the real Rails stack (routing, controllers, views) in the test
+# environment with caching forced on, which is what production does.
+#
+# Usage:
+#   bin/replay_log production.log                     # replay the 200 costliest requests
+#   bin/replay_log production.log --n 500 --endpoint CardController#index
+#   bin/replay_log production.log --slowest           # pick by recorded time instead of sampling
+#   bin/replay_log --paths paths.txt                  # explicit list, one path per line
+#
+# Compare two revisions by running it on each and diffing the summary.
+
+require "optparse"
+require "json"
+
+options = { n: 200, endpoint: nil, slowest: false, paths: nil, warmup: false, verbose: false }
+OptionParser.new do |o|
+  o.banner = "Usage: replay_log [LOGFILE] [options]"
+  o.on("--n N", Integer, "how many requests to replay (default 200)") { |v| options[:n] = v }
+  o.on("--endpoint E", "only requests handled by this Controller#action") { |v| options[:endpoint] = v }
+  o.on("--slowest", "replay the slowest recorded requests instead of a spread") { options[:slowest] = true }
+  o.on("--sequential", "replay a contiguous run in log order (keeps crawler locality)") { options[:sequential] = true }
+  o.on("--skip N", Integer, "skip the first N matching requests") { |v| options[:skip] = v }
+  o.on("--paths FILE", "replay paths from a file instead of a log") { |v| options[:paths] = v }
+  o.on("--warmup", "replay the list twice, report the second pass (measures with caches hot)") { options[:warmup] = true }
+  o.on("--verbose", "print every request") { options[:verbose] = true }
+  o.on("--checksums FILE", "write path/status/digest per request, to diff two revisions") { |v| options[:checksums] = v }
+end.parse!
+
+paths =
+  if options[:paths]
+    File.readlines(options[:paths]).map(&:strip).reject(&:empty?)
+  else
+    logfile = ARGV.shift or abort("Usage: replay_log LOGFILE [options] (or --paths FILE)")
+    # Reuse the analyzer's parser so both tools agree on what a request is.
+    analyzer_src = File.read(File.expand_path("analyze_rails_log", __dir__))
+    # Everything above the "main" section is library code
+    eval(analyzer_src.split("# ---------------------------------------------------------------- main").first)
+    reqs = LogAnalysis.new.parse_file(logfile).requests.values.select(&:complete?)
+    reqs.select! { |r| r.verb == "GET" && r.status == 200 && r.path }
+    reqs.select! { |r| r.endpoint == options[:endpoint] } if options[:endpoint]
+    reqs = reqs.sort_by { |r| r.started_at || Time.at(0) }
+    reqs = reqs.drop(options[:skip].to_i)
+    picked =
+      if options[:slowest]
+        reqs.sort_by { |r| -r.duration }
+      elsif options[:sequential]
+        reqs
+      else
+        # A spread across the whole log, so cheap requests aren't drowned out
+        reqs.each_slice([reqs.size / options[:n], 1].max).map(&:first)
+      end
+    picked.first(options[:n]).map(&:path)
+  end
+
+abort("nothing to replay") if paths.empty?
+$stderr.puts "Replaying #{paths.size} paths"
+
+ENV["RAILS_ENV"] ||= "test"
+require_relative "../frontend/config/environment"
+Rails.application.config.action_controller.perform_caching = true
+Rails.application.config.cache_store = :memory_store
+Rails.application.routes.default_url_options[:host] ||= "mtg.wtf"
+
+require "digest"
+Result = Struct.new(:path, :status, :ms, :bytes, :digest)
+
+def replay(paths, verbose:)
+  results = []
+  paths.each do |path|
+    session = ActionDispatch::Integration::Session.new(Rails.application)
+    session.host = "mtg.wtf"
+    t = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    status =
+      begin
+        session.get(path)
+        session.response.status
+      rescue => e
+        $stderr.puts "  #{path}: #{e.class}: #{e.message}"
+        0
+      end
+    ms = (Process.clock_gettime(Process::CLOCK_MONOTONIC) - t) * 1000
+    body = status.zero? ? "" : session.response.body
+    # The CSRF token is regenerated per request, so ignore it when comparing.
+    comparable = body.gsub(/name="csrf-token" content="[^"]*"/, "").gsub(/content="[^"]*" name="csrf-token"/, "")
+    results << Result.new(path, status, ms, body.bytesize, Digest::SHA256.hexdigest(comparable)[0, 16])
+    printf("%8.1fms %3d %8dB  %s\n", ms, status, body.bytesize, path) if verbose
+  end
+  results
+end
+
+replay(paths, verbose: false) if options[:warmup]
+results = replay(paths, verbose: options[:verbose])
+
+ok = results.reject { |r| r.status.zero? }
+sorted = ok.map(&:ms).sort
+def q(a, x) = a.empty? ? 0 : a[[(a.size * x).ceil - 1, 0].max]
+
+puts
+puts "=== Replay summary ==="
+puts "  requests   : #{results.size} (#{results.count { |r| r.status.zero? }} errored)"
+puts "  statuses   : #{results.group_by(&:status).map { |k, v| "#{k}:#{v.size}" }.join(' ')}"
+puts "  total time : #{format('%.2f', sorted.sum / 1000.0)}s"
+puts "  mean       : #{format('%.1f', sorted.sum / [sorted.size, 1].max)}ms"
+puts "  p50/p90/p95/max : " +
+     [q(sorted, 0.5), q(sorted, 0.9), q(sorted, 0.95), sorted.last.to_f]
+       .map { |v| format('%.1fms', v) }.join(" / ")
+
+puts
+puts "=== Slowest replayed ==="
+ok.sort_by { |r| -r.ms }.first(15).each do |r|
+  printf("  %8.1fms %8dB  %s\n", r.ms, r.bytes, r.path[0, 100])
+end
+
+if options[:checksums]
+  File.open(options[:checksums], "w") do |f|
+    results.each { |r| f.puts "#{r.status} #{r.digest} #{r.bytes} #{r.path}" }
+  end
+  puts "\nWrote #{options[:checksums]}"
+end
+
+if defined?(SearchCache)
+  puts
+  puts "=== SearchCache ==="
+  SearchCache.stats.each { |k, v| puts "  #{k}: #{v.is_a?(Float) ? format('%.1f%%', v * 100) : v}" }
+end
