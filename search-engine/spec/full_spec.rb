@@ -37,6 +37,7 @@ describe "Full Database Test" do
       "Infirmary Healer", "Stream of Life (Prepared)",
       "Kellan, Daring Traveler", "Journey On",
       "Leech Collector", "Bloodletting",
+      "Most Decrepit Old Bird", "Speak Secrets",
       "Paradox Shaper", "Omit Variables",
       "Pollen-Shield Hare", "Hare Raising",
       "Rimrock Knight", "Boulder Rush",
