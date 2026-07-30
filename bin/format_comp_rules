@@ -12,8 +12,9 @@ end
 class FormatCompRules
   def call
     @output = []
-    @output << "= content_for(:disable_turbolinks) do"
-    @output << "  true"
+    @output << "<% content_for(:disable_turbolinks) do %>"
+    @output << "true"
+    @output << "<% end %>"
     paras = text_rules.split(/\n{2,}/)
 
     raise unless paras[0] == "Magic: The Gathering Comprehensive Rules"
@@ -112,20 +113,26 @@ class FormatCompRules
     end
   end
 
+  # The .strip calls below are what Haml used to do implicitly to a tag's inline
+  # content. Keeping them means the generated HTML is byte for byte what the old
+  # .haml template rendered.
+
   def glossary_entry!(text)
     term, definition = text.split("\n", 2)
-    @output << ".glossary_entry"
-    @output << "  .glossary_term #{term}"
-    @output << "  .glossary_definition #{resolve_references(definition).oneline}"
+    @output << %[<div class="glossary_entry">]
+    @output << %[<div class="glossary_term">#{term.strip}</div>]
+    @output << %[<div class="glossary_definition">#{resolve_references(definition).oneline.strip}</div>]
+    @output << %[</div>]
   end
 
   def rule!(rule)
     rule_id, rule_text = rule.split(" ", 2)
-    @output << ".rule{id: #{ref(rule_id).inspect}}"
-    @output << "  .rule_id #{rule_id}"
+    @output << %[<div class="rule" id="#{ref(rule_id)}">]
+    @output << %[<div class="rule_id">#{rule_id.strip}</div>]
     rule_text.split("\n").each do |rule_line|
-      @output << "  .rule_text #{resolve_references(rule_line)}"
+      @output << %[<div class="rule_text">#{resolve_references(rule_line).strip}</div>]
     end
+    @output << %[</div>]
   end
 
   def tos_entry!(tos_entry)
@@ -134,27 +141,29 @@ class FormatCompRules
     else
       section_ref = "section-#{tos_entry.downcase}"
     end
-    @output << "  %li"
-    @output << "    %a{href: '##{section_ref}'} #{tos_entry.oneline}"
+    @output << %[<li>]
+    @output << %[<a href="##{section_ref}">#{tos_entry.oneline.strip}</a>]
+    @output << %[</li>]
   end
 
   def tos_section!(text)
-    @output << "%ul.tos_section"
+    @output << %[<ul class="tos_section">]
     text.split("\n").each do |tos_entry|
       tos_entry! tos_entry
     end
+    @output << %[</ul>]
   end
 
   def primary_header!(text)
-    @output << "%h4 #{text.oneline}"
+    @output << %[<h4>#{text.oneline.strip}</h4>]
   end
 
   def secondary_header!(text)
-    @output << "%h3{id: #{ref(text).inspect}} #{text.oneline}"
+    @output << %[<h3 id="#{ref(text)}">#{text.oneline.strip}</h3>]
   end
 
   def para!(text)
-    @output << "%p #{text.oneline}"
+    @output << %[<p>#{text.oneline.strip}</p>]
   end
 
   ## Everything else
@@ -163,8 +172,13 @@ class FormatCompRules
     html_rules_path.write(@output.join("\n")+"\n")
   end
 
+  # Plain HTML in an .erb template rather than .haml: the rules are a 12k-line
+  # static page, and Haml's compiler is superlinear in template size, so it spent
+  # ~13s turning this file into Ruby (Ruby then compiled that in 7ms). Erubi does
+  # the same job in ~20ms. Nothing here is dynamic enough to need a template
+  # language - the generator already emits raw HTML for links and mana symbols.
   def html_rules_path
-    Pathname(__dir__) + "../frontend/app/views/help/rules.html.haml"
+    Pathname(__dir__) + "../frontend/app/views/help/rules.html.erb"
   end
 
   def text_rules_path
