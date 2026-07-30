@@ -12,17 +12,22 @@ class ConditionOracle < ConditionSimple
       @regexp_prefilter = Regexp.new(@base_rx_str.gsub("~", ".*"), Regexp::IGNORECASE)
       # Cards which refer to themselves without naming themselves don't need a per-card regexp
       @self_reference_regexp = Regexp.new(@base_rx_str.gsub("~", "(?:#{SELF_REFERENCE})"), Regexp::IGNORECASE)
+      # With a single ~ that check has already settled the self-reference case by the time
+      # we build the per-card regexp, so it only needs the names. Only a query using ~ more
+      # than once can still need both, and it's the big alternation that costs to compile.
+      @tilde_self_reference = (@text.count("~") > 1 ? "|" + SELF_REFERENCE : "")
     end
     @regexp = Regexp.new(@base_rx_str, Regexp::IGNORECASE)
   end
 
   def match?(card)
     if @has_cardname
-      # This speeds it up a lot
+      # Two regexps shared by every card settle most of them, which matters a lot -
+      # only what survives both needs a regexp compiled for this card in particular
       text = oracle_text(card)
       return false unless text =~ @regexp_prefilter
       return true if text =~ @self_reference_regexp
-      tilde_rx_str = "(?:" + names_rx_str(card) + "|" + SELF_REFERENCE + ")"
+      tilde_rx_str = "(?:" + names_rx_str(card) + @tilde_self_reference + ")"
       text =~ Regexp.new(@base_rx_str.gsub("~", tilde_rx_str), Regexp::IGNORECASE)
     else
       oracle_text(card) =~ @regexp

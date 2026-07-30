@@ -10,8 +10,8 @@
 # it off the card: the short name is the longest run of words in the Oracle text
 # which is an in-order subsequence of the name's words, starting at the first one.
 #
-# That's all o:"~" needs. A card which never calls itself by a short name simply
-# doesn't have one as far as we're concerned.
+# That's all o:"~" and fo:"~" need. A card which never calls itself by a short name
+# simply doesn't have one as far as we're concerned.
 class PatchShortName < Patch
   WORD_RX = %r{[\p{L}\p{N}][\p{L}\p{N}'’\-/]*|&}
 

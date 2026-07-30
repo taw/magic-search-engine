@@ -46,7 +46,7 @@
     %h4#oracle-text Search by Oracle text
     %div Reminder text is not included in Oracle search with <code>o:</code>, but is with <code>fo:</code>
     %div Reminder text is always kept on uncards, as it's meaningful there
-    %div You can use ~ as placeholder for name of the card. It also matches "This <type>" templating, as well as the shortened names cards use for themselves these days, like "Ajani deals 3 damage" on Ajani Vengeant (with some edge cases). It can't be mixed with regular expressions.
+    %div You can use ~ as placeholder for name of the card, in both <code>o:</code> and <code>fo:</code>. It also matches "This <type>" templating, as well as the shortened names cards use for themselves these days, like "Ajani deals 3 damage" on Ajani Vengeant (with some edge cases). It can't be mixed with regular expressions.
     %ul
       = search_help "o:delve", %[search cards with "delve" in Oracle text]
       = search_help %[o:"destroy target creature"], %[search cards with "destroy target creature" in Oracle text]
