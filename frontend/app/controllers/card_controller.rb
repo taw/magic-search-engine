@@ -54,10 +54,7 @@ class CardController < ApplicationController
     end
 
     # Temporary issue with bots
-    if params[:page]
-      logger.info "PAGINATED #{params.inspect} BY USERAGENT: #{request.headers['HTTP_USER_AGENT']}"
-    end
-
+    # (user agents are on every request's METRICS line now, see RequestMetrics)
     if request.headers['HTTP_USER_AGENT'] =~ /MJ12bot|PetalBot|Bytespider/ and params[:page]
       render_403
       return
@@ -67,12 +64,20 @@ class CardController < ApplicationController
     @title = @search
     query = Query.new(@search, params[:random_seed])
     @seed = query.seed
-    # There are probably valid queries that can trigger this, especially on a small busy server
-    results = Timeout.timeout(5) do
-      $CardDatabase.search(query)
+
+    metric :page, page
+    results = measure :search do
+      # There are probably valid queries that can trigger this, especially on a small busy server
+      Timeout.timeout(5) do
+        $CardDatabase.search(query)
+      end
     end
     @warnings = results.warnings
-    @cards = results.card_groups.map do |printings|
+
+    # card_groups regroups on every call, so keep the one we've got
+    card_groups = results.card_groups
+    metric :results, card_groups.size
+    @cards = card_groups.map do |printings|
       choose_best_printing(printings)
     end
 
