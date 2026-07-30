@@ -142,6 +142,7 @@ class IndexSerializer
         "s" => printing["secondary"],
         "sb" => printing["spellbook"],
         "sd" => printing["specialized"],
+        "sn" => printing["short_name"],
         "ss" => printing["specializes"],
         "t" => printing["types"],
         "tb" => printing["subtypes"],

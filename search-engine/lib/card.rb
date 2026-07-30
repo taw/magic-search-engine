@@ -47,6 +47,7 @@ class Card
     :reminder_text,
     :reserved,
     :rulings,
+    :short_name,
     :specialized,
     :specializes,
     :spellbook,
@@ -132,6 +133,7 @@ class Card
     end
     @defense = data["df"]
     @produces = data["pr"]&.freeze
+    @short_name = data["sn"]&.freeze
     calculate_mana_hash
     calculate_color_indicator
     calculate_reminder_text
