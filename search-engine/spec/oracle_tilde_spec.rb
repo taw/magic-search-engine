@@ -108,6 +108,15 @@ describe "Oracle ~" do
       "Icingdeath, Frost Tyrant"
   end
 
+  # A single phrase can name the card one way and refer to it another way, so every ~
+  # has to accept every form independently - this is the only case where it matters.
+  it "matches ~ used more than once" do
+    assert_search_include 'o:"~ transforms into ~"',
+      "Abolisher of Bloodlines" # "this creature transforms into Abolisher of Bloodlines"
+    assert_search_include 'o:"when ~ dies, return ~"',
+      "Michelangelo, On the Scene" # "When Michelangelo dies, return this card to your hand."
+  end
+
   # Plenty of things look like a shortened name without being one. Each case checks the
   # phrase really is on the card, then that nothing at all matches once ~ takes the place
   # of the part which isn't a short name.
@@ -167,5 +176,10 @@ describe "Oracle ~" do
     # keep their reminder text.
     assert_search_include 'fo:"whenever ~ gains or loses loyalty"',
       "B.O.B. (Bevy of Beebles)"
+    # ~ means the same thing under fo: as under o:, self-reference included
+    assert_search_include 'fo:"when ~ enters"',
+      "Adaptive Armorer" # "When this creature enters, draft a card from Adaptive Armorer"
+    # fo: only ever adds reminder text on top of the rules text, so it can't match less
+    "o:~ -fo:~".should return_no_cards
   end
 end

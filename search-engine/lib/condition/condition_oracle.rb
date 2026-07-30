@@ -17,13 +17,13 @@ class ConditionOracle < ConditionSimple
   def match?(card)
     if @has_cardname
       # This speeds it up a lot
-      text = card.text_normalized
+      text = oracle_text(card)
       return false unless text =~ @regexp_prefilter
       return true if text =~ @self_reference_regexp
       tilde_rx_str = "(?:" + names_rx_str(card) + "|" + SELF_REFERENCE + ")"
       text =~ Regexp.new(@base_rx_str.gsub("~", tilde_rx_str), Regexp::IGNORECASE)
     else
-      card.text_normalized =~ @regexp
+      oracle_text(card) =~ @regexp
     end
   end
 
@@ -32,6 +32,11 @@ class ConditionOracle < ConditionSimple
   end
 
   private
+
+  # Which text gets searched is the only thing fo: does differently
+  def oracle_text(card)
+    card.text_normalized
+  end
 
   # Modern templating often shortens the name it refers to itself by, and which part
   # it keeps isn't predictable, so the indexer mines it out of the card's own text
