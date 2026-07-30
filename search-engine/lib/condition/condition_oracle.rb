@@ -20,7 +20,7 @@ class ConditionOracle < ConditionSimple
       text = card.text_normalized
       return false unless text =~ @regexp_prefilter
       return true if text =~ @self_reference_regexp
-      tilde_rx_str = "(?:" + Regexp.escape(normalize_text(card.name)) + "|" + SELF_REFERENCE + ")"
+      tilde_rx_str = "(?:" + names_rx_str(card) + "|" + SELF_REFERENCE + ")"
       text =~ Regexp.new(@base_rx_str.gsub("~", tilde_rx_str), Regexp::IGNORECASE)
     else
       card.text_normalized =~ @regexp
@@ -32,6 +32,15 @@ class ConditionOracle < ConditionSimple
   end
 
   private
+
+  # Modern templating often shortens the name it refers to itself by, and which part
+  # it keeps isn't predictable, so the indexer mines it out of the card's own text
+  # (see PatchShortName): "Ajani deals 3 damage" on Ajani Vengeant.
+  def names_rx_str(card)
+    [card.name, card.short_name].compact.map{|name|
+      Regexp.escape(normalize_text(name))
+    }.join("|")
+  end
 
   def build_regexp(text)
     Regexp.new(Regexp.escape(text), Regexp::IGNORECASE)

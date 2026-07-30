@@ -256,6 +256,7 @@ class CardPrinting
     reserved
     rulings
     secondary?
+    short_name
     specialized
     specializes
     spellbook
