@@ -95,4 +95,8 @@ describe "Type expr" do
     assert_search_equal "is:party is:outlaw -t:rogue -keyword:changeling",
       "t:creature (t:cleric or t:warrior or t:wizard) (t:assassin or t:mercenary or t:pirate or t:warlock) -t:rogue -keyword:changeling"
   end
+
+  it "is:basictype" do
+    assert_search_equal "is:basictype", "t:plains or t:island or t:swamp or t:mountain or t:forest"
+  end
 end

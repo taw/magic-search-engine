@@ -17,9 +17,4 @@ describe "Archenemy" do
       "The Very Soil Shall Shake",
       "Your Will Is Not Your Own"
   end
-
-  # this is testing a system that no longer exists
-  it "! search doesn't require explicit flags" do
-    assert_search_results "!Your Will Is Not Your Own", "Your Will Is Not Your Own"
-  end
 end

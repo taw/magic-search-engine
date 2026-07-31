@@ -205,7 +205,7 @@ class IndexSerializer
     inconsistent_keys = keys.select{|key| common_card_data.map{|ccd| ccd[key]}.uniq.size > 1 }
     warn "Data for card #{name} inconsistent on #{inconsistent_keys.join(", ")}"
 
-    # This doesn't work due to keys compression
+    # This is confusing due to keys compression
     inconsistent_keys.each do |key|
       warn "* #{key}: #{card.map{|c| c["set_code"]}.zip(common_card_data.map{|ccd| ccd[key]}).inspect}"
     end

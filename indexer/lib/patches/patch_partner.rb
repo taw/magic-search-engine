@@ -1,4 +1,4 @@
-# This does three things:
+# This does two things:
 # - marks partner cards as such (Commander)
 # - finds partners for cards (Commander and Battlebond)
 #

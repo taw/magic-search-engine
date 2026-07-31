@@ -1,6 +1,8 @@
-# We normally don't do tokens, but there's tiny number of exceptions:
+# We normally don't do tokens, but there's tiny number of exceptions like:
 # * AFR dungeons
 # * CLB dungeons
+# * The Initiative
+# * The Ring / The Ring Tempts You
 class PatchTokens < Patch
   def call
     add_tafr
