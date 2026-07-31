@@ -1,7 +1,7 @@
-describe "Any queries" do
+describe "Foreign language queries" do
   include_context "db"
 
-  context "German name" do
+  context "German" do
     it "includes German name" do
       assert_search_equal %[foreign:"Abrupter Verfall"], %[de:"Abrupter Verfall"]
       assert_search_equal %q[foreign:/\bvon der\b/], %q[de:/\bvon der\b/]
@@ -14,9 +14,43 @@ describe "Any queries" do
     it "is word match with foreign:" do
       assert_search_equal %[foreign:"Spinner"], %[foreign:/\bSpinner\b/ or (Arachnus Spinner)]
     end
+
+    context "Avacyn Restored" do
+      include_context "db", "avr"
+
+      it "de" do
+        assert_search_results "de:engel",
+          "Angel of Glory's Rise",
+          "Angel of Jubilation",
+          "Angelic Wall",
+          "Archangel", # not full word
+          "Angel's Mercy", # not full word
+          "Angel's Tomb", # not full word
+          "Avacyn, Angel of Hope",
+          "Emancipation Angel",
+          "Entreat the Angels",
+          "Restoration Angel"
+        assert_search_results %q[de:/\bdes\b/],
+          "Alchemist's Refuge",
+          "Angel of Glory's Rise",
+          "Angel's Mercy",
+          "Angel's Tomb",
+          "Builder's Blessing",
+          "Commander's Authority",
+          "Conjurer's Closet",
+          "Demonlord of Ashmouth",
+          "Druid's Familiar",
+          "Herald of War",
+          "Midvast Protector",
+          "Predator's Gambit",
+          "Rush of Blood",
+          "Terrifying Presence",
+          "Tormentor's Trident"
+      end
+    end
   end
 
-  context "French name" do
+  context "French" do
     it do
       assert_search_equal %[foreign:"Décomposition abrupte"], %[fr:"Décomposition abrupte"]
     end
@@ -26,39 +60,161 @@ describe "Any queries" do
     it "ignores diacritics" do
       assert_search_equal %[foreign:"Décomposition abrupte"], %[foreign:"Decomposition abrupte"]
     end
+
+    context "Avacyn Restored" do
+      include_context "db", "avr"
+
+      it "fr" do
+        assert_search_results "fr:Fragments", "Bone Splinters"
+        assert_search_results %[fr:"Lumière d'albâtre"], "Bruna, Light of Alabaster"
+        assert_search_results %[fr:"lumiere d'albatre"], "Bruna, Light of Alabaster"
+      end
+    end
   end
 
-  it "includes Italian name" do
-    assert_search_equal %[foreign:"Deterioramento Improvviso"], %[it:"Deterioramento Improvviso"]
+  context "Italian" do
+    it "includes Italian name" do
+      assert_search_equal %[foreign:"Deterioramento Improvviso"], %[it:"Deterioramento Improvviso"]
+    end
+
+    context "Avacyn Restored" do
+      include_context "db", "avr"
+
+      it "it" do
+        assert_search_results "it:clemenza", "Angel's Mercy"
+        assert_search_results %q[it:/\bdell\b/],
+          "Alchemist's Apprentice",
+          "Alchemist's Refuge",
+          "Angel of Glory's Rise",
+          "Angel's Mercy",
+          "Angel's Tomb",
+          "Conjurer's Closet",
+          "Essence Harvest",
+          "Seraph of Dawn",
+          "Timberland Guide",
+          "Treacherous Pit-Dweller",
+          "Vanguard's Shield"
+      end
+    end
   end
 
-  it "includes Japanese name" do
-    assert_search_equal %[foreign:"血染めの月"], %[jp:"血染めの月"]
+  context "Japanese" do
+    it "includes Japanese name" do
+      assert_search_equal %[foreign:"血染めの月"], %[jp:"血染めの月"]
+    end
+
+    context "Avacyn Restored" do
+      include_context "db", "avr"
+
+      it "jp" do
+        assert_search_results "jp:ブルーナ", "Bruna, Light of Alabaster"
+        assert_search_results %q[jp:/ブルーナ/], "Bruna, Light of Alabaster"
+      end
+    end
   end
 
-  it "includes Russian name" do
-    assert_search_equal %[foreign:"Кровавая луна"], %[ru:"Кровавая луна"]
+  context "Korean" do
+    it "includes Korean name" do
+      assert_search_equal %[foreign:"축복받은 신령들"], %[kr:"축복받은 신령들"]
+      assert_search_equal %q[foreign:/축복받은/], %q[kr:/축복받은/]
+    end
+
+    context "Avacyn Restored" do
+      include_context "db", "avr"
+
+      it "kr" do
+        assert_search_results "kr:아바신", "Avacyn, Angel of Hope", "Scroll of Avacyn"
+        assert_search_results %q[kr:/아바신/], "Avacyn, Angel of Hope", "Scroll of Avacyn"
+      end
+    end
   end
 
-  it "includes Spanish name" do
-    assert_search_equal %[foreign:"Puente engañoso"], %[sp:"Puente engañoso"]
+  context "Portuguese" do
+    it "includes Portuguese name" do
+      assert_search_equal %[foreign:"Ponte Traiçoeira"], %[pt:"Ponte Traiçoeira"]
+    end
+
+    context "Avacyn Restored" do
+      include_context "db", "avr"
+
+      it "pt" do
+        assert_search_results "pt:estacas", "Bone Splinters"
+        assert_search_results %q[pt:/estacas/], "Bone Splinters"
+      end
+    end
   end
 
-  it "includes Portuguese name" do
-    assert_search_equal %[foreign:"Ponte Traiçoeira"], %[pt:"Ponte Traiçoeira"]
+  context "Russian" do
+    it "includes Russian name" do
+      assert_search_equal %[foreign:"Кровавая луна"], %[ru:"Кровавая луна"]
+    end
+
+    context "Avacyn Restored" do
+      include_context "db", "avr"
+
+      it "ru" do
+        assert_search_results "ru:Ангел",
+          "Angel of Glory's Rise",
+          "Angel of Jubilation",
+          "Avacyn, Angel of Hope",
+          "Emancipation Angel",
+          "Restoration Angel"
+        assert_search_equal "ru:ангел", "ru:Ангел"
+        assert_search_equal "ru:АНГЕЛ", "ru:Ангел"
+        assert_search_equal %q[ru:/\bАНГЕЛ\b/], "ru:Ангел"
+      end
+    end
   end
 
-  it "includes Korean name" do
-    assert_search_equal %[foreign:"축복받은 신령들"], %[kr:"축복받은 신령들"]
-    assert_search_equal %q[foreign:/축복받은/], %q[kr:/축복받은/]
+  context "Spanish" do
+    it "includes Spanish name" do
+      assert_search_equal %[foreign:"Puente engañoso"], %[sp:"Puente engañoso"]
+    end
+
+    context "Avacyn Restored" do
+      include_context "db", "avr"
+
+      it "sp" do
+        assert_search_results "sp:Astillas", "Bone Splinters"
+        assert_search_results %q[sp:/astillas/], "Bone Splinters"
+      end
+    end
   end
 
-  it "includes Chinese Traditional name" do
-    assert_search_equal %[foreign:"刻拉諾斯的電擊"], %[ct:"刻拉諾斯的電擊"]
+  context "Chinese Simplified" do
+    it "includes Chinese Simplified name" do
+      assert_search_equal %[foreign:"刻拉诺斯的电击"], %[cs:"刻拉诺斯的电击"]
+    end
+
+    context "Avacyn Restored" do
+      include_context "db", "avr"
+
+      it "cs" do
+        assert_search_results "cs:拱翼巨龙", "Archwing Dragon"
+        assert_search_results "zhs:拱翼巨龙", "Archwing Dragon"
+        assert_search_results "tw:拱翼巨龙"
+        assert_search_results "ct:拱翼巨龙"
+        assert_search_results "zht:拱翼巨龙"
+      end
+    end
   end
 
-  it "includes Chinese Simplified name" do
-    assert_search_equal %[foreign:"刻拉诺斯的电击"], %[cs:"刻拉诺斯的电击"]
+  context "Chinese Traditional" do
+    it "includes Chinese Traditional name" do
+      assert_search_equal %[foreign:"刻拉諾斯的電擊"], %[ct:"刻拉諾斯的電擊"]
+    end
+
+    context "Avacyn Restored" do
+      include_context "db", "avr"
+
+      it "chinese_traditional" do
+        assert_search_results "ct:拱翼巨龍", "Archwing Dragon"
+        assert_search_results "zht:拱翼巨龍", "Archwing Dragon"
+        assert_search_results "tw:拱翼巨龍", "Archwing Dragon"
+        assert_search_results "cs:拱翼巨龍"
+        assert_search_results "zhs:拱翼巨龍"
+      end
+    end
   end
 
   # This test is a bit fragile to reprints

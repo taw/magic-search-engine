@@ -1,4 +1,4 @@
-describe "Shadowmoor" do
+describe "is:reprint" do
   include_context "db"
 
   it "is:reprint" do

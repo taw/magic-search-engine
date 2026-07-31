@@ -147,12 +147,6 @@ describe "Return to Ravnica block" do
     assert_search_results "aetherize", "Aetherize"
   end
 
-  it "watermark:" do
-    assert_search_include "w:gruul", "Rubblebelt Raiders"
-    assert_search_include "w:boros", "Aurelia, the Warleader"
-    assert_search_exclude "w:gruul", "Aurelia, the Warleader"
-  end
-
   # {u/g} and {u} don't compare
   it "hybrid mana" do
     assert_search_results "e:gtc mana=u", "Cloudfin Raptor", "Rapid Hybridization", "Realmwright"

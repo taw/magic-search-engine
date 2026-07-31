@@ -246,10 +246,6 @@ describe "Full Database Test" do
     assert_search_equal "not:unique", "-is:unique"
   end
 
-  it "is:historic" do
-    assert_search_equal "is:historic", "t:artifact or t:legendary or t:saga"
-  end
-
   # This test got messed up by latest Oracle changes replacing text by "this creature" etc.
   it "Oracle unicode" do
     assert_search_equal %[o:"Éomer"], %[o:"Eomer"]

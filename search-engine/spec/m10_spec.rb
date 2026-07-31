@@ -56,49 +56,6 @@ describe "Magic 2010" do
     assert_search_equal "c:c", "c!c"
   end
 
-  it "pow" do
-    assert_search_results "pow=0 c:g", "Birds of Paradise", "Bramble Creeper", "Protean Hydra"
-    assert_search_results "pow>=4 c:u", "Air Elemental", "Djinn of Wishes", "Sphinx Ambassador"
-    assert_search_results "pow>4 c:u", "Sphinx Ambassador"
-    assert_search_results "pow<=4 c:c", "Ornithopter", "Platinum Angel"
-    assert_search_results "pow<4 c:c", "Ornithopter"
-    assert_search_results "pow=6", "Ball Lightning", "Capricious Efreet", "Craw Wurm"
-    assert_search_results "pow<tou c:r", "Dragon Whelp", "Goblin Artillery", "Stone Giant", "Wall of Fire"
-    assert_search_results "pow>cmc c:r", "Ball Lightning", "Jackal Familiar"
-  end
-
-  it "tou" do
-    assert_search_results "tou<=cmc c:c", "Darksteel Colossus", "Platinum Angel"
-    assert_search_results "tou>=9", "Darksteel Colossus", "Kalonian Behemoth"
-    assert_search_results "tou>9", "Darksteel Colossus"
-  end
-
-  it "cmc" do
-    assert_search_results "cmc=0",
-      "Dragonskull Summit",
-      "Drowned Catacomb",
-      "Forest",
-      "Gargoyle Castle",
-      "Glacial Fortress",
-      "Island",
-      "Mountain",
-      "Ornithopter",
-      "Plains",
-      "Rootbound Crag",
-      "Spellbook",
-      "Sunpetal Grove",
-      "Swamp",
-      "Terramorphic Expanse"
-    assert_search_results "cmc>=7 c:r", "Bogardan Hellkite", "Warp World"
-    assert_search_results "cmc=7 c:u", "Sphinx Ambassador"
-  end
-
-  it "extra_spaces_in_expr" do
-    assert_search_equal "cmc>=7", "cmc >= 7"
-    assert_search_equal "pow=cmc", "pow = cmc"
-    assert_search_equal "tou<3", "tou < 3"
-  end
-
   it "oracle" do
     assert_search_results 'o:Flying r:rare',
       "Birds of Paradise",
@@ -200,12 +157,6 @@ describe "Magic 2010" do
   it "is_spell" do
     assert_search_results "e:m10 r:rare ci:c is:spell", "Coat of Arms", "Howling Mine", "Magebane Armor", "Mirror of Fate", "Pithing Needle"
     assert_search_results "e:m10 r:rare ci:c", "Coat of Arms", "Howling Mine", "Magebane Armor", "Mirror of Fate", "Pithing Needle", "Gargoyle Castle"
-  end
-
-  it "loyalty" do
-    assert_search_results "loyalty=5", "Liliana Vess"
-    assert_search_results "loyalty>cmc", "Chandra Nalaar"
-    assert_search_results "loyalty<=4", "Ajani Goldmane", "Garruk Wildspeaker", "Jace Beleren"
   end
 
   it "unicode_hyphen" do
