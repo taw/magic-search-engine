@@ -1,13 +1,17 @@
 class PatchProducts < Patch
   def call
     @products.each do |product|
-      product["contents"] = parse_contents(product["contents"] || [])
+      product["contents"] = parse_contents(product["contents"] || [], product)
     end
 
     # TODO: simplify products that are just packs
   end
 
-  def parse_contents(contents)
+  def product_description(product)
+    %Q[#{product["set_code"].to_s.upcase} "#{product["name"]}"]
+  end
+
+  def parse_contents(contents, product)
     result = []
     if contents.empty?
       result << [1, "unknown"]
@@ -48,7 +52,7 @@ class PatchProducts < Patch
 
           if !@cards[name]
             # Fail, but allow for now
-            warn "Product has unknown card #{name} [#{set_code}:#{number}]"
+            warn "Product #{product_description(product)} has unknown card #{name} [#{set_code}:#{number}]"
             result << [1, "card", set_code, number, name, !!foil]
           elsif @cards[name].find{|p| p["set_code"] == set_code and p["number"] == number}
             result << [1, "card", set_code, number, name, !!foil]
@@ -59,7 +63,7 @@ class PatchProducts < Patch
             result << [1, "card", set_code, number.downcase, name, !!foil]
           else
             # Fail, but allow for now
-            warn "Product has unknown card #{name} [#{set_code}:#{number}]"
+            warn "Product #{product_description(product)} has unknown card #{name} [#{set_code}:#{number}]"
             result << [1, "card", set_code, number, name, !!foil]
           end
         end
@@ -69,7 +73,7 @@ class PatchProducts < Patch
         subproducts = configs.map do |config|
           {
             "chance" => config.dig("variable_config", 0, "chance") || 1,
-            "subproduct" => parse_contents(config.except("variable_config")),
+            "subproduct" => parse_contents(config.except("variable_config"), product),
           }
         end
         total = subproducts.map{|c| c["chance"]}.sum
