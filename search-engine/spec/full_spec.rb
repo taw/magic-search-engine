@@ -20,6 +20,7 @@ describe "Full Database Test" do
     assert_search_results "part:cmc=1 part:cmc=2",
       "Appeal", "Authority",
       "Bloodline Recollector", "Ancestral Craving",
+      "Bofur, Reliable Guardian", "Concerted Care",
       "Callous Sell-Sword", "Burn Together",
       "Claim", "Fame",
       "Crescendo Conductor", "Boltwave (Prepared)",
