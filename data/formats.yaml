@@ -38,6 +38,13 @@
 # ships inside the seeded prerelease booster -- where that is the case it is part
 # of the booster's contents and is not listed separately here.
 # https://mtg.wiki/page/Prerelease_card
+#
+# Play Boosters
+# -------------
+# Ravnica Remastered was the last set with draft boosters; from Murders at
+# Karlov Manor on there is a single `<set>-play` booster, and draft and sealed
+# use it in the same counts draft boosters used to (three to draft, six to seal).
+# https://magic.wizards.com/en/news/making-magic/what-are-play-boosters
 
 mir:
   draft:
@@ -2028,9 +2035,294 @@ rvr:
   - rvr-draft
   - rvr-draft
 
+mkm:
+  sealed:
+  - 6x mkm-play
+  # The prerelease booster also holds one of three mythics exclusive to
+  # prerelease packs (MKM 430-432); those were Standard legal but explicitly
+  # not part of the sealed pool.
+  # https://magic.wizards.com/en/news/feature/collecting-murders-at-karlov-manor
+  prerelease-sealed:
+    boosters:
+    - 6x mkm-play
+    - 1x mkm-prerelease
+  draft:
+  - mkm-play
+  - mkm-play
+  - mkm-play
+
+otj:
+  sealed:
+  - 6x otj-play
+  prerelease-sealed:
+    boosters:
+    - 6x otj-play
+    - 1x otj-prerelease
+  draft:
+  - otj-play
+  - otj-play
+  - otj-play
+
+mh3:
+  sealed:
+  - 6x mh3-play
+  prerelease-sealed:
+    boosters:
+    - 6x mh3-play
+    - 1x mh3-prerelease
+  draft:
+  - mh3-play
+  - mh3-play
+  - mh3-play
+
+# Assassin's Creed came in seven-card Beyond Boosters, which were never meant
+# to be drafted, so it has no limited format.
+# https://magic.wizards.com/en/news/feature/collecting-assassins-creed
+
+blb:
+  sealed:
+  - 6x blb-play
+  prerelease-sealed:
+    boosters:
+    - 6x blb-play
+    - 1x blb-prerelease
+  draft:
+  - blb-play
+  - blb-play
+  - blb-play
+
 # Draft product, like the first Mystery Booster.
 mb2:
   draft:
   - mb2-draft
   - mb2-draft
   - mb2-draft
+
+dsk:
+  sealed:
+  - 6x dsk-play
+  prerelease-sealed:
+    boosters:
+    - 6x dsk-play
+    - 1x dsk-prerelease
+  draft:
+  - dsk-play
+  - dsk-play
+  - dsk-play
+
+fdn:
+  sealed:
+  - 6x fdn-play
+  prerelease-sealed:
+    boosters:
+    - 6x fdn-play
+    - 1x fdn-prerelease
+  draft:
+  - fdn-play
+  - fdn-play
+  - fdn-play
+
+# Remastered sets get no prerelease.
+inr:
+  sealed:
+  - 6x inr-play
+  draft:
+  - inr-play
+  - inr-play
+  - inr-play
+
+dft:
+  sealed:
+  - 6x dft-play
+  prerelease-sealed:
+    boosters:
+    - 6x dft-play
+    - 1x dft-prerelease
+  draft:
+  - dft-play
+  - dft-play
+  - dft-play
+
+tdm:
+  sealed:
+  - 6x tdm-play
+  # Five play boosters plus a seeded clan booster; unlike Khans of Tarkir the
+  # stamped promo is a separate card, not part of the seeded booster.
+  # https://magic.wizards.com/en/news/feature/tarkir-dragonstorm-prerelease-guide
+  prerelease-sealed:
+    choice: clan
+    variants:
+      abzan:
+        boosters:
+        - 5x tdm-play
+        - 1x tdm-prerelease-abzan
+        - 1x tdm-prerelease
+      jeskai:
+        boosters:
+        - 5x tdm-play
+        - 1x tdm-prerelease-jeskai
+        - 1x tdm-prerelease
+      mardu:
+        boosters:
+        - 5x tdm-play
+        - 1x tdm-prerelease-mardu
+        - 1x tdm-prerelease
+      sultai:
+        boosters:
+        - 5x tdm-play
+        - 1x tdm-prerelease-sultai
+        - 1x tdm-prerelease
+      temur:
+        boosters:
+        - 5x tdm-play
+        - 1x tdm-prerelease-temur
+        - 1x tdm-prerelease
+  draft:
+  - tdm-play
+  - tdm-play
+  - tdm-play
+
+fin:
+  sealed:
+  - 6x fin-play
+  prerelease-sealed:
+    boosters:
+    - 6x fin-play
+    - 1x fin-prerelease
+  draft:
+  - fin-play
+  - fin-play
+  - fin-play
+
+eoe:
+  sealed:
+  - 6x eoe-play
+  prerelease-sealed:
+    boosters:
+    - 6x eoe-play
+    - 1x eoe-prerelease
+  draft:
+  - eoe-play
+  - eoe-play
+  - eoe-play
+
+spm:
+  sealed:
+  - 6x spm-play
+  prerelease-sealed:
+    boosters:
+    - 6x spm-play
+    - 1x spm-prerelease
+  draft:
+  - spm-play
+  - spm-play
+  - spm-play
+
+tla:
+  sealed:
+  - 6x tla-play
+  # Seeded booster themed to one of five characters, each one color
+  # (Aang W, Katara U, Azula B, Zuko R, Toph G), plus a separate stamped promo.
+  # https://magic.wizards.com/en/news/feature/avatar-the-last-airbender-prerelease-guide
+  prerelease-sealed:
+    choice: character
+    variants:
+      aang:
+        boosters:
+        - 5x tla-play
+        - 1x tla-prerelease-aang
+        - 1x tla-prerelease
+      katara:
+        boosters:
+        - 5x tla-play
+        - 1x tla-prerelease-katara
+        - 1x tla-prerelease
+      azula:
+        boosters:
+        - 5x tla-play
+        - 1x tla-prerelease-azula
+        - 1x tla-prerelease
+      zuko:
+        boosters:
+        - 5x tla-play
+        - 1x tla-prerelease-zuko
+        - 1x tla-prerelease
+      toph:
+        boosters:
+        - 5x tla-play
+        - 1x tla-prerelease-toph
+        - 1x tla-prerelease
+  draft:
+  - tla-play
+  - tla-play
+  - tla-play
+
+ecl:
+  sealed:
+  - 6x ecl-play
+  prerelease-sealed:
+    boosters:
+    - 6x ecl-play
+    - 1x ecl-prerelease
+  draft:
+  - ecl-play
+  - ecl-play
+  - ecl-play
+
+tmt:
+  sealed:
+  - 6x tmt-play
+  prerelease-sealed:
+    boosters:
+    - 6x tmt-play
+    - 1x tmt-prerelease
+  draft:
+  - tmt-play
+  - tmt-play
+  - tmt-play
+
+sos:
+  sealed:
+  - 6x sos-play
+  # Like the original Strixhaven -- the seeded college booster carries the
+  # foil promo, so it is not listed separately.
+  # https://magic.wizards.com/en/news/feature/secrets-of-strixhaven-prerelease-guide
+  prerelease-sealed:
+    choice: college
+    variants:
+      silverquill:
+        boosters:
+        - 5x sos-play
+        - 1x sos-prerelease-silverquill
+      prismari:
+        boosters:
+        - 5x sos-play
+        - 1x sos-prerelease-prismari
+      witherbloom:
+        boosters:
+        - 5x sos-play
+        - 1x sos-prerelease-witherbloom
+      lorehold:
+        boosters:
+        - 5x sos-play
+        - 1x sos-prerelease-lorehold
+      quandrix:
+        boosters:
+        - 5x sos-play
+        - 1x sos-prerelease-quandrix
+  draft:
+  - sos-play
+  - sos-play
+  - sos-play
+
+msh:
+  sealed:
+  - 6x msh-play
+  prerelease-sealed:
+    boosters:
+    - 6x msh-play
+    - 1x msh-prerelease
+  draft:
+  - msh-play
+  - msh-play
+  - msh-play
