@@ -4,13 +4,13 @@ require "json"
 require "yaml"
 require "pathname"
 
-class FormatsIndexer
+class LimitedFormatsIndexer
   def input_path
-    Pathname(__dir__) + "../../data/formats.yaml"
+    Pathname(__dir__) + "../../data/limited_formats.yaml"
   end
 
   def output_path
-    Pathname(__dir__) + "../../index/formats.json"
+    Pathname(__dir__) + "../../index/limited_formats.json"
   end
 
   def data
@@ -153,4 +153,4 @@ class FormatsIndexer
   end
 end
 
-FormatsIndexer.new.call
+LimitedFormatsIndexer.new.call

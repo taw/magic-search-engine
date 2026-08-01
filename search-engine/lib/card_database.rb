@@ -13,6 +13,7 @@ require_relative "card"
 require_relative "color_balanced_card_sheet"
 require_relative "card_sheet_with_duplicates"
 require_relative "fixed_card_sheet"
+require_relative "limited_format"
 require_relative "color"
 require_relative "deck_database"
 require_relative "deck_parser"
@@ -51,6 +52,13 @@ end
 
 class CardDatabase
   attr_reader :sets, :cards, :blocks, :artists, :cards_in_precons, :products
+  attr_reader :limited_formats
+
+  INDEX_ROOT = Pathname(__dir__) + "../../index"
+  INDEX_PATH = INDEX_ROOT + "index.json"
+  BOOSTER_INDEX_PATH = INDEX_ROOT + "booster_index.json"
+  PRODUCTS_PATH = INDEX_ROOT + "products.json"
+  LIMITED_FORMATS_PATH = INDEX_ROOT + "limited_formats.json"
 
   def initialize
     @sets = {}
@@ -82,11 +90,15 @@ class CardDatabase
   end
 
   def booster_data
-    @booster_data ||= JSON.parse(Pathname("#{__dir__}/../../index/booster_index.json").read)
+    @booster_data ||= JSON.parse(BOOSTER_INDEX_PATH.read)
   end
 
   def products_data
-    @products_data ||= JSON.parse(Pathname("#{__dir__}/../../index/products.json").read)
+    @products_data ||= JSON.parse(PRODUCTS_PATH.read)
+  end
+
+  def limited_formats_data
+    @limited_formats_data ||= JSON.parse(LIMITED_FORMATS_PATH.read)
   end
 
   # This used to allow all other cards with same name from same set,
@@ -290,7 +302,7 @@ class CardDatabase
   class <<self
     private :new
 
-    def load(path=Pathname("#{__dir__}/../../index/index.json"))
+    def load(path=INDEX_PATH)
       new do |db|
         db.send(:load_from_json!, Pathname(path))
       end
@@ -371,6 +383,7 @@ class CardDatabase
     setup_sort_index!
     DeckDatabase.new(self).load!
     load_products!
+    load_limited_formats!
     index_cards_in_precons!
   end
 
@@ -389,6 +402,23 @@ class CardDatabase
     end
 
     Product.link_products(self)
+  end
+
+  def load_limited_formats!
+    @limited_formats = []
+
+    limited_formats_data.each do |set_code, set_data|
+      set = @sets[set_code]
+      unless set
+        warn "Can't find set #{set_code} for limited formats"
+        next
+      end
+      set_data.each do |type, format_data|
+        limited_format = LimitedFormat.new(set, type, format_data)
+        @limited_formats << limited_format
+        set.limited_formats << limited_format
+      end
+    end
   end
 
   # Change card number to CardPrinting reference

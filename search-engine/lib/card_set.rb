@@ -4,6 +4,7 @@ class CardSet
   attr_reader :border, :release_date, :printings, :types
   attr_reader :decks, :base_set_size
   attr_reader :products, :subsets, :languages
+  attr_reader :limited_formats
   attr_reader :token_set_code
   attr_reader :normalized_name, :normalized_name_alt, :printing_by_number
 
@@ -25,6 +26,7 @@ class CardSet
     @decks         = []
     @base_set_size = data["base_set_size"]
     @products = []
+    @limited_formats = []
     @subsets = data["subsets"]
     @languages = data["languages"]
     @token_set_code = data["token_set_code"]
