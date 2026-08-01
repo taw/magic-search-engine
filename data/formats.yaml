@@ -4,6 +4,26 @@
 #   draft              - the three booster packs, in the order they are opened
 #   sealed             - the sealed deck pool (unordered, so counts are used)
 #   prerelease-sealed  - the sealed deck pool handed out at that set's prerelease
+#   play-variant       - how the set is played, when that is not normal limited
+#
+# Play variants
+# -------------
+# Nearly every set is drafted eight players / three packs / 40-card deck / 1v1,
+# and sealed as a 40-card deck out of six boosters. The handful of sets built
+# for something else carry a `play-variant` key, which applies to every limited
+# format listed for that set. (This is unrelated to the `variants` key inside a
+# sealed pool, which is about which pool a player got, not how it is played.)
+#   multiplayer       - Conspiracy: drafted with draft-matters cards (and
+#                       conspiracies, drafted face down and starting the game in
+#                       the command zone), played as free-for-all multiplayer.
+#   two-headed-giant  - Battlebond: drafted in fixed pairs and played 2HG, which
+#                       is what the partner pairs in the booster are for.
+#   commander         - Commander Legends and friends: three 20-card packs
+#                       drafted into a 60-card singleton deck with a commander,
+#                       played in multiplayer pods.
+# Sets whose *contents* are unusual but whose play is ordinary are not tagged:
+# the Un-sets, Mystery Booster, and Innistrad: Double Feature are all just
+# normal drafts over a strange card pool.
 #
 # Draft order
 # -----------
@@ -1144,6 +1164,7 @@ jou:
 
 # Conspiracy is a draft-only set; there is no sealed or prerelease format.
 cns:
+  play-variant: multiplayer
   draft:
   - cns-draft
   - cns-draft
@@ -1407,6 +1428,7 @@ emn:
 
 # Draft-only set, like the first Conspiracy.
 cn2:
+  play-variant: multiplayer
   draft:
   - cn2-draft
   - cn2-draft
@@ -1539,6 +1561,7 @@ dom:
 # Battlebond is a Two-Headed Giant set; both its draft and its prerelease were
 # played in pairs, which this schema has no way to say.
 bbd:
+  play-variant: two-headed-giant
   sealed:
   - 6x bbd-draft
   prerelease-sealed:
@@ -1744,6 +1767,7 @@ znr:
 # Commander Draft: three boosters, but you draft two cards at a time and build
 # a 60-card Commander deck. No sealed or prerelease format.
 cmr:
+  play-variant: commander
   draft:
   - cmr-draft
   - cmr-draft
@@ -1900,6 +1924,7 @@ snc:
 
 # Commander Draft, like Commander Legends.
 clb:
+  play-variant: commander
   # Only three boosters -- the prerelease was Commander Draft, not sealed.
   prerelease-sealed:
     boosters:
@@ -1998,6 +2023,7 @@ ltr:
 
 # Commander Draft.
 cmm:
+  play-variant: commander
   draft:
   - cmm-draft
   - cmm-draft
