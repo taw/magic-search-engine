@@ -48,6 +48,20 @@ class FormatsIndexer
     (pool_data[key] || []).map{|entry| parse_promo(entry)}
   end
 
+  # Dragon's Maze handed out one guild booster picked at random out of a few,
+  # on top of the fixed boosters
+  def parse_random_boosters(pool_data)
+    (pool_data["random-boosters"] || []).map do |entry|
+      unless entry["pick"] and entry["from"]
+        raise "Random boosters need pick and from"
+      end
+      {
+        pick: entry["pick"],
+        from: entry["from"],
+      }
+    end
+  end
+
   # Either a bare booster list, or a Hash with boosters plus promo cards
   def index_sealed_pool(pool_data)
     if pool_data.is_a?(Array)
@@ -58,6 +72,7 @@ class FormatsIndexer
     end
     {
       boosters: parse_boosters(pool_data["boosters"]),
+      random_boosters: parse_random_boosters(pool_data),
       playable_promo_cards: parse_promos(pool_data, "playable-promo"),
       unplayable_promo_cards: parse_promos(pool_data, "unplayable-promo"),
     }

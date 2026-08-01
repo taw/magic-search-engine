@@ -1,3 +1,610 @@
+# Limited formats, by set.
+#
+# Keys:
+#   draft              - the three booster packs, in the order they are opened
+#   sealed             - the sealed deck pool (unordered, so counts are used)
+#   prerelease-sealed  - the sealed deck pool handed out at that set's prerelease
+#
+# Draft order
+# -----------
+# Block drafts originally added each new set to the *end* of the order, so a
+# block's draft went large set first (RAV / GPT / DIS, TSP / PLC / FUT).
+# Beginning with Mirrodin Besieged the order was reversed and drafts start with
+# the most recent set (MBS / SOM / SOM, NPH / MBS / SOM).
+# https://mtg.wiki/page/Booster_Draft#Order
+#
+# From Oath of the Gatewatch on, the Two-Block Paradigm drafted the second set
+# of a block as BBA (two small, one large) rather than AAB.
+# From Dominaria on (Three-and-One Model) every set is drafted on its own.
+#
+# Sealed pools
+# ------------
+# Until Conflux, sealed used one tournament pack plus booster packs; from
+# Alara Reborn on it is six boosters. https://mtg.wiki/page/Sealed_Deck
+# The `sealed` key is only filled in for the six-booster era -- the exact
+# tournament-pack-era pool is not something we have a reliable source for.
+#
+# Prereleases
+# -----------
+# Tournament-pack era prereleases handed out one tournament pack of the block's
+# large set plus three boosters of the new set (confirmed for Planar Chaos and
+# Future Sight; assumed to hold for the rest of that era).
+# https://magic.wizards.com/en/articles/archive/feature/planar-chaos-prerelease-primer-2007-01-15
+#
+# The prerelease card was a fixed giveaway and not part of the sealed pool until
+# Return to Ravnica, which is where `unplayable-promo` gives way to
+# `playable-promo`. Core sets kept the old fixed promo through Magic 2014.
+# From Khans of Tarkir on the promo is a random rare/mythic of the set, and it
+# ships inside the seeded prerelease booster -- where that is the case it is part
+# of the booster's contents and is not listed separately here.
+# https://mtg.wiki/page/Prerelease_card
+
+mir:
+  draft:
+  - mir-draft
+  - mir-draft
+  - mir-draft
+
+vis:
+  draft:
+  - mir-draft
+  - mir-draft
+  - vis-draft
+
+5ed:
+  draft:
+  - 5ed-draft
+  - 5ed-draft
+  - 5ed-draft
+
+wth:
+  draft:
+  - mir-draft
+  - vis-draft
+  - wth-draft
+
+tmp:
+  draft:
+  - tmp-draft
+  - tmp-draft
+  - tmp-draft
+
+sth:
+  draft:
+  - tmp-draft
+  - tmp-draft
+  - sth-draft
+
+exo:
+  draft:
+  - tmp-draft
+  - sth-draft
+  - exo-draft
+
+ugl:
+  draft:
+  - ugl-draft
+  - ugl-draft
+  - ugl-draft
+
+usg:
+  prerelease-sealed:
+    boosters:
+    - 1x usg-tournament
+    - 3x usg-draft
+    unplayable-promo:
+    - Lightning Dragon [PUSG:202]
+  draft:
+  - usg-draft
+  - usg-draft
+  - usg-draft
+
+ulg:
+  prerelease-sealed:
+    boosters:
+    - 1x usg-tournament
+    - 3x ulg-draft
+    unplayable-promo:
+    - Beast of Burden [PULG:122]
+  draft:
+  - usg-draft
+  - usg-draft
+  - ulg-draft
+
+6ed:
+  draft:
+  - 6ed-draft
+  - 6ed-draft
+  - 6ed-draft
+
+uds:
+  prerelease-sealed:
+    boosters:
+    - 1x usg-tournament
+    - 3x uds-draft
+    unplayable-promo:
+    - False Prophet [PUDS:6]
+  draft:
+  - usg-draft
+  - ulg-draft
+  - uds-draft
+
+mmq:
+  prerelease-sealed:
+    boosters:
+    - 1x mmq-tournament
+    - 3x mmq-draft
+    unplayable-promo:
+    - Overtaker [PMMQ:89]
+  draft:
+  - mmq-draft
+  - mmq-draft
+  - mmq-draft
+
+nem:
+  prerelease-sealed:
+    boosters:
+    - 1x mmq-tournament
+    - 3x nem-draft
+    unplayable-promo:
+    - Rathi Assassin [PNEM:67]
+  draft:
+  - mmq-draft
+  - mmq-draft
+  - nem-draft
+
+pcy:
+  prerelease-sealed:
+    boosters:
+    - 1x mmq-tournament
+    - 3x pcy-draft
+    unplayable-promo:
+    - Avatar of Hope [PPCY:3]
+  draft:
+  - mmq-draft
+  - nem-draft
+  - pcy-draft
+
+inv:
+  prerelease-sealed:
+    boosters:
+    - 1x inv-tournament
+    - 3x inv-draft
+    unplayable-promo:
+    - Raging Kavu [PINV:262]
+  draft:
+  - inv-draft
+  - inv-draft
+  - inv-draft
+
+pls:
+  prerelease-sealed:
+    boosters:
+    - 1x inv-tournament
+    - 3x pls-draft
+    unplayable-promo:
+    - Questing Phelddagrif [PPLS:119]
+  draft:
+  - inv-draft
+  - inv-draft
+  - pls-draft
+
+7ed:
+  draft:
+  - 7ed-draft
+  - 7ed-draft
+  - 7ed-draft
+
+apc:
+  prerelease-sealed:
+    boosters:
+    - 1x inv-tournament
+    - 3x apc-draft
+    unplayable-promo:
+    - Fungal Shambler [PAPC:100]
+  draft:
+  - inv-draft
+  - pls-draft
+  - apc-draft
+
+ody:
+  prerelease-sealed:
+    boosters:
+    - 1x ody-tournament
+    - 3x ody-draft
+    unplayable-promo:
+    - Stone-Tongue Basilisk [PODY:276]
+  draft:
+  - ody-draft
+  - ody-draft
+  - ody-draft
+
+tor:
+  prerelease-sealed:
+    boosters:
+    - 1x ody-tournament
+    - 3x tor-draft
+    unplayable-promo:
+    - Laquatus's Champion [PTOR:67]
+  draft:
+  - ody-draft
+  - ody-draft
+  - tor-draft
+
+jud:
+  prerelease-sealed:
+    boosters:
+    - 1x ody-tournament
+    - 3x jud-draft
+    unplayable-promo:
+    - Glory [PJUD:11]
+  draft:
+  - ody-draft
+  - tor-draft
+  - jud-draft
+
+ons:
+  prerelease-sealed:
+    boosters:
+    - 1x ons-tournament
+    - 3x ons-draft
+    unplayable-promo:
+    - Silent Specter [PONS:169]
+  draft:
+  - ons-draft
+  - ons-draft
+  - ons-draft
+
+lgn:
+  prerelease-sealed:
+    boosters:
+    - 1x ons-tournament
+    - 3x lgn-draft
+    unplayable-promo:
+    - Feral Throwback [PLGN:126]
+  draft:
+  - ons-draft
+  - ons-draft
+  - lgn-draft
+
+scg:
+  prerelease-sealed:
+    boosters:
+    - 1x ons-tournament
+    - 3x scg-draft
+    unplayable-promo:
+    - Soul Collector [PSCG:74]
+  draft:
+  - ons-draft
+  - lgn-draft
+  - scg-draft
+
+8ed:
+  draft:
+  - 8ed-draft
+  - 8ed-draft
+  - 8ed-draft
+
+mrd:
+  prerelease-sealed:
+    boosters:
+    - 1x mrd-tournament
+    - 3x mrd-draft
+    unplayable-promo:
+    - Sword of Kaldra [PMRD:251★]
+  draft:
+  - mrd-draft
+  - mrd-draft
+  - mrd-draft
+
+dst:
+  prerelease-sealed:
+    boosters:
+    - 1x mrd-tournament
+    - 3x dst-draft
+    unplayable-promo:
+    - Shield of Kaldra [PDST:139★]
+  draft:
+  - mrd-draft
+  - mrd-draft
+  - dst-draft
+
+5dn:
+  prerelease-sealed:
+    boosters:
+    - 1x mrd-tournament
+    - 3x 5dn-draft
+    unplayable-promo:
+    - Helm of Kaldra [P5DN:131★]
+  draft:
+  - mrd-draft
+  - dst-draft
+  - 5dn-draft
+
+chk:
+  prerelease-sealed:
+    boosters:
+    - 1x chk-tournament
+    - 3x chk-draft
+    unplayable-promo:
+    - Ryusei, the Falling Star [PCHK:185★]
+  draft:
+  - chk-draft
+  - chk-draft
+  - chk-draft
+
+unh:
+  draft:
+  - unh-draft
+  - unh-draft
+  - unh-draft
+
+bok:
+  prerelease-sealed:
+    boosters:
+    - 1x chk-tournament
+    - 3x bok-draft
+    unplayable-promo:
+    - Ink-Eyes, Servant of Oni [PBOK:71★]
+  draft:
+  - chk-draft
+  - chk-draft
+  - bok-draft
+
+sok:
+  prerelease-sealed:
+    boosters:
+    - 1x chk-tournament
+    - 3x sok-draft
+    unplayable-promo:
+    - Kiyomaro, First to Stand [PSOK:18★]
+  draft:
+  - chk-draft
+  - bok-draft
+  - sok-draft
+
+9ed:
+  draft:
+  - 9ed-draft
+  - 9ed-draft
+  - 9ed-draft
+
+rav:
+  prerelease-sealed:
+    boosters:
+    - 1x rav-tournament
+    - 3x rav-draft
+    unplayable-promo:
+    - Gleancrawler [PRAV:247★]
+  draft:
+  - rav-draft
+  - rav-draft
+  - rav-draft
+
+gpt:
+  prerelease-sealed:
+    boosters:
+    - 1x rav-tournament
+    - 3x gpt-draft
+    unplayable-promo:
+    - Djinn Illuminatus [PGPT:142★]
+  draft:
+  - rav-draft
+  - rav-draft
+  - gpt-draft
+
+dis:
+  prerelease-sealed:
+    boosters:
+    - 1x rav-tournament
+    - 3x dis-draft
+    unplayable-promo:
+    - Avatar of Discord [PDIS:140★]
+  draft:
+  - rav-draft
+  - gpt-draft
+  - dis-draft
+
+# Coldsnap was drafted on its own, not with Ice Age and Alliances.
+# Its prerelease is not modelled: Coldsnap tournament packs exist but
+# we have no booster data for them (promo Allosaurus Rider [PCSP:101★]).
+csp:
+  draft:
+  - csp-draft
+  - csp-draft
+  - csp-draft
+
+tsp:
+  prerelease-sealed:
+    boosters:
+    - 1x tsp-tournament
+    - 3x tsp-draft
+    unplayable-promo:
+    - Lotus Bloom [PTSP:259★]
+  draft:
+  - tsp-draft
+  - tsp-draft
+  - tsp-draft
+
+plc:
+  # "one 75-card tournament pack of Time Spiral and three 15-card
+  # booster packs of Planar Chaos" -- Planar Chaos Prerelease Primer
+  prerelease-sealed:
+    boosters:
+    - 1x tsp-tournament
+    - 3x plc-draft
+    unplayable-promo:
+    - Oros, the Avenger [PPLC:161★]
+  draft:
+  - tsp-draft
+  - tsp-draft
+  - plc-draft
+
+fut:
+  prerelease-sealed:
+    boosters:
+    - 1x tsp-tournament
+    - 3x fut-draft
+    unplayable-promo:
+    - Korlash, Heir to Blackblade [PFUT:87★]
+  draft:
+  - tsp-draft
+  - plc-draft
+  - fut-draft
+
+10e:
+  draft:
+  - 10e-draft
+  - 10e-draft
+  - 10e-draft
+
+lrw:
+  prerelease-sealed:
+    boosters:
+    - 1x lrw-tournament
+    - 3x lrw-draft
+    unplayable-promo:
+    - Wren's Run Packmaster [PLRW:244★]
+  draft:
+  - lrw-draft
+  - lrw-draft
+  - lrw-draft
+
+mor:
+  prerelease-sealed:
+    boosters:
+    - 1x lrw-tournament
+    - 3x mor-draft
+    unplayable-promo:
+    - Door of Destinies [PMOR:143★]
+  draft:
+  - lrw-draft
+  - lrw-draft
+  - mor-draft
+
+shm:
+  prerelease-sealed:
+    boosters:
+    - 1x shm-tournament
+    - 3x shm-draft
+    unplayable-promo:
+    - Demigod of Revenge [PSHM:183★]
+  draft:
+  - shm-draft
+  - shm-draft
+  - shm-draft
+
+eve:
+  prerelease-sealed:
+    boosters:
+    - 1x shm-tournament
+    - 3x eve-draft
+    unplayable-promo:
+    - Overbeing of Myth [PEVE:157★]
+  draft:
+  - shm-draft
+  - shm-draft
+  - eve-draft
+
+ala:
+  prerelease-sealed:
+    boosters:
+    - 1x ala-tournament
+    - 3x ala-draft
+    unplayable-promo:
+    - Ajani Vengeant [PALA:154★]
+  draft:
+  - ala-draft
+  - ala-draft
+  - ala-draft
+
+con:
+  prerelease-sealed:
+    boosters:
+    - 1x ala-tournament
+    - 3x con-draft
+    unplayable-promo:
+    - Malfegor [PCON:117★]
+  draft:
+  - ala-draft
+  - ala-draft
+  - con-draft
+
+# First prerelease without tournament packs.
+# The prerelease pool skipped Conflux entirely: 3 Shards of Alara + 3 Alara Reborn.
+arb:
+  sealed:
+  - 2x ala-draft
+  - 2x con-draft
+  - 2x arb-draft
+  prerelease-sealed:
+    boosters:
+    - 3x ala-draft
+    - 3x arb-draft
+    unplayable-promo:
+    - Dragon Broodmother [PARB:53★]
+  draft:
+  - ala-draft
+  - con-draft
+  - arb-draft
+
+# First core set with a prerelease.
+m10:
+  sealed:
+  - 6x m10-draft
+  prerelease-sealed:
+    boosters:
+    - 6x m10-draft
+    unplayable-promo:
+    - Vampire Nocturnus [PM10:118★]
+  draft:
+  - m10-draft
+  - m10-draft
+  - m10-draft
+
+zen:
+  sealed:
+  - 6x zen-draft
+  # Players also got the oversized plane Celestine Reef, not modelled here.
+  prerelease-sealed:
+    boosters:
+    - 6x zen-draft
+    unplayable-promo:
+    - Rampaging Baloths [PZEN:178★]
+  draft:
+  - zen-draft
+  - zen-draft
+  - zen-draft
+
+wwk:
+  sealed:
+  - 3x zen-draft
+  - 3x wwk-draft
+  prerelease-sealed:
+    boosters:
+    - 3x zen-draft
+    - 3x wwk-draft
+    unplayable-promo:
+    - Comet Storm [PWWK:76★]
+  draft:
+  - zen-draft
+  - zen-draft
+  - wwk-draft
+
+# Rise of the Eldrazi was drafted alone, not with the rest of Zendikar block.
+roe:
+  sealed:
+  - 6x roe-draft
+  prerelease-sealed:
+    boosters:
+    - 6x roe-draft
+    unplayable-promo:
+    - Emrakul, the Aeons Torn [PROE:4★]
+  draft:
+  - roe-draft
+  - roe-draft
+  - roe-draft
+
 m11:
   sealed:
   - 6x m11-draft
@@ -10,6 +617,7 @@ m11:
   - m11-draft
   - m11-draft
   - m11-draft
+
 som:
   sealed:
   - 6x som-draft
@@ -22,14 +630,19 @@ som:
   - som-draft
   - som-draft
   - som-draft
+
+# First set drafted newest-pack-first.
 mbs:
   sealed:
   - 3x mbs-draft
   - 3x som-draft
+  # "For Prereleases only, Mirrodin Besieged will come in very special packs.
+  # These packs will only contain cards from a single faction. When you register
+  # for an event, you will be very clearly showing your allegiance, and that will
+  # affect what cards you will open, and even the Prerelease card that you receive."
+  # videos confirm: 3 MBS faction packs, and 3 SOM packs
+  # promo is faction-specific too, so it lives inside each variant
   prerelease-sealed:
-    # "For Prereleases only, Mirrodin Besieged will come in very special packs. These packs will only contain cards from a single faction. When you register for an event, you will be very clearly showing your allegiance, and that will affect what cards you will open, and even the Prerelease card that you receive."
-    # videos confirm: 3 MBS faction packs, and 3 SOM packs
-    # promo is faction-specific too, so it lives inside each variant
     choice: faction
     variants:
       mirran:
@@ -48,6 +661,7 @@ mbs:
   - mbs-draft
   - som-draft
   - som-draft
+
 nph:
   sealed:
   - 2x nph-draft
@@ -64,6 +678,7 @@ nph:
   - nph-draft
   - mbs-draft
   - som-draft
+
 m12:
   sealed:
   - 6x m12-draft
@@ -76,6 +691,7 @@ m12:
   - m12-draft
   - m12-draft
   - m12-draft
+
 isd:
   sealed:
   - 6x isd-draft
@@ -89,6 +705,7 @@ isd:
   - isd-draft
   - isd-draft
   - isd-draft
+
 dka:
   sealed:
   - 3x isd-draft
@@ -104,6 +721,8 @@ dka:
   - dka-draft
   - isd-draft
   - isd-draft
+
+# Avacyn Restored was drafted alone, not with Innistrad and Dark Ascension.
 avr:
   sealed:
   - 6x avr-draft
@@ -116,6 +735,7 @@ avr:
   - avr-draft
   - avr-draft
   - avr-draft
+
 m13:
   sealed:
   - 6x m13-draft
@@ -128,6 +748,261 @@ m13:
   - m13-draft
   - m13-draft
   - m13-draft
+
+rtr:
+  sealed:
+  - 6x rtr-draft
+  # Five normal boosters plus a guild booster of the guild you registered for.
+  # First set whose prerelease card is part of your sealed pool, so it is a
+  # playable-promo. It sits outside the guild booster.
+  prerelease-sealed:
+    choice: guild
+    variants:
+      azorius:
+        boosters:
+        - 5x rtr-draft
+        - 1x rtr-prerelease-azorius
+        playable-promo:
+        - Archon of the Triumvirate [PRTR:142★]
+      izzet:
+        boosters:
+        - 5x rtr-draft
+        - 1x rtr-prerelease-izzet
+        playable-promo:
+        - Hypersonic Dragon [PRTR:170★]
+      rakdos:
+        boosters:
+        - 5x rtr-draft
+        - 1x rtr-prerelease-rakdos
+        playable-promo:
+        - Carnival Hellsteed [PRTR:147★]
+      golgari:
+        boosters:
+        - 5x rtr-draft
+        - 1x rtr-prerelease-golgari
+        playable-promo:
+        - Corpsejack Menace [PRTR:152★]
+      selesnya:
+        boosters:
+        - 5x rtr-draft
+        - 1x rtr-prerelease-selesnya
+        playable-promo:
+        - Grove of the Guardian [PRTR:240★]
+  draft:
+  - rtr-draft
+  - rtr-draft
+  - rtr-draft
+
+gtc:
+  sealed:
+  - 6x gtc-draft
+  # Same structure as Return to Ravnica, for the other five guilds.
+  prerelease-sealed:
+    choice: guild
+    variants:
+      orzhov:
+        boosters:
+        - 5x gtc-draft
+        - 1x gtc-prerelease-orzhov
+        playable-promo:
+        - Treasury Thrull [PGTC:201★]
+      dimir:
+        boosters:
+        - 5x gtc-draft
+        - 1x gtc-prerelease-dimir
+        playable-promo:
+        - Consuming Aberration [PGTC:152★]
+      gruul:
+        boosters:
+        - 5x gtc-draft
+        - 1x gtc-prerelease-gruul
+        playable-promo:
+        - Rubblehulk [PGTC:191★]
+      boros:
+        boosters:
+        - 5x gtc-draft
+        - 1x gtc-prerelease-boros
+        playable-promo:
+        - Foundry Champion [PGTC:165★]
+      simic:
+        boosters:
+        - 5x gtc-draft
+        - 1x gtc-prerelease-simic
+        playable-promo:
+        - Fathom Mage [PGTC:162★]
+  draft:
+  - gtc-draft
+  - gtc-draft
+  - gtc-draft
+
+dgm:
+  sealed:
+  - 2x dgm-draft
+  - 2x gtc-draft
+  - 2x rtr-draft
+  # You picked one of all ten guilds and got that guild's booster from its own set,
+  # plus a booster of one randomly chosen allied guild from the other set.
+  # The allied guild shares a colour with yours and is always from the opposite set.
+  # https://magic.wizards.com/en/news/feature/dragons-maze-prerelease-primer
+  # The `random-boosters` key is new -- nothing else needs one-of-N yet.
+  # There was no guild promo this time; Maze's End and a foil Plains were handed
+  # out for completing the Implicit Maze, so they are not part of the pool.
+  prerelease-sealed:
+    choice: guild
+    variants:
+      azorius:
+        boosters:
+        - 4x dgm-draft
+        - 1x rtr-prerelease-azorius
+        random-boosters:
+        - pick: 1
+          from:
+          - gtc-prerelease-orzhov
+          - gtc-prerelease-dimir
+          - gtc-prerelease-boros
+          - gtc-prerelease-simic
+        unplayable-promo:
+        - Maze's End [PDGM:152★]
+        - Plains [PDGM:157★]
+      izzet:
+        boosters:
+        - 4x dgm-draft
+        - 1x rtr-prerelease-izzet
+        random-boosters:
+        - pick: 1
+          from:
+          - gtc-prerelease-dimir
+          - gtc-prerelease-gruul
+          - gtc-prerelease-boros
+          - gtc-prerelease-simic
+        unplayable-promo:
+        - Maze's End [PDGM:152★]
+        - Plains [PDGM:157★]
+      rakdos:
+        boosters:
+        - 4x dgm-draft
+        - 1x rtr-prerelease-rakdos
+        random-boosters:
+        - pick: 1
+          from:
+          - gtc-prerelease-orzhov
+          - gtc-prerelease-dimir
+          - gtc-prerelease-gruul
+          - gtc-prerelease-boros
+        unplayable-promo:
+        - Maze's End [PDGM:152★]
+        - Plains [PDGM:157★]
+      golgari:
+        boosters:
+        - 4x dgm-draft
+        - 1x rtr-prerelease-golgari
+        random-boosters:
+        - pick: 1
+          from:
+          - gtc-prerelease-orzhov
+          - gtc-prerelease-dimir
+          - gtc-prerelease-gruul
+          - gtc-prerelease-simic
+        unplayable-promo:
+        - Maze's End [PDGM:152★]
+        - Plains [PDGM:157★]
+      selesnya:
+        boosters:
+        - 4x dgm-draft
+        - 1x rtr-prerelease-selesnya
+        random-boosters:
+        - pick: 1
+          from:
+          - gtc-prerelease-orzhov
+          - gtc-prerelease-gruul
+          - gtc-prerelease-boros
+          - gtc-prerelease-simic
+        unplayable-promo:
+        - Maze's End [PDGM:152★]
+        - Plains [PDGM:157★]
+      orzhov:
+        boosters:
+        - 4x dgm-draft
+        - 1x gtc-prerelease-orzhov
+        random-boosters:
+        - pick: 1
+          from:
+          - rtr-prerelease-azorius
+          - rtr-prerelease-rakdos
+          - rtr-prerelease-golgari
+          - rtr-prerelease-selesnya
+        unplayable-promo:
+        - Maze's End [PDGM:152★]
+        - Plains [PDGM:157★]
+      dimir:
+        boosters:
+        - 4x dgm-draft
+        - 1x gtc-prerelease-dimir
+        random-boosters:
+        - pick: 1
+          from:
+          - rtr-prerelease-azorius
+          - rtr-prerelease-izzet
+          - rtr-prerelease-rakdos
+          - rtr-prerelease-golgari
+        unplayable-promo:
+        - Maze's End [PDGM:152★]
+        - Plains [PDGM:157★]
+      gruul:
+        boosters:
+        - 4x dgm-draft
+        - 1x gtc-prerelease-gruul
+        random-boosters:
+        - pick: 1
+          from:
+          - rtr-prerelease-izzet
+          - rtr-prerelease-rakdos
+          - rtr-prerelease-golgari
+          - rtr-prerelease-selesnya
+        unplayable-promo:
+        - Maze's End [PDGM:152★]
+        - Plains [PDGM:157★]
+      boros:
+        boosters:
+        - 4x dgm-draft
+        - 1x gtc-prerelease-boros
+        random-boosters:
+        - pick: 1
+          from:
+          - rtr-prerelease-azorius
+          - rtr-prerelease-izzet
+          - rtr-prerelease-rakdos
+          - rtr-prerelease-selesnya
+        unplayable-promo:
+        - Maze's End [PDGM:152★]
+        - Plains [PDGM:157★]
+      simic:
+        boosters:
+        - 4x dgm-draft
+        - 1x gtc-prerelease-simic
+        random-boosters:
+        - pick: 1
+          from:
+          - rtr-prerelease-azorius
+          - rtr-prerelease-izzet
+          - rtr-prerelease-golgari
+          - rtr-prerelease-selesnya
+        unplayable-promo:
+        - Maze's End [PDGM:152★]
+        - Plains [PDGM:157★]
+  draft:
+  - dgm-draft
+  - gtc-draft
+  - rtr-draft
+
+mma:
+  sealed:
+  - 6x mma-draft
+  draft:
+  - mma-draft
+  - mma-draft
+  - mma-draft
+
 m14:
   sealed:
   - 6x m14-draft
@@ -142,50 +1017,297 @@ m14:
   - m14-draft
   - m14-draft
   - m14-draft
+
+ths:
+  sealed:
+  - 6x ths-draft
+  # "Choose a Path": five boosters plus a seeded booster of your chosen path.
+  # The stamped foil promo is inside the seeded booster.
+  # The Hero card is oversized and not part of the pool.
+  prerelease-sealed:
+    choice: path
+    variants:
+      honor:
+        boosters:
+        - 5x ths-draft
+        - 1x ths-prerelease-honor
+      wisdom:
+        boosters:
+        - 5x ths-draft
+        - 1x ths-prerelease-wisdom
+      ambition:
+        boosters:
+        - 5x ths-draft
+        - 1x ths-prerelease-ambition
+      might:
+        boosters:
+        - 5x ths-draft
+        - 1x ths-prerelease-might
+      battle:
+        boosters:
+        - 5x ths-draft
+        - 1x ths-prerelease-battle
+  draft:
+  - ths-draft
+  - ths-draft
+  - ths-draft
+
+bng:
+  sealed:
+  - 3x bng-draft
+  - 3x ths-draft
+  # "Master your Destiny". Counting the seeded booster this is the usual 3+3.
+  prerelease-sealed:
+    choice: destiny
+    variants:
+      lead:
+        boosters:
+        - 2x bng-draft
+        - 3x ths-draft
+        - 1x bng-prerelease-lead
+      outwit:
+        boosters:
+        - 2x bng-draft
+        - 3x ths-draft
+        - 1x bng-prerelease-outwit
+      dominate:
+        boosters:
+        - 2x bng-draft
+        - 3x ths-draft
+        - 1x bng-prerelease-dominate
+      conquer:
+        boosters:
+        - 2x bng-draft
+        - 3x ths-draft
+        - 1x bng-prerelease-conquer
+      thrive:
+        boosters:
+        - 2x bng-draft
+        - 3x ths-draft
+        - 1x bng-prerelease-thrive
+  draft:
+  - bng-draft
+  - ths-draft
+  - ths-draft
+
+jou:
+  sealed:
+  - 2x jou-draft
+  - 2x bng-draft
+  - 2x ths-draft
+  # "Forge a Godslayer". The kit was not the plain 2/2/2 of the sealed format:
+  # two Journey into Nyx, one Born of the Gods, two Theros, plus the seeded booster.
+  prerelease-sealed:
+    choice: godslayer
+    variants:
+      glory:
+        boosters:
+        - 2x jou-draft
+        - 1x bng-draft
+        - 2x ths-draft
+        - 1x jou-prerelease-glory
+      intellect:
+        boosters:
+        - 2x jou-draft
+        - 1x bng-draft
+        - 2x ths-draft
+        - 1x jou-prerelease-intellect
+      tyranny:
+        boosters:
+        - 2x jou-draft
+        - 1x bng-draft
+        - 2x ths-draft
+        - 1x jou-prerelease-tyranny
+      war:
+        boosters:
+        - 2x jou-draft
+        - 1x bng-draft
+        - 2x ths-draft
+        - 1x jou-prerelease-war
+      pursuit:
+        boosters:
+        - 2x jou-draft
+        - 1x bng-draft
+        - 2x ths-draft
+        - 1x jou-prerelease-pursuit
+  draft:
+  - jou-draft
+  - bng-draft
+  - ths-draft
+
+# Conspiracy is a draft-only set; there is no sealed or prerelease format.
+cns:
+  draft:
+  - cns-draft
+  - cns-draft
+  - cns-draft
+
 m15:
   sealed:
   - 6x m15-draft
+  # "Hunt for the Rarest Beasts": five normal boosters plus a seeded booster
+  # of the chosen hunt (and an oversized Garruk the Slayer, not modelled here).
+  # The stamped foil promo sits inside the seeded booster.
   prerelease-sealed:
-    # "Hunt for the Rarest Beasts" -- box contains 6 normal boosters plus 1 seeded
-    # booster of the chosen hunt (and a spindown, not modeled here)
-    # https://www.youtube.com/watch?v=9-TElAVCzhw
-    # the stamped foil promo sits inside the seeded booster, so it is part of the
-    # pool and is not listed as a separate promo here
     choice: hunt
     variants:
       valor:
         boosters:
-        - 6x m15-draft
+        - 5x m15-draft
         - 1x m15-prerelease-valor
       guile:
         boosters:
-        - 6x m15-draft
+        - 5x m15-draft
         - 1x m15-prerelease-guile
       ambition:
         boosters:
-        - 6x m15-draft
+        - 5x m15-draft
         - 1x m15-prerelease-ambition
       strength:
         boosters:
-        - 6x m15-draft
+        - 5x m15-draft
         - 1x m15-prerelease-strength
       ferocity:
         boosters:
-        - 6x m15-draft
+        - 5x m15-draft
         - 1x m15-prerelease-ferocity
   draft:
   - m15-draft
   - m15-draft
   - m15-draft
+
+ktk:
+  sealed:
+  - 6x ktk-draft
+  # Five boosters plus a seeded clan booster, which holds the stamped foil promo
+  # (one of eight per clan -- the first set where the promo is not a single card).
+  prerelease-sealed:
+    choice: clan
+    variants:
+      abzan:
+        boosters:
+        - 5x ktk-draft
+        - 1x ktk-prerelease-abzan
+      jeskai:
+        boosters:
+        - 5x ktk-draft
+        - 1x ktk-prerelease-jeskai
+      mardu:
+        boosters:
+        - 5x ktk-draft
+        - 1x ktk-prerelease-mardu
+      sultai:
+        boosters:
+        - 5x ktk-draft
+        - 1x ktk-prerelease-sultai
+      temur:
+        boosters:
+        - 5x ktk-draft
+        - 1x ktk-prerelease-temur
+  draft:
+  - ktk-draft
+  - ktk-draft
+  - ktk-draft
+
+# Fate Reforged is the linchpin of the Tarkir block: drafted with Khans of Tarkir
+# here, and with Dragons of Tarkir later.
+frf:
+  sealed:
+  - 4x frf-draft
+  - 2x ktk-draft
+  # Also included the four-card Ugin's Fate booster of alternate-art cards.
+  prerelease-sealed:
+    choice: clan
+    variants:
+      abzan:
+        boosters:
+        - 4x frf-draft
+        - 1x ktk-draft
+        - 1x frf-prerelease-abzan
+        - 1x ugin-fate
+      jeskai:
+        boosters:
+        - 4x frf-draft
+        - 1x ktk-draft
+        - 1x frf-prerelease-jeskai
+        - 1x ugin-fate
+      mardu:
+        boosters:
+        - 4x frf-draft
+        - 1x ktk-draft
+        - 1x frf-prerelease-mardu
+        - 1x ugin-fate
+      sultai:
+        boosters:
+        - 4x frf-draft
+        - 1x ktk-draft
+        - 1x frf-prerelease-sultai
+        - 1x ugin-fate
+      temur:
+        boosters:
+        - 4x frf-draft
+        - 1x ktk-draft
+        - 1x frf-prerelease-temur
+        - 1x ugin-fate
+  draft:
+  - frf-draft
+  - ktk-draft
+  - ktk-draft
+
+dtk:
+  sealed:
+  - 4x dtk-draft
+  - 2x frf-draft
+  # Dragons of Tarkir moved to allied colours, so the seeded boosters are named
+  # after the dragonlords rather than the Khans clans.
+  prerelease-sealed:
+    choice: dragonlord
+    variants:
+      dromoka:
+        boosters:
+        - 4x dtk-draft
+        - 1x frf-draft
+        - 1x dtk-prerelease-dromoka
+      ojutai:
+        boosters:
+        - 4x dtk-draft
+        - 1x frf-draft
+        - 1x dtk-prerelease-ojutai
+      silumgar:
+        boosters:
+        - 4x dtk-draft
+        - 1x frf-draft
+        - 1x dtk-prerelease-silumgar
+      kolaghan:
+        boosters:
+        - 4x dtk-draft
+        - 1x frf-draft
+        - 1x dtk-prerelease-kolaghan
+      atarka:
+        boosters:
+        - 4x dtk-draft
+        - 1x frf-draft
+        - 1x dtk-prerelease-atarka
+  draft:
+  - dtk-draft
+  - dtk-draft
+  - frf-draft
+
+mm2:
+  sealed:
+  - 6x mm2-draft
+  draft:
+  - mm2-draft
+  - mm2-draft
+  - mm2-draft
+
 ori:
   sealed:
   - 6x ori-draft
+  # Six normal boosters plus a small seven-card seeded booster of the chosen
+  # planeswalker's colour, which holds the stamped foil promo.
+  # Last of the seeded 'experience' prereleases before Battle for Zendikar.
   prerelease-sealed:
-    # box contains 6 normal boosters plus 1 seeded booster of the chosen
-    # planeswalker (and a spindown, not modeled here)
-    # https://www.youtube.com/watch?v=9-TElAVCzhw
-    # the stamped foil promo sits inside the seeded booster, so it is part of the
-    # pool and is not listed as a separate promo here
     choice: planeswalker
     variants:
       gideon:
@@ -212,3 +1334,703 @@ ori:
   - ori-draft
   - ori-draft
   - ori-draft
+
+bfz:
+  sealed:
+  - 6x bfz-draft
+  # From here the prerelease card is a random rare or mythic of the set, modelled
+  # as a one-card `-prerelease` pack. It is part of the sealed pool.
+  prerelease-sealed:
+    boosters:
+    - 6x bfz-draft
+    - 1x bfz-prerelease
+  draft:
+  - bfz-draft
+  - bfz-draft
+  - bfz-draft
+
+# Two-Block Paradigm: second sets are drafted BBA rather than AAB.
+ogw:
+  sealed:
+  - 4x ogw-draft
+  - 2x bfz-draft
+  prerelease-sealed:
+    boosters:
+    - 4x ogw-draft
+    - 2x bfz-draft
+    - 1x ogw-prerelease
+  draft:
+  - ogw-draft
+  - ogw-draft
+  - bfz-draft
+
+soi:
+  sealed:
+  - 6x soi-draft
+  prerelease-sealed:
+    boosters:
+    - 6x soi-draft
+    - 1x soi-prerelease
+  draft:
+  - soi-draft
+  - soi-draft
+  - soi-draft
+
+ema:
+  sealed:
+  - 6x ema-draft
+  draft:
+  - ema-draft
+  - ema-draft
+  - ema-draft
+
+emn:
+  sealed:
+  - 4x emn-draft
+  - 2x soi-draft
+  prerelease-sealed:
+    boosters:
+    - 4x emn-draft
+    - 2x soi-draft
+    - 1x emn-prerelease
+  draft:
+  - emn-draft
+  - emn-draft
+  - soi-draft
+
+# Draft-only set, like the first Conspiracy.
+cn2:
+  draft:
+  - cn2-draft
+  - cn2-draft
+  - cn2-draft
+
+kld:
+  sealed:
+  - 6x kld-draft
+  prerelease-sealed:
+    boosters:
+    - 6x kld-draft
+    - 1x kld-prerelease
+  draft:
+  - kld-draft
+  - kld-draft
+  - kld-draft
+
+aer:
+  sealed:
+  - 4x aer-draft
+  - 2x kld-draft
+  prerelease-sealed:
+    boosters:
+    - 4x aer-draft
+    - 2x kld-draft
+    - 1x aer-prerelease
+  draft:
+  - aer-draft
+  - aer-draft
+  - kld-draft
+
+mm3:
+  sealed:
+  - 6x mm3-draft
+  draft:
+  - mm3-draft
+  - mm3-draft
+  - mm3-draft
+
+akh:
+  sealed:
+  - 6x akh-draft
+  prerelease-sealed:
+    boosters:
+    - 6x akh-draft
+    - 1x akh-prerelease
+  draft:
+  - akh-draft
+  - akh-draft
+  - akh-draft
+
+hou:
+  sealed:
+  - 4x hou-draft
+  - 2x akh-draft
+  prerelease-sealed:
+    boosters:
+    - 4x hou-draft
+    - 2x akh-draft
+    - 1x hou-prerelease
+  draft:
+  - hou-draft
+  - hou-draft
+  - akh-draft
+
+xln:
+  sealed:
+  - 6x xln-draft
+  prerelease-sealed:
+    boosters:
+    - 6x xln-draft
+    - 1x xln-prerelease
+  draft:
+  - xln-draft
+  - xln-draft
+  - xln-draft
+
+ima:
+  sealed:
+  - 6x ima-draft
+  draft:
+  - ima-draft
+  - ima-draft
+  - ima-draft
+
+ust:
+  sealed:
+  - 6x ust-draft
+  draft:
+  - ust-draft
+  - ust-draft
+  - ust-draft
+
+# Last set of the Two-Block Paradigm; from Dominaria on every set stands alone.
+rix:
+  sealed:
+  - 4x rix-draft
+  - 2x xln-draft
+  prerelease-sealed:
+    boosters:
+    - 4x rix-draft
+    - 2x xln-draft
+    - 1x rix-prerelease
+  draft:
+  - rix-draft
+  - rix-draft
+  - xln-draft
+
+a25:
+  sealed:
+  - 6x a25-draft
+  draft:
+  - a25-draft
+  - a25-draft
+  - a25-draft
+
+# Three-and-One Model: blocks are gone, each set is drafted on its own.
+dom:
+  sealed:
+  - 6x dom-draft
+  prerelease-sealed:
+    boosters:
+    - 6x dom-draft
+    - 1x dom-prerelease
+  draft:
+  - dom-draft
+  - dom-draft
+  - dom-draft
+
+# Battlebond is a Two-Headed Giant set; both its draft and its prerelease were
+# played in pairs, which this schema has no way to say.
+bbd:
+  sealed:
+  - 6x bbd-draft
+  prerelease-sealed:
+    boosters:
+    - 6x bbd-draft
+    - 1x bbd-prerelease
+  draft:
+  - bbd-draft
+  - bbd-draft
+  - bbd-draft
+
+m19:
+  sealed:
+  - 6x m19-draft
+  prerelease-sealed:
+    boosters:
+    - 6x m19-draft
+    - 1x m19-prerelease
+  draft:
+  - m19-draft
+  - m19-draft
+  - m19-draft
+
+grn:
+  sealed:
+  - 6x grn-draft
+  # Seeded guild boosters are back, and this time the promo ships inside them.
+  prerelease-sealed:
+    choice: guild
+    variants:
+      selesnya:
+        boosters:
+        - 5x grn-draft
+        - 1x grn-prerelease-selesnya
+      golgari:
+        boosters:
+        - 5x grn-draft
+        - 1x grn-prerelease-golgari
+      izzet:
+        boosters:
+        - 5x grn-draft
+        - 1x grn-prerelease-izzet
+      boros:
+        boosters:
+        - 5x grn-draft
+        - 1x grn-prerelease-boros
+      dimir:
+        boosters:
+        - 5x grn-draft
+        - 1x grn-prerelease-dimir
+  draft:
+  - grn-draft
+  - grn-draft
+  - grn-draft
+
+uma:
+  sealed:
+  - 6x uma-draft
+  draft:
+  - uma-draft
+  - uma-draft
+  - uma-draft
+
+rna:
+  sealed:
+  - 6x rna-draft
+  prerelease-sealed:
+    choice: guild
+    variants:
+      azorius:
+        boosters:
+        - 5x rna-draft
+        - 1x rna-prerelease-azorius
+      orzhov:
+        boosters:
+        - 5x rna-draft
+        - 1x rna-prerelease-orzhov
+      rakdos:
+        boosters:
+        - 5x rna-draft
+        - 1x rna-prerelease-rakdos
+      gruul:
+        boosters:
+        - 5x rna-draft
+        - 1x rna-prerelease-gruul
+      simic:
+        boosters:
+        - 5x rna-draft
+        - 1x rna-prerelease-simic
+  draft:
+  - rna-draft
+  - rna-draft
+  - rna-draft
+
+war:
+  sealed:
+  - 6x war-draft
+  prerelease-sealed:
+    boosters:
+    - 6x war-draft
+    - 1x war-prerelease
+  draft:
+  - war-draft
+  - war-draft
+  - war-draft
+
+# Modern Horizons had no prerelease.
+mh1:
+  sealed:
+  - 6x mh1-draft
+  draft:
+  - mh1-draft
+  - mh1-draft
+  - mh1-draft
+
+m20:
+  sealed:
+  - 6x m20-draft
+  prerelease-sealed:
+    boosters:
+    - 6x m20-draft
+    - 1x m20-prerelease
+  draft:
+  - m20-draft
+  - m20-draft
+  - m20-draft
+
+eld:
+  sealed:
+  - 6x eld-draft
+  prerelease-sealed:
+    boosters:
+    - 6x eld-draft
+    - 1x eld-prerelease
+  draft:
+  - eld-draft
+  - eld-draft
+  - eld-draft
+
+# Mystery Booster is a draft product; no sealed or prerelease format.
+mb1:
+  draft:
+  - mb1-draft
+  - mb1-draft
+  - mb1-draft
+
+thb:
+  sealed:
+  - 6x thb-draft
+  prerelease-sealed:
+    boosters:
+    - 6x thb-draft
+    - 1x thb-prerelease
+  draft:
+  - thb-draft
+  - thb-draft
+  - thb-draft
+
+iko:
+  sealed:
+  - 6x iko-draft
+  prerelease-sealed:
+    boosters:
+    - 6x iko-draft
+    - 1x iko-prerelease
+  draft:
+  - iko-draft
+  - iko-draft
+  - iko-draft
+
+m21:
+  sealed:
+  - 6x m21-draft
+  prerelease-sealed:
+    boosters:
+    - 6x m21-draft
+    - 1x m21-prerelease
+  draft:
+  - m21-draft
+  - m21-draft
+  - m21-draft
+
+2xm:
+  sealed:
+  - 6x 2xm-draft
+  draft:
+  - 2xm-draft
+  - 2xm-draft
+  - 2xm-draft
+
+znr:
+  sealed:
+  - 6x znr-draft
+  prerelease-sealed:
+    boosters:
+    - 6x znr-draft
+    - 1x znr-prerelease
+  draft:
+  - znr-draft
+  - znr-draft
+  - znr-draft
+
+# Commander Draft: three boosters, but you draft two cards at a time and build
+# a 60-card Commander deck. No sealed or prerelease format.
+cmr:
+  draft:
+  - cmr-draft
+  - cmr-draft
+  - cmr-draft
+
+khm:
+  sealed:
+  - 6x khm-draft
+  prerelease-sealed:
+    boosters:
+    - 6x khm-draft
+    - 1x khm-prerelease
+  draft:
+  - khm-draft
+  - khm-draft
+  - khm-draft
+
+tsr:
+  sealed:
+  - 6x tsr-draft
+  draft:
+  - tsr-draft
+  - tsr-draft
+  - tsr-draft
+
+stx:
+  sealed:
+  - 6x stx-draft
+  prerelease-sealed:
+    choice: college
+    variants:
+      silverquill:
+        boosters:
+        - 5x stx-draft
+        - 1x stx-prerelease-silverquill
+      prismari:
+        boosters:
+        - 5x stx-draft
+        - 1x stx-prerelease-prismari
+      witherbloom:
+        boosters:
+        - 5x stx-draft
+        - 1x stx-prerelease-witherbloom
+      lorehold:
+        boosters:
+        - 5x stx-draft
+        - 1x stx-prerelease-lorehold
+      quandrix:
+        boosters:
+        - 5x stx-draft
+        - 1x stx-prerelease-quandrix
+  draft:
+  - stx-draft
+  - stx-draft
+  - stx-draft
+
+mh2:
+  sealed:
+  - 6x mh2-draft
+  prerelease-sealed:
+    boosters:
+    - 6x mh2-draft
+    - 1x mh2-prerelease
+  draft:
+  - mh2-draft
+  - mh2-draft
+  - mh2-draft
+
+afr:
+  sealed:
+  - 6x afr-draft
+  prerelease-sealed:
+    boosters:
+    - 6x afr-draft
+    - 1x afr-prerelease
+  draft:
+  - afr-draft
+  - afr-draft
+  - afr-draft
+
+mid:
+  sealed:
+  - 6x mid-draft
+  prerelease-sealed:
+    boosters:
+    - 6x mid-draft
+    - 1x mid-prerelease
+  draft:
+  - mid-draft
+  - mid-draft
+  - mid-draft
+
+vow:
+  sealed:
+  - 6x vow-draft
+  prerelease-sealed:
+    boosters:
+    - 6x vow-draft
+    - 1x vow-prerelease
+  draft:
+  - vow-draft
+  - vow-draft
+  - vow-draft
+
+# Innistrad: Double Feature was a draft-only product.
+dbl:
+  draft:
+  - dbl-draft
+  - dbl-draft
+  - dbl-draft
+
+neo:
+  sealed:
+  - 6x neo-draft
+  prerelease-sealed:
+    boosters:
+    - 6x neo-draft
+    - 1x neo-prerelease
+  draft:
+  - neo-draft
+  - neo-draft
+  - neo-draft
+
+snc:
+  sealed:
+  - 6x snc-draft
+  prerelease-sealed:
+    choice: family
+    variants:
+      brokers:
+        boosters:
+        - 5x snc-draft
+        - 1x snc-prerelease-brokers
+      obscura:
+        boosters:
+        - 5x snc-draft
+        - 1x snc-prerelease-obscura
+      maestros:
+        boosters:
+        - 5x snc-draft
+        - 1x snc-prerelease-maestros
+      riveteers:
+        boosters:
+        - 5x snc-draft
+        - 1x snc-prerelease-riveteers
+      cabaretti:
+        boosters:
+        - 5x snc-draft
+        - 1x snc-prerelease-cabaretti
+  draft:
+  - snc-draft
+  - snc-draft
+  - snc-draft
+
+# Commander Draft, like Commander Legends.
+clb:
+  # Only three boosters -- the prerelease was Commander Draft, not sealed.
+  prerelease-sealed:
+    boosters:
+    - 3x clb-draft
+    - 1x clb-prerelease
+  draft:
+  - clb-draft
+  - clb-draft
+  - clb-draft
+
+2x2:
+  sealed:
+  - 6x 2x2-draft
+  draft:
+  - 2x2-draft
+  - 2x2-draft
+  - 2x2-draft
+
+dmu:
+  sealed:
+  - 6x dmu-draft
+  prerelease-sealed:
+    boosters:
+    - 6x dmu-draft
+    - 1x dmu-prerelease
+  draft:
+  - dmu-draft
+  - dmu-draft
+  - dmu-draft
+
+unf:
+  sealed:
+  - 6x unf-draft
+  draft:
+  - unf-draft
+  - unf-draft
+  - unf-draft
+
+bro:
+  sealed:
+  - 6x bro-draft
+  # Sold as two differently-themed boxes (Urza's Iron Alliance and Mishra's
+  # Burnished Banner) with identical contents, so there is no choice to model.
+  prerelease-sealed:
+    boosters:
+    - 6x bro-draft
+    - 1x bro-prerelease
+  draft:
+  - bro-draft
+  - bro-draft
+  - bro-draft
+
+dmr:
+  sealed:
+  - 6x dmr-draft
+  draft:
+  - dmr-draft
+  - dmr-draft
+  - dmr-draft
+
+one:
+  sealed:
+  - 6x one-draft
+  prerelease-sealed:
+    boosters:
+    - 6x one-draft
+    - 1x one-prerelease
+  draft:
+  - one-draft
+  - one-draft
+  - one-draft
+
+mom:
+  sealed:
+  - 6x mom-draft
+  prerelease-sealed:
+    boosters:
+    - 6x mom-draft
+    - 1x mom-prerelease
+  draft:
+  - mom-draft
+  - mom-draft
+  - mom-draft
+
+ltr:
+  sealed:
+  - 6x ltr-draft
+  prerelease-sealed:
+    boosters:
+    - 6x ltr-draft
+    - 1x ltr-prerelease
+  draft:
+  - ltr-draft
+  - ltr-draft
+  - ltr-draft
+
+# Commander Draft.
+cmm:
+  draft:
+  - cmm-draft
+  - cmm-draft
+  - cmm-draft
+
+woe:
+  sealed:
+  - 6x woe-draft
+  prerelease-sealed:
+    boosters:
+    - 6x woe-draft
+    - 1x woe-prerelease
+  draft:
+  - woe-draft
+  - woe-draft
+  - woe-draft
+
+lci:
+  sealed:
+  - 6x lci-draft
+  prerelease-sealed:
+    boosters:
+    - 6x lci-draft
+    - 1x lci-prerelease
+  draft:
+  - lci-draft
+  - lci-draft
+  - lci-draft
+
+rvr:
+  sealed:
+  - 6x rvr-draft
+  draft:
+  - rvr-draft
+  - rvr-draft
+  - rvr-draft
+
+# Draft product, like the first Mystery Booster.
+mb2:
+  draft:
+  - mb2-draft
+  - mb2-draft
+  - mb2-draft
