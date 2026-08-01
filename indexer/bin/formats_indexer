@@ -17,6 +17,52 @@ class FormatsIndexer
     @data ||= YAML.load_file(input_path)
   end
 
+  # Sealed pools are unordered, so "6x isd-draft" collapses to a count
+  def parse_boosters(lines)
+    boosters = Hash.new{|ht,k| ht[k] = 0}
+    lines.each do |line|
+      if line =~ /\A(\d+)x\s+(\S+)\z/
+        boosters[$2] += $1.to_i
+      elsif line =~ /\A(\S+)\z/
+        boosters[$1] += 1
+      else
+        raise "Unknown booster line #{line}"
+      end
+    end
+    boosters
+  end
+
+  # "Sheoldred, Whispering One [PNPH:73★]"
+  def parse_promo(entry)
+    unless entry =~ /\A(.+?)\s*\[([^\[\]:]+):([^\[\]]+)\]\z/
+      raise "Unknown promo card #{entry}"
+    end
+    {
+      name: $1,
+      set_code: $2.downcase,
+      number: $3,
+    }
+  end
+
+  def parse_promos(pool_data, key)
+    (pool_data[key] || []).map{|entry| parse_promo(entry)}
+  end
+
+  # Either a bare booster list, or a Hash with boosters plus promo cards
+  def index_sealed_pool(pool_data)
+    if pool_data.is_a?(Array)
+      pool_data = {"boosters" => pool_data}
+    end
+    unless pool_data["boosters"]
+      raise "Sealed pool has no boosters"
+    end
+    {
+      boosters: parse_boosters(pool_data["boosters"]),
+      playable_promo_cards: parse_promos(pool_data, "playable-promo"),
+      unplayable_promo_cards: parse_promos(pool_data, "unplayable-promo"),
+    }
+  end
+
   def index_draft(set_code, format, format_data)
     {
       format_name: format,
@@ -25,31 +71,31 @@ class FormatsIndexer
     }
   end
 
+  # Prereleases where you pick a faction/hunt/planeswalker are one format
+  # with several alternative pools, as the choice affects packs and promos
   def index_sealed(set_code, format, format_data)
-    boosters = Hash.new{|ht,k| ht[k] = 0}
-    format_data.each do |line|
-      if line =~ /\A(\d+)x\s+(\S+)\z/
-        boosters[$2] += $1.to_i
-      elsif line =~ /\A(\S+)\z/
-        boosters[$1] += 1
-      else
-        raise "Unknown line #{line}"
-      end
+    if format_data.is_a?(Hash) and format_data["variants"]
+      {
+        format_name: format,
+        format_type: "sealed",
+        choice: format_data["choice"],
+        variants: format_data["variants"].to_h{|variant, variant_data|
+          [variant, index_sealed_pool(variant_data)]
+        },
+      }
+    else
+      {
+        format_name: format,
+        format_type: "sealed",
+      }.merge(index_sealed_pool(format_data))
     end
-    {
-      format_name: format,
-      format_type: "sealed",
-      boosters: boosters, # this is Hash
-      playable_promo_cards: [],
-      unplayable_promo_cards: [],
-    }
   end
 
   def index_format(set_code, format, format_data)
     case format
     when "draft"
       index_draft(set_code, format, format_data)
-    when "sealed", "prerelease"
+    when "sealed", "prerelease-sealed"
       index_sealed(set_code, format, format_data)
     else
       raise "Unknown format #{format}"
