@@ -28,7 +28,7 @@ pack:
   common: 7
   uncommon: 3
   wildcard: 1
-  rare_mythic_boosterfun: 1
+  rare_mythic: 1
   foil: 1
   land:
     - non_foil_land: 1
@@ -37,15 +37,18 @@ pack:
       chance: 20
 
 queries:
-  # TODO: fill exact collector-number ranges once the full hob data is ingested.
-  # Only the default-frame basics (194-198) are confirmed from current data.
-  basic_land: "e:{set} number:194-198"            # Default frame basic land
-  journey_land: "e:{set} number:TODO"             # Middle-earth journey basic land
-  dual_land: "e:{set} number:TODO"                # Common dual land
-  scene: "e:{set} number:TODO"                    # Scene cards (c/u/r/m)
-  dragon_hoard: "e:{set} number:TODO"             # Dragon hoard cards (u/r/m)
-  book_cover: "e:{set} number:TODO"               # Book cover cards (r/m)
+  # Collector-number ranges from Scryfall (e:hob), cross-checked against the
+  # collecting article's category counts. The surge-foil duplicates of Dragon
+  # hoard (250-274) and Book cover (275-284) are collector-only and excluded.
+  basic_land: "e:{set} number:189-193"            # Default frame basic land
+  journey_land: "e:{set} number:194-198"          # Full-Art Middle-earth journey basic land
+  dual_land: "e:{set} number:182,183,185,186,188" # Common dual land (5-card cycle)
+  scene: "e:{set} number:199-213"                 # Scene cards (2C, 4U, 9R)
+  dragon_hoard: "e:{set} number:214-238"          # Dragon hoard cards (6U, 11R, 8M)
+  book_cover: "e:{set} number:239-248"            # Book cover cards (4R, 6M)
   boosterfun: "{scene} or {dragon_hoard} or {book_cover}"
+  rare_two_boosterfun: "e:{set} number:187"       # The Lonely Mountain (scene + book cover)
+  mythic_two_boosterfun: "e:{set} number:170"     # The Arkenstone (Dragon hoard + book cover)
 
 sheets:
   # Scene commons are boosterfun (alt-art) versions of existing commons. Folded
@@ -72,8 +75,8 @@ sheets:
   #   Dragon hoard alt = T/3 (rate 4, regular 8) -> 10.9% over 3 slots (article 10.9%)
   #   scene alt        = T/4 (rate 3, regular 9) ->  5.5% over 3 slots (article 5.5%)
   uncommon:
-    # Assumes scene and dragon_hoard are on different underlying cards (no single
-    # card has both a scene and a Dragon hoard version). TODO: validate once data lands.
+    # Scene and dragon_hoard are on different underlying cards (verified: the 4
+    # scene and 6 Dragon hoard uncommons are 10 distinct cards, no overlap).
     any:
       - rawquery: "{scene} r:u" # Scene uncommon (boosterfun)
         rate: 3
@@ -120,27 +123,6 @@ sheets:
         rate: 1
         count: 0 # TODO
 
-  boosterfun_without_uncommons:
-    any:
-      - rawquery: "{scene} r:r"
-        rate: 2
-        count: 0 # TODO
-      - rawquery: "{scene} r:m"
-        rate: 1
-        count: 0 # TODO
-      - rawquery: "{dragon_hoard} r:r"
-        rate: 2
-        count: 0 # TODO
-      - rawquery: "{dragon_hoard} r:m"
-        rate: 1
-        count: 0 # TODO
-      - rawquery: "{book_cover} r:r"
-        rate: 2
-        count: 0 # TODO
-      - rawquery: "{book_cover} r:m"
-        rate: 1
-        count: 0 # TODO
-
   # Article wildcard rates: common 74.17%, uncommon 3.9%, rare 17.3%, mythic 2.3%,
   # plus <1% each for scene (c/u/r), Dragon hoard (u/r/m) and book cover (r/m).
   # Lumped remainder -> boosterfun.
@@ -157,29 +139,49 @@ sheets:
       - use: boosterfun
         chance: 233 # 100% - 97.67% = 2.33%
 
+  # Rares/mythics can have 0, 1, or 2 boosterfun versions (scene / Dragon hoard /
+  # book cover). Folded in msh-play style so every main rare/mythic stays
+  # equiprobable: per-card total weight is 16 (rare) / 8 (mythic), each boosterfun
+  # printing weighs 2 (rare) / 1 (mythic), and the regular version absorbs the
+  # rest. This reproduces the article rare/mythic-slot rates: main rare 82.6%,
+  # main mythic 10.95%, scene rare 1.86%, hoard rare 2.27%, hoard mythic 0.83%,
+  # book rare 0.83%, book mythic 0.62% (article: 82.9 / 11.1 / 1.8 / 2.3 / <1 each).
   rare:
-    query: "r:r -{boosterfun}" # Regular rare
-    count: 0 # TODO: verify count of main-set rares
+    any:
+      - rawquery: "{boosterfun} r:r" # All rare scene/hoard/book printings
+        rate: 2
+        count: 24
+      - query: "r:r -alt:({boosterfun})" # Rares with no boosterfun version
+        rate: 16
+        count: 30
+      - query: "r:r alt:({boosterfun}) -{rare_two_boosterfun}" # Rares with 1 boosterfun version
+        rate: 14
+        count: 22
+      - rawquery: "{rare_two_boosterfun}" # The Lonely Mountain (scene + book cover)
+        rate: 12
+        count: 1
 
   mythic:
-    query: "r:m -{boosterfun}" # Regular mythic
-    count: 0 # TODO: verify count of main-set mythics
+    any:
+      - rawquery: "{boosterfun} r:m" # All mythic hoard/book printings
+        rate: 1
+        count: 14
+      - query: "r:m -alt:({boosterfun})" # Mythics with no boosterfun version
+        rate: 8
+        count: 2
+      - query: "r:m alt:({boosterfun}) -{mythic_two_boosterfun}" # Mythics with 1 boosterfun version
+        rate: 7
+        count: 12
+      - rawquery: "{mythic_two_boosterfun}" # The Arkenstone (Dragon hoard + book cover)
+        rate: 6
+        count: 1
 
   rare_mythic:
     any:
       - use: rare
-        rate: 2
+        chance: 848 # 53 rares × 16
       - use: mythic
-        rate: 1
-
-  # Article rare/mythic slot: rare 82.9%, mythic 11.1%, rare scene 1.8%,
-  # Dragon hoard rare 2.3% / mythic <1%, book cover r/m <1%. Remainder -> boosterfun.
-  rare_mythic_boosterfun:
-    any:
-      - use: rare_mythic
-        chance: 940 # 82.9% + 11.1% = 94.0%
-      - use: boosterfun_without_uncommons
-        chance: 60 # 100% - 94.0% = 6.0%
+        chance: 120 # 15 mythics × 8
 
   # Article foil slot: common 59.8%, uncommon 29.3%, rare 7.1%, mythic 1.0%,
   # plus <1% each scene / Dragon hoard / book cover. Remainder -> boosterfun.
