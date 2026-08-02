@@ -4,24 +4,6 @@
 # - https://magic.wizards.com/en/news/feature/collecting-the-hobbit
 # - https://magic.wizards.com/en/products/the-hobbit/card-image-gallery
 # - https://scryfall.com/sets/hob
-#
-# ############################################################################
-# STATUS: complete. All six slots are modeled from the collecting article, and
-# every collector-number range in `queries:` is verified against Scryfall
-# (e:hob); the drop rates reproduce the published percentages. What is still in
-# flux is only the data: the set releases 2026-08-14 and commons are not fully
-# spoiled, so some `count:` assertions won't match the index until the data repo
-# catches up to the final set. Re-run booster_indexer / open_packs then to
-# confirm the count warnings clear.
-# ############################################################################
-#
-# Play Booster = 14 cards + 1 non-foil double-sided token:
-#   7 common      : 60 commons + 2 scene cards (scene 7.8%)
-#   3 uncommon    : 55 uncommons + 4 scene (5.5%) + 6 Dragon hoard (10.9%)
-#   1 wildcard    : any rarity, main set + scene/hoard/book cover
-#   1 rare_mythic : rare/mythic + scene/hoard/book cover
-#   1 foil        : any rarity, main set + scene/hoard/book cover
-#   1 land        : common dual / default basic / Middle-earth journey basic
 
 pack:
   common: 7
@@ -36,9 +18,6 @@ pack:
       chance: 20
 
 queries:
-  # Collector-number ranges from Scryfall (e:hob), cross-checked against the
-  # collecting article's category counts. The surge-foil duplicates of Dragon
-  # hoard (250-274) and Book cover (275-284) are collector-only and excluded.
   basic_land: "e:{set} number:189-193"            # Default frame basic land
   journey_land: "e:{set} number:194-198"          # Full-Art Middle-earth journey basic land
   dual_land: "e:{set} number:182,183,185,186,188" # Common dual land (5-card cycle)
@@ -50,14 +29,9 @@ queries:
   mythic_two_boosterfun: "e:{set} number:170"     # The Arkenstone (Dragon hoard + book cover)
 
 sheets:
-  # Scene commons are boosterfun (alt-art) versions of existing commons. Folded
-  # into the common sheet msh-play style so every common is equiprobable and the
-  # ones that have a scene version appear less often as regular cards. With 2
-  # scene commons the 1:2:3 rate gives ~7.78% scene appearance across the 7
-  # common slots (article: 7.8%). Modeled on msh-play.yaml's common sheet.
   common:
     any:
-      - rawquery: "{scene} r:c" # Scene (boosterfun) common
+      - rawquery: "{scene} r:c" # Scene common
         rate: 1
         count: 2
       - query: "r:c alt:({scene})" # Regular version of commons that have a scene
@@ -67,15 +41,7 @@ sheets:
         rate: 3
         count: 60 - 2
 
-  # 3 uncommon slots: scene (4) and Dragon hoard (6) uncommons are boosterfun
-  # alt-art versions of main-set uncommons, so the uncommons that have one appear
-  # less often as regular cards (msh-play style), keeping all 55 uncommons
-  # equiprobable. Per-card total weight T = 12:
-  #   Dragon hoard alt = T/3 (rate 4, regular 8) -> 10.9% over 3 slots (article 10.9%)
-  #   scene alt        = T/4 (rate 3, regular 9) ->  5.5% over 3 slots (article 5.5%)
   uncommon:
-    # Scene and dragon_hoard are on different underlying cards (verified: the 4
-    # scene and 6 Dragon hoard uncommons are 10 distinct cards, no overlap).
     any:
       - rawquery: "{scene} r:u" # Scene uncommon (boosterfun)
         rate: 3
@@ -93,13 +59,6 @@ sheets:
         rate: 12
         count: 55 - 4 - 6
 
-  # Wildcard (any rarity). common/uncommon folded; rare + mythic drawn together via
-  # rare_mythic so all-version rare:mythic is exactly 2:1 per card (like the foil
-  # slot). Each chance = article regular % ÷ that sheet's regular fraction:
-  #   common      74.17% / (178/180) = 75.00  (-> 74.17% reg + 0.83% scene)
-  #   uncommon     3.9%  / (624/660) =  4.13  (-> 3.9% reg + ~0.2% scene/hoard)
-  #   rare+mythic 19.6%  / 0.9360    = 20.94  (rare_mythic sheet is 93.6% regular;
-  #                                            -> 17.29% reg rare + 2.29% reg mythic)
   wildcard:
     any:
       - use: common
@@ -109,13 +68,6 @@ sheets:
       - use: rare_mythic
         chance: 2094
 
-  # Rares/mythics can have 0, 1, or 2 boosterfun versions (scene / Dragon hoard /
-  # book cover). Folded in msh-play style so every main rare/mythic stays
-  # equiprobable: per-card total weight is 16 (rare) / 8 (mythic), each boosterfun
-  # printing weighs 2 (rare) / 1 (mythic), and the regular version absorbs the
-  # rest. This reproduces the article rare/mythic-slot rates: main rare 82.6%,
-  # main mythic 10.95%, scene rare 1.86%, hoard rare 2.27%, hoard mythic 0.83%,
-  # book rare 0.83%, book mythic 0.62% (article: 82.9 / 11.1 / 1.8 / 2.3 / <1 each).
   rare:
     any:
       - rawquery: "{boosterfun} r:r" # All rare scene/hoard/book printings
@@ -149,18 +101,10 @@ sheets:
   rare_mythic:
     any:
       - use: rare
-        chance: 53 * 2 # 53 rares, each 2× a mythic
+        chance: 53 * 2
       - use: mythic
-        chance: 15 * 1 # 15 mythics
+        chance: 15 * 1
 
-  # Foil (traditional foil, any rarity). common/uncommon folded like the wildcard;
-  # rare + mythic drawn together via rare_mythic so all-version rare:mythic is
-  # exactly 2:1 per card (as in msh-play). Each chance = article regular % ÷ that
-  # sheet's regular fraction:
-  #   common      59.8% / (178/180) = 60.47  (-> 59.8% reg + 0.67% scene)
-  #   uncommon    29.3% / (624/660) = 30.99  (-> 29.3% reg + 0.56% scene + 1.13% hoard)
-  #   rare+mythic  8.1% / 0.9360    =  8.65  (rare_mythic sheet is 93.6% regular)
-  # Trade-off of the exact 2:1: regular mythic is 0.95% vs the article's 1.0%.
   foil:
     foil: true
     any:
@@ -171,12 +115,6 @@ sheets:
       - use: rare_mythic
         chance: 865
 
-  # Article land slot (non-foil / foil):
-  #   common dual land          40% / 10%   -> 50% of land slot
-  #   default frame basic land  26.7% / 6.7% -> 33.3%
-  #   Middle-earth journey land 13.3% / 3.3% -> 16.7%
-  # All three groups have 5 cards, so the 3 : 2 : 1 rate gives exactly
-  # 50% / 33.3% / 16.7%. Non-foil 80% / foil 20% is the pack-level land split.
   non_foil_land:
     any:
       - rawquery: "{dual_land}" # Common dual land
