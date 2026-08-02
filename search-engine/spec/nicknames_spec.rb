@@ -637,6 +637,21 @@ describe "Card nicknames" do
       "Stone-Throwing Devils"
   end
 
+  # Both faces of Nightmare Moon are listed, as we treat card faces separately
+  it "is:mylittlepony" do
+    assert_search_results "is:mylittlepony",
+      "Applejack",
+      "Discord, Lord of Disharmony",
+      "Fluttershy",
+      "Nightmare Moon",
+      "Pinkie Pie",
+      "Princess Luna",
+      "Princess Twilight Sparkle",
+      "Rainbow Dash",
+      "Rarity"
+    assert_search_equal "is:mlp", "is:mylittlepony"
+  end
+
   it "is:masterpiece" do
     assert_search_equal "is:masterpiece", "st:masterpiece"
   end
