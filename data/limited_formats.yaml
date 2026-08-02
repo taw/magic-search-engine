@@ -17,7 +17,9 @@
 #                       conspiracies, drafted face down and starting the game in
 #                       the command zone), played as free-for-all multiplayer.
 #   two-headed-giant  - Battlebond: drafted in fixed pairs and played 2HG, which
-#                       is what the partner pairs in the booster are for.
+#                       is what the partner pairs in the booster are for. Packs
+#                       of such a set are listed per team, not per player, as
+#                       that is how they are handed out.
 #   commander         - Commander Legends and friends: three 20-card packs
 #                       drafted into a 60-card singleton deck with a commander,
 #                       played in multiplayer pods.
@@ -1568,8 +1570,14 @@ dom:
   - dom-draft
   - dom-draft
 
-# Battlebond is a Two-Headed Giant set; both its draft and its prerelease were
-# played in pairs, which this schema has no way to say.
+# Battlebond is a Two-Headed Giant set, so its packs are handed to a team of
+# two, not to one player, and the two of them build their decks out of one
+# shared pool. WotC recommended six boosters per team for Battlebond sealed
+# (rather than the eight MTR 9.6 recommends for 2HG Sealed) and four per team
+# for the draft (rather than six), passed left-right-left-right.
+# https://wpn.wizards.com/en/article/see-first-battlebond-preview-cards
+# There was no Prerelease, only a Preview Event run with ordinary boosters,
+# but it handed out the stamped promos, one per player.
 bbd:
   play-variant: two-headed-giant
   sealed:
@@ -1579,6 +1587,7 @@ bbd:
     - 6x bbd-draft
     - 1x bbd-prerelease
   draft:
+  - bbd-draft
   - bbd-draft
   - bbd-draft
   - bbd-draft

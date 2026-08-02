@@ -19,6 +19,8 @@ RSpec.describe LimitedFormatController, type: :controller do
     assert_select %[li a[href="/pack/nph-draft"]:contains("New Phyrexia Draft Booster")]
     assert_select %[li a[href="/pack/mbs-draft"]:contains("Mirrodin Besieged Draft Booster")]
     assert_select %[li a[href="/pack/som-draft"]:contains("Scars of Mirrodin Draft Booster")]
+    assert_select %[p:contains("draft one card")]
+    assert_select %[p:contains("build a 40 card deck")]
   end
 
   it "sealed" do
@@ -61,18 +63,59 @@ RSpec.describe LimitedFormatController, type: :controller do
     assert_select %[h4:contains("Gideon")]
   end
 
-  # Formats with random packs, or an unusual way of playing them,
-  # only get a placeholder page
+  it "commander draft" do
+    get "show", params: {set: "cmr", id: "draft"}
+    assert_response 200
+    assert_select %[p:contains("draft two cards")]
+    assert_select %[p:contains("at least 60 cards")]
+    assert_select %[p a:contains("The Prismatic Piper")]
+    assert_select %[a[href="/help/rules#section-903-13"]]
+    # Normal draft rules don't apply
+    assert_select %[p:contains("draft one card")], false
+    assert_select %[p:contains("40 card deck")], false
+  end
+
+  # Baldur's Gate ran its prerelease as a Commander Draft of the packs
+  it "sealed format played as commander draft" do
+    get "show", params: {set: "clb", id: "prerelease-sealed"}
+    assert_response 200
+    assert_select %[li:contains("3x") a[href="/pack/clb-draft"]]
+    assert_select %[p:contains("you draft them, as a Commander Draft")]
+    assert_select %[p a:contains("Faceless One")]
+  end
+
+  it "conspiracy draft" do
+    get "show", params: {set: "cns", id: "draft"}
+    assert_response 200
+    assert_select %[p:contains("draft one card")]
+    assert_select %[p:contains("command zone")]
+    assert_select %[p:contains("free-for-all multiplayer")]
+    assert_select %[a[href="/help/rules#section-905"]]
+  end
+
+  it "two-headed giant draft and sealed" do
+    get "show", params: {set: "bbd", id: "draft"}
+    assert_response 200
+    # Four packs per team, not three per player
+    assert_select %[li a[href="/pack/bbd-draft"]], 4
+    assert_select %[p:contains("You draft in a team of two")]
+    assert_select %[p:contains("Two-Headed Giant")]
+    assert_select %[a[href="/help/rules#section-810"]]
+
+    get "show", params: {set: "bbd", id: "sealed"}
+    assert_response 200
+    assert_select %[p:contains("what your team gets")]
+    assert_select %[p:contains("Two-Headed Giant")]
+    assert_select %[a:contains("Open in Sealed simulator")]
+  end
+
+  # Formats with random packs only get a placeholder page
   it "placeholder for sealed formats with extra complexity" do
     get "show", params: {set: "dgm", id: "prerelease-sealed"}
     assert_response 200
     assert_equal "Dragon's Maze Prerelease Sealed - #{APP_NAME}", html_document.title
     assert_select %[p:contains("not described on this website yet")]
     assert_select %[a:contains("Open in Sealed simulator")], false
-
-    get "show", params: {set: "bbd", id: "sealed"}
-    assert_response 200
-    assert_select %[p:contains("not described on this website yet")]
   end
 
   it "404 for unknown set" do

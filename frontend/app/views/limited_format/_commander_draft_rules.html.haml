@@ -1,0 +1,17 @@
+%p
+  From every booster, draft two cards, and pass the rest to the next player,
+  until all cards have been drafted.
+  Direction changes with every booster.
+%p
+  From cards you draft, build a deck of at least 60 cards, following Commander
+  deck construction rules, except that your deck can contain any number of cards
+  with the same name, and there is no maximum deck size.
+- limited_format.filler_commanders.each do |card|
+  %p
+    You can also add up to two copies of
+    = link_to_card(card) do
+      = card.name
+    to your card pool, but only if you use them as your commander.
+%p
+  Games are played as multiplayer Commander games.
+  = link_to "See rule 903.13 for the full rules.", controller: "help", action: "rules", anchor: "section-903-13"

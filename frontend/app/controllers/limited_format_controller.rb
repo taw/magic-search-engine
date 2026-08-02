@@ -15,10 +15,10 @@ class LimitedFormatController < ApplicationController
     render template_for(@limited_format)
   end
 
-  # Sealed formats with random packs or an unusual way of playing them are not
-  # described yet, and only get a placeholder
+  # Formats with random packs, or ones played in a way we have no rules text
+  # for, are not described yet, and only get a placeholder
   private def template_for(limited_format)
-    if limited_format.format_type == "draft"
+    if limited_format.describable_draft?
       "draft"
     elsif limited_format.describable_sealed?
       "sealed"

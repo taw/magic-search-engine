@@ -6,8 +6,5 @@
       = link_to_pack(pack) do
         = pack.name
       = "(#{pack.code.upcase})"
-%p
-  From every booster, draft one card, and pass the rest to the next player,
-  until all cards have been drafted.
-  Direction changes with every booster.
+= render "draft_rules", limited_format: @limited_format
 %p Drafting is not supported on this website.

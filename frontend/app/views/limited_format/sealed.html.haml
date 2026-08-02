@@ -9,3 +9,4 @@
     = render "pool", pool: pool
 - else
   = render "pool", pool: @limited_format.pools[0]
+= render "sealed_rules", limited_format: @limited_format

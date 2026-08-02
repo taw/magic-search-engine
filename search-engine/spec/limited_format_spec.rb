@@ -38,16 +38,34 @@ describe LimitedFormat do
     azorius.unplayable_promo_cards.should eq([])
   end
 
-  # Formats with random packs, or an unusual way of playing them
+  # Formats with random packs
   it "formats with extra complexity are not describable sealed" do
     dgm_prerelease = db.sets["dgm"].limited_formats.find{|f| f.type == "prerelease-sealed"}
     dgm_prerelease.random_boosters.should_not eq([])
     dgm_prerelease.describable_sealed?.should eq(false)
+  end
 
+  # Sets played as something else than normal limited have their own rules text
+  it "formats with a play variant are describable" do
     bbd_sealed = db.sets["bbd"].limited_formats.find{|f| f.type == "sealed"}
     bbd_sealed.pools.size.should eq(1)
     bbd_sealed.play_variant.should eq("two-headed-giant")
-    bbd_sealed.describable_sealed?.should eq(false)
+    bbd_sealed.describable_sealed?.should eq(true)
+
+    cmr_draft = db.sets["cmr"].limited_formats.find{|f| f.type == "draft"}
+    cmr_draft.describable_draft?.should eq(true)
+    cmr_draft.describable_sealed?.should eq(false)
+    nph_draft.describable_draft?.should eq(true)
+    nph_prerelease.describable_draft?.should eq(false)
+  end
+
+  # Commander Draft lets you use a filler commander you did not draft (903.13e)
+  it "filler commanders" do
+    db.sets["cmr"].limited_formats.find{|f| f.type == "draft"}
+      .filler_commanders.map(&:name).should eq(["The Prismatic Piper"])
+    db.sets["clb"].limited_formats.find{|f| f.type == "prerelease-sealed"}
+      .filler_commanders.map(&:name).should eq(["Faceless One"])
+    nph_draft.filler_commanders.should eq([])
   end
 
   # Every booster of every described pool has to be one we can open,

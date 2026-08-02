@@ -1,0 +1,42 @@
+-# How a set is drafted and what you build out of it. Anything but the normal
+-# draft comes from the comprehensive rules - Commander Draft is 903.13,
+-# Conspiracy Draft is 905, Two-Headed Giant drafting is not in the rules,
+-# but how it is played is 810.
+- case limited_format.play_variant
+- when "commander"
+  = render "commander_draft_rules", limited_format: limited_format
+- when "multiplayer"
+  %p
+    From every booster, draft one card, and pass the rest to the next player,
+    until all cards have been drafted.
+    Direction changes with every booster.
+  %p
+    Some cards are drafted face up, or ask you to reveal them and note something
+    as you draft them, and cards in the game care about what happened.
+  %p
+    From cards you draft and any number of basic land cards, build a 40 card deck.
+    Conspiracy cards are never part of your deck - as the game begins you put any
+    number of the ones you drafted into the command zone instead, face down if
+    they have hidden agenda.
+  %p
+    Games are played as free-for-all multiplayer, and you can attack multiple players.
+    = link_to "See rule 905 for the full rules.", controller: "help", action: "rules", anchor: "section-905"
+- when "two-headed-giant"
+  %p
+    You draft in a team of two, and the packs above are what your team gets
+    between the two of you. Your team opens a booster, drafts two cards, and
+    passes the rest to the next team.
+    Direction changes with every booster.
+  %p
+    Cards your team drafts are one shared pool, and are not assigned to either of
+    you as you draft them. From that pool and any number of basic land cards,
+    each of you builds their own 40 card deck. Cards you don't use are a shared
+    sideboard.
+  = render "two_headed_giant_play"
+- else
+  %p
+    From every booster, draft one card, and pass the rest to the next player,
+    until all cards have been drafted.
+    Direction changes with every booster.
+  %p
+    From cards you draft and any number of basic land cards, build a 40 card deck.

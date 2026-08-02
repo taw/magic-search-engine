@@ -1,0 +1,23 @@
+-# What you build out of the pool. Sets played as something other than normal
+-# limited get their own text - Commander Legends: Battle for Baldur's Gate ran
+-# its prerelease as a Commander Draft of the packs, not as sealed at all.
+- case limited_format.play_variant
+- when "commander"
+  %p
+    These packs are not played as a sealed pool - you draft them, as a Commander Draft.
+  = render "commander_draft_rules", limited_format: limited_format
+- when "multiplayer"
+  %p
+    From cards you open and any number of basic land cards, build a 40 card deck.
+  %p
+    Games are played as free-for-all multiplayer, and you can attack multiple players.
+- when "two-headed-giant"
+  %p
+    You open these packs in a team of two, and they are what your team gets
+    between the two of you. From the cards you open and any number of basic land
+    cards, each of you builds their own 40 card deck. Cards you don't use are a
+    shared sideboard.
+  = render "two_headed_giant_play"
+- else
+  %p
+    From cards you open and any number of basic land cards, build a 40 card deck.

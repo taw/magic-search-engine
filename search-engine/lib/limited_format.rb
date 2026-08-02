@@ -45,13 +45,41 @@ class LimitedFormat
     pools.flat_map(&:random_boosters)
   end
 
+  # Play variants the frontend has rules text for. Anything new gets a
+  # placeholder page until someone writes that text.
+  DESCRIBABLE_PLAY_VARIANTS = [nil, "multiplayer", "two-headed-giant", "commander"]
+
+  def describable_play_variant?
+    DESCRIBABLE_PLAY_VARIANTS.include?(play_variant)
+  end
+
+  # A draft we can describe in full: we know every pack, and we know how the
+  # set is played.
+  def describable_draft?
+    format_type == "draft" and
+      booster_order.any? and
+      describable_play_variant?
+  end
+
   # A sealed format we can describe in full: every pool is one we can describe,
-  # and it is played as ordinary limited. Anything fancier gets a placeholder.
+  # and we know how the set is played. Anything fancier gets a placeholder.
   def describable_sealed?
     format_type == "sealed" and
       pools.any? and
       pools.all?(&:describable?) and
-      play_variant.nil?
+      describable_play_variant?
+  end
+
+  # 903.13e - in a Commander Draft you may use up to two copies of a filler
+  # commander even though you did not draft them. Which card that is depends on
+  # the set, and it is always a card of that set, so just look it up.
+  FILLER_COMMANDER_NAMES = ["The Prismatic Piper", "Faceless One"]
+
+  def filler_commanders
+    return [] unless play_variant == "commander"
+    @filler_commanders ||= @set.printings
+      .select{|printing| FILLER_COMMANDER_NAMES.include?(printing.name)}
+      .uniq(&:name)
   end
 
   # Pools a sealed format is handed out as. There is just one, unless the player
