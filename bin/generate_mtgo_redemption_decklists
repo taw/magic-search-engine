@@ -152,7 +152,13 @@ class GenerateMtgoRedemptionDecklists
 
   def warn_about_missing_redemptions
     redeemable = set_data.map{|row| row[:code].downcase }
-    std_sets = DB.sets.values.select{|set| set.release_date >= Date.parse("2000-10-02") and set.types.include?("standard") }.map(&:code)
+    # Sets we only have a partial spoiler for aren't out yet, so nobody announced
+    # their redemption either
+    std_sets = DB.sets.values.select{|set|
+      set.release_date >= Date.parse("2000-10-02") and
+        set.types.include?("standard") and
+        !set.types.include?("preview")
+    }.map(&:code)
     should_be_redeemable = std_sets - redeemable - KNOWN_NOT_REDEEMABLE
     unless should_be_redeemable.empty?
       warn "These sets should probably be redemable on MTGO: #{should_be_redeemable.join(" ")}"
