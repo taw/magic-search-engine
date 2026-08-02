@@ -12,37 +12,51 @@ describe LimitedFormat do
   end
 
   it "sealed pool boosters are listed with counts" do
-    nph_prerelease.boosters.map{|count, pack| [count, pack.code]}.should eq([
+    nph_prerelease.pools.size.should eq(1)
+    nph_prerelease.pools[0].name.should eq(nil)
+    nph_prerelease.pools[0].boosters.map{|count, pack| [count, pack.code]}.should eq([
       [2, "nph-draft"],
       [2, "mbs-draft"],
       [2, "som-draft"],
     ])
-    nph_prerelease.simple_sealed?.should eq(true)
-    nph_draft.simple_sealed?.should eq(false)
+    nph_prerelease.describable_sealed?.should eq(true)
+    nph_draft.describable_sealed?.should eq(false)
   end
 
-  # Formats with a choice, random packs, or an unusual way of playing them
-  it "formats with extra complexity are not simple sealed" do
+  it "one pool per choice, with its own packs and promos" do
     rtr_prerelease.choice.should eq("guild")
-    rtr_prerelease.boosters.should eq([])
-    rtr_prerelease.simple_sealed?.should eq(false)
+    rtr_prerelease.describable_sealed?.should eq(true)
+    rtr_prerelease.pools.map(&:slug).should eq(["azorius", "izzet", "rakdos", "golgari", "selesnya"])
+    rtr_prerelease.pools.map(&:name).should eq(["Azorius", "Izzet", "Rakdos", "Golgari", "Selesnya"])
 
+    azorius = rtr_prerelease.pools[0]
+    azorius.boosters.map{|count, pack| [count, pack.code]}.should eq([
+      [5, "rtr-draft"],
+      [1, "rtr-prerelease-azorius"],
+    ])
+    azorius.playable_promo_cards.map(&:name).should eq(["Archon of the Triumvirate"])
+    azorius.unplayable_promo_cards.should eq([])
+  end
+
+  # Formats with random packs, or an unusual way of playing them
+  it "formats with extra complexity are not describable sealed" do
     dgm_prerelease = db.sets["dgm"].limited_formats.find{|f| f.type == "prerelease-sealed"}
     dgm_prerelease.random_boosters.should_not eq([])
-    dgm_prerelease.simple_sealed?.should eq(false)
+    dgm_prerelease.describable_sealed?.should eq(false)
 
     bbd_sealed = db.sets["bbd"].limited_formats.find{|f| f.type == "sealed"}
     bbd_sealed.pools.size.should eq(1)
     bbd_sealed.play_variant.should eq("two-headed-giant")
-    bbd_sealed.simple_sealed?.should eq(false)
+    bbd_sealed.describable_sealed?.should eq(false)
   end
 
-  # Every booster of every simple sealed format has to be one we can open,
+  # Every booster of every described pool has to be one we can open,
   # as those pages link into the sealed simulator
-  it "simple sealed formats only use known boosters" do
-    db.limited_formats.select(&:simple_sealed?).each do |limited_format|
-      listed = limited_format.pools[0]["boosters"].size
-      limited_format.boosters.size.should eq(listed), "#{limited_format.inspect} uses boosters we don't know"
+  it "described sealed formats only use known boosters" do
+    db.limited_formats.select(&:describable_sealed?).each do |limited_format|
+      limited_format.pools.each do |pool|
+        pool.boosters.size.should eq(pool.data["boosters"].size), "#{pool.inspect} uses boosters we don't know"
+      end
     end
   end
 
@@ -71,7 +85,7 @@ describe LimitedFormat do
   it "every promo card exists" do
     db.limited_formats.each do |limited_format|
       listed = limited_format.pools.sum{|pool|
-        (pool["playable_promo_cards"] || []).size + (pool["unplayable_promo_cards"] || []).size
+        (pool.data["playable_promo_cards"] || []).size + (pool.data["unplayable_promo_cards"] || []).size
       }
       limited_format.promo_cards.size.should eq(listed), "#{limited_format.inspect} has promo cards not in the card db"
     end

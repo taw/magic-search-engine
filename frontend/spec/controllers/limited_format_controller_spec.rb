@@ -37,14 +37,42 @@ RSpec.describe LimitedFormatController, type: :controller do
     end
   end
 
-  # Formats with a faction choice, random packs, or an unusual way of playing
-  # them only get a placeholder page
-  it "placeholder for sealed formats with extra complexity" do
+  it "sealed with a choice has one section per choice" do
     get "show", params: {set: "rtr", id: "prerelease-sealed"}
     assert_response 200
     assert_equal "Return to Ravnica Prerelease Sealed - #{APP_NAME}", html_document.title
+    assert_select %[p:contains("You must choose one of the following guilds:")]
+    assert_select %[ul li:contains("Azorius")]
+    assert_select %[h4:contains("Selesnya")]
+    assert_select "h4", 5
+    # Each guild opens its own guild pack, and gets its own promo
+    assert_select %[li:contains("1x") a[href="/pack/rtr-prerelease-azorius"]]
+    assert_select %[p:contains("You also have access to these playable promos")], 5
+    assert_select %[a:contains("Open in Sealed simulator")], 5 do |links|
+      assert_includes links.first["href"], "set%5B%5D=rtr-draft&set%5B%5D=rtr-prerelease-azorius"
+      assert_includes links.first["href"], "fixed=1x+prtr%3A142%E2%98%85%3Afoil"
+    end
+  end
+
+  it "sealed with a choice pluralizes the choice" do
+    get "show", params: {set: "ori", id: "prerelease-sealed"}
+    assert_response 200
+    assert_select %[p:contains("You must choose one of the following planeswalkers:")]
+    assert_select %[h4:contains("Gideon")]
+  end
+
+  # Formats with random packs, or an unusual way of playing them,
+  # only get a placeholder page
+  it "placeholder for sealed formats with extra complexity" do
+    get "show", params: {set: "dgm", id: "prerelease-sealed"}
+    assert_response 200
+    assert_equal "Dragon's Maze Prerelease Sealed - #{APP_NAME}", html_document.title
     assert_select %[p:contains("not described on this website yet")]
     assert_select %[a:contains("Open in Sealed simulator")], false
+
+    get "show", params: {set: "bbd", id: "sealed"}
+    assert_response 200
+    assert_select %[p:contains("not described on this website yet")]
   end
 
   it "404 for unknown set" do

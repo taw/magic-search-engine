@@ -46,15 +46,15 @@ module ApplicationHelper
 
   # Sealed simulator opens the packs of the pool, and hands out the promo cards
   # for free. It has no notion of promos not being part of deck construction.
-  def link_to_sealed_simulator(limited_format, &blk)
-    boosters = limited_format.boosters
+  def link_to_sealed_simulator(pool, &blk)
+    boosters = pool.boosters
     link_to(
       {
         controller: "sealed",
         action: "index",
         count: boosters.map{|count, pack| count},
         set: boosters.map{|count, pack| pack.code},
-        fixed: limited_format.promo_cards.map{|card| fixed_card_line(card)}.join("\n").presence,
+        fixed: pool.promo_cards.map{|card| fixed_card_line(card)}.join("\n").presence,
       },
       &blk)
   end

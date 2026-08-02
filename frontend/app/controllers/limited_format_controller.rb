@@ -15,12 +15,12 @@ class LimitedFormatController < ApplicationController
     render template_for(@limited_format)
   end
 
-  # Sealed formats with a faction choice, random packs, or an unusual way of
-  # playing them are not described yet, and only get a placeholder
+  # Sealed formats with random packs or an unusual way of playing them are not
+  # described yet, and only get a placeholder
   private def template_for(limited_format)
     if limited_format.format_type == "draft"
       "draft"
-    elsif limited_format.simple_sealed?
+    elsif limited_format.describable_sealed?
       "sealed"
     else
       "placeholder"

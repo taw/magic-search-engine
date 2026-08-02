@@ -40,55 +40,43 @@ class LimitedFormat
     @data["choice"]
   end
 
-  # Packs of a sealed pool, as [count, pack], in the order they are listed.
-  # Only meaningful for formats with a single pool.
-  def boosters
-    pool = pools.size == 1 ? pools[0] : nil
-    return [] unless pool
-    (pool["boosters"] || []).map{|code, count|
-      pack = @db.supported_booster_types[code]
-      warn "#{inspect} uses unknown booster #{code}" unless pack
-      pack && [count, pack]
-    }.compact
-  end
-
   # Packs picked at random out of a list, on top of the fixed ones
   def random_boosters
-    pools.flat_map{|pool| pool["random_boosters"] || []}
+    pools.flat_map(&:random_boosters)
   end
 
-  # A sealed format we can describe in full: one pool, no random packs, and
-  # played as ordinary limited. Anything fancier only gets a placeholder page.
-  def simple_sealed?
+  # A sealed format we can describe in full: every pool is one we can describe,
+  # and it is played as ordinary limited. Anything fancier gets a placeholder.
+  def describable_sealed?
     format_type == "sealed" and
-      pools.size == 1 and
-      random_boosters.empty? and
-      play_variant.nil? and
-      boosters.any?
+      pools.any? and
+      pools.all?(&:describable?) and
+      play_variant.nil?
   end
 
   # Pools a sealed format is handed out as. There is just one, unless the player
   # picked a faction/guild at the prerelease, in which case there is one each.
   def pools
-    if @data["variants"]
-      @data["variants"].values
-    elsif @data["boosters"]
-      [@data]
-    else
-      []
-    end
+    @pools ||=
+      if @data["variants"]
+        @data["variants"].map{|slug, pool_data| SealedPool.new(self, slug, pool_data)}
+      elsif @data["boosters"]
+        [SealedPool.new(self, nil, @data)]
+      else
+        []
+      end
   end
 
   def playable_promo_cards
-    promo_cards_for("playable_promo_cards")
+    pools.flat_map(&:playable_promo_cards)
   end
 
   def unplayable_promo_cards
-    promo_cards_for("unplayable_promo_cards")
+    pools.flat_map(&:unplayable_promo_cards)
   end
 
   def promo_cards
-    playable_promo_cards + unplayable_promo_cards
+    pools.flat_map(&:promo_cards)
   end
 
   # The data file and the card db each know whether a promo was foil, and they
@@ -112,22 +100,5 @@ class LimitedFormat
 
   def to_s
     "#{@set.name} #{@type.split("-").map(&:capitalize).join(" ")}"
-  end
-
-  private
-
-  # The foil tag is part of the card, so promos are just PhysicalCards
-  def promo_cards_for(key)
-    pools.flat_map{|pool| (pool[key] || []).map{|promo_data| promo_card(promo_data)}}.compact
-  end
-
-  def promo_card(promo_data)
-    set = @db.sets[promo_data["set_code"]]
-    printing = set && set.printing_by_number[promo_data["number"]]
-    unless printing
-      warn "#{inspect} has unknown promo card #{promo_data["name"]} [#{promo_data["set_code"].upcase}:#{promo_data["number"]}]"
-      return nil
-    end
-    PhysicalCard.for(printing, promo_data["foil"])
   end
 end
