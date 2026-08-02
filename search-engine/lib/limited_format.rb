@@ -20,6 +20,6 @@ class LimitedFormat
   end
 
   def to_s
-    inspect
+    "#{@set.name} #{@type.split("-").map(&:capitalize).join(" ")}"
   end
 end

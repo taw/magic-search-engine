@@ -1,0 +1,6 @@
+%h3 Limited Formats
+- @sets.each do |set|
+  %div= "#{set.name} (#{set.code.upcase})"
+  %ul
+    - set.limited_formats.each do |limited_format|
+      %li= limited_format.to_s

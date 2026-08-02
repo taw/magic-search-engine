@@ -46,6 +46,12 @@
             %li
               = link_to_product(product) do
                 = product.name
+    - if @set.limited_formats.present?
+      .col-12
+        %div Limited Formats:
+        %ul
+          - @set.limited_formats.each do |limited_format|
+            %li= limited_format.to_s
     - if @set.subsets.present?
       .col-12
         %div Subsets:
