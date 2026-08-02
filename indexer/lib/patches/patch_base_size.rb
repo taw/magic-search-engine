@@ -3,6 +3,7 @@
 class PatchBaseSize < Patch
   def call
     sizes = {
+      "hob" => 193,
     }
 
     sizes.each do |code, size|
