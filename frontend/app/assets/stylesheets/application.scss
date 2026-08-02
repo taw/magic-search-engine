@@ -455,10 +455,63 @@ h3 .manacost {
     width: 100%;
   }
 }
+.sealed_form {
+  max-width: 36em;
+  margin-bottom: 1em;
+}
 .pack_selection {
-  input[type="number"] {
-    width: 3em;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+
+  input.pack_count {
+    width: 4.5em;
+    flex: 0 0 auto;
+    margin-right: 0.5em;
+    text-align: right;
   }
+  // select2 replaces the select, but keep both sane in case JS is off
+  select.pack_set {
+    flex: 1 1 auto;
+    width: auto;
+  }
+  .select2-container {
+    flex: 1 1 auto;
+    width: auto !important;
+    min-width: 0;
+  }
+  // Make select2 match the height and shape of bootstrap's form-control
+  .select2-container--default .select2-selection--single {
+    height: calc(1.5em + 0.75rem + 2px);
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+
+    .select2-selection__rendered {
+      line-height: calc(1.5em + 0.75rem);
+      padding-left: 0.75rem;
+      padding-right: 2rem;
+    }
+    .select2-selection__arrow {
+      height: calc(1.5em + 0.75rem);
+    }
+  }
+  .select2-container--default.select2-container--focus .select2-selection--single,
+  .select2-container--default.select2-container--open .select2-selection--single {
+    border-color: #80bdff;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .select2-container--default .select2-selection--single {
+      border-color: #444;
+    }
+    .select2-container--default.select2-container--focus .select2-selection--single,
+    .select2-container--default.select2-container--open .select2-selection--single {
+      border-color: #375a7f;
+    }
+  }
+}
+.fixed_cards {
+  margin-bottom: 0.5em;
 }
 .deck_submit {
   textarea {
@@ -497,4 +550,5 @@ label {
 }
 textarea.fixed {
   width: 100%;
+  font-size: 0.9rem;
 }
