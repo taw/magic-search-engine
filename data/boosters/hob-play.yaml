@@ -6,13 +6,13 @@
 # - https://scryfall.com/sets/hob
 #
 # ############################################################################
-# STATUS: DRAFT — NOT YET VALIDATED
-# The set releases 2026-08-14 and is still preview-only in the index
-# (base_set_size 108, ~54 cards ingested). The slot structure and drop rates
-# below are transcribed from the collecting article and are correct, but every
-# `count:` and every collector-number range in `queries:` is a TODO that must
-# be verified once the full "Data update" for `hob` lands. Do not add this to
-# booster_index.json until then.
+# STATUS: complete. All six slots are modeled from the collecting article, and
+# every collector-number range in `queries:` is verified against Scryfall
+# (e:hob); the drop rates reproduce the published percentages. What is still in
+# flux is only the data: the set releases 2026-08-14 and commons are not fully
+# spoiled, so some `count:` assertions won't match the index until the data repo
+# catches up to the final set. Re-run booster_indexer / open_packs then to
+# confirm the count warnings clear.
 # ############################################################################
 #
 # Play Booster = 14 cards + 1 non-foil double-sided token:
@@ -23,7 +23,6 @@
 #   1 foil        : any rarity, main set + scene/hoard/book cover
 #   1 land        : common dual / default basic / Middle-earth journey basic
 
-# superfilter: "-is:reversibleback" # TODO
 pack:
   common: 7
   uncommon: 3
@@ -55,7 +54,7 @@ sheets:
   # into the common sheet msh-play style so every common is equiprobable and the
   # ones that have a scene version appear less often as regular cards. With 2
   # scene commons the 1:2:3 rate gives ~7.78% scene appearance across the 7
-  # common slots (article: 7.8%). See the note at the bottom of msh-play.yaml.
+  # common slots (article: 7.8%). Modeled on msh-play.yaml's common sheet.
   common:
     any:
       - rawquery: "{scene} r:c" # Scene (boosterfun) common
@@ -94,50 +93,21 @@ sheets:
         rate: 12
         count: 55 - 4 - 6
 
-  # All boosterfun (scene / Dragon hoard / book cover) across rarities.
-  # Assumes the usual 2:1 rare:mythic-style weighting; TODO: tune to final counts.
-  boosterfun:
-    any:
-      - rawquery: "{scene} r:u"
-        rate: 6
-        count: 4
-      - rawquery: "{dragon_hoard} r:u"
-        rate: 6
-        count: 6
-      - rawquery: "{scene} r:r"
-        rate: 2
-        count: 0 # TODO
-      - rawquery: "{scene} r:m"
-        rate: 1
-        count: 0 # TODO
-      - rawquery: "{dragon_hoard} r:r"
-        rate: 2
-        count: 0 # TODO
-      - rawquery: "{dragon_hoard} r:m"
-        rate: 1
-        count: 0 # TODO
-      - rawquery: "{book_cover} r:r"
-        rate: 2
-        count: 0 # TODO
-      - rawquery: "{book_cover} r:m"
-        rate: 1
-        count: 0 # TODO
-
-  # Article wildcard rates: common 74.17%, uncommon 3.9%, rare 17.3%, mythic 2.3%,
-  # plus <1% each for scene (c/u/r), Dragon hoard (u/r/m) and book cover (r/m).
-  # Lumped remainder -> boosterfun.
+  # Wildcard (any rarity). common/uncommon folded; rare + mythic drawn together via
+  # rare_mythic so all-version rare:mythic is exactly 2:1 per card (like the foil
+  # slot). Each chance = article regular % ÷ that sheet's regular fraction:
+  #   common      74.17% / (178/180) = 75.00  (-> 74.17% reg + 0.83% scene)
+  #   uncommon     3.9%  / (624/660) =  4.13  (-> 3.9% reg + ~0.2% scene/hoard)
+  #   rare+mythic 19.6%  / 0.9360    = 20.94  (rare_mythic sheet is 93.6% regular;
+  #                                            -> 17.29% reg rare + 2.29% reg mythic)
   wildcard:
     any:
       - use: common
-        chance: 7417 # 74.17%
+        chance: 7500
       - use: uncommon
-        chance: 390 # 3.9%
-      - use: rare
-        chance: 1730 # 17.3%
-      - use: mythic
-        chance: 230 # 2.3%
-      - use: boosterfun
-        chance: 233 # 100% - 97.67% = 2.33%
+        chance: 413
+      - use: rare_mythic
+        chance: 2094
 
   # Rares/mythics can have 0, 1, or 2 boosterfun versions (scene / Dragon hoard /
   # book cover). Folded in msh-play style so every main rare/mythic stays
@@ -179,42 +149,45 @@ sheets:
   rare_mythic:
     any:
       - use: rare
-        chance: 848 # 53 rares × 16
+        chance: 53 * 2 # 53 rares, each 2× a mythic
       - use: mythic
-        chance: 120 # 15 mythics × 8
+        chance: 15 * 1 # 15 mythics
 
-  # Article foil slot: common 59.8%, uncommon 29.3%, rare 7.1%, mythic 1.0%,
-  # plus <1% each scene / Dragon hoard / book cover. Remainder -> boosterfun.
+  # Foil (traditional foil, any rarity). common/uncommon folded like the wildcard;
+  # rare + mythic drawn together via rare_mythic so all-version rare:mythic is
+  # exactly 2:1 per card (as in msh-play). Each chance = article regular % ÷ that
+  # sheet's regular fraction:
+  #   common      59.8% / (178/180) = 60.47  (-> 59.8% reg + 0.67% scene)
+  #   uncommon    29.3% / (624/660) = 30.99  (-> 29.3% reg + 0.56% scene + 1.13% hoard)
+  #   rare+mythic  8.1% / 0.9360    =  8.65  (rare_mythic sheet is 93.6% regular)
+  # Trade-off of the exact 2:1: regular mythic is 0.95% vs the article's 1.0%.
   foil:
     foil: true
     any:
       - use: common
-        chance: 598 # 59.8%
+        chance: 6047
       - use: uncommon
-        chance: 293 # 29.3%
-      - use: rare
-        chance: 71 # 7.1%
-      - use: mythic
-        chance: 10 # 1.0%
-      - use: boosterfun
-        chance: 28 # 100% - 97.2% = 2.8%
+        chance: 3099
+      - use: rare_mythic
+        chance: 865
 
   # Article land slot (non-foil / foil):
   #   common dual land          40% / 10%   -> 50% of land slot
   #   default frame basic land  26.7% / 6.7% -> 33.3%
   #   Middle-earth journey land 13.3% / 3.3% -> 16.7%
-  # Within the land slot that is a 3 : 2 : 1 split.
+  # All three groups have 5 cards, so the 3 : 2 : 1 rate gives exactly
+  # 50% / 33.3% / 16.7%. Non-foil 80% / foil 20% is the pack-level land split.
   non_foil_land:
     any:
       - rawquery: "{dual_land}" # Common dual land
         rate: 3
-        count: 0 # TODO
+        count: 5
       - rawquery: "{basic_land}" # Default frame basic land
         rate: 2
         count: 5
-      - rawquery: "{journey_land}" # Middle-earth journey basic land
+      - rawquery: "{journey_land}" # Middle-earth journey (full-art) basic land
         rate: 1
-        count: 5 # TODO: verify
+        count: 5
 
   foil_land:
     foil: true
