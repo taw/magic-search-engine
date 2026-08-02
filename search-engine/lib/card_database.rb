@@ -414,7 +414,7 @@ class CardDatabase
         next
       end
       set_data.each do |type, format_data|
-        limited_format = LimitedFormat.new(set, type, format_data)
+        limited_format = LimitedFormat.new(self, set, type, format_data)
         @limited_formats << limited_format
         set.limited_formats << limited_format
       end

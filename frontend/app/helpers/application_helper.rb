@@ -35,6 +35,15 @@ module ApplicationHelper
     link_to(controller: "pack", action: "show", id: pack.code, &blk)
   end
 
+  def link_to_limited_format(limited_format, &blk)
+    link_to(controller: "limited_format", action: "show", set: limited_format.set_code, id: limited_format.slug, &blk)
+  end
+
+  # Not every limited format has a page yet
+  def limited_format_page?(limited_format)
+    LimitedFormatController::SUPPORTED_TYPES.include?(limited_format.type)
+  end
+
   def link_to_product(product, &blk)
     link_to(controller: "product", action: "show", set: product.set_code, id: product.slug, &blk)
   end

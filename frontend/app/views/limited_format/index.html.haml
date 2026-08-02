@@ -3,4 +3,9 @@
   %div= "#{set.name} (#{set.code.upcase})"
   %ul
     - set.limited_formats.each do |limited_format|
-      %li= limited_format.to_s
+      %li
+        - if limited_format_page?(limited_format)
+          = link_to_limited_format(limited_format) do
+            = limited_format.to_s
+        - else
+          = limited_format.to_s

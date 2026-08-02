@@ -1,0 +1,13 @@
+%h3= @limited_format.to_s
+%p Open these packs in order:
+%ol
+  - @limited_format.booster_order.each do |pack|
+    %li
+      = link_to_pack(pack) do
+        = pack.name
+      = "(#{pack.code.upcase})"
+%p
+  From every booster, draft one card, and pass the rest to the next player,
+  until all cards have been drafted.
+  Direction changes with every booster.
+%p Drafting is not supported on this website.
