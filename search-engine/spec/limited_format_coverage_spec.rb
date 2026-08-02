@@ -25,6 +25,14 @@ describe LimitedFormatCoverage do
     warn warning if warning
   end
 
+  # Magic Online only sets were drafted there, and had no paper events at all
+  it "expects an mtgo draft and nothing else from a Magic Online only set" do
+    coverage.expected_formats.select{|set_code, format| set_code == "me1"}
+      .should eq([["me1", "mtgo-draft"]])
+    coverage.expected_formats.select{|set_code, format| format == "mtgo-draft"}
+      .map(&:first).should match_array(["me1", "me2", "me3", "me4", "vma", "tpr"])
+  end
+
   it "data file only lists sets that exist" do
     coverage.not_played.keys.reject{|set_code| db.sets[set_code]}.should eq([])
   end

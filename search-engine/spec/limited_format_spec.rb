@@ -59,6 +59,18 @@ describe LimitedFormat do
     nph_prerelease.describable_draft?.should eq(false)
   end
 
+  # Sets which were never printed on paper were only drafted on Magic Online
+  it "mtgo drafts are ordinary drafts of a digital set" do
+    vma_draft = db.sets["vma"].limited_formats.find{|f| f.type == "mtgo-draft"}
+    vma_draft.format_type.should eq("draft")
+    vma_draft.describable_draft?.should eq(true)
+    vma_draft.mtgo?.should eq(true)
+    vma_draft.booster_order.map(&:code).should eq(["vma-mtgo"] * 3)
+    vma_draft.to_s.should eq("Vintage Masters MTGO Draft")
+    vma_draft.slug.should eq("mtgo-draft")
+    nph_draft.mtgo?.should eq(false)
+  end
+
   # Commander Draft lets you use a filler commander you did not draft (903.13e)
   it "filler commanders" do
     db.sets["cmr"].limited_formats.find{|f| f.type == "draft"}

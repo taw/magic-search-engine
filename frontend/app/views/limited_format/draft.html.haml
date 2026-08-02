@@ -1,4 +1,8 @@
 %h3= @limited_format.to_s
+- if @limited_format.mtgo?
+  %p
+    This set was never printed on paper, so this draft only ever happened
+    on Magic Online.
 %p Open these packs in order:
 %ol
   - @limited_format.booster_order.each do |pack|

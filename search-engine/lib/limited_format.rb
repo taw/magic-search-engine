@@ -118,6 +118,12 @@ class LimitedFormat
     end
   end
 
+  # Formats which only ever happened on Magic Online, like the drafts of the
+  # Masters Edition sets, which were never printed on paper
+  def mtgo?
+    @type.start_with?("mtgo-")
+  end
+
   def slug
     @type
   end
@@ -127,6 +133,8 @@ class LimitedFormat
   end
 
   def to_s
-    "#{@set.name} #{@type.split("-").map(&:capitalize).join(" ")}"
+    "#{@set.name} #{@type.split("-").map{|word| TITLES[word] || word.capitalize}.join(" ")}"
   end
+
+  TITLES = {"mtgo" => "MTGO"}
 end

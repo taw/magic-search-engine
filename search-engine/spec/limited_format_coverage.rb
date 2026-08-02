@@ -14,10 +14,15 @@ require "pathname"
 class LimitedFormatCoverage
   NOT_PLAYED_PATH = Pathname(__dir__) + "../../data/limited_formats_not_played.yaml"
 
-  # Boosters a set is drafted out of. Older sets just have a booster named
-  # after the set, and we make no claims about those - drafting them was never
-  # an event WotC ran.
-  DRAFT_BOOSTERS = ["draft", "play"]
+  # Booster a set has => format it should have. Older sets just have a booster
+  # named after the set, and we make no claims about those - drafting them was
+  # never an event WotC ran. A set whose boosters are Magic Online only was
+  # drafted there and nowhere else.
+  DRAFT_BOOSTERS = {
+    "draft" => "draft",
+    "play" => "draft",
+    "mtgo" => "mtgo-draft",
+  }
 
   # Sealed used to be one tournament pack plus boosters, and we have no data
   # for that era, so only sets from Alara Reborn on are expected to have it.
@@ -38,13 +43,11 @@ class LimitedFormatCoverage
   # [set code, format] pairs the boosters of a set tell us it should have
   def expected_formats
     booster_variants.flat_map do |set_code, variants|
-      formats = []
-      if variants.any?{|variant| DRAFT_BOOSTERS.include?(variant)}
-        formats << "draft"
-        formats << "sealed" if six_booster_sealed_era?(set_code)
-      end
+      formats = variants.filter_map{|variant| DRAFT_BOOSTERS[variant]}
+      # Sealed was a paper event, so Magic Online only sets don't get it
+      formats << "sealed" if formats.include?("draft") and six_booster_sealed_era?(set_code)
       formats << "prerelease-sealed" if variants.any?{|variant| variant.start_with?("prerelease")}
-      formats.map{|format| [set_code, format]}
+      formats.uniq.map{|format| [set_code, format]}
     end
   end
 

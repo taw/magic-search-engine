@@ -113,7 +113,8 @@ class LimitedFormatsIndexer
 
   def index_format(set_code, format, format_data)
     case format
-    when "draft"
+    # "mtgo-draft" is an ordinary draft that only ever happened on Magic Online
+    when "draft", "mtgo-draft"
       index_draft(set_code, format, format_data)
     when "sealed", "prerelease-sealed"
       index_sealed(set_code, format, format_data)

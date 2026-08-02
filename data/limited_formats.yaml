@@ -497,6 +497,15 @@ fut:
   - 10e-draft
   - 10e-draft
 
+# The Masters Edition sets exist to make old cards draftable on Magic Online,
+# and were never printed on paper. Magic Online drafts are three boosters.
+# https://www.mtgo.com/getting-started/getting-started-play-limited
+me1:
+  mtgo-draft:
+  - me1-mtgo
+  - me1-mtgo
+  - me1-mtgo
+
 lrw:
   prerelease-sealed:
     boosters:
@@ -544,6 +553,12 @@ eve:
   - shm-draft
   - shm-draft
   - eve-draft
+
+me2:
+  mtgo-draft:
+  - me2-mtgo
+  - me2-mtgo
+  - me2-mtgo
 
 ala:
   prerelease-sealed:
@@ -600,6 +615,12 @@ m10:
   - m10-draft
   - m10-draft
   - m10-draft
+
+me3:
+  mtgo-draft:
+  - me3-mtgo
+  - me3-mtgo
+  - me3-mtgo
 
 zen:
   sealed:
@@ -669,6 +690,12 @@ som:
   - som-draft
   - som-draft
   - som-draft
+
+me4:
+  mtgo-draft:
+  - me4-mtgo
+  - me4-mtgo
+  - me4-mtgo
 
 # First set drafted newest-pack-first.
 mbs:
@@ -1182,6 +1209,14 @@ cns:
   - cns-draft
   - cns-draft
 
+# Vintage Masters is Magic Online only - most of what is in it is on the
+# Reserved List, so it could not be printed on paper.
+vma:
+  mtgo-draft:
+  - vma-mtgo
+  - vma-mtgo
+  - vma-mtgo
+
 m15:
   sealed:
   - 6x m15-draft
@@ -1332,6 +1367,13 @@ dtk:
   - dtk-draft
   - dtk-draft
   - frf-draft
+
+# Tempest Remastered was a Magic Online only reprint of the Tempest block.
+tpr:
+  mtgo-draft:
+  - tpr-mtgo
+  - tpr-mtgo
+  - tpr-mtgo
 
 mm2:
   sealed:

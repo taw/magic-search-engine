@@ -63,6 +63,15 @@ RSpec.describe LimitedFormatController, type: :controller do
     assert_select %[h4:contains("Gideon")]
   end
 
+  it "mtgo draft" do
+    get "show", params: {set: "vma", id: "mtgo-draft"}
+    assert_response 200
+    assert_equal "Vintage Masters MTGO Draft - #{APP_NAME}", html_document.title
+    assert_select %[p:contains("only ever happened")]
+    assert_select %[li a[href="/pack/vma-mtgo"]], 3
+    assert_select %[p:contains("draft one card")]
+  end
+
   it "commander draft" do
     get "show", params: {set: "cmr", id: "draft"}
     assert_response 200
