@@ -1,0 +1,36 @@
+# Sets which have the boosters for a format, but never had that format.
+#
+# LimitedFormatCoverage warns about anything it expects from a set's boosters
+# and can't find in data/limited_formats.yaml. Sets listed here are the ones
+# where the format genuinely never happened, rather than data we still owe.
+# Each entry says why, as this is the only place that knowledge is written down.
+#
+# Format: set code => format => why
+
+# Draft-only sets. Conspiracy, Mystery Booster, and Innistrad: Double Feature
+# were all sold as draft products, and WotC never ran sealed with them.
+cns:
+  sealed: Conspiracy is a draft-only set
+cn2:
+  sealed: "Conspiracy: Take the Crown is a draft-only set, like the first one"
+mb1:
+  sealed: Mystery Booster is a draft-only product
+mb2:
+  sealed: Mystery Booster 2 is a draft-only product, like the first one
+dbl:
+  sealed: Innistrad Double Feature was sold as a draft product only
+
+# The Commander Legends line is drafted into 60 card Commander decks; sealed
+# would not give you enough cards to build one.
+cmr:
+  sealed: Commander Legends is Commander Draft only
+clb:
+  sealed: Commander Legends Battle for Baldur's Gate is Commander Draft only, its prerelease was a draft too
+cmm:
+  sealed: Commander Masters is Commander Draft only
+
+# 30th Anniversary Edition was a $999 collector's item of four packs of cards
+# with a non-standard card back, not legal in any sanctioned play.
+30a:
+  draft: 30th Anniversary Edition cards are not legal in any format, so there were no events
+  sealed: 30th Anniversary Edition cards are not legal in any format, so there were no events
