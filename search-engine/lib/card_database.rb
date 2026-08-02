@@ -419,6 +419,8 @@ class CardDatabase
         set.limited_formats << limited_format
       end
     end
+
+    @limited_formats.each(&:verify_promo_cards!)
   end
 
   # Change card number to CardPrinting reference

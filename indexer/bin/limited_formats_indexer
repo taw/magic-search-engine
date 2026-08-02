@@ -32,15 +32,20 @@ class LimitedFormatsIndexer
     boosters
   end
 
-  # "Sheoldred, Whispering One [PNPH:73★]"
+  # "Sheoldred, Whispering One [PNPH:73★] [foil]"
+  # The `[foil]` tag is there iff the card was handed out foil
   def parse_promo(entry)
-    unless entry =~ /\A(.+?)\s*\[([^\[\]:]+):([^\[\]]+)\]\z/
+    unless entry =~ /\A(.+?)\s*\[([^\[\]:]+):([^\[\]]+)\](?:\s*\[([^\[\]]+)\])?\z/
       raise "Unknown promo card #{entry}"
+    end
+    if $4 and $4 != "foil"
+      raise "Unknown promo tag [#{$4}] in #{entry}"
     end
     {
       name: $1,
       set_code: $2.downcase,
       number: $3,
+      foil: !!$4,
     }
   end
 

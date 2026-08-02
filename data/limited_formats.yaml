@@ -59,6 +59,16 @@
 # of the booster's contents and is not listed separately here.
 # https://mtg.wiki/page/Prerelease_card
 #
+# Promo cards carry a `[foil]` tag when the card was handed out foil, and no tag
+# when it was a normal card. None were available both ways. There are two
+# sources for this: the wiki page above, which calls out the non-foil ones in
+# its comments, and the printing's own foiling in the card db, which is
+# `foilonly` or `nonfoil` for every one of them. The two agree on every promo
+# listed here (all foil - the non-foil prerelease cards are Tempest, Stronghold,
+# Exodus and Portal Three Kingdoms, none of which have a pool listed). Where
+# they ever disagree, tag the entry with what the wiki says and leave a comment
+# here saying so; the loader warns about the mismatch either way.
+#
 # Play Boosters
 # -------------
 # Ravnica Remastered was the last set with draft boosters; from Murders at
@@ -120,7 +130,7 @@ usg:
     - 1x usg-tournament
     - 3x usg-draft
     unplayable-promo:
-    - Lightning Dragon [PUSG:202]
+    - Lightning Dragon [PUSG:202] [foil]
   draft:
   - usg-draft
   - usg-draft
@@ -132,7 +142,7 @@ ulg:
     - 1x usg-tournament
     - 3x ulg-draft
     unplayable-promo:
-    - Beast of Burden [PULG:122]
+    - Beast of Burden [PULG:122] [foil]
   draft:
   - usg-draft
   - usg-draft
@@ -150,7 +160,7 @@ uds:
     - 1x usg-tournament
     - 3x uds-draft
     unplayable-promo:
-    - False Prophet [PUDS:6]
+    - False Prophet [PUDS:6] [foil]
   draft:
   - usg-draft
   - ulg-draft
@@ -162,7 +172,7 @@ mmq:
     - 1x mmq-tournament
     - 3x mmq-draft
     unplayable-promo:
-    - Overtaker [PMMQ:89]
+    - Overtaker [PMMQ:89] [foil]
   draft:
   - mmq-draft
   - mmq-draft
@@ -174,7 +184,7 @@ nem:
     - 1x mmq-tournament
     - 3x nem-draft
     unplayable-promo:
-    - Rathi Assassin [PNEM:67]
+    - Rathi Assassin [PNEM:67] [foil]
   draft:
   - mmq-draft
   - mmq-draft
@@ -186,7 +196,7 @@ pcy:
     - 1x mmq-tournament
     - 3x pcy-draft
     unplayable-promo:
-    - Avatar of Hope [PPCY:3]
+    - Avatar of Hope [PPCY:3] [foil]
   draft:
   - mmq-draft
   - nem-draft
@@ -198,7 +208,7 @@ inv:
     - 1x inv-tournament
     - 3x inv-draft
     unplayable-promo:
-    - Raging Kavu [PINV:262]
+    - Raging Kavu [PINV:262] [foil]
   draft:
   - inv-draft
   - inv-draft
@@ -210,7 +220,7 @@ pls:
     - 1x inv-tournament
     - 3x pls-draft
     unplayable-promo:
-    - Questing Phelddagrif [PPLS:119]
+    - Questing Phelddagrif [PPLS:119] [foil]
   draft:
   - inv-draft
   - inv-draft
@@ -228,7 +238,7 @@ apc:
     - 1x inv-tournament
     - 3x apc-draft
     unplayable-promo:
-    - Fungal Shambler [PAPC:100]
+    - Fungal Shambler [PAPC:100] [foil]
   draft:
   - inv-draft
   - pls-draft
@@ -240,7 +250,7 @@ ody:
     - 1x ody-tournament
     - 3x ody-draft
     unplayable-promo:
-    - Stone-Tongue Basilisk [PODY:276]
+    - Stone-Tongue Basilisk [PODY:276] [foil]
   draft:
   - ody-draft
   - ody-draft
@@ -252,7 +262,7 @@ tor:
     - 1x ody-tournament
     - 3x tor-draft
     unplayable-promo:
-    - Laquatus's Champion [PTOR:67]
+    - Laquatus's Champion [PTOR:67] [foil]
   draft:
   - ody-draft
   - ody-draft
@@ -264,7 +274,7 @@ jud:
     - 1x ody-tournament
     - 3x jud-draft
     unplayable-promo:
-    - Glory [PJUD:11]
+    - Glory [PJUD:11] [foil]
   draft:
   - ody-draft
   - tor-draft
@@ -276,7 +286,7 @@ ons:
     - 1x ons-tournament
     - 3x ons-draft
     unplayable-promo:
-    - Silent Specter [PONS:169]
+    - Silent Specter [PONS:169] [foil]
   draft:
   - ons-draft
   - ons-draft
@@ -288,7 +298,7 @@ lgn:
     - 1x ons-tournament
     - 3x lgn-draft
     unplayable-promo:
-    - Feral Throwback [PLGN:126]
+    - Feral Throwback [PLGN:126] [foil]
   draft:
   - ons-draft
   - ons-draft
@@ -300,7 +310,7 @@ scg:
     - 1x ons-tournament
     - 3x scg-draft
     unplayable-promo:
-    - Soul Collector [PSCG:74]
+    - Soul Collector [PSCG:74] [foil]
   draft:
   - ons-draft
   - lgn-draft
@@ -318,7 +328,7 @@ mrd:
     - 1x mrd-tournament
     - 3x mrd-draft
     unplayable-promo:
-    - Sword of Kaldra [PMRD:251★]
+    - Sword of Kaldra [PMRD:251★] [foil]
   draft:
   - mrd-draft
   - mrd-draft
@@ -330,7 +340,7 @@ dst:
     - 1x mrd-tournament
     - 3x dst-draft
     unplayable-promo:
-    - Shield of Kaldra [PDST:139★]
+    - Shield of Kaldra [PDST:139★] [foil]
   draft:
   - mrd-draft
   - mrd-draft
@@ -342,7 +352,7 @@ dst:
     - 1x mrd-tournament
     - 3x 5dn-draft
     unplayable-promo:
-    - Helm of Kaldra [P5DN:131★]
+    - Helm of Kaldra [P5DN:131★] [foil]
   draft:
   - mrd-draft
   - dst-draft
@@ -354,7 +364,7 @@ chk:
     - 1x chk-tournament
     - 3x chk-draft
     unplayable-promo:
-    - Ryusei, the Falling Star [PCHK:185★]
+    - Ryusei, the Falling Star [PCHK:185★] [foil]
   draft:
   - chk-draft
   - chk-draft
@@ -372,7 +382,7 @@ bok:
     - 1x chk-tournament
     - 3x bok-draft
     unplayable-promo:
-    - Ink-Eyes, Servant of Oni [PBOK:71★]
+    - Ink-Eyes, Servant of Oni [PBOK:71★] [foil]
   draft:
   - chk-draft
   - chk-draft
@@ -384,7 +394,7 @@ sok:
     - 1x chk-tournament
     - 3x sok-draft
     unplayable-promo:
-    - Kiyomaro, First to Stand [PSOK:18★]
+    - Kiyomaro, First to Stand [PSOK:18★] [foil]
   draft:
   - chk-draft
   - bok-draft
@@ -402,7 +412,7 @@ rav:
     - 1x rav-tournament
     - 3x rav-draft
     unplayable-promo:
-    - Gleancrawler [PRAV:247★]
+    - Gleancrawler [PRAV:247★] [foil]
   draft:
   - rav-draft
   - rav-draft
@@ -414,7 +424,7 @@ gpt:
     - 1x rav-tournament
     - 3x gpt-draft
     unplayable-promo:
-    - Djinn Illuminatus [PGPT:142★]
+    - Djinn Illuminatus [PGPT:142★] [foil]
   draft:
   - rav-draft
   - rav-draft
@@ -426,7 +436,7 @@ dis:
     - 1x rav-tournament
     - 3x dis-draft
     unplayable-promo:
-    - Avatar of Discord [PDIS:140★]
+    - Avatar of Discord [PDIS:140★] [foil]
   draft:
   - rav-draft
   - gpt-draft
@@ -434,7 +444,7 @@ dis:
 
 # Coldsnap was drafted on its own, not with Ice Age and Alliances.
 # Its prerelease is not modelled: Coldsnap tournament packs exist but
-# we have no booster data for them (promo Allosaurus Rider [PCSP:101★]).
+# we have no booster data for them (promo Allosaurus Rider [PCSP:101★] [foil]).
 csp:
   draft:
   - csp-draft
@@ -447,7 +457,7 @@ tsp:
     - 1x tsp-tournament
     - 3x tsp-draft
     unplayable-promo:
-    - Lotus Bloom [PTSP:259★]
+    - Lotus Bloom [PTSP:259★] [foil]
   draft:
   - tsp-draft
   - tsp-draft
@@ -461,7 +471,7 @@ plc:
     - 1x tsp-tournament
     - 3x plc-draft
     unplayable-promo:
-    - Oros, the Avenger [PPLC:161★]
+    - Oros, the Avenger [PPLC:161★] [foil]
   draft:
   - tsp-draft
   - tsp-draft
@@ -473,7 +483,7 @@ fut:
     - 1x tsp-tournament
     - 3x fut-draft
     unplayable-promo:
-    - Korlash, Heir to Blackblade [PFUT:87★]
+    - Korlash, Heir to Blackblade [PFUT:87★] [foil]
   draft:
   - tsp-draft
   - plc-draft
@@ -491,7 +501,7 @@ lrw:
     - 1x lrw-tournament
     - 3x lrw-draft
     unplayable-promo:
-    - Wren's Run Packmaster [PLRW:244★]
+    - Wren's Run Packmaster [PLRW:244★] [foil]
   draft:
   - lrw-draft
   - lrw-draft
@@ -503,7 +513,7 @@ mor:
     - 1x lrw-tournament
     - 3x mor-draft
     unplayable-promo:
-    - Door of Destinies [PMOR:143★]
+    - Door of Destinies [PMOR:143★] [foil]
   draft:
   - lrw-draft
   - lrw-draft
@@ -515,7 +525,7 @@ shm:
     - 1x shm-tournament
     - 3x shm-draft
     unplayable-promo:
-    - Demigod of Revenge [PSHM:183★]
+    - Demigod of Revenge [PSHM:183★] [foil]
   draft:
   - shm-draft
   - shm-draft
@@ -527,7 +537,7 @@ eve:
     - 1x shm-tournament
     - 3x eve-draft
     unplayable-promo:
-    - Overbeing of Myth [PEVE:157★]
+    - Overbeing of Myth [PEVE:157★] [foil]
   draft:
   - shm-draft
   - shm-draft
@@ -539,7 +549,7 @@ ala:
     - 1x ala-tournament
     - 3x ala-draft
     unplayable-promo:
-    - Ajani Vengeant [PALA:154★]
+    - Ajani Vengeant [PALA:154★] [foil]
   draft:
   - ala-draft
   - ala-draft
@@ -551,7 +561,7 @@ con:
     - 1x ala-tournament
     - 3x con-draft
     unplayable-promo:
-    - Malfegor [PCON:117★]
+    - Malfegor [PCON:117★] [foil]
   draft:
   - ala-draft
   - ala-draft
@@ -569,7 +579,7 @@ arb:
     - 3x ala-draft
     - 3x arb-draft
     unplayable-promo:
-    - Dragon Broodmother [PARB:53★]
+    - Dragon Broodmother [PARB:53★] [foil]
   draft:
   - ala-draft
   - con-draft
@@ -583,7 +593,7 @@ m10:
     boosters:
     - 6x m10-draft
     unplayable-promo:
-    - Vampire Nocturnus [PM10:118★]
+    - Vampire Nocturnus [PM10:118★] [foil]
   draft:
   - m10-draft
   - m10-draft
@@ -597,7 +607,7 @@ zen:
     boosters:
     - 6x zen-draft
     unplayable-promo:
-    - Rampaging Baloths [PZEN:178★]
+    - Rampaging Baloths [PZEN:178★] [foil]
   draft:
   - zen-draft
   - zen-draft
@@ -612,7 +622,7 @@ wwk:
     - 3x zen-draft
     - 3x wwk-draft
     unplayable-promo:
-    - Comet Storm [PWWK:76★]
+    - Comet Storm [PWWK:76★] [foil]
   draft:
   - zen-draft
   - zen-draft
@@ -626,7 +636,7 @@ roe:
     boosters:
     - 6x roe-draft
     unplayable-promo:
-    - Emrakul, the Aeons Torn [PROE:4★]
+    - Emrakul, the Aeons Torn [PROE:4★] [foil]
   draft:
   - roe-draft
   - roe-draft
@@ -639,7 +649,7 @@ m11:
     boosters:
     - 6x m11-draft
     unplayable-promo:
-    - Sun Titan [PM11:35★]
+    - Sun Titan [PM11:35★] [foil]
   draft:
   - m11-draft
   - m11-draft
@@ -652,7 +662,7 @@ som:
     boosters:
     - 6x som-draft
     unplayable-promo:
-    - Wurmcoil Engine [PSOM:223★]
+    - Wurmcoil Engine [PSOM:223★] [foil]
   draft:
   - som-draft
   - som-draft
@@ -677,13 +687,13 @@ mbs:
         - 3x mbs-mirran
         - 3x som-draft
         unplayable-promo:
-        - Hero of Bladehold [PMBS:8★]
+        - Hero of Bladehold [PMBS:8★] [foil]
       phyrexian:
         boosters:
         - 3x mbs-phyrexian
         - 3x som-draft
         unplayable-promo:
-        - Glissa, the Traitor [PMBS:96★]
+        - Glissa, the Traitor [PMBS:96★] [foil]
   draft:
   - mbs-draft
   - som-draft
@@ -700,7 +710,7 @@ nph:
     - 2x mbs-draft
     - 2x som-draft
     unplayable-promo:
-    - Sheoldred, Whispering One [PNPH:73★]
+    - Sheoldred, Whispering One [PNPH:73★] [foil]
   draft:
   - nph-draft
   - mbs-draft
@@ -713,7 +723,7 @@ m12:
     boosters:
     - 6x m12-draft
     unplayable-promo:
-    - Bloodlord of Vaasgoth [PM12:82★]
+    - Bloodlord of Vaasgoth [PM12:82★] [foil]
   draft:
   - m12-draft
   - m12-draft
@@ -727,7 +737,7 @@ isd:
     - 6x isd-draft
     # double-faced, PISD:193★a and PISD:193★b are the two faces of a single promo
     unplayable-promo:
-    - Mayor of Avabruck [PISD:193★a]
+    - Mayor of Avabruck [PISD:193★a] [foil]
   draft:
   - isd-draft
   - isd-draft
@@ -743,7 +753,7 @@ dka:
     - 3x dka-draft
     # double-faced, PDKA:71★a and PDKA:71★b are the two faces of a single promo
     unplayable-promo:
-    - Ravenous Demon [PDKA:71★a]
+    - Ravenous Demon [PDKA:71★a] [foil]
   draft:
   - dka-draft
   - isd-draft
@@ -757,7 +767,7 @@ avr:
     boosters:
     - 6x avr-draft
     unplayable-promo:
-    - Moonsilver Spear [PAVR:217★]
+    - Moonsilver Spear [PAVR:217★] [foil]
   draft:
   - avr-draft
   - avr-draft
@@ -770,7 +780,7 @@ m13:
     boosters:
     - 6x m13-draft
     unplayable-promo:
-    - Xathrid Gorgon [PM13:118★]
+    - Xathrid Gorgon [PM13:118★] [foil]
   draft:
   - m13-draft
   - m13-draft
@@ -790,31 +800,31 @@ rtr:
         - 5x rtr-draft
         - 1x rtr-prerelease-azorius
         playable-promo:
-        - Archon of the Triumvirate [PRTR:142★]
+        - Archon of the Triumvirate [PRTR:142★] [foil]
       izzet:
         boosters:
         - 5x rtr-draft
         - 1x rtr-prerelease-izzet
         playable-promo:
-        - Hypersonic Dragon [PRTR:170★]
+        - Hypersonic Dragon [PRTR:170★] [foil]
       rakdos:
         boosters:
         - 5x rtr-draft
         - 1x rtr-prerelease-rakdos
         playable-promo:
-        - Carnival Hellsteed [PRTR:147★]
+        - Carnival Hellsteed [PRTR:147★] [foil]
       golgari:
         boosters:
         - 5x rtr-draft
         - 1x rtr-prerelease-golgari
         playable-promo:
-        - Corpsejack Menace [PRTR:152★]
+        - Corpsejack Menace [PRTR:152★] [foil]
       selesnya:
         boosters:
         - 5x rtr-draft
         - 1x rtr-prerelease-selesnya
         playable-promo:
-        - Grove of the Guardian [PRTR:240★]
+        - Grove of the Guardian [PRTR:240★] [foil]
   draft:
   - rtr-draft
   - rtr-draft
@@ -832,31 +842,31 @@ gtc:
         - 5x gtc-draft
         - 1x gtc-prerelease-orzhov
         playable-promo:
-        - Treasury Thrull [PGTC:201★]
+        - Treasury Thrull [PGTC:201★] [foil]
       dimir:
         boosters:
         - 5x gtc-draft
         - 1x gtc-prerelease-dimir
         playable-promo:
-        - Consuming Aberration [PGTC:152★]
+        - Consuming Aberration [PGTC:152★] [foil]
       gruul:
         boosters:
         - 5x gtc-draft
         - 1x gtc-prerelease-gruul
         playable-promo:
-        - Rubblehulk [PGTC:191★]
+        - Rubblehulk [PGTC:191★] [foil]
       boros:
         boosters:
         - 5x gtc-draft
         - 1x gtc-prerelease-boros
         playable-promo:
-        - Foundry Champion [PGTC:165★]
+        - Foundry Champion [PGTC:165★] [foil]
       simic:
         boosters:
         - 5x gtc-draft
         - 1x gtc-prerelease-simic
         playable-promo:
-        - Fathom Mage [PGTC:162★]
+        - Fathom Mage [PGTC:162★] [foil]
   draft:
   - gtc-draft
   - gtc-draft
@@ -889,8 +899,8 @@ dgm:
           - gtc-prerelease-boros
           - gtc-prerelease-simic
         unplayable-promo:
-        - Maze's End [PDGM:152★]
-        - Plains [PDGM:157★]
+        - Maze's End [PDGM:152★] [foil]
+        - Plains [PDGM:157★] [foil]
       izzet:
         boosters:
         - 4x dgm-draft
@@ -903,8 +913,8 @@ dgm:
           - gtc-prerelease-boros
           - gtc-prerelease-simic
         unplayable-promo:
-        - Maze's End [PDGM:152★]
-        - Plains [PDGM:157★]
+        - Maze's End [PDGM:152★] [foil]
+        - Plains [PDGM:157★] [foil]
       rakdos:
         boosters:
         - 4x dgm-draft
@@ -917,8 +927,8 @@ dgm:
           - gtc-prerelease-gruul
           - gtc-prerelease-boros
         unplayable-promo:
-        - Maze's End [PDGM:152★]
-        - Plains [PDGM:157★]
+        - Maze's End [PDGM:152★] [foil]
+        - Plains [PDGM:157★] [foil]
       golgari:
         boosters:
         - 4x dgm-draft
@@ -931,8 +941,8 @@ dgm:
           - gtc-prerelease-gruul
           - gtc-prerelease-simic
         unplayable-promo:
-        - Maze's End [PDGM:152★]
-        - Plains [PDGM:157★]
+        - Maze's End [PDGM:152★] [foil]
+        - Plains [PDGM:157★] [foil]
       selesnya:
         boosters:
         - 4x dgm-draft
@@ -945,8 +955,8 @@ dgm:
           - gtc-prerelease-boros
           - gtc-prerelease-simic
         unplayable-promo:
-        - Maze's End [PDGM:152★]
-        - Plains [PDGM:157★]
+        - Maze's End [PDGM:152★] [foil]
+        - Plains [PDGM:157★] [foil]
       orzhov:
         boosters:
         - 4x dgm-draft
@@ -959,8 +969,8 @@ dgm:
           - rtr-prerelease-golgari
           - rtr-prerelease-selesnya
         unplayable-promo:
-        - Maze's End [PDGM:152★]
-        - Plains [PDGM:157★]
+        - Maze's End [PDGM:152★] [foil]
+        - Plains [PDGM:157★] [foil]
       dimir:
         boosters:
         - 4x dgm-draft
@@ -973,8 +983,8 @@ dgm:
           - rtr-prerelease-rakdos
           - rtr-prerelease-golgari
         unplayable-promo:
-        - Maze's End [PDGM:152★]
-        - Plains [PDGM:157★]
+        - Maze's End [PDGM:152★] [foil]
+        - Plains [PDGM:157★] [foil]
       gruul:
         boosters:
         - 4x dgm-draft
@@ -987,8 +997,8 @@ dgm:
           - rtr-prerelease-golgari
           - rtr-prerelease-selesnya
         unplayable-promo:
-        - Maze's End [PDGM:152★]
-        - Plains [PDGM:157★]
+        - Maze's End [PDGM:152★] [foil]
+        - Plains [PDGM:157★] [foil]
       boros:
         boosters:
         - 4x dgm-draft
@@ -1001,8 +1011,8 @@ dgm:
           - rtr-prerelease-rakdos
           - rtr-prerelease-selesnya
         unplayable-promo:
-        - Maze's End [PDGM:152★]
-        - Plains [PDGM:157★]
+        - Maze's End [PDGM:152★] [foil]
+        - Plains [PDGM:157★] [foil]
       simic:
         boosters:
         - 4x dgm-draft
@@ -1015,8 +1025,8 @@ dgm:
           - rtr-prerelease-golgari
           - rtr-prerelease-selesnya
         unplayable-promo:
-        - Maze's End [PDGM:152★]
-        - Plains [PDGM:157★]
+        - Maze's End [PDGM:152★] [foil]
+        - Plains [PDGM:157★] [foil]
   draft:
   - dgm-draft
   - gtc-draft
@@ -1039,7 +1049,7 @@ m14:
     # last core set with the old fixed unplayable promo; seeded prerelease packs
     # started at RTR for expansions, but core sets only switched with M15
     unplayable-promo:
-    - Megantic Sliver [PM14:185★]
+    - Megantic Sliver [PM14:185★] [foil]
   draft:
   - m14-draft
   - m14-draft
