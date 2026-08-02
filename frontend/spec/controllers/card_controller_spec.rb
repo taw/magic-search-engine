@@ -66,6 +66,24 @@ RSpec.describe CardController, type: :controller do
     assert_equal "sort:new - #{APP_NAME}", html_document.title
   end
 
+  it "search page 2" do
+    get "index", params: {q: "sort:new", page: "2"}
+    assert_response 200
+    assert_select ".cardinfo", 25
+    assert_equal "sort:new - #{APP_NAME}", html_document.title
+  end
+
+  it "view:full" do
+    get "index", params: {q: "t:planeswalker view:full"}
+    assert_response 200
+    assert_select ".cardinfo"
+  end
+
+  it "view:checklist" do
+    get "index", params: {q: "t:planeswalker view:checklist"}
+    assert_response 200
+  end
+
   it "nothing found" do
     get "index", params: {q: "italian spiderman"}
     assert_response 200

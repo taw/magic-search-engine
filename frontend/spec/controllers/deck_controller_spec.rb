@@ -30,6 +30,45 @@ RSpec.describe DeckController, type: :controller do
     assert_response 404
   end
 
+  describe "download" do
+    let(:set) { $CardDatabase.sets.values.find{|s| s.decks.present?} }
+    let(:deck) { set.decks.first }
+
+    it "download" do
+      get "download", params: {set: set.code, id: deck.slug}
+      assert_response 200
+      expect(response.body).to eq(deck.to_text)
+      expect(response.headers["Content-Disposition"]).to include(deck.name)
+    end
+
+    it "download_with_printings" do
+      get "download_with_printings", params: {set: set.code, id: deck.slug}
+      assert_response 200
+      expect(response.body).to eq(deck.to_text_with_printings)
+      expect(response.headers["Content-Disposition"]).to include(deck.name)
+    end
+
+    it "download - fake set" do
+      get "download", params: {set: "m99", id: deck.slug}
+      assert_response 404
+    end
+
+    it "download - fake deck" do
+      get "download", params: {set: set.code, id: "lolwtf"}
+      assert_response 404
+    end
+
+    it "download_with_printings - fake set" do
+      get "download_with_printings", params: {set: "m99", id: deck.slug}
+      assert_response 404
+    end
+
+    it "download_with_printings - fake deck" do
+      get "download_with_printings", params: {set: set.code, id: "lolwtf"}
+      assert_response 404
+    end
+  end
+
   describe "visualizer" do
     let(:deck_list) { html_document.css(".card_entry").map(&:text).map { |x| x.split(/\s+/).join(" ").strip } }
 

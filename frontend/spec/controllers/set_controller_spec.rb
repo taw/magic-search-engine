@@ -38,4 +38,26 @@ RSpec.describe SetController, type: :controller do
     assert_response 200
     assert_equal "Amonkhet - #{APP_NAME}", html_document.title
   end
+
+  it "verify_scans action" do
+    get "verify_scans", params: {id: "akh"}
+    assert_response 200
+    assert_equal "Amonkhet - #{APP_NAME}", html_document.title
+  end
+
+  it "verify_scans action - fake set" do
+    get "verify_scans", params: {id: "lolwtf"}
+    assert_response 404
+  end
+
+  it "missing_scans action" do
+    get "missing_scans", params: {id: "akh"}
+    assert_response 200
+    assert_equal "Amonkhet - #{APP_NAME}", html_document.title
+  end
+
+  it "missing_scans action - fake set" do
+    get "missing_scans", params: {id: "lolwtf"}
+    assert_response 404
+  end
 end
