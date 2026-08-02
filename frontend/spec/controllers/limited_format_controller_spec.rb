@@ -80,7 +80,7 @@ RSpec.describe LimitedFormatController, type: :controller do
     get "show", params: {set: "clb", id: "prerelease-sealed"}
     assert_response 200
     assert_select %[li:contains("3x") a[href="/pack/clb-draft"]]
-    assert_select %[p:contains("you draft them, as a Commander Draft")]
+    assert_select %[p:contains("the draft boosters are drafted")]
     assert_select %[p a:contains("Faceless One")]
   end
 
