@@ -1,0 +1,20 @@
+%h3= @limited_format.to_s
+%p Open these packs:
+%ol
+  - @limited_format.boosters.each do |count, pack|
+    %li
+      = "#{count}x"
+      = link_to_pack(pack) do
+        = pack.name
+      = "(#{pack.code.upcase})"
+- if @limited_format.playable_promo_cards.present?
+  %p You also have access to these playable promos:
+  = render "promo_cards", cards: @limited_format.playable_promo_cards
+- if @limited_format.unplayable_promo_cards.present?
+  %p You also receive these promos, but they're not part of deck construction:
+  = render "promo_cards", cards: @limited_format.unplayable_promo_cards
+%p
+  From cards you open and any number of basic land cards, build a 40 card deck.
+%p
+  = link_to_sealed_simulator(@limited_format) do
+    Open in Sealed simulator

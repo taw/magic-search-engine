@@ -35,6 +35,38 @@ class LimitedFormat
     }.compact
   end
 
+  # "faction", "guild" etc. if the player picked one, and it changed their pool
+  def choice
+    @data["choice"]
+  end
+
+  # Packs of a sealed pool, as [count, pack], in the order they are listed.
+  # Only meaningful for formats with a single pool.
+  def boosters
+    pool = pools.size == 1 ? pools[0] : nil
+    return [] unless pool
+    (pool["boosters"] || []).map{|code, count|
+      pack = @db.supported_booster_types[code]
+      warn "#{inspect} uses unknown booster #{code}" unless pack
+      pack && [count, pack]
+    }.compact
+  end
+
+  # Packs picked at random out of a list, on top of the fixed ones
+  def random_boosters
+    pools.flat_map{|pool| pool["random_boosters"] || []}
+  end
+
+  # A sealed format we can describe in full: one pool, no random packs, and
+  # played as ordinary limited. Anything fancier only gets a placeholder page.
+  def simple_sealed?
+    format_type == "sealed" and
+      pools.size == 1 and
+      random_boosters.empty? and
+      play_variant.nil? and
+      boosters.any?
+  end
+
   # Pools a sealed format is handed out as. There is just one, unless the player
   # picked a faction/guild at the prerelease, in which case there is one each.
   def pools

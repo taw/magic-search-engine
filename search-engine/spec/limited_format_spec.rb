@@ -11,6 +11,41 @@ describe LimitedFormat do
     db.sets["cmr"].limited_formats.find{|f| f.type == "draft"}.play_variant.should eq("commander")
   end
 
+  it "sealed pool boosters are listed with counts" do
+    nph_prerelease.boosters.map{|count, pack| [count, pack.code]}.should eq([
+      [2, "nph-draft"],
+      [2, "mbs-draft"],
+      [2, "som-draft"],
+    ])
+    nph_prerelease.simple_sealed?.should eq(true)
+    nph_draft.simple_sealed?.should eq(false)
+  end
+
+  # Formats with a choice, random packs, or an unusual way of playing them
+  it "formats with extra complexity are not simple sealed" do
+    rtr_prerelease.choice.should eq("guild")
+    rtr_prerelease.boosters.should eq([])
+    rtr_prerelease.simple_sealed?.should eq(false)
+
+    dgm_prerelease = db.sets["dgm"].limited_formats.find{|f| f.type == "prerelease-sealed"}
+    dgm_prerelease.random_boosters.should_not eq([])
+    dgm_prerelease.simple_sealed?.should eq(false)
+
+    bbd_sealed = db.sets["bbd"].limited_formats.find{|f| f.type == "sealed"}
+    bbd_sealed.pools.size.should eq(1)
+    bbd_sealed.play_variant.should eq("two-headed-giant")
+    bbd_sealed.simple_sealed?.should eq(false)
+  end
+
+  # Every booster of every simple sealed format has to be one we can open,
+  # as those pages link into the sealed simulator
+  it "simple sealed formats only use known boosters" do
+    db.limited_formats.select(&:simple_sealed?).each do |limited_format|
+      listed = limited_format.pools[0]["boosters"].size
+      limited_format.boosters.size.should eq(listed), "#{limited_format.inspect} uses boosters we don't know"
+    end
+  end
+
   it "promo cards" do
     nph_prerelease.playable_promo_cards.should eq([])
     nph_prerelease.unplayable_promo_cards.should eq([

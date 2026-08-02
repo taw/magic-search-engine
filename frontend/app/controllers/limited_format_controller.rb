@@ -4,8 +4,7 @@ class LimitedFormatController < ApplicationController
     @title = "Limited Formats"
   end
 
-  # Only draft has a page so far
-  SUPPORTED_TYPES = ["draft"]
+  SUPPORTED_TYPES = ["draft", "sealed", "prerelease-sealed"]
 
   def show
     @set = $CardDatabase.sets[params[:set]] or return render_404
@@ -13,6 +12,18 @@ class LimitedFormatController < ApplicationController
     return render_404 unless SUPPORTED_TYPES.include?(@limited_format.type)
 
     @title = @limited_format.to_s
-    render @limited_format.type
+    render template_for(@limited_format)
+  end
+
+  # Sealed formats with a faction choice, random packs, or an unusual way of
+  # playing them are not described yet, and only get a placeholder
+  private def template_for(limited_format)
+    if limited_format.format_type == "draft"
+      "draft"
+    elsif limited_format.simple_sealed?
+      "sealed"
+    else
+      "placeholder"
+    end
   end
 end
