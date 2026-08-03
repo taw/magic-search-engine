@@ -1,0 +1,132 @@
+# The Hobbit
+# Play Booster
+# Sources:
+# - https://magic.wizards.com/en/news/feature/collecting-the-hobbit
+# - https://magic.wizards.com/en/products/the-hobbit/card-image-gallery
+# - https://scryfall.com/sets/hob
+
+pack:
+  common: 7
+  uncommon: 3
+  wildcard: 1
+  rare_mythic: 1
+  foil: 1
+  land:
+    - non_foil_land: 1
+      chance: 80
+    - foil_land: 1
+      chance: 20
+
+queries:
+  basic_land: "e:{set} number:189-193"            # Default frame basic land
+  journey_land: "e:{set} number:194-198"          # Full-Art Middle-earth journey basic land
+  dual_land: "e:{set} number:182,183,185,186,188" # Common dual land (5-card cycle)
+  scene: "e:{set} number:199-213"                 # Scene cards (2C, 4U, 9R)
+  dragon_hoard: "e:{set} number:214-238"          # Dragon hoard cards (6U, 11R, 8M)
+  book_cover: "e:{set} number:239-248"            # Book cover cards (4R, 6M)
+  boosterfun: "{scene} or {dragon_hoard} or {book_cover}"
+  rare_two_boosterfun: "e:{set} number:187"       # The Lonely Mountain (scene + book cover)
+  mythic_two_boosterfun: "e:{set} number:170a"     # The Arkenstone (Dragon hoard + book cover)
+
+sheets:
+  common:
+    any:
+      - rawquery: "{scene} r:c" # Scene common
+        rate: 1
+        count: 2
+      - query: "r:c alt:({scene})" # Regular version of commons that have a scene
+        rate: 2
+        count: 2
+      - query: "r:c -alt:({scene}) -{dual_land} -t:basic" # Regular commons with no scene
+        rate: 3
+        count: 60 - 2
+
+  uncommon:
+    any:
+      - rawquery: "{scene} r:u" # Scene uncommon (boosterfun)
+        rate: 3
+        count: 4
+      - rawquery: "{dragon_hoard} r:u" # Dragon hoard uncommon (boosterfun)
+        rate: 4
+        count: 6
+      - query: "r:u alt:({scene})" # Regular version of scene uncommons
+        rate: 9
+        count: 4
+      - query: "r:u alt:({dragon_hoard})" # Regular version of hoard uncommons
+        rate: 8
+        count: 6
+      - query: "r:u -alt:({scene}) -alt:({dragon_hoard})" # Regular uncommons, no boosterfun
+        rate: 12
+        count: 55 - 4 - 6
+
+  wildcard:
+    any:
+      - use: common
+        chance: 7500
+      - use: uncommon
+        chance: 413
+      - use: rare_mythic
+        chance: 2094
+
+  rare:
+    any:
+      - rawquery: "{boosterfun} r:r" # All rare scene/hoard/book printings
+        rate: 2
+        count: 24
+      - query: "r:r -alt:({boosterfun})" # Rares with no boosterfun version
+        rate: 16
+        count: 30
+      - query: "r:r alt:({boosterfun}) -{rare_two_boosterfun}" # Rares with 1 boosterfun version
+        rate: 14
+        count: 22
+      - rawquery: "{rare_two_boosterfun}" # The Lonely Mountain (scene + book cover)
+        rate: 12
+        count: 1
+
+  mythic:
+    any:
+      - rawquery: "{boosterfun} r:m" # All mythic hoard/book printings
+        rate: 1
+        count: 14
+      - query: "r:m -alt:({boosterfun})" # Mythics with no boosterfun version
+        rate: 8
+        count: 2
+      - query: "r:m alt:({boosterfun}) -{mythic_two_boosterfun}" # Mythics with 1 boosterfun version
+        rate: 7
+        count: 12
+      - rawquery: "{mythic_two_boosterfun}" # The Arkenstone (Dragon hoard + book cover)
+        rate: 6
+        count: 1
+
+  rare_mythic:
+    any:
+      - use: rare
+        chance: 53 * 2
+      - use: mythic
+        chance: 15 * 1
+
+  foil:
+    foil: true
+    any:
+      - use: common
+        chance: 6047
+      - use: uncommon
+        chance: 3099
+      - use: rare_mythic
+        chance: 865
+
+  non_foil_land:
+    any:
+      - rawquery: "{dual_land}" # Common dual land
+        rate: 3
+        count: 5
+      - rawquery: "{basic_land}" # Default frame basic land
+        rate: 2
+        count: 5
+      - rawquery: "{journey_land}" # Middle-earth journey (full-art) basic land
+        rate: 1
+        count: 5
+
+  foil_land:
+    foil: true
+    use: non_foil_land

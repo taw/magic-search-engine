@@ -1,0 +1,170 @@
+# The Hobbit
+# Collector Booster
+# Sources:
+# - https://magic.wizards.com/en/news/feature/collecting-the-hobbit
+# - https://magic.wizards.com/en/products/the-hobbit/card-image-gallery
+# - https://scryfall.com/sets/hob
+# - https://scryfall.com/sets/hoc
+
+pack:
+  foil_common: 5
+  foil_uncommon: 3
+  foil_uncommon_surge:
+    - foil_uncommon: 1
+      chance: 9
+    - surge_hoard_uncommon: 1
+      chance: 1
+  foil_journey_land: 1
+  foil_rare_mythic: 2
+  boosterfun: 2
+  foil_boosterfun: 1
+
+queries:
+  basic_land: "e:{set} number:189-193"            # Default frame basic land
+  journey_land: "e:{set} number:194-198"          # Full-Art Middle-earth journey basic land
+  dual_land: "e:{set} number:182,183,185,186,188" # Common dual land (5-card cycle)
+  scene: "e:{set} number:199-213"                 # Scene cards (2C, 4U, 9R)
+  dragon_hoard: "e:{set} number:214-238"          # Dragon hoard cards (6U, 11R, 8M)
+  book_cover: "e:{set} number:239-248"            # Book cover cards (4R, 6M)
+  smaug_headliner: "e:{set} number:249"           # Gleaming-gold Smaug headliner (~500 copies)
+  dragon_hoard_surge: "e:{set} number:250-274"    # Dragon hoard surge foils (6U, 11R, 8M)
+  book_cover_surge: "e:{set} number:275-284"      # Book cover surge foils (4R, 6M)
+  extended_art: "e:{set} number:285-312"          # Extended-art HOB (26R, 2M)
+  
+  hoc_scene: "e:HOC number:1-12"                  # Scene cards (12R)
+  classic_artist: "e:HOC number:13-52"            # Classic Artist Cards (40M)
+  classic_artist_surge: "e:HOC number:53-92"      # Classic Artist Surge Foils (40M)
+  dwarvish: "e:HOC number:93-97"                  # Dwarvish Cards (5M)
+  hoc_extended_art: "e:HOC number:98-106"         # Five Armies Kit Extended Arts (9M)
+
+sheets:
+  foil_common:
+    foil: true
+    any:
+      - query: "r:c -t:basic" # 60 commons + 5 dual lands
+        rate: 1
+        count: 65
+      - rawquery: "{scene} r:c"
+        rate: 1
+        count: 2
+
+  foil_uncommon:
+    foil: true
+    any:
+      - query: "r:u"
+        rate: 1
+        count: 55
+      - rawquery: "{scene} r:u"
+        rate: 1
+        count: 4
+      - rawquery: "{dragon_hoard} r:u"
+        rate: 1
+        count: 6
+
+  surge_hoard_uncommon:
+    foil: true
+    rawquery: "{dragon_hoard_surge} r:u"
+    count: 6
+
+  foil_journey_land:
+    foil: true
+    rawquery: "{journey_land}"
+    count: 5
+
+  foil_rare_mythic:
+    foil: true
+    any:
+      - query: "r:r"
+        chance: 53 * 2
+      - query: "r:m"
+        chance: 15 * 1
+
+  boosterfun:
+    # 4:2:1 rate is pretty close to the numbers given by Wizards.
+    any:
+      - rawquery: "{scene} r:r"
+        rate: 4
+        count: 9
+      - rawquery: "{hoc_scene}"
+        rate: 4
+        count: 12
+      - rawquery: "{dragon_hoard} r:r"
+        rate: 4
+        count: 11
+      - rawquery: "{dragon_hoard} r:m"
+        rate: 2
+        count: 8
+      - rawquery: "{book_cover} r:r"
+        rate: 4
+        count: 4
+      - rawquery: "{book_cover} r:m"
+        rate: 2
+        count: 6
+      - rawquery: "{classic_artist}"
+        rate: 1
+        count: 40
+      - rawquery: "{dwarvish}"
+        rate: 1
+        count: 5
+      - rawquery: "{extended_art} r:r"
+        rate: 4
+        count: 26
+      - rawquery: "{extended_art} r:m"
+        rate: 2
+        count: 2
+      - rawquery: "{hoc_extended_art}"
+        rate: 2
+        count: 9
+
+  foil_boosterfun_no_headliner:
+    # 4:2:1 rate is pretty close to the numbers given by Wizards.
+    foil: true
+    any:
+      - rawquery: "{scene} r:r"
+        rate: 4
+        count: 9
+      - rawquery: "{dragon_hoard} r:r"
+        rate: 4
+        count: 11
+      - rawquery: "{dragon_hoard} r:m"
+        rate: 2
+        count: 8
+      - rawquery: "{book_cover} r:r"
+        rate: 4
+        count: 4
+      - rawquery: "{book_cover} r:m"
+        rate: 2
+        count: 6
+      - rawquery: "{dwarvish}"
+        rate: 1
+        count: 5
+      - rawquery: "{extended_art} r:r"
+        rate: 4
+        count: 26
+      - rawquery: "{extended_art} r:m"
+        rate: 2
+        count: 2
+      - rawquery: "{dragon_hoard_surge} r:r"
+        rate: 2
+        count: 11
+      - rawquery: "{dragon_hoard_surge} r:m"
+        rate: 1
+        count: 8
+      - rawquery: "{book_cover_surge} r:r"
+        rate: 2
+        count: 4
+      - rawquery: "{book_cover_surge} r:m"
+        rate: 1
+        count: 6
+      - rawquery: "{classic_artist_surge}"
+        rate: 1
+        count: 40
+
+  foil_boosterfun:
+    foil: true
+    any:
+      - use: foil_boosterfun_no_headliner
+        chance: 5999
+      - rawquery: "{smaug_headliner}"
+        chance: 1
+        count: 1
