@@ -2,7 +2,7 @@
 true
 <% end %>
 <h4>Magic: The Gathering Comprehensive Rules</h4>
-<p>These rules are effective as of June 19, 2026.</p>
+<p>These rules are effective as of August 7, 2026.</p>
 <h3 id="section-introduction">Introduction</h3>
 <p>This document is the ultimate authority for Magic: The Gathering® competitive game play. It consists of a series of numbered rules followed by a glossary. Many of the numbered rules are divided into subrules, and each separate rule and subrule of the game has its own number. (Note that subrules skip the letters “l” and “o” due to potential confusion with the numbers “1” and “0”; subrule 704.5k is followed by 704.5m, then 704.5n, then 704.5p, for example.)</p>
 <p>Changes may have been made to this document since its publication. You can download the most recent version from the Magic rules website at Magic.Wizards.com/Rules.</p>
@@ -2505,6 +2505,10 @@ true
 <div class="rule_id">122.1i</div>
 <div class="rule_text">One or more rad counters on a player cause a triggered ability to trigger at the beginning of that player’s precombat main phase. See rule <a href="#section-728">728</a>, “Rad Counters.”</div>
 </div>
+<div class="rule" id="section-122-1j">
+<div class="rule_id">122.1j</div>
+<div class="rule_text">A hone counter on an Equipment gives +1/+0 to any creature that Equipment is attached to.</div>
+</div>
 <div class="rule" id="section-122-2">
 <div class="rule_id">122.2.</div>
 <div class="rule_text">Counters on an object are not retained if that object moves from one zone to another. The counters are not “removed”; they simply cease to exist. See rule <a href="#section-400-7">400.7</a>.</div>
@@ -3716,58 +3720,62 @@ true
 </div>
 <div class="rule" id="section-310-7">
 <div class="rule_id">310.7.</div>
-<div class="rule_text">If a battle’s defense is 0 and it isn’t the source of an ability which has triggered but not yet left the stack, it’s put into its owner’s graveyard. (This is a state-based action. See rule <a href="#section-704">704</a>.)</div>
+<div class="rule_text">If a Siege battle’s defense is 0 and it isn’t the source of an ability which has triggered but not yet left the stack, it’s put into its owner’s graveyard. (This is a state-based action. See rule <a href="#section-704">704</a>.)</div>
 </div>
 <div class="rule" id="section-310-8">
 <div class="rule_id">310.8.</div>
-<div class="rule_text">Each battle has a player designated as its protector.</div>
-</div>
-<div class="rule" id="section-310-8a">
-<div class="rule_id">310.8a</div>
-<div class="rule_text">As a battle enters the battlefield, its controller chooses a player to be its protector. Which players may be chosen as its protector are determined by its battle type (see rule <a href="#section-310-11">310.11</a>). If it has no battle types, its controller becomes its protector.</div>
-</div>
-<div class="rule" id="section-310-8b">
-<div class="rule_id">310.8b</div>
-<div class="rule_text">A battle’s protector can never attack it. A battle can be attacked by any attacking player for whom its protector is a defending player. Notably, a Siege battle can be attacked by its own controller.</div>
-</div>
-<div class="rule" id="section-310-8c">
-<div class="rule_id">310.8c</div>
-<div class="rule_text">A battle’s protector may block creatures attacking that battle with creatures they control. Creatures controlled by other players can’t block those attackers.</div>
-</div>
-<div class="rule" id="section-310-8d">
-<div class="rule_id">310.8d</div>
-<div class="rule_text">If a battle’s protector is a different player than its controller, all rules and effects that refer to the “defending player” relative to a battle that is being attacked refer to that battle’s protector rather than its controller. See rule <a href="#section-508-5">508.5</a>.</div>
-</div>
-<div class="rule" id="section-310-8e">
-<div class="rule_id">310.8e</div>
-<div class="rule_text">If a rule or effect refers to the player who protects a battle, it means the player who is that battle’s protector.</div>
-</div>
-<div class="rule" id="section-310-8f">
-<div class="rule_id">310.8f</div>
-<div class="rule_text">A battle can have only one protector at a time. A battle’s protector stops being its protector if another player becomes its protector.</div>
-</div>
-<div class="rule" id="section-310-8g">
-<div class="rule_id">310.8g</div>
-<div class="rule_text">A battle’s protector doesn’t change if it stops being a battle or it becomes a copy of another battle.</div>
+<div class="rule_text">If a non-Siege battle’s defense is 0, it’s put into its owner’s graveyard. (This is a state-based action. See rule <a href="#section-704">704</a>.)</div>
 </div>
 <div class="rule" id="section-310-9">
 <div class="rule_id">310.9.</div>
-<div class="rule_text">A battle can’t be attached to players or permanents, even if it is also an Aura, Equipment, or Fortification. If a battle is somehow attached to a permanent, it becomes unattached. This is a state-based action (see rule <a href="#section-704">704</a>).</div>
+<div class="rule_text">Each battle has a player designated as its protector.</div>
+</div>
+<div class="rule" id="section-310-9a">
+<div class="rule_id">310.9a</div>
+<div class="rule_text">As a battle enters the battlefield, its controller chooses a player to be its protector. Which players may be chosen as its protector are determined by its battle type (see rule <a href="#section-310-12">310.12</a>). If it has no battle types, only its controller can be its protector.</div>
+</div>
+<div class="rule" id="section-310-9b">
+<div class="rule_id">310.9b</div>
+<div class="rule_text">A battle’s protector can never attack it. A battle can be attacked by any attacking player for whom its protector is a defending player. Notably, a Siege battle can be attacked by its own controller.</div>
+</div>
+<div class="rule" id="section-310-9c">
+<div class="rule_id">310.9c</div>
+<div class="rule_text">A battle’s protector may block creatures attacking that battle with creatures they control. Creatures controlled by other players can’t block those attackers.</div>
+</div>
+<div class="rule" id="section-310-9d">
+<div class="rule_id">310.9d</div>
+<div class="rule_text">If a battle’s protector is a different player than its controller, all rules and effects that refer to the “defending player” relative to a battle that is being attacked refer to that battle’s protector rather than its controller. See rule <a href="#section-508-5">508.5</a>.</div>
+</div>
+<div class="rule" id="section-310-9e">
+<div class="rule_id">310.9e</div>
+<div class="rule_text">If a rule or effect refers to the player who protects a battle, it means the player who is that battle’s protector.</div>
+</div>
+<div class="rule" id="section-310-9f">
+<div class="rule_id">310.9f</div>
+<div class="rule_text">A battle can have only one protector at a time. A battle’s protector stops being its protector if another player becomes its protector.</div>
+</div>
+<div class="rule" id="section-310-9g">
+<div class="rule_id">310.9g</div>
+<div class="rule_text">A battle’s protector doesn’t change if it stops being a battle or it becomes a copy of another battle.</div>
 </div>
 <div class="rule" id="section-310-10">
 <div class="rule_id">310.10.</div>
-<div class="rule_text">If a battle that isn’t being attacked has no player designated as its protector, or its protector is a player who can’t be its protector based on its battle type, its controller chooses an appropriate player to be its protector. If no player can be chosen this way, the battle is put into its owner’s graveyard. This is a state-based action (see rule <a href="#section-704">704</a>).</div>
+<div class="rule_text">A battle can’t be attached to players or permanents, even if it is also an Aura, Equipment, or Fortification. If a battle is somehow attached to a permanent, it becomes unattached. This is a state-based action (see rule <a href="#section-704">704</a>).</div>
 </div>
 <div class="rule" id="section-310-11">
 <div class="rule_id">310.11.</div>
-<div class="rule_text">All currently existing battles have the subtype Siege. Sieges are subject to special rules.</div>
+<div class="rule_text">If a battle that isn’t being attacked has no player designated as its protector, or its protector is a player who can’t be its protector, its controller chooses an appropriate player to be its protector. If no player can be chosen this way, the battle is put into its owner’s graveyard. This is a state-based action (see rule <a href="#section-704">704</a>).</div>
 </div>
-<div class="rule" id="section-310-11a">
-<div class="rule_id">310.11a</div>
+<div class="rule" id="section-310-12">
+<div class="rule_id">310.12.</div>
+<div class="rule_text">Some battles have the subtype Siege. Sieges are subject to special rules.</div>
+</div>
+<div class="rule" id="section-310-12a">
+<div class="rule_id">310.12a</div>
 <div class="rule_text">As a Siege enters the battlefield, its controller must choose its protector from among their opponents. Only an opponent of a Siege’s controller can be its protector.</div>
 </div>
-<div class="rule" id="section-310-11b">
-<div class="rule_id">310.11b</div>
+<div class="rule" id="section-310-12b">
+<div class="rule_id">310.12b</div>
 <div class="rule_text">Sieges have the intrinsic ability “When the last defense counter is removed from this permanent, exile it, then you may cast it transformed without paying its mana cost.”</div>
 </div>
 <div class="rule" id="section-311">
@@ -4419,8 +4427,10 @@ true
 <div class="rule" id="section-504-2">
 <div class="rule_id">504.2.</div>
 <div class="rule_text">Second, the active player gets priority. (See rule <a href="#section-117">117</a>, “Timing and Priority.”)</div>
-<div class="rule_text"></div>
-<div class="rule_text"><a href="#section-505">505</a>. Main Phase</div>
+</div>
+<div class="rule" id="section-505">
+<div class="rule_id">505.</div>
+<div class="rule_text">Main Phase</div>
 </div>
 <div class="rule" id="section-505-1">
 <div class="rule_id">505.1.</div>
@@ -4516,7 +4526,7 @@ true
 </div>
 <div class="rule" id="section-506-4">
 <div class="rule_id">506.4.</div>
-<div class="rule_text">A permanent is removed from combat if it leaves the battlefield, if its controller changes, if it phases out, if an effect specifically removes it from combat, if it’s a planeswalker that’s being attacked and stops being a planeswalker, if it’s a battle that’s being attacked and stops being a battle, or if it’s an attacking or blocking creature that regenerates (see rule <a href="#section-701-19">701.19</a>), stops being a creature, or becomes a battle. A creature that’s removed from combat stops being an attacking, blocking, blocked, and/or unblocked creature. A planeswalker or battle that’s removed from combat stops being attacked.</div>
+<div class="rule_text">A permanent is removed from combat if it leaves the battlefield, if its controller or protector changes, if it phases out, if an effect specifically removes it from combat, if it’s a planeswalker that’s being attacked and stops being a planeswalker, if it’s a battle that’s being attacked and stops being a battle, or if it’s an attacking or blocking creature that regenerates (see rule <a href="#section-701-19">701.19</a>), stops being a creature, or becomes a battle. A creature that’s removed from combat stops being an attacking, blocking, blocked, and/or unblocked creature. A planeswalker or battle that’s removed from combat stops being attacked.</div>
 </div>
 <div class="rule" id="section-506-4a">
 <div class="rule_id">506.4a</div>
@@ -5412,7 +5422,7 @@ true
 </div>
 <div class="rule" id="section-605-1a">
 <div class="rule_id">605.1a</div>
-<div class="rule_text">An activated ability is a mana ability if it meets all of the following criteria: it doesn’t require a target (see rule <a href="#section-115-6">115.6</a>), it could add mana to a player’s mana pool when it resolves, and it’s not a loyalty ability. (See rule <a href="#section-606">606</a>, “Loyalty Abilities.”)</div>
+<div class="rule_text">An activated ability is a mana ability if it meets all of the following criteria: it doesn’t require a target (see rule <a href="#section-115-6">115.6</a>), it could add mana to a player’s mana pool when it resolves, it’s not a loyalty ability (see rule <a href="#section-606">606</a>, “Loyalty Abilities”), and its cost and effect don’t move any card to or from a library. Do not take into account replacement effects that may apply, other than self-replacement effects, when evaluating these criteria.</div>
 </div>
 <div class="rule" id="section-605-1b">
 <div class="rule_id">605.1b</div>
@@ -6624,8 +6634,10 @@ true
 <div class="rule" id="section-701-8">
 <div class="rule_id">701.8.</div>
 <div class="rule_text">Destroy</div>
-<div class="rule_text"></div>
-<div class="rule_text"><a href="#section-701-8a">701.8a</a> To destroy a permanent, move it from the battlefield to its owner’s graveyard.</div>
+</div>
+<div class="rule" id="section-701-8a">
+<div class="rule_id">701.8a</div>
+<div class="rule_text">To destroy a permanent, move it from the battlefield to its owner’s graveyard.</div>
 </div>
 <div class="rule" id="section-701-8b">
 <div class="rule_id">701.8b</div>
@@ -7716,6 +7728,14 @@ true
 <div class="rule" id="section-701-69a">
 <div class="rule_id">701.69a</div>
 <div class="rule_text">To heal damage already dealt to a permanent, remove that marked damage from that permanent. If an effect states that damage already dealt to a permanent “is healed,” that permanent’s controller removes all marked damage from that permanent.</div>
+</div>
+<div class="rule" id="section-701-70">
+<div class="rule_id">701.70.</div>
+<div class="rule_text">Recruit</div>
+</div>
+<div class="rule" id="section-701-70a">
+<div class="rule_id">701.70a</div>
+<div class="rule_text">“Recruit” means “Draw a card, then discard a card. If you discarded a nonland card this way, create a 1/1 white Human Soldier creature token.”</div>
 </div>
 <div class="rule" id="section-702">
 <div class="rule_id">702.</div>
@@ -10584,8 +10604,10 @@ true
 <div class="rule" id="section-702-176a">
 <div class="rule_id">702.176a</div>
 <div class="rule_text">Impending is a keyword that represents four abilities. The first is a static ability that functions while the spell with impending is on the stack. The second is static ability that creates a replacement effect that may apply to the permanent with impending as it enters the battlefield from the stack. The third is a static ability that functions on the battlefield. The fourth is a triggered ability that functions on the battlefield. “Impending N—[cost]” means “You may choose to pay [cost] rather than pay this spell’s mana cost,” “If you chose to pay this permanent’s impending cost, it enters with N time counters on it,” “As long as this permanent’s impending cost was paid and it has a time counter on it, it’s not a creature,” and “At the beginning of your end step, if this permanent’s impending cost was paid and it has a time counter on it, remove a time counter from it.” Casting a spell for its impending cost follows the rules for paying alternative costs in rules <a href="#section-601-2b">601.2b</a> and <a href="#section-601-2f">601.2f</a>–h.</div>
-<div class="rule_text"></div>
-<div class="rule_text"><a href="#section-702-177">702.177</a>. Exhaust</div>
+</div>
+<div class="rule" id="section-702-177">
+<div class="rule_id">702.177.</div>
+<div class="rule_text">Exhaust</div>
 </div>
 <div class="rule" id="section-702-177a">
 <div class="rule_id">702.177a</div>
@@ -10813,6 +10835,22 @@ true
 <div class="rule_id">702.194c</div>
 <div class="rule_text">If part of a spell’s ability has its effect only if teamwork was used to cast it, and that part of the ability includes any targets, the spell’s controller chooses those targets only if teamwork was used to cast that spell. Otherwise, the spell is cast as if it did not have those targets. See rule <a href="#section-601-2c">601.2c</a>.</div>
 </div>
+<div class="rule" id="section-702-195">
+<div class="rule_id">702.195.</div>
+<div class="rule_text">Storied</div>
+</div>
+<div class="rule" id="section-702-195a">
+<div class="rule_id">702.195a</div>
+<div class="rule_text">Storied is a static ability. It means “Any time you control three or more permanents that are artifacts, Sagas, and/or legendary and you don’t have an enduring story, you have an enduring story for the rest of the game.”</div>
+</div>
+<div class="rule" id="section-702-195b">
+<div class="rule_id">702.195b</div>
+<div class="rule_text">Enduring story is a designation that has no rules meaning other than to act as a marker that other rules and effects can identify. Any number of players may have the enduring story designation at the same time.</div>
+</div>
+<div class="rule" id="section-702-195c">
+<div class="rule_id">702.195c</div>
+<div class="rule_text">After a player gets an enduring story, continuous effects are reapplied before the game checks to see if the game state or preceding events have matched any trigger conditions.</div>
+</div>
 <div class="rule" id="section-703">
 <div class="rule_id">703.</div>
 <div class="rule_text">Turn-Based Actions</div>
@@ -11004,22 +11042,26 @@ true
 </div>
 <div class="rule" id="section-704-5v">
 <div class="rule_id">704.5v</div>
-<div class="rule_text">If a battle has defense 0 and it isn’t the source of an ability that has triggered but not yet left the stack, it’s put into its owner’s graveyard.</div>
+<div class="rule_text">If a Siege battle has defense 0 and it isn’t the source of an ability that has triggered but not yet left the stack, it’s put into its owner’s graveyard.</div>
 </div>
 <div class="rule" id="section-704-5w">
 <div class="rule_id">704.5w</div>
-<div class="rule_text">If a battle has no player in the game designated as its protector and no attacking creatures are currently attacking that battle, that battle’s controller chooses an appropriate player to be its protector based on its battle type. If no player can be chosen this way, the battle is put into its owner’s graveyard. See rule <a href="#section-310">310</a>, “Battles.”</div>
+<div class="rule_text">If a non-Siege battle has defense 0, it’s put into its owner’s graveyard.</div>
 </div>
 <div class="rule" id="section-704-5x">
 <div class="rule_id">704.5x</div>
-<div class="rule_text">If a Siege’s controller is also its designated protector, that player chooses an opponent to become its protector. If no player can be chosen this way, the battle is put into its owner’s graveyard. See rule <a href="#section-310">310</a>, “Battles.”</div>
+<div class="rule_text">If a battle has no player in the game designated as its protector and no attacking creatures are currently attacking that battle, that battle’s controller chooses an appropriate player to be its protector based on its battle type. If the battle has no battle type, its controller must be chosen. If no player can be chosen this way, the battle is put into its owner’s graveyard. See rule <a href="#section-310">310</a>, “Battles.”</div>
 </div>
 <div class="rule" id="section-704-5y">
 <div class="rule_id">704.5y</div>
-<div class="rule_text">If a permanent has more than one Role controlled by the same player attached to it, each of those Roles except the one with the most recent timestamp is put into its owner’s graveyard.</div>
+<div class="rule_text">If a battle’s protector is a player who can’t be its protector, that battle’s controller chooses an appropriate player to become its protector. If no player can be chosen this way, the battle is put into its owner’s graveyard. See rule <a href="#section-310">310</a>, “Battles.”</div>
 </div>
 <div class="rule" id="section-704-5z">
 <div class="rule_id">704.5z</div>
+<div class="rule_text">If a permanent has more than one Role controlled by the same player attached to it, each of those Roles except the one with the most recent timestamp is put into its owner’s graveyard.</div>
+</div>
+<div class="rule" id="section-704-5aa">
+<div class="rule_id">704.5aa</div>
 <div class="rule_text">If a player controls a permanent with start your engines! and that player has no speed, that player’s speed becomes 1. See rule <a href="#section-702-179">702.179</a>, “Start Your Engines!”</div>
 </div>
 <div class="rule" id="section-704-6">
@@ -12194,7 +12236,7 @@ true
 </div>
 <div class="rule" id="section-722-3a">
 <div class="rule_id">722.3a</div>
-<div class="rule_text">Some spells and abilities cause a permanent with a prepare spell to become prepared or state that a permanent enters prepared. If that permanent has the alternative characteristics of a prepare spell, this gives the permanent the “prepared” designation. Prepared is a designation that acts as a marker which rules and effects can identify. A permanent can’t gain this designation unless it has a prepare spell, Additionally, a permanent can’t gain this designation if the permanent already has it.</div>
+<div class="rule_text">Some spells and abilities cause a permanent with a prepare spell to become prepared or state that a permanent enters prepared. If that permanent has the alternative characteristics of a prepare spell, this gives the permanent the “prepared” designation. Prepared is a designation that acts as a marker which rules and effects can identify. A permanent can’t gain this designation unless it has a prepare spell. Additionally, a permanent can’t gain this designation if the permanent already has it.</div>
 </div>
 <div class="rule" id="section-722-3b">
 <div class="rule_id">722.3b</div>
@@ -14897,6 +14939,10 @@ true
 <div class="glossary_definition">A keyword ability that lets you choose put +1/+1 counters on a creature or create a Spirit creature token. See rule <a href="#section-702-62">702.62</a>, “Endure.”</div>
 </div>
 <div class="glossary_entry">
+<div class="glossary_term">Enduring Story</div>
+<div class="glossary_definition">A designation a player can have. The storied keyword causes a player to get this designation once they control three permanents that are artifacts, Sagas, and/or legendary. See rule <a href="#section-702-195">702.195</a>, “Storied.”</div>
+</div>
+<div class="glossary_entry">
 <div class="glossary_term">Energy Symbol</div>
 <div class="glossary_definition">The energy symbol <span class="manacost"><span class="mana mana-e"><span class="sr-only">{E}</span></span></span> represents one energy counter. To pay <span class="manacost"><span class="mana mana-e"><span class="sr-only">{E}</span></span></span>, a player removes one energy counter from themselves.</div>
 </div>
@@ -15247,6 +15293,10 @@ true
 <div class="glossary_entry">
 <div class="glossary_term">Historic</div>
 <div class="glossary_definition">An object is historic if it has the legendary supertype, the artifact card type, or the Saga subtype. See rule <a href="#section-700-6">700.6</a>.</div>
+</div>
+<div class="glossary_entry">
+<div class="glossary_term">Hone Counter</div>
+<div class="glossary_definition">A counter on an Equipment that gives the equipped creature +1/+0. See rule <a href="#section-122">122</a>, “Counters.”</div>
 </div>
 <div class="glossary_entry">
 <div class="glossary_term">Horsemanship</div>
@@ -16062,7 +16112,7 @@ true
 </div>
 <div class="glossary_entry">
 <div class="glossary_term">Protect, Protector</div>
-<div class="glossary_definition">Each battle has a player designated as its protector, and that player protects that battle. See rule <a href="#section-310-8">310.8</a>.</div>
+<div class="glossary_definition">Each battle has a player designated as its protector, and that player protects that battle. See rule <a href="#section-310-9">310.9</a>.</div>
 </div>
 <div class="glossary_entry">
 <div class="glossary_term">Protection</div>
@@ -16127,6 +16177,10 @@ true
 <div class="glossary_entry">
 <div class="glossary_term">Recover</div>
 <div class="glossary_definition">A keyword ability that lets a player return a card from their graveyard to their hand. See rule <a href="#section-702-59">702.59</a>, “Recover.”</div>
+</div>
+<div class="glossary_entry">
+<div class="glossary_term">Recruit</div>
+<div class="glossary_definition">A keyword action that lets a player draw a card, discard a card, and then create a creature token if a nonland card was discarded. See rule <a href="#section-701-70">701.70</a>, “Recruit.”</div>
 </div>
 <div class="glossary_entry">
 <div class="glossary_term">Redirect (Obsolete)</div>
@@ -16330,7 +16384,7 @@ true
 </div>
 <div class="glossary_entry">
 <div class="glossary_term">Siege</div>
-<div class="glossary_definition">A battle subtype. Only an opponent of a Siege’s controller can be its protector. When the last defense counter is removed, its controller exiles the Siege, then they may cast it transformed without paying its mana cost. See rule <a href="#section-310-11">310.11</a>.</div>
+<div class="glossary_definition">A battle subtype. Only an opponent of a Siege’s controller can be its protector. When the last defense counter is removed, its controller exiles the Siege, then they may cast it transformed without paying its mana cost. See rule <a href="#section-310-12">310.12</a>.</div>
 </div>
 <div class="glossary_entry">
 <div class="glossary_term">Silver-Bordered</div>
@@ -16507,6 +16561,10 @@ true
 <div class="glossary_entry">
 <div class="glossary_term">Sticker Sheet</div>
 <div class="glossary_definition">The collection of stickers found on an insert in Unfinity booster packs. See rule <a href="#section-123">123</a>, “Stickers.”</div>
+</div>
+<div class="glossary_entry">
+<div class="glossary_term">Storied</div>
+<div class="glossary_definition">A keyword causing a player to get the enduring story designation once they control three or more permanents that are artifacts, Sagas, and/or legendary. See rule <a href="#section-702-195">702.195</a>, “Storied.”</div>
 </div>
 <div class="glossary_entry">
 <div class="glossary_term">Storm</div>
@@ -16960,10 +17018,10 @@ true
 <p>Magic: The Gathering Original Game Design: Richard Garfield Comprehensive Rules Design and Development: Paul Barclay, Mark L. Gottlieb, Beth Moursund, Bill Rose, Eli Shiffrin, and Matt Tabak, with contributions from Charlie Cathero, John Carter, Elaine Chase, Laurie Cheers, Stephen D’Angelo, Dave DeLaney, Brady Dommermuth, Mike Donais, Skaff Elias, Mike Elliott, Richard Garfield, Dan Gray, Robert Gutschera, Collin Jackson, William Jockusch, Jeff Jordan, Yonemura Kaoru, Russell Linnemann, Jim Lin, Steve Lord, Sheldon Menery, Michael Phoenix, Mark Rosewater, David Sachs, Lee Sharpe, Henry Stern, Donald X. Vaccarino, Thijs van Ommen, Ingo Warnke, Tom Wylie, and Bryan Zembruski Editing: Del Laugel (principal), Matt Tabak (principal), Nat Moes, Samantha Phelan, Michael Zhang, and Hans Ziegler Magic Rules Management: Jess Dunks, Eric Levine, and Eliana Rabinowitz</p>
 <p>The Magic: The Gathering game was designed by Richard Garfield, with contributions from Charlie Cathero, Skaff Elias, Don Felice, Tom Fontaine, Jim Lin, Joel Mick, Chris Page, Dave Pettey, Barry “Bit” Reich, Bill Rose, and Elliott Segal. The mana symbols were designed by Christopher Rush.</p>
 <p>Thanks to all our project team members and the many others too numerous to mention who have contributed to this product.</p>
-<p>These rules are effective as of June 19, 2026.</p>
+<p>These rules are effective as of August 7, 2026.</p>
 <p>Published by Wizards of the Coast LLC, PO Box 707, Renton, WA 98057-0707, USA. Wizards of the Coast, Magic: The Gathering, Magic, their respective logos, Mirrodin, Kamigawa, Lorwyn, Zendikar, Innistrad, Ravnica, Khans of Tarkir, Magic Origins, Magic: The Gathering—Conspiracy, Ixalan, Unfinity, Dominaria, Ikoria, Kaldheim, Baldur’s Gate, The Brothers’ War, and Planeswalker Decks are trademarks of Wizards of the Coast LLC in the USA and other countries. ©2026 Wizards. U.S. Pat. No. RE 37,957.</p>
 <p>Astartes, C’tan, Custodes, Necron, Primarch, and Tyranid ® &amp; © Games Workshop Limited 2022. All Rights Reserved.</p>
-<p>© 2023 Middle-earth Enterprises. Tales of Middle-earth and The Lord of the Rings and the names of the characters, events, items and places therein, are trademarks of Middle-earth Enterprises, LLC used under license by Wizards of the Coast LLC. All rights reserved.</p>
+<p>© 2026 Middle-earth Enterprises. Tales of Middle-earth, The Lord of the Rings, The Hobbit and the names of the characters, events, items and places therein, are trademarks of Middle-earth Enterprises, LLC used under license by Wizards of the Coast LLC. All rights reserved.</p>
 <p>BBC, DOCTOR WHO, TARDIS, DALEK, CYBERMAN and K-9 (word marks and devices) are trade marks of the British Broadcasting Corporation and are used under licence. BBC logo © BBC 1996.</p>
 <p>Moogle; Qu; Fang, Fearless l’Cie; Vanille, Cheerful l’Cie; and Ragnarok, Divine Deliverance ® &amp; © SQUARE ENIX.</p>
 <p>© 2025 MARVEL.</p>
