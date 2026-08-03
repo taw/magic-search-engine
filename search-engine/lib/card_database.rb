@@ -439,6 +439,8 @@ class CardDatabase
         end
       end
     end
+    # Needs a second pass, as it looks at `others` of other printings
+    each_printing(&:calculate_main_front!)
   end
 
   def index_cards_in_precons!

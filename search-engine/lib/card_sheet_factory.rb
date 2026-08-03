@@ -22,7 +22,7 @@ class CardSheetFactory
   # This method can legitimately return 0 results
   # For example mythic subsheet for foil sheet is very often empty for older sets
   def find_cards(query, assert_count=nil, foil: false)
-    base_query = "is:front"
+    base_query = "is:mainfront"
     if foil
       base_query += " is:foil"
     else

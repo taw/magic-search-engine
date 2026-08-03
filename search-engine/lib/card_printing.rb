@@ -332,6 +332,26 @@ class CardPrinting
     physical_card.main_front
   end
 
+  # Is this printing the face that PhysicalCard identity is based on?
+  # Precomputed, as `is:mainfront` would otherwise build a PhysicalCard for every card it looks at.
+  def main_front?
+    @main_front
+  end
+
+  # Called by CardDatabase once `others` references are resolved.
+  # This must stay in sync with PhysicalCard.for.
+  def calculate_main_front!
+    @main_front =
+      if !has_multiple_parts? or name == "B.F.M. (Big Furry Monster)" or name == "B.F.M. (Big Furry Monster, Right Side)"
+        true
+      elsif !front?
+        false
+      else
+        # Meld pairs have two fronts, and only the lower numbered one is the main front
+        [self, *@others].select(&:front?).min_by(&:number).equal?(self)
+      end
+  end
+
   def physical_card
     PhysicalCard.for(self)
   end
