@@ -33,6 +33,17 @@ describe LimitedFormatCoverage do
       .map(&:first).should match_array(["me1", "me2", "me3", "me4", "vma", "tpr"])
   end
 
+  # An Arena set which was also printed on paper has both drafts, an Arena only
+  # one has just the Arena draft, and no sealed either way
+  it "expects an arena draft from a set with Arena boosters" do
+    coverage.expected_formats.select{|set_code, format| set_code == "dom"}
+      .should match_array([["dom", "draft"], ["dom", "sealed"], ["dom", "prerelease-sealed"], ["dom", "arena-draft"]])
+    coverage.expected_formats.select{|set_code, format| set_code == "akr"}
+      .should eq([["akr", "arena-draft"]])
+    # Play Booster sets have their Arena booster named after it
+    coverage.expected_formats.should include(["mkm", "arena-draft"])
+  end
+
   it "data file only lists sets that exist" do
     coverage.not_played.keys.reject{|set_code| db.sets[set_code]}.should eq([])
   end

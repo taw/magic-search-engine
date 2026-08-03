@@ -68,7 +68,31 @@ describe LimitedFormat do
     vma_draft.booster_order.map(&:code).should eq(["vma-mtgo"] * 3)
     vma_draft.to_s.should eq("Vintage Masters MTGO Draft")
     vma_draft.slug.should eq("mtgo-draft")
+    vma_draft.digital_client.should eq("Magic Online")
     nph_draft.mtgo?.should eq(false)
+  end
+
+  # Magic Arena has its own boosters, so an Arena draft of a paper set is a
+  # different format from the paper draft of the same set
+  it "arena drafts are ordinary drafts out of Arena's own boosters" do
+    dom_arena_draft = db.sets["dom"].limited_formats.find{|f| f.type == "arena-draft"}
+    dom_arena_draft.format_type.should eq("draft")
+    dom_arena_draft.describable_draft?.should eq(true)
+    dom_arena_draft.arena?.should eq(true)
+    dom_arena_draft.mtgo?.should eq(false)
+    dom_arena_draft.booster_order.map(&:code).should eq(["dom-arena"] * 3)
+    dom_arena_draft.to_s.should eq("Dominaria Arena Draft")
+    dom_arena_draft.slug.should eq("arena-draft")
+    dom_arena_draft.digital_client.should eq("Magic Arena")
+    nph_draft.arena?.should eq(false)
+    nph_draft.digital_client.should eq(nil)
+  end
+
+  # Arena drafted Rivals of Ixalan the same way paper did, two packs of Rivals
+  # and one of Ixalan, just out of Arena boosters
+  it "arena drafts follow the block structure of the paper draft" do
+    rix_arena_draft = db.sets["rix"].limited_formats.find{|f| f.type == "arena-draft"}
+    rix_arena_draft.booster_order.map(&:code).should eq(["rix-arena", "rix-arena", "xln-arena"])
   end
 
   # Commander Draft lets you use a filler commander you did not draft (903.13e)

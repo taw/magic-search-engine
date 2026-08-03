@@ -113,8 +113,9 @@ class LimitedFormatsIndexer
 
   def index_format(set_code, format, format_data)
     case format
-    # "mtgo-draft" is an ordinary draft that only ever happened on Magic Online
-    when "draft", "mtgo-draft"
+    # "mtgo-draft" and "arena-draft" are ordinary drafts which happened on
+    # Magic Online or Magic Arena, out of that client's own boosters
+    when "draft", "mtgo-draft", "arena-draft"
       index_draft(set_code, format, format_data)
     when "sealed", "prerelease-sealed"
       index_sealed(set_code, format, format_data)

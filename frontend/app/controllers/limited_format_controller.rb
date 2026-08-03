@@ -4,7 +4,7 @@ class LimitedFormatController < ApplicationController
     @title = "Limited Formats"
   end
 
-  SUPPORTED_TYPES = ["draft", "mtgo-draft", "sealed", "prerelease-sealed"]
+  SUPPORTED_TYPES = ["draft", "mtgo-draft", "arena-draft", "sealed", "prerelease-sealed"]
 
   def show
     @set = $CardDatabase.sets[params[:set]] or return render_404

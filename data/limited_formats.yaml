@@ -1283,6 +1283,14 @@ ktk:
   - ktk-draft
   - ktk-draft
   - ktk-draft
+  # Khans of Tarkir was added to Magic Arena in 2023, and drafted there too.
+  # Arena builds its own boosters out of the cards it has, so an Arena draft
+  # of a paper set is not the same format as the paper draft. Arena drafts
+  # are three boosters, like paper ones.
+  arena-draft:
+  - ktk-arena
+  - ktk-arena
+  - ktk-arena
 
 # Fate Reforged is the linchpin of the Tarkir block: drafted with Khans of Tarkir
 # here, and with Dragons of Tarkir later.
@@ -1559,6 +1567,10 @@ xln:
   - xln-draft
   - xln-draft
   - xln-draft
+  arena-draft:
+  - xln-arena
+  - xln-arena
+  - xln-arena
 
 ima:
   sealed:
@@ -1590,6 +1602,10 @@ rix:
   - rix-draft
   - rix-draft
   - xln-draft
+  arena-draft:
+  - rix-arena
+  - rix-arena
+  - xln-arena
 
 a25:
   sealed:
@@ -1611,6 +1627,10 @@ dom:
   - dom-draft
   - dom-draft
   - dom-draft
+  arena-draft:
+  - dom-arena
+  - dom-arena
+  - dom-arena
 
 # Battlebond is a Two-Headed Giant set, so its packs are handed to a team of
 # two, not to one player, and the two of them build their decks out of one
@@ -1645,6 +1665,10 @@ m19:
   - m19-draft
   - m19-draft
   - m19-draft
+  arena-draft:
+  - m19-arena
+  - m19-arena
+  - m19-arena
 
 grn:
   sealed:
@@ -1677,6 +1701,10 @@ grn:
   - grn-draft
   - grn-draft
   - grn-draft
+  arena-draft:
+  - grn-arena
+  - grn-arena
+  - grn-arena
 
 uma:
   sealed:
@@ -1716,6 +1744,10 @@ rna:
   - rna-draft
   - rna-draft
   - rna-draft
+  arena-draft:
+  - rna-arena
+  - rna-arena
+  - rna-arena
 
 war:
   sealed:
@@ -1728,6 +1760,10 @@ war:
   - war-draft
   - war-draft
   - war-draft
+  arena-draft:
+  - war-arena
+  - war-arena
+  - war-arena
 
 # Modern Horizons had no prerelease.
 mh1:
@@ -1749,6 +1785,10 @@ m20:
   - m20-draft
   - m20-draft
   - m20-draft
+  arena-draft:
+  - m20-arena
+  - m20-arena
+  - m20-arena
 
 eld:
   sealed:
@@ -1761,6 +1801,10 @@ eld:
   - eld-draft
   - eld-draft
   - eld-draft
+  arena-draft:
+  - eld-arena
+  - eld-arena
+  - eld-arena
 
 # Mystery Booster is a draft product; no sealed or prerelease format.
 mb1:
@@ -1780,6 +1824,10 @@ thb:
   - thb-draft
   - thb-draft
   - thb-draft
+  arena-draft:
+  - thb-arena
+  - thb-arena
+  - thb-arena
 
 iko:
   sealed:
@@ -1792,6 +1840,10 @@ iko:
   - iko-draft
   - iko-draft
   - iko-draft
+  arena-draft:
+  - iko-arena
+  - iko-arena
+  - iko-arena
 
 m21:
   sealed:
@@ -1804,6 +1856,10 @@ m21:
   - m21-draft
   - m21-draft
   - m21-draft
+  arena-draft:
+  - m21-arena
+  - m21-arena
+  - m21-arena
 
 2xm:
   sealed:
@@ -1812,6 +1868,14 @@ m21:
   - 2xm-draft
   - 2xm-draft
   - 2xm-draft
+
+# Amonkhet Remastered was a Magic Arena only remaster of the Amonkhet block,
+# never printed on paper, so it was only ever drafted on Arena.
+akr:
+  arena-draft:
+  - akr-arena
+  - akr-arena
+  - akr-arena
 
 znr:
   sealed:
@@ -1824,6 +1888,17 @@ znr:
   - znr-draft
   - znr-draft
   - znr-draft
+  arena-draft:
+  - znr-arena
+  - znr-arena
+  - znr-arena
+
+# Kaladesh Remastered was Arena only too, like Amonkhet Remastered before it.
+klr:
+  arena-draft:
+  - klr-arena
+  - klr-arena
+  - klr-arena
 
 # Commander Draft: three boosters, but you draft two cards at a time and build
 # a 60-card Commander deck. No sealed or prerelease format.
@@ -1845,6 +1920,10 @@ khm:
   - khm-draft
   - khm-draft
   - khm-draft
+  arena-draft:
+  - khm-arena
+  - khm-arena
+  - khm-arena
 
 tsr:
   sealed:
@@ -1884,6 +1963,10 @@ stx:
   - stx-draft
   - stx-draft
   - stx-draft
+  arena-draft:
+  - stx-arena
+  - stx-arena
+  - stx-arena
 
 mh2:
   sealed:
@@ -1908,6 +1991,10 @@ afr:
   - afr-draft
   - afr-draft
   - afr-draft
+  arena-draft:
+  - afr-arena
+  - afr-arena
+  - afr-arena
 
 mid:
   sealed:
@@ -1920,6 +2007,10 @@ mid:
   - mid-draft
   - mid-draft
   - mid-draft
+  arena-draft:
+  - mid-arena
+  - mid-arena
+  - mid-arena
 
 vow:
   sealed:
@@ -1932,6 +2023,10 @@ vow:
   - vow-draft
   - vow-draft
   - vow-draft
+  arena-draft:
+  - vow-arena
+  - vow-arena
+  - vow-arena
 
 # Innistrad: Double Feature was a draft-only product.
 dbl:
@@ -1951,6 +2046,10 @@ neo:
   - neo-draft
   - neo-draft
   - neo-draft
+  arena-draft:
+  - neo-arena
+  - neo-arena
+  - neo-arena
 
 snc:
   sealed:
@@ -1982,6 +2081,10 @@ snc:
   - snc-draft
   - snc-draft
   - snc-draft
+  arena-draft:
+  - snc-arena
+  - snc-arena
+  - snc-arena
 
 # Commander Draft, like Commander Legends.
 clb:
@@ -2015,6 +2118,10 @@ dmu:
   - dmu-draft
   - dmu-draft
   - dmu-draft
+  arena-draft:
+  - dmu-arena
+  - dmu-arena
+  - dmu-arena
 
 unf:
   sealed:
@@ -2037,6 +2144,10 @@ bro:
   - bro-draft
   - bro-draft
   - bro-draft
+  arena-draft:
+  - bro-arena
+  - bro-arena
+  - bro-arena
 
 dmr:
   sealed:
@@ -2057,6 +2168,10 @@ one:
   - one-draft
   - one-draft
   - one-draft
+  arena-draft:
+  - one-arena
+  - one-arena
+  - one-arena
 
 mom:
   sealed:
@@ -2069,6 +2184,13 @@ mom:
   - mom-draft
   - mom-draft
   - mom-draft
+  # Once The Aftermath came out, Arena added an Aftermath card to every March
+  # of the Machine booster (mat-arena), so the draft above is the one that ran
+  # until then.
+  arena-draft:
+  - mom-arena
+  - mom-arena
+  - mom-arena
 
 ltr:
   sealed:
@@ -2081,6 +2203,10 @@ ltr:
   - ltr-draft
   - ltr-draft
   - ltr-draft
+  arena-draft:
+  - ltr-arena
+  - ltr-arena
+  - ltr-arena
 
 # Commander Draft.
 cmm:
@@ -2101,6 +2227,10 @@ woe:
   - woe-draft
   - woe-draft
   - woe-draft
+  arena-draft:
+  - woe-arena
+  - woe-arena
+  - woe-arena
 
 lci:
   sealed:
@@ -2113,6 +2243,10 @@ lci:
   - lci-draft
   - lci-draft
   - lci-draft
+  arena-draft:
+  - lci-arena
+  - lci-arena
+  - lci-arena
 
 rvr:
   sealed:
@@ -2137,6 +2271,10 @@ mkm:
   - mkm-play
   - mkm-play
   - mkm-play
+  arena-draft:
+  - mkm-play-arena
+  - mkm-play-arena
+  - mkm-play-arena
 
 otj:
   sealed:

@@ -124,6 +124,19 @@ class LimitedFormat
     @type.start_with?("mtgo-")
   end
 
+  # Formats played on Magic Arena. Most of these sets were printed on paper as
+  # well, but Arena builds its own boosters, so the format is not the same.
+  def arena?
+    @type.start_with?("arena-")
+  end
+
+  # Client a format was played on, for formats which only happened digitally
+  def digital_client
+    return "Magic Online" if mtgo?
+    return "Magic Arena" if arena?
+    nil
+  end
+
   def slug
     @type
   end

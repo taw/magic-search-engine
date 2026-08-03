@@ -17,11 +17,18 @@ class LimitedFormatCoverage
   # Booster a set has => format it should have. Older sets just have a booster
   # named after the set, and we make no claims about those - drafting them was
   # never an event WotC ran. A set whose boosters are Magic Online only was
-  # drafted there and nowhere else.
+  # drafted there and nowhere else. Magic Arena has its own boosters, and a
+  # draft out of them is its own format, even for sets printed on paper.
+  #
+  # Numbered Arena boosters (sir-arena-1, pio-arena-1 and so on) are the same
+  # draft with a bonus sheet that rotated every week or two, and a format here
+  # is one fixed list of boosters, so we expect nothing from them for now.
   DRAFT_BOOSTERS = {
     "draft" => "draft",
     "play" => "draft",
     "mtgo" => "mtgo-draft",
+    "arena" => "arena-draft",
+    "play-arena" => "arena-draft",
   }
 
   # Sealed used to be one tournament pack plus boosters, and we have no data
@@ -44,7 +51,7 @@ class LimitedFormatCoverage
   def expected_formats
     booster_variants.flat_map do |set_code, variants|
       formats = variants.filter_map{|variant| DRAFT_BOOSTERS[variant]}
-      # Sealed was a paper event, so Magic Online only sets don't get it
+      # The sealed we track is a paper event, so digital only sets don't get it
       formats << "sealed" if formats.include?("draft") and six_booster_sealed_era?(set_code)
       formats << "prerelease-sealed" if variants.any?{|variant| variant.start_with?("prerelease")}
       formats.uniq.map{|format| [set_code, format]}

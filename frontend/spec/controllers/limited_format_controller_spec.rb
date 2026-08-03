@@ -72,6 +72,25 @@ RSpec.describe LimitedFormatController, type: :controller do
     assert_select %[p:contains("draft one card")]
   end
 
+  # Dominaria was drafted in paper too, just out of different boosters
+  it "arena draft of a paper set" do
+    get "show", params: {set: "dom", id: "arena-draft"}
+    assert_response 200
+    assert_equal "Dominaria Arena Draft - #{APP_NAME}", html_document.title
+    assert_select %[p:contains("not the same format as the paper draft")]
+    assert_select %[p:contains("only ever happened")], false
+    assert_select %[li a[href="/pack/dom-arena"]], 3
+    assert_select %[p:contains("draft one card")]
+  end
+
+  it "arena draft of an Arena only set" do
+    get "show", params: {set: "akr", id: "arena-draft"}
+    assert_response 200
+    assert_equal "Amonkhet Remastered Arena Draft - #{APP_NAME}", html_document.title
+    assert_select %[p:contains("only ever happened")]
+    assert_select %[li a[href="/pack/akr-arena"]], 3
+  end
+
   it "commander draft" do
     get "show", params: {set: "cmr", id: "draft"}
     assert_response 200
