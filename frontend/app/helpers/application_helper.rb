@@ -41,7 +41,7 @@ module ApplicationHelper
 
   # Not every limited format has a page yet
   def limited_format_page?(limited_format)
-    LimitedFormatController::SUPPORTED_TYPES.include?(limited_format.type)
+    LimitedFormatController.supported_type?(limited_format.type)
   end
 
   # Sealed simulator opens the packs of the pool, and hands out the promo cards

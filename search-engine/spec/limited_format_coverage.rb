@@ -19,10 +19,6 @@ class LimitedFormatCoverage
   # never an event WotC ran. A set whose boosters are Magic Online only was
   # drafted there and nowhere else. Magic Arena has its own boosters, and a
   # draft out of them is its own format, even for sets printed on paper.
-  #
-  # Numbered Arena boosters (sir-arena-1, pio-arena-1 and so on) are the same
-  # draft with a bonus sheet that rotated every week or two, and a format here
-  # is one fixed list of boosters, so we expect nothing from them for now.
   DRAFT_BOOSTERS = {
     "draft" => "draft",
     "play" => "draft",
@@ -50,7 +46,7 @@ class LimitedFormatCoverage
   # [set code, format] pairs the boosters of a set tell us it should have
   def expected_formats
     booster_variants.flat_map do |set_code, variants|
-      formats = variants.filter_map{|variant| DRAFT_BOOSTERS[variant]}
+      formats = variants.filter_map{|variant| draft_format_of(variant)}
       # The sealed we track is a paper event, so digital only sets don't get it
       formats << "sealed" if formats.include?("draft") and six_booster_sealed_era?(set_code)
       formats << "prerelease-sealed" if variants.any?{|variant| variant.start_with?("prerelease")}
@@ -129,6 +125,13 @@ class LimitedFormatCoverage
   end
 
   private
+
+  # A set whose Arena boosters changed from run to run has one numbered
+  # booster and one numbered format per run: sir-arena-2 => arena-draft-2
+  def draft_format_of(variant)
+    return DRAFT_BOOSTERS[variant] if DRAFT_BOOSTERS[variant]
+    "arena-draft-#{$1}" if variant =~ /\Aarena-(\d+)\z/
+  end
 
   def prerelease_boosters_of(set_code)
     booster_variants[set_code]

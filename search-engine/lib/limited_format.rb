@@ -145,8 +145,23 @@ class LimitedFormat
     "LimitedFormat(#{set_code}, #{type})"
   end
 
+  # Title of the format. Most are named after their type, but a format the
+  # type doesn't describe well can set its own name in the data file, with
+  # "{set_name}" standing for the set name, the same as booster names do.
+  def name
+    @name ||=
+      @data["name"]&.gsub("{set_name}", @set.name) ||
+      "#{@set.name} #{@type.split("-").map{|word| TITLES[word] || word.capitalize}.join(" ")}"
+  end
+
+  # A paragraph from the data file, for formats which need explaining, like
+  # one of the four Arena drafts of Shadows over Innistrad Remastered
+  def description
+    @data["description"]
+  end
+
   def to_s
-    "#{@set.name} #{@type.split("-").map{|word| TITLES[word] || word.capitalize}.join(" ")}"
+    name
   end
 
   TITLES = {"mtgo" => "MTGO"}

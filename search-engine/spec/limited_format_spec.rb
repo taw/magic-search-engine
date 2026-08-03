@@ -95,6 +95,35 @@ describe LimitedFormat do
     rix_arena_draft.booster_order.map(&:code).should eq(["rix-arena", "rix-arena", "xln-arena"])
   end
 
+  # A set whose Arena boosters changed as its bonus sheet rotated was drafted
+  # once per booster, and each of those runs is a format of its own
+  it "sets with rotating arena boosters have one draft per booster" do
+    sir_drafts = db.sets["sir"].limited_formats.select(&:arena?)
+    sir_drafts.map(&:type).should eq(["arena-draft-1", "arena-draft-2", "arena-draft-3", "arena-draft-4"])
+    sir_drafts.map{|f| f.booster_order.map(&:code)}.should eq([
+      ["sir-arena-1"] * 3,
+      ["sir-arena-2"] * 3,
+      ["sir-arena-3"] * 3,
+      ["sir-arena-4"] * 3,
+    ])
+    sir_drafts.all?(&:describable_draft?).should eq(true)
+    db.sets["pio"].limited_formats.map(&:type)
+      .should eq(["arena-draft-1", "arena-draft-2", "arena-draft-3"])
+  end
+
+  # Formats the type doesn't describe well get their name and their
+  # explanation out of the data file
+  it "formats can name and describe themselves" do
+    sir_draft = db.sets["sir"].limited_formats.find{|f| f.type == "arena-draft-2"}
+    sir_draft.name.should eq("Shadows over Innistrad Remastered Arena Draft: Fatal Flashback")
+    sir_draft.to_s.should eq(sir_draft.name)
+    sir_draft.slug.should eq("arena-draft-2")
+    sir_draft.description.should include("four drafts rather than one")
+    # Formats which don't say get the name their type spells out, and no text
+    nph_draft.name.should eq("New Phyrexia Draft")
+    nph_draft.description.should eq(nil)
+  end
+
   # Commander Draft lets you use a filler commander you did not draft (903.13e)
   it "filler commanders" do
     db.sets["cmr"].limited_formats.find{|f| f.type == "draft"}

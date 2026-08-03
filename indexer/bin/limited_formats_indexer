@@ -83,12 +83,24 @@ class LimitedFormatsIndexer
     }
   end
 
+  # A draft is usually just the list of boosters it opens. Formats which need
+  # a title and an explanation of their own - a set whose Arena boosters
+  # changed between runs has one numbered format per run - are a Hash with the
+  # boosters plus that text.
   def index_draft(set_code, format, format_data)
+    if format_data.is_a?(Array)
+      format_data = {"boosters" => format_data}
+    end
+    unless format_data["boosters"]
+      raise "Draft #{set_code} #{format} has no boosters"
+    end
     {
       format_name: format,
       format_type: "draft",
-      booster_order: format_data,
-    }
+      name: format_data["name"],
+      description: format_data["description"],
+      booster_order: format_data["boosters"],
+    }.compact
   end
 
   # Prereleases where you pick a faction/hunt/planeswalker are one format
@@ -114,8 +126,10 @@ class LimitedFormatsIndexer
   def index_format(set_code, format, format_data)
     case format
     # "mtgo-draft" and "arena-draft" are ordinary drafts which happened on
-    # Magic Online or Magic Arena, out of that client's own boosters
-    when "draft", "mtgo-draft", "arena-draft"
+    # Magic Online or Magic Arena, out of that client's own boosters.
+    # A numbered "arena-draft-1" is one run of a set whose Arena boosters
+    # changed from run to run, as its bonus sheet rotated.
+    when "draft", "mtgo-draft", /\Aarena-draft(-\d+)?\z/
       index_draft(set_code, format, format_data)
     when "sealed", "prerelease-sealed"
       index_sealed(set_code, format, format_data)

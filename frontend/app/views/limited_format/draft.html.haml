@@ -8,6 +8,8 @@
     %p
       #{@limited_format.digital_client} builds its own boosters, so this draft
       is not the same format as the paper draft of this set.
+- if @limited_format.description
+  %p= @limited_format.description
 %p Open these packs in order:
 %ol
   - @limited_format.booster_order.each do |pack|

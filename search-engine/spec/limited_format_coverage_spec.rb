@@ -44,6 +44,14 @@ describe LimitedFormatCoverage do
     coverage.expected_formats.should include(["mkm", "arena-draft"])
   end
 
+  # Sets whose Arena boosters rotated were drafted once per booster
+  it "expects one numbered arena draft per numbered arena booster" do
+    coverage.expected_formats.select{|set_code, format| set_code == "sir"}
+      .should eq([["sir", "arena-draft-1"], ["sir", "arena-draft-2"], ["sir", "arena-draft-3"], ["sir", "arena-draft-4"]])
+    coverage.expected_formats.select{|set_code, format| set_code == "pio"}
+      .should eq([["pio", "arena-draft-1"], ["pio", "arena-draft-2"], ["pio", "arena-draft-3"]])
+  end
+
   it "data file only lists sets that exist" do
     coverage.not_played.keys.reject{|set_code| db.sets[set_code]}.should eq([])
   end

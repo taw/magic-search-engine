@@ -2173,6 +2173,59 @@ one:
   - one-arena
   - one-arena
 
+# Shadows over Innistrad Remastered was a Magic Arena only set, drafted with a
+# bonus sheet, Shadows of the Past, split into four groups of cards. Each group
+# spent a week in the boosters, so the set was drafted four times, with a
+# different booster every time.
+# https://magic.wizards.com/en/news/mtg-arena/shadows-of-the-past-card-list-and-schedule
+sir:
+  arena-draft-1:
+    name: "{set_name} Arena Draft: Creature Type Terror"
+    description: >-
+      The Shadows of the Past bonus sheet these boosters open was in four
+      groups, one week of drafting each, so the set had four drafts rather
+      than one. This is the first of them, drafted from March 21 to 28, 2023,
+      when the bonus cards were the tribal ones of Creature Type Terror.
+    boosters:
+    - sir-arena-1
+    - sir-arena-1
+    - sir-arena-1
+  arena-draft-2:
+    name: "{set_name} Arena Draft: Fatal Flashback"
+    description: >-
+      The Shadows of the Past bonus sheet these boosters open was in four
+      groups, one week of drafting each, so the set had four drafts rather
+      than one. This is the second of them, drafted from March 28 to April 4,
+      2023, when the bonus cards were the flashback spells of Fatal Flashback.
+    boosters:
+    - sir-arena-2
+    - sir-arena-2
+    - sir-arena-2
+  arena-draft-3:
+    name: "{set_name} Arena Draft: Morbid and Macabre"
+    description: >-
+      The Shadows of the Past bonus sheet these boosters open was in four
+      groups, one week of drafting each, so the set had four drafts rather
+      than one. This is the third of them, drafted from April 4 to 11, 2023,
+      when the bonus cards were the death and sacrifice ones of Morbid and
+      Macabre.
+    boosters:
+    - sir-arena-3
+    - sir-arena-3
+    - sir-arena-3
+  arena-draft-4:
+    name: "{set_name} Arena Draft: Abominable All Stars"
+    description: >-
+      The Shadows of the Past bonus sheet these boosters open was in four
+      groups, one week of drafting each, so the set had four drafts rather
+      than one. This is the last of them, drafted from April 11 to 18, 2023,
+      when the bonus cards were the mythics and other iconic cards of
+      Abominable All Stars.
+    boosters:
+    - sir-arena-4
+    - sir-arena-4
+    - sir-arena-4
+
 mom:
   sealed:
   - 6x mom-draft
@@ -2346,6 +2399,45 @@ fdn:
   - fdn-play
   - fdn-play
   - fdn-play
+
+# Pioneer Masters was a Magic Arena only set, and came out in three parts, a
+# fortnight apart. Each part put its own bonus sheet in the boosters, so the
+# set was drafted three times, with a different booster every time.
+# https://magic.wizards.com/en/news/mtg-arena/collecting-pioneer-masters
+pio:
+  arena-draft-1:
+    name: "{set_name} Arena Draft: Planeswalkers"
+    description: >-
+      Pioneer Masters came to Magic Arena in three parts, each one putting its
+      own bonus sheet in the boosters, so the set had three drafts rather than
+      one. This is the first of them, drafted from December 10 to 24, 2024,
+      when the bonus sheet was the Planeswalkers one.
+    boosters:
+    - pio-arena-1
+    - pio-arena-1
+    - pio-arena-1
+  arena-draft-2:
+    name: "{set_name} Arena Draft: Spells"
+    description: >-
+      Pioneer Masters came to Magic Arena in three parts, each one putting its
+      own bonus sheet in the boosters, so the set had three drafts rather than
+      one. This is the second of them, drafted from December 24, 2024 to
+      January 7, 2025, when the bonus sheet was the Spells one.
+    boosters:
+    - pio-arena-2
+    - pio-arena-2
+    - pio-arena-2
+  arena-draft-3:
+    name: "{set_name} Arena Draft: Devotion"
+    description: >-
+      Pioneer Masters came to Magic Arena in three parts, each one putting its
+      own bonus sheet in the boosters, so the set had three drafts rather than
+      one. This is the last of them, drafted from January 7 to 21, 2025, when
+      the bonus sheet was the Devotion one.
+    boosters:
+    - pio-arena-3
+    - pio-arena-3
+    - pio-arena-3
 
 # Remastered sets get no prerelease.
 inr:

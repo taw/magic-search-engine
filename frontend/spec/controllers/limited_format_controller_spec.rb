@@ -91,6 +91,25 @@ RSpec.describe LimitedFormatController, type: :controller do
     assert_select %[li a[href="/pack/akr-arena"]], 3
   end
 
+  # Shadows over Innistrad Remastered was drafted four times, once per group of
+  # its bonus sheet, so each of those runs has a page of its own
+  it "arena draft of a set whose boosters rotated" do
+    get "show", params: {set: "sir", id: "arena-draft-3"}
+    assert_response 200
+    assert_equal "Shadows over Innistrad Remastered Arena Draft: Morbid and Macabre - #{APP_NAME}", html_document.title
+    assert_select %[p:contains("only ever happened")]
+    assert_select %[p:contains("four drafts rather than one")]
+    assert_select %[li a[href="/pack/sir-arena-3"]], 3
+    assert_select %[p:contains("draft one card")]
+  end
+
+  it "lists every run of a draft whose boosters rotated" do
+    get "index"
+    assert_response 200
+    assert_select %[a[href="/limited_format/pio/arena-draft-1"]:contains("Pioneer Masters Arena Draft: Planeswalkers")]
+    assert_select %[a[href="/limited_format/pio/arena-draft-3"]:contains("Pioneer Masters Arena Draft: Devotion")]
+  end
+
   it "commander draft" do
     get "show", params: {set: "cmr", id: "draft"}
     assert_response 200
