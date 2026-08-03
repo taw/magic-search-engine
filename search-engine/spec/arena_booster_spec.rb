@@ -14,6 +14,33 @@ describe "Arena and MTGO Boosters" do
     end
   end
 
+  # mkm-play-arena was drafted by copying mkm-play and stripping boosterfun sheets,
+  # and it kept paper play booster's foil slot. It's not known yet what Arena really does here,
+  # so it's excluded until we get better data.
+  let(:known_foil_arena_boosters) { %W[mkm-play-arena] }
+
+  it "Arena boosters contain no foils" do
+    (arena_boosters.reject{|b| known_foil_arena_boosters.include?(b.code)}).each do |booster|
+      booster.foil_cards.should(eq([]), "No cards for #{booster.code} #{booster.name} should be foil, Arena has no foils")
+    end
+  end
+
+  # "is:baseset" is not usable here - legitimate Arena sheets are routinely outside base set:
+  # bonus sheets (wot, brr, sis, spg), Arena-only alt numbering (ktk /y/), extra basics (lci 393-402).
+  # Plain "promo:boosterfun" is not usable either - mtgjson marks whole bonus sheets as boosterfun
+  # (all of wot and spg), even though those are the only printings of those cards.
+  # So what we check is that we never take an alternative printing when a plain one exists in same set.
+  it "Arena boosters contain only base printings, no boosterfun variants" do
+    arena_boosters.each do |booster|
+      variants = booster.cards.map(&:main_front).select do |printing|
+        boosterfun?(printing) and printing.card.printings.any?{|other|
+          other.set_code == printing.set_code and !boosterfun?(other)
+        }
+      end
+      variants.should(eq([]), "Cards for #{booster.code} #{booster.name} should be base printings, got: #{variants.map(&:id).join(", ")}")
+    end
+  end
+
   it "MTGO exclusive boosters contain only MTGO cards" do
     mtgo_boosters.each do |booster|
       booster.cards.all?(&:mtgo?).should(eq(true), "All cards for #{booster.code} #{booster.name} should be MTGO cards")
@@ -30,5 +57,9 @@ describe "Arena and MTGO Boosters" do
   it "No reversibleback cards are in boosters" do
     # "is:reversiblefront" appear in a few
     assert_search_results "is:booster is:reversibleback"
+  end
+
+  def boosterfun?(printing)
+    !!printing.promo_types&.include?("boosterfun")
   end
 end
