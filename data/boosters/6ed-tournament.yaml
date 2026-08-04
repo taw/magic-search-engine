@@ -1,4 +1,20 @@
-# Data from https://www.trollandtoad.com/magic-the-gathering/magic-the-gathering-sealed-product/6th-edition-sixth-edition-tournament-pack-mtg-/94542
+# Data from https://lethe.xyz/mtg/collation/6ed.html
+# "Tournament packs have 75 cards including 3 rares, 10 uncommons, 32 commons,
+# 30 basic lands, a rules insert, and a tournament play insert."
+#
+# Sixth Edition is the only core set that got tournament packs rather than starter
+# decks, and the first set to use the 75-card format's land count.
+#
+# lethe notes "I have not observed any (English) US tournament packs", so its
+# split comes from non-US packs. This opening
+# https://www.youtube.com/watch?v=uMXH-c5hpQ8 corroborates it from an English
+# pack: 3 rares, 10 uncommons, 0 foils, with the remaining 62 cards basics and
+# commons (not counted separately, but 30 + 32 is what lethe records).
+#
+# No foils: Sixth Edition (April 1999) came out after foils were introduced in
+# Urza's Legacy (February 1999), but did not include them in any product -- see
+# 6ed-draft.yaml. Two separate openings confirm this for tournament packs, the one
+# above and https://www.youtube.com/watch?v=Ut4_t9RAnTI.
 name: "{set_name} Tournament Deck"
 pack:
   common_with_duplicates: 32

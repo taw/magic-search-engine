@@ -1,9 +1,14 @@
-# Data from https://mtg.wiki/wiki/Tournament_pack
+# Data from https://lethe.xyz/mtg/collation/tmp.html
+# "Starter decks have 3 rares, 9 uncommons, 26 commons, and 22 basic lands in
+# addition to a rulebook." This matches 4ed/ice/mir/5ed, i.e. the whole
+# 4th Edition - Tempest era used the same 26/9 split. The mtg.wiki product
+# breakdown table claims 25 commons / 10 uncommons for Mirage - Tempest, but
+# that contradicts lethe's observed openings, so it is not used here.
 name: "{set_name} Starter Deck"
 pack:
   basics: 22
-  common_with_duplicates: 25
-  uncommon_with_duplicates: 10
+  common_with_duplicates: 26
+  uncommon_with_duplicates: 9
   rare: 3
 sheets:
   basics:

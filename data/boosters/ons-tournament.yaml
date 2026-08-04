@@ -1,10 +1,45 @@
-# Pre-mythic, with new style foils, only foil basics in packs
+# Data from https://lethe.xyz/mtg/collation/ons.html
+# "Tournament packs have 30 basic lands, 3 rares, 10 uncommons, 32 commons."
+#
+# "Foil cards in tournament packs behave in the same way as foils in booster
+# packs, except foil basic lands appear in the lands instead of in the commons."
+# Onslaught boosters have foils at advertised odds of 1 : 70 cards, and a foil
+# displaces a card of its own rarity, so each rarity group carries an n/70 chance
+# that one of its slots is foil -- the same idiom as ons-draft.yaml. The one
+# difference is the basic lands: in boosters a foil basic displaces a common
+# (via foil_common_or_basic), here it displaces a land, so the common slot takes
+# foil_common and the land slot takes foil_basic.
+#
+# Summed over all 75 slots this gives 75/70 expected foils, matching the 1 : 70
+# advertised rate. As in the booster file, the layout technically permits one
+# foil per rarity group; lethe suspects only a single foil per pack is possible
+# but notes this is hard to confirm.
 name: "{set_name} Tournament Deck"
 pack:
-  basic_with_duplicates: 30
-  common_with_duplicates: 32
-  uncommon_with_duplicates: 10
-  rare: 3
+  basic_maybe_foil:
+  - basic_with_duplicates: 30
+    chance: 70 - 30
+  - basic_with_duplicates: 29
+    foil_basic: 1
+    chance: 30
+  common_maybe_foil:
+  - common_with_duplicates: 32
+    chance: 70 - 32
+  - common_with_duplicates: 31
+    foil_common: 1
+    chance: 32
+  uncommon_maybe_foil:
+  - uncommon_with_duplicates: 10
+    chance: 70 - 10
+  - uncommon_with_duplicates: 9
+    foil_uncommon: 1
+    chance: 10
+  rare_maybe_foil:
+  - rare: 3
+    chance: 70 - 3
+  - rare: 2
+    foil_rare: 1
+    chance: 3
 sheets:
   basic_with_duplicates:
     duplicates: true

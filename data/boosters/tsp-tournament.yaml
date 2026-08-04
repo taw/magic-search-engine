@@ -1,12 +1,63 @@
 # Time Spiral tournament pack: 75 cards -- 30 basics, 29 commons, 10 uncommons,
-# 3 rares, and 3 timeshifted cards. Per Wikipedia, "The 'Timeshifted' cards are
-# distributed one per booster pack and three per tournament pack (taking the
-# place of common cards)." https://en.wikipedia.org/wiki/Time_Spiral
-# Timeshifted cards are their own set (e:tsb, rarity "special").
+# 3 rares, and 3 timeshifted, with a foil replacing one of the commons in most but
+# not all packs. Timeshifted cards are their own set (e:tsb, rarity "special").
+#
+# Seven openings:
+#   https://www.youtube.com/watch?v=9pEnwgInbfg -- 28 commons, 1 foil basic
+#   https://www.youtube.com/watch?v=JRcyAXytL6w -- 28 commons, 1 foil common
+#   https://www.youtube.com/watch?v=OWDk7Du6-vw -- 1 foil rare
+#   https://www.youtube.com/watch?v=5RLUaPNG8tc -- 1 foil basic
+#   https://www.youtube.com/watch?v=XFQnq3HQZFY -- 1 foil rare
+#   https://www.youtube.com/watch?v=mYiapvl_8qk -- two packs, 0 foils and
+#                                                  1 foil uncommon
+# Every pack had 10 uncommons, 3 rares and 3 timeshifted. The timeshifted count is
+# the reliable part of those readings: those cards carry the distinctive purple
+# set symbol, so they can be counted off a video without reading them.
+#
+# So 6 of 7 packs had exactly one foil, one had none, and none had two. The foil
+# comes out of the commons rather than its own rarity: the two packs whose commons
+# were counted both had 28 rather than 29 while their basics stayed at 30, and in
+# one of them the foil was itself a basic land. That is lethe's Lorwyn/Shadowmoor
+# rule, "if there is a foil, it will appear [in] the basic lands, displacing a
+# common". Foils span every rarity -- basic, common, uncommon and rare have all
+# been seen -- so the generic foil sheet is used rather than dedicated_foil, which
+# is for guaranteed slots and skews harder towards commons than the six observed
+# foils do.
+#
+# The 6 : 1 chance is simply the observed frequency over seven packs, so it is
+# loosely determined; the real value could be anywhere from roughly 3/4 to
+# genuinely guaranteed-with-a-miscount. What is not in doubt is that a foil-less
+# pack exists, which rules out the guaranteed slot this file briefly modelled
+# after the first two openings, and that the pack is 75 cards either way.
+#
+# A high rate is unremarkable for a pack this size: 6/7 across 75 cards works out
+# to about one foil per 87 cards, which sits in the same range as the advertised
+# per-card rates of the neighbouring sets (1 : 70 for ons/mrd/chk/rav, 1 : 100 for
+# mmq/inv/ody, 1 : 51 for lrw/shm tournament packs). A pack simply has to be
+# nearly five boosters' worth of cards before a rate like that starts to look like
+# a guarantee. Modelling it as a single optional slot rather than a per-card rate
+# also matches the observations in the other direction: no pack has yet shown two
+# foils, which a genuine per-card rate at any of those numbers would produce
+# reasonably often.
+#
+# The foil-less pack was counted afterwards and has 29 commons, which is the
+# direct confirmation that 29 is the base and that a foil takes a common's place
+# rather than being added on top or taken from its own rarity. Every counted pack
+# is now accounted for: 29 commons with no foil, 28 with one.
+#
+# This supersedes the original sourcing, one sentence on Wikipedia ("The
+# 'Timeshifted' cards are distributed one per booster pack and three per
+# tournament pack (taking the place of common cards)"). There is no collation
+# analysis for Time Spiral.
 name: "{set_name} Tournament Pack"
 pack:
   basic_with_duplicates: 30
-  common_with_duplicates: 29
+  common_maybe_foil:
+  - common_with_duplicates: 29
+    chance: 1
+  - common_with_duplicates: 28
+    foil: 1
+    chance: 6
   uncommon_with_duplicates: 10
   rare: 3
   timeshifted: 3

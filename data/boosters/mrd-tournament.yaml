@@ -1,10 +1,48 @@
-# Pre-mythic, with new style foils, only foil basics in packs
+# 3 rares, 10 uncommons, 32 commons, 30 basic lands.
+#
+# Foils: this opening https://www.youtube.com/watch?v=HsHVezjGHWU contains a foil
+# common, so a foil displaces a card of its own rarity here just as it does in the
+# draft booster.
+#
+# There is no collation analysis for Mirrodin, so the rate is carried over from
+# mrd-draft.yaml: foils at advertised odds of 1 : 70 cards, giving each rarity
+# group an n/70 chance that one of its slots is foil. Summed over all 75 slots
+# that is 75/70 expected foils per pack.
+#
+# The one place this departs from mrd-draft is the basic lands. In boosters a foil
+# basic displaces a common (via foil_common_or_basic), because boosters have no
+# land slot. Tournament packs do, and for Onslaught -- the only set of this era
+# with a collation analysis covering tournament packs -- lethe records that "foil
+# cards in tournament packs behave in the same way as foils in booster packs,
+# except foil basic lands appear in the lands instead of in the commons"
+# (https://lethe.xyz/mtg/collation/ons.html). That split is assumed here too, so
+# the common slot takes foil_common and the land slot takes foil_basic.
 name: "{set_name} Tournament Deck"
 pack:
-  basic_with_duplicates: 30
-  common_with_duplicates: 32
-  uncommon_with_duplicates: 10
-  rare: 3
+  basic_maybe_foil:
+  - basic_with_duplicates: 30
+    chance: 70 - 30
+  - basic_with_duplicates: 29
+    foil_basic: 1
+    chance: 30
+  common_maybe_foil:
+  - common_with_duplicates: 32
+    chance: 70 - 32
+  - common_with_duplicates: 31
+    foil_common: 1
+    chance: 32
+  uncommon_maybe_foil:
+  - uncommon_with_duplicates: 10
+    chance: 70 - 10
+  - uncommon_with_duplicates: 9
+    foil_uncommon: 1
+    chance: 10
+  rare_maybe_foil:
+  - rare: 3
+    chance: 70 - 3
+  - rare: 2
+    foil_rare: 1
+    chance: 3
 sheets:
   basic_with_duplicates:
     duplicates: true

@@ -1,10 +1,49 @@
-# Data from https://mtg.wiki/wiki/Tournament_pack
+# 3 rares, 10 uncommons, 32 commons, 30 basic lands.
+#
+# Foils: this opening https://www.youtube.com/watch?v=JPZ0gKQvSp0 shows 3 rares,
+# 10 uncommons, 31 regular commons and 1 foil common, i.e. a foil displaces a
+# card of its own rarity, exactly as it does in the draft booster. (Basics were
+# not counted in the video.)
+#
+# There is no collation analysis for Champions of Kamigawa, so the rate is
+# carried over from chk-draft.yaml: foils at advertised odds of 1 : 70 cards,
+# giving each rarity group an n/70 chance that one of its slots is foil. Summed
+# over all 75 slots that is 75/70 expected foils per pack.
+#
+# The one place this departs from chk-draft is the basic lands. In boosters a
+# foil basic displaces a common (via foil_common_or_basic), because boosters have
+# no land slot. Tournament packs do, and for Onslaught -- the only set of this
+# era with a collation analysis covering tournament packs -- lethe records that
+# "foil cards in tournament packs behave in the same way as foils in booster
+# packs, except foil basic lands appear in the lands instead of in the commons"
+# (https://lethe.xyz/mtg/collation/ons.html). That split is assumed here too, so
+# the common slot takes foil_common and the land slot takes foil_basic.
 name: "{set_name} Tournament Pack"
 pack:
-  basics: 30
-  common_with_duplicates: 32
-  uncommon_with_duplicates: 10
-  rare: 3
+  basics_maybe_foil:
+  - basics: 30
+    chance: 70 - 30
+  - basics: 29
+    foil_basic: 1
+    chance: 30
+  common_maybe_foil:
+  - common_with_duplicates: 32
+    chance: 70 - 32
+  - common_with_duplicates: 31
+    foil_common: 1
+    chance: 32
+  uncommon_maybe_foil:
+  - uncommon_with_duplicates: 10
+    chance: 70 - 10
+  - uncommon_with_duplicates: 9
+    foil_uncommon: 1
+    chance: 10
+  rare_maybe_foil:
+  - rare: 3
+    chance: 70 - 3
+  - rare: 2
+    foil_rare: 1
+    chance: 3
 sheets:
   basics:
     query: "r:b"
