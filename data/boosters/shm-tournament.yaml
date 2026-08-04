@@ -1,8 +1,48 @@
-# Pre-mythic, with new style foils, only foil basics in packs
+# Data from https://lethe.xyz/mtg/collation/shm.html
+# "Tournament packs have 3 rares, 10 uncommons, 32 commons, and 30 basic lands in
+# addition to a rules insert, and a pro tour player card."
+#
+# A foil replaces one of the commons, whatever the foil's own rarity is:
+# "if there is a foil, it will appear [in] the basic lands, displacing a common".
+# The direct confirmation comes from Lorwyn, whose tournament packs are built the
+# same way -- see lrw-tournament.yaml for an opening with 3 normal rares AND a
+# foil rare, which same-rarity displacement could not produce. lethe describes the
+# same behaviour in Shadowmoor boosters, where "uncommon and rare foils can
+# displace either C or D cards" (C and D being common runs), and shm-draft.yaml
+# already models it that way: 11 commons drop to 10 while the uncommons and rare
+# stay put.
+#
+# Foil count is weighted from the advertised odds, 1 : 51 cards for tournament
+# packs (boosters are 1 : 56). Over 75 cards that is a binomial, and the weights
+# are its exact probabilities per mille: 226 / 340 / 251 for 0 / 1 / 2 foils,
+# with the entire remaining 3-or-more mass collapsed onto exactly 3 (183).
+# That reproduces lethe's observations for this set: single-foil packs with 31
+# commons, and the one pack it found with 30 commons, i.e. two foils, which it
+# could not otherwise confirm.
+#
+# Truncating that tail is a deliberate departure from the advertised rate, and
+# the only one in these tournament pack files. It costs about 5% of the foils:
+# the weights above average 1.391 foils per pack, where an untruncated 1 : 51
+# over 75 cards would give 75/51 = 1.471. The alternative was inventing a 4+-foil
+# tail lethe has never observed, in a set where even the two-foil pack is a
+# single sighting. Every other file here reproduces its advertised rate exactly
+# (75/70 for ons/mrd/chk/rav, 75/100 for inv/mmq/ody, a guaranteed slot for ala);
+# tsp has no advertised rate and is modelled straight off observed frequency.
 name: "{set_name} Tournament Deck"
 pack:
   basic_with_duplicates: 30
-  common_with_duplicates: 32
+  commons_and_foils:
+  - common_with_duplicates: 32
+    chance: 226
+  - common_with_duplicates: 31
+    foil: 1
+    chance: 340
+  - common_with_duplicates: 30
+    foil: 2
+    chance: 251
+  - common_with_duplicates: 29
+    foil: 3
+    chance: 183
   uncommon_with_duplicates: 10
   rare: 3
 sheets:

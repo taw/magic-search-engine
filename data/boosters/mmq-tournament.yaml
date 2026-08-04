@@ -1,10 +1,40 @@
-# Data from https://mtg.wiki/wiki/Tournament_pack
+# Data from https://lethe.xyz/mtg/collation/mmq.html
+# "Tournament packs have 3 rares, 10 uncommons, 32 commons, and 30 basic lands in
+# addition to a rulebook."
+#
+# "Foil cards in tournament packs behave in the same way as foils in booster
+# packs, except foil basic lands appear in the lands instead of in the commons."
+# Mercadian Masques boosters have foils at advertised odds of 1 : 100 cards, with
+# a foil displacing a card of its own rarity, so each rarity group carries an
+# n/100 chance that one of its slots is foil -- the same idiom as mmq-draft.yaml,
+# except that the common slot takes foil_common and the land slot takes
+# foil_basic, per the lands caveat above.
 name: "{set_name} Tournament Pack"
 pack:
-  basics: 30
-  common_with_duplicates: 32
-  uncommon_with_duplicates: 10
-  rare: 3
+  basics_maybe_foil:
+  - basics: 30
+    chance: 100 - 30
+  - basics: 29
+    foil_basic: 1
+    chance: 30
+  common_maybe_foil:
+  - common_with_duplicates: 32
+    chance: 100 - 32
+  - common_with_duplicates: 31
+    foil_common: 1
+    chance: 32
+  uncommon_maybe_foil:
+  - uncommon_with_duplicates: 10
+    chance: 100 - 10
+  - uncommon_with_duplicates: 9
+    foil_uncommon: 1
+    chance: 10
+  rare_maybe_foil:
+  - rare: 3
+    chance: 100 - 3
+  - rare: 2
+    foil_rare: 1
+    chance: 3
 sheets:
   basics:
     query: "r:b"

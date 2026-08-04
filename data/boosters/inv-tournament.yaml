@@ -1,10 +1,42 @@
-# Data from https://www.cardkingdom.com/catalog/search?search=header&filter%5Bname%5D=Invasion+Tournament+Pack
+# Data from https://lethe.xyz/mtg/collation/inv.html
+# "Tournament packs have 30 basic lands, 3 rares, 10 uncommons, 32 commons."
+#
+# "If a foil card appears, it will be between the basic lands and the rares,
+# displacing a card of the same rarity. (Here, foil basic lands displace basic
+# lands, not commons.)" Invasion boosters have foils at advertised odds of
+# 1 : 100 cards, so each rarity group carries an n/100 chance that one of its
+# slots is foil -- the same idiom as inv-draft.yaml, except that the common slot
+# takes foil_common and the land slot takes foil_basic, per the lands caveat.
+#
+# lethe notes "it may only be possible to get a single foil per pack (although
+# this is hard to confirm)"; as in the booster file, this layout technically
+# permits one foil per rarity group.
 name: "{set_name} Tournament Deck"
 pack:
-  common_with_duplicates: 32
-  uncommon_with_duplicates: 10
-  rare: 3
-  basic: 30
+  basic_maybe_foil:
+  - basic: 30
+    chance: 100 - 30
+  - basic: 29
+    foil_basic: 1
+    chance: 30
+  common_maybe_foil:
+  - common_with_duplicates: 32
+    chance: 100 - 32
+  - common_with_duplicates: 31
+    foil_common: 1
+    chance: 32
+  uncommon_maybe_foil:
+  - uncommon_with_duplicates: 10
+    chance: 100 - 10
+  - uncommon_with_duplicates: 9
+    foil_uncommon: 1
+    chance: 10
+  rare_maybe_foil:
+  - rare: 3
+    chance: 100 - 3
+  - rare: 2
+    foil_rare: 1
+    chance: 3
 sheets:
   basic:
     duplicates: true

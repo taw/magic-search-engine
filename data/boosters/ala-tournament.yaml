@@ -1,14 +1,34 @@
-# Data from https://www.cardkingdom.com/mtg/shards-of-alara/shards-of-alara-tournament-pack
-# Shards of Alara introduced the mythic rare, and per mtg.wiki each rare slot
-# -- in boosters AND tournament packs -- could be a rare or a mythic rare
-# (https://mtg.wiki/page/Tournament_pack). Use the shared rare_mythic sheet so
-# the three rare slots can yield mythics, matching the draft booster.
+# Data from https://lethe.xyz/mtg/collation/ala.html
+# "Tournament packs have 3 rares, 9 uncommons, 32 commons, and 30 basic lands in
+# addition to a rules insert, plus a foil." The foil slot is guaranteed, which is
+# what makes this 74 cards plus a foil rather than the 75 non-foil cards of
+# earlier tournament packs.
+#
+# This opening https://www.youtube.com/watch?v=5Ik9bNoixGY confirms the guaranteed
+# foil -- 3 rares and exactly 1 foil, a common in that pack.
+#
+# lethe expects the odd two-foil pack ("according the rare rate, there should be
+# packs with two foils, but I haven't observed any") but has never seen one, and
+# the opening above is a second independent sighting of exactly one. Until a
+# two-foil pack turns up, the slot is modelled as exactly one foil every time.
+#
+# Shards of Alara introduced the mythic rare, and each rare slot -- in boosters
+# AND tournament packs -- can be a rare or a mythic rare, so the three rare slots
+# use the shared rare_mythic sheet, matching the draft booster.
+#
+# The foil uses the shared dedicated_foil sheet (10 / 3 / 1), which is tehtmi's
+# rate for sets with a guaranteed foil slot. Its subsheets line up with the
+# actual foil sheets lethe documents: the foil common sheet holds every common
+# and every basic land variation once, the foil uncommon sheet holds each
+# uncommon twice, and the foil rare sheet holds each rare twice and each mythic
+# once (which is exactly the 2:1 of rare_mythic).
 name: "{set_name} Tournament Deck"
 pack:
-  basic: 29
-  common: 33
-  uncommon: 10
+  basic: 30
+  common: 32
+  uncommon: 9
   rare_mythic: 3
+  dedicated_foil: 1
 sheets:
   uncommon:
     duplicates: true

@@ -1,9 +1,34 @@
-# Data from https://www.trollandtoad.com/magic-the-gathering/magic-the-gathering-sealed-product/revised-starter-deck-mtg-/87558#:~:text=Revised%20contains%20306%20new%20cards,%2C%20Tundra%2C%20and%20Tropical%20Island.
+# Data from https://lethe.xyz/mtg/collation/3ed.html
+# Revised starter decks come in two configurations: "A 2-rare starter is
+# accompanied by 13 uncommons, 45 commons, and a rulebook. [...] A 3-rare starter
+# is accompanied by 12 uncommons, 45 commons, and a rulebook."
+#
+# lethe presumes the 2-rare decks are earlier print runs (matching Alpha through
+# Unlimited) and the 3-rare decks later ones (matching 4th Edition onwards).
+#
+# The 3-rare configuration is confirmed in the wild by this opening
+# https://www.youtube.com/watch?v=DGjb9scc6Ew -- 3 rares, 12 uncommons, and the
+# remaining 45 cards commons (which on Revised print sheets is where the basic
+# lands come from, so that 45 includes them). No foils, as expected for the era.
+#
+# The two layouts are weighted equally, and this is a permanent assumption rather
+# than a gap waiting to be filled. There is no data on how the two configurations
+# split across the production run, and no practical way to gather any: few enough
+# sealed Revised starters get opened on camera to begin with, and Revised predates
+# rarity symbols, so a rare count cannot be read off a video at all -- every card
+# has to be identified by name and cross-referenced, which will not survive being
+# done across a large sample. Even a clean tally would measure which decks
+# survived and got opened, not what was produced.
 name: "{set_name} Starter Deck"
-pack:
-  common_with_duplicates: 45
+packs:
+# Earlier print runs
+- common_with_duplicates: 45
   uncommon_with_duplicates: 13
   rare: 2
+# Later print runs
+- common_with_duplicates: 45
+  uncommon_with_duplicates: 12
+  rare: 3
 sheets:
   common_with_duplicates:
     duplicates: true
