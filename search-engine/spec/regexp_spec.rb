@@ -55,7 +55,8 @@ describe "Regexp" do
       "The Millennium Calendar",
       "TL;DR",
       "Urza, Academy Headmaster",
-      "Vexing Puzzlebox"
+      "Vexing Puzzlebox",
+      "Whtz, the Bibliophile"
   end
 
   it "regexp flavor text" do
