@@ -1,0 +1,61 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-foundations
+#
+# Foundations' land slot is not basics-only (half of it is common dual lands), so Arena
+# keeps it, basics included, and packs stay at 14 cards. The traditional foil slot
+# survives as a second nonfoil slot. Verified against 17lands public FDN PremierDraft
+# data: 33358 packs, all 14 cards, 0.501 basics per pack.
+pack:
+  land: 1
+  list_slot:
+  - common: 7
+    chance: 197
+  - common: 6
+    special_guest: 1
+    chance: 3
+  uncommon: 3
+  rare_mythic: 1
+  wildcard: 1
+  foil_replacement: 1
+sheets:
+  common:
+    query: "r:c -(e:{set} t:land -uncharted -evolving)"
+    count: 80
+  uncommon:
+    query: "r:u"
+    count: 101
+  land:
+    # Article: 1 of 10 character lands (25%, the full-art basics), 1 of 10
+    # common dual lands (50%), or 1 of 10 regular-frame basic lands (25%).
+    any:
+    - query: "t:basic is:fullart"
+      chance: 1
+      count: 10
+    - query: "r:c t:land -uncharted -evolving"
+      chance: 2
+      count: 10
+    - query: "t:basic -is:fullart"
+      chance: 1
+      count: 10
+  # Same weights as fdn-play; see there for how they were fitted.
+  wildcard:
+    any:
+    - chance: 167 + 18
+      use: common
+    - chance: 583 + 24
+      use: uncommon
+    - chance: 163+26+16+3
+      use: rare_mythic
+  # Paper's traditional foil slot. Arena has no foils, so it stays as a second
+  # nonfoil slot with the same contents.
+  foil_replacement:
+    foil: false
+    any:
+    - chance: 599
+      use: common
+    - chance: 314
+      use: uncommon
+    - chance: 85
+      use: rare_mythic
+  special_guest:
+    set: spg
+    code: "FDN"

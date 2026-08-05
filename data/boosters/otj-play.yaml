@@ -47,22 +47,28 @@ sheets:
       chance: 6
     - use: mythic_with_showcase
       chance: 1
+  # Only the rare/mythic rate of the wildcard slot is published (1 in 12); the
+  # common/uncommon split of the wildcard and the whole traditional foil slot are not.
+  # Those are fitted to 17lands Arena pack data (31054 OTJ packs). Only the two slots
+  # combined are observable in a pack, so the wildcard keeps its published 1-in-12 and
+  # the foil slot takes the remainder, which lands at ~9% rare/mythic - matching what
+  # Wizards later published for eoe.
   wildcard:
     any:
-    - chance: 880
+    - chance: 654
       use: common
-    - chance: 220
+    - chance: 260
       use: uncommon
-    - chance: 100 # wildcard is a rare/mythic in 1 of 12 Play Boosters
+    - chance: 83 # wildcard is a rare/mythic in 1 of 12 Play Boosters
       use: rare_mythic_with_showcase
   foil:
     foil: true
     any:
-    - chance: 12
+    - chance: 587
       use: common
-    - chance: 5
+    - chance: 324
       use: uncommon
-    - chance: 3
+    - chance: 89
       use: rare_mythic_with_showcase
   the_list:
     # The List slot is 1/5 of packs and holds 30 Big Score + 10 Special

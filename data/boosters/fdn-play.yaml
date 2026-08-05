@@ -98,14 +98,18 @@ sheets:
       use: uncommon_with_showcase
     - chance: 163+26+16+3
       use: rare_mythic_with_showcase
+  # The article gives no split for the traditional foil slot, so this is fitted to
+  # 17lands Arena pack data (33358 FDN packs). It lands in the same place as the
+  # published foil slots of later sets (dft, tdm, tla, ecl, msh), and well away from
+  # the old 12:5:3 default this used to inherit.
   foil:
     foil: true
     any:
-    - chance: 12
+    - chance: 599
       use: common_with_showcase
-    - chance: 5
+    - chance: 314
       use: uncommon_with_showcase
-    - chance: 3
+    - chance: 85
       use: rare_mythic_with_showcase
   special_guest:
     set: spg

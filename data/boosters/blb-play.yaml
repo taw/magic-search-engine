@@ -68,22 +68,28 @@ sheets:
       chance: 6
     - use: mythic_with_showcase
       chance: 1
+  # Wizards published no rarity split for the wildcard or the traditional foil slot
+  # ("1 Wildcard of any rarity", "1 Traditional foil of any rarity"), so these are
+  # fitted to 17lands Arena pack data (37063 BLB packs). Only the two slots combined
+  # are observable in a pack; the split between them follows the shape Wizards did
+  # publish for later sets (see eoe-play.yaml: wildcard is uncommon-heavy, the foil
+  # slot is common-heavy at roughly 58/32/10).
   wildcard:
     any:
-    - chance: 700
+    - chance: 200
       use: common
-    - chance: 175
+    - chance: 645
       use: uncommon
-    - chance: 125
+    - chance: 155
       use: rare_mythic_with_showcase
   foil:
     foil: true
     any:
-    - chance: 12
+    - chance: 580
       use: common
-    - chance: 5
+    - chance: 320
       use: uncommon
-    - chance: 3
+    - chance: 100
       use: rare_mythic_with_showcase
   special_guest:
     set: spg

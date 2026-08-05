@@ -56,22 +56,28 @@ sheets:
       - rawquery: "e:{set} r:r t:land promo:boosterfun"
         count: 10
         chance: 1
+    # Only the 1-in-6 rare dual land above is published for this slot. The rest of the
+    # wildcard slot, and the whole traditional foil slot, have no published rarity
+    # split, so they are fitted to 17lands Arena pack data (52436 MKM packs). Only the
+    # two slots combined are observable in a pack; the split between them follows the
+    # shape Wizards did publish for later sets (see eoe-play.yaml) and agrees with an
+    # independent two-slot factorisation of the same Arena data.
     - chance: 5
       any:
-      - chance: 700
+      - chance: 203
         use: common_with_showcase
-      - chance: 175
+      - chance: 616
         use: uncommon_with_showcase
-      - chance: 125
+      - chance: 181
         use: rare_mythic_with_showcase
   foil:
     foil: true
     any:
-    - chance: 12
+    - chance: 580
       use: common_with_showcase
-    - chance: 5
+    - chance: 320
       use: uncommon_with_showcase
-    - chance: 3
+    - chance: 100
       any:
       - any:
         - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly (Aurelia or Lazav or Niv-Mizzet or Teysa) -number:/z/"

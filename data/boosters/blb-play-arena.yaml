@@ -1,0 +1,44 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-bloomburrow
+#
+# Arena drops the paper land slot (Bloomburrow's is seasonal full-art basics only),
+# so packs are 13 cards, not 14, and the traditional foil slot survives as a second
+# nonfoil slot. Verified against 17lands public BLB PremierDraft data: 37063 packs,
+# all 13 cards, zero basics.
+pack:
+  list_slot:
+  - common: 7
+    chance: 985
+  - common: 6
+    special_guest: 1
+    chance: 15
+  uncommon: 3
+  rare_mythic: 1
+  wildcard: 1
+  foil_replacement: 1
+sheets:
+  common:
+    query: "r:c"
+    count: 81
+  # Same weights as blb-play; see there for how they were fitted.
+  wildcard:
+    any:
+    - chance: 200
+      use: common
+    - chance: 645
+      use: uncommon
+    - chance: 155
+      use: rare_mythic
+  # Paper's traditional foil slot. Arena has no foils, so it stays as a second
+  # nonfoil slot with the same contents.
+  foil_replacement:
+    foil: false
+    any:
+    - chance: 580
+      use: common
+    - chance: 320
+      use: uncommon
+    - chance: 100
+      use: rare_mythic
+  special_guest:
+    set: spg
+    code: "BLB"

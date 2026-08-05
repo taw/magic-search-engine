@@ -1,0 +1,68 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-outlaws-of-thunder-junction
+#
+# Outlaws of Thunder Junction's land slot is not basics-only (half of it is common dual
+# lands), so Arena keeps it, basics included, and packs stay at 14 cards. The
+# traditional foil slot survives as a second nonfoil slot. Verified against 17lands
+# public OTJ PremierDraft data: 31054 packs, all 14 cards, 0.503 basics per pack.
+pack:
+  land: 1
+  list_slot:
+  - common: 6
+    chance: 4
+  - common: 5
+    the_list: 1
+    chance: 1
+  uncommon: 3
+  rare_mythic: 1
+  breaking_news: 1
+  wildcard: 1
+  foil_replacement: 1
+sheets:
+  common:
+    query: "r:c -(number:251-264 -(Mirage Mesa) -(Conduit Pylons))"
+    count: 81
+  land:
+    any:
+    - query: "t:basic"
+      count: 15
+      chance: 1
+    - query: "t:land number:251-264 r:c -(Mirage Mesa) -(Conduit Pylons)"
+      count: 10
+      chance: 1
+  # Same weights as otj-play; see there for how they were fitted.
+  wildcard:
+    any:
+    - chance: 654
+      use: common
+    - chance: 260
+      use: uncommon
+    - chance: 83 # wildcard is a rare/mythic in 1 of 12 Play Boosters
+      use: rare_mythic
+  # Paper's traditional foil slot. Arena has no foils, so it stays as a second
+  # nonfoil slot with the same contents.
+  foil_replacement:
+    foil: false
+    any:
+    - chance: 587
+      use: common
+    - chance: 324
+      use: uncommon
+    - chance: 89
+      use: rare_mythic
+  the_list:
+    any:
+    - rawquery: "e:big number<=30"
+      count: 30
+      chance: 118
+    - set: spg
+      code: "OTJ"
+      chance: 10
+  breaking_news:
+    filter: "e:otp number<=65"
+    any:
+    - query: "r:u"
+      count: 20
+      chance: 2
+    - query: "r:r or r:m"
+      count: 45
+      chance: 1
