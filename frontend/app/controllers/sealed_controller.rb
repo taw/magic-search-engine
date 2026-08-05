@@ -21,6 +21,8 @@ class SealedController < ApplicationController
     end
     @packs_to_open << [most_recent_booster_type, 0] while @packs_to_open.size < 3
 
+    @booster_options = booster_options
+
     if packs_requested
       @cards = @fixed_cards.dup
       factory = PackFactory.new($CardDatabase)
@@ -48,6 +50,28 @@ class SealedController < ApplicationController
     end
 
     @title = "Sealed"
+  end
+
+  # Options of the pack dropdowns. Every row offers the same packs, so this is
+  # one list for all of them. Booster types have aliases, and the dropdown only
+  # wants each pack once, under its own code.
+  private def booster_options
+    @booster_types
+      .select{|code, booster| code == booster.code}
+      .map{|code, booster| [booster.name, code]} +
+      random_booster_options
+  end
+
+  # There is no booster type for a pack picked at random out of a few, so a row
+  # asking for one has nothing to select. Offer it as an extra option, named
+  # after the packs it could be, at the end of every dropdown.
+  private def random_booster_options
+    @packs_to_open.map(&:first).uniq.filter_map do |set_code|
+      next unless set_code&.include?("|")
+      names = set_code.split("|").filter_map{|code| @booster_types[code]&.name}
+      next if names.empty?
+      ["Random: #{names.join(", ")}", set_code]
+    end
   end
 
   # Packs one row of the form can open. Usually just one, but a pack the player

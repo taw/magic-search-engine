@@ -38,5 +38,17 @@ RSpec.describe SealedController, type: :controller do
     }
     assert_response 200
     assert_select ".card_picture_container", count: 6 * 15
+    # A random pack is not a booster type, so the dropdowns get an extra option
+    # for it, or the row would have nothing selected
+    random = "gtc-prerelease-orzhov|gtc-prerelease-dimir|gtc-prerelease-boros|gtc-prerelease-simic"
+    assert_select %[select#set_2 option[selected][value=?]], random
+    assert_select %[select#set_0 option[value=?]], random
+    assert_select %[option:contains("Random: Gatecrash Prerelease Pack Orzhov, ")]
+  end
+
+  it "no random option without a random pack" do
+    get "index"
+    assert_response 200
+    assert_select %[option:contains("Random: ")], false
   end
 end

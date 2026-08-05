@@ -1,10 +1,9 @@
 %h1 Sealed
-- booster_options = @booster_types.select{|code, booster| code == booster.code}.map{|code, booster| [booster.name, code]}
 %form.sealed_form
   - @packs_to_open.each_with_index do |(set_code, count), i|
     .pack_selection
       %input.form-control.pack_count{type: "number", name: "count[]", value: count, min: 0, id: "count_#{i}", "aria-label": "Number of packs"}
-      = select_tag "set[]", options_for_select(booster_options, set_code), id: "set_#{i}", class: "form-control pack_set", "aria-label": "Booster type"
+      = select_tag "set[]", options_for_select(@booster_options, set_code), id: "set_#{i}", class: "form-control pack_set", "aria-label": "Booster type"
   .fixed_cards
     %label{for: "fixed"} Optional fixed cards
     %textarea.form-control.fixed{id: "fixed", name: "fixed", rows: 3, placeholder: "1x mh1:255\n1x m19:306:foil"}= @fixed
