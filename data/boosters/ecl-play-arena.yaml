@@ -1,0 +1,63 @@
+# Lorwyn Eclipsed
+# Arena Play Booster
+#
+# Arena drops the paper land slot (Lorwyn Eclipsed's is basics only), so packs are
+# 13 cards, not 14, and the traditional foil slot survives as a second nonfoil slot.
+# Booster Fun (borderless / fable / reversible shockland) does not exist on Arena, so
+# the paper boosterfun chances are folded into the plain rarities they are variants of,
+# and the fable uncommons drop out of the uncommon slot.
+# Verified against 17lands public ECL PremierDraft data: 24864 packs, 13 cards, zero
+# basics.
+superfilter: "-is:reversibleback"
+pack:
+  common_special_guest:
+  - common: 7
+    chance: 54
+  - common: 6
+    special_guest: 1
+    chance: 1
+  uncommon: 3
+  wildcard: 1
+  rare_mythic: 1
+  foil_replacement: 1
+sheets:
+  common:
+    query: "r:c"
+    count: 81
+  uncommon:
+    query: "r:u"
+    count: 100
+  # Mythics are not at the usual half-of-a-rare per-card rate here. Measured over
+  # 24864 Arena packs, each mythic shows up 0.582x as often as each rare, not 0.500x
+  # (compare eoe 0.496, dft 0.502, sos 0.503, msh 0.510). tla is the same way at
+  # 0.579. Whether paper shares this is untested - ecl-play.yaml still uses 2:1.
+  rare_mythic:
+    any:
+    - rawquery: "e:{set} number:1-268 r:r"
+      count: 65
+      rate: 50
+    - rawquery: "e:{set} number:1-268 r:m"
+      count: 22
+      rate: 29
+  wildcard:
+    any:
+    - use: common
+      chance: 180
+    - use: uncommon
+      chance: 560
+    - use: rare_mythic
+      chance: 260
+  # Paper's traditional foil slot. Arena has no foils, so it stays as a second
+  # nonfoil slot with the same contents.
+  foil_replacement:
+    foil: false
+    any:
+    - use: common
+      chance: 604
+    - use: uncommon
+      chance: 307
+    - use: rare_mythic
+      chance: 89
+  special_guest:
+    set: spg
+    code: "ECL"

@@ -1,0 +1,108 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-modern-horizons-3
+#
+# Modern Horizons 3's land slot is not basics-only (half the time it is a common), so
+# Arena keeps it and packs stay at 14 cards; the paper foil land branch just becomes a
+# nonfoil one. The traditional foil slot survives as a second nonfoil slot.
+#
+# Booster Fun (borderless / profile / retro frame) does not exist on Arena, so those
+# branches fold into the plain rarities they are variants of. Of the Commander cards
+# the paper wildcard can produce, only m3c 1-8 are on Arena - 9-16 are not - which is
+# what makes the outside-the-set rate 0.061 per pack here against 0.100 in mh3-play.
+# Verified against 17lands public MH3 PremierDraft data: 32214 packs, 14 cards, 0.502
+# basics per pack.
+pack:
+  land_slot:
+  - land: 1
+    chance: 5
+  - common: 1
+    chance: 5
+  spg_slot:
+  - common: 1
+    chance: 63
+  - special_guest: 1
+    chance: 1
+  common: 5
+  new_uncommon: 3
+  new_rare_mythic: 1
+  reprint: 1
+  wildcard: 1
+  foil_replacement: 1
+sheets:
+  common:
+    query: "r:c"
+    count: 80
+  land:
+    # mh3/304-309 are Booster Fun basics, so Arena draws from the plain ones.
+    rawquery: "e:mh3 number:310-319"
+    count: 10
+  new_uncommon:
+    query: "r:u -is:reprint"
+    count: 101
+  new_rare_mythic:
+    any:
+    - query: "r:r (is:fetchland or -is:reprint) -is:foilonly"
+      count: 60
+      rate: 2
+    - query: "r:m -is:reprint -is:foilonly"
+      count: 20
+      rate: 1
+  reprint:
+    any:
+    - chance: 750
+      query: "r:u is:reprint"
+      count: 24
+    - chance: 213
+      query: "r:r is:reprint -is:foilonly"
+      count: 23
+    - chance: 23
+      query: "r:m is:reprint -is:foilonly"
+      count: 4
+  # The published treatment weighting, with the Booster Fun treatments folded back
+  # into the plain rarities and the Commander branch cut to the 8 cards Arena has.
+  wildcard:
+    any:
+    - chance: 501
+      query: "r:c"
+      count: 80
+    - chance: 306
+      query: "r:u -is:reprint -is:dfc"
+      count: 81
+    - chance: 76
+      query: "r:u -is:reprint is:dfc"
+      count: 20
+    - chance: 80
+      query: "r:r (is:fetchland or -is:reprint) -is:foilonly"
+      count: 60
+    - chance: 12
+      query: "r:m -is:reprint -is:foilonly"
+      count: 20
+    - chance: 25
+      rawquery: "e:m3c number:1-8"
+      count: 8
+  # Paper's traditional foil slot. Arena has no foils, so it stays as a second
+  # nonfoil slot with the same contents. Unlike the wildcard slot it keeps the
+  # new-to-Modern reprints.
+  foil_replacement:
+    foil: false
+    any:
+    - chance: 501
+      query: "r:c"
+      count: 80
+    - chance: 306
+      query: "r:u -is:dfc"
+      count: 101
+    - chance: 76
+      query: "r:u is:dfc"
+      count: 20
+    - chance: 80
+      query: "r:r -is:foilonly"
+      count: 78
+    - chance: 12
+      query: "r:m -is:foilonly"
+      count: 24
+    - chance: 25
+      rawquery: "e:m3c number:1-8"
+      count: 8
+  special_guest:
+    set: spg
+    code: "MHTHREE"

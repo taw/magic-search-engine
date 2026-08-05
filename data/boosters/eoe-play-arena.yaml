@@ -1,0 +1,73 @@
+# Data from: https://magic.wizards.com/en/news/feature/collecting-edge-of-eternities
+#
+# Arena drops the paper land slot (Edge of Eternities' is basics only), so packs are
+# 13 cards, not 14, and the traditional foil slot survives as a second nonfoil slot.
+# Booster Fun variants (viewport / triumphant / surreal) do not exist on Arena, so
+# their chances are folded into the plain rare and mythic they are variants of.
+# Stellar Sights (EOS) is a real bonus sheet and stays.
+# Verified against 17lands public EOE PremierDraft data: 35378 packs, 13 cards, zero
+# basics.
+queries:
+  stellar_sights: "e:EOS number:1-45"
+pack:
+  common_special_slot:
+  - common: 7
+    chance: 982
+  - common: 6
+    special_guest: 1
+    chance: 18
+  uncommon: 3
+  rare_mythic: 1
+  wildcard: 1
+  foil_replacement: 1
+sheets:
+  common:
+    query: "r:c"
+    count: 81
+  uncommon:
+    query: "r:u"
+    count: 100
+  rare_mythic:
+    any:
+    - use: rare
+      chance: 8440
+    - use: mythic
+      chance: 1560
+  stellar_sights:
+    any:
+    - rawquery: "{stellar_sights} r:r"
+      rate: 2
+      count: 30
+    - rawquery: "{stellar_sights} r:m"
+      rate: 1
+      count: 15
+  wildcard:
+    any:
+    - use: common
+      chance: 12500
+    - use: uncommon
+      chance: 62500
+    - use: rare
+      chance: 11808
+    - use: mythic
+      chance: 692
+    - use: stellar_sights
+      chance: 12500
+  # Paper's traditional foil slot. Arena has no foils, so it stays as a second
+  # nonfoil slot with the same contents.
+  foil_replacement:
+    foil: false
+    any:
+    - use: common
+      chance: 5800
+    - use: uncommon
+      chance: 3200
+    - use: rare
+      chance: 741
+    - use: mythic
+      chance: 135
+    - use: stellar_sights
+      chance: 125
+  special_guest:
+    set: spg
+    code: "EOE"

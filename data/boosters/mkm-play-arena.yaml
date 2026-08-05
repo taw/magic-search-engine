@@ -7,16 +7,12 @@
 # The same data confirms the 6-7 common / 3 uncommon floors, the 1-in-8 The List rate,
 # the 2:1 rate split of the MKM_ARENA sheets, and the rare and mythic rates.
 #
-# Known issue: the common/uncommon weights on the wildcard and foil_replacement sheets
-# below are wrong, and so are the paper ones in mkm-play.yaml that they were copied
-# from. Wizards never published that split for MKM - the article only says "any rarity"
-# plus the 1-in-6 rare dual land - so 700:175:125 and 12:5:3 are inherited assumptions.
-# Sets whose articles do publish it (dft, tdm, fin, eoe) give a wildcard of roughly
-# 12.5% common / 62.5% uncommon and a foil slot of roughly 58% common / 32% uncommon,
-# and 17lands measures MKM Arena's two slots at about 62/30/9 and 13/54/33 percent
-# common/uncommon/rare+mythic, matching that shape. Measured packs therefore have 7.625
-# commons and 3.834 uncommons where this file yields 8.058 / 3.396. Fixing it means
-# fixing mkm-play.yaml too, so it is left for a separate PR.
+# Wizards never published the common/uncommon split for the wildcard or the traditional
+# foil slot - the article only says "any rarity", plus the 1-in-6 rare dual land - so
+# the weights below are fitted to that Arena data, as in mkm-play.yaml. Only the two
+# slots combined are observable in a pack; the split between them follows the shape
+# Wizards did publish for later sets (see eoe-play.yaml) and agrees with an independent
+# two-slot factorisation of the same data.
 pack:
   list_slot:
   - common: 7
@@ -46,21 +42,21 @@ sheets:
       count: 10
     - chance: 5
       any:
-      - chance: 700
+      - chance: 203
         use: common
-      - chance: 175
+      - chance: 616
         use: uncommon
-      - chance: 125
+      - chance: 181
         use: rare_mythic
   # Paper's foil slot. Arena has no foils, so it stays as a second nonfoil slot.
   foil_replacement:
     foil: false
     any:
-    - chance: 12
+    - chance: 580
       use: common
-    - chance: 5
+    - chance: 320
       use: uncommon
-    - chance: 3
+    - chance: 100
       any:
       - use: rare
         chance: 140

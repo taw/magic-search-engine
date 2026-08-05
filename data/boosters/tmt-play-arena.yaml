@@ -1,0 +1,99 @@
+# Teenage Mutant Ninja Turtles
+# Arena Play Booster
+#
+# TMNT's land slot is not basics-only (dual lands are most of it), so Arena keeps it,
+# basics included, and packs stay at 14 cards. The traditional foil slot survives as a
+# second nonfoil slot. Booster Fun (scene / sewer / silhouette) does not exist on
+# Arena, so those branches collapse to the plain rarities. Source material (PZA) is a
+# real bonus sheet and stays.
+#
+# Two rates here are fitted to 17lands Arena data (24342 TMT packs) and disagree with
+# tmt-play.yaml, which is likely wrong for paper too:
+#  - mythics run at 0.934x the per-card rate of rares, not the usual 0.500x. This is a
+#    small set with only 15 mythics against 53 rares, so a 2:1 sheet badly undercounts
+#    them (0.163 modelled vs 0.276 measured per pack).
+#  - the source material slot lands in about 1 pack in 11, not 1 in 28.
+queries:
+  dual_land: "e:{set} number:183,185-187,189"
+  rooftop_basic: "e:{set} number:191-195"
+  legendary_turtle_c: "e:{set} t:turtle t:legendary r:c"
+  legendary_turtle_u: "e:{set} number:16,38,101,120"
+  legendary_turtle_r: "e:{set} number:15,35,103,121"
+  legendary_turtle_m: "e:{set} number:17,36,102,119"
+  regular_common: "e:{set} r:c -{dual_land} -t:basic"
+  source_material: "e:PZA number:1-20"
+pack:
+  land: 1
+  common:
+  - common_no_legend: 7
+    chance: 10
+  - common_no_legend: 6
+    source_material: 1
+    chance: 1
+  uncommon: 2
+  legendary_turtle: 1
+  wildcard: 1
+  rare_mythic: 1
+  foil_replacement: 1
+sheets:
+  common_no_legend:
+    query: "{regular_common} -{legendary_turtle_c}"
+    count: 57
+  uncommon:
+    query: "r:u -{legendary_turtle_u}"
+    count: 51
+  rare_mythic:
+    any:
+    - query: "r:r -{legendary_turtle_r}"
+      count: 49
+      rate: 100
+    - query: "r:m -{legendary_turtle_m}"
+      count: 11
+      rate: 93
+  legendary_turtle:
+    any:
+    - query: "t:turtle t:legendary r:c"
+      count: 5
+      chance: 687
+    - rawquery: "{legendary_turtle_u}"
+      count: 4
+      chance: 196
+    - any:
+      - rawquery: "{legendary_turtle_r}"
+        count: 4
+        rate: 100
+      - rawquery: "{legendary_turtle_m}"
+        count: 4
+        rate: 93
+      chance: 117
+  land:
+    # Fitted to Arena data (0.440 basics per pack); tmt-play.yaml has 3:2, giving 0.400.
+    any:
+    - rawquery: "{dual_land}"
+      rate: 14
+      count: 5
+    - rawquery: "{rooftop_basic}"
+      rate: 11
+      count: 5
+  source_material:
+    rawquery: "{source_material}"
+    count: 20
+  wildcard:
+    any:
+    - use: common_no_legend
+      chance: 297
+    - use: uncommon
+      chance: 605
+    - use: rare_mythic
+      chance: 98
+  # Paper's traditional foil slot. Arena has no foils, so it stays as a second
+  # nonfoil slot with the same contents.
+  foil_replacement:
+    foil: false
+    any:
+    - use: common_no_legend
+      chance: 619
+    - use: uncommon
+      chance: 283
+    - use: rare_mythic
+      chance: 98

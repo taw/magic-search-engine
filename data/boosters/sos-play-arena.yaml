@@ -1,0 +1,96 @@
+# Secrets of Strixhaven
+# Arena Play Booster
+#
+# Secrets of Strixhaven's land slot is not basics-only (dual and spellcraft lands are
+# in it), so Arena keeps it, basics included, and packs stay at 14 cards. The
+# traditional foil slot survives as a second nonfoil slot. The Mystical Archive (SOA)
+# is a real bonus sheet and stays.
+# Verified against 17lands public SOS PremierDraft data: 31708 packs, 14 cards, 0.497
+# basics per pack.
+queries:
+  dual_land: "e:{set} number:255,256,258,262,266"
+  spellcraft_land: "e:{set} number:267-271"
+  basic_land: "e:{set} number:272-281"
+  en_mystical_archive: "e:SOA number:1-65"
+pack:
+  land: 1
+  common_special_guest:
+  - common: 6
+    chance: 54
+  - common: 5
+    special_guest: 1
+    chance: 1
+  uncommon: 3
+  wildcard: 1
+  rare_mythic: 1
+  mystical_archive: 1
+  foil_replacement: 1
+sheets:
+  common:
+    query: "r:c -{dual_land}"
+    count: 81
+  uncommon:
+    query: "r:u"
+    count: 100
+  rare_mythic:
+    any:
+    - use: rare
+      chance: 6
+    - use: mythic
+      chance: 1
+  land:
+    any:
+    - rawquery: "{basic_land}"
+      rate: 1
+      count: 10
+    - rawquery: "{spellcraft_land}"
+      rate: 1
+      count: 5
+    - rawquery: "{dual_land}"
+      rate: 3
+      count: 5
+  mystical_archive:
+    any:
+    - rawquery: "{en_mystical_archive} r:u"
+      rate: 18
+      count: 25
+    - rawquery: "{en_mystical_archive} r:r"
+      rate: 2
+      count: 25
+    - rawquery: "{en_mystical_archive} r:m"
+      rate: 1
+      count: 15
+  wildcard:
+    any:
+    - use: common
+      chance: 391
+    - use: uncommon
+      chance: 391
+    - use: rare
+      chance: 195 + 3
+    - use: mythic
+      chance: 19 + 1
+  # Paper's traditional foil slot. Arena has no foils, so it stays as a second
+  # nonfoil slot with the same contents.
+  foil_replacement:
+    foil: false
+    any:
+    - any:
+      - use: common
+        rate: 2
+      - use: uncommon
+        rate: 1
+      chance: 544 + 336
+    - any:
+      - use: rare
+        chance: 6
+      - use: mythic
+        chance: 1
+      chance: 67 + 11 + 10
+    - use: mystical_archive
+      chance: 32
+  # spg/158 Library of Leng is the one Secrets of Strixhaven Special Guest that is
+  # not on Arena, so this sheet is the nine that are.
+  special_guest:
+    rawquery: "e:spg number:149-157"
+    count: 9
