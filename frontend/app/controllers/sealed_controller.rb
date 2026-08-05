@@ -26,10 +26,10 @@ class SealedController < ApplicationController
       factory = PackFactory.new($CardDatabase)
       @packs_to_open.each do |set_code, count|
         next unless set_code and count and count > 0
-        set_code, variant = set_code.split("-", 2)
-        pack = factory.for(set_code, variant) or next
+        packs = packs_for(factory, set_code)
         # Error handling ?
-        @cards.push *count.times.flat_map{ pack.open }
+        next if packs.empty?
+        @cards.push *count.times.flat_map{ packs.sample.open }
       end
       @cards.sort_by!{|c|
         [
@@ -48,6 +48,17 @@ class SealedController < ApplicationController
     end
 
     @title = "Sealed"
+  end
+
+  # Packs one row of the form can open. Usually just one, but a pack the player
+  # got at random out of a few - like the allied guild booster of the Dragon's
+  # Maze prerelease - is passed as its alternatives joined by "|", and we roll
+  # it separately for every pack of that row.
+  private def packs_for(factory, set_code)
+    set_code.split("|").filter_map{|code|
+      code, variant = code.split("-", 2)
+      factory.for(code, variant)
+    }
   end
 
   # This is very hacky
