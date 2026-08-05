@@ -14,13 +14,8 @@ describe "Arena and MTGO Boosters" do
     end
   end
 
-  # mkm-play-arena was drafted by copying mkm-play and stripping boosterfun sheets,
-  # and it kept paper play booster's foil slot. It's not known yet what Arena really does here,
-  # so it's excluded until we get better data.
-  let(:known_foil_arena_boosters) { %W[mkm-play-arena] }
-
   it "Arena boosters contain no foils" do
-    (arena_boosters.reject{|b| known_foil_arena_boosters.include?(b.code)}).each do |booster|
+    arena_boosters.each do |booster|
       booster.foil_cards.should(eq([]), "No cards for #{booster.code} #{booster.name} should be foil, Arena has no foils")
     end
   end

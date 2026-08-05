@@ -1,6 +1,19 @@
 # Data from https://magic.wizards.com/en/news/feature/collecting-murders-at-karlov-manor
+#
+# Arena drops the paper basic land slot, so packs are 13 cards, not 14. The foil slot
+# survives as a second nonfoil slot. Verified against 17lands public MKM PremierDraft
+# data (52436 packs, all 13 cards, picks 0-12, zero basics).
+#
+# Known issue: measured Arena packs have 7.625 commons and 3.834 uncommons per pack,
+# while this file yields 8.058 / 3.396 - about 0.44 cards per pack shift from common to
+# uncommon in the wildcard + ex-foil slots. Rare (1.239 vs 1.244), mythic (0.179 vs
+# 0.177) and The List (0.124 vs 0.125) all match, and the 30/20 rate 2:1 split of the
+# MKM_ARENA sheets is confirmed. The two flexible slots factor as two independent slots
+# of roughly 62/30/9 and 13/54/33 percent common/uncommon/rare+mythic, but which is the
+# ex-foil one is not recoverable from pack contents, so it is left unmodelled here.
+# Arena also has no separate rare-land branch: all 70 rares, surveil lands included,
+# appear at an equal per-card rate.
 pack:
-  basic: 1
   list_slot:
   - common: 7
     chance: 7
@@ -10,11 +23,8 @@ pack:
   uncommon: 3
   rare_mythic: 1
   wildcard: 1
-  foil: 1
+  foil_replacement: 1
 sheets:
-  basic:
-    query: "t:basic -is:fullart"
-    count: 10
   common:
     query: "r:c"
     count: 81
@@ -38,8 +48,9 @@ sheets:
         use: uncommon
       - chance: 125
         use: rare_mythic
-  foil:
-    foil: true
+  # Paper's foil slot. Arena has no foils, so it stays as a second nonfoil slot.
+  foil_replacement:
+    foil: false
     any:
     - chance: 12
       use: common

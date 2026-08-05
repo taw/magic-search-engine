@@ -1,6 +1,8 @@
 # Data from https://magic.wizards.com/en/news/feature/collecting-wilds-of-eldraine
+# Arena drops the paper basic land slot, so packs are 14 cards, not 15.
+# Verified against 17lands public WOE PremierDraft data: 40399 packs, all 14 cards,
+# exactly 9 commons + 3 uncommons + 1 Enchanting Tales + 1 rare/mythic, zero basics.
 pack:
-  basic: 1
   common: 9
   uncommon: 3
   enchanting_tales: 1
