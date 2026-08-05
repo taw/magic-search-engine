@@ -2,13 +2,14 @@
 
 require_relative "../search-engine/lib/card_database"
 require "memoist"
+require "zlib"
 
 class ReportMtgjsonDifferences
   extend Memoist
 
   def initialize
     @db = CardDatabase.load
-    @mtgjson = JSON.parse(Pathname("#{__dir__}/../tmp/AllSets.json").read)
+    @mtgjson = JSON.parse(Zlib::GzipReader.open("#{__dir__}/../tmp/AllSets.json.gz", &:read))
     # v4 / v5
     @mtgjson = @mtgjson["data"] if @mtgjson["data"]
   end

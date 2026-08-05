@@ -2,13 +2,22 @@
 
 require "pathname"
 require "json"
+require "zlib"
 
 class SplitMtgjson
   SETS_DIR = Pathname(__dir__) + "../../../magic-search-engine-data/data/sets"
 
   def initialize(path, output_dir=SETS_DIR)
-    @data = JSON.parse(Pathname(path).read)
+    @data = JSON.parse(read_json_file(path))
     @output_dir = Pathname(output_dir)
+  end
+
+  def read_json_file(path)
+    if path.to_s.end_with?(".gz")
+      Zlib::GzipReader.open(path, &:read)
+    else
+      Pathname(path).read
+    end
   end
 
   # It doesn't remove any extra files
@@ -63,8 +72,8 @@ class SplitMtgjson
 end
 
 unless ARGV.size == 1 or ARGV.size == 2
-  STDERR.puts "Usage: #{$0} /path/to/AllSets.json"
-  STDERR.puts "   or: #{$0} /path/to/AllSets.json /output/directory"
+  STDERR.puts "Usage: #{$0} /path/to/AllSets.json.gz"
+  STDERR.puts "   or: #{$0} /path/to/AllSets.json.gz /output/directory"
   exit 1
 end
 
