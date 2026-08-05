@@ -57,7 +57,36 @@ class PatchPrintSheets < Patch
       "Stone-Throwing Devils" => { "33†" => "C1", "33" => "C3" }, # reddit says C1/C4 incorrectly
       "War Elephant"          => { "11†" => "C1", "11" => "C3" },
       "Wyluli Wolf"           => { "55†" => "C1", "55" => "C4" },
-    }
+    },
+    # Alliances commons all have two artworks, and for ten of them one artwork
+    # is printed twice on the common sheet. The official checklist tells us which
+    # cards those are, but not which artwork, as it only says "(v. 1)"/"(v. 2)"
+    # and both versions share an artist.
+    #
+    # Resolved by reading an uncut Alliances common sheet (10x11, header
+    # "1797USA.ENG/D1/ALLIANCES - COMMON - SET1"), photo from
+    # https://www.ancestralmtg.com/products/alliances-uncut-common-sheet
+    # The sheet contains 50 distinct commons; exactly these ten occur three
+    # times (artwork x2 + artwork x1), every other common occurs twice, which
+    # independently confirms the checklist's C2 list including the Kjeldoran
+    # Escort C1 -> C2 correction below. Each duplicated artwork was then matched
+    # to a collector number by its flavour text where the card has one, and by
+    # artwork otherwise (Bestial Fury, Guerrilla Tactics, Swamp Mosquito).
+    #
+    # Note the doubled artwork is *not* consistently the "a" or "b" number, so
+    # checklist order cannot be assumed to match mtgjson order here.
+    "all" => {
+      "Kjeldoran Escort"   => { "7a"   => "C1", "7b"   => "C2" },
+      "Wild Aesthir"       => { "21a"  => "C2", "21b"  => "C1" },
+      "Soldevi Sage"       => { "34a"  => "C1", "34b"  => "C2" },
+      "Storm Crow"         => { "36a"  => "C2", "36b"  => "C1" },
+      "Fevered Strength"   => { "50a"  => "C2", "50b"  => "C1" },
+      "Swamp Mosquito"     => { "63a"  => "C1", "63b"  => "C2" },
+      "Bestial Fury"       => { "67a"  => "C1", "67b"  => "C2" },
+      "Guerrilla Tactics"  => { "74a"  => "C1", "74b"  => "C2" },
+      "Gorilla Berserkers" => { "93a"  => "C2", "93b"  => "C1" },
+      "Taste of Paradise"  => { "100a" => "C1", "100b" => "C2" },
+    },
   }
 
   def assign_print_sheet_information(cards, checklist)
