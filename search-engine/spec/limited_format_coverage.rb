@@ -94,7 +94,7 @@ class LimitedFormatCoverage
       next [] unless limited_format.type == "prerelease-sealed"
       used = limited_format.pools.flat_map{|pool|
         pool.boosters.map{|count, pack| pack.code} +
-          pool.random_boosters.flat_map{|random| random["from"]}
+          pool.random_boosters.flat_map{|random| random.packs.map(&:code)}
       }
       prerelease_boosters_of(limited_format.set_code) - used
     }

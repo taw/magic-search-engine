@@ -156,13 +156,18 @@ RSpec.describe LimitedFormatController, type: :controller do
     assert_select %[a:contains("Open in Sealed simulator")]
   end
 
-  # Formats with random packs only get a placeholder page
-  it "placeholder for sealed formats with extra complexity" do
+  # Formats with packs picked at random out of a list
+  it "sealed with random packs" do
     get "show", params: {set: "dgm", id: "prerelease-sealed"}
     assert_response 200
     assert_equal "Dragon's Maze Prerelease Sealed - #{APP_NAME}", html_document.title
-    assert_select %[p:contains("not described on this website yet")]
-    assert_select %[a:contains("Open in Sealed simulator")], false
+    # One pool per guild, each with its own pack and its own allied guilds
+    assert_select %[h4:contains("Azorius")]
+    assert_select %[li a[href="/pack/rtr-prerelease-azorius"]]
+    assert_select %[li:contains("1x allied guild booster")]
+    assert_select %[li a[href="/pack/gtc-prerelease-orzhov"]]
+    assert_select %[li a[href="/pack/gtc-prerelease-simic"]]
+    assert_select %[a:contains("Open in Sealed simulator")], 10
   end
 
   it "404 for unknown set" do

@@ -31,7 +31,9 @@ class SealedPool
 
   # Packs picked at random out of a list, on top of the fixed ones
   def random_boosters
-    @data["random_boosters"] || []
+    @random_boosters ||= (@data["random_boosters"] || []).map{|entry|
+      RandomBoosters.new(self, entry)
+    }
   end
 
   def playable_promo_cards
@@ -46,12 +48,12 @@ class SealedPool
     playable_promo_cards + unplayable_promo_cards
   end
 
-  # A pool we can describe in full - every pack is one we know, and there is
-  # nothing random about it
+  # A pool we can describe in full - every pack is one we know, including the
+  # ones the player got at random
   def describable?
-    random_boosters.empty? and
-      boosters.size == (@data["boosters"] || []).size and
-      boosters.any?
+    boosters.size == (@data["boosters"] || []).size and
+      boosters.any? and
+      random_boosters.all?(&:describable?)
   end
 
   def inspect

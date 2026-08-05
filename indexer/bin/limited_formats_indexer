@@ -54,16 +54,18 @@ class LimitedFormatsIndexer
   end
 
   # Dragon's Maze handed out one guild booster picked at random out of a few,
-  # on top of the fixed boosters
+  # on top of the fixed boosters. The name is what that pack was called at the
+  # event, like "allied guild booster", as the list alone doesn't say.
   def parse_random_boosters(pool_data)
     (pool_data["random-boosters"] || []).map do |entry|
       unless entry["pick"] and entry["from"]
         raise "Random boosters need pick and from"
       end
       {
+        name: entry["name"],
         pick: entry["pick"],
         from: entry["from"],
-      }
+      }.compact
     end
   end
 

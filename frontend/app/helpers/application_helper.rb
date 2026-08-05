@@ -44,16 +44,28 @@ module ApplicationHelper
     LimitedFormatController.supported_type?(limited_format.type)
   end
 
+  # "A (A-CODE), B (B-CODE), or C (C-CODE)" - what one pack picked at random
+  # out of a list could have been
+  def pack_alternatives(packs)
+    packs.map{|pack|
+      safe_join([link_to_pack(pack){pack.name}, " (#{pack.code.upcase})"])
+    }.to_sentence(two_words_connector: " or ", last_word_connector: ", or ").html_safe
+  end
+
   # Sealed simulator opens the packs of the pool, and hands out the promo cards
   # for free. It has no notion of promos not being part of deck construction.
+  # A pack picked at random is passed as its alternatives joined by "|", and
+  # the simulator rolls it.
   def link_to_sealed_simulator(pool, &blk)
-    boosters = pool.boosters
+    boosters =
+      pool.boosters.map{|count, pack| [count, pack.code]} +
+      pool.random_boosters.map{|random| [random.pick, random.packs.map(&:code).join("|")]}
     link_to(
       {
         controller: "sealed",
         action: "index",
-        count: boosters.map{|count, pack| count},
-        set: boosters.map{|count, pack| pack.code},
+        count: boosters.map{|count, code| count},
+        set: boosters.map{|count, code| code},
         fixed: pool.promo_cards.map{|card| fixed_card_line(card)}.join("\n").presence,
       },
       &blk)

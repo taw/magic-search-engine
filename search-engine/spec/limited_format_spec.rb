@@ -38,11 +38,30 @@ describe LimitedFormat do
     azorius.unplayable_promo_cards.should eq([])
   end
 
-  # Formats with random packs
-  it "formats with extra complexity are not describable sealed" do
+  # Formats with random packs - the Dragon's Maze prerelease handed out a
+  # booster of one guild allied with the one you picked, chosen at random
+  it "formats with random packs are describable sealed" do
     dgm_prerelease = db.sets["dgm"].limited_formats.find{|f| f.type == "prerelease-sealed"}
-    dgm_prerelease.random_boosters.should_not eq([])
-    dgm_prerelease.describable_sealed?.should eq(false)
+    dgm_prerelease.describable_sealed?.should eq(true)
+
+    azorius = dgm_prerelease.pools[0]
+    azorius.name.should eq("Azorius")
+    azorius.boosters.map{|count, pack| [count, pack.code]}.should eq([
+      [4, "dgm-draft"],
+      [1, "rtr-prerelease-azorius"],
+    ])
+    azorius.random_boosters.size.should eq(1)
+    allied = azorius.random_boosters[0]
+    allied.pick.should eq(1)
+    allied.name.should eq("allied guild booster")
+    allied.packs.map(&:code).should eq([
+      "gtc-prerelease-orzhov",
+      "gtc-prerelease-dimir",
+      "gtc-prerelease-boros",
+      "gtc-prerelease-simic",
+    ])
+    allied.describable?.should eq(true)
+    azorius.unplayable_promo_cards.map(&:name).should eq(["Maze's End", "Plains"])
   end
 
   # Sets played as something else than normal limited have their own rules text

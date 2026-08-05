@@ -6,6 +6,10 @@
       = link_to_pack(pack) do
         = pack.name
       = "(#{pack.code.upcase})"
+  - pool.random_boosters.each do |random|
+    %li
+      = "#{random.pick}x #{random.name} -"
+      = pack_alternatives(random.packs)
 - if pool.playable_promo_cards.present?
   %p You also have access to these playable promos:
   = render "promo_cards", cards: pool.playable_promo_cards
