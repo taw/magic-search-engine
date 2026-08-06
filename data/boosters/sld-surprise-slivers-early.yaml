@@ -1,0 +1,68 @@
+# Secret Lair "Surprise Slivers" bonus pool -- the EARLY (pre-October 2022) window.
+# The 2022-2023 Secret Lair drops came with a random foil extended-art Sliver
+# bonus card (Scryfall's "Surprise Slivers" grouping). The pool grew Superdrop by
+# Superdrop, so drops that only shipped early could not contain slivers printed in
+# a later wave. This is the general pool restricted to that early window; drops
+# still shipping later use the full `sld-surprise-slivers` pool instead.
+#
+# Cutoff: the drops that reference this pool shipped 2022-07-22 .. 2022-09-13
+# (e.g. Astrology Lands Aries/Pisces/Taurus, Li'l Walkers, Pictures of the
+# Floating World, Rule the Room, The Tokyo Lands). By 2022-09-13 only the July
+# (2022-07-15) and August (2022-08-11..08-19) waves existed; the October wave
+# (from 2022-10-28) was not yet available. The first drop to use the full pool is
+# Astrology Lands Gemini (2022-09-23), confirming the boundary sits just before
+# the October 2022 Superdrop.
+#
+# As in the full pool, slivers tied to a specific drop keep their per-product
+# variable pools in mtg-sealed-content and are excluded here (e.g. Diffusion 618,
+# Manaweft 650, Might 652 on "Just Some Totally Normal Guys"). Chances are carried
+# over unchanged from the full pool (inverse-price foil weights, top chase = 1).
+name: "SLD Surprise Slivers (early, pre-October 2022)"
+pack:
+  slivers: 1
+sheets:
+  slivers:
+    foil: true
+    any:
+    - rawquery: "e:sld number:657" # Tempered Sliver
+      count: 1
+      chance: 129
+    - rawquery: "e:sld number:646" # Two-Headed Sliver
+      count: 1
+      chance: 83
+    - rawquery: "e:sld number:628" # Winged Sliver
+      count: 1
+      chance: 73
+    - rawquery: "e:sld number:617" # Ward Sliver
+      count: 1
+      chance: 59
+    - rawquery: "e:sld number:647" # Brood Sliver
+      count: 1
+      chance: 33
+    - rawquery: "e:sld number:664" # Hibernation Sliver
+      count: 1
+      chance: 27
+    - rawquery: "e:sld number:660" # Cloudshredder Sliver
+      count: 1
+      chance: 24
+    - rawquery: "e:sld number:649" # Horned Sliver
+      count: 1
+      chance: 23
+    - rawquery: "e:sld number:654" # Predatory Sliver
+      count: 1
+      chance: 22
+    - rawquery: "e:sld number:634" # Syphon Sliver
+      count: 1
+      chance: 11
+    - rawquery: "e:sld number:661" # Crystalline Sliver
+      count: 1
+      chance: 9
+    - rawquery: "e:sld number:663" # Harmonic Sliver
+      count: 1
+      chance: 9
+    - rawquery: "e:sld number:643" # Spiteful Sliver
+      count: 1
+      chance: 8
+    - rawquery: "e:sld number:668" # Sliver Hive
+      count: 1
+      chance: 1
