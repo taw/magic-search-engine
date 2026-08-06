@@ -118,6 +118,35 @@ RSpec.describe DeckController, type: :controller do
       assert_equal deck_list, ["20 Dandân {U}{U}", "30 Lightning Bolt {R}", "10 Mountain"]
     end
 
+    it "shows every section of a deck we exported" do
+      deck = <<~EOF
+        COMMANDER: 1 Ghave, Guru of Spores
+        40 Lightning Bolt
+
+        Sideboard
+        1 Goblin Guide
+
+        Planar Deck
+        1 Naya
+
+        Scheme Deck
+        1 All in Good Time
+
+        Display Commander
+        1 Teneb, the Harvester
+      EOF
+      post "visualize", params: {deck: deck}
+      assert_response 200
+      assert_equal deck_list, [
+        "1 Ghave, Guru of Spores {2}{W}{B}{G}",
+        "40 Lightning Bolt {R}",
+        "1 Goblin Guide {R}",
+        "1 Naya",
+        "1 All in Good Time",
+        "1 Teneb, the Harvester {3}{W}{B}{G}",
+      ]
+    end
+
     it "deals with unknown cards" do
       post "visualize", params: {deck: "40x Lightning Bolt\n20x Pod of Greed"}
       assert_response 200

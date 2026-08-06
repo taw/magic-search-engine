@@ -31,7 +31,7 @@ require_relative "sealed"
 require_relative "sealed_pool"
 require_relative "spelling_suggestions"
 require_relative "unknown_card"
-require_relative "user_deck_parser"
+require_relative "user_deck_preprocessor"
 require_relative "weighted_pack"
 
 class String

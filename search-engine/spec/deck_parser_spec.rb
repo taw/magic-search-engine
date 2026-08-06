@@ -7,10 +7,10 @@ describe DeckParser do
     PhysicalCard.for(printings[0], foil)
   end
 
-  def physical_by_best(name, foil=false)
+  def physical_by_best(name, foil=false, etched=false)
     printing = db.cards[name].printings.min_by(&:default_sort_index)
     raise "No such printing #{name}" unless printing
-    PhysicalCard.for(printing, foil)
+    PhysicalCard.for(printing, foil, etched)
   end
 
   let(:parser) { DeckParser.new(db, text) }
@@ -267,6 +267,120 @@ describe DeckParser do
         [3, ice_fire],
         [4, birds_m10],
       ])
+    end
+  end
+
+  describe "it knows every section we export" do
+    let(:text) do
+      <<~EOF
+      // NAME: Not A Real Deck - Some Set Commander Deck
+      COMMANDER: 1 Kydele, Chosen of Kruphix
+      40 Lightning Bolt
+
+      Sideboard
+      15 Goblin Guide
+
+      Planar Deck
+      1 Naya
+
+      Scheme Deck
+      2 All in Good Time
+
+      Display Commander
+      1 Ghave, Guru of Spores
+      EOF
+    end
+
+    it do
+      parser.sections.should eq({
+        "Main Deck" => [{name: "Lightning Bolt", count: 40}],
+        "Commander" => [{name: "Kydele, Chosen of Kruphix", count: 1}],
+        "Sideboard" => [{name: "Goblin Guide", count: 15}],
+        "Planar Deck" => [{name: "Naya", count: 1}],
+        "Scheme Deck" => [{name: "All in Good Time", count: 2}],
+        "Display Commander" => [{name: "Ghave, Guru of Spores", count: 1}],
+      })
+      deck.section("Planar Deck").should eq([[1, physical_by_best("naya")]])
+      deck.section("Scheme Deck").should eq([[2, physical_by_best("all in good time")]])
+      deck.section("Display Commander").should eq([[1, physical_by_best("ghave, guru of spores")]])
+    end
+  end
+
+  describe "section header variations" do
+    let(:text) do
+      <<~EOF
+      Deck
+      40 Lightning Bolt
+
+      Sideboard: 15
+      15 Goblin Guide
+
+      COMMANDER:
+      1 Kydele, Chosen of Kruphix
+      EOF
+    end
+
+    it do
+      parser.main.should eq([{name: "Lightning Bolt", count: 40}])
+      parser.side.should eq([{name: "Goblin Guide", count: 15}])
+      parser.commander.should eq([{name: "Kydele, Chosen of Kruphix", count: 1}])
+    end
+  end
+
+  describe "etched" do
+    let(:text) do
+      <<~EOF
+      1 Kardur, Doomscourge
+      2 Kardur, Doomscourge [foil]
+      3 Kardur, Doomscourge [foil] [etched]
+      EOF
+    end
+
+    it do
+      parser.main.should eq([
+        {name: "Kardur, Doomscourge", count: 1},
+        {name: "Kardur, Doomscourge", count: 2, foil: true},
+        {name: "Kardur, Doomscourge", count: 3, foil: true, etched: true},
+      ])
+      parser.main_cards.should eq([
+        [1, physical_by_best("kardur, doomscourge")],
+        [2, physical_by_best("kardur, doomscourge", true)],
+        [3, physical_by_best("kardur, doomscourge", true, true)],
+      ])
+    end
+  end
+
+  # Whatever we hand out has to be something we can take back
+  describe "it parses back every deck we export" do
+    def count_cards(cards)
+      counts = Hash.new(0)
+      cards.each{|count, card| counts[yield(card)] += count }
+      counts
+    end
+
+    def cards_by_printing(deck)
+      DeckParser::SECTIONS.to_h{|name| [name, count_cards(deck.section(name)){|card| card }] }
+    end
+
+    def cards_by_name(deck)
+      DeckParser::SECTIONS.to_h{|name| [name, count_cards(deck.section(name)){|card| card.name }] }
+    end
+
+    let(:decks) { db.sets.values.flat_map(&:decks) }
+
+    it "to_text" do
+      # Without printings all we can round trip is names
+      mismatched = decks.reject do |deck|
+        cards_by_name(DeckParser.new(db, deck.to_text).deck) == cards_by_name(deck)
+      end
+      mismatched.should eq([])
+    end
+
+    it "to_text_with_printings" do
+      mismatched = decks.reject do |deck|
+        cards_by_printing(DeckParser.new(db, deck.to_text_with_printings).deck) == cards_by_printing(deck)
+      end
+      mismatched.should eq([])
     end
   end
 end

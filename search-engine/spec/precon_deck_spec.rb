@@ -333,7 +333,7 @@ describe PreconDeck do
       1 TARDIS Bay [WHO:601]
 
       Display Commander
-      1 The Fourth Doctor [WHO:193] [foil]
+      1 The Fourth Doctor [WHO:193] [foil] [etched]
       EOF
     end
 

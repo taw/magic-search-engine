@@ -1,39 +1,50 @@
 class DeckParser
-  # For testing only:
-  attr_reader :lines, :main, :side, :commander
+  # Sections mtg.wtf decks can have, and the headers other tools write for them.
+  # A header has to be the whole line (or the part before the colon), so these
+  # cannot eat a card name.
+  SECTION_HEADERS = {
+    "Main Deck" => ["main deck", "maindeck", "main", "deck"],
+    "Commander" => ["commander", "commanders"],
+    "Sideboard" => ["sideboard", "side board", "sb"],
+    "Planar Deck" => ["planar deck", "planes"],
+    "Scheme Deck" => ["scheme deck", "schemes"],
+    "Display Commander" => ["display commander"],
+  }
+  SECTIONS = SECTION_HEADERS.keys
+  SECTION_BY_HEADER = SECTION_HEADERS.flat_map{|section, headers| headers.map{|header| [header, section]} }.to_h
 
-  attr_reader :main_cards, :sideboard_cards, :commander_cards
+  # For testing only:
+  attr_reader :lines, :sections
+
+  attr_reader :section_cards
 
   def initialize(db, text)
     @db = db
     @text = text
     @lines = text.sub(/\A\s+/, "").sub(/\s+\z/, "").lines.map(&:chomp).map(&:strip)
     preparse
-    @main_cards = resolve_card_list(@main)
-    @sideboard_cards = resolve_card_list(@side)
-    @commander_cards = resolve_card_list(@commander)
+    @section_cards = @sections.transform_values{|card_list| resolve_card_list(card_list) }
   end
 
   # This method is really messy, but is has decent test coverage
   def preparse
-    @main = []
-    @side = []
-    @commander = []
-    current = @main
+    @sections = SECTIONS.to_h{|section| [section, []] }
+    current = @sections["Main Deck"]
     @lines.each do |line|
       foil = nil
+      etched = nil
       number = nil
       next if line =~ /\A\s*[#\/]/
       # In some decklist formats empty line separates sideboard
       next if line.empty?
-      if line =~ /\Asideboard:?\z/i
-        current = @side
+      header = section_header(line)
+      if header
+        current = @sections[header]
         next
       end
-      if line =~ /\ASB:\s*(.*)/
-        target, line = @side, $1
-      elsif line =~ /\ACOMMANDER:\s*(.*)/
-        target, line = @commander, $1
+      prefix, rest = section_prefixed(line)
+      if prefix
+        target, line = @sections[prefix], rest
       else
         target = current
       end
@@ -47,6 +58,8 @@ class DeckParser
         case tag
         when /\Afoil\z/i
           foil = true
+        when /\Aetched\z/i
+          etched = true
         when %r[\A(.*)[/:](.*)\z]
           set_code = $1
           number = $2
@@ -54,20 +67,61 @@ class DeckParser
           set_code = tag
         end
       end
-      target << {name: name, count: num, set_code: set_code, number: number, foil: foil}.compact
+      # Nothing but a count, like the "15" of a "Sideboard: 15" header
+      next if name.empty?
+      target << {name: name, count: num, set_code: set_code, number: number, foil: foil, etched: etched}.compact
     end
     commander_detection_heuristic!
   end
 
+  def main
+    @sections["Main Deck"]
+  end
+
+  def side
+    @sections["Sideboard"]
+  end
+
+  def commander
+    @sections["Commander"]
+  end
+
+  def main_cards
+    @section_cards["Main Deck"]
+  end
+
+  def sideboard_cards
+    @section_cards["Sideboard"]
+  end
+
+  def commander_cards
+    @section_cards["Commander"]
+  end
+
   def deck
-    Deck.new({
-      "Main Deck" => @main_cards,
-      "Sideboard" => @sideboard_cards,
-      "Commander" => @commander_cards,
-    })
+    Deck.new(@section_cards)
   end
 
   private
+
+  # Section header on a line of its own, like "Sideboard", "sideboard:",
+  # "Planar Deck", or "Sideboard (15)"
+  def section_header(line)
+    return unless line =~ /\A([a-z][a-z ]*?)\s*(?::\s*\d*|\(\s*\d+\s*\))?\z/i
+    SECTION_BY_HEADER[normalize_header($1)]
+  end
+
+  # Section name used as a prefix on every card in it, like "SB: Taiga"
+  # or "COMMANDER: 1 The Fourth Doctor"
+  def section_prefixed(line)
+    return unless line =~ /\A([a-z][a-z ]*?)\s*:\s*(\S.*)\z/i
+    section = SECTION_BY_HEADER[normalize_header($1)]
+    [section, $2] if section
+  end
+
+  def normalize_header(header)
+    header.downcase.split.join(" ")
+  end
 
   def resolve_card_list(card_list)
     card_list = card_list.map do |card_description|
@@ -82,11 +136,12 @@ class DeckParser
     set_code = card_description[:set_code]
     number = card_description[:number]
     foil = !!card_description[:foil]
+    etched = !!card_description[:etched]
     card = @db.cards[normalize_name(name)]
     if card
       printings = card.printings
       best_printing = select_best_printing(printings, set_code, number)
-      return PhysicalCard.for(best_printing, foil)
+      return PhysicalCard.for(best_printing, foil, etched)
     end
     parts = name.split(%r[(?:&|/)+]).map{|n| normalize_name(n)}
     if parts.size > 1
@@ -94,7 +149,7 @@ class DeckParser
       if card
         printings = card.printings
         best_printing = select_best_printing(printings, set_code, number)
-        return PhysicalCard.for(best_printing, foil)
+        return PhysicalCard.for(best_printing, foil, etched)
       end
     end
 
@@ -130,14 +185,14 @@ class DeckParser
 
   # Many deck formats do not have commander slot and use sideboard for that
   def commander_detection_heuristic!
-    return unless @commander.empty?
-    return if @side.empty?
-    main_size = @main.map{|x| x[:count] }.sum
-    side_size = @side.map{|x| x[:count] }.sum
+    return unless commander.empty?
+    return if side.empty?
+    main_size = main.map{|x| x[:count] }.sum
+    side_size = side.map{|x| x[:count] }.sum
     total_size = main_size + side_size
     return unless total_size == 60 or total_size == 100
     if side_size == 1 or side_size == 2
-      @commander, @side = @side, @commander
+      @sections["Commander"], @sections["Sideboard"] = @sections["Sideboard"], @sections["Commander"]
     end
   end
 end

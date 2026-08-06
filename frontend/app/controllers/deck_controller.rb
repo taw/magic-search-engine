@@ -58,9 +58,9 @@ class DeckController < ApplicationController
     if params[:deck_upload]
       upload = params[:deck_upload]
       @deck = upload.respond_to?(:read) ? upload.read : upload.to_s
-      parser = UserDeckParser.new(@deck)
-      if parser.valid?
-        @deck = parser.deck
+      preprocessor = UserDeckPreprocessor.new(@deck)
+      if preprocessor.valid?
+        @deck = preprocessor.text
       else
         @warnings = ["Can't parse uploaded deck."]
         @deck = ""
@@ -72,20 +72,20 @@ class DeckController < ApplicationController
     if @deck.present?
       parser = DeckParser.new($CardDatabase, @deck)
 
-      @cards = parser.main_cards.sort_by{|_,c|
-        c.is_a?(PhysicalCard) ? [0, c.name, c.set_code, c.number] : [1, c.name]
-      }
-      @sideboard = parser.sideboard_cards.sort_by{|_,c|
-        c.is_a?(PhysicalCard) ? [0, c.name, c.set_code, c.number] : [1, c.name]
-      }
-      @commander = parser.commander_cards.sort_by{|_,c|
-        c.is_a?(PhysicalCard) ? [0, c.name, c.set_code, c.number] : [1, c.name]
-      }
+      @cards = sort_parsed_section(parser.section_cards["Main Deck"])
+      @sideboard = sort_parsed_section(parser.section_cards["Sideboard"])
+      @commander = sort_parsed_section(parser.section_cards["Commander"])
+      @planar_deck = sort_parsed_section(parser.section_cards["Planar Deck"])
+      @scheme_deck = sort_parsed_section(parser.section_cards["Scheme Deck"])
+      @display_commander = sort_parsed_section(parser.section_cards["Display Commander"])
 
       @card_previews = [
         *@cards.map(&:last),
         *@sideboard.map(&:last),
         *@commander.map(&:last),
+        *@planar_deck.map(&:last),
+        *@scheme_deck.map(&:last),
+        *@display_commander.map(&:last),
       ].uniq.grep(PhysicalCard)
 
       choose_default_preview_card
@@ -97,6 +97,13 @@ class DeckController < ApplicationController
 
   def sort_section(section)
     section.sort_by{|_,c| [c.name, c.set_code, c.number] }
+  end
+
+  # Same, except a pasted deck can contain cards we know nothing about
+  def sort_parsed_section(section)
+    section.sort_by{|_,c|
+      c.is_a?(PhysicalCard) ? [0, c.name, c.set_code, c.number] : [1, c.name]
+    }
   end
 
   def choose_default_preview_card
