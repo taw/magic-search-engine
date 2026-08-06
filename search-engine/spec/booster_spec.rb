@@ -24,7 +24,9 @@ describe "is:booster" do
 
       set_pp = "#{set.name} [#{set.code}]"
       should_have_boosters = (
-        %W[mb1 cmr dbl clb 30a zne who sld clu pip slc tle ugin ss1 ss2 ss3].include?(set_code) or (
+        # hbg is st:alchemy, which is not a booster set type, but it was drafted
+        # on Arena out of its own boosters
+        %W[mb1 cmr dbl clb 30a zne who sld clu pip slc tle ugin ss1 ss2 ss3 hbg].include?(set_code) or (
           !(set_types_with_boosters & set.types).empty? and
           !%W[ced cei tsb itp s00 cp1 cp2 cp3 w16 w17 gk1 ppod ana oana fmb1 anb plst slx ulst sis md1 big h2r].include?(set.code)
         )
@@ -75,10 +77,13 @@ describe "is:booster" do
       }.map(&:code).to_set
     end
 
+    # Sets which only ever existed on Arena, so they have Arena boosters and no
+    # paper draft boosters at all. akr, klr and sir are Arena remasters, hbg is
+    # the Alchemy set built out of Battle for Baldur's Gate.
     # tpr is MTGO remaster
     # rvr is non-Arena remaster
-    let(:remaster_arena_sets) do
-      %W[akr klr sir].to_set
+    let(:arena_only_sets) do
+      %W[akr klr sir hbg].to_set
     end
 
     it do
@@ -89,7 +94,7 @@ describe "is:booster" do
           pack_factory.for(set_code, "arena-3").should_not(be_nil, "#{set_code} should have Arena boosters")
           pack_factory.for(set_code, "arena-4").should_not(be_nil, "#{set_code} should have Arena boosters")
           pack_factory.for(set_code, nil).should(be_nil, "#{set_code} should not have default boosters")
-        elsif remaster_arena_sets.include?(set_code)
+        elsif arena_only_sets.include?(set_code)
           pack_factory.for(set_code, "arena").should_not(be_nil, "#{set_code} should have Arena boosters")
           pack_factory.for(set_code, "draft").should(be_nil, "#{set_code} should not have draft boosters")
         elsif standard_arena_sets.include?(set_code)

@@ -1,0 +1,84 @@
+# Alchemy Horizons: Baldur's Gate was Magic Arena only, and Wizards never
+# published what its draft boosters held. Everything here is measured from the
+# 17lands public draft data, the pick 0 rows of both
+# https://17lands-public.s3.amazonaws.com/analysis_data/draft_data/draft_data_public.HBG.PremierDraft.csv.gz
+# https://17lands-public.s3.amazonaws.com/analysis_data/draft_data/draft_data_public.HBG.TradDraft.csv.gz
+# which are 33182 and 25380 packs, and agree with each other throughout.
+#
+# Every one of those packs was exactly 14 cards: 10 commons, 3 uncommons, and 1
+# rare or mythic at the usual 6:1. No basic land slot, no foil slot, and no card
+# ever appeared twice in the same pack.
+#
+# The 19 "specialize" legends (numbers 1-19) are the one oddity. Each is around
+# 1.1x as likely as another card of its rarity, and a pack never holds two of
+# them. Across both data sets 47.96%/48.33% of packs had none, 40.20%/39.59% had
+# one in an uncommon slot, and 11.84%/12.08% had one in the rare slot, while not
+# a single pack out of 58562 had two, where independent slots would give 4.76%.
+# So one slot at a time is handed over to them, which is what the pack below
+# does. The 12/10/3 chances are those measured rates rounded, and the two data
+# sets fall either side of the rounding.
+#
+# Their five colour variants (1b, 1g, 1r, 1u, 1w and so on) are conjured during
+# play and never come in packs, so the number filter drops them. It drops
+# double-faced backs like 85b too, which we also want. is:baseset already keeps
+# out the basics, the H17-H25 "Hag of ..." conjured cards, and the 900+ extras,
+# none of which are in packs either. What is left is exactly the 266 cards the
+# data shows: 101 commons, 85 uncommons, 60 rares, 20 mythics.
+#
+# 17lands names five of these cards as rebalanced - A-Sepulcher Ghoul,
+# A-Earthquake Dragon, A-Minsc & Boo, A-Baba Lysaga and A-Monster Manual. We have
+# A- printings for the first three and none at all for the last two, so the
+# sheets use the plain printings throughout. Same cards, same pack odds.
+queries:
+  # Conjured colour variants of the specialize legends, plus double-faced backs
+  in_packs: "-number:/^[0-9]+[bgruw]$/"
+  specialize: "{in_packs} number<=19"
+  regular: "{in_packs} number>=20"
+pack:
+  common: 10
+  # A pack has at most one specialize legend, in place of a regular card of the
+  # same rarity, so the three variants below are exclusive
+  specialize_slot:
+  - uncommon: 3
+    rare_mythic: 1
+    chance: 12
+  - specialize_uncommon: 1
+    uncommon: 2
+    rare_mythic: 1
+    chance: 10
+  - uncommon: 3
+    specialize_rare_mythic: 1
+    chance: 3
+sheets:
+  common:
+    # Colour balanced. Every one of the 58562 packs had at least one common of
+    # each colour, where an unbalanced sheet would leave a colour out of about
+    # half of them. Arena also caps a colour at 4 of the 10 commons, which this
+    # sheet does not, so it puts about 0.4% of packs at 5 of one colour where
+    # the real thing has none, and splits 1-vs-2 of a colour 38/41 where Arena
+    # measures 41/35. Colourless commons come out right either way.
+    balanced: true
+    query: "{regular} r:c"
+    count: 101
+  uncommon:
+    query: "{regular} r:u"
+    count: 75
+  rare_mythic:
+    any:
+    - query: "{regular} r:r"
+      count: 54
+      rate: 2
+    - query: "{regular} r:m"
+      count: 17
+      rate: 1
+  specialize_uncommon:
+    query: "{specialize} r:u"
+    count: 10
+  specialize_rare_mythic:
+    any:
+    - query: "{specialize} r:r"
+      count: 6
+      rate: 2
+    - query: "{specialize} r:m"
+      count: 3
+      rate: 1
