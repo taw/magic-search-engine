@@ -18,9 +18,10 @@ class DeckParser
   SECTION_BY_HEADER = SECTION_HEADERS.flat_map{|section, headers| headers.map{|header| [header, section]} }.to_h
 
   # Arena-style printing, like "Lion Sash (NEO) 232", or The List's
-  # "Amulet of Vigor (PLST) WWK-121". The number is mandatory - plenty of real
-  # cards, like "Bind (CMB1)", end with something that looks like a set code.
-  ARENA_PRINTING = /\A(.*?)\s*\((\w{2,6})\)\s+(\d+[a-z★†]?|[a-z0-9]+-\d+[a-z★†]?)\z/i
+  # "Amulet of Vigor (PLST) WWK-121". Cockatrice and TappedOut leave out the
+  # number. Only used for names we don't know - "Unquenchable Fury (TBTH)" is
+  # a card in one of our own decks, not Unquenchable Fury from tbth.
+  ARENA_PRINTING = /\A(.*?)\s*\((\w{2,6})\)(?:\s+(\d+[a-z★†]?|[a-z0-9]+-\d+[a-z★†]?))?\z/i
 
   # Arena-style finish markers: *F* foil, *E* etched, plus ones we have no use
   # for like TappedOut's *CMDR*
@@ -94,8 +95,9 @@ class DeckParser
       name.gsub!(TAGS, "")
       # This wins over a bracket, because a line with both is Archidekt, where
       # the bracket is a user-defined category and only the parens are a set
-      if name =~ ARENA_PRINTING
-        name, set_code, number = $1, $2, $3
+      if name =~ ARENA_PRINTING and !known_card?(name)
+        name, set_code = $1, $2
+        number = $3 if $3
       end
       # Nothing but a count, like the "15" of a "Sideboard: 15" header
       next if name.empty?
@@ -163,6 +165,10 @@ class DeckParser
       @sections["Sideboard"] << card
     end
     @sections = @sections.slice(*SECTIONS)
+  end
+
+  def known_card?(name)
+    !!@db.cards[normalize_name(name)]
   end
 
   def resolve_card_list(card_list)

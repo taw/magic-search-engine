@@ -421,8 +421,7 @@ describe DeckParser do
       1 Amulet of Vigor (plst) WWK-121 *F* [Ramp]
       1x Lightning Bolt (A25) 141 *E*
       1 Goblin Guide (ZEN) 125 *CMDR*
-      # A set code without a number stays part of the name
-      1 Bind (CMB1)
+      1x Black Lotus (LEA)
       EOF
     end
 
@@ -433,7 +432,7 @@ describe DeckParser do
         {name: "Amulet of Vigor", count: 1, set_code: "plst", number: "WWK-121", foil: true},
         {name: "Lightning Bolt", count: 1, set_code: "A25", number: "141", etched: true},
         {name: "Goblin Guide", count: 1, set_code: "ZEN", number: "125"},
-        {name: "Bind (CMB1)", count: 1},
+        {name: "Black Lotus", count: 1, set_code: "LEA"},
       ])
       parser.main_cards.should eq([
         [4, physical_by_query("counterspell e:cmr number=632", true)],
@@ -441,7 +440,33 @@ describe DeckParser do
         [1, physical_by_query("amulet of vigor e:plst", true)],
         [1, PhysicalCard.for(db.cards["lightning bolt"].printings.find{|c| c.set_code == "a25"}, false, true)],
         [1, physical_by_query("goblin guide e:zen")],
-        [1, physical_by_best("bind (cmb1)")],
+        [1, physical_by_query("black lotus e:lea")],
+      ])
+    end
+  end
+
+  # Battle the Horde ships with "Unquenchable Fury (TBTH)", so this is not just
+  # about playtest cards - our own export has to survive it
+  describe "a card name that ends with something shaped like a set code" do
+    let(:text) do
+      <<~EOF
+      1 Unquenchable Fury (TBTH)
+      2 Bind (CMB1)
+      # Only a name we don't know is read as a printing
+      3 Sol Ring (C21)
+      EOF
+    end
+
+    it do
+      parser.main.should eq([
+        {name: "Unquenchable Fury (TBTH)", count: 1},
+        {name: "Bind (CMB1)", count: 2},
+        {name: "Sol Ring", count: 3, set_code: "C21"},
+      ])
+      parser.main_cards.should eq([
+        [1, physical_by_best("unquenchable fury (tbth)")],
+        [2, physical_by_best("bind (cmb1)")],
+        [3, physical_by_query("sol ring e:c21")],
       ])
     end
   end
