@@ -23,6 +23,9 @@
 #   commander         - Commander Legends and friends: three 20-card packs
 #                       drafted into a 60-card singleton deck with a commander,
 #                       played in multiplayer pods.
+#   pick-two          - Through the Omenpaths on Arena: two cards are taken from
+#                       every pack instead of one, so three 14-card packs are
+#                       drafted seven picks at a time into a 42-card pool.
 # Sets whose *contents* are unusual but whose play is ordinary are not tagged:
 # the Un-sets, Mystery Booster, and Innistrad: Double Feature are all just
 # normal drafts over a strange card pool.
@@ -2589,6 +2592,15 @@ spm:
   - spm-play
   - spm-play
   - spm-play
+
+# Arena never got Marvel's Spider-Man. It got Through the Omenpaths instead,
+# which is the same set with in-universe names, and drafted it as Pick Two.
+om1:
+  play-variant: pick-two
+  arena-draft:
+  - om1-arena
+  - om1-arena
+  - om1-arena
 
 tla:
   sealed:

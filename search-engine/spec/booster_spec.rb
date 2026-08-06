@@ -79,11 +79,12 @@ describe "is:booster" do
 
     # Sets which only ever existed on Arena, so they have Arena boosters and no
     # paper draft boosters at all. akr, klr and sir are Arena remasters, hbg is
-    # the Alchemy set built out of Battle for Baldur's Gate.
+    # the Alchemy set built out of Battle for Baldur's Gate, om1 is the Universes
+    # Within Spider-Man, which is the only way that set was drafted digitally.
     # tpr is MTGO remaster
     # rvr is non-Arena remaster
     let(:arena_only_sets) do
-      %W[akr klr sir hbg].to_set
+      %W[akr klr sir hbg om1].to_set
     end
 
     it do

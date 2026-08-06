@@ -8,9 +8,19 @@ describe "Arena and MTGO Boosters" do
   let(:non_legal_boosters) { boosters.select{|b| b.code == "30a-draft" }}
   let(:non_digital_boosters) { boosters - arena_boosters - mtgo_boosters - non_legal_boosters }
 
+  # mtgjson gives Through the Omenpaths mtgo availability and nothing else, so
+  # none of its cards pass is:arena. It is an Arena set as much as an MTGO one:
+  # it launched there on 2025-09-23 as the Universes Within Spider-Man, and the
+  # 17lands public draft data om1-arena is measured from is Arena only. Drop this
+  # once mtgjson lists arena for the set.
+  let(:sets_mtgjson_does_not_know_are_on_arena) { Set["om1"] }
+
   it "Arena boosters contain only Arena cards" do
     arena_boosters.each do |booster|
-      booster.cards.all?(&:arena?).should(eq(true), "All cards for #{booster.code} #{booster.name} should be Arena cards")
+      not_on_arena = booster.cards.reject do |card|
+        card.arena? or sets_mtgjson_does_not_know_are_on_arena.include?(card.set_code)
+      end
+      not_on_arena.should(eq([]), "All cards for #{booster.code} #{booster.name} should be Arena cards")
     end
   end
 

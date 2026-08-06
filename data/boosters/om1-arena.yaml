@@ -1,0 +1,115 @@
+# Through the Omenpaths is the Arena-only twin of Marvel's Spider-Man: the same
+# 188 cards, released the same week (2025-09-23), with in-universe names printed
+# on them instead of the Marvel ones (Spectacular Spider-Man is Ademi of the
+# Silkchutes, Cosmic Spider-Man is Scions of the Ur-Spider, and so on). Arena
+# never got SPM itself, so this is where that set was drafted, and Wizards never
+# published what its packs held.
+#
+# Everything below is measured from the 17lands public draft data,
+# https://17lands-public.s3.amazonaws.com/analysis_data/draft_data/draft_data_public.OM1.PickTwoDraft.csv.gz
+# which is 59587 drafts run 2025-09-23 to 2025-10-25, so 178761 pick 0 packs.
+# 17lands only has the set under PickTwoDraft - there was no premier, no
+# traditional and no sealed - and it names the cards by their in-universe names,
+# which is why nothing in that file looks like a Spider-Man card.
+#
+# Pick Two draft is the unique part of the product, but it is only unusual in
+# how the pack is consumed, not in what it holds: 3 packs of 14, two cards taken
+# per pick, 7 picks a pack, 42 cards drafted. The pack itself is a Spider-Man
+# Play Booster with the paper-only parts stripped, exactly like the other Arena
+# play boosters here - no foils, no Booster Fun, and every one of the 178761
+# packs was 14 cards in one of only six common/uncommon/rare shapes, which is
+# what the slots below reconstruct.
+#
+# Note the indexer warns that the common sheet is too small to be balanced in
+# the 6-common variant. That variant is 1 pack in 24 and 6 is doable here (60
+# cards, 10 per colour, 10 with no single colour identity), so the warning is
+# expected.
+queries:
+  # The five common two-colour lands. They only ever come out of the land slot -
+  # each is 0.100 a pack, exactly a basic, where a common off the common sheet is
+  # 0.138. Vibrant Cityscape (188) is not one of them: at 0.139 it is an ordinary
+  # common, and Multiversal Passage (181) and Urban Retreat (187) are ordinary
+  # rares.
+  land_slot: "e:{set} number:182-186"
+  # Through the Omenpaths has no basic lands of its own in the card data, and
+  # neither Scryfall nor mtgjson has the ones Arena actually deals, so the plain
+  # Spider-Man basics stand in for them. Half of all land slots is a basic, and
+  # the five are equally likely, which is all the data says about them.
+  basic_land: "e:spm number:194-198"
+pack:
+  land: 1
+  common_bonus:
+  - common: 7
+    chance: 23
+  - common: 6
+    bonus_sheet: 1
+    chance: 1
+  uncommon: 3
+  rare_mythic: 1
+  wildcard: 1
+  foil_replacement: 1
+sheets:
+  # Colour balanced. A pack holds 1.381 white commons with a variance of 0.341,
+  # where commons drawn independently would vary by about 1.1, and the same holds
+  # for every colour. Modelling the 7 common slots as balanced and the two
+  # flexible slots as independent predicts 0.350, which is as close as this
+  # engine's balancing gets.
+  common:
+    balanced: true
+    query: "r:c -{land_slot}"
+    count: 60
+  uncommon:
+    query: "r:u"
+    count: 55
+  # Not the usual 2:1 per card. Mythics are 14.284% of every rare-or-mythic card
+  # dealt (35134 of 245969), which is 1/7 to within a fifth of a standard error,
+  # where 2:1 per card over 53 rares and 15 mythics would be 12.4%.
+  rare_mythic:
+    any:
+    - use: rare
+      chance: 6
+      count: 53
+    - use: mythic
+      chance: 1
+      count: 15
+  land:
+    any:
+    - rawquery: "{land_slot}"
+      chance: 1
+      count: 5
+    - rawquery: "{basic_land}"
+      chance: 1
+      count: 5
+  # The bonus sheet, 40 older cards brought to Arena, flat across its rarities:
+  # every one of the 40 is 0.00104 a pack whether it is the common Ponder or the
+  # mythic Wedding Ring. That totals 1/24.0 packs, matching paper Spider-Man's
+  # source material slot, so it replaces a common the same way.
+  bonus_sheet:
+    rawquery: "e:omb"
+    count: 40
+  # The wildcard and the (nonfoil on Arena) foil slot are both any-rarity, and
+  # unlike a pair of slots that only differ in rarity, these two are recoverable:
+  # the six pack shapes give six equations for their four free parameters. The
+  # fit is 71/4/25 and 5:2:1, and it reproduces all six shapes to within a
+  # standard error (chi-square 1.6 on 5 degrees of freedom). Which of the two is
+  # which comes from paper Spider-Man, where the wildcard slot is the
+  # common-heavy one and the foil slot is the one with a quarter uncommons.
+  wildcard:
+    any:
+    - use: common
+      chance: 71
+    - use: uncommon
+      chance: 4
+    - use: rare_mythic
+      chance: 25
+  # Paper's traditional foil slot. Arena has no foils, so it stays as a second
+  # nonfoil slot with the same contents.
+  foil_replacement:
+    foil: false
+    any:
+    - use: common
+      chance: 5
+    - use: uncommon
+      chance: 2
+    - use: rare_mythic
+      chance: 1
