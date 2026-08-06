@@ -1,0 +1,91 @@
+# Final Fantasy
+# Arena Play Booster
+#
+# Final Fantasy's land slot is not basics-only (dual lands are most of it), so Arena
+# keeps it, basics included, and packs stay at 14 cards. The traditional foil slot
+# survives as a second nonfoil slot. Booster Fun (woodblock / character / artist /
+# borderless) does not exist on Arena, so those branches fold into the plain rarities.
+# Through the Ages (FCA) is a real bonus sheet and stays.
+# Verified against 17lands public FIN PremierDraft data: 31186 packs, 14 cards, 0.335
+# basics per pack.
+superfilter: "-variant:misprint"
+queries:
+  dual_land: 'r:c t:land -t:basic -name:"Adventurers Inn" -name:"Crossroads Village"'
+  uncommon_without_cid: "r:u -cid"
+  regular_cid: "e:{set} cid -frame:extendedart"
+pack:
+  land: 1
+  common_ta_slot:
+  - common: 7
+    chance: 2
+  - common: 6
+    through_the_ages: 1
+    chance: 1 # 1 in 3 boosters have a Through the Ages card
+  uncommon: 3
+  wildcard: 1
+  rare_mythic: 1
+  foil_replacement: 1
+sheets:
+  common:
+    query: "r:c -{dual_land} -t:basic"
+    count: 80
+  uncommon:
+    any:
+    - query: "{uncommon_without_cid}"
+      count: 108
+      chance: 10768
+    - rawquery: "{regular_cid}"
+      count: 15
+      chance: 997
+  rare_mythic:
+    any:
+    - query: "r:r"
+      count: 74
+      chance: 885
+    - query: "r:m"
+      count: 20
+      chance: 115
+  land:
+    # The dual : basics ratio here is fitted to Arena data (0.335 basics per pack).
+    # fin-play.yaml still carries 55:45, which gives 0.450.
+    any:
+    - query: "{dual_land}"
+      chance: 665
+      count: 10
+    - rawquery: "e:{set} t:basic number<519"
+      chance: 335
+      count: 16
+  through_the_ages:
+    # fca/63 is a Booster Fun printing of Strixhaven Stadium, which also has a plain
+    # printing in fca, so Arena uses that one instead. It is the only such duplicate
+    # in the set - a blanket -promo:boosterfun would empty the sheet, because mtgjson
+    # tags every card on a bonus sheet as boosterfun.
+    any:
+    - rawquery: "e:fca r:u -variant:misprint -number:63"
+      chance: 6325
+      count: 16
+    - rawquery: "e:fca r:r -is:alchemy"
+      chance: 2975
+      count: 32
+    - rawquery: "e:fca r:m"
+      chance: 700
+      count: 15
+  wildcard:
+    any:
+    - use: common
+      chance: 193
+    - use: uncommon
+      chance: 640
+    - use: rare_mythic
+      chance: 167
+  # Paper's traditional foil slot. Arena has no foils, so it stays as a second
+  # nonfoil slot with the same contents.
+  foil_replacement:
+    foil: false
+    any:
+    - use: common
+      chance: 5585
+    - use: uncommon
+      chance: 3665
+    - use: rare_mythic
+      chance: 750

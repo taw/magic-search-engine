@@ -1,0 +1,77 @@
+# Avatar: The Last Airbender
+# Arena Play Booster
+#
+# Avatar's land slot is not basics-only (dual lands are half of it), so Arena keeps it,
+# basics included, and packs stay at 14 cards. The traditional foil slot survives as a
+# second nonfoil slot. Booster Fun does not exist on Arena, so those branches collapse
+# into the plain rarities and the scene uncommons drop out of the uncommon slot.
+# Source material (TLE) is a real bonus sheet and stays.
+# Verified against 17lands public TLA PremierDraft data: 21512 packs, 14 cards, 0.498
+# basics per pack.
+queries:
+  dual_land: "e:{set} number:265,267,269,271-275,279,280"
+  basic_land: "e:{set} number:282-286"
+  appa_land: "e:{set} number:287-291"
+  journey_land: "e:{set} number:292-296"
+  source_material: "e:TLE number:1-61"
+pack:
+  land: 1
+  common_source:
+  - common: 7
+    chance: 25
+  - common: 6
+    source_material: 1
+    chance: 1
+  uncommon: 3
+  wildcard: 1
+  rare_mythic: 1
+  foil_replacement: 1
+sheets:
+  common:
+    query: "r:c -{dual_land}"
+    count: 81
+  uncommon:
+    query: "r:u"
+    count: 110
+  # Mythics are not at the usual half-of-a-rare per-card rate here. Measured over
+  # 21512 Arena packs, each mythic shows up 0.579x as often as each rare, not 0.500x
+  # (compare eoe 0.496, dft 0.502, sos 0.503, msh 0.510). ecl behaves the same way at
+  # 0.582. Whether paper shares this is untested - tla-play.yaml still uses 2:1.
+  rare_mythic:
+    any:
+    - use: rare
+      rate: 50
+    - use: mythic
+      rate: 29
+  land:
+    any:
+    # The appa and journey lands are Booster Fun basics, so on Arena their share of
+    # the slot falls back to the plain basics. Measured 0.498 basics per pack.
+    - rawquery: "{dual_land}"
+      chance: 40
+      count: 10
+    - rawquery: "{basic_land}"
+      chance: 40
+      count: 5
+  source_material:
+    rawquery: "{source_material}"
+    count: 61
+  wildcard:
+    any:
+    - use: common
+      chance: 43
+    - use: uncommon
+      chance: 699
+    - use: rare_mythic
+      chance: 258
+  # Paper's traditional foil slot. Arena has no foils, so it stays as a second
+  # nonfoil slot with the same contents.
+  foil_replacement:
+    foil: false
+    any:
+    - use: common
+      chance: 546
+    - use: uncommon
+      chance: 373
+    - use: rare_mythic
+      chance: 81

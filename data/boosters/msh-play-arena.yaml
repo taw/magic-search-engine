@@ -1,0 +1,75 @@
+# Marvel Super Heroes
+# Arena Play Booster
+#
+# Marvel Super Heroes' land slot is not basics-only (dual and city lands are in it), so
+# Arena keeps it, basics included, and packs stay at 14 cards. The traditional foil
+# slot survives as a second nonfoil slot. Booster Fun does not exist on Arena, so those
+# branches collapse into the plain rarities. Source material (MAR) is a real bonus
+# sheet and stays.
+# Verified against 17lands public MSH PremierDraft data: 30411 packs, 14 cards, 0.499
+# basics per pack.
+queries:
+  dual_land: "e:{set} number:257-259,262,265,268,270-273"
+  city_calm_chaos: "e:{set} number:277-286"
+  basic_land: "e:{set} number:287-296"
+  source_material: "e:MAR number:41-100"
+pack:
+  land: 1
+  common_source:
+  - common: 7
+    chance: 23
+  - common: 6
+    source_material: 1
+    chance: 1
+  uncommon: 3
+  wildcard: 1
+  rare_mythic: 1
+  foil_replacement: 1
+sheets:
+  common:
+    query: "r:c -{dual_land}"
+    count: 81
+  uncommon:
+    query: "r:u"
+    count: 100
+  rare_mythic:
+    any:
+    - use: rare
+      chance: 2 * 60
+    - use: mythic
+      chance: 1 * 25
+  land:
+    any:
+    - rawquery: "{basic_land}"
+      rate: 1
+      count: 10
+    - rawquery: "{city_calm_chaos}"
+      rate: 1
+      count: 10
+    - rawquery: "{dual_land}"
+      rate: 2
+      count: 10
+  source_material:
+    rawquery: "{source_material}"
+    count: 60
+  # The paper wildcard and foil slots each have a small borderless-land branch; those
+  # are Booster Fun, so on Arena the chance folds into the common branch.
+  wildcard:
+    any:
+    - use: common
+      chance: 140
+    - use: uncommon
+      chance: 667
+    - use: rare_mythic
+      chance: 193
+  # Paper's traditional foil slot. Arena has no foils, so it stays as a second
+  # nonfoil slot with the same contents.
+  foil_replacement:
+    foil: false
+    any:
+    - use: common
+      chance: 617
+    - use: uncommon
+      chance: 308
+    - use: rare_mythic
+      chance: 75

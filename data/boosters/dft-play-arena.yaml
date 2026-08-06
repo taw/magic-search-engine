@@ -1,0 +1,62 @@
+# Aetherdrift
+# Arena Play Booster
+#
+# Aetherdrift's land slot is not basics-only (half of it is common dual lands), so
+# Arena keeps it, basics included, and packs stay at 14 cards. The traditional foil
+# slot survives as a second nonfoil slot. Booster Fun does not exist on Arena, so the
+# showcase sheets collapse to the plain rarities.
+# Verified against 17lands public DFT PremierDraft data: 33377 packs, 14 cards, 0.498
+# basics per pack.
+queries:
+  dual_land: "e:{set} t:land r:c -raceway -market"
+  normal_basic: "e:{set} number:277-291"
+  driver_basic: "e:{set} number:272-276"
+pack:
+  land: 1
+  list_slot:
+  - common: 7
+    chance: 63
+  - common: 6
+    special_guest: 1
+    chance: 1
+  uncommon: 3
+  rare_mythic: 1
+  wildcard: 1
+  foil_replacement: 1
+sheets:
+  common:
+    query: "r:c -{dual_land} -t:basic"
+    count: 81
+  land:
+    any:
+    - query: "{dual_land}"
+      count: 10
+      chance: 4
+    - query: "{normal_basic}"
+      count: 15
+      chance: 3
+    - query: "{driver_basic}"
+      count: 5
+      chance: 1
+  wildcard:
+    any:
+    - use: common
+      chance: 125
+    - use: uncommon
+      chance: 667
+    - use: rare_mythic
+      chance: 208
+  # Paper's traditional foil slot. Arena has no foils, so it stays as a second
+  # nonfoil slot with the same contents.
+  foil_replacement:
+    foil: false
+    any:
+    - use: common
+      chance: 610
+    - use: uncommon
+      chance: 305
+    - use: rare_mythic
+      chance: 85
+  special_guest:
+    set: spg
+    code: "DFT"

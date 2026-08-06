@@ -50,6 +50,9 @@ describe "is:booster" do
       db.sets.values.select{|s|
         (s.types.include?("standard") or s.code == "ltr") and
         s.types.include?("booster") and
+        # Spoiler season sets have no Arena Limited yet, and their card data is still
+        # in flux, so they'd only produce warnings we can't act on until release.
+        !s.types.include?("preview") and
         s.printings.any?(&:arena?) and
         (
           # older ones keep getting into remasters and I don't want to maintain a list here, so date cutoff
@@ -57,7 +60,18 @@ describe "is:booster" do
           s.release_date >= Date.parse("2017-09-29") or
           s.code == "ktk"
         ) and
-        !%W[big].include?(s.code)
+        # spm never had an Arena Limited release of its own. Wizards could not put the
+        # Marvel sets on digital platforms, and shipped a renamed equivalent instead:
+        # "One 2025 set, Magic: The Gathering | Marvel's Spider-Man (as well as future
+        # Marvel sets) will not be coming to digital Magic platforms. Instead, we will
+        # release our first Through the Omenpaths set on September 23."
+        # https://magic.wizards.com/en/news/announcements/through-the-omenpaths-and-digital-universes-beyond-updates
+        # That Arena set is om1 (Through the Omenpaths), drafted as Pick-Two Draft, not
+        # as spm play boosters. spm printings only became Arena-available in June 2026,
+        # when Wizards swapped Omenpaths collections over to the real Marvel cards, so
+        # the set trips the arena? check without ever having been draftable under this
+        # code. 17lands has OM1 PickTwoDraft data and nothing for SPM in any format.
+        !%W[big spm].include?(s.code)
       }.map(&:code).to_set
     end
 

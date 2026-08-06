@@ -1,0 +1,68 @@
+# Tarkir: Dragonstorm
+# Arena Play Booster
+#
+# Tarkir's land slot is not basics-only (it is mostly common dual lands), so Arena
+# keeps it, basics included, and packs stay at 14 cards. The traditional foil slot
+# survives as a second nonfoil slot. Booster Fun does not exist on Arena, so those
+# branches are folded into the plain rarities in proportion to the rest of the slot.
+# Verified against 17lands public TDM PremierDraft data: 32782 packs, 14 cards, 0.168
+# basics per pack.
+superfilter: "-is:reversibleback"
+queries:
+  dual_land: "e:{set} t:land r:c -t:basic -wilds"
+  presence_land: "e:{set} number:272-276"
+  basic_land: "e:{set} number:277-286"
+pack:
+  land: 1
+  common_special_guest:
+  - common: 7
+    chance: 63
+  - common: 6
+    special_guest: 1
+    chance: 1
+  uncommon: 3
+  wildcard: 1
+  rare_mythic: 1
+  foil_replacement: 1
+sheets:
+  common:
+    query: "r:c -{dual_land} -t:basic"
+    count: 81
+  uncommon:
+    query: "r:u"
+    count: 100
+  land:
+    # The dual : basics ratio here is fitted to Arena data (0.168 basics per pack).
+    # tdm-play.yaml still carries the old 10:1:1 weighting, which gives 0.130.
+    any:
+    - query: "{basic_land}"
+      count: 10
+      rate: 2
+    - query: "{presence_land}"
+      count: 5
+      rate: 2
+    - query: "{dual_land}"
+      count: 10
+      rate: 15
+  wildcard:
+    any:
+    - use: common
+      chance: 177
+    - use: uncommon
+      chance: 596
+    - use: rare_mythic
+      chance: 227
+  # Paper's traditional foil slot. Arena has no foils, so it stays as a second
+  # nonfoil slot with the same contents.
+  foil_replacement:
+    foil: false
+    any:
+    - use: common
+      chance: 588
+    - use: uncommon
+      chance: 333
+    - use: rare_mythic
+      chance: 79
+  special_guest:
+    set: spg
+    code: "TDM"

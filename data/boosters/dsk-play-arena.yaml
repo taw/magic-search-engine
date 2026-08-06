@@ -1,0 +1,61 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-duskmourn
+#
+# Duskmourn's land slot is not basics-only (half of it is common dual lands), so Arena
+# keeps it, basics included, and packs stay at 14 cards. The traditional foil slot
+# survives as a second nonfoil slot. Verified against 17lands public DSK PremierDraft
+# data: 32415 packs, all 14 cards, 0.497 basics per pack.
+pack:
+  land: 1
+  list_slot:
+  - common: 7
+    chance: 63
+  - common: 6
+    special_guest: 1
+    chance: 1
+  uncommon: 3
+  rare_mythic: 1
+  wildcard: 1
+  foil_replacement: 1
+sheets:
+  common:
+    query: "r:c -(t:land -terramorphic)"
+    count: 81
+  uncommon:
+    query: "r:u"
+    count: 100
+  land:
+    # Article: full-art manor lands 16.7%, regular basic lands 33.3%,
+    # common dual lands 50% (1:2:3).
+    any:
+    - query: "t:basic is:fullart"
+      count: 5
+      chance: 1
+    - query: "t:basic -is:fullart"
+      count: 10
+      chance: 2
+    - query: "r:c t:land -terramorphic"
+      count: 10
+      chance: 3
+  # Same weights as dsk-play; see there for how they were fitted.
+  wildcard:
+    any:
+    - chance: 181
+      use: common
+    - chance: 671
+      use: uncommon
+    - chance: 151
+      use: rare_mythic
+  # Paper's traditional foil slot. Arena has no foils, so it stays as a second
+  # nonfoil slot with the same contents.
+  foil_replacement:
+    foil: false
+    any:
+    - chance: 580
+      use: common
+    - chance: 320
+      use: uncommon
+    - chance: 100
+      use: rare_mythic
+  special_guest:
+    set: spg
+    code: "DSK"
