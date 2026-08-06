@@ -350,6 +350,102 @@ describe DeckParser do
     end
   end
 
+  describe "arena format" do
+    let(:text) do
+      <<~EOF
+      About
+      Name Death & Taxes
+
+      Companion
+      1 Yorion, Sky Nomad (IKO) 232
+
+      Deck
+      2 Arid Mesa (MH2) 244
+      4 Swords to Plowshares (STA) 8
+      1 Lightning Bolt (A25) 141
+
+      Sideboard
+      2 Containment Priest (M21) 13
+      1 Yorion, Sky Nomad (IKO) 232
+      EOF
+    end
+
+    it do
+      parser.main.should eq([
+        {name: "Arid Mesa", count: 2, set_code: "MH2", number: "244"},
+        {name: "Swords to Plowshares", count: 4, set_code: "STA", number: "8"},
+        {name: "Lightning Bolt", count: 1, set_code: "A25", number: "141"},
+      ])
+      # Arena lists its companion twice, we only want it once
+      parser.side.should eq([
+        {name: "Containment Priest", count: 2, set_code: "M21", number: "13"},
+        {name: "Yorion, Sky Nomad", count: 1, set_code: "IKO", number: "232"},
+      ])
+      # Arena numbers cards its own way, and a number we don't have just falls
+      # back to the best printing in the set it asked for
+      parser.main_cards.should eq([
+        [2, physical_by_query("arid mesa e:mh2 number=244")],
+        [4, physical_by_query("swords to plowshares e:sta number=10")],
+        [1, physical_by_query("lightning bolt e:a25")],
+      ])
+    end
+  end
+
+  describe "companion not repeated in the sideboard" do
+    let(:text) do
+      <<~EOF
+      Companion
+      1 Yorion, Sky Nomad (IKO) 232
+
+      Deck
+      1 Arid Mesa (MH2) 244
+
+      Sideboard
+      2 Containment Priest (M21) 13
+      EOF
+    end
+
+    it do
+      parser.side.should eq([
+        {name: "Containment Priest", count: 2, set_code: "M21", number: "13"},
+        {name: "Yorion, Sky Nomad", count: 1, set_code: "IKO", number: "232"},
+      ])
+    end
+  end
+
+  describe "other programs writing arena-style lines" do
+    let(:text) do
+      <<~EOF
+      4 Counterspell (CMR) 632 *F* #TargetedDisruption
+      1 Ashnod's Altar (ema) 218 *F* [Mana Advantage]
+      1 Amulet of Vigor (plst) WWK-121 *F* [Ramp]
+      1x Lightning Bolt (A25) 141 *E*
+      1 Goblin Guide (ZEN) 125 *CMDR*
+      # A set code without a number stays part of the name
+      1 Bind (CMB1)
+      EOF
+    end
+
+    it do
+      parser.main.should eq([
+        {name: "Counterspell", count: 4, set_code: "CMR", number: "632", foil: true},
+        {name: "Ashnod's Altar", count: 1, set_code: "ema", number: "218", foil: true},
+        {name: "Amulet of Vigor", count: 1, set_code: "plst", number: "WWK-121", foil: true},
+        {name: "Lightning Bolt", count: 1, set_code: "A25", number: "141", etched: true},
+        {name: "Goblin Guide", count: 1, set_code: "ZEN", number: "125"},
+        {name: "Bind (CMB1)", count: 1},
+      ])
+      parser.main_cards.should eq([
+        [4, physical_by_query("counterspell e:cmr number=632", true)],
+        [1, physical_by_query("ashnod's altar e:ema", true)],
+        [1, physical_by_query("amulet of vigor e:plst", true)],
+        [1, PhysicalCard.for(db.cards["lightning bolt"].printings.find{|c| c.set_code == "a25"}, false, true)],
+        [1, physical_by_query("goblin guide e:zen")],
+        [1, physical_by_best("bind (cmb1)")],
+      ])
+    end
+  end
+
   # Whatever we hand out has to be something we can take back
   describe "it parses back every deck we export" do
     def count_cards(cards)

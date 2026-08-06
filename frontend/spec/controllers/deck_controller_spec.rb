@@ -147,6 +147,17 @@ RSpec.describe DeckController, type: :controller do
       ]
     end
 
+    it "shows an arena decklist you upload" do
+      path = "#{__dir__}/decks/arena.txt"
+      post "visualize", params: {deck_upload: Rack::Test::UploadedFile.new(path)}
+      assert_response 200
+      assert_equal deck_list, [
+        "1 Lightning Bolt {R}",
+        "4 Swords to Plowshares {W}",
+        "2 Arid Mesa",
+      ]
+    end
+
     it "deals with unknown cards" do
       post "visualize", params: {deck: "40x Lightning Bolt\n20x Pod of Greed"}
       assert_response 200

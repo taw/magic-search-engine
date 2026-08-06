@@ -3,15 +3,31 @@ class DeckParser
   # A header has to be the whole line (or the part before the colon), so these
   # cannot eat a card name.
   SECTION_HEADERS = {
-    "Main Deck" => ["main deck", "maindeck", "main", "deck"],
+    "Main Deck" => ["main deck", "maindeck", "mainboard", "main", "deck", "decklist"],
     "Commander" => ["commander", "commanders"],
     "Sideboard" => ["sideboard", "side board", "sb"],
     "Planar Deck" => ["planar deck", "planes"],
     "Scheme Deck" => ["scheme deck", "schemes"],
     "Display Commander" => ["display commander"],
+    # Sections that only exist while parsing, see #finish_scratch_sections!
+    "Companion" => ["companion"],
+    "About" => ["about"],
   }
-  SECTIONS = SECTION_HEADERS.keys
+  SCRATCH_SECTIONS = ["Companion", "About"]
+  SECTIONS = SECTION_HEADERS.keys - SCRATCH_SECTIONS
   SECTION_BY_HEADER = SECTION_HEADERS.flat_map{|section, headers| headers.map{|header| [header, section]} }.to_h
+
+  # Arena-style printing, like "Lion Sash (NEO) 232", or The List's
+  # "Amulet of Vigor (PLST) WWK-121". The number is mandatory - plenty of real
+  # cards, like "Bind (CMB1)", end with something that looks like a set code.
+  ARENA_PRINTING = /\A(.*?)\s*\((\w{2,6})\)\s+(\d+[a-z★†]?|[a-z0-9]+-\d+[a-z★†]?)\z/i
+
+  # Arena-style finish markers: *F* foil, *E* etched, plus ones we have no use
+  # for like TappedOut's *CMDR*
+  MARKER = /\s*\*(\w+)\*/
+
+  # Moxfield tags: "#TargetedDisruption", "#!CollectionTag"
+  TAGS = /\s+#!?\S+/
 
   # For testing only:
   attr_reader :lines, :sections
@@ -28,7 +44,7 @@ class DeckParser
 
   # This method is really messy, but is has decent test coverage
   def preparse
-    @sections = SECTIONS.to_h{|section| [section, []] }
+    @sections = SECTION_HEADERS.keys.to_h{|section| [section, []] }
     current = @sections["Main Deck"]
     @lines.each do |line|
       foil = nil
@@ -37,12 +53,12 @@ class DeckParser
       next if line =~ /\A\s*[#\/]/
       # In some decklist formats empty line separates sideboard
       next if line.empty?
-      header = section_header(line)
+      header = DeckParser.section_header(line)
       if header
         current = @sections[header]
         next
       end
-      prefix, rest = section_prefixed(line)
+      prefix, rest = DeckParser.section_prefixed(line)
       if prefix
         target, line = @sections[prefix], rest
       else
@@ -51,7 +67,7 @@ class DeckParser
       if line =~ /\A(\d+)x?\s*(.*)/
         num, name = $1.to_i, $2
       else
-        num, name = 1, line
+        num, name = 1, line.dup
       end
       while name.sub!(/\s*\[(.*?)\]/, "")
         tag = $1
@@ -67,10 +83,25 @@ class DeckParser
           set_code = tag
         end
       end
+      while name.sub!(MARKER, "")
+        case $1
+        when /\Af\z/i
+          foil = true
+        when /\Ae\z/i
+          etched = true
+        end
+      end
+      name.gsub!(TAGS, "")
+      # This wins over a bracket, because a line with both is Archidekt, where
+      # the bracket is a user-defined category and only the parens are a set
+      if name =~ ARENA_PRINTING
+        name, set_code, number = $1, $2, $3
+      end
       # Nothing but a count, like the "15" of a "Sideboard: 15" header
       next if name.empty?
       target << {name: name, count: num, set_code: set_code, number: number, foil: foil, etched: etched}.compact
     end
+    finish_scratch_sections!
     commander_detection_heuristic!
   end
 
@@ -102,25 +133,36 @@ class DeckParser
     Deck.new(@section_cards)
   end
 
-  private
-
   # Section header on a line of its own, like "Sideboard", "sideboard:",
   # "Planar Deck", or "Sideboard (15)"
-  def section_header(line)
+  def self.section_header(line)
     return unless line =~ /\A([a-z][a-z ]*?)\s*(?::\s*\d*|\(\s*\d+\s*\))?\z/i
     SECTION_BY_HEADER[normalize_header($1)]
   end
 
   # Section name used as a prefix on every card in it, like "SB: Taiga"
   # or "COMMANDER: 1 The Fourth Doctor"
-  def section_prefixed(line)
+  def self.section_prefixed(line)
     return unless line =~ /\A([a-z][a-z ]*?)\s*:\s*(\S.*)\z/i
     section = SECTION_BY_HEADER[normalize_header($1)]
     [section, $2] if section
   end
 
-  def normalize_header(header)
+  def self.normalize_header(header)
     header.downcase.split.join(" ")
+  end
+
+  private
+
+  # A companion is a sideboard card, and Arena lists it in both sections,
+  # so only take it if the sideboard doesn't have it already. Nothing in the
+  # About section is about cards.
+  def finish_scratch_sections!
+    @sections["Companion"].each do |card|
+      next if @sections["Sideboard"].any?{|other| normalize_name(other[:name]) == normalize_name(card[:name]) }
+      @sections["Sideboard"] << card
+    end
+    @sections = @sections.slice(*SECTIONS)
   end
 
   def resolve_card_list(card_list)

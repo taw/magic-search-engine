@@ -57,12 +57,19 @@ class UserDeckPreprocessor
 
     # MTGO text Format marks sideboard with empty line
     # Every other text format ignores empty lines
-    if @data !~ /^\s*(sideboard|SB:)/i and @data.split(/\n\n/).size == 2
+    # Arena-style lists use empty lines between sections they name themselves,
+    # and their second block is usually the deck, not the sideboard
+    if !labelled_sections? and @data.split(/\n\n/).size == 2
       main, side = @data.split(/\n\n/, 2)
       side = side.lines.map{|x| "SB: #{x}" }.join
       @data = "#{main}\n\n#{side}"
     end
 
     @text = @data
+  end
+
+  def labelled_sections?
+    return true if @data =~ /^\s*SB:/i
+    @data.lines.any?{|line| DeckParser.section_header(line.strip) }
   end
 end

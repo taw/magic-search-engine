@@ -71,6 +71,15 @@ describe UserDeckPreprocessor do
     end
   end
 
+  # Two blocks, but the second one is the deck, not a sideboard
+  describe "arena .txt" do
+    let(:filename) { "arena.txt" }
+    it do
+      preprocessor.should be_valid
+      preprocessor.text.should eq(path.read)
+    end
+  end
+
   describe "cockatrice .cod xml" do
     let(:filename) { "knights.cod" }
     let(:output) { Pathname("#{__dir__}/decklists/knights.out").read }
