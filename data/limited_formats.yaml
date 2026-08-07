@@ -44,17 +44,46 @@
 #
 # Sealed pools
 # ------------
-# Until Conflux, sealed used one tournament pack plus booster packs; from
-# Alara Reborn on it is six boosters. https://mtg.wiki/page/Sealed_Deck
-# The `sealed` key is only filled in for the six-booster era -- the exact
-# tournament-pack-era pool is not something we have a reliable source for.
+# Until Conflux, sealed was one tournament pack plus two boosters; from Alara
+# Reborn on it is six boosters. The Morningtide primer says both numbers in one
+# sentence, which is the only official statement of the old one we have found:
+#   "you will get one Lorwyn tournament pack and three Morningtide boosters to
+#   create a deck (Sealed Deck tournaments usually provide only two boosters,
+#   but it's the Prerelease!)"
+#   https://magic.wizards.com/en/news/feature/morningtide-prerelease-primer
+# A tournament pack is 75 cards, 45 playable plus 30 basic lands. The DCI priced
+# one at three boosters, in the Two-Headed Giant recommendation of "one
+# tournament pack and four boosters or seven boosters" (Magic DCI Floor Rules
+# effective 2006-12-20, section 170).
+# https://web.archive.org/web/20071231072040/http://www.wizards.com/dci/downloads/MTG_FLR_1Dec06_EN.txt
+#
+# Don't go looking for this in the rules documents - it isn't there. The Magic
+# DCI Floor Rules (checked 2002, 2004-09, 2004-12, 2005-08, 2006-12, 2009-01,
+# 2009-04) and the DCI Universal Tournament Rules (2004-06, 2006-01, 2006-12,
+# 2007-06) recommend product for team and Two-Headed Giant events only; for an
+# individual the UTR says just "each player receives an assortment of sealed
+# product". They are all on the Wayback Machine under wizards.com/dci/downloads.
+#
+# The `sealed` key is only filled in for the six-booster era so far. The
+# starter-deck era before Urza's Saga (60-card starter decks, not 75-card
+# tournament packs) is a different thing again, and is unsourced.
 #
 # Prereleases
 # -----------
-# Tournament-pack era prereleases handed out one tournament pack of the block's
-# large set plus three boosters of the new set (confirmed for Planar Chaos and
-# Future Sight; assumed to hold for the rest of that era).
-# https://magic.wizards.com/en/articles/archive/feature/planar-chaos-prerelease-primer-2007-01-15
+# Tournament-pack era prereleases were one tournament pack plus boosters, and
+# the count depends on the size of the set: a small set handed out the block's
+# large-set tournament pack plus THREE boosters of the new set, a large set its
+# own tournament pack plus TWO of its own - the same pool as an ordinary sealed
+# event. The quotation each set's pool comes from is in a comment above it.
+# Sets with no comment are unverified: their primer either predates the ones
+# that survive online (2003) or isn't at a findable URL, and they are entered as
+# tournament pack plus three, which is a guess for the large ones among them.
+#
+# Two things stop this from being a rule you can apply blind. Shadowmoor was
+# "one tournament pack, and either two or three Shadowmoor boosters, depending
+# on your tournament organizer", and Dissension notes "there might be some parts
+# of the world where you only get two packs, but by and large it is three".
+# So each set wants its own source rather than a bulk edit.
 #
 # The prerelease card was a fixed giveaway and not part of the sealed pool until
 # Return to Ravnica, which is where `unplayable-promo` gives way to
@@ -131,6 +160,9 @@ ugl:
 
 usg:
   prerelease-sealed:
+    # Unverified: no primer for this set survives at a findable URL. Large
+    # sets of this era handed out two boosters, not three (see mrd, tsp,
+    # lrw), so this entry is probably one booster too generous.
     boosters:
     - 1x usg-tournament
     - 3x usg-draft
@@ -173,6 +205,9 @@ uds:
 
 mmq:
   prerelease-sealed:
+    # Unverified: no primer for this set survives at a findable URL. Large
+    # sets of this era handed out two boosters, not three (see mrd, tsp,
+    # lrw), so this entry is probably one booster too generous.
     boosters:
     - 1x mmq-tournament
     - 3x mmq-draft
@@ -209,6 +244,9 @@ pcy:
 
 inv:
   prerelease-sealed:
+    # Unverified: no primer for this set survives at a findable URL. Large
+    # sets of this era handed out two boosters, not three (see mrd, tsp,
+    # lrw), so this entry is probably one booster too generous.
     boosters:
     - 1x inv-tournament
     - 3x inv-draft
@@ -251,6 +289,9 @@ apc:
 
 ody:
   prerelease-sealed:
+    # Unverified: no primer for this set survives at a findable URL. Large
+    # sets of this era handed out two boosters, not three (see mrd, tsp,
+    # lrw), so this entry is probably one booster too generous.
     boosters:
     - 1x ody-tournament
     - 3x ody-draft
@@ -287,6 +328,9 @@ jud:
 
 ons:
   prerelease-sealed:
+    # Unverified: no primer for this set survives at a findable URL. Large
+    # sets of this era handed out two boosters, not three (see mrd, tsp,
+    # lrw), so this entry is probably one booster too generous.
     boosters:
     - 1x ons-tournament
     - 3x ons-draft
@@ -299,6 +343,10 @@ ons:
 
 lgn:
   prerelease-sealed:
+    # "an Onslaught tournament pack, three Legions booster packs, and a
+    # commemorative foil prerelease card (you cannot use this card to build
+    # your deck)"
+    # https://magic.wizards.com/en/news/feature/legions-prerelease-primer
     boosters:
     - 1x ons-tournament
     - 3x lgn-draft
@@ -311,6 +359,9 @@ lgn:
 
 scg:
   prerelease-sealed:
+    # "This fee covers your entry into the tournament and with that you will
+    # receive an Onslaught tournament pack and three Scourge booster packs."
+    # https://magic.wizards.com/en/news/feature/scourge-prerelease-primer
     boosters:
     - 1x ons-tournament
     - 3x scg-draft
@@ -329,9 +380,13 @@ scg:
 
 mrd:
   prerelease-sealed:
+    # "you will receive a Mirrodin Tournament Pack, two Mirrodin booster packs
+    # and a commemorative foil Prerelease card (you cannot use this card to
+    # build your deck)"
+    # https://magic.wizards.com/en/news/feature/mirrodin-prerelease-primer
     boosters:
     - 1x mrd-tournament
-    - 3x mrd-draft
+    - 2x mrd-draft
     unplayable-promo:
     - Sword of Kaldra [PMRD:251★] [foil]
   draft:
@@ -341,6 +396,9 @@ mrd:
 
 dst:
   prerelease-sealed:
+    # "you will receive a Mirrodin Tournament Pack, three Darksteel booster
+    # packs and a commemorative foil Prerelease card"
+    # https://magic.wizards.com/en/news/feature/darksteel-prerelease-primer
     boosters:
     - 1x mrd-tournament
     - 3x dst-draft
@@ -353,6 +411,9 @@ dst:
 
 5dn:
   prerelease-sealed:
+    # "you will receive a Mirrodin Tournament Pack, three Fifth Dawn booster
+    # packs and a commemorative foil Prerelease card"
+    # https://magic.wizards.com/en/news/feature/fifth-dawn-prerelease-primer
     boosters:
     - 1x mrd-tournament
     - 3x 5dn-draft
@@ -365,6 +426,9 @@ dst:
 
 chk:
   prerelease-sealed:
+    # Unverified: no primer for this set survives at a findable URL. Large
+    # sets of this era handed out two boosters, not three (see mrd, tsp,
+    # lrw), so this entry is probably one booster too generous.
     boosters:
     - 1x chk-tournament
     - 3x chk-draft
@@ -395,6 +459,9 @@ bok:
 
 sok:
   prerelease-sealed:
+    # Caption on the product photo: "Champions of Kamigawa tournament pack and
+    # three Saviors of Kamigawa boosters"
+    # https://magic.wizards.com/en/news/feature/saviors-of-kamigawa-prerelease-primer
     boosters:
     - 1x chk-tournament
     - 3x sok-draft
@@ -413,6 +480,9 @@ sok:
 
 rav:
   prerelease-sealed:
+    # Unverified: no primer for this set survives at a findable URL. Large
+    # sets of this era handed out two boosters, not three (see mrd, tsp,
+    # lrw), so this entry is probably one booster too generous.
     boosters:
     - 1x rav-tournament
     - 3x rav-draft
@@ -437,6 +507,11 @@ gpt:
 
 dis:
   prerelease-sealed:
+    # "most of you will be getting a Ravnica Tournament Pack and three
+    # Dissension booster packs to build a 40-card minimum deck with. I
+    # understand that there might be some parts of the world where you only get
+    # two packs, but by and large it is three packs."
+    # https://magic.wizards.com/en/news/feature/dissension-prerelease-primer
     boosters:
     - 1x rav-tournament
     - 3x dis-draft
@@ -458,9 +533,13 @@ csp:
 
 tsp:
   prerelease-sealed:
+    # "whichever style of Sealed Deck event you choose to play in, you will be
+    # working with the same basic materials: one Tournament Pack and two booster
+    # packs of Time Spiral"
+    # https://magic.wizards.com/en/news/feature/time-spiral-prerelease-primer
     boosters:
     - 1x tsp-tournament
-    - 3x tsp-draft
+    - 2x tsp-draft
     unplayable-promo:
     - Lotus Bloom [PTSP:259★] [foil]
   draft:
@@ -469,9 +548,10 @@ tsp:
   - tsp-draft
 
 plc:
-  # "one 75-card tournament pack of Time Spiral and three 15-card
-  # booster packs of Planar Chaos" -- Planar Chaos Prerelease Primer
   prerelease-sealed:
+    # "you will be handed one 75-card tournament pack of Time Spiral and three
+    # 15-card booster packs of Planar Chaos"
+    # https://magic.wizards.com/en/news/feature/planar-chaos-prerelease-primer
     boosters:
     - 1x tsp-tournament
     - 3x plc-draft
@@ -484,6 +564,9 @@ plc:
 
 fut:
   prerelease-sealed:
+    # "for this weekend's event I was handed one 75-card tournament pack of Time
+    # Spiral and three 15-card booster packs of Future Sight"
+    # https://magic.wizards.com/en/news/feature/future-sight-prerelease-primer
     boosters:
     - 1x tsp-tournament
     - 3x fut-draft
@@ -511,9 +594,13 @@ me1:
 
 lrw:
   prerelease-sealed:
+    # "you will receive a Lorwyn tournament pack, two Lorwyn booster packs, and
+    # a commemorative foil prerelease card (you cannot use this card to build
+    # your deck)"
+    # https://magic.wizards.com/en/news/feature/lorwyn-prerelease-primer
     boosters:
     - 1x lrw-tournament
-    - 3x lrw-draft
+    - 2x lrw-draft
     unplayable-promo:
     - Wren's Run Packmaster [PLRW:244★] [foil]
   draft:
@@ -523,6 +610,10 @@ lrw:
 
 mor:
   prerelease-sealed:
+    # "you will get one Lorwyn tournament pack and three Morningtide boosters to
+    # create a deck (Sealed Deck tournaments usually provide only two boosters,
+    # but it's the Prerelease!)"
+    # https://magic.wizards.com/en/news/feature/morningtide-prerelease-primer
     boosters:
     - 1x lrw-tournament
     - 3x mor-draft
@@ -535,6 +626,11 @@ mor:
 
 shm:
   prerelease-sealed:
+    # "The Shadowmoor Prerelease will be Sealed Deck, with one tournament pack,
+    # and either two or three Shadowmoor boosters, depending on your tournament
+    # organizer." Three is the bigger of the two, and what a Shadowmoor player
+    # would have expected; there is no way to record "or".
+    # https://magic.wizards.com/en/news/feature/article-or-shadowmoor-prerelease-primer
     boosters:
     - 1x shm-tournament
     - 3x shm-draft
@@ -565,6 +661,12 @@ me2:
 
 ala:
   prerelease-sealed:
+    # The last prerelease with a tournament pack, and the one large set of the
+    # era reported as three boosters rather than two ("one Shards of Alara
+    # tournament pack and three Shards of Alara booster packs"). That is
+    # secondhand - the primer itself never says what you were handed - so it is
+    # left as three, but it is the weakest entry here.
+    # https://magic.wizards.com/en/news/feature/shards-of-alara-prerelease-primer
     boosters:
     - 1x ala-tournament
     - 3x ala-draft
@@ -575,10 +677,16 @@ ala:
   - ala-draft
   - ala-draft
 
+# First prerelease without a tournament pack - six boosters, half of them from
+# the block's large set, which is the shape every prerelease has had since.
 con:
   prerelease-sealed:
+    # "everyone is limited to being able to play with the cards you've opened
+    # (in this case three Shards of Alara boosters and three very exciting
+    # Conflux boosters)"
+    # https://magic.wizards.com/en/news/feature/conflux-prerelease-primer
     boosters:
-    - 1x ala-tournament
+    - 3x ala-draft
     - 3x con-draft
     unplayable-promo:
     - Malfegor [PCON:117★] [foil]
@@ -587,7 +695,6 @@ con:
   - ala-draft
   - con-draft
 
-# First prerelease without tournament packs.
 # The prerelease pool skipped Conflux entirely: 3 Shards of Alara + 3 Alara Reborn.
 arb:
   sealed:
@@ -595,6 +702,10 @@ arb:
   - 2x con-draft
   - 2x arb-draft
   prerelease-sealed:
+    # "Here everyone receives the same amount of boosters (3 Shards of Alara and
+    # 3 Alara Reborn in this case), builds a deck, and play with it over the
+    # course of a number of rounds."
+    # https://magic.wizards.com/en/news/feature/alara-reborn-prerelease-primer
     boosters:
     - 3x ala-draft
     - 3x arb-draft
