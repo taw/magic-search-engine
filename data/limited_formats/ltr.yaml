@@ -12,3 +12,15 @@ arena-draft:
 - ltr-arena
 - ltr-arena
 - ltr-arena
+# The Lord of the Rings got two volumes of Jumpstart boosters, five themes in
+# two versions each with the set in June 2023, and five more on 2023-11-03.
+# They are ordinary Jumpstart packs, so a game is any two of them and the
+# volumes mix freely; before November there was only Volume 1 to open.
+# https://magic.wizards.com/en/news/announcements/the-lord-of-the-rings-tales-of-middle-earth-jumpstart-booster-contents
+jumpstart:
+  random-boosters:
+  - name: Jumpstart booster
+    pick: 2
+    from:
+    - ltr-jumpstart
+    - ltr-jumpstart-v2

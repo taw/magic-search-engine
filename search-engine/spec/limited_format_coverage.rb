@@ -50,6 +50,10 @@ class LimitedFormatCoverage
       # The sealed we track is a paper event, so digital only sets don't get it
       formats << "sealed" if formats.include?("draft") and six_booster_sealed_era?(set_code)
       formats << "prerelease-sealed" if variants.any?{|variant| variant.start_with?("prerelease")}
+      # A Jumpstart booster is a half deck, and two of them are the whole
+      # format, so a set which has them has it. Extra volumes of packs are
+      # part of the same format, not a format each.
+      formats << "jumpstart" if variants.include?("jumpstart")
       formats.uniq.map{|format| [set_code, format]}
     end
   end

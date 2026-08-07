@@ -6,7 +6,7 @@ class LimitedFormatController < ApplicationController
 
   # Formats with a page of their own. Sets whose Arena boosters changed from
   # run to run have one numbered format per run, so those are a pattern.
-  SUPPORTED_TYPES = ["draft", "mtgo-draft", "sealed", "prerelease-sealed", /\Aarena-draft(-\d+)?\z/]
+  SUPPORTED_TYPES = ["draft", "mtgo-draft", "sealed", "prerelease-sealed", "jumpstart", /\Aarena-draft(-\d+)?\z/]
 
   def self.supported_type?(type)
     SUPPORTED_TYPES.any?{|supported| supported === type}

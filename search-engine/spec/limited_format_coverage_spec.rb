@@ -52,6 +52,16 @@ describe LimitedFormatCoverage do
       .should eq([["pio", "arena-draft-1"], ["pio", "arena-draft-2"], ["pio", "arena-draft-3"]])
   end
 
+  # A set with Jumpstart boosters has the Jumpstart format, whether that is all
+  # it has (the Jumpstart sets) or one format of many (the sets which got
+  # Jumpstart packs of their own alongside their draft boosters)
+  it "expects jumpstart from a set with jumpstart boosters" do
+    coverage.expected_formats.select{|set_code, format| set_code == "jmp"}
+      .should eq([["jmp", "jumpstart"]])
+    coverage.expected_formats.select{|set_code, format| format == "jumpstart"}
+      .map(&:first).should match_array(%w[jmp j22 j25 tle msh dmu bro one mom ltr])
+  end
+
   it "data file only lists sets that exist" do
     coverage.not_played.keys.reject{|set_code| db.sets[set_code]}.should eq([])
   end

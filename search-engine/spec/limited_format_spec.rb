@@ -78,6 +78,37 @@ describe LimitedFormat do
     nph_prerelease.describable_draft?.should eq(false)
   end
 
+  # Jumpstart is two half decks shuffled together, so it is a sealed pool of
+  # two packs whose play variant comes with the format rather than with the set
+  it "jumpstart is a sealed pool of two half decks" do
+    dmu_jumpstart = db.sets["dmu"].limited_formats.find{|f| f.type == "jumpstart"}
+    dmu_jumpstart.format_type.should eq("sealed")
+    dmu_jumpstart.play_variant.should eq("jumpstart")
+    dmu_jumpstart.describable_sealed?.should eq(true)
+    dmu_jumpstart.pools[0].boosters.map{|count, pack| [count, pack.code]}.should eq([
+      [2, "dmu-jumpstart"],
+    ])
+    dmu_jumpstart.to_s.should eq("Dominaria United Jumpstart")
+    # The set's other formats are played normally, so the variant is not set wide
+    db.sets["dmu"].limited_formats.find{|f| f.type == "draft"}.play_variant.should eq(nil)
+    # A set whose name already says Jumpstart names the format itself
+    db.sets["jmp"].limited_formats.map(&:to_s).should eq(["Jumpstart"])
+    db.sets["j25"].limited_formats.map(&:to_s).should eq(["Foundations Jumpstart"])
+  end
+
+  # The Lord of the Rings printed two volumes of Jumpstart packs, and a game is
+  # any two of them, so the pool is all random packs and nothing fixed
+  it "jumpstart of a set with two volumes of packs picks any two" do
+    ltr_jumpstart = db.sets["ltr"].limited_formats.find{|f| f.type == "jumpstart"}
+    ltr_jumpstart.describable_sealed?.should eq(true)
+    pool = ltr_jumpstart.pools[0]
+    pool.boosters.should eq([])
+    pool.random_boosters.size.should eq(1)
+    pool.random_boosters[0].pick.should eq(2)
+    pool.random_boosters[0].packs.map(&:code).should eq(["ltr-jumpstart", "ltr-jumpstart-v2"])
+    pool.describable?.should eq(true)
+  end
+
   # Sets which were never printed on paper were only drafted on Magic Online
   it "mtgo drafts are ordinary drafts of a digital set" do
     vma_draft = db.sets["vma"].limited_formats.find{|f| f.type == "mtgo-draft"}

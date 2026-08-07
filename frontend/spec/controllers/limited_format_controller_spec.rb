@@ -170,6 +170,43 @@ RSpec.describe LimitedFormatController, type: :controller do
     assert_select %[a:contains("Open in Sealed simulator")], 10
   end
 
+  # Two packs shuffled together, with no deck construction at all
+  it "jumpstart" do
+    get "show", params: {set: "dmu", id: "jumpstart"}
+    assert_response 200
+    assert_equal "Dominaria United Jumpstart - #{APP_NAME}", html_document.title
+    assert_select %[li:contains("2x") a[href="/pack/dmu-jumpstart"]:contains("Dominaria United Jumpstart Booster")]
+    assert_select %[p:contains("no deck construction")]
+    assert_select %[p:contains("any other Jumpstart set")]
+    # Normal sealed rules don't apply
+    assert_select %[p:contains("build a 40 card deck")], false
+    assert_select %[a:contains("Open in Sealed simulator")] do |links|
+      assert_includes links.first["href"], "count%5B%5D=2"
+      assert_includes links.first["href"], "set%5B%5D=dmu-jumpstart"
+    end
+  end
+
+  # A set whose name already says Jumpstart names the format itself
+  it "jumpstart of a jumpstart set" do
+    get "show", params: {set: "j25", id: "jumpstart"}
+    assert_response 200
+    assert_equal "Foundations Jumpstart - #{APP_NAME}", html_document.title
+    assert_select %[li a[href="/pack/j25-jumpstart"]]
+  end
+
+  # The Lord of the Rings has two volumes of Jumpstart packs, and a game is any
+  # two of them, so every pack of the pool is picked at random
+  it "jumpstart of a set with two volumes of packs" do
+    get "show", params: {set: "ltr", id: "jumpstart"}
+    assert_response 200
+    assert_select %[li:contains("2x Jumpstart booster")]
+    assert_select %[li a[href="/pack/ltr-jumpstart"]]
+    assert_select %[li a[href="/pack/ltr-jumpstart-v2"]]
+    assert_select %[a:contains("Open in Sealed simulator")] do |links|
+      assert_includes links.first["href"], "set%5B%5D=ltr-jumpstart%7Cltr-jumpstart-v2"
+    end
+  end
+
   it "404 for unknown set" do
     get "show", params: {set: "nosuchset", id: "draft"}
     assert_response 404

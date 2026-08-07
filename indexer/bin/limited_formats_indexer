@@ -78,16 +78,18 @@ class LimitedFormatsIndexer
     end
   end
 
-  # Either a bare booster list, or a Hash with boosters plus promo cards
+  # Either a bare booster list, or a Hash with boosters plus promo cards.
+  # A pool whose every pack is picked at random - Jumpstart of a set with more
+  # than one volume of packs - has no fixed boosters at all, just the picks.
   def index_sealed_pool(pool_data)
     if pool_data.is_a?(Array)
       pool_data = {"boosters" => pool_data}
     end
-    unless pool_data["boosters"]
+    unless pool_data["boosters"] or pool_data["random-boosters"]
       raise "Sealed pool has no boosters"
     end
     {
-      boosters: parse_boosters(pool_data["boosters"]),
+      boosters: parse_boosters(pool_data["boosters"] || []),
       random_boosters: parse_random_boosters(pool_data),
       playable_promo_cards: parse_promos(pool_data, "playable-promo"),
       unplayable_promo_cards: parse_promos(pool_data, "unplayable-promo"),
@@ -114,23 +116,32 @@ class LimitedFormatsIndexer
     }.compact
   end
 
+  # Title and explanation of a format, for the ones their type doesn't
+  # describe well. A bare booster list says neither.
+  def format_text(format_data)
+    return {} unless format_data.is_a?(Hash)
+    {
+      name: format_data["name"],
+      description: format_data["description"],
+    }.compact
+  end
+
   # Prereleases where you pick a faction/hunt/planeswalker are one format
   # with several alternative pools, as the choice affects packs and promos
   def index_sealed(set_code, format, format_data)
+    header = {
+      format_name: format,
+      format_type: "sealed",
+    }.merge(format_text(format_data))
     if format_data.is_a?(Hash) and format_data["variants"]
-      {
-        format_name: format,
-        format_type: "sealed",
+      header.merge(
         choice: format_data["choice"],
         variants: format_data["variants"].to_h{|variant, variant_data|
           [variant, index_sealed_pool(variant_data)]
         },
-      }
+      )
     else
-      {
-        format_name: format,
-        format_type: "sealed",
-      }.merge(index_sealed_pool(format_data))
+      header.merge(index_sealed_pool(format_data))
     end
   end
 
@@ -144,17 +155,24 @@ class LimitedFormatsIndexer
       index_draft(set_code, format, format_data)
     when "sealed", "prerelease-sealed"
       index_sealed(set_code, format, format_data)
+    # Jumpstart is a pool of two packs which are simply shuffled together, so
+    # it is a sealed format whose play variant comes with the format itself -
+    # the same two packs are played the same way whatever the set they are of.
+    when "jumpstart"
+      index_sealed(set_code, format, format_data).merge(play_variant: "jumpstart")
     else
       raise "Unknown format #{format}"
     end
   end
 
-  PLAY_VARIANTS = ["multiplayer", "two-headed-giant", "commander", "pick-two"]
+  PLAY_VARIANTS = ["multiplayer", "two-headed-giant", "commander", "pick-two", "jumpstart"]
 
   # Conspiracy, Battlebond, and the Commander Legends line are not played like
   # normal limited. The tag is set-level, as it covers every format of the set,
   # but it is copied onto each format, as that is what anything reading the
-  # index actually has in hand.
+  # index actually has in hand. A format which brings its own variant, like
+  # jumpstart, keeps it - a set can have both, as a Jumpstart booster of an
+  # ordinary set is played as Jumpstart while the set's draft is not.
   def parse_play_variant(set_code, set_data)
     play_variant = set_data["play-variant"]
     return unless play_variant
@@ -172,7 +190,7 @@ class LimitedFormatsIndexer
     play_variant = parse_play_variant(set_code, set_data)
     set_data.except("play-variant").to_h{|format, format_data|
       format_index = index_format(set_code, format, format_data)
-      format_index[:play_variant] = play_variant if play_variant
+      format_index[:play_variant] ||= play_variant if play_variant
       [format, format_index]
     }
   end

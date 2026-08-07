@@ -49,10 +49,11 @@ class SealedPool
   end
 
   # A pool we can describe in full - every pack is one we know, including the
-  # ones the player got at random
+  # ones the player got at random. A pool can be all random packs and nothing
+  # fixed, so it only has to have packs of one kind or the other.
   def describable?
     boosters.size == (@data["boosters"] || []).size and
-      boosters.any? and
+      (boosters.any? or random_boosters.any?) and
       random_boosters.all?(&:describable?)
   end
 

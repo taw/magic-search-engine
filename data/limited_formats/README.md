@@ -40,11 +40,31 @@ tracked in [DATA_GAPS.md](../../DATA_GAPS.md).
 | `draft` | the three booster packs, in the order they are opened |
 | `sealed` | the sealed deck pool (unordered, so counts are used) |
 | `prerelease-sealed` | the sealed deck pool handed out at that set's prerelease |
+| `jumpstart` | the two Jumpstart boosters a game of Jumpstart is played out of |
 | `play-variant` | how the set is played, when that is not normal limited |
 
-A draft or an Arena draft that needs a title and explanation of its own — a set whose
-Arena boosters changed between runs has one numbered format per run, `arena-draft-1` and
-friends — is a hash of `boosters` plus `name` and `description` rather than a bare list.
+Any format that needs a title and explanation of its own — a set whose Arena boosters
+changed between runs has one numbered format per run, `arena-draft-1` and friends; a set
+whose name already says Jumpstart would otherwise be titled "Jumpstart Jumpstart" — is a
+hash of `boosters` plus `name` and `description` rather than a bare list.
+
+## Jumpstart
+
+A Jumpstart booster is a 20-card themed half deck with its own basic lands, so two of them
+shuffled together are a whole game and there is nothing to build. That makes `jumpstart` a
+sealed format of two packs, played the way the `jumpstart` play variant describes.
+
+It belongs to the packs, not to the event: the Jumpstart sets (`jmp` `j22` `j25` `tle`) are
+nothing but the format, and the sets which got Jumpstart boosters of their own alongside
+their draft boosters (`dmu` `bro` `one` `mom` `ltr` `msh`) have it as one format among
+several. Dominaria United through March of the Machine also ran it as a
+[Jumpstart Prerelease](https://wpn.wizards.com/en/news/how-plan-jumpstart-prerelease-event),
+a store event of exactly these two packs, which is why they are not tagged
+`prerelease-sealed` twice.
+
+Packs are interchangeable across Jumpstart sets by design, so The Lord of the Rings, which
+printed a second volume of packs five months after the first, is entered as two packs
+picked out of both volumes rather than as two formats.
 
 ## Play variants
 
@@ -63,6 +83,10 @@ got, not how it is played.)
   singleton deck with a commander, played in multiplayer pods.
 * `pick-two` — Through the Omenpaths on Arena: two cards are taken from every pack instead
   of one, so three 14-card packs are drafted seven picks at a time into a 42-card pool.
+* `jumpstart` — two 20-card half decks shuffled together into a 40-card deck, with no deck
+  construction and no lands to add. This one is not a key you write: it comes with the
+  `jumpstart` format itself, as a Jumpstart booster is played the same way whatever set it
+  is of, and a set can have it for its Jumpstart packs while its draft stays ordinary.
 
 Sets whose *contents* are unusual but whose play is ordinary are not tagged: the Un-sets,
 Mystery Booster, and Innistrad: Double Feature are all just normal drafts over a strange

@@ -47,7 +47,7 @@ class LimitedFormat
 
   # Play variants the frontend has rules text for. Anything new gets a
   # placeholder page until someone writes that text.
-  DESCRIBABLE_PLAY_VARIANTS = [nil, "multiplayer", "two-headed-giant", "commander", "pick-two"]
+  DESCRIBABLE_PLAY_VARIANTS = [nil, "multiplayer", "two-headed-giant", "commander", "pick-two", "jumpstart"]
 
   def describable_play_variant?
     DESCRIBABLE_PLAY_VARIANTS.include?(play_variant)
