@@ -1,4 +1,21 @@
+# Sealed in this set's season: the block's Invasion tournament pack
+# plus two boosters, which is the era's standard two (README, Sealed pools).
+# Which two is derived, not sourced - no Grand Prix fact sheet survives for a
+# mid-block season. Both are taken to be PLS, following the DCI's own
+# set selection for team events, which puts every booster in the newest small
+# set ("If the first small expansion has been released, the four boosters
+# should be from the first small expansion", Floor Rules section 148).
+sealed:
+- 1x inv-tournament
+- 2x pls-draft
 prerelease-sealed:
+  # Unsourced. Entered as the era's standard small-set prerelease pool: the
+  # block's Invasion tournament pack plus three boosters of the new set.
+  # Three rather than the two an ordinary sealed event gave out is the
+  # prerelease's extra booster, which is why this and `sealed` above disagree
+  # - see README, Prereleases. Every small set of the era with a surviving
+  # source says three, but this one has none: no primer survives from before
+  # 2003, and the fact sheets run late 2005 to early 2007 only.
   boosters:
   - 1x inv-tournament
   - 3x pls-draft

@@ -81,6 +81,18 @@ set is drafted on its own.
 
 ## Sealed pools
 
+A set whose pool is anything other than "six boosters of itself" should carry a comment in
+its own file saying where the shape comes from, or saying plainly that it is derived rather
+than sourced. That includes any set whose `sealed` and `prerelease-sealed` counts differ —
+the difference is real, but a reader should not have to guess why.
+
+Six-booster-era pools follow the block structure the same way the draft does: a set drafted
+on its own is sealed as six of its own boosters, and a set drafted with its block-mates is
+sealed out of the same mix in the same proportion. So Worldwake is three Zendikar and three
+Worldwake, Eldritch Moon four of itself and two Shadows over Innistrad, and New Phyrexia two
+each of the Scars block. From Dominaria on, every set is its own format and the pool is
+plainly six of its own boosters.
+
 Until Conflux, sealed was one tournament pack plus two boosters; from Alara Reborn on it is
 six boosters. The [Morningtide primer](https://magic.wizards.com/en/news/feature/morningtide-prerelease-primer)
 says both numbers in one sentence, which is the only official statement of the old one we
@@ -102,9 +114,34 @@ and Two-Headed Giant events only; for an individual the UTR says just "each play
 an assortment of sealed product". They are all on the Wayback Machine under
 `wizards.com/dci/downloads`.
 
-The `sealed` key is only filled in for the six-booster era so far. The starter-deck era
-before Urza's Saga (60-card starter decks, not 75-card tournament packs) is a different
-thing again, and is unsourced.
+Which packs, not just how many, comes from Grand Prix fact sheets, which print the pool as
+a one-liner. Two of them pin down both ends of a block:
+
+> Tournament Format: Sealed Deck (*Time Spiral* tournament pack and 2 *Time Spiral*
+> boosters)
+> — [Grand Prix Athens, 14-15 October 2006](https://web.archive.org/web/2018/https://magic.wizards.com/en/articles/archive/feature/tournament-fact-sheet-2006-06-09),
+> when Time Spiral was the only set of its block out
+
+> Tournament Format: Sealed Deck (*Time Spiral* tournament pack and 1 *Planar Chaos* and 1
+> *Future Sight* Booster)
+> — [Grand Prix Stockholm, 5-6 May 2007](https://web.archive.org/web/2018/https://magic.wizards.com/en/articles/archive/feature/tournament-fact-sheet-2007-03-19),
+> the weekend after Future Sight came out
+
+So the tournament pack is always the block's large set, and the two boosters are the newest
+cards available: both from the large set until a small set exists, then one of each small
+set once the block is complete. The middle case — first small set out, second not yet — has
+no event sheet of its own, and is entered as two boosters of the small set, following the
+DCI's own set-selection rule for team events, which puts every booster in the newest small
+set ("If the first small expansion has been released, the four boosters should be from the
+first small expansion", Floor Rules section 148).
+
+Filled in on that basis for Urza's Saga (1998) through Shards of Alara (2008), the whole
+tournament-pack era. Not filled in for the core sets, which had no tournament pack of their
+own after Sixth Edition, or for Coldsnap, whose block predates tournament packs entirely —
+its prerelease was five boosters, but what a Coldsnap sealed event handed out is unknown.
+
+The starter-deck era before Urza's Saga (60-card starter decks, not 75-card tournament
+packs) is a different thing again, and is unsourced.
 
 ## Prereleases
 
@@ -140,6 +177,10 @@ old fixed promo through Magic 2014. From Khans of Tarkir on the promo is a rando
 rare/mythic of the set, and it ships inside the seeded prerelease booster — where that is
 the case it is part of the booster's contents and is not listed separately.
 https://mtg.wiki/page/Prerelease_card
+
+That seeded pack is why a modern set's `prerelease-sealed` lists seven packs against
+`sealed`'s six: same six boosters, plus the `<set>-prerelease` pack the promo comes in. It
+needs no comment in the set's file. A count that differs for any *other* reason does.
 
 Promo cards carry a `[foil]` tag when the card was handed out foil, and no tag when it was a
 normal card. None were available both ways. There are two sources for this: the wiki page

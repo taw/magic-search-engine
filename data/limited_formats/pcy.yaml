@@ -1,4 +1,19 @@
+# Sealed in this set's season: the block's Mercadian Masques tournament pack
+# plus one booster of each small set. Sourced for the Time Spiral block by
+# the Grand Prix Stockholm fact sheet in fut.yaml, and the same shape is used
+# for every completed block of the era.
+sealed:
+- 1x mmq-tournament
+- 1x nem-draft
+- 1x pcy-draft
 prerelease-sealed:
+  # Unsourced. Entered as the era's standard small-set prerelease pool: the
+  # block's Mercadian Masques tournament pack plus three boosters of the new set.
+  # Three rather than the two an ordinary sealed event gave out is the
+  # prerelease's extra booster, which is why this and `sealed` above disagree
+  # - see README, Prereleases. Every small set of the era with a surviving
+  # source says three, but this one has none: no primer survives from before
+  # 2003, and the fact sheets run late 2005 to early 2007 only.
   boosters:
   - 1x mmq-tournament
   - 3x pcy-draft
