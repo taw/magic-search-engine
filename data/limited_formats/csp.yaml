@@ -1,6 +1,23 @@
 # Coldsnap was drafted on its own, not with Ice Age and Alliances.
-# Its prerelease is not modelled: Coldsnap tournament packs exist but
-# we have no booster data for them (promo Allosaurus Rider [PCSP:101★] [foil]).
+prerelease-sealed:
+  # Coldsnap had no tournament pack - Ice Age block predates them and none was
+  # printed for the set - so its prerelease was boosters only, and five of them
+  # rather than six. Official, from the Coldsnap Worldwide Prerelease Fact
+  # Sheet (Wizards of the Coast, 2006-06-12):
+  #   "Cost of entry includes one (5) Coldsnap booster packs per person for
+  #   single player flights, (7) Coldsnap booster packs per Two-Headed Giant
+  #   team and (10) booster packs per three-person Team."
+  # (the "one (5)" is a typo in the original)
+  # https://web.archive.org/web/2018/https://magic.wizards.com/en/articles/archive/feature/coldsnap-worldwide-prerelease-fact-sheet-2006-06-12
+  #
+  # All three numbers are the DCI's tournament-pack recommendations converted to
+  # boosters at one pack = three boosters: 1 pack + 2 boosters = 5, 1 pack + 4 =
+  # 7 for Two-Headed Giant, 2 packs + 4 = 10 for a three-person team. Which is a
+  # neat confirmation of the exchange rate the README quotes.
+  boosters:
+  - 5x csp-draft
+  unplayable-promo:
+  - Allosaurus Rider [PCSP:101★] [foil]
 draft:
 - csp-draft
 - csp-draft

@@ -116,11 +116,23 @@ from is in a comment in that set's file. Sets with no such comment are unverifie
 primer either predates the ones that survive online (2003) or isn't at a findable URL, and
 they are entered as tournament pack plus three, which is a guess for the large ones.
 
-Two things stop this from being a rule you can apply blind. Shadowmoor was "one tournament
-pack, and either two or three *Shadowmoor* boosters, depending on your tournament
-organizer", and Dissension notes "there might be some parts of the world where you only get
-two packs, but by and large it is three". So each set wants its own source rather than a
-bulk edit.
+Three things stop this from being a rule you can apply blind. Shards of Alara is a large
+set that handed out three; Shadowmoor was "one tournament pack, and either two or three
+*Shadowmoor* boosters, depending on your tournament organizer"; and Dissension notes "there
+might be some parts of the world where you only get two packs, but by and large it is
+three". So each set wants its own source rather than a bulk edit.
+
+The best source is WotC's **Worldwide Prerelease Fact Sheet** for the set, which states the
+product mix outright, for single players and for Two-Headed Giant and three-person teams.
+They are all dead on the live site and all present on the Wayback Machine, at
+`magic.wizards.com/en/articles/archive/[<set>-]worldwide-prerelease-fact-sheet-<date>` up to
+early 2007, and at `wizards.com/Magic/TCG/Events.aspx?x=mtgcom/events/prerelease-facts` from
+September 2008. Nothing of the sort is archived before late 2005. List what exists with the
+CDX API — a prefix query works, a regex filter times out:
+
+```
+http://web.archive.org/cdx/search/cdx?url=magic.wizards.com/en/articles/archive/<name>*&output=text&fl=original&collapse=urlkey
+```
 
 The prerelease card was a fixed giveaway and not part of the sealed pool until Return to
 Ravnica, which is where `unplayable-promo` gives way to `playable-promo`. Core sets kept the
