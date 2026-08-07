@@ -1,0 +1,33 @@
+sealed:
+- 6x snc-draft
+prerelease-sealed:
+  choice: family
+  variants:
+    brokers:
+      boosters:
+      - 5x snc-draft
+      - 1x snc-prerelease-brokers
+    obscura:
+      boosters:
+      - 5x snc-draft
+      - 1x snc-prerelease-obscura
+    maestros:
+      boosters:
+      - 5x snc-draft
+      - 1x snc-prerelease-maestros
+    riveteers:
+      boosters:
+      - 5x snc-draft
+      - 1x snc-prerelease-riveteers
+    cabaretti:
+      boosters:
+      - 5x snc-draft
+      - 1x snc-prerelease-cabaretti
+draft:
+- snc-draft
+- snc-draft
+- snc-draft
+arena-draft:
+- snc-arena
+- snc-arena
+- snc-arena

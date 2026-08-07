@@ -1,0 +1,39 @@
+sealed:
+- 6x ktk-draft
+# Five boosters plus a seeded clan booster, which holds the stamped foil promo
+# (one of eight per clan -- the first set where the promo is not a single card).
+prerelease-sealed:
+  choice: clan
+  variants:
+    abzan:
+      boosters:
+      - 5x ktk-draft
+      - 1x ktk-prerelease-abzan
+    jeskai:
+      boosters:
+      - 5x ktk-draft
+      - 1x ktk-prerelease-jeskai
+    mardu:
+      boosters:
+      - 5x ktk-draft
+      - 1x ktk-prerelease-mardu
+    sultai:
+      boosters:
+      - 5x ktk-draft
+      - 1x ktk-prerelease-sultai
+    temur:
+      boosters:
+      - 5x ktk-draft
+      - 1x ktk-prerelease-temur
+draft:
+- ktk-draft
+- ktk-draft
+- ktk-draft
+# Khans of Tarkir was added to Magic Arena in 2023, and drafted there too.
+# Arena builds its own boosters out of the cards it has, so an Arena draft
+# of a paper set is not the same format as the paper draft. Arena drafts
+# are three boosters, like paper ones.
+arena-draft:
+- ktk-arena
+- ktk-arena
+- ktk-arena

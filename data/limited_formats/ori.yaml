@@ -1,0 +1,32 @@
+sealed:
+- 6x ori-draft
+# Six normal boosters plus a small seven-card seeded booster of the chosen
+# planeswalker's colour, which holds the stamped foil promo.
+# Last of the seeded 'experience' prereleases before Battle for Zendikar.
+prerelease-sealed:
+  choice: planeswalker
+  variants:
+    gideon:
+      boosters:
+      - 6x ori-draft
+      - 1x ori-prerelease-gideon
+    jace:
+      boosters:
+      - 6x ori-draft
+      - 1x ori-prerelease-jace
+    liliana:
+      boosters:
+      - 6x ori-draft
+      - 1x ori-prerelease-liliana
+    chandra:
+      boosters:
+      - 6x ori-draft
+      - 1x ori-prerelease-chandra
+    nissa:
+      boosters:
+      - 6x ori-draft
+      - 1x ori-prerelease-nissa
+draft:
+- ori-draft
+- ori-draft
+- ori-draft

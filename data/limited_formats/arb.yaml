@@ -1,0 +1,19 @@
+# The prerelease pool skipped Conflux entirely: 3 Shards of Alara + 3 Alara Reborn.
+sealed:
+- 2x ala-draft
+- 2x con-draft
+- 2x arb-draft
+prerelease-sealed:
+  # "Here everyone receives the same amount of boosters (3 Shards of Alara and
+  # 3 Alara Reborn in this case), builds a deck, and play with it over the
+  # course of a number of rounds."
+  # https://magic.wizards.com/en/news/feature/alara-reborn-prerelease-primer
+  boosters:
+  - 3x ala-draft
+  - 3x arb-draft
+  unplayable-promo:
+  - Dragon Broodmother [PARB:53★] [foil]
+draft:
+- ala-draft
+- con-draft
+- arb-draft

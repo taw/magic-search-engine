@@ -1,0 +1,32 @@
+sealed:
+- 6x ths-draft
+# "Choose a Path": five boosters plus a seeded booster of your chosen path.
+# The stamped foil promo is inside the seeded booster.
+# The Hero card is oversized and not part of the pool.
+prerelease-sealed:
+  choice: path
+  variants:
+    honor:
+      boosters:
+      - 5x ths-draft
+      - 1x ths-prerelease-honor
+    wisdom:
+      boosters:
+      - 5x ths-draft
+      - 1x ths-prerelease-wisdom
+    ambition:
+      boosters:
+      - 5x ths-draft
+      - 1x ths-prerelease-ambition
+    might:
+      boosters:
+      - 5x ths-draft
+      - 1x ths-prerelease-might
+    battle:
+      boosters:
+      - 5x ths-draft
+      - 1x ths-prerelease-battle
+draft:
+- ths-draft
+- ths-draft
+- ths-draft

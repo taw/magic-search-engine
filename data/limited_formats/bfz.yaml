@@ -1,0 +1,12 @@
+sealed:
+- 6x bfz-draft
+# From here the prerelease card is a random rare or mythic of the set, modelled
+# as a one-card `-prerelease` pack. It is part of the sealed pool.
+prerelease-sealed:
+  boosters:
+  - 6x bfz-draft
+  - 1x bfz-prerelease
+draft:
+- bfz-draft
+- bfz-draft
+- bfz-draft

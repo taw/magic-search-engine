@@ -7,7 +7,7 @@ require "pathname"
 # prerelease, and from Alara Reborn on a set that was drafted was also played
 # as six booster sealed.
 #
-# data/limited_formats.yaml is filled in by hand out of old primers and
+# data/limited_formats/ is filled in by hand out of old primers and
 # mtg.wiki, so it lags behind new sets, and everything here is a warning only.
 # Sets which had the boosters but never had the format go into
 # data/limited_formats_not_played.yaml, with a note saying why.
@@ -66,7 +66,7 @@ class LimitedFormatCoverage
     return nil if missing.empty?
     "These sets should probably have limited formats we don't have: " +
       missing.map{|set_code, format| "#{set_code} #{format}"}.join(", ") +
-      " - fill them in in data/limited_formats.yaml," \
+      " - fill them in in data/limited_formats/<set>.yaml," \
       " or say why they never happened in data/limited_formats_not_played.yaml"
   end
 
@@ -84,7 +84,7 @@ class LimitedFormatCoverage
     return nil if drafts.empty?
     "These drafts don't open a single booster of their own set: " +
       drafts.map{|limited_format| limited_format.set_code}.join(" ") +
-      " - check their booster order in data/limited_formats.yaml"
+      " - check their booster order in data/limited_formats/<set>.yaml"
   end
 
   # Every prerelease booster a set has is a booster somebody was handed at that
@@ -105,7 +105,7 @@ class LimitedFormatCoverage
     return nil if unused.empty?
     "These prerelease boosters are not handed out by any prerelease pool: " +
       unused.join(" ") +
-      " - somebody got them, so add them in data/limited_formats.yaml"
+      " - somebody got them, so add them in data/limited_formats/<set>.yaml"
   end
 
   # Set code => format => why that set never had that format

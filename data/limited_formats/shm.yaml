@@ -1,0 +1,15 @@
+prerelease-sealed:
+  # "The Shadowmoor Prerelease will be Sealed Deck, with one tournament pack,
+  # and either two or three Shadowmoor boosters, depending on your tournament
+  # organizer." Three is the bigger of the two, and what a Shadowmoor player
+  # would have expected; there is no way to record "or".
+  # https://magic.wizards.com/en/news/feature/article-or-shadowmoor-prerelease-primer
+  boosters:
+  - 1x shm-tournament
+  - 3x shm-draft
+  unplayable-promo:
+  - Demigod of Revenge [PSHM:183★] [foil]
+draft:
+- shm-draft
+- shm-draft
+- shm-draft

@@ -6,15 +6,24 @@ require "pathname"
 
 class LimitedFormatsIndexer
   def input_path
-    Pathname(__dir__) + "../../data/limited_formats.yaml"
+    Pathname(__dir__) + "../../data/limited_formats"
   end
 
   def output_path
     Pathname(__dir__) + "../../index/limited_formats.json"
   end
 
+  # One file per set, named after the set, as data/boosters does it.
+  # The whole folder compiles into a single index file.
+  #
+  # Underscores in a file name are not part of the set code. Conflux is
+  # con_.yaml because CON is a reserved device name on Windows, so con.yaml
+  # cannot be checked out there at all. Same trick, and same fix, as
+  # booster_indexer uses for data/boosters.
   def data
-    @data ||= YAML.load_file(input_path)
+    @data ||= input_path.glob("*.yaml").sort.to_h{|path|
+      [path.basename(".yaml").to_s.delete("_"), YAML.load_file(path)]
+    }
   end
 
   # Sealed pools are unordered, so "6x isd-draft" collapses to a count

@@ -1,0 +1,42 @@
+sealed:
+- 6x rtr-draft
+# Five normal boosters plus a guild booster of the guild you registered for.
+# First set whose prerelease card is part of your sealed pool, so it is a
+# playable-promo. It sits outside the guild booster.
+prerelease-sealed:
+  choice: guild
+  variants:
+    azorius:
+      boosters:
+      - 5x rtr-draft
+      - 1x rtr-prerelease-azorius
+      playable-promo:
+      - Archon of the Triumvirate [PRTR:142★] [foil]
+    izzet:
+      boosters:
+      - 5x rtr-draft
+      - 1x rtr-prerelease-izzet
+      playable-promo:
+      - Hypersonic Dragon [PRTR:170★] [foil]
+    rakdos:
+      boosters:
+      - 5x rtr-draft
+      - 1x rtr-prerelease-rakdos
+      playable-promo:
+      - Carnival Hellsteed [PRTR:147★] [foil]
+    golgari:
+      boosters:
+      - 5x rtr-draft
+      - 1x rtr-prerelease-golgari
+      playable-promo:
+      - Corpsejack Menace [PRTR:152★] [foil]
+    selesnya:
+      boosters:
+      - 5x rtr-draft
+      - 1x rtr-prerelease-selesnya
+      playable-promo:
+      - Grove of the Guardian [PRTR:240★] [foil]
+draft:
+- rtr-draft
+- rtr-draft
+- rtr-draft

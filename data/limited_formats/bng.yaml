@@ -1,0 +1,36 @@
+sealed:
+- 3x bng-draft
+- 3x ths-draft
+# "Master your Destiny". Counting the seeded booster this is the usual 3+3.
+prerelease-sealed:
+  choice: destiny
+  variants:
+    lead:
+      boosters:
+      - 2x bng-draft
+      - 3x ths-draft
+      - 1x bng-prerelease-lead
+    outwit:
+      boosters:
+      - 2x bng-draft
+      - 3x ths-draft
+      - 1x bng-prerelease-outwit
+    dominate:
+      boosters:
+      - 2x bng-draft
+      - 3x ths-draft
+      - 1x bng-prerelease-dominate
+    conquer:
+      boosters:
+      - 2x bng-draft
+      - 3x ths-draft
+      - 1x bng-prerelease-conquer
+    thrive:
+      boosters:
+      - 2x bng-draft
+      - 3x ths-draft
+      - 1x bng-prerelease-thrive
+draft:
+- bng-draft
+- ths-draft
+- ths-draft

@@ -1,0 +1,29 @@
+# First set drafted newest-pack-first.
+sealed:
+- 3x mbs-draft
+- 3x som-draft
+# "For Prereleases only, Mirrodin Besieged will come in very special packs.
+# These packs will only contain cards from a single faction. When you register
+# for an event, you will be very clearly showing your allegiance, and that will
+# affect what cards you will open, and even the Prerelease card that you receive."
+# videos confirm: 3 MBS faction packs, and 3 SOM packs
+# promo is faction-specific too, so it lives inside each variant
+prerelease-sealed:
+  choice: faction
+  variants:
+    mirran:
+      boosters:
+      - 3x mbs-mirran
+      - 3x som-draft
+      unplayable-promo:
+      - Hero of Bladehold [PMBS:8★] [foil]
+    phyrexian:
+      boosters:
+      - 3x mbs-phyrexian
+      - 3x som-draft
+      unplayable-promo:
+      - Glissa, the Traitor [PMBS:96★] [foil]
+draft:
+- mbs-draft
+- som-draft
+- som-draft

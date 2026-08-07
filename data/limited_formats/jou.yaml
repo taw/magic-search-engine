@@ -1,0 +1,43 @@
+sealed:
+- 2x jou-draft
+- 2x bng-draft
+- 2x ths-draft
+# "Forge a Godslayer". The kit was not the plain 2/2/2 of the sealed format:
+# two Journey into Nyx, one Born of the Gods, two Theros, plus the seeded booster.
+prerelease-sealed:
+  choice: godslayer
+  variants:
+    glory:
+      boosters:
+      - 2x jou-draft
+      - 1x bng-draft
+      - 2x ths-draft
+      - 1x jou-prerelease-glory
+    intellect:
+      boosters:
+      - 2x jou-draft
+      - 1x bng-draft
+      - 2x ths-draft
+      - 1x jou-prerelease-intellect
+    tyranny:
+      boosters:
+      - 2x jou-draft
+      - 1x bng-draft
+      - 2x ths-draft
+      - 1x jou-prerelease-tyranny
+    war:
+      boosters:
+      - 2x jou-draft
+      - 1x bng-draft
+      - 2x ths-draft
+      - 1x jou-prerelease-war
+    pursuit:
+      boosters:
+      - 2x jou-draft
+      - 1x bng-draft
+      - 2x ths-draft
+      - 1x jou-prerelease-pursuit
+draft:
+- jou-draft
+- bng-draft
+- ths-draft

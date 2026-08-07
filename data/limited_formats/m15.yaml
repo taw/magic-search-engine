@@ -1,0 +1,32 @@
+sealed:
+- 6x m15-draft
+# "Hunt for the Rarest Beasts": five normal boosters plus a seeded booster
+# of the chosen hunt (and an oversized Garruk the Slayer, not modelled here).
+# The stamped foil promo sits inside the seeded booster.
+prerelease-sealed:
+  choice: hunt
+  variants:
+    valor:
+      boosters:
+      - 5x m15-draft
+      - 1x m15-prerelease-valor
+    guile:
+      boosters:
+      - 5x m15-draft
+      - 1x m15-prerelease-guile
+    ambition:
+      boosters:
+      - 5x m15-draft
+      - 1x m15-prerelease-ambition
+    strength:
+      boosters:
+      - 5x m15-draft
+      - 1x m15-prerelease-strength
+    ferocity:
+      boosters:
+      - 5x m15-draft
+      - 1x m15-prerelease-ferocity
+draft:
+- m15-draft
+- m15-draft
+- m15-draft

@@ -1,0 +1,20 @@
+# Battlebond is a Two-Headed Giant set, so its packs are handed to a team of
+# two, not to one player, and the two of them build their decks out of one
+# shared pool. WotC recommended six boosters per team for Battlebond sealed
+# (rather than the eight MTR 9.6 recommends for 2HG Sealed) and four per team
+# for the draft (rather than six), passed left-right-left-right.
+# https://wpn.wizards.com/en/article/see-first-battlebond-preview-cards
+# There was no Prerelease, only a Preview Event run with ordinary boosters,
+# but it handed out the stamped promos, one per player.
+play-variant: two-headed-giant
+sealed:
+- 6x bbd-draft
+prerelease-sealed:
+  boosters:
+  - 6x bbd-draft
+  - 1x bbd-prerelease
+draft:
+- bbd-draft
+- bbd-draft
+- bbd-draft
+- bbd-draft

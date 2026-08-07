@@ -1,0 +1,18 @@
+sealed:
+- 6x mkm-play
+# The prerelease booster also holds one of three mythics exclusive to
+# prerelease packs (MKM 430-432); those were Standard legal but explicitly
+# not part of the sealed pool.
+# https://magic.wizards.com/en/news/feature/collecting-murders-at-karlov-manor
+prerelease-sealed:
+  boosters:
+  - 6x mkm-play
+  - 1x mkm-prerelease
+draft:
+- mkm-play
+- mkm-play
+- mkm-play
+arena-draft:
+- mkm-play-arena
+- mkm-play-arena
+- mkm-play-arena

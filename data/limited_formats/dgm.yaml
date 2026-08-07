@@ -1,0 +1,168 @@
+sealed:
+- 2x dgm-draft
+- 2x gtc-draft
+- 2x rtr-draft
+# You picked one of all ten guilds and got that guild's booster from its own set,
+# plus a booster of one randomly chosen allied guild from the other set.
+# The allied guild shares a colour with yours and is always from the opposite set.
+# https://magic.wizards.com/en/news/feature/dragons-maze-prerelease-primer
+# The `random-boosters` key is new -- nothing else needs one-of-N yet.
+# There was no guild promo this time; Maze's End and a foil Plains were handed
+# out for completing the Implicit Maze, so they are not part of the pool.
+prerelease-sealed:
+  choice: guild
+  variants:
+    azorius:
+      boosters:
+      - 4x dgm-draft
+      - 1x rtr-prerelease-azorius
+      random-boosters:
+      - name: allied guild booster
+        pick: 1
+        from:
+        - gtc-prerelease-orzhov
+        - gtc-prerelease-dimir
+        - gtc-prerelease-boros
+        - gtc-prerelease-simic
+      unplayable-promo:
+      - Maze's End [PDGM:152★] [foil]
+      - Plains [PDGM:157★] [foil]
+    izzet:
+      boosters:
+      - 4x dgm-draft
+      - 1x rtr-prerelease-izzet
+      random-boosters:
+      - name: allied guild booster
+        pick: 1
+        from:
+        - gtc-prerelease-dimir
+        - gtc-prerelease-gruul
+        - gtc-prerelease-boros
+        - gtc-prerelease-simic
+      unplayable-promo:
+      - Maze's End [PDGM:152★] [foil]
+      - Plains [PDGM:157★] [foil]
+    rakdos:
+      boosters:
+      - 4x dgm-draft
+      - 1x rtr-prerelease-rakdos
+      random-boosters:
+      - name: allied guild booster
+        pick: 1
+        from:
+        - gtc-prerelease-orzhov
+        - gtc-prerelease-dimir
+        - gtc-prerelease-gruul
+        - gtc-prerelease-boros
+      unplayable-promo:
+      - Maze's End [PDGM:152★] [foil]
+      - Plains [PDGM:157★] [foil]
+    golgari:
+      boosters:
+      - 4x dgm-draft
+      - 1x rtr-prerelease-golgari
+      random-boosters:
+      - name: allied guild booster
+        pick: 1
+        from:
+        - gtc-prerelease-orzhov
+        - gtc-prerelease-dimir
+        - gtc-prerelease-gruul
+        - gtc-prerelease-simic
+      unplayable-promo:
+      - Maze's End [PDGM:152★] [foil]
+      - Plains [PDGM:157★] [foil]
+    selesnya:
+      boosters:
+      - 4x dgm-draft
+      - 1x rtr-prerelease-selesnya
+      random-boosters:
+      - name: allied guild booster
+        pick: 1
+        from:
+        - gtc-prerelease-orzhov
+        - gtc-prerelease-gruul
+        - gtc-prerelease-boros
+        - gtc-prerelease-simic
+      unplayable-promo:
+      - Maze's End [PDGM:152★] [foil]
+      - Plains [PDGM:157★] [foil]
+    orzhov:
+      boosters:
+      - 4x dgm-draft
+      - 1x gtc-prerelease-orzhov
+      random-boosters:
+      - name: allied guild booster
+        pick: 1
+        from:
+        - rtr-prerelease-azorius
+        - rtr-prerelease-rakdos
+        - rtr-prerelease-golgari
+        - rtr-prerelease-selesnya
+      unplayable-promo:
+      - Maze's End [PDGM:152★] [foil]
+      - Plains [PDGM:157★] [foil]
+    dimir:
+      boosters:
+      - 4x dgm-draft
+      - 1x gtc-prerelease-dimir
+      random-boosters:
+      - name: allied guild booster
+        pick: 1
+        from:
+        - rtr-prerelease-azorius
+        - rtr-prerelease-izzet
+        - rtr-prerelease-rakdos
+        - rtr-prerelease-golgari
+      unplayable-promo:
+      - Maze's End [PDGM:152★] [foil]
+      - Plains [PDGM:157★] [foil]
+    gruul:
+      boosters:
+      - 4x dgm-draft
+      - 1x gtc-prerelease-gruul
+      random-boosters:
+      - name: allied guild booster
+        pick: 1
+        from:
+        - rtr-prerelease-izzet
+        - rtr-prerelease-rakdos
+        - rtr-prerelease-golgari
+        - rtr-prerelease-selesnya
+      unplayable-promo:
+      - Maze's End [PDGM:152★] [foil]
+      - Plains [PDGM:157★] [foil]
+    boros:
+      boosters:
+      - 4x dgm-draft
+      - 1x gtc-prerelease-boros
+      random-boosters:
+      - name: allied guild booster
+        pick: 1
+        from:
+        - rtr-prerelease-azorius
+        - rtr-prerelease-izzet
+        - rtr-prerelease-rakdos
+        - rtr-prerelease-selesnya
+      unplayable-promo:
+      - Maze's End [PDGM:152★] [foil]
+      - Plains [PDGM:157★] [foil]
+    simic:
+      boosters:
+      - 4x dgm-draft
+      - 1x gtc-prerelease-simic
+      random-boosters:
+      - name: allied guild booster
+        pick: 1
+        from:
+        - rtr-prerelease-azorius
+        - rtr-prerelease-izzet
+        - rtr-prerelease-golgari
+        - rtr-prerelease-selesnya
+      unplayable-promo:
+      - Maze's End [PDGM:152★] [foil]
+      - Plains [PDGM:157★] [foil]
+draft:
+- dgm-draft
+- gtc-draft
+- rtr-draft

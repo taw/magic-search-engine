@@ -1,0 +1,41 @@
+sealed:
+- 6x tdm-play
+# Five play boosters plus a seeded clan booster; unlike Khans of Tarkir the
+# stamped promo is a separate card, not part of the seeded booster.
+# https://magic.wizards.com/en/news/feature/tarkir-dragonstorm-prerelease-guide
+prerelease-sealed:
+  choice: clan
+  variants:
+    abzan:
+      boosters:
+      - 5x tdm-play
+      - 1x tdm-prerelease-abzan
+      - 1x tdm-prerelease
+    jeskai:
+      boosters:
+      - 5x tdm-play
+      - 1x tdm-prerelease-jeskai
+      - 1x tdm-prerelease
+    mardu:
+      boosters:
+      - 5x tdm-play
+      - 1x tdm-prerelease-mardu
+      - 1x tdm-prerelease
+    sultai:
+      boosters:
+      - 5x tdm-play
+      - 1x tdm-prerelease-sultai
+      - 1x tdm-prerelease
+    temur:
+      boosters:
+      - 5x tdm-play
+      - 1x tdm-prerelease-temur
+      - 1x tdm-prerelease
+draft:
+- tdm-play
+- tdm-play
+- tdm-play
+arena-draft:
+- tdm-play-arena
+- tdm-play-arena
+- tdm-play-arena

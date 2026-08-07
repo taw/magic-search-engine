@@ -1,0 +1,36 @@
+sealed:
+- 6x sos-play
+# Like the original Strixhaven -- the seeded college booster carries the
+# foil promo, so it is not listed separately.
+# https://magic.wizards.com/en/news/feature/secrets-of-strixhaven-prerelease-guide
+prerelease-sealed:
+  choice: college
+  variants:
+    silverquill:
+      boosters:
+      - 5x sos-play
+      - 1x sos-prerelease-silverquill
+    prismari:
+      boosters:
+      - 5x sos-play
+      - 1x sos-prerelease-prismari
+    witherbloom:
+      boosters:
+      - 5x sos-play
+      - 1x sos-prerelease-witherbloom
+    lorehold:
+      boosters:
+      - 5x sos-play
+      - 1x sos-prerelease-lorehold
+    quandrix:
+      boosters:
+      - 5x sos-play
+      - 1x sos-prerelease-quandrix
+draft:
+- sos-play
+- sos-play
+- sos-play
+arena-draft:
+- sos-play-arena
+- sos-play-arena
+- sos-play-arena
