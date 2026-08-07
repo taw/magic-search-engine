@@ -446,6 +446,10 @@ class PatchMtgjsonVersions < Patch
         card["spellbook"] = ["Ancestral Recall", "Black Lotus", "Mox Emerald", "Mox Jet", "Mox Pearl", "Mox Ruby", "Mox Sapphire", "Time Walk", "Timetwister"]
       end
 
+      if card["name"] == "Euru, Acorn Scrounger"
+        card["spellbook"] = ["Chitterspitter"]
+      end
+
       # Fix some names, as they contain impossible to search Unicode characters
       # at some point I might decide to drop this and develop a better solution
       if card["name"] == "Ratonhnhaké꞉ton"
