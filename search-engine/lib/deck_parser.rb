@@ -23,6 +23,11 @@ class DeckParser
   # a card in one of our own decks, not Unquenchable Fury from tbth.
   ARENA_PRINTING = /\A(.*?)\s*\((\w{2,6})\)(?:\s+(\d+[a-z★†]?|[a-z0-9]+-\d+[a-z★†]?))?\z/i
 
+  # Archidekt exports cards from sets Arena doesn't have as "Think Twice () 92",
+  # with empty parens where the set code would be. The number means nothing
+  # without a set, so all we get out of such a line is the name.
+  ARENA_PRINTING_NO_SET = /\A(.*?)\s*\(\)(?:\s+(?:\d+[a-z★†]?|[a-z0-9]+-\d+[a-z★†]?))?\z/i
+
   # Arena-style finish markers: *F* foil, *E* etched, plus ones we have no use
   # for like TappedOut's *CMDR*
   MARKER = /\s*\*(\w+)\*/
@@ -98,6 +103,10 @@ class DeckParser
       if name =~ ARENA_PRINTING and !known_card?(name)
         name, set_code = $1, $2
         number = $3 if $3
+      elsif name =~ ARENA_PRINTING_NO_SET and !known_card?(name)
+        # Empty parens win over a bracket the same way a set code would, so an
+        # Archidekt category like "[Mana Advantage]" doesn't become a set
+        name, set_code, number = $1, nil, nil
       end
       # Nothing but a count, like the "15" of a "Sideboard: 15" header
       next if name.empty?

@@ -445,6 +445,30 @@ describe DeckParser do
     end
   end
 
+  # Archidekt leaves the set code out for cards Arena doesn't have
+  describe "arena-style line with no set code" do
+    let(:text) do
+      <<~EOF
+      3 Think Twice () 92
+      1 Ashnod's Altar ()
+      2 Counterspell () 92 *F* [Mana Advantage]
+      EOF
+    end
+
+    it do
+      parser.main.should eq([
+        {name: "Think Twice", count: 3},
+        {name: "Ashnod's Altar", count: 1},
+        {name: "Counterspell", count: 2, foil: true},
+      ])
+      parser.main_cards.should eq([
+        [3, physical_by_best("think twice")],
+        [1, physical_by_best("ashnod's altar")],
+        [2, physical_by_best("counterspell", true)],
+      ])
+    end
+  end
+
   # Battle the Horde ships with "Unquenchable Fury (TBTH)", so this is not just
   # about playtest cards - our own export has to survive it
   describe "a card name that ends with something shaped like a set code" do
