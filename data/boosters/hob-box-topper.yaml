@@ -1,0 +1,16 @@
+# The Hobbit
+# Box Topper
+# Sources:
+# - https://magic.wizards.com/en/news/feature/collecting-the-hobbit
+# - https://scryfall.com/sets/hoc
+#
+# Each Play Booster box and Collector Booster box includes one Box Topper:
+# 1 traditional foil Middle-earth classic artist card (40 mythics, hoc 13-52).
+name: "{set_name} Box Topper"
+pack:
+  box_topper: 1
+sheets:
+  box_topper:
+    foil: true
+    rawquery: "e:hoc number:13-52"
+    count: 40
