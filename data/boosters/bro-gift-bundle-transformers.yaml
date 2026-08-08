@@ -1,0 +1,12 @@
+# The Brothers' War Gift Bundle came with one foil Transformers bonus card,
+# drawn from the 15 standard Transformers cards (BOT 1-15). The Shattered Glass
+# versions (BOT >=16) were Collector Booster exclusive, so they're excluded here
+# -- same "no shattered glass" assumption as the Set Booster wildcard.
+name: "The Brothers' War Gift Bundle Transformers card"
+pack:
+  transformers: 1
+sheets:
+  transformers:
+    foil: true
+    rawquery: "e:bot number<16"
+    count: 15
