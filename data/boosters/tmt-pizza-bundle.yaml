@@ -1,0 +1,12 @@
+# The Teenage Mutant Ninja Turtles Pizza Bundle came with 2 foil pizza-themed
+# promo cards, drawn from a 6-card pool (TMC 131-136): Dark Ritual, Waste Not,
+# Food Chain, Supreme Verdict, Commander's Plate, and Sword of Hearth and Home.
+# All are foil-only "inverted" (pizza-box) frame mythics.
+name: "Teenage Mutant Ninja Turtles Pizza Bundle promos"
+pack:
+  pizza: 2
+sheets:
+  pizza:
+    foil: true
+    rawquery: "e:tmc number>=131 number<=136"
+    count: 6
