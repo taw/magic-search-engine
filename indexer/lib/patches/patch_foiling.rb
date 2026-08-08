@@ -36,8 +36,10 @@ class PatchFoiling < Patch
       next if card["alchemy"]
 
       case card["set_code"]
-      when "inv"
-        fix_to card, "both"
+      # There are two suspicious cards in INV inv/124★ and inv/134★ but I can't find which product they're even from
+      # so I disabled attempts at fixing them.
+      # when "inv"
+      #   fix_to card, "both"
       when "tsr"
         if card["number"] == "411"
           # I think?

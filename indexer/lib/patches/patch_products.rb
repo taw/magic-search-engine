@@ -50,7 +50,10 @@ class PatchProducts < Patch
           # only take first part of a DFC
           name = v["name"].split(" // ").first
 
-          if !@cards[name]
+
+          if v["token"]
+            raise "Implement token handling"
+          elsif !@cards[name]
             # Fail, but allow for now
             warn "Product #{product_description(product)} has unknown card #{name} [#{set_code}:#{number}]"
             result << [1, "card", set_code, number, name, !!foil]
