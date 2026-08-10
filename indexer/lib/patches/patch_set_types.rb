@@ -103,9 +103,14 @@ class PatchSetTypes < Patch
         set_types << "box" << "sdcc"
       end
 
-      # Some of these are not actually funny sets, just promo sets mixing funny and regular cards
-      # (like j17 or pf25), so PatchFunny still decides card by card.
-      funny_sets = %W[unh ugl pcel hho ust pust ppc1 pal04 h17 j17 tbth tdag tfth thp1 thp2 thp3 ptg cmb1 cmb2 mbc und punh o90p olep ulst p30m mb2 unk punk pf24 pf25 past]
+      # Some of these still mix in regular cards (basics in un-sets, reprints in mb2),
+      # so PatchFunny decides card by card.
+      # Promo sets which only mix in a few funny cards are not funny sets at all -
+      # they live in PatchFunny::SetsWithSomeFunnyCards instead.
+      #
+      # mbc is on neither list. It is legal in Commander, Legacy, and Vintage, and its only
+      # non-legal cards are the Alchemy conversions, which the acorn stamp already catches.
+      funny_sets = %W[unh ugl pcel hho ust pust ppc1 h17 tbth tdag tfth thp1 thp2 thp3 ptg cmb1 cmb2 und punh ulst mb2 unk punk past]
       if funny_sets.include?(set_code) or set["name"] =~ /Heroes of the Realm/
         set_types << "funny"
         set["funny"] = true
