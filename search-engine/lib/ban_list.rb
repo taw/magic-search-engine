@@ -52,6 +52,12 @@ class BanList
     @events.map{|d,_,_| d}
   end
 
+  # Announcements as declared, [date, url, {card name => legality}]
+  # Unlike events it doesn't split them by card or figure out previous legality
+  def changes
+    @events
+  end
+
   def to_s
     "BanList[#{@format}]"
   end
@@ -99,6 +105,11 @@ class BanList
 
     def all_change_dates
       @ban_lists.values.flat_map(&:change_dates).uniq.sort
+    end
+
+    # Formats get a BanList even if they never had any bans, skip those
+    def all_ban_lists
+      @ban_lists.values.reject{|ban_list| ban_list.changes.empty?}.sort_by(&:format)
     end
   end
 end

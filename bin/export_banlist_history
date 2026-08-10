@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+
+# Exports every B&R announcement we know about, for every format, as:
+#   {"modern": [{"date": "2011-09-20", "url": "...", "changes": {"Jace, the Mind Sculptor": "banned"}}, ...], ...}
+#
+# Formats are sorted by name, announcements within a format are sorted by date.
+# Announcements which established the initial ban list have null date,
+# and announcements we have no source for have null url.
+
+require "date"
+require "json"
+require_relative "../search-engine/lib/ban_list"
+
+data = BanList.all_ban_lists.map do |ban_list|
+  announcements = ban_list.changes.map do |date, url, legalities|
+    {
+      "date" => (date == BanList::START ? nil : date.to_s),
+      "url" => url,
+      "changes" => legalities,
+    }
+  end
+  [ban_list.format, announcements]
+end.to_h
+
+json = JSON.pretty_generate(data)
+
+if ARGV.empty?
+  puts json
+else
+  Pathname(ARGV[0]).write(json + "\n")
+end
