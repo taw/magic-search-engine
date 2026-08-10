@@ -1,5 +1,6 @@
 # This banlist doesn't distinguish "suspended" from "banned"
-# "restricted" status is used for conjured/specialized cards, which is technically not a B&R issue
+# "conjurable" and "specialized" are technically not a B&R issue, they're cards which
+# can't go into a deck at all. Both currently collapse to "restricted" - see _LEGALITY.md
 
 BanList.for_format("historic") do
   change(
@@ -101,11 +102,11 @@ BanList.for_format("historic") do
   change(
     "2021-08-26",
     nil,
-    "Kraken Hatchling" => "restricted",
-    "Ponder" => "restricted",
-    "Regal Force" => "restricted",
-    "Stormfront Pegasus" => "restricted",
-    "Tropical Island" => "restricted",
+    "Kraken Hatchling" => "conjurable",
+    "Ponder" => "conjurable",
+    "Regal Force" => "conjurable",
+    "Stormfront Pegasus" => "conjurable",
+    "Tropical Island" => "conjurable",
   )
 
   change(
@@ -127,131 +128,131 @@ BanList.for_format("historic") do
     "2022-07-07",
     nil,
     # Specialized cards
-    "Alora, Cheerful Assassin" => "restricted",
-    "Alora, Cheerful Mastermind" => "restricted",
-    "Alora, Cheerful Scout" => "restricted",
-    "Alora, Cheerful Swashbuckler" => "restricted",
-    "Alora, Cheerful Thief" => "restricted",
-    "Ambergris, Agent of Balance" => "restricted",
-    "Ambergris, Agent of Destruction" => "restricted",
-    "Ambergris, Agent of Law" => "restricted",
-    "Ambergris, Agent of Progress" => "restricted",
-    "Ambergris, Agent of Tyranny" => "restricted",
-    "Gale, Abyssal Conduit" => "restricted",
-    "Gale, Holy Conduit" => "restricted",
-    "Gale, Primeval Conduit" => "restricted",
-    "Gale, Storm Conduit" => "restricted",
-    "Gale, Temporal Conduit" => "restricted",
-    "Gut, Bestial Fanatic" => "restricted",
-    "Gut, Brutal Fanatic" => "restricted",
-    "Gut, Devious Fanatic" => "restricted",
-    "Gut, Furious Fanatic" => "restricted",
-    "Gut, Zealous Fanatic" => "restricted",
-    "Imoen, Chaotic Trickster" => "restricted",
-    "Imoen, Honorable Trickster" => "restricted",
-    "Imoen, Occult Trickster" => "restricted",
-    "Imoen, Wily Trickster" => "restricted",
-    "Imoen, Wise Trickster" => "restricted",
-    "Jaheira, Heroic Harper" => "restricted",
-    "Jaheira, Insightful Harper" => "restricted",
-    "Jaheira, Merciful Harper" => "restricted",
-    "Jaheira, Ruthless Harper" => "restricted",
-    "Jaheira, Stirring Harper" => "restricted",
-    "Karlach, Tiefling Berserker" => "restricted",
-    "Karlach, Tiefling Guardian" => "restricted",
-    "Karlach, Tiefling Punisher" => "restricted",
-    "Karlach, Tiefling Spellrager" => "restricted",
-    "Karlach, Tiefling Zealot" => "restricted",
-    "Klement, Death Acolyte" => "restricted",
-    "Klement, Knowledge Acolyte" => "restricted",
-    "Klement, Life Acolyte" => "restricted",
-    "Klement, Nature Acolyte" => "restricted",
-    "Klement, Tempest Acolyte" => "restricted",
-    "Lae'zel, Blessed Warrior" => "restricted",
-    "Lae'zel, Callous Warrior" => "restricted",
-    "Lae'zel, Illithid Thrall" => "restricted",
-    "Lae'zel, Primal Warrior" => "restricted",
-    "Lae'zel, Wrathful Warrior" => "restricted",
-    "Lukamina, Bear Form" => "restricted",
-    "Lukamina, Crocodile Form" => "restricted",
-    "Lukamina, Hawk Form" => "restricted",
-    "Lukamina, Scorpion Form" => "restricted",
-    "Lukamina, Wolf Form" => "restricted",
-    "Lulu, Curious Hollyphant" => "restricted",
-    "Lulu, Helpful Hollyphant" => "restricted",
-    "Lulu, Inspiring Hollyphant" => "restricted",
-    "Lulu, Vengeful Hollyphant" => "restricted",
-    "Lulu, Wild Hollyphant" => "restricted",
-    "Rasaad, Dragon Monk" => "restricted",
-    "Rasaad, Radiant Monk" => "restricted",
-    "Rasaad, Shadow Monk" => "restricted",
-    "Rasaad, Sylvan Monk" => "restricted",
-    "Rasaad, Warrior Monk" => "restricted",
-    "Sarevok, Deadly Usurper" => "restricted",
-    "Sarevok, Deceitful Usurper" => "restricted",
-    "Sarevok, Divine Usurper" => "restricted",
-    "Sarevok, Ferocious Usurper" => "restricted",
-    "Sarevok, Mighty Usurper" => "restricted",
-    "Shadowheart, Cleric of Graves" => "restricted",
-    "Shadowheart, Cleric of Order" => "restricted",
-    "Shadowheart, Cleric of Trickery" => "restricted",
-    "Shadowheart, Cleric of Twilight" => "restricted",
-    "Shadowheart, Cleric of War" => "restricted",
-    "Skanos, Black Dragon Vassal" => "restricted",
-    "Skanos, Blue Dragon Vassal" => "restricted",
-    "Skanos, Green Dragon Vassal" => "restricted",
-    "Skanos, Red Dragon Vassal" => "restricted",
-    "Skanos, White Dragon Vassal" => "restricted",
-    "Vhal, Scholar of Creation" => "restricted",
-    "Vhal, Scholar of Elements" => "restricted",
-    "Vhal, Scholar of Mortality" => "restricted",
-    "Vhal, Scholar of Prophecy" => "restricted",
-    "Vhal, Scholar of Tactics" => "restricted",
-    "Viconia, Disciple of Arcana" => "restricted",
-    "Viconia, Disciple of Blood" => "restricted",
-    "Viconia, Disciple of Rebirth" => "restricted",
-    "Viconia, Disciple of Strength" => "restricted",
-    "Viconia, Disciple of Violence" => "restricted",
-    "Wilson, Ardent Bear" => "restricted",
-    "Wilson, Fearsome Bear" => "restricted",
-    "Wilson, Majestic Bear" => "restricted",
-    "Wilson, Subtle Bear" => "restricted",
-    "Wilson, Urbane Bear" => "restricted",
-    "Wyll of the Blade Pact" => "restricted",
-    "Wyll of the Celestial Pact" => "restricted",
-    "Wyll of the Elder Pact" => "restricted",
-    "Wyll of the Fey Pact" => "restricted",
-    "Wyll of the Fiend Pact" => "restricted",
+    "Alora, Cheerful Assassin" => "specialized",
+    "Alora, Cheerful Mastermind" => "specialized",
+    "Alora, Cheerful Scout" => "specialized",
+    "Alora, Cheerful Swashbuckler" => "specialized",
+    "Alora, Cheerful Thief" => "specialized",
+    "Ambergris, Agent of Balance" => "specialized",
+    "Ambergris, Agent of Destruction" => "specialized",
+    "Ambergris, Agent of Law" => "specialized",
+    "Ambergris, Agent of Progress" => "specialized",
+    "Ambergris, Agent of Tyranny" => "specialized",
+    "Gale, Abyssal Conduit" => "specialized",
+    "Gale, Holy Conduit" => "specialized",
+    "Gale, Primeval Conduit" => "specialized",
+    "Gale, Storm Conduit" => "specialized",
+    "Gale, Temporal Conduit" => "specialized",
+    "Gut, Bestial Fanatic" => "specialized",
+    "Gut, Brutal Fanatic" => "specialized",
+    "Gut, Devious Fanatic" => "specialized",
+    "Gut, Furious Fanatic" => "specialized",
+    "Gut, Zealous Fanatic" => "specialized",
+    "Imoen, Chaotic Trickster" => "specialized",
+    "Imoen, Honorable Trickster" => "specialized",
+    "Imoen, Occult Trickster" => "specialized",
+    "Imoen, Wily Trickster" => "specialized",
+    "Imoen, Wise Trickster" => "specialized",
+    "Jaheira, Heroic Harper" => "specialized",
+    "Jaheira, Insightful Harper" => "specialized",
+    "Jaheira, Merciful Harper" => "specialized",
+    "Jaheira, Ruthless Harper" => "specialized",
+    "Jaheira, Stirring Harper" => "specialized",
+    "Karlach, Tiefling Berserker" => "specialized",
+    "Karlach, Tiefling Guardian" => "specialized",
+    "Karlach, Tiefling Punisher" => "specialized",
+    "Karlach, Tiefling Spellrager" => "specialized",
+    "Karlach, Tiefling Zealot" => "specialized",
+    "Klement, Death Acolyte" => "specialized",
+    "Klement, Knowledge Acolyte" => "specialized",
+    "Klement, Life Acolyte" => "specialized",
+    "Klement, Nature Acolyte" => "specialized",
+    "Klement, Tempest Acolyte" => "specialized",
+    "Lae'zel, Blessed Warrior" => "specialized",
+    "Lae'zel, Callous Warrior" => "specialized",
+    "Lae'zel, Illithid Thrall" => "specialized",
+    "Lae'zel, Primal Warrior" => "specialized",
+    "Lae'zel, Wrathful Warrior" => "specialized",
+    "Lukamina, Bear Form" => "specialized",
+    "Lukamina, Crocodile Form" => "specialized",
+    "Lukamina, Hawk Form" => "specialized",
+    "Lukamina, Scorpion Form" => "specialized",
+    "Lukamina, Wolf Form" => "specialized",
+    "Lulu, Curious Hollyphant" => "specialized",
+    "Lulu, Helpful Hollyphant" => "specialized",
+    "Lulu, Inspiring Hollyphant" => "specialized",
+    "Lulu, Vengeful Hollyphant" => "specialized",
+    "Lulu, Wild Hollyphant" => "specialized",
+    "Rasaad, Dragon Monk" => "specialized",
+    "Rasaad, Radiant Monk" => "specialized",
+    "Rasaad, Shadow Monk" => "specialized",
+    "Rasaad, Sylvan Monk" => "specialized",
+    "Rasaad, Warrior Monk" => "specialized",
+    "Sarevok, Deadly Usurper" => "specialized",
+    "Sarevok, Deceitful Usurper" => "specialized",
+    "Sarevok, Divine Usurper" => "specialized",
+    "Sarevok, Ferocious Usurper" => "specialized",
+    "Sarevok, Mighty Usurper" => "specialized",
+    "Shadowheart, Cleric of Graves" => "specialized",
+    "Shadowheart, Cleric of Order" => "specialized",
+    "Shadowheart, Cleric of Trickery" => "specialized",
+    "Shadowheart, Cleric of Twilight" => "specialized",
+    "Shadowheart, Cleric of War" => "specialized",
+    "Skanos, Black Dragon Vassal" => "specialized",
+    "Skanos, Blue Dragon Vassal" => "specialized",
+    "Skanos, Green Dragon Vassal" => "specialized",
+    "Skanos, Red Dragon Vassal" => "specialized",
+    "Skanos, White Dragon Vassal" => "specialized",
+    "Vhal, Scholar of Creation" => "specialized",
+    "Vhal, Scholar of Elements" => "specialized",
+    "Vhal, Scholar of Mortality" => "specialized",
+    "Vhal, Scholar of Prophecy" => "specialized",
+    "Vhal, Scholar of Tactics" => "specialized",
+    "Viconia, Disciple of Arcana" => "specialized",
+    "Viconia, Disciple of Blood" => "specialized",
+    "Viconia, Disciple of Rebirth" => "specialized",
+    "Viconia, Disciple of Strength" => "specialized",
+    "Viconia, Disciple of Violence" => "specialized",
+    "Wilson, Ardent Bear" => "specialized",
+    "Wilson, Fearsome Bear" => "specialized",
+    "Wilson, Majestic Bear" => "specialized",
+    "Wilson, Subtle Bear" => "specialized",
+    "Wilson, Urbane Bear" => "specialized",
+    "Wyll of the Blade Pact" => "specialized",
+    "Wyll of the Celestial Pact" => "specialized",
+    "Wyll of the Elder Pact" => "specialized",
+    "Wyll of the Fey Pact" => "specialized",
+    "Wyll of the Fiend Pact" => "specialized",
     # conjure only cards
-    "Hag of Ceaseless Torment" => "restricted",
-    "Hag of Dark Duress" => "restricted",
-    "Hag of Death's Legion" => "restricted",
-    "Hag of Inner Weakness" => "restricted",
-    "Hag of Mage's Doom" => "restricted",
-    "Hag of Noxious Nightmares" => "restricted",
-    "Hag of Scoured Thoughts" => "restricted",
-    "Hag of Syphoned Breath" => "restricted",
-    "Hag of Twisted Visions" => "restricted",
+    "Hag of Ceaseless Torment" => "conjurable",
+    "Hag of Dark Duress" => "conjurable",
+    "Hag of Death's Legion" => "conjurable",
+    "Hag of Inner Weakness" => "conjurable",
+    "Hag of Mage's Doom" => "conjurable",
+    "Hag of Noxious Nightmares" => "conjurable",
+    "Hag of Scoured Thoughts" => "conjurable",
+    "Hag of Syphoned Breath" => "conjurable",
+    "Hag of Twisted Visions" => "conjurable",
     # Now this is fun, HBG cards 900+ are conjure only, but some of these have other historic legal printings
     # It would be better to move these to a separate set
-    # "Archipelagore" => "restricted", # also in IKO
-    # "Junk Winder" => "restricted", # also in J21
-    # "Moat Piranhas" => "restricted", # also in M20
-    # "Mystic Skyfish" => "restricted", # also in M21
-    # "Nadir Kraken" => "restricted", # also in THB
-    # "Nezahal, Primal Tide" => "restricted", # also in RIX
-    # "Pouncing Shoreshark" => "restricted", # also in IKO
-    # "Pursued Whale" => "restricted", # also in M21
-    # "Riptide Turtle" => "restricted", # also in THB
-    # "Ruin Crab" => "restricted", # also in ZNR
-    # "Sea-Dasher Octopus" => "restricted", # also in IKO
-    # "Sigiled Starfish" => "restricted", # also in JMP
-    # "Spined Megalodon" => "restricted", # also in M21
-    # "Stinging Lionfish" => "restricted", # also in THB
-    # "Voracious Greatshark" => "restricted", # also in IKO
-    "Lightning Bolt" => "restricted", # well, it was pre-banned, but now it's conjurable, so this is fine
-    # "Naturalize" => "restricted", # also in M19
-    # "Plummet" => "restricted", # also in M20
+    # "Archipelagore" => "conjurable", # also in IKO
+    # "Junk Winder" => "conjurable", # also in J21
+    # "Moat Piranhas" => "conjurable", # also in M20
+    # "Mystic Skyfish" => "conjurable", # also in M21
+    # "Nadir Kraken" => "conjurable", # also in THB
+    # "Nezahal, Primal Tide" => "conjurable", # also in RIX
+    # "Pouncing Shoreshark" => "conjurable", # also in IKO
+    # "Pursued Whale" => "conjurable", # also in M21
+    # "Riptide Turtle" => "conjurable", # also in THB
+    # "Ruin Crab" => "conjurable", # also in ZNR
+    # "Sea-Dasher Octopus" => "conjurable", # also in IKO
+    # "Sigiled Starfish" => "conjurable", # also in JMP
+    # "Spined Megalodon" => "conjurable", # also in M21
+    # "Stinging Lionfish" => "conjurable", # also in THB
+    # "Voracious Greatshark" => "conjurable", # also in IKO
+    "Lightning Bolt" => "conjurable", # well, it was pre-banned, but now it's conjurable, so this is fine
+    # "Naturalize" => "conjurable", # also in M19
+    # "Plummet" => "conjurable", # also in M20
   )
 
   # YDMU
@@ -259,15 +260,15 @@ BanList.for_format("historic") do
     "2022-10-05",
     nil,
     # conjure only cards
-    "Ancestral Recall" => "restricted",
-    "Time Walk" => "restricted",
-    "Timetwister" => "restricted",
-    "Black Lotus" => "restricted",
-    "Mox Emerald" => "restricted",
-    "Mox Jet" => "restricted",
-    "Mox Pearl" => "restricted",
-    "Mox Ruby" => "restricted",
-    "Mox Sapphire" => "restricted",
+    "Ancestral Recall" => "conjurable",
+    "Time Walk" => "conjurable",
+    "Timetwister" => "conjurable",
+    "Black Lotus" => "conjurable",
+    "Mox Emerald" => "conjurable",
+    "Mox Jet" => "conjurable",
+    "Mox Pearl" => "conjurable",
+    "Mox Ruby" => "conjurable",
+    "Mox Sapphire" => "conjurable",
   )
 
   # BRR preemptively banned

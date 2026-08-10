@@ -111,8 +111,8 @@ BanList.for_format("commander") do
   change(
     "2006-02-02",
     nil,
-    "Heartless Hidetsugu" => "restricted",
-    "Niv-Mizzet, the Firemind" => "restricted",
+    "Heartless Hidetsugu" => "banned_as_commander",
+    "Niv-Mizzet, the Firemind" => "banned_as_commander",
   )
 
   change(
@@ -134,7 +134,7 @@ BanList.for_format("commander") do
     "2007-03-08",
     "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=81", # posted 2007-03-08, "go into effect immediately"
     "Coalition Victory" => "banned",
-    "Rofellos, Llanowar Emissary" => "restricted",
+    "Rofellos, Llanowar Emissary" => "banned_as_commander",
   )
 
   # When was it banned ?
@@ -190,7 +190,7 @@ BanList.for_format("commander") do
     "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=2074", # posted 2009-06-18, effective 2009-06-20
     "Fastbond" => "banned",
     "Gifts Ungiven" => "banned",
-    "Braids, Cabal Minion" => "restricted",
+    "Braids, Cabal Minion" => "banned_as_commander",
   )
 
   change(
@@ -212,7 +212,7 @@ BanList.for_format("commander") do
     "Channel" => "banned",
     "Staff of Domination" => "banned",
     "Tolarian Academy" => "banned",
-    "Rofellos, Llanowar Emissary" => "restricted",
+    "Rofellos, Llanowar Emissary" => "banned_as_commander",
   )
 
   change(
@@ -231,8 +231,8 @@ BanList.for_format("commander") do
     "2011-10-01",
     "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=10749", # posted 2011-09-19
     "Lion's Eye Diamond" => "legal",
-    "Erayo's Essence" => "restricted",
-    "Erayo, Soratami Ascendant" => "restricted",
+    "Erayo's Essence" => "banned_as_commander",
+    "Erayo, Soratami Ascendant" => "banned_as_commander",
   )
 
   change(
@@ -247,7 +247,7 @@ BanList.for_format("commander") do
     "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=12253", # posted 2012-09-18
     "Primeval Titan" => "banned",
     "Worldfire" => "banned",
-    "Kokusho, the Evening Star" => "restricted",
+    "Kokusho, the Evening Star" => "banned_as_commander",
   )
 
   change(
@@ -363,6 +363,6 @@ BanList.for_format("commander") do
     "2026-02-09",
     "https://magic.wizards.com/en/news/announcements/commander-banned-and-restricted-february-9-2026",
     "Biorhythm" => "legal",
-    "Lutri, the Spellchaser" => "restricted", # new "banned as companion status"
+    "Lutri, the Spellchaser" => "banned_as_companion",
   )
 end

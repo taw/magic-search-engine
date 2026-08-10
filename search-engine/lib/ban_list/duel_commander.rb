@@ -59,15 +59,15 @@ BanList.for_format("duel commander") do
     "Tolarian Academy" => "banned",
     "Treasure Cruise" => "banned",
     "Vampiric Tutor" => "banned",
-    "Derevi, Empyrial Tactician" => "restricted",
-    "Edric, Spymaster of Trest" => "restricted",
-    "Erayo, Soratami Ascendant" => "restricted",
-    "Marath, Will of the Wild" => "restricted",
-    "Oloro, Ageless Ascetic" => "restricted",
-    "Rofellos, Llanowar Emissary" => "restricted",
-    "Tasigur, the Golden Fang" => "restricted",
-    "Yisan, the Wanderer Bard" => "restricted",
-    "Zur the Enchanter" => "restricted",
+    "Derevi, Empyrial Tactician" => "banned_as_commander",
+    "Edric, Spymaster of Trest" => "banned_as_commander",
+    "Erayo, Soratami Ascendant" => "banned_as_commander",
+    "Marath, Will of the Wild" => "banned_as_commander",
+    "Oloro, Ageless Ascetic" => "banned_as_commander",
+    "Rofellos, Llanowar Emissary" => "banned_as_commander",
+    "Tasigur, the Golden Fang" => "banned_as_commander",
+    "Yisan, the Wanderer Bard" => "banned_as_commander",
+    "Zur the Enchanter" => "banned_as_commander",
     "Yawgmoth's Bargain" => "banned",
     "Serra Ascendant" => "banned",
     "Grindstone" => "banned",
@@ -94,8 +94,8 @@ BanList.for_format("duel commander") do
     "Chrome Mox" => "banned",
     "Mox Diamond" => "banned",
     "Yisan, the Wanderer Bard" => "legal",
-    "Breya, Etherium Shaper" => "restricted",
-    "Vial Smasher the Fierce" => "restricted",
+    "Breya, Etherium Shaper" => "banned_as_commander",
+    "Vial Smasher the Fierce" => "banned_as_commander",
   )
 
   change(
@@ -106,10 +106,10 @@ BanList.for_format("duel commander") do
     "Ancient Tomb" => "legal",
     "Fastbond" => "legal",
     "Mind Twist" => "legal",
-    "Bruse Tarl, Boorish Herder" => "restricted",
-    "Geist of Saint Traft" => "restricted",
-    "Jace, Vryn's Prodigy" => "restricted",
-    # "Jace, Telepath Unbound" => "restricted", # DFC of previous, should it be listed explicitly?
+    "Bruse Tarl, Boorish Herder" => "banned_as_commander",
+    "Geist of Saint Traft" => "banned_as_commander",
+    "Jace, Vryn's Prodigy" => "banned_as_commander",
+    # "Jace, Telepath Unbound" => "banned_as_commander", # DFC of previous, should it be listed explicitly?
   )
 
   change(
@@ -119,7 +119,7 @@ BanList.for_format("duel commander") do
     "Fireblast" => "banned",
     "Price of Progress" => "banned",
     "Sulfuric Vortex" => "banned",
-    "Edgar Markov" => "restricted",
+    "Edgar Markov" => "banned_as_commander",
   )
 
   change(
@@ -131,24 +131,24 @@ BanList.for_format("duel commander") do
   change(
     "2018-06-01",
     "http://www.duelcommander.com/2018/05/classic-may-2018-rules-banlist-update/",
-    "Zurgo Bellstriker" => "restricted",
+    "Zurgo Bellstriker" => "banned_as_commander",
   )
 
   change(
     "2019-03-01",
     "http://www.duelcommander.com/2019/02/february-2019-rules-banned-restricted-update/",
-    "Prime Speaker Vannifar" => "restricted",
-    "Baral, Chief of Compliance" => "restricted",
+    "Prime Speaker Vannifar" => "banned_as_commander",
+    "Baral, Chief of Compliance" => "banned_as_commander",
   )
 
   change(
     "2019-08-31",
     "http://www.duelcommander.com/2019/08/august-2019-rules-banned-restricted-update/",
-    "Arahbo, Roar of the World" => "restricted",
-    "Najeela, the Blade-Blossom" => "restricted",
-    "Teferi, Temporal Archmage" => "restricted",
-    "Urza, Lord High Artificer" => "restricted",
-    "Yuriko, the Tiger's Shadow" => "restricted",
+    "Arahbo, Roar of the World" => "banned_as_commander",
+    "Najeela, the Blade-Blossom" => "banned_as_commander",
+    "Teferi, Temporal Archmage" => "banned_as_commander",
+    "Urza, Lord High Artificer" => "banned_as_commander",
+    "Yuriko, the Tiger's Shadow" => "banned_as_commander",
     "Timetwister" => "banned",
     "Edric, Spymaster of Trest" => "legal",
     "Erayo, Soratami Ascendant" => "legal",
@@ -158,8 +158,8 @@ BanList.for_format("duel commander") do
   change(
     "2019-11-25",
     "http://www.duelcommander.com/2019/11/november-2019-rules-banned-restricted-update/",
-    "Emry, Lurker of the Loch" => "restricted", # was experimentally legal
-    "Edric, Spymaster of Trest" => "restricted", # was experimentally legal
+    "Emry, Lurker of the Loch" => "banned_as_commander", # was experimentally legal
+    "Edric, Spymaster of Trest" => "banned_as_commander", # was experimentally legal
     # "Erayo, Soratami Ascendant" => "legal", # officially legal, was experimentally legal
     "Scapeshift" => "banned",
   )
@@ -212,10 +212,10 @@ BanList.for_format("duel commander") do
   change(
     "2020-12-04",
     "https://www.mtgdc.info/announcements/2020/november-2020-rules-bannedrestricted-update",
-    "Akiri, Line-Slinger" => "restricted",
-    "Omnath, Locus of Creation" => "restricted",
-    "Thrasios, Triton Hero" => "restricted",
-    "Tymna the Weaver" => "restricted",
+    "Akiri, Line-Slinger" => "banned_as_commander",
+    "Omnath, Locus of Creation" => "banned_as_commander",
+    "Thrasios, Triton Hero" => "banned_as_commander",
+    "Tymna the Weaver" => "banned_as_commander",
     "Jeweled Lotus" => "banned",
     "Uro, Titan of Nature's Wrath" => "banned",
   )
@@ -223,27 +223,27 @@ BanList.for_format("duel commander") do
   change(
     "2021-01-25",
     "https://www.mtgdc.info/announcements/2021/january-2021-rules-bannedrestricted-update",
-    "Esior, Wardwing Familiar" => "restricted",
-    "Jeska, Thrice Reborn" => "restricted",
+    "Esior, Wardwing Familiar" => "banned_as_commander",
+    "Jeska, Thrice Reborn" => "banned_as_commander",
     "Fireblast" => "legal",
   )
 
   change(
     "2021-03-29",
     "https://www.mtgdc.info/announcements/2021/march-2021-rules-bannedrestricted-update",
-    "Ardenn, Intrepid Archaeologist" => "restricted",
-    "Keleth, Sunmane Familiar" => "restricted",
-    "Krark, the Thumbless" => "restricted",
-    "Ludevic, Necro-Alchemist" => "restricted",
-    "Reyhan, Last of the Abzan" => "restricted",
-    "Rograkh, Son of Rohgahh" => "restricted",
+    "Ardenn, Intrepid Archaeologist" => "banned_as_commander",
+    "Keleth, Sunmane Familiar" => "banned_as_commander",
+    "Krark, the Thumbless" => "banned_as_commander",
+    "Ludevic, Necro-Alchemist" => "banned_as_commander",
+    "Reyhan, Last of the Abzan" => "banned_as_commander",
+    "Rograkh, Son of Rohgahh" => "banned_as_commander",
   )
 
   change(
     "2021-07-26",
     "https://www.mtgdc.info/announcements/2021/july-2021-rules-bannedrestricted-update",
-    "Inalla, Archmage Ritualist" => "restricted",
-    "Ragavan, Nimble Pilferer" => "restricted",
+    "Inalla, Archmage Ritualist" => "banned_as_commander",
+    "Ragavan, Nimble Pilferer" => "banned_as_commander",
     "Gifts Ungiven" => "banned",
   )
 
@@ -251,15 +251,15 @@ BanList.for_format("duel commander") do
     "2021-09-27",
     "https://www.mtgdc.info/announcements/2021/september-2021-rules-bannedrestricted-update",
     "Maddening Hex" => "banned",
-    "Asmoranomardicadaistinaculdacar" => "restricted",
-    "Winota, Joiner of Forces" => "restricted",
+    "Asmoranomardicadaistinaculdacar" => "banned_as_commander",
+    "Winota, Joiner of Forces" => "banned_as_commander",
   )
 
   change(
     "2022-01-31",
     "https://www.mtgdc.info/announcements/2022/january-2022-rules-bannedrestricted-update",
-    "Kraum, Ludevic's Opus" => "restricted",
-    "Livio, Oathsworn Sentinel" => "restricted",
+    "Kraum, Ludevic's Opus" => "banned_as_commander",
+    "Livio, Oathsworn Sentinel" => "banned_as_commander",
     "Teferi, Temporal Archmage" => "legal",
     "Marath, Will of the Wild" => "legal",
   )
@@ -276,13 +276,13 @@ BanList.for_format("duel commander") do
     "Reyhan, Last of the Abzan" => "legal",
     "Rograkh, Son of Rohgahh" => "legal",
     "Tymna the Weaver" => "legal",
-    "Yoshimaru, Ever Faithful" => "restricted",
+    "Yoshimaru, Ever Faithful" => "banned_as_commander",
   )
 
   change(
     "2022-05-30",
     "https://www.mtgdc.info/announcements/2022/may-2022-rules-bannedrestricted-update",
-    "Shorikai, Genesis Engine" => "restricted",
+    "Shorikai, Genesis Engine" => "banned_as_commander",
     "Bazaar of Baghdad" => "banned",
     "Ragavan, Nimble Pilferer" => "banned",
     "Serra's Sanctum"  => "banned",
@@ -291,7 +291,7 @@ BanList.for_format("duel commander") do
   change(
     "2022-07-25",
     "https://www.mtgdc.info/announcements/2022/july-2022-rules-bannedrestricted-update",
-    "Minsc & Boo, Timeless Heroes" => "restricted",
+    "Minsc & Boo, Timeless Heroes" => "banned_as_commander",
   )
 
   change(
@@ -309,7 +309,7 @@ BanList.for_format("duel commander") do
   change(
     "2023-05-29",
     "https://www.mtgdc.info/announcements/2023/may-2023-rules-bannedrestricted-update",
-    "Dihada, Binder of Wills" => "restricted",
+    "Dihada, Binder of Wills" => "banned_as_commander",
     "Comet, Stellar Pup" => "banned",
     "Hogaak, Arisen Necropolis" => "banned",
     "Mox Amber" => "banned",
@@ -335,13 +335,13 @@ BanList.for_format("duel commander") do
   change(
     "2024-03-25",
     "https://www.mtgdc.info/announcements/2024/march-2024-rules-bannedrestricted-update",
-    "Raffine, Scheming Seer" => "restricted",
+    "Raffine, Scheming Seer" => "banned_as_commander",
   )
 
   change(
     "2024-05-27",
     "https://www.mtgdc.info/announcements/2024/may-2024-rules-bannedrestricted-update",
-    "Eris, Roar of the Storm" => "restricted",
+    "Eris, Roar of the Storm" => "banned_as_commander",
     # and all sticker and attraction cards, like with official formats ban in:
     # "https://magic.wizards.com/en/news/announcements/may-13-2024-banned-and-restricted-announcement",
     # All Sticker Cards, as per linked url
@@ -508,15 +508,15 @@ BanList.for_format("duel commander") do
   change(
     "2024-06-17",
     "https://www.mtgdc.info/announcements/2024/june-17-2024-announcementupdate",
-    "Ajani, Nacatl Pariah" => "restricted",
-    "Ajani, Nacatl Avenger" => "restricted", # DFC side of restricted card
-    "Nadu, Winged Wisdom" => "restricted",
+    "Ajani, Nacatl Pariah" => "banned_as_commander",
+    "Ajani, Nacatl Avenger" => "banned_as_commander", # back face, listed so both faces agree
+    "Nadu, Winged Wisdom" => "banned_as_commander",
   )
 
   change(
     "2024-07-22",
     "https://www.mtgdc.info/announcements/2024/july-22-2024-announcementupdate",
-    "Old Stickfingers" => "restricted",
+    "Old Stickfingers" => "banned_as_commander",
     "Ardenn, Intrepid Archaeologist" => "legal",
     "Thrasios, Triton Hero" => "legal",
     "Polymorph" => "legal",
@@ -525,14 +525,14 @@ BanList.for_format("duel commander") do
   change(
     "2024-09-30",
     "https://www.mtgdc.info/announcements/2024/september-30-2024-announcementupdate",
-    "Tamiyo, Inquisitive Student" => "restricted",
-    "Tamiyo, Seasoned Scholar" => "restricted", # DFC side of restricted card
+    "Tamiyo, Inquisitive Student" => "banned_as_commander",
+    "Tamiyo, Seasoned Scholar" => "banned_as_commander", # back face, listed so both faces agree
   )
 
   change(
     "2025-01-27",
     "https://www.mtgdc.info/announcements/2025/january-27-2025",
-    "Ezio Auditore da Firenze" => "restricted",
+    "Ezio Auditore da Firenze" => "banned_as_commander",
     "Balance" => "banned",
     "Reanimate" => "banned",
     "White Plume Adventurer" => "banned",
@@ -551,7 +551,7 @@ BanList.for_format("duel commander") do
     "https://www.mtgdc.info/announcements/2025/may-26-2025",
     "Invert Polarity" => "banned",
     "Zurgo Bellstriker" => "legal",
-    "Hogaak, Arisen Necropolis" => "restricted",
+    "Hogaak, Arisen Necropolis" => "banned_as_commander",
   )
 
   change(
@@ -583,7 +583,7 @@ BanList.for_format("duel commander") do
   change(
     "2026-01-26",
     "https://www.duelcommander.org/announcements/2026/01/26/",
-    "Rograkh, Son of Rohgahh" => "restricted",
+    "Rograkh, Son of Rohgahh" => "banned_as_commander",
     "Tasigur, the Golden Fang" => "legal",
     "Trazyn the Infinite" => "legal",
     "Necrotic Ooze" => "legal",
@@ -592,7 +592,7 @@ BanList.for_format("duel commander") do
   change(
     "2026-03-30",
     "https://www.duelcommander.org/announcements/2026/03/30/",
-    "Lutri, the Spellchaser" => "restricted", # banned as companion only, not as commander
+    "Lutri, the Spellchaser" => "banned_as_companion",
   )
 
   change(
@@ -606,8 +606,8 @@ BanList.for_format("duel commander") do
   change(
     "2026-07-27",
     "https://www.duelcommander.org/announcements/2026/07/27/",
-    "Spider-Man 2099" => "restricted",
-    "Lumra, Bellow of the Woods" => "restricted",
-    "The Fantasticar" => "restricted",
+    "Spider-Man 2099" => "banned_as_commander",
+    "Lumra, Bellow of the Woods" => "banned_as_commander",
+    "The Fantasticar" => "banned_as_commander",
   )
 end
