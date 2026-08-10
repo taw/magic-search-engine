@@ -254,6 +254,83 @@ describe "Formats" do
     assert_legality "historic", Date.parse("2023-08-01"), "Lightning Bolt", "conjurable"
   end
 
+  # The sets conjure-only cards are conjured from. A card printed into the format
+  # by anything else is an ordinary card, not a conjurable one.
+  CONJURE_ONLY_SETS = ["hbg", "ydmu", "j21"]
+
+  # Cards which are only conjurable, but which some set outside CONJURE_ONLY_SETS also
+  # puts into the format, stop being conjurable - the ban list then says => "legal",
+  # like Voracious Greatshark did when FDN reprinted it. This catches the next one.
+  #
+  # Only Alchemy can be checked this way. Its card pool is the hand-maintained
+  # rotation_schedule, while Historic's is "every printing mtgjson tags game:arena",
+  # and that tag is not reliable - Arena store decks make mtgjson tag cards from
+  # sets which never were on Arena, so Regal Force looks like it was printed in
+  # Eventide "on Arena". See _LEGALITY.md.
+  def conjurable_cards_in_pool(time=nil)
+    format = Format["alchemy"].new(time)
+    db.cards.each_value.select{|card|
+      next false unless ["conjurable", "specialized"].include?(format.legality(card))
+      card.printings.any?{|printing|
+        format.included_sets.include?(printing.set_code) and
+        not CONJURE_ONLY_SETS.include?(printing.set_code)
+      }
+    }.map(&:name).sort
+  end
+
+  it "conjurable cards are not also printed into the format" do
+    conjurable_cards_in_pool.should eq([])
+  end
+
+  # Proof the check above actually fires - FDN was released 2024-11-15 and the ban list
+  # only caught up on 2024-12-15, so in between Voracious Greatshark was both conjurable
+  # and in the Alchemy pool
+  it "conjurable cards printed into the format are detected" do
+    conjurable_cards_in_pool(Date.parse("2024-12-01")).should eq(["Voracious Greatshark"])
+  end
+
+  # Historic's pool can't be trusted the way Alchemy's can, so this is a tripwire, not an
+  # assertion - a failure means "go look", not "the data is wrong". mtgjson tags cards
+  # game:arena for sets which never were on Arena, because Arena store decks reference
+  # them, so a new entry here can equally be a genuine reprint (=> "legal", like the
+  # J21 four when AA4 and OMB picked them up) or just another mis-tagged paper printing.
+  it "conjurable and specialized cards have no Arena printing outside conjure-only sets" do
+    expected = {
+      # Legitimately both - it was pre-banned out of STA, and only later got a
+      # conjurable version in HBG
+      "historic: Lightning Bolt" => ["fca", "msc", "sta", "tle"],
+      # Conjure-only despite the mar/omb printings - it's a Legacy staple with no
+      # Historic play at all. See the 2025-09-23 comment in ban_list/historic.rb.
+      # lrw is just mtgjson store-deck noise
+      "historic: Ponder" => ["lrw", "mar", "omb"],
+    }
+
+    actual = {}
+    ["alchemy", "historic"].each do |format_name|
+      format = Format[format_name].new
+      db.cards.each_value do |card|
+        next unless ["conjurable", "specialized"].include?(format.legality(card))
+        sets = card.printings.select(&:arena?).map(&:set_code).uniq.sort - CONJURE_ONLY_SETS
+        actual["#{format_name}: #{card.name}"] = sets unless sets.empty?
+      end
+    end
+
+    actual.should eq(expected)
+  end
+
+  # This direction doesn't need the game:arena tag at all - a conjured card has to be
+  # conjured from somewhere
+  it "conjurable and specialized cards come from a conjure-only set" do
+    orphans = ["alchemy", "historic"].flat_map do |format_name|
+      format = Format[format_name].new
+      db.cards.each_value.select{|card|
+        next false unless ["conjurable", "specialized"].include?(format.legality(card))
+        card.printings.none?{|printing| CONJURE_ONLY_SETS.include?(printing.set_code) }
+      }.map{|card| "#{format_name}: #{card.name}" }
+    end
+    orphans.sort.should eq([])
+  end
+
   it "premodern" do
     assert_count_cards "banned:premodern", 32
   end

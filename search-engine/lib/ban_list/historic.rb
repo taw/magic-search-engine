@@ -370,6 +370,30 @@ BanList.for_format("historic") do
     "Magus of the Moon" => "banned",
   )
 
+  # Not a banlist change. AA4 puts three of the five J21 conjured cards into the normal
+  # Arena card pool - 25 of its 28 cards are new to Arena and it conjures nothing, so it's
+  # an ordinary release, and a card printed in it is an ordinary card.
+  #
+  # Tropical Island is still conjure-only, J21 is still its only Arena printing.
+  #
+  # Ponder stays conjure-only. It looked like the same case - it's in OMB, released the
+  # same day - but OMB is a sheet of 40 cards which are all already on Arena, so it doesn't
+  # show anything is new, Ponder is still actively conjured by Preponderant Pearl in YECL,
+  # and the release FAQ doesn't say either way:
+  # https://magic.wizards.com/en/news/mtg-arena/through-the-omenpaths-release-faq
+  # The metagame settles it as well as anything can - Ponder is the 5th most played spell
+  # in Legacy and banned in Modern, but sees no Historic play at all, which it would if it
+  # were collectable: https://www.mtggoldfish.com/format-staples/historic/full/spells
+  # That argument only works for cards good enough that absence is meaningful, so it says
+  # nothing about the three above, which are weak and would see no play either way.
+  change(
+    "2025-09-23",
+    nil,
+    "Kraken Hatchling" => "legal", # aa4
+    "Regal Force" => "legal", # aa4
+    "Stormfront Pegasus" => "legal", # aa4
+  )
+
   change(
     "2025-11-10",
     "https://magic.wizards.com/en/news/announcements/banned-and-restricted-november-10-2025",
