@@ -234,7 +234,7 @@ class QueryTokenizer
       elsif s.scan(/(booster|booster-foil|booster-nonfoil)\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_\-\*]+))/i)
         booster_query = s[1].downcase
         booster = [s[2] || s[3]]
-        booster << (s[2] || s[3]) while s.scan(/,(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
+        booster << (s[2] || s[3]) while s.scan(/,(?:"(.*?)"|([\p{L}\p{Digit}_\-\*]+))/i)
         tokens << [:test, ConditionBooster.new(booster_query, *booster)]
       elsif s.scan(/st\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)
         tokens << [:test, ConditionSetType.new(s[1] || s[2])]

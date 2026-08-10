@@ -7,7 +7,8 @@ class ConditionBooster < Condition
       "booster" => :cards,
     }.fetch(foiling)
     @codes = codes
-    @codes_star = @codes.include?("*")
+    # in_boosters is precomputed, but it ignores foiling
+    @codes_star = @codes.include?("*") && @query == :cards
   end
 
   def search_all(db)
@@ -19,12 +20,20 @@ class ConditionBooster < Condition
   end
 
   def matching_boosters(db, code)
-    if code =~ /\A(.*?)-?\*\z/
-      set = $1
-      db.supported_booster_types.values.select{|b| b.set_code == set}
+    if code.include?("*")
+      pattern = booster_code_pattern(code)
+      db.supported_booster_types.select{|booster_code, _| booster_code =~ pattern}.values.uniq
     else
       [db.supported_booster_types[code]].compact
     end
+  end
+
+  # Globs like "*-arena", "war-*", or "*collector*" match booster codes.
+  # Trailing "-*" also matches the set's variantless booster, so "nph-*" includes "nph".
+  def booster_code_pattern(code)
+    prefix = code.sub(/-\*\z/, "")
+    tail = (prefix == code) ? "" : "(?:-.*)?"
+    /\A#{prefix.split("*", -1).map{|part| Regexp.escape(part)}.join(".*")}#{tail}\z/
   end
 
   def to_s

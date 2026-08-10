@@ -17,6 +17,17 @@ describe "booster:" do
     assert_search_equal "booster:one-*", "booster:one or booster:one-set or booster:one-collector or booster:one-arena or booster:one-jumpstart or booster:one-prerelease or booster:one-compleat or booster:one-collector-sample"
   end
 
+  it "supports star anywhere in the code" do
+    assert_search_equal "booster:*-compleat", "booster:one-compleat"
+    assert_search_equal "booster:*-arena e:war", "booster:war-arena"
+    assert_search_equal "booster:*-arena e:blb", "booster:blb-play-arena e:blb"
+    assert_search_equal "booster:*arena* e:sir", "booster:sir-* e:sir"
+    assert_search_equal "booster:m2*-arena", "booster:m20-arena or booster:m21-arena"
+    assert_search_equal "booster:sir-arena-*", "booster:sir-*"
+    assert_search_equal "booster:one-collector*", "booster:one-collector or booster:one-collector-sample"
+    assert_search_equal "booster:*", "booster:*-*"
+  end
+
   it "supports full star" do
     assert_search_equal "booster:* e:m20", "booster:m20 e:m20"
     assert_search_equal "booster:* e:zen", "booster:zen e:zen"
@@ -24,6 +35,8 @@ describe "booster:" do
 
   it "supports multiple codes" do
     assert_search_equal "booster:m10,m11,m12", "booster:m10 or booster:m11 or booster:m12"
+    assert_search_equal "booster:m20-arena,one-compleat", "booster:m20-arena or booster:one-compleat"
+    assert_search_equal "booster:one-*,sir-*", "booster:one-* or booster:sir-*"
   end
 
   it "default type" do
@@ -43,5 +56,8 @@ describe "booster:" do
     assert_search_equal "booster:akh-draft", "(e:akh is:baseset) or (e:mp2 cn:1-30)"
     assert_search_equal "booster-nonfoil:akh-draft", "(e:akh is:baseset)"
     assert_search_equal "booster-foil:akh-draft", "(e:akh is:baseset) or (e:mp2 cn:1-30)"
+    # star queries respect foiling too
+    assert_search_results "booster-foil:* e:lea"
+    assert_search_equal "booster-nonfoil:* e:akh", "booster-nonfoil:akh-* e:akh"
   end
 end
