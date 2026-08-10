@@ -69,10 +69,10 @@ describe "Banlist" do
   it "2014" do
     # http://www.mtgcommander.net/Forum/viewtopic.php?f=1&t=17210
     assert_commander_banlist_changes "September 2014",
-      "restricted-to-banned", "Braids, Cabal Minion",
-      "restricted-to-banned", "Rofellos, Llanowar Emissary",
-      "restricted-to-banned", "Erayo, Soratami Ascendant",
-      "unrestricted", "Kokusho, the Evening Star",
+      "banned-as-commander-to-banned", "Braids, Cabal Minion",
+      "banned-as-commander-to-banned", "Rofellos, Llanowar Emissary",
+      "banned-as-commander-to-banned", "Erayo, Soratami Ascendant",
+      "unbanned-as-commander", "Kokusho, the Evening Star",
       "unbanned", "Metalworker"
 
     # http://www.mtgcommander.net/Forum/viewtopic.php?f=1&t=17093
@@ -105,7 +105,7 @@ describe "Banlist" do
     assert_commander_banlist_changes "September 2012",
       "banned", "Primeval Titan",
       "banned", "Worldfire",
-      "banned-to-restricted", "Kokusho, the Evening Star"
+      "banned-to-banned-as-commander", "Kokusho, the Evening Star"
 
     assert_commander_banlist_changes "June 2012",
       "banned", "Griselbrand",
@@ -114,7 +114,7 @@ describe "Banlist" do
 
   it "2011" do
     assert_commander_banlist_changes "September 2011",
-      "restricted", "Erayo, Soratami Ascendant",
+      "banned-as-commander", "Erayo, Soratami Ascendant",
       "unbanned", "Lion's Eye Diamond"
       # Specifically banned even though it's redundant due to vintage ban
       # "banned", "Shahrazad"
@@ -131,7 +131,7 @@ describe "Banlist" do
       "banned", "Channel",
       "banned", "Staff of Domination",
       "banned", "Tolarian Academy",
-      "restricted", "Rofellos, Llanowar Emissary"
+      "banned-as-commander", "Rofellos, Llanowar Emissary"
   end
 
   it "2009" do
@@ -145,13 +145,13 @@ describe "Banlist" do
     assert_commander_banlist_changes "June 2009",
       "banned", "Fastbond",
       "banned", "Gifts Ungiven",
-      "restricted", "Braids, Cabal Minion"
+      "banned-as-commander", "Braids, Cabal Minion"
 
     assert_commander_banlist_changes "March 2009",
       "banned", "Metalworker",
       "banned", "Tinker",
       "unbanned", "Crucible of Worlds",
-      "unrestricted", "Rofellos, Llanowar Emissary"
+      "unbanned-as-commander", "Rofellos, Llanowar Emissary"
   end
 
   it "2008" do
@@ -184,22 +184,22 @@ describe "Banlist" do
 
     assert_commander_banlist_changes "March 2007",
       "banned", "Coalition Victory",
-      "restricted", "Rofellos, Llanowar Emissary"
+      "banned-as-commander", "Rofellos, Llanowar Emissary"
   end
 
   it "2006" do
     assert_commander_banlist_changes "November 2006",
-      "unrestricted", "Niv-Mizzet, the Firemind",
-      "unrestricted", "Heartless Hidetsugu"
+      "unbanned-as-commander", "Niv-Mizzet, the Firemind",
+      "unbanned-as-commander", "Heartless Hidetsugu"
       # No evidence it was actually restricted ever...
-      # "unrestricted", "Kaervek the Merciless",
+      # "unbanned-as-commander", "Kaervek the Merciless",
 
     assert_commander_banlist_changes "May 2006",
       "banned", "Yawgmoth's Bargain"
 
     assert_commander_banlist_changes "February 2006",
-      "restricted", "Niv-Mizzet, the Firemind",
-      "restricted", "Heartless Hidetsugu"
+      "banned-as-commander", "Niv-Mizzet, the Firemind",
+      "banned-as-commander", "Heartless Hidetsugu"
   end
 
   it "2005" do

@@ -1,4 +1,16 @@
 class Format
+  # Statuses which all mean "in the format, but with a deckbuilding restriction".
+  # They're displayed and validated differently, but restricted: and f: searches
+  # treat them all the same way, which is how "restricted" behaved when it was
+  # the only name for all of them. See _LEGALITY.md.
+  RESTRICTED_STATUSES = [
+    "restricted",
+    "banned_as_commander",
+    "banned_as_companion",
+    "conjurable",
+    "specialized",
+  ].freeze
+
   attr_reader :included_sets, :excluded_sets
 
   def initialize(time=nil)
@@ -28,7 +40,7 @@ class Format
   end
 
   def restricted?(card)
-    legality(card) == "restricted"
+    RESTRICTED_STATUSES.include?(legality(card))
   end
 
   def legal?(card)
@@ -37,7 +49,7 @@ class Format
 
   def legal_or_restricted?(card)
     l = legality(card)
-    l == "legal" or l == "restricted"
+    l == "legal" or RESTRICTED_STATUSES.include?(l)
   end
 
   def in_format?(card)
@@ -99,7 +111,9 @@ class Format
         if count > 4 and not card.allowed_in_any_number?
           issues << "Deck contains #{count} copies of #{name}, only up to 4 allowed"
         end
-      when "restricted"
+      when *RESTRICTED_STATUSES
+        # FIXME: only correct for "restricted". "conjurable" and "specialized" cards
+        # can't go into a deck at all, so 1 copy isn't allowed either - see _LEGALITY.md
         if count > 1
           issues << "Deck contains #{count} copies of #{name}, which is restricted to only up to 1 allowed"
         end

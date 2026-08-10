@@ -103,12 +103,10 @@ class ReportLegalityDifferences
         next if card.layout =="meld" and card.names.size == 3
       end
 
-      # This is technically not a B&R issue
-      if a == nil and b == "restricted" and ["alchemy", "historic"].include?(format.format_name)
-        b = nil
-      end
-      if a == "banned" and b == "restricted" and ["alchemy", "historic"].include?(format.format_name)
-        b = "banned"
+      # This is technically not a B&R issue, so mtgjson reports these cards as either
+      # not in format or banned, and we have no reason to prefer one over the other
+      if ["conjurable", "specialized"].include?(b) and [nil, "banned"].include?(a)
+        b = a
       end
       statuses << [name, a, b]
     end

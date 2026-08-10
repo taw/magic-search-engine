@@ -153,7 +153,9 @@ form.search {
   .legalities {
     font-size: small;
   }
-  .legality-legal, .legality-banned, .legality-restricted {
+  .legality-legal, .legality-banned, .legality-restricted,
+  .legality-banned-as-commander, .legality-banned-as-companion,
+  .legality-conjurable, .legality-specialized {
     display: inline-block;
     width: 7em;
     text-align: center;
@@ -171,7 +173,9 @@ form.search {
       background-color: #800;
     }
   }
-  .legality-restricted {
+  .legality-restricted,
+  .legality-banned-as-commander, .legality-banned-as-companion,
+  .legality-conjurable, .legality-specialized {
     background-color: #fa4;
     @media (prefers-color-scheme: dark) {
       background-color: #880;

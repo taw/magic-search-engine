@@ -1,22 +1,23 @@
 class BanList
   START = Date.parse("1900-01-01")
 
-  # The only statuses the engine itself understands
-  LEGALITY_STATUSES = ["legal", "banned", "restricted"].freeze
-
-  # Statuses ban lists are allowed to say, and what they currently collapse to.
-  # "restricted" is doing the work of four unrelated rules concepts, and these
-  # names are the first step of untangling it - see _LEGALITY.md.
-  LEGALITY_ALIASES = {
+  # Every status a ban list is allowed to say. The last four used to be spelled
+  # "restricted" as well, which meant nothing downstream could tell them apart -
+  # Format::RESTRICTED_STATUSES is what groups them back together now. See _LEGALITY.md.
+  LEGALITY_STATUSES = [
+    "legal",
+    "banned",
+    # only 1 copy in a deck instead of 4 (Vintage, historically Standard)
+    "restricted",
     # legal in the deck, but may not be your commander (Commander, Duel Commander, Brawl)
-    "banned_as_commander" => "restricted",
-    # legal in the deck, but may not be your companion (Commander)
-    "banned_as_companion" => "restricted",
+    "banned_as_commander",
+    # legal in the deck, but may not be your companion (Commander, Duel Commander)
+    "banned_as_companion",
     # Arena-only card that can only be conjured, never put in a deck (Historic, Alchemy)
-    "conjurable" => "restricted",
+    "conjurable",
     # Arena-only card that only enters play by specializing another card (Historic, Alchemy)
-    "specialized" => "restricted",
-  }.freeze
+    "specialized",
+  ].freeze
 
   attr_reader :format
 
@@ -87,20 +88,14 @@ class BanList
 
   def change(date, url, legalities)
     date = Date.parse(date) unless date.is_a?(Date)
-    legalities = legalities.map{|card, legality| [card, normalize_legality(legality)]}.to_h
+    legalities.each_value do |legality|
+      raise "#{self} has unknown legality status #{legality.inspect}" unless LEGALITY_STATUSES.include?(legality)
+    end
     @events << [date, url, legalities]
     legalities.each do |card, legality|
       @cards[card] ||= []
       @cards[card] << [date, legality]
     end
-  end
-
-  # Ban lists say what they actually mean, the engine only understands the three
-  # statuses below, so the specific ones collapse back to "restricted" here.
-  # Nothing downstream can tell them apart yet - see _LEGALITY.md.
-  def normalize_legality(legality)
-    return legality if LEGALITY_STATUSES.include?(legality)
-    LEGALITY_ALIASES[legality] or raise "#{self} has unknown legality status #{legality.inspect}"
   end
 
   def validate

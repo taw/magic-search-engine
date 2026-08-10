@@ -5,6 +5,13 @@ describe "Legality information" do
     db.cards[name.downcase].legality_information(date)
   end
 
+  # BanList says which statuses exist, Format says which of them count as restricted.
+  # They're separate lists in separate files, so make sure they stay in sync.
+  it "every legality status is accounted for" do
+    (Format::RESTRICTED_STATUSES - BanList::LEGALITY_STATUSES).should eq([])
+    (BanList::LEGALITY_STATUSES - ["legal", "banned"] - Format::RESTRICTED_STATUSES).should eq([])
+  end
+
   it "legal everywhere" do
     legality_information("Island").should be_legal_everywhere
     legality_information("Giant Spider").should_not be_legal_everywhere

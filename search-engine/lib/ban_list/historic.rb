@@ -1,6 +1,7 @@
 # This banlist doesn't distinguish "suspended" from "banned"
 # "conjurable" and "specialized" are technically not a B&R issue, they're cards which
-# can't go into a deck at all. Both currently collapse to "restricted" - see _LEGALITY.md
+# can't go into a deck at all. Format::RESTRICTED_STATUSES groups them with the
+# other restricted-family statuses for restricted: and f: searches - see _LEGALITY.md
 
 BanList.for_format("historic") do
   change(

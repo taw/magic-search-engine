@@ -31,7 +31,7 @@ class FormatBrawl < FormatStandard
     deck.card_counts.each do |card, name, count|
       card_legality = legality(card)
       case card_legality
-      when "legal", "restricted"
+      when "legal", *RESTRICTED_STATUSES
         if count > 1 and not card.allowed_in_any_number?
           issues << "Deck contains #{count} copies of #{name}, only up to 1 allowed"
         end
@@ -52,7 +52,7 @@ class FormatBrawl < FormatStandard
     cards.each do |c|
       if not c.brawler?
         issues << "#{c.name} is not a valid commander"
-      elsif legality(c) == "restricted"
+      elsif legality(c) == "banned_as_commander"
         issues << "#{c.name} is banned as commander"
       end
     end

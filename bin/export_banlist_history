@@ -6,6 +6,10 @@
 # Formats are sorted by name, announcements within a format are sorted by date.
 # Announcements which established the initial ban list have null date,
 # and announcements we have no source for have null url.
+#
+# Statuses are BanList::LEGALITY_STATUSES - "legal", "banned", "restricted", and the
+# more specific "banned_as_commander", "banned_as_companion", "conjurable" and
+# "specialized", which used to all be spelled "restricted". See _LEGALITY.md.
 
 require "date"
 require "json"

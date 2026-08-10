@@ -113,7 +113,7 @@ describe "Banlist" do
       "mtgo commander unbanned", "Yisan, the Wanderer Bard"
 
     assert_banlist_changes "September 2017",
-      "duel commander restricted", "Edgar Markov",
+      "duel commander banned-as-commander", "Edgar Markov",
       "duel commander banned", "Fireblast",
       "duel commander banned", "Eidolon of the Great Revel",
       "duel commander banned", "Sulfuric Vortex",
@@ -134,9 +134,9 @@ describe "Banlist" do
       "mtgo commander unbanned", "Limited Resources",
       "mtgo commander unbanned", "Painter's Servant",
       "mtgo commander unbanned", "Trade Secrets",
-      "duel commander restricted", "Geist of Saint Traft",
-      "duel commander restricted", "Jace, Vryn's Prodigy",
-      "duel commander restricted", "Bruse Tarl, Boorish Herder",
+      "duel commander banned-as-commander", "Geist of Saint Traft",
+      "duel commander banned-as-commander", "Jace, Vryn's Prodigy",
+      "duel commander banned-as-commander", "Bruse Tarl, Boorish Herder",
       "duel commander banned", "Polymorph",
       "duel commander banned", "Emrakul, the Aeons Torn",
       "duel commander unbanned", "Ancient Tomb",
@@ -157,11 +157,11 @@ describe "Banlist" do
       "vintage restricted", "Gush",
       "commander banned", "Leovold, Emissary of Trest",
       "commander unbanned", "Protean Hulk",
-      "duel commander unrestricted", "Yisan, the Wanderer Bard",
+      "duel commander unbanned-as-commander", "Yisan, the Wanderer Bard",
       "duel commander banned", "Chrome Mox",
       "duel commander banned", "Mox Diamond",
-      "duel commander restricted", "Breya, Etherium Shaper",
-      "duel commander restricted", "Vial Smasher the Fierce",
+      "duel commander banned-as-commander", "Breya, Etherium Shaper",
+      "duel commander banned-as-commander", "Vial Smasher the Fierce",
       "standard banned", "Felidar Guardian"
 
     assert_banlist_changes "January 2017",

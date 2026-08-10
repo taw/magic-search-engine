@@ -302,25 +302,24 @@ shared_context "db" do |*sets|
       assert_banlist_change(prev_date, this_date, "legacy", change_legacy, card) if change_legacy
       return
     end
-    case change
-    when "banned"
-      assert_banlist_status(prev_date, format, "legal", card)
-      assert_banlist_status(this_date, format, "banned", card)
-    when "unbanned"
-      assert_banlist_status(prev_date, format, "banned", card)
-      assert_banlist_status(this_date, format, "legal", card)
-    when "restricted"
-      assert_banlist_status(prev_date, format, "legal", card)
-      assert_banlist_status(this_date, format, "restricted", card)
-    when "unrestricted"
-      assert_banlist_status(prev_date, format, "restricted", card)
-      assert_banlist_status(this_date, format, "legal", card)
-    when "banned-to-restricted"
-      assert_banlist_status(prev_date, format, "banned", card)
-      assert_banlist_status(this_date, format, "restricted", card)
-    when "restricted-to-banned"
-      assert_banlist_status(prev_date, format, "restricted", card)
-      assert_banlist_status(this_date, format, "banned", card)
+    from, to = parse_banlist_transition(change)
+    assert_banlist_status(prev_date, format, from, card)
+    assert_banlist_status(this_date, format, to, card)
+  end
+
+  # "X" is legal->X, "unX" is X->legal, "X-to-Y" is X->Y.
+  # Statuses are spelled with dashes here, underscores in the ban lists,
+  # so "banned-as-commander" and "unbanned-as-commander" read as English.
+  def parse_banlist_transition(change)
+    statuses = BanList::LEGALITY_STATUSES.map{|status| status.tr("_", "-")}
+    resolve = ->(status) { statuses.include?(status) ? status.tr("-", "_") : nil }
+
+    if change =~ /\A(.+)-to-(.+)\z/ and resolve[$1] and resolve[$2]
+      [resolve[$1], resolve[$2]]
+    elsif resolve[change]
+      ["legal", resolve[change]]
+    elsif change =~ /\Aun(.+)\z/ and resolve[$1]
+      [resolve[$1], "legal"]
     else
       raise "Unknown transition `#{change}'"
     end
