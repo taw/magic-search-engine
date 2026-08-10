@@ -103,8 +103,9 @@ class PatchSetTypes < Patch
         set_types << "box" << "sdcc"
       end
 
-      # Some of these are not actually funny sets, just promo sets mixing funny and regular cards (like plst)
-      funny_sets = %W[unh ugl pcel hho parl ust pust ppc1 pal04 h17 j17 tbth tdag tfth thp1 thp2 thp3 ptg cmb1 cmb2 mbc und punh plst o90p olep p30a ulst p30m mb2 unk punk pf24 pf25 past]
+      # Some of these are not actually funny sets, just promo sets mixing funny and regular cards
+      # (like j17 or pf25), so PatchFunny still decides card by card.
+      funny_sets = %W[unh ugl pcel hho ust pust ppc1 pal04 h17 j17 tbth tdag tfth thp1 thp2 thp3 ptg cmb1 cmb2 mbc und punh o90p olep ulst p30m mb2 unk punk pf24 pf25 past]
       if funny_sets.include?(set_code) or set["name"] =~ /Heroes of the Realm/
         set_types << "funny"
         set["funny"] = true
