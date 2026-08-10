@@ -14,6 +14,18 @@ describe "Formats - Block Constructed" do
     end
   end
 
+  describe "Block format start dates" do
+    let(:block_formats) { Format.formats_index.select{|k,v| k.end_with?('block')}.values.uniq }
+    it "each block format starts with its first set" do
+      block_formats.each do |format_class|
+        format = format_class.new
+        first_set_date = format.included_sets.map{|code| db.sets[code].release_date}.min
+        format.format_start_date.should eq(first_set_date.strftime("%Y-%m-%d")),
+          "#{format.format_name} start date"
+      end
+    end
+  end
+
   # I don't even know what this means anymore
   describe "Un legal sets" do
     let(:unsets) { db.sets.values.select{|s| s.types.include?("un") } }

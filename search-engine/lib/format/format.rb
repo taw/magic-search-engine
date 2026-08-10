@@ -134,6 +134,13 @@ class Format
     format_pretty_name.downcase
   end
 
+  # Date the format started, as "yyyy-mm-dd" string, or nil if we don't know.
+  # Block constructed formats start with their first set.
+  # Other formats need a clear format start announcement to be filled in here.
+  def format_start_date
+    nil
+  end
+
   # Formats which don't have a ban list of their own can borrow someone else's
   def ban_list_name
     format_name

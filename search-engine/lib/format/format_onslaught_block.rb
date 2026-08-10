@@ -3,6 +3,10 @@ class FormatOnslaughtBlock < Format
     "Onslaught Block"
   end
 
+  def format_start_date
+    "2002-10-07"
+  end
+
   def build_included_sets
     Set["ons", "lgn", "scg"]
   end
