@@ -218,4 +218,12 @@ BanList.for_format("standard") do
     "Screaming Nemesis" => "banned",
     "Proft's Eidetic Memory" => "banned",
   )
+
+  change(
+    "2026-08-10",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-august-10-2026",
+    "Badgermole Cub" => "banned",
+    "Stormchaser's Talent" => "banned",
+    "Gran-Gran" => "banned",
+  )
 end

@@ -567,4 +567,10 @@ BanList.for_format("legacy") do
     "https://magic.wizards.com/en/news/announcements/banned-and-restricted-june-29-2026",
     "Candelabra of Tawnos" => "banned",
   )
+
+  change(
+    "2026-08-10",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-august-10-2026",
+    "The Fantasticar" => "banned",
+  )
 end

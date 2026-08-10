@@ -545,4 +545,10 @@ BanList.for_format("vintage") do
     nil,
     "Sticker sheet" => "banned",
   )
+
+  change(
+    "2026-08-10",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-august-10-2026",
+    "The Fantasticar" => "restricted",
+  )
 end

@@ -64,6 +64,8 @@ describe "Formats - Future Standard" do
         -is:alchemy
         -(Cori-Steel Cutter)
         -(Vivi Ornitier)
+        -(Badgermole Cub)
+        -(Gran-Gran)
       ]
   end
 

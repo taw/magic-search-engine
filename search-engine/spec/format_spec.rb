@@ -20,6 +20,9 @@ describe "Formats" do
         -(Vivi Ornitier)
         -(Screaming Nemesis)
         -(Proft's Eidetic Memory)
+        -(Badgermole Cub)
+        -(Stormchaser's Talent)
+        -(Gran-Gran)
       ]
     assert_search_equal_cards 'f:"ravnica block"', "e:rav,gp,di"
     assert_search_equal 'f:"ravnica block"', 'legal:"ravnica block"'
