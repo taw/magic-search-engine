@@ -3,6 +3,12 @@ class FormatPremodern < Format
     "Premodern"
   end
 
+  # No format_start_date - the format has no start announcement to point at.
+  # It's community-created, and the only date its own site ever gives is the year:
+  # "Premodern was invented in 2012 by Martin Berlin", played casually in Stockholm for years
+  # before the website and the ban list went up (site's first archived snapshot is 2018-05).
+  # https://web.archive.org/web/20180506042814/http://premodernmagic.com/about
+
   def build_included_sets
     Set[
       "4ed", # Fourth Edition

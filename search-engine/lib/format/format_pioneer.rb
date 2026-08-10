@@ -3,6 +3,13 @@ class FormatPioneer < Format
     "Pioneer"
   end
 
+  # Announcement day, which also published the initial ban list (the five fetchlands).
+  # Magic Online support followed on 2019-10-23.
+  # https://magic.wizards.com/en/articles/archive/news/announcing-pioneer-format-2019-10-21
+  def format_start_date
+    "2019-10-21"
+  end
+
   def build_included_sets
     Set[
       "rtr", "gtc", "dgm",

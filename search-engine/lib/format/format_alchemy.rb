@@ -3,6 +3,13 @@ class FormatAlchemy < FormatStandard
     "Alchemy"
   end
 
+  # Announced 2021-12-02, went live with the December 2021 Arena update together with Alchemy: Innistrad.
+  # rotation_schedule below uses the announcement date instead, as that's when the card pool was declared.
+  # https://magic.wizards.com/en/news/mtg-arena/introducing-alchemy-new-way-play-mtg-arena-2021-12-02
+  def format_start_date
+    "2021-12-09"
+  end
+
   # Format announced 2021-12-02, so no previous rotations
   # Standard rotation in 2023 cancelled, but it was kept for Alchemy, so it desynced from Standard
   # ANB always legal

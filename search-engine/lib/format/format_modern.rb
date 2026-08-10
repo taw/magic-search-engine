@@ -3,6 +3,14 @@ class FormatModern < Format
     "Modern"
   end
 
+  # Modern debuted as an unsanctioned Magic Online format at the 2011 Community Cup,
+  # this is the announcement which turned it into a real format and published its initial ban list.
+  # (Magic Online support followed on 2011-08-24, first sanctioned event was Pro Tour Philadelphia.)
+  # https://magic.wizards.com/en/articles/archive/latest-developments/welcome-modern-world-2011-08-12
+  def format_start_date
+    "2011-08-12"
+  end
+
   def build_included_sets
     Set[
       "8ed",

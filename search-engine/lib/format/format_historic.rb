@@ -3,6 +3,13 @@ class FormatHistoric < FormatVintage
     "Historic"
   end
 
+  # Announced 2019-06-27, but the format only went live on Arena with the November 2019 update,
+  # together with Historic Anthology 1 and the ranked Historic queue.
+  # https://magic.wizards.com/en/articles/archive/magic-digital/mtg-arena-historic-rollout-2019-11-13
+  def format_start_date
+    "2019-11-21"
+  end
+
   def legality(card)
     card = card.main_front if card.is_a?(PhysicalCard)
     if !in_format?(card)

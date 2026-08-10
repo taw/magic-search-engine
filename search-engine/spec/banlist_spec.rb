@@ -913,6 +913,19 @@ describe "Banlist" do
     )
   end
 
+  it "no ban events happen before the format started" do
+    Format.all_format_classes.each do |format_class|
+      format = format_class.new
+      start_date = format.format_start_date
+      next unless start_date
+      # format_start events have no date, they're the initial ban list
+      dates = format.ban_events.map(&:first).compact
+      next if dates.empty?
+      dates.min.to_s.should be >= start_date,
+        "#{format.format_name} has a ban event before its start date #{start_date}"
+    end
+  end
+
   it "all ban events have correctly named cards" do
     Format.all_format_classes.each do |format_class|
       format_class.new.ban_events.each do |_, _, cards|

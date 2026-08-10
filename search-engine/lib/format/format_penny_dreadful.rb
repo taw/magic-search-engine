@@ -18,6 +18,11 @@ class FormatPennyDreadful < FormatVintage
     "Penny Dreadful"
   end
 
+  # No format_start_date - the format has no start announcement to point at.
+  # Community-created on reddit in 2016, season 1 was Eldritch Moon; pennydreadfulmagic.com
+  # only lists seasons from season 2 (KLD) on, and pdmtgo.com's first archived snapshot
+  # with an EMN legal cards list is 2016-08-04. It has no ban list anyway.
+
   # specs validate that all card names match the database
   # some of these are flavor names
   def self.load_cards
