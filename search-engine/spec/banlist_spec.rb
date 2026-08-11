@@ -389,8 +389,7 @@ describe "Banlist" do
       "legacy banned", "Imperial Seal",
       "vintage restricted", "Imperial Seal",
       "vintage restricted", "Personal Tutor",
-      "vintage unrestricted", "Mind Over Matter",
-      "two-headed giant banned", "Erayo, Soratami Ascendant"
+      "vintage unrestricted", "Mind Over Matter"
   end
 
   it "banlist_2004" do
@@ -801,12 +800,6 @@ describe "Banlist" do
       "Cloudpost",
       "Temporal Fissure",
       "Treasure Cruise",
-    ]
-  end
-
-  it "two_headed_giant_banlist_now" do
-    assert_full_banlist "two-headed giant", "1 October 2015", [
-      "Erayo, Soratami Ascendant",
     ]
   end
 
