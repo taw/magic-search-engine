@@ -124,10 +124,8 @@ describe "Indexer Fixes Test" do
       }.should eq []
     end
 
-    it "No both halves of split cards when we have some better name" do
-      foreign_names_where{|name, names|
-        split_card_name(name) and names.size > 1
-      }.should eq []
+    it "No both halves of split cards" do
+      foreign_names_where{|name, _| split_card_name(name)}.should eq []
     end
 
     it "No English names when we have an actual translation" do
@@ -146,6 +144,17 @@ describe "Indexer Fixes Test" do
       db.cards["dawn"].foreign_names[:cs].should eq ["朝生"]
       db.cards["supply"].foreign_names[:it].should eq ["Offerta"]
       db.cards["replicate"].foreign_names[:cs].should eq ["复造"]
+    end
+
+    it "Split cards we only have both halves of get their half by position" do
+      db.cards["cease"].foreign_names[:sp].should eq ["Cese"]
+      db.cards["desist"].foreign_names[:sp].should eq ["Desista"]
+      db.cards["push"].foreign_names[:fr].should eq ["Pousser"]
+      db.cards["pull"].foreign_names[:fr].should eq ["Tirer"]
+      db.cards["supply"].foreign_names[:fr].should eq ["Offre"]
+      db.cards["fuss"].foreign_names[:de].should eq ["Gesums"]
+      db.cards["bother"].foreign_names[:de].should eq ["Gedöns"]
+      db.cards["wax"].foreign_names[:jp].should eq ["増進"]
     end
 
     it "SP//dr is not a split card" do

@@ -55,7 +55,7 @@ class PatchReconcileForeignNames < Patch
       raw_data = extract_raw_data(printings)
 
       ### Reconcile data
-      reconciled_data = reconcile(name, raw_data)
+      reconciled_data = reconcile(name, raw_data, printings)
 
       ### Assign to all printings
       unless reconciled_data.empty?
@@ -95,12 +95,13 @@ class PatchReconcileForeignNames < Patch
     raw_data
   end
 
-  def reconcile(card_name, raw_data)
+  def reconcile(card_name, raw_data, printings)
     result = {}
+    face_position = face_position(card_name, printings)
 
     raw_data.each do |language_code, names|
       names = names.reject{|name, _| known_wrong_names.include?([card_name, language_code, name])}
-      names = drop_split_card_names(card_name, language_code, names)
+      names = resolve_split_card_names(card_name, language_code, names, face_position)
       names = drop_english_names(card_name, names)
       # Every name we had for that language was junk
       next if names.empty?
@@ -110,20 +111,34 @@ class PatchReconcileForeignNames < Patch
     result
   end
 
+  # Which face of a split card we are, and how many faces it has
+  def face_position(card_name, printings)
+    names = printings.map{|printing| printing["names"]}.compact.first or return nil
+    index = names.index(card_name) or return nil
+    [index, names.size]
+  end
+
   # Foreign data for split cards often lists both halves as "x // y",
   # sometimes even the English "x // y", which is never what we want.
-  def drop_split_card_names(card_name, language_code, names)
-    names.reject do |name, _|
-      parts = split_card_name(name) or next false
-      # English name of the whole card
-      next true if parts.all?{|part| english_card_name?(part)}
-      # We already have the half we want
-      next true if parts.any?{|part| names.key?(part)}
-      # Or at least some name that isn't glued together
-      next true if names.any?{|other, _| other != name and !split_card_name(other) and !english_card_name?(other)}
-      warn "Only have both halves of split card #{card_name} [#{language_code}]: #{name}"
-      false
+  def resolve_split_card_names(card_name, language_code, names, face_position)
+    result = {}
+    names.each do |name, set_codes|
+      if parts = split_card_name(name)
+        # English name of the whole card
+        next if parts.all?{|part| english_card_name?(part)}
+        # We already have some name that isn't glued together
+        next if names.any?{|other, _| other != name and !split_card_name(other) and !english_card_name?(other)}
+        # Faces are listed in the same order in every language
+        index, face_count = face_position
+        if face_count == parts.size
+          name = parts[index]
+        else
+          warn "Only have both halves of split card #{card_name} [#{language_code}]: #{name}"
+        end
+      end
+      (result[name] ||= []).concat(set_codes)
     end
+    result
   end
 
   # Gatherer often lists the English name as a foreign name,
