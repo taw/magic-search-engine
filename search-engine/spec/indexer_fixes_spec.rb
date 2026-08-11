@@ -97,4 +97,46 @@ describe "Indexer Fixes Test" do
   it "No &amp; in artist names" do
     db.printings.map(&:artist_name).grep(/&amp/).should be_empty
   end
+
+  context "foreign names" do
+    def foreign_names_where
+      result = []
+      db.cards.each_value do |card|
+        card.foreign_names.each do |language, names|
+          names.each do |name|
+            result << [card.name, language, name] if yield(name, names)
+          end
+        end
+      end
+      result
+    end
+
+    it "No English names of split cards" do
+      english_names = Set[*db.cards.each_value.map(&:name)]
+      foreign_names_where{|name, _|
+        name.split(" // ").then{|parts| parts.size > 1 and parts.all?{|part| english_names.include?(part)}}
+      }.should eq []
+    end
+
+    it "No both halves of split cards when we have the half we want" do
+      foreign_names_where{|name, names|
+        name.split(" // ").then{|parts| parts.size > 1 and parts.any?{|part| names.include?(part)}}
+      }.should eq []
+    end
+
+    it "No furigana in Japanese names" do
+      foreign_names_where{|name, _| name =~ /[（）]/}.should eq []
+    end
+
+    it "Split cards get just their own half" do
+      db.cards["warden"].foreign_names[:de].should eq ["Vollstrecker"]
+      db.cards["find"].foreign_names[:sp].should eq ["Descubrir"]
+      db.cards["dawn"].foreign_names[:cs].should eq ["朝生"]
+    end
+
+    it "Japanese names have no furigana" do
+      db.cards["aftermath analyst"].foreign_names[:jp].should eq ["事件現場の分析者"]
+      db.cards["rakdos, the muscle"].foreign_names[:jp].should eq ["用心棒、ラクドス"]
+    end
+  end
 end
