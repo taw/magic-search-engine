@@ -370,28 +370,28 @@ BanList.for_format("historic") do
     "Magus of the Moon" => "banned",
   )
 
-  # Not a banlist change. AA4 puts three of the five J21 conjured cards into the normal
-  # Arena card pool - 25 of its 28 cards are new to Arena and it conjures nothing, so it's
-  # an ordinary release, and a card printed in it is an ordinary card.
+  # Not a banlist change. AA4 and the OMB bonus sheet put four of the five J21 conjured
+  # cards into the normal Arena card pool.
+  #
+  # AA4 is 28 cards, 25 of them new to Arena, and it conjures nothing - an ordinary
+  # release, so a card printed in it is an ordinary card.
+  #
+  # OMB is the bonus sheet of Through the Omenpaths, and the release FAQ settles it
+  # outright: "Those cards are legal for play in Historic, Timeless, and Brawl as well as
+  # any other format where a card with the same name is already permitted."
+  # https://magic.wizards.com/en/news/mtg-arena/through-the-omenpaths-release-faq
+  # Reanimate is the only OMB card that stays unplayable in Historic, and that's an
+  # ordinary ban (2024-04-08), not conjure-only status. Ponder is still conjured by
+  # Preponderant Pearl in YECL, which is no obstacle - a card can be both.
   #
   # Tropical Island is still conjure-only, J21 is still its only Arena printing.
-  #
-  # Ponder stays conjure-only. It looked like the same case - it's in OMB, released the
-  # same day - but OMB is a sheet of 40 cards which are all already on Arena, so it doesn't
-  # show anything is new, Ponder is still actively conjured by Preponderant Pearl in YECL,
-  # and the release FAQ doesn't say either way:
-  # https://magic.wizards.com/en/news/mtg-arena/through-the-omenpaths-release-faq
-  # The metagame settles it as well as anything can - Ponder is the 5th most played spell
-  # in Legacy and banned in Modern, but sees no Historic play at all, which it would if it
-  # were collectable: https://www.mtggoldfish.com/format-staples/historic/full/spells
-  # That argument only works for cards good enough that absence is meaningful, so it says
-  # nothing about the three above, which are weak and would see no play either way.
   change(
     "2025-09-23",
     nil,
     "Kraken Hatchling" => "legal", # aa4
     "Regal Force" => "legal", # aa4
     "Stormfront Pegasus" => "legal", # aa4
+    "Ponder" => "legal", # omb
   )
 
   change(

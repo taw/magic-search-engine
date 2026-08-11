@@ -293,10 +293,6 @@ describe "Formats" do
       # Legitimately both - it was pre-banned out of STA, and only later got a
       # conjurable version in HBG
       "historic: Lightning Bolt" => ["fca", "msc", "sta", "tle"],
-      # Conjure-only despite the mar/omb printings - it's a Legacy staple with no
-      # Historic play at all. See the 2025-09-23 comment in ban_list/historic.rb.
-      # lrw is just mtgjson store-deck noise
-      "historic: Ponder" => ["lrw", "mar", "omb"],
     }
 
     actual = {}
