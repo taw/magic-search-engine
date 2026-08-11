@@ -106,11 +106,18 @@ class ReportLegalityDifferences
     statuses = []
     card_names.sort.each do |name|
       next if future_cards.include?(name)
+      # back faces have no legality of their own, mtgjson just repeats front face's
+      db_card = @db.cards[name.downcase]
+      next if db_card and db_card.secondary?
       a = mtgjson_legalities[name]
       b = db_legalities[name]
-      # mtgjson doesn't make this distinction, it just says "restricted"
-      if ["banned_as_commander", "banned_as_companion"].include?(b)
+      # mtgjson doesn't make these distinctions - it reports cards banned as
+      # commander as "restricted", and cards banned as companion (just Lutri)
+      # as "legal", which is very questionable, but there's nothing to report
+      if b == "banned_as_commander"
         b = "restricted"
+      elsif b == "banned_as_companion"
+        b = "legal"
       end
       # Just ignore "banned" vs "not in format" distinction
       if (a || "banned") == (b || "banned")

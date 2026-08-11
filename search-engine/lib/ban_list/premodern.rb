@@ -62,4 +62,10 @@ BanList.for_format("premodern") do
     "https://premodernmagic.com/blog/ban-list-update-2023/",
     "Land Tax" => "banned",
   )
+
+  change(
+    "2026-01-18",
+    "https://premodernmagic.com/blog/ban-list-update-2026/",
+    "Parallax Tide" => "banned",
+  )
 end

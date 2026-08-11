@@ -370,6 +370,21 @@ BanList.for_format("historic") do
     "Magus of the Moon" => "banned",
   )
 
+  # pre-banned, came to Arena with AA2 the next day
+  change(
+    "2025-08-18",
+    "https://magic.wizards.com/en/news/mtg-arena/announcements-august-18-2025",
+    "Mox Opal" => "banned",
+  )
+
+  # pre-banned, came to Arena with AA3 on 2025-09-23
+  change(
+    "2025-09-16",
+    "https://magic.wizards.com/en/news/mtg-arena/through-the-omenpaths-card-and-event-updates",
+    "Broadside Bombardiers" => "banned",
+    "Gut, True Soul Zealot" => "banned",
+  )
+
   # Not a banlist change. AA4 and the OMB bonus sheet put four of the five J21 conjured
   # cards into the normal Arena card pool.
   #
@@ -394,6 +409,16 @@ BanList.for_format("historic") do
     "Ponder" => "legal", # omb
   )
 
+  # pre-banned, came to Arena in Powered Cube prize packs when the event started on 2025-10-28
+  change(
+    "2025-10-20",
+    "https://magic.wizards.com/en/news/mtg-arena/announcing-the-arena-powered-cube",
+    "Fireblast" => "banned",
+    "Preordain" => "banned",
+    "Pyrokinesis" => "banned",
+    "Seething Song" => "banned",
+  )
+
   change(
     "2025-11-10",
     "https://magic.wizards.com/en/news/announcements/banned-and-restricted-november-10-2025",
@@ -403,6 +428,14 @@ BanList.for_format("historic") do
     "Mystical Tutor" => "banned",
     "Entomb" => "banned",
     "Dark Depths" => "banned",
+  )
+
+  # pre-banned, came to Arena as Lorwyn Eclipsed Special Guests on 2026-01-23
+  change(
+    "2026-01-12",
+    "https://magic.wizards.com/en/news/mtg-arena/announcements-january-12-2026",
+    "Devoted Druid" => "banned",
+    "Painter's Servant" => "banned",
   )
 
   change(
