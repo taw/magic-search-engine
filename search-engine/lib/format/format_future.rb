@@ -10,6 +10,11 @@ class FormatFuture < FormatStandard
     "Future Standard"
   end
 
+  # It's all one hypothetical rotation, there's no history to show
+  def display_rotation_schedule?
+    false
+  end
+
   # Nothing knows what will be banned after the rotation, current Standard ban list is the best guess
   def ban_list_name
     "standard"

@@ -143,6 +143,11 @@ class Format
     nil
   end
 
+  # Only formats which actually rotate have a rotation schedule worth showing
+  def display_rotation_schedule?
+    false
+  end
+
   # Formats which don't have a ban list of their own can borrow someone else's
   def ban_list_name
     format_name

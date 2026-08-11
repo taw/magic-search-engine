@@ -19,6 +19,9 @@ class FormatController < ApplicationController
       @included_sets = @format.included_sets.map{|set_code| $CardDatabase.sets[set_code] }.reverse
     end
     @events = @format.ban_events
+    if @format.display_rotation_schedule?
+      @rotation_history = @format.rotation_history($CardDatabase)
+    end
   end
 
   private

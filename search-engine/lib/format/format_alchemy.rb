@@ -40,8 +40,7 @@ class FormatAlchemy < FormatStandard
         "woe", "ywoe",
         "lci", "ylci",
         "mkm", "ymkm",
-        "otj", "yotj",
-        "big",
+        "otj", "big", "yotj",
         "blb", "yblb",
         "dsk", "ydsk",
         "fdn", # will likely have unusual rotation matching Standard
@@ -59,18 +58,17 @@ class FormatAlchemy < FormatStandard
         "woe", "ywoe",
         "lci", "ylci",
         "mkm", "ymkm",
-        "otj", "yotj",
-        "big",
+        "otj", "big", "yotj",
       ],
       "2022-09-09" => [
         "anb",
-        "mid", "ymid", "vow", "neo", "yneo", "snc", "ysnc", "hbg",
+        "mid", "vow", "ymid", "neo", "yneo", "snc", "ysnc", "hbg",
         "dmu", "ydmu", "bro", "ybro", "one", "yone", "mom", "mat", "ltr", "woe", "ywoe", "lci", "ylci", "mkm", "ymkm", "otj", "big", "yotj",
       ],
       "2021-12-02" => [
         "anb",
         "znr", "khm", "stx", "afr",
-        "mid", "ymid", "vow", "neo", "yneo", "snc", "ysnc", "hbg",
+        "mid", "vow", "ymid", "neo", "yneo", "snc", "ysnc", "hbg",
       ],
     }
   end

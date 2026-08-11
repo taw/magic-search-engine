@@ -16,6 +16,21 @@ describe "Formats - Standard" do
     end
   end
 
+  # Rotation schedules are displayed in the order they're written down,
+  # so they need to be sorted by set release date already.
+  # Sets released on the same day go in (base set, accompanying set) order,
+  # which the sort here doesn't check, as there's no way to tell them apart automatically.
+  describe "rotation schedule set order" do
+    Format.all_format_classes.select{|format_class| format_class.new.display_rotation_schedule?}.each do |format_class|
+      it "#{format_class} rotations are sorted by set release date" do
+        format_class.new.rotation_schedule.each do |rotation_date, set_codes|
+          release_dates = set_codes.map{|set_code| db.sets[set_code].release_date}
+          release_dates.should eq(release_dates.sort), "#{format_class} rotation #{rotation_date} is not sorted by set release date: #{set_codes.inspect}"
+        end
+      end
+    end
+  end
+
   it "standard" do
     assert_block_composition "standard", "war",  ["xln", "rix", "dom", "m19", "g18", "grn", "rna", "war"],
       "Rampaging Ferocidon" => "banned"

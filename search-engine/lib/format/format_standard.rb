@@ -21,6 +21,22 @@ class FormatStandard < Format
     rotation ? rotation.last.to_set : Set[]
   end
 
+  def display_rotation_schedule?
+    true
+  end
+
+  # Rotation history for display, most recent rotation first, as [end_date, sets] pairs.
+  # Sets within each rotation are in rotation_schedule order, which is release date order.
+  # Rotations which didn't happen yet are not included, and the current card pool has no
+  # end date, as the next rotation date is never definite.
+  def rotation_history(db)
+    past_rotations = rotations.select{|rotation_time, _| rotation_time <= rotation_reference_time}.sort_by(&:first).reverse
+    end_times = [nil, *past_rotations.map(&:first)]
+    past_rotations.zip(end_times).map do |(_, set_codes), end_time|
+      [end_time, set_codes.map{|set_code| db.sets[set_code]}.compact]
+    end
+  end
+
   def rotation_schedule
     # http://archive.wizards.com/Magic/magazine/article.aspx?x=mtg/daily/feature/27a
     # for change in core set rotation - "Core sets will rotate as if they were part of the block preceding them."
@@ -44,9 +60,9 @@ class FormatStandard < Format
       "2021-09-18" => ["znr", "khm", "stx", "afr", "mid", "vow", "neo", "snc"],
       "2020-09-25" => ["eld", "thb", "iko", "m21", "znr", "khm", "stx", "afr"],
       "2019-10-04" => ["grn", "rna", "war", "m20", "eld", "thb", "iko", "m21"],
-      "2018-10-05" => ["xln", "rix", "dom", "m19", "g18", "grn", "rna", "war", "m20"],
-      "2017-09-29" => ["kld", "aer", "akh", "w17", "hou", "xln", "rix", "dom", "m19", "g18"],
-      "2016-09-30" => ["bfz", "ogw", "soi", "w16", "emn", "kld", "aer", "akh", "w17", "hou"],
+      "2018-10-05" => ["xln", "rix", "dom", "m19", "grn", "g18", "rna", "war", "m20"],
+      "2017-09-29" => ["kld", "aer", "w17", "akh", "hou", "xln", "rix", "dom", "m19", "g18"],
+      "2016-09-30" => ["bfz", "ogw", "soi", "w16", "emn", "kld", "aer", "w17", "akh", "hou"],
       # 3 blocks system, 2 rotations/year
       # w16 was released together with soi
       "2016-04-08" => ["dtk", "ori", "bfz", "ogw", "soi", "w16", "emn"],         # soi
@@ -81,15 +97,15 @@ class FormatStandard < Format
       # and did not follow established rotation schedule
       # basing it on https://mtg.fandom.com/wiki/Standard/Timeline
       "1997-07-01" => ["ice", "hml", "all", "mir", "vis", "5ed", "wth"],
-      "1997-04-23" => ["5ed", "chr", "all", "mir", "vis"],
+      "1997-04-23" => ["chr", "all", "mir", "vis", "5ed"],
       "1997-03-05" => ["4ed", "chr", "all", "mir", "vis"],
       "1997-01-01" => ["4ed", "chr", "hml", "all", "mir"],
-      "1996-10-01" => ["4ed", "chr", "fem", "ice", "hml", "all", "mir"],
-      "1996-06-01" => ["4ed", "chr", "fem", "ice", "hml", "all"],
-      "1995-10-01" => ["4ed", "chr", "fem", "ice", "hml"],
-      "1995-08-01" => ["4ed", "chr", "fem", "ice"],
-      "1995-06-01" => ["4ed", "fem", "ice"],
-      "1995-04-19" => ["4ed", "drk", "fem"],
+      "1996-10-01" => ["fem", "4ed", "ice", "chr", "hml", "all", "mir"],
+      "1996-06-01" => ["fem", "4ed", "ice", "chr", "hml", "all"],
+      "1995-10-01" => ["fem", "4ed", "ice", "chr", "hml"],
+      "1995-08-01" => ["fem", "4ed", "ice", "chr"],
+      "1995-06-01" => ["fem", "4ed", "ice"],
+      "1995-04-19" => ["drk", "fem", "4ed"],
       "1995-01-10" => ["3ed", "drk", "fem"], # standard officially announced, no standard before
     }
   end

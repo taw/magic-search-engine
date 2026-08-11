@@ -58,3 +58,11 @@
                 = surround "", ":" do
                   = link_to event[:name], card_name_url(event[:name])
                 = event[:new].tr("_", " ")
+
+    - if @rotation_history
+      %h4 Rotation history
+      %ul
+        - @rotation_history.each do |end_date, sets|
+          %li
+            = end_date ? "Until #{end_date}:" : "Currently:"
+            = safe_join(sets.map{|set| link_to set.name, set_url(set)}, ", ")
