@@ -1,35 +1,35 @@
 .navbar
   %nav.footer
     %div
-      = link_to controller: "help", action: "syntax" do
+      = link_to "/help/syntax" do
         Syntax Help
       &bullet;
-      = link_to controller: "help", action: "rules" do
+      = link_to "/help/rules" do
         Rules
       &bullet;
-      = link_to controller: "help", action: "contact" do
+      = link_to "/help/contact" do
         Contact
     %div
-      = link_to controller: "set", action: "index" do
+      = link_to "/set" do
         Sets
       &bullet;
-      = link_to controller: "artist", action: "index" do
+      = link_to "/artist" do
         Artists
       &bullet;
-      = link_to controller: "format", action: "index" do
+      = link_to "/format" do
         Formats
       &bullet;
-      = link_to controller: "sealed", action: "index" do
+      = link_to "/sealed" do
         Sealed
       &bullet;
-      = link_to controller: "pack", action: "index" do
+      = link_to "/pack" do
         Packs
       &bullet;
-      = link_to controller: "deck", action: "index" do
+      = link_to "/deck" do
         Decks
       &bullet;
-      = link_to controller: "deck", action: "visualize" do
+      = link_to "/deck/visualize" do
         View Your Deck
       &bullet;
-      = link_to controller: "settings", action: "index" do
+      = link_to "/settings" do
         Settings

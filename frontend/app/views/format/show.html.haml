@@ -11,7 +11,7 @@
       %ul
         - @included_sets.each do |set|
           %li
-            = link_to set.name, controller: "set", action: "show", id: set.code
+            = link_to set.name, set_url(set)
 
     %h4 Banned cards
     - if @banned.present?
@@ -44,7 +44,7 @@
             - events.each do |event|
               %li
                 = surround "", ":" do
-                  = link_to event[:name], controller: "card", q: "!#{event[:name]}"
+                  = link_to event[:name], card_name_url(event[:name])
                 = event[:old].tr("_", " ")
                 &rarr;
                 = event[:new].tr("_", " ")
@@ -56,5 +56,5 @@
             - events.each do |event|
               %li
                 = surround "", ":" do
-                  = link_to event[:name], controller: "card", q: "!#{event[:name]}"
+                  = link_to event[:name], card_name_url(event[:name])
                 = event[:new].tr("_", " ")

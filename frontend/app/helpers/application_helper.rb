@@ -1,42 +1,100 @@
 module ApplicationHelper
-  def link_to_card(card, &blk)
-    link_to(
-      controller: "card",
-      action: "show",
-      set: card.set_code,
-      id: card.number,
-      name: card.name_slug,
-      &blk)
+  # url_for(controller:, action:, ...) runs Rails' full route generation on every
+  # call, which is about 10x the cost of interpolating the path ourselves. Search
+  # results, the deck index and the artist index each render thousands of links,
+  # and the footer renders eleven of them on every single page, so we build the
+  # paths by hand. Segments go through escape_segment so ★ in collector numbers
+  # and friends come out identical to what url_for produced.
+  URL_UTILS = ActionDispatch::Journey::Router::Utils
+
+  def url_segment(value)
+    URL_UTILS.escape_segment(value.to_s)
   end
 
-  def url_for_card(card)
-    url_for(
-      controller: "card",
-      action: "show",
-      set: card.set_code,
-      id: card.number,
-      name: card.name_slug,
-    )
+  # url_for drops nil params, Hash#to_query renders them as "key=", so compact first
+  def url_query(params)
+    params.compact.to_query
+  end
+
+  def card_url(card)
+    "/card/#{url_segment card.set_code}/#{url_segment card.number}/#{url_segment card.name_slug}"
+  end
+  alias_method :url_for_card, :card_url
+
+  def card_gallery_url(card)
+    "/card/gallery/#{url_segment card.set_code}/#{url_segment card.number}"
+  end
+
+  def search_url(query)
+    "/card?#{url_query(q: query)}"
+  end
+
+  def card_name_url(card_name)
+    search_url("!#{card_name}")
+  end
+
+  def subset_url(set_code, subset)
+    search_url(%Q[e:#{set_code} subset:"#{subset}"])
+  end
+
+  def set_url(set)
+    "/set/#{url_segment set.code}"
+  end
+
+  def pack_url(pack)
+    "/pack/#{url_segment pack.code}"
+  end
+
+  def artist_url(artist)
+    "/artist/#{url_segment artist.slug}"
+  end
+
+  def product_url(product)
+    "/product/#{url_segment product.set_code}/#{url_segment product.slug}"
+  end
+
+  def deck_url(deck)
+    "/deck/#{url_segment deck.set_code}/#{url_segment deck.slug}"
+  end
+
+  def deck_download_url(deck)
+    "#{deck_url(deck)}/download"
+  end
+
+  def deck_download_with_printings_url(deck)
+    "#{deck_url(deck)}/download_with_printings"
+  end
+
+  def limited_format_url(limited_format)
+    "/limited_format/#{url_segment limited_format.set_code}/#{url_segment limited_format.slug}"
+  end
+
+  def format_url(format_name)
+    "/format/#{url_segment format_name.parameterize}"
+  end
+
+  def link_to_card(card, &blk)
+    link_to(card_url(card), &blk)
   end
 
   def link_to_query(query, &blk)
-    link_to(controller: "card", action: "index", q: query, &blk)
+    link_to(search_url(query), &blk)
   end
 
   def link_to_card_name(card_name, &blk)
-    link_to(controller: "card", action: "index",  q: "!#{card_name}", &blk)
+    link_to(card_name_url(card_name), &blk)
   end
 
   def link_to_set(set, &blk)
-    link_to(controller: "set", action: "show", id: set.code, &blk)
+    link_to(set_url(set), &blk)
   end
 
   def link_to_pack(pack, &blk)
-    link_to(controller: "pack", action: "show", id: pack.code, &blk)
+    link_to(pack_url(pack), &blk)
   end
 
   def link_to_limited_format(limited_format, &blk)
-    link_to(controller: "limited_format", action: "show", set: limited_format.set_code, id: limited_format.slug, &blk)
+    link_to(limited_format_url(limited_format), &blk)
   end
 
   # Not every limited format has a page yet
@@ -57,18 +115,18 @@ module ApplicationHelper
   # A pack picked at random is passed as its alternatives joined by "|", and
   # the simulator rolls it.
   def link_to_sealed_simulator(pool, &blk)
+    link_to(sealed_simulator_url(pool), &blk)
+  end
+
+  def sealed_simulator_url(pool)
     boosters =
       pool.boosters.map{|count, pack| [count, pack.code]} +
       pool.random_boosters.map{|random| [random.pick, random.packs.map(&:code).join("|")]}
-    link_to(
-      {
-        controller: "sealed",
-        action: "index",
-        count: boosters.map{|count, code| count},
-        set: boosters.map{|count, code| code},
-        fixed: pool.promo_cards.map{|card| fixed_card_line(card)}.join("\n").presence,
-      },
-      &blk)
+    "/sealed?" + url_query(
+      count: boosters.map{|count, code| count},
+      set: boosters.map{|count, code| code},
+      fixed: pool.promo_cards.map{|card| fixed_card_line(card)}.join("\n").presence,
+    )
   end
 
   # Format the sealed simulator's "fixed cards" box understands
@@ -77,36 +135,31 @@ module ApplicationHelper
   end
 
   def link_to_product(product, &blk)
-    link_to(controller: "product", action: "show", set: product.set_code, id: product.slug, &blk)
+    link_to(product_url(product), &blk)
   end
 
   def link_to_deck(deck, &blk)
-    link_to(controller: "deck", action: "show", set: deck.set_code, id: deck.slug, &blk)
+    link_to(deck_url(deck), &blk)
   end
 
   def download_link_to_deck(deck, *html_options, &blk)
-    link_to({controller: "deck", action: "download", set: deck.set_code, id: deck.slug}, *html_options, &blk)
+    link_to(deck_download_url(deck), *html_options, &blk)
   end
 
   def download_with_printings_link_to_deck(deck, *html_options, &blk)
-    link_to({controller: "deck", action: "download_with_printings", set: deck.set_code, id: deck.slug}, *html_options, &blk)
+    link_to(deck_download_with_printings_url(deck), *html_options, &blk)
   end
 
   def link_to_artist(artist, &blk)
-    link_to(controller: "artist", action: "show", id: artist.slug, &blk)
+    link_to(artist_url(artist), &blk)
   end
 
   def link_to_search(search, &blk)
-    link_to(controller: "card", action: "index", q: search, &blk)
+    link_to(search_url(search), &blk)
   end
 
   def link_to_subset(set_code, subset, &blk)
-    query = %Q[e:#{set_code} subset:"#{subset}"]
-    link_to(
-      controller: "card",
-      action: "index",
-      q: query,
-      &blk)
+    link_to(subset_url(set_code, subset), &blk)
   end
 
   def format_mana_symbols_in_text(text)
@@ -177,8 +230,7 @@ module ApplicationHelper
   end
 
   def card_gallery_path(card)
-    first_printing = card.printings.first
-    "/card/gallery/#{first_printing.set_code}/#{first_printing.number}"
+    card_gallery_url(card.printings.first)
   end
 
   def printings_view(selected_printing, matching_printings)

@@ -23,7 +23,7 @@
   - sheets = @pack.sheets.keys
 
 %div
-  = link_to controller: "sealed", set: [params[:id]], count: [6] do
+  = link_to "/sealed?#{url_query(count: [6], set: [params[:id]])}" do
     Explore this pack in Sealed.
 
 %h3 Sheets

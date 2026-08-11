@@ -78,33 +78,41 @@ class CardController < ApplicationController
     # card_groups regroups on every call, so keep the one we've got
     card_groups = results.card_groups
     metric :results, card_groups.size
-    @cards = card_groups.map do |printings|
-      choose_best_printing(printings)
-    end
 
     view_mode = query.view || cookies["default_view"] || "default"
 
     case view_mode
     when "full"
       # force detailed view
-      @cards = @cards.paginate(page: page, per_page: 10)
+      @cards = paginate_card_groups(card_groups, page, 10)
       render "index_full"
     when "images"
-      @cards = @cards.paginate(page: page, per_page: 60)
+      @cards = paginate_card_groups(card_groups, page, 60)
       render "index_images"
     when "text"
-      @cards = @cards.paginate(page: page, per_page: 60)
+      @cards = paginate_card_groups(card_groups, page, 60)
       render "index_text"
     when "checklist"
-      @cards = @cards.paginate(page: page, per_page: 500)
+      @cards = paginate_card_groups(card_groups, page, 500)
       render "index_checklist"
     else
       # default view
-      @cards = @cards.paginate(page: page, per_page: 25)
+      @cards = paginate_card_groups(card_groups, page, 25)
     end
   end
 
   private
+
+  # Only the groups on this page ever get rendered, so pick the best printing
+  # after slicing rather than before. "sort:newall" groups ~36k cards, and
+  # mapping all of them to throw away all but 25 was most of the time this
+  # action spent outside the search itself.
+  def paginate_card_groups(card_groups, page, per_page)
+    WillPaginate::Collection.create(page, per_page, card_groups.size) do |pager|
+      window = card_groups[pager.offset, pager.per_page] || []
+      pager.replace(window.map{|printings| choose_best_printing(printings)})
+    end
+  end
 
   def choose_best_printing(printings)
     best_printing = printings.find(&:image_path) || printings[0]

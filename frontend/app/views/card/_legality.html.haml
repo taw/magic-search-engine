@@ -19,4 +19,4 @@
     - legality.to_h.sort.each do |format_name, status|
       %li
         %i{class: "legality-#{status.tr("_", "-")}"}= status.tr("_", " ")
-        = link_to format_name, controller: "format", action: "show", id: format_name.parameterize
+        = link_to format_name, format_url(format_name)
