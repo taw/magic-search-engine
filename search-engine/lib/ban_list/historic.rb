@@ -117,11 +117,30 @@ BanList.for_format("historic") do
     "Memory Lapse" => "banned",
   )
 
+  # Alchemy launch. "This rebalanced version of Omnath, Locus of Creation is legal in
+  # Alchemy, Historic, and other digital-only formats (the original remains banned in
+  # Standard)." The rebalance was reverted later, and mtgjson only keeps cards which are
+  # still rebalanced, so there's no A- version of it in the data - just the original,
+  # legal in Historic ever since.
+  change(
+    "2021-12-09",
+    "https://magic.wizards.com/en/news/mtg-arena/mtg-arena-state-game-alchemy-2021-12-02",
+    "Omnath, Locus of Creation" => "legal", # rebalanced version
+  )
+
   change(
     "2022-01-25",
     "https://magic.wizards.com/en/articles/archive/news/january-25-2022-banned-and-restricted-announcement",
     # Memory Lapse is banned (from suspended).
     "Teferi, Time Raveler" => "legal", # rebalanced version
+  )
+
+  # "Costs 4R (from 3R), unbanned in Historic" - same story as Omnath above,
+  # the rebalance is long gone, the original is legal
+  change(
+    "2022-02-24",
+    "https://magic.wizards.com/en/news/mtg-arena/alchemy-rebalancing-february-24-2022",
+    "Fires of Invention" => "legal", # rebalanced version
   )
 
   # HBG conjured/specialized
@@ -460,9 +479,12 @@ BanList.for_format("historic") do
     "Food Chain" => "banned",
   )
 
+  # /news/mtg-arena/arena-powered-cube-draft gets overwritten with every new cube run,
+  # so the live URL no longer says anything about this ban - archived copy of the
+  # "Arena Powered Cube Draft: March 31-April 21" article it used to be instead
   change(
     "2026-03-30",
-    "https://magic.wizards.com/en/news/mtg-arena/arena-powered-cube-draft",
+    "https://web.archive.org/web/20260402085746/https://magic.wizards.com/en/news/mtg-arena/arena-powered-cube-draft",
     "Survival of the Fittest" => "banned",
   )
 
