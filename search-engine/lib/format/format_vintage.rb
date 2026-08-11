@@ -29,10 +29,13 @@ class FormatVintage < Format
       om1
       omb
       past
+      pf26
       pio
       pmic
       prm
       psdg
+      purl
+      pw26
       ren
       rin
       sir
