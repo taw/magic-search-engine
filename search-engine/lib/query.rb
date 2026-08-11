@@ -1,7 +1,7 @@
 require_relative "query_parser"
 require_relative "search_results"
 require_relative "sorter"
-require "digest"
+require "zlib"
 
 class Date
   # Any kind of key for sorting

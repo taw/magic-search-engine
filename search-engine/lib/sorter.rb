@@ -79,7 +79,7 @@ class Sorter
       when "-toughness"
         [c.toughness ? 0 : 1, c.toughness.to_i]
       when "random"
-        [Digest::MD5.hexdigest(@seed + c.name)]
+        [Zlib.crc32(@seed + c.name)]
       when "number"
         [c.set.name, c.number_i, c.number]
       when "-number"
