@@ -1,4 +1,14 @@
 BanList.for_format("standard") do
+  # The Type II restricted list printed in The Duelist #10 (May 1996), as of the April 1,
+  # 1996 changes, is Balance, Black Vise, Ivory Tower and Zuran Orb. Balance and Black Vise
+  # have dated restrictions below; these two do not, so they start here.
+  # https://archive.org/details/duelist-10
+  format_start(
+    "https://archive.org/details/duelist-10",
+    "Ivory Tower" => "restricted",
+    "Zuran Orb" => "restricted",
+  )
+
   change(
     "1995-05-01",
     nil,
@@ -40,6 +50,9 @@ BanList.for_format("standard") do
     "Ivory Tower" => "banned",
     "Land Tax" => "banned",
     "Strip Mine" => "banned",
+    # Zuran Orb left with Ice Age the same day, so it is not on the new list. It comes back
+    # in Fifth Edition and is banned outright on 1997-07-01.
+    "Zuran Orb" => "legal",
   )
 
   change(

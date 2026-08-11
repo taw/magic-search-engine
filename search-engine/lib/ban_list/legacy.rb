@@ -34,7 +34,8 @@ BanList.for_format("legacy") do
     "Timmerian Fiends" => "banned",
     # Type 1.5 banned everything on either Type 1 list - DCI Universal Tournament Rules
     # section 2.5.1, https://web.archive.org/web/19961219095847/http://www.wizards.com/DCI/Unirules.html
-    # - so these mirror Vintage's initial list.
+    # - so these mirror Vintage's initial list. The Type 1 lists themselves are printed in
+    # The Duelist #10 (May 1996), https://archive.org/details/duelist-10
     "Divine Intervention" => "banned",
     "Maze of Ith" => "banned",
     "Mirror Universe" => "banned",

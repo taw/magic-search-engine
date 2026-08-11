@@ -14,11 +14,13 @@ BanList.for_format("vintage") do
     "Shahrazad" => "banned",
     "Tempest Efreet" => "banned",
     "Timmerian Fiends" => "banned",
-    # These seven are on the Type I lists printed in the DCI Universal Tournament Rules as
-    # of January 1, 1997, sections 2.4.1 and 2.4.2:
+    # These seven are on the Type I lists printed in The Duelist #10 (May 1996), as of the
+    # April 1, 1996 changes - https://archive.org/details/duelist-10 - and all but Sword of
+    # the Ages are still there in the DCI Universal Tournament Rules as of January 1, 1997,
+    # sections 2.4.1 and 2.4.2:
     # https://web.archive.org/web/19961219095847/http://www.wizards.com/DCI/Unirules.html
-    # When they were *added* is not recorded anywhere, so they sit in the initial list even
-    # though several postdate it. Each has a removal below.
+    # When they were *added* is not recorded, so they sit in the initial list even though
+    # several postdate it. Each has a removal below.
     "Divine Intervention" => "banned",
     "Maze of Ith" => "restricted",
     "Mirror Universe" => "restricted",
@@ -108,6 +110,7 @@ BanList.for_format("vintage") do
   # though 1997-10-01 fits the Type I schedule (announced September 1, effective a month
   # later). Mishra's Workshop and Zuran Orb are grouped here on inference, not on a source:
   # the January 1997 rules have both restricted, and neither is on any later Type I list.
+  # The Duelist stopped printing the lists after #10, so nothing narrows this further.
   change(
     "1997-10-01",
     nil,
