@@ -176,13 +176,23 @@ describe "Banlist" do
     assert_banlist_changes "January 2016",
       "modern banned", "Splinter Twin",
       "modern banned", "Summer Bloom",
-      "pauper banned", "Cloud of Faeries"
+      "pauper banned", "Cloud of Faeries",
+      "duel commander unbanned", "Cataclysm"
 
     assert_banlist_changes "April 2016",
       "modern banned", "Eye of Ugin",
       "modern unbanned", "Ancestral Vision",
       "modern unbanned", "Sword of the Meek",
-      "vintage restricted", "Lodestone Golem"
+      "vintage restricted", "Lodestone Golem",
+      "duel commander banned", "Gaea's Cradle",
+      "duel commander banned-as-commander", "Tasigur, the Golden Fang",
+      "duel commander banned-as-commander", "Yisan, the Wanderer Bard"
+
+    assert_banlist_changes "July 2016",
+      "duel commander banned", "Dig Through Time",
+      "duel commander banned", "Necrotic Ooze",
+      "duel commander banned", "Treasure Cruise",
+      "duel commander banned-as-commander", "Marath, Will of the Wild"
 
     assert_banlist_changes "November 2016",
       "pauper banned", "Peregrine Drake",
@@ -198,10 +208,21 @@ describe "Banlist" do
       "legacy banned",  "Dig Through Time",
       "legacy unbanned", "Black Vise",
       "vintage restricted", "Chalice of the Void",
-      "vintage unrestricted", "Thirst for Knowledge"
+      "vintage unrestricted", "Thirst for Knowledge",
+      "duel commander banned", "Sensei's Divining Top"
+
+    assert_banlist_changes "July 2015",
+      "duel commander banned", "Mystical Tutor"
 
     assert_banlist_changes "March 2015",
-      "pauper banned", "Treasure Cruise"
+      "pauper banned", "Treasure Cruise",
+      "duel commander banned", "Entomb",
+      "duel commander banned", "Fastbond",
+      "duel commander banned", "Food Chain",
+      "duel commander unbanned-as-commander", "Braids, Cabal Minion",
+      "duel commander unbanned", "Crucible of Worlds",
+      "duel commander unbanned", "Sensei's Divining Top",
+      "duel commander unbanned", "Winter Orb"
 
     assert_banlist_changes "January 2015",
       "modern banned", "Dig Through Time",
@@ -214,20 +235,52 @@ describe "Banlist" do
   end
 
   it "banlist_2014" do
+    assert_banlist_changes "July 2014",
+      "duel commander banned", "Cataclysm",
+      "duel commander banned-as-commander", "Oloro, Ageless Ascetic"
+
     assert_banlist_changes "February 2014",
       "modern banned", "Deathrite Shaman",
       "modern unbanned", "Wild Nacatl",
-      "modern unbanned", "Bitterblossom"
+      "modern unbanned", "Bitterblossom",
+      "duel commander banned", "Grim Monolith",
+      "duel commander banned", "Natural Order",
+      "duel commander banned", "Oath of Druids",
+      "duel commander unbanned", "Vanishing",
+      "duel commander banned-as-commander", "Derevi, Empyrial Tactician",
+      "duel commander banned-as-commander", "Zur the Enchanter"
+  end
+
+  it "banlist_2012" do
+    # Both applied on the 1st of the following month
+    assert_banlist_changes "September 2012",
+      "duel commander banned", "Ancient Tomb",
+      "duel commander unbanned", "Fastbond",
+      "duel commander banned-as-commander", "Edric, Spymaster of Trest"
+
+    assert_banlist_changes "June 2012",
+      "duel commander unbanned", "Intuition",
+      "duel commander unbanned", "Recurring Nightmare"
   end
 
   it "banlist_2013" do
     assert_banlist_changes "September 2013",
       "pauper banned", "Cloudpost",
-      "pauper banned", "Temporal Fissure"
+      "pauper banned", "Temporal Fissure",
+      "duel commander banned", "Loyal Retainers"
+
+    assert_banlist_changes "July 2013",
+      "duel commander banned", "Protean Hulk",
+      "duel commander banned", "Winter Orb"
 
     assert_banlist_changes "May 2013",
       "modern banned", "Second Sunrise",
-      "vintage unrestricted", "Regrowth"
+      "vintage unrestricted", "Regrowth",
+      "duel commander banned", "Humility",
+      "duel commander banned", "Vanishing",
+      "duel commander unbanned", "Bitterblossom",
+      "duel commander unbanned", "Protean Hulk",
+      "duel commander unbanned", "Staff of Domination"
 
     assert_banlist_changes "January 2013",
       "modern banned", "Bloodbraid Elf",
