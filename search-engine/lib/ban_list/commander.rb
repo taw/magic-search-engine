@@ -10,6 +10,9 @@ BanList.for_format("commander") do
     "Contract from Below" => "banned",
     "Darkpact" => "banned",
     "Demonic Attorney" => "banned",
+    # Banned in Type I until 1999-10-01, mirrored here the same way Channel, Mind Twist,
+    # Shahrazad and Time Vault are.
+    "Divine Intervention" => "banned",
     "Double Stroke" => "banned",
     "Falling Star" => "banned",
     "Immediate Action" => "banned",
@@ -38,13 +41,14 @@ BanList.for_format("commander") do
 
   change(
     "1996-04-01",
-    nil,
+    "https://web.archive.org/web/19960510142729/http://www.wizards.com/DCI/ban_rest_letter.html",
     "Time Vault" => "legal",
   )
 
   change(
     "1999-10-01",
-    nil,
+    "https://web.archive.org/web/20000305053359/http://www.wizards.com/DCI/announce.asp?dci19990901b",
+    "Divine Intervention" => "legal",
     "Shahrazad" => "legal",
   )
 

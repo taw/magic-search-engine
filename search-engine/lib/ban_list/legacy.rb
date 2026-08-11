@@ -32,6 +32,16 @@ BanList.for_format("legacy") do
     "Time Walk" => "banned",
     "Timetwister" => "banned",
     "Timmerian Fiends" => "banned",
+    # Type 1.5 banned everything on either Type 1 list - DCI Universal Tournament Rules
+    # section 2.5.1, https://web.archive.org/web/19961219095847/http://www.wizards.com/DCI/Unirules.html
+    # - so these mirror Vintage's initial list.
+    "Divine Intervention" => "banned",
+    "Maze of Ith" => "banned",
+    "Mirror Universe" => "banned",
+    "Mishra's Workshop" => "banned",
+    "Sword of the Ages" => "banned",
+    "Underworld Dreams" => "banned",
+    "Zuran Orb" => "banned",
   )
 
   change(
@@ -70,9 +80,10 @@ BanList.for_format("legacy") do
 
   change(
     "1996-04-01",
-    nil,
+    "https://web.archive.org/web/19960510142729/http://www.wizards.com/DCI/ban_rest_letter.html",
     "Ali from Cairo" => "legal",
     "Black Vise" => "legal",
+    "Sword of the Ages" => "legal",
     "Time Vault" => "legal",
   )
 
@@ -80,7 +91,6 @@ BanList.for_format("legacy") do
     "1996-10-01",
     nil,
     "Fastbond" => "banned",
-    "Strip Mine" => "banned",
   )
 
   change(
@@ -89,37 +99,55 @@ BanList.for_format("legacy") do
     "Black Vise" => "banned",
   )
 
+  # Mirrors Vintage. The DCI's printed Type 1.5 list did not catch up until 1999-01-01
+  # (Feldon's Cane) and 1999-04-01 (Candelabra of Tawnos, Copy Artifact, Mishra's Workshop),
+  # but Type 1.5 was *defined* as "any card appearing on either the Banned or Restricted
+  # Lists for Standard (Type II) or Classic (Type I) tournaments", so those announcements
+  # are the printed list catching up to the rule rather than the rule changing. Keeping
+  # Vintage's dates is also what banlist_spec's legacy_was_just_vintage_plus_before_split
+  # asserts.
   change(
     "1997-10-01",
     nil,
     "Candelabra of Tawnos" => "legal",
     "Copy Artifact" => "legal",
     "Feldon's Cane" => "legal",
+    "Mishra's Workshop" => "legal",
+    "Zuran Orb" => "legal",
   )
 
   change(
-    "1998-04-01",
-    nil,
-    "Memory Jar" => "banned",
+    "1998-01-01",
+    "https://web.archive.org/web/19990203122929/http://www.wizards.com/DCI/BRAnnouncement.html",
+    "Strip Mine" => "banned",
   )
 
   change(
     "1999-01-01",
-    nil,
+    "https://web.archive.org/web/19990209004446/http://www.wizards.com/DCI/MTG_DCI_BR12-1-98.html",
     "Stroke of Genius" => "banned",
     "Tolarian Academy" => "banned",
     "Windfall" => "banned",
   )
 
+  # Emergency announcement. Its page was already a 404 when the Wayback Machine first
+  # visited, so only the date survives, from the DCI announcement archive index.
+  change(
+    "1999-03-11",
+    "https://web.archive.org/web/20010128184200/http://www.wizards.com/DCI/announce_archive.asp",
+    "Memory Jar" => "banned",
+  )
+
   change(
     "1999-04-01",
-    nil,
+    "https://web.archive.org/web/19990506144254/http://www.wizards.com/DCI/MTG_DCI_BR2-26-99.html",
+    "Maze of Ith" => "legal",
     "Time Spiral" => "banned",
   )
 
   change(
     "1999-10-01",
-    nil,
+    "https://web.archive.org/web/20000305053359/http://www.wizards.com/DCI/announce.asp?dci19990901b",
     "Crop Rotation" => "banned",
     "Doomsday" => "banned",
     "Dream Halls" => "banned",
@@ -138,8 +166,11 @@ BanList.for_format("legacy") do
     "Voltaic Key" => "banned",
     "Yawgmoth's Bargain" => "banned",
     "Yawgmoth's Will" => "banned",
+    "Divine Intervention" => "legal",
     "Ivory Tower" => "legal",
+    "Mirror Universe" => "legal",
     "Shahrazad" => "legal",
+    "Underworld Dreams" => "legal",
   )
 
   change(

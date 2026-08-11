@@ -25,12 +25,19 @@ BanList.for_format("standard") do
     "Strip Mine" => "restricted",
   )
 
+  # The announcement that abolished the Standard restricted list and folded it into the
+  # banned list. Hymn to Tourach is not on the resulting list: only restricted cards that
+  # "remain in the tournament environment after the departure of Fallen Empires and Ice
+  # Age" were moved over, and Hymn to Tourach is a Fallen Empires card, so it left the
+  # format that day instead of being banned. Ivory Tower is a Fourth Edition card and
+  # stayed, so it was banned.
   change(
     "1997-01-01",
-    nil,
+    "https://web.archive.org/web/19961219074006/http://www.wizards.com/DCI/ban_rest_letter.html",
     "Balance" => "banned",
     "Black Vise" => "banned",
-    "Hymn to Tourach" => "banned",
+    "Hymn to Tourach" => "legal",
+    "Ivory Tower" => "banned",
     "Land Tax" => "banned",
     "Strip Mine" => "banned",
   )
@@ -43,19 +50,26 @@ BanList.for_format("standard") do
 
   change(
     "1999-01-01",
-    nil,
+    "https://web.archive.org/web/19990209004446/http://www.wizards.com/DCI/MTG_DCI_BR12-1-98.html",
     "Tolarian Academy" => "banned",
     "Windfall" => "banned",
   )
 
+  # Emergency announcement. Its page was already a 404 when the Wayback Machine first
+  # visited, so only the date survives, from the DCI announcement archive index.
+  change(
+    "1999-03-11",
+    "https://web.archive.org/web/20010128184200/http://www.wizards.com/DCI/announce_archive.asp",
+    "Memory Jar" => "banned",
+  )
+
   change(
     "1999-04-01",
-    nil,
+    "https://web.archive.org/web/19990506144254/http://www.wizards.com/DCI/MTG_DCI_BR2-26-99.html",
     "Dream Halls" => "banned",
     "Earthcraft" => "banned",
     "Fluctuator" => "banned",
     "Lotus Petal" => "banned",
-    "Memory Jar" => "banned",
     "Recurring Nightmare" => "banned",
     "Time Spiral" => "banned",
   )

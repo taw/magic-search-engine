@@ -634,10 +634,17 @@ describe "Banlist" do
   end
 
   it "banlist_1994" do
+    # Divine Intervention, Maze of Ith, Mirror Universe, Mishra's Workshop, Sword of the
+    # Ages, Underworld Dreams and Zuran Orb are all on the DCI's Type I lists in the
+    # January 1, 1997 Universal Tournament Rules, but nothing records when they were added,
+    # so they sit in the initial list - which is why they show up here even though several
+    # of them postdate January 1994. Nothing user-visible comes of that: Format#legality
+    # returns nil for a card with no printing yet.
     assert_full_banlist "vintage", "January 1, 1994", [
       "Contract from Below",
       "Darkpact",
       "Demonic Attorney",
+      "Divine Intervention",
       "Jeweled Bird",
       "Bronze Tablet", # all ante cards are banned in advance
       "Amulet of Quoz",
@@ -656,6 +663,9 @@ describe "Banlist" do
       "Dingus Egg",
       "Gauntlet of Might",
       "Icy Manipulator",
+      "Maze of Ith",
+      "Mirror Universe",
+      "Mishra's Workshop",
       "Mox Pearl",
       "Mox Emerald",
       "Mox Ruby",
@@ -664,9 +674,12 @@ describe "Banlist" do
       "Orcish Oriflamme",
       "Rukh Egg",
       "Sol Ring",
+      "Sword of the Ages",
       "Timetwister",
       "Time Vault",
       "Time Walk",
+      "Underworld Dreams",
+      "Zuran Orb",
     ]
 
     assert_banlist_changes "May 1994",

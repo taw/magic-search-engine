@@ -1,5 +1,16 @@
 # Format isn't even supported so sort of pointless
 BanList.for_format("extended") do
+  # Braingeyser is here because the December 1, 1998 announcement below unbans it, and the
+  # three ante/dexterity cards because the DCI's own Extended list (the source below) has
+  # them banned. When any of them went on the list is not recorded.
+  format_start(
+    "https://web.archive.org/web/20000511092139/http://www.wizards.com/dci/judge/resources/sfr_extended.asp",
+    "Amulet of Quoz" => "banned",
+    "Braingeyser" => "banned",
+    "Timmerian Fiends" => "banned",
+    "Zuran Orb" => "banned",
+  )
+
   change(
     "1997-10-01",
     nil,
@@ -7,15 +18,25 @@ BanList.for_format("extended") do
   )
 
   change(
+    "1998-07-01",
+    "https://web.archive.org/web/19981205023409/http://www.wizards.com/DCI/BR6-1-98.html",
+    "Land Tax" => "banned",
+  )
+
+  change(
     "1999-01-01",
-    nil,
+    "https://web.archive.org/web/19990209004446/http://www.wizards.com/DCI/MTG_DCI_BR12-1-98.html",
+    "Braingeyser" => "legal",
     "Tolarian Academy" => "banned",
     "Windfall" => "banned",
   )
 
+  # Emergency announcement. Its page was already a 404 when the Wayback Machine first
+  # visited, so only the date survives, from the DCI announcement archive index. The
+  # March 1, 1999 announcement explicitly says "No changes" for Extended.
   change(
-    "1999-04-01",
-    nil,
+    "1999-03-11",
+    "https://web.archive.org/web/20010128184200/http://www.wizards.com/DCI/announce_archive.asp",
     "Memory Jar" => "banned",
   )
 
@@ -27,13 +48,13 @@ BanList.for_format("extended") do
 
   change(
     "1999-08-01",
-    nil,
+    "https://web.archive.org/web/20000422065433/http://www.wizards.com/DCI/announce.asp?dci19990716a",
     "Yawgmoth's Bargain" => "banned",
   )
 
   change(
     "1999-10-01",
-    nil,
+    "https://web.archive.org/web/20000305053359/http://www.wizards.com/DCI/announce.asp?dci19990901b",
     "Dream Halls" => "banned",
     "Earthcraft" => "banned",
     "Lotus Petal" => "banned",
@@ -43,7 +64,7 @@ BanList.for_format("extended") do
 
   change(
     "2000-04-01",
-    nil,
+    "https://web.archive.org/web/20000510094853/http://www.wizards.com/dci/judge/resources/br_030100.asp",
     "Dark Ritual" => "banned",
     "Mana Vault" => "banned",
   )

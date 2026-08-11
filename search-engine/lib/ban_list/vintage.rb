@@ -14,6 +14,18 @@ BanList.for_format("vintage") do
     "Shahrazad" => "banned",
     "Tempest Efreet" => "banned",
     "Timmerian Fiends" => "banned",
+    # These seven are on the Type I lists printed in the DCI Universal Tournament Rules as
+    # of January 1, 1997, sections 2.4.1 and 2.4.2:
+    # https://web.archive.org/web/19961219095847/http://www.wizards.com/DCI/Unirules.html
+    # When they were *added* is not recorded anywhere, so they sit in the initial list even
+    # though several postdate it. Each has a removal below.
+    "Divine Intervention" => "banned",
+    "Maze of Ith" => "restricted",
+    "Mirror Universe" => "restricted",
+    "Mishra's Workshop" => "restricted",
+    "Sword of the Ages" => "restricted",
+    "Underworld Dreams" => "restricted",
+    "Zuran Orb" => "restricted",
     "Ali from Cairo" => "restricted",
     "Ancestral Recall" => "restricted",
     "Berserk" => "restricted",
@@ -73,9 +85,10 @@ BanList.for_format("vintage") do
 
   change(
     "1996-04-01",
-    nil,
+    "https://web.archive.org/web/19960510142729/http://www.wizards.com/DCI/ban_rest_letter.html",
     "Ali from Cairo" => "legal",
     "Black Vise" => "legal",
+    "Sword of the Ages" => "legal",
     "Time Vault" => "legal",
   )
 
@@ -83,7 +96,6 @@ BanList.for_format("vintage") do
     "1996-10-01",
     nil,
     "Fastbond" => "restricted",
-    "Strip Mine" => "restricted",
   )
 
   change(
@@ -92,39 +104,57 @@ BanList.for_format("vintage") do
     "Black Vise" => "restricted",
   )
 
+  # Date still unsourced - the DCI announcement archive skips from 1997-08-01 to 1997-12-03,
+  # though 1997-10-01 fits the Type I schedule (announced September 1, effective a month
+  # later). Mishra's Workshop and Zuran Orb are grouped here on inference, not on a source:
+  # the January 1997 rules have both restricted, and neither is on any later Type I list.
   change(
     "1997-10-01",
     nil,
     "Candelabra of Tawnos" => "legal",
     "Copy Artifact" => "legal",
     "Feldon's Cane" => "legal",
+    "Mishra's Workshop" => "legal",
+    "Zuran Orb" => "legal",
   )
 
   change(
-    "1998-04-01",
-    nil,
-    "Memory Jar" => "restricted",
+    "1998-01-01",
+    "https://web.archive.org/web/19990203122929/http://www.wizards.com/DCI/BRAnnouncement.html",
+    "Strip Mine" => "restricted",
   )
 
   change(
     "1999-01-01",
-    nil,
+    "https://web.archive.org/web/19990209004446/http://www.wizards.com/DCI/MTG_DCI_BR12-1-98.html",
     "Stroke of Genius" => "restricted",
     "Tolarian Academy" => "restricted",
     "Windfall" => "restricted",
   )
 
+  # Emergency announcement. Its page was already a 404 when the Wayback Machine first
+  # visited, so only the date survives, from the DCI announcement archive index.
+  change(
+    "1999-03-11",
+    "https://web.archive.org/web/20010128184200/http://www.wizards.com/DCI/announce_archive.asp",
+    "Memory Jar" => "restricted",
+  )
+
   change(
     "1999-04-01",
-    nil,
+    "https://web.archive.org/web/19990506144254/http://www.wizards.com/DCI/MTG_DCI_BR2-26-99.html",
+    "Maze of Ith" => "legal",
     "Time Spiral" => "restricted",
   )
 
   change(
     "1999-10-01",
-    nil,
+    "https://web.archive.org/web/20000305053359/http://www.wizards.com/DCI/announce.asp?dci19990901b",
+    "Divine Intervention" => "legal",
     "Ivory Tower" => "legal",
+    "Mirror Universe" => "legal",
     "Shahrazad" => "legal",
+    "Underworld Dreams" => "legal",
     "Crop Rotation" => "restricted",
     "Doomsday" => "restricted",
     "Dream Halls" => "restricted",
@@ -145,9 +175,12 @@ BanList.for_format("vintage") do
     "Yawgmoth's Will" => "restricted",
   )
 
+  # The September 1, 2000 announcement itself was never archived; this is the DCI's own
+  # Type 1 deck construction page, dated "effective October 1, 2000", which lists exactly
+  # these four as newly restricted.
   change(
     "2000-10-01",
-    nil,
+    "https://web.archive.org/web/20000930010409/http://www.wizards.com/dci/judge/resources/sfr_type1.asp",
     "Channel" => "restricted",
     "Demonic Consultation" => "restricted",
     "Mind Twist" => "restricted",

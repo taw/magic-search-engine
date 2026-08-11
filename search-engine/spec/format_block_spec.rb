@@ -54,12 +54,13 @@ describe "Formats - Block Constructed" do
   end
 
   it "tempest" do
-    # No idea when Cursed Scroll was banned exactly
-    assert_block_composition "tempest block", "tmp", ["tmp"],
-      "Cursed Scroll" => "banned"
-    assert_block_composition "tempest block", "sth", ["tmp", "sth"],
-      "Cursed Scroll" => "banned"
-    assert_block_composition "tempest block", "exo", ["tmp", "sth", "exo"],
+    # Cursed Scroll was banned by the June 1, 1998 announcement, effective July 1, 1998
+    # (source in ban_list/tempest_block.rb), which is after all three sets shipped - so it
+    # is legal at every release date and banned only afterwards.
+    assert_block_composition "tempest block", "tmp", ["tmp"]
+    assert_block_composition "tempest block", "sth", ["tmp", "sth"]
+    assert_block_composition "tempest block", "exo", ["tmp", "sth", "exo"]
+    assert_block_composition "tempest block", Date.parse("1998-07-01"), ["tmp", "sth", "exo"],
       "Cursed Scroll" => "banned"
   end
 
