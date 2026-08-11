@@ -278,6 +278,11 @@ class PatchMtgjsonVersions < Patch
         card["oversized"] = true
       end
 
+      # mtgjson bug - MBC is a paper set, but a few cards are marked as arena-only
+      if card["set"]["official_code"] == "MBC"
+        card["availability"] = ["paper"]
+      end
+
       # Moved in v5
       card["arena"] = true if card.delete("isArena") or card["availability"]&.delete("arena")
       card["paper"] = true if card.delete("isPaper") or card["availability"]&.delete("paper")
