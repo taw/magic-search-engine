@@ -281,6 +281,7 @@ class PatchMtgjsonVersions < Patch
       # mtgjson bug - MBC is a paper set, but a few cards are marked as arena-only
       if card["set"]["official_code"] == "MBC"
         card["availability"] = ["paper"]
+        card.delete("digital")
       end
 
       # Moved in v5
