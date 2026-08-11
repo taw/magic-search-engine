@@ -1,0 +1,189 @@
+#!/usr/bin/env ruby
+
+# Runs the spec suite in parallel.
+#
+# Nearly every spec needs the card database, and loading it takes about ten
+# seconds, so workers are forked after it's already in memory - they inherit it
+# copy-on-write instead of each building its own copy. That saves both the
+# repeated load time and most of the memory a worker would otherwise need.
+#
+# Files are handed out by greedy bin packing over how long they took last time
+# (recorded in tmp/spec_timings.json), because the suite is very lopsided -
+# a handful of files account for most of the runtime.
+#
+# Usage:
+#   bin/parallel_rspec                 # whole suite
+#   bin/parallel_rspec spec/foo_spec.rb
+#   SPEC_WORKERS=4 bin/parallel_rspec  # override worker count
+
+require "etc"
+require "json"
+require "pathname"
+
+ROOT = Pathname(__dir__).parent
+TIMINGS_PATH = ROOT + "tmp/spec_timings.json"
+
+Dir.chdir(ROOT.to_s)
+
+# Each worker holds the database plus its own garbage, so worker count is
+# limited by memory at least as much as by cores.
+GB = 1024 * 1024 * 1024
+
+def total_memory_bytes
+  if RUBY_PLATFORM =~ /darwin/
+    `sysctl -n hw.memsize`.to_i
+  else
+    `awk '/MemTotal/ {print $2 * 1024}' /proc/meminfo 2>/dev/null`.to_i
+  end
+rescue SystemCallError
+  0
+end
+
+def default_worker_count
+  cores = Etc.nprocessors
+  # Workers share the database copy-on-write, so the first one costs the whole
+  # database and each one after it costs roughly what its own garbage comes to.
+  memory = total_memory_bytes
+  by_memory = memory > 0 ? (memory - 2 * GB) / GB : cores
+  # A CI box has nothing else to do; on a laptop, leave a core for the person
+  # waiting on the run - but never let that round down to no parallelism at all.
+  by_cores = ENV["CI"] ? cores : [cores - 1, 2].max
+  [by_cores, by_memory, 8].min.clamp(1, 32)
+end
+
+def spec_files(args)
+  return args unless args.empty?
+  Pathname.glob("spec/**/*_spec.rb").map(&:to_s).sort
+end
+
+# Greedy longest-first bin packing. Files never timed before are assumed to be
+# on the slow side, so a new spec doesn't get piled onto an already-full worker.
+def partition(files, workers, timings)
+  fallback = timings.empty? ? 1.0 : timings.values.max
+  buckets = Array.new(workers) { [] }
+  loads = Array.new(workers, 0.0)
+  files.sort_by { |f| -(timings[f] || fallback) }.each do |file|
+    i = loads.each_with_index.min_by { |load, _| load }.last
+    buckets[i] << file
+    loads[i] += timings[file] || fallback
+  end
+  buckets.reject(&:empty?)
+end
+
+def load_timings
+  return {} unless TIMINGS_PATH.exist?
+  JSON.parse(TIMINGS_PATH.read)
+rescue JSON::ParserError
+  {}
+end
+
+def save_timings(previous, results)
+  # A partial run only reports on its own files, so previous timings are kept
+  # for everything else - minus specs that have since been deleted or renamed.
+  timings = previous.merge(results).select { |file, _| File.exist?(file) }
+  TIMINGS_PATH.parent.mkpath
+  TIMINGS_PATH.write(JSON.pretty_generate(timings.sort.to_h))
+rescue SystemCallError
+  # Timings are only an optimization, never worth failing the run over
+end
+
+files = spec_files(ARGV)
+if files.empty?
+  warn "No spec files found"
+  exit 1
+end
+
+requested = ENV["SPEC_WORKERS"].to_s.strip
+workers = requested.empty? ? default_worker_count : requested.to_i
+workers = [workers, files.size].min
+
+if workers <= 1
+  exec(RbConfig.ruby, "-S", "rspec", *files)
+end
+
+previous_timings = load_timings
+buckets = partition(files, workers, previous_timings)
+
+# Load before forking so every worker shares one copy.
+require_relative "../lib/card_database"
+$stderr.print "Loading card database... "
+started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+$card_database = {[] => CardDatabase.load}
+$card_database[[]].supported_booster_types
+$stderr.puts "%.1fs, forking %d workers" % [Process.clock_gettime(Process::CLOCK_MONOTONIC) - started, buckets.size]
+
+# Old objects are skipped by minor GC, so promoting the database first keeps
+# the pages holding it from being dirtied (and un-shared) in every worker.
+3.times { GC.start }
+GC.compact if GC.respond_to?(:compact)
+
+require "tmpdir"
+suite_started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+
+Dir.mktmpdir("parallel_rspec") do |tmpdir|
+  pids = buckets.each_with_index.map do |bucket, i|
+    report = File.join(tmpdir, "worker-#{i}.json")
+    fork do
+      require "rspec/core"
+      # Workers only draw the progress dots; the parent owns the one summary,
+      # so that a run doesn't end in a pile of per-worker "N examples" lines.
+      require_relative "../spec/support/worker_progress_formatter"
+      status = RSpec::Core::Runner.run(
+        ["--format", "WorkerProgressFormatter", "--format", "json", "--out", report, *bucket],
+        $stderr, $stdout
+      )
+      # Runner.run leaves at_exit hooks and open handles behind; exit! keeps a
+      # worker from doing anything on the way out that the parent didn't ask for.
+      $stdout.flush
+      exit!(status)
+    end
+  end
+
+  trap("INT") { pids.each { |pid| Process.kill("INT", pid) rescue nil } }
+
+  failed = pids.map { |pid| Process.waitpid2(pid).last.success? }.count(false) > 0
+  elapsed = Process.clock_gettime(Process::CLOCK_MONOTONIC) - suite_started
+
+  examples = []
+  buckets.each_index do |i|
+    report = File.join(tmpdir, "worker-#{i}.json")
+    next unless File.exist?(report) and File.size(report) > 0
+    examples += JSON.parse(File.read(report))["examples"] || []
+  rescue JSON::ParserError
+    failed = true
+    warn "Worker #{i} produced no usable report"
+  end
+
+  by_file = Hash.new(0.0)
+  examples.each { |e| by_file[e["file_path"].sub(%r{\A\./}, "")] += e["run_time"].to_f }
+  save_timings(previous_timings, by_file)
+
+  failures = examples.select { |e| e["status"] == "failed" }
+  pending = examples.count { |e| e["status"] == "pending" }
+
+  puts
+  puts
+  unless failures.empty?
+    puts "Failures:"
+    puts
+    failures.each_with_index do |e, i|
+      puts "  #{i + 1}) #{e['full_description']}"
+      # The whole message, not just its first line - these specs fail with a
+      # card-by-card diff, which is the only part worth reading
+      e.dig("exception", "message").to_s.each_line { |line| puts "     #{line.chomp}" }
+      puts "     # #{e['id']}"
+      puts
+    end
+  end
+  puts "Finished in %.1f seconds across %d workers" % [elapsed, buckets.size]
+  puts "%d examples, %d %s, %d pending" % [
+    examples.size, failures.size, failures.size == 1 ? "failure" : "failures", pending
+  ]
+  unless failures.empty?
+    puts
+    puts "Failed examples:"
+    failures.each { |e| puts "rspec #{e['id']}" }
+  end
+
+  exit(failed ? 1 : 0)
+end

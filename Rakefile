@@ -13,7 +13,8 @@ task "test" => "spec"
 
 task "spec" do
   Dir.chdir("search-engine") do
-    sh "rspec"
+    # Forks workers off one loaded card database; SPEC_WORKERS=1 to run plain rspec
+    sh "./bin/parallel_rspec"
   end
   Dir.chdir("frontend") do
     sh "rspec"
