@@ -45,46 +45,7 @@ describe "Banlist" do
     # These were separate announcements
     assert_banlist_changes "July 2018",
       "legacy banned", "Deathrite Shaman",
-      "legacy banned", "Gitaxian Probe",
-      "mtgo commander unbanned", "Ancient Tomb",
-      "mtgo commander unbanned", "Brainstorm",
-      "mtgo commander unbanned", "Chrome Mox",
-      "mtgo commander unbanned", "Demonic Tutor",
-      "mtgo commander unbanned", "Dig Through Time",
-      "mtgo commander unbanned", "Enlightened Tutor",
-      "mtgo commander unbanned", "Entomb",
-      "mtgo commander unbanned", "Gaea's Cradle",
-      "mtgo commander unbanned", "Imperial Seal",
-      "mtgo commander unbanned", "Mana Crypt",
-      "mtgo commander unbanned", "Mana Drain",
-      "mtgo commander unbanned", "Mana Vault",
-      "mtgo commander unbanned", "Mox Diamond",
-      "mtgo commander unbanned", "Mystical Tutor",
-      "mtgo commander unbanned", "Necropotence",
-      "mtgo commander unbanned", "Ponder",
-      "mtgo commander unbanned", "Preordain",
-      "mtgo commander unbanned", "Sol Ring",
-      "mtgo commander unbanned", "Sylvan Tutor",
-      "mtgo commander unbanned", "Treachery",
-      "mtgo commander unbanned", "Treasure Cruise",
-      "mtgo commander unbanned", "Vampiric Tutor",
-      "mtgo commander unbanned", "Vial Smasher the Fierce",
-      "mtgo commander unbanned", "Worldly Tutor",
-      "mtgo commander unbanned", "Yawgmoth's Bargain"
-
-    assert_banlist_changes "April 2018",
-      "mtgo commander banned", "Edgar Markov",
-      "mtgo commander banned", "Chrome Mox",
-      "mtgo commander banned", "Ancient Tomb",
-      "mtgo commander banned", "Mox Diamond",
-      "mtgo commander banned", "Winter Orb",
-      "mtgo commander banned", "Sylvan Library",
-      "mtgo commander banned", "Worldly Tutor",
-      "mtgo commander banned", "Sylvan Tutor",
-      "mtgo commander unbanned", "Protean Hulk",
-      "mtgo commander unbanned", "Mishra's Workshop",
-      "mtgo commander unbanned", "Bazaar of Baghdad",
-      "mtgo commander unbanned", "Griselbrand"
+      "legacy banned", "Gitaxian Probe"
 
     assert_banlist_changes "January 2018",
       "standard banned", "Attune with Aether",
@@ -101,17 +62,6 @@ describe "Banlist" do
     assert_banlist_changes "November 2017",
       "duel commander banned", "Fastbond"
 
-    assert_banlist_changes "October 2017",
-      "mtgo commander banned", "Baral, Chief of Compliance",
-      "mtgo commander banned", "Demonic Tutor",
-      "mtgo commander banned", "Emrakul, the Aeons Torn",
-      "mtgo commander banned", "Enlightened Tutor",
-      "mtgo commander banned", "Imperial Seal",
-      "mtgo commander banned", "Mystical Tutor",
-      "mtgo commander banned", "Vampiric Tutor",
-      "mtgo commander unbanned", "Arcum Dagsson",
-      "mtgo commander unbanned", "Yisan, the Wanderer Bard"
-
     assert_banlist_changes "September 2017",
       "duel commander banned-as-commander", "Edgar Markov",
       "duel commander banned", "Fireblast",
@@ -125,15 +75,6 @@ describe "Banlist" do
       "vintage unrestricted", "Yawgmoth's Bargain"
 
     assert_banlist_changes "July 2017",
-      "mtgo commander banned", "Vial Smasher the Fierce",
-      "mtgo commander banned", "Ponder",
-      "mtgo commander banned", "Preordain",
-      "mtgo commander banned", "Brainstorm",
-      "mtgo commander banned", "Treachery",
-      "mtgo commander unbanned", "Biorhythm",
-      "mtgo commander unbanned", "Limited Resources",
-      "mtgo commander unbanned", "Painter's Servant",
-      "mtgo commander unbanned", "Trade Secrets",
       "duel commander banned-as-commander", "Geist of Saint Traft",
       "duel commander banned-as-commander", "Jace, Vryn's Prodigy",
       "duel commander banned-as-commander", "Bruse Tarl, Boorish Herder",
@@ -145,11 +86,6 @@ describe "Banlist" do
 
     assert_banlist_changes "June 2017",
       "standard banned", "Aetherworks Marvel"
-
-    assert_banlist_changes "May 2017",
-      "mtgo commander banned", "Dig Through Time",
-      "mtgo commander banned", "Strip Mine",
-      "mtgo commander banned", "Treasure Cruise"
 
     assert_banlist_changes "April 2017",
       "legacy banned", "Sensei's Divining Top",
@@ -868,78 +804,6 @@ describe "Banlist" do
     ]
   end
 
-  it "MTGO commander now" do
-    assert_full_banlist "mtgo commander", "4 May 2017", [
-      "Black Lotus",
-      "Channel",
-      "Fastbond",
-      "Gaea's Cradle",
-      "Mana Crypt",
-      "Mana Vault",
-      "Mishra's Workshop",
-      "Mox Emerald",
-      "Mox Jet",
-      "Mox Pearl",
-      "Mox Ruby",
-      "Mox Sapphire",
-      "Sol Ring",
-      "Tolarian Academy",
-      "Bazaar of Baghdad",
-      "Doomsday",
-      "Entomb",
-      "Food Chain",
-      "Gifts Ungiven",
-      "Hermit Druid",
-      "Protean Hulk",
-      "Survival of the Fittest",
-      "Time Vault",
-      "Tinker",
-      "Yawgmoth's Bargain",
-      "Arcum Dagsson",
-      "Braids, Cabal Minion",
-      "Derevi, Empyrial Tactician",
-      "Edric, Spymaster of Trest",
-      "Erayo, Soratami Ascendant",
-      "Erayo's Essence",
-      "Griselbrand",
-      "Rofellos, Llanowar Emissary",
-      "Yisan, the Wanderer Bard",
-      "Zur the Enchanter",
-      "Ancestral Recall",
-      "Back to Basics",
-      "Balance",
-      "Humility",
-      "Karakas",
-      "Library of Alexandria",
-      "Mana Drain",
-      "Mind Twist",
-      "Moat",
-      "Natural Order",
-      "Necropotence",
-      "Oath of Druids",
-      "Serra Ascendant",
-      "The Tabernacle at Pendrell Vale",
-      "Time Walk",
-      "Biorhythm",
-      "Limited Resources",
-      "Painter's Servant",
-      "Sensei's Divining Top",
-      "Trade Secrets",
-      "Amulet of Quoz",
-      "Bronze Tablet",
-      "Chaos Orb",
-      "Contract from Below",
-      "Darkpact",
-      "Demonic Attorney",
-      "Falling Star",
-      "Jeweled Bird",
-      "Rebirth",
-      "Shahrazad",
-      "Tempest Efreet",
-      "Timmerian Fiends",
-    ]
-  end
-
   it "two_headed_giant_banlist_now" do
     assert_full_banlist "two-headed giant", "1 October 2015", [
       "Erayo, Soratami Ascendant",
@@ -947,20 +811,13 @@ describe "Banlist" do
   end
 
   it "ban_events_for" do
-    BanList["mtgo commander"].events.should include(
+    BanList["commander"].events.should include(
       [
-        Date.parse("2017-10-11"),
-        "http://wizardsmtgo.tumblr.com/post/166220048834/mtgo-commander-1v1-banned-announcement",
+        Date.parse("2017-04-24"),
+        "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=18588",
         [
-          {:name=>"Arcum Dagsson", :old=>"banned", :new=>"legal"},
-           {:name=>"Yisan, the Wanderer Bard", :old=>"banned", :new=>"legal"},
-           {:name=>"Baral, Chief of Compliance", :old=>"legal", :new=>"banned"},
-           {:name=>"Demonic Tutor", :old=>"legal", :new=>"banned"},
-           {:name=>"Emrakul, the Aeons Torn", :old=>"legal", :new=>"banned"},
-           {:name=>"Enlightened Tutor", :old=>"legal", :new=>"banned"},
-           {:name=>"Imperial Seal", :old=>"legal", :new=>"banned"},
-           {:name=>"Mystical Tutor", :old=>"legal", :new=>"banned"},
-           {:name=>"Vampiric Tutor", :old=>"legal", :new=>"banned"},
+          {:name=>"Protean Hulk", :old=>"banned", :new=>"legal"},
+          {:name=>"Leovold, Emissary of Trest", :old=>"legal", :new=>"banned"},
         ]
       ]
     )

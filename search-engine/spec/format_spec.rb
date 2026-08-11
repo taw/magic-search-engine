@@ -239,12 +239,6 @@ describe "Formats" do
     assert_count_cards 'restricted:"duel commander"', 30
   end
 
-  # Used to be Lurrus
-  # And now it's all the sticker and attraction cards, and I don't even know if the format is still used or not really
-  # it "mtgo commander" do
-  #   assert_count_cards 'banned:vintage legal:"mtgo commander"', 0
-  # end
-
   it "historic" do
     # including STA pre-banned
     # this is extra fun as some conjurable cards will be not banned
@@ -426,7 +420,6 @@ describe "Formats" do
     assert_search_results "is:racist f:pauper"
     assert_search_results "is:racist f:modern"
     assert_search_results "is:racist f:commander"
-    assert_search_results "is:racist f:\"mtgo commander\""
     assert_search_results "is:racist f:pioneer"
     assert_search_results "is:racist f:standard"
   end

@@ -1,3 +1,5 @@
+# Previously supported formats: (Standard) Brawl, Frontier, MTGO Commander
+
 class Format
   # Statuses which all mean "in the format, but with a deckbuilding restriction".
   # They're displayed and validated differently, but restricted: and f: searches
@@ -243,10 +245,6 @@ class Format
         "duelcommander"              => FormatDuelCommander,
         "dueledh"                    => FormatDuelCommander,
         "duel"                       => FormatDuelCommander,
-        # Disabled as I don't even know where the banlist for it is and if it's still a real format
-        # This could be reverted
-        # "mtgocommander"              => FormatMTGOCommander,
-        # "mtgoedh"                    => FormatMTGOCommander,
         "historic"                   => FormatHistoric,
         "premodern"                  => FormatPremodern,
         "alchemy"                    => FormatAlchemy,

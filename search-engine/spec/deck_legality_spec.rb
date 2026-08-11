@@ -236,7 +236,7 @@ describe "Deck legality" do
               "Deck's commander must be exactly 1 card or 2 partner cards designated as commander, has 0",
             ])
 
-          when FormatCommander, FormatDuelCommander, FormatMTGOCommander
+          when FormatCommander, FormatDuelCommander
             legality_40_0.should match_array([
               "Deck must contain exactly 100 cards, has 40",
               "Deck's commander must be exactly 1 card or 2 partner cards designated as commander, has 0",
