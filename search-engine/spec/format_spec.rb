@@ -242,7 +242,7 @@ describe "Formats" do
   it "historic" do
     # including STA pre-banned
     # this is extra fun as some conjurable cards will be not banned
-    assert_count_cards "banned:historic", 69
+    assert_count_cards "banned:historic", 76
     assert_legality "historic", Date.parse("2023-08-01"), "Alora, Cheerful Assassin", "specialized"
     assert_legality "historic", Date.parse("2023-08-01"), "Black Lotus", "conjurable"
     assert_legality "historic", Date.parse("2023-08-01"), "Lightning Bolt", "conjurable"
@@ -322,7 +322,7 @@ describe "Formats" do
   end
 
   it "premodern" do
-    assert_count_cards "banned:premodern", 32
+    assert_count_cards "banned:premodern", 33
   end
 
   # We don't keep historical legality for Petty Dreadful yet
