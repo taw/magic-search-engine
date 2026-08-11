@@ -7,6 +7,7 @@ class CardController < ApplicationController
     end
     if @card
       @title = @card.name
+      @legality = @card.legality_information
     else
       render_404
     end

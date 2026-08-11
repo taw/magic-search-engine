@@ -105,7 +105,7 @@ class Deck
   end
 
   def all_set_codes
-    @sections.values.flat_map{|sc| sc.map{|_,card| card.set_code}}.to_set
+    @all_set_codes ||= @sections.values.flat_map{|sc| sc.map{|_,card| card.set_code}}.to_set
   end
 
   def all_token_set_codes
