@@ -31,7 +31,9 @@ gem "ffi", "1.16.3" # 1.17 doesn't work on old ruby
 # Must stay conditional: on older rubies the default gems already work, and asking
 # for them by name resolves to versions that need a newer ruby (drb 2.0.6 calls
 # ruby2_keywords, which 2.6 doesn't have).
-if RUBY_VERSION >= "3.4"
+#
+# Ruby 3.3 doesn't need any of them, but still warns
+if RUBY_VERSION >= "3.3"
   gem "mutex_m"
   gem "drb"
   gem "base64"
