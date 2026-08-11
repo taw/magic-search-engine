@@ -10,7 +10,8 @@ class ReportLegalityDifferences
 
   attr_reader :mtgjson_legalities_data, :spoiler_cards, :non_spoiler_cards
 
-  def initialize
+  def initialize(formats=[])
+    @formats = formats.map(&:downcase)
     @db = CardDatabase.load
     @mtgjson = JSON.parse(Zlib::GzipReader.open("#{__dir__}/../tmp/AllSets.json.gz", &:read))
     load_mtgjson_legalities_data
@@ -137,11 +138,20 @@ class ReportLegalityDifferences
     }.join(" // ")
   end
 
+  memoize def formats_to_check
+    return mtgjson_formats if @formats.empty?
+    unknown = @formats - mtgjson_formats
+    unless unknown.empty?
+      raise "Unknown format#{"s" if unknown.size > 1}: #{unknown.join(", ")} - known formats: #{mtgjson_formats.join(", ")}"
+    end
+    @formats
+  end
+
   def call
-    mtgjson_formats.each do |name|
+    formats_to_check.each do |name|
       verify_format name
     end
   end
 end
 
-ReportLegalityDifferences.new.call
+ReportLegalityDifferences.new(ARGV).call
