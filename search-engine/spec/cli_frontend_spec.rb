@@ -1,5 +1,7 @@
 describe "CLI Frontend" do
-  let(:cli) { $cli_frontend ||= CLIFrontend.new }
+  include_context "db"
+
+  let(:cli) { $cli_frontend ||= CLIFrontend.new(db) }
 
   it "non_verbose" do
     assert_cli(

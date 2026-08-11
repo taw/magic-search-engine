@@ -1,8 +1,8 @@
 require_relative "card_database"
 
 class CLIFrontend
-  def initialize
-    @db = CardDatabase.load
+  def initialize(db=nil)
+    @db = db || CardDatabase.load
   end
 
   def call(verbose, query_string)
