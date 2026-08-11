@@ -295,8 +295,14 @@ class Card
     -sym.downcase.tr("/{}", "").chars.sort.join
   end
 
+  # unicode_normalize already hands back a copy nobody else holds, so the
+  # accent-stripping and downcasing can happen in it rather than allocating
+  # two more. This runs for every foreign name on every card.
   def hard_normalize(s)
-    -s.unicode_normalize(:nfd).gsub(/\p{Mn}/, "").downcase
+    result = s.unicode_normalize(:nfd)
+    result.gsub!(/\p{Mn}/, "")
+    result.downcase!
+    -result
   end
 
   def smart_convert_powtou(val)

@@ -1,8 +1,12 @@
 class PhysicalCard
+  # Only meld and multipart cards have a back, so the great majority of these
+  # objects would otherwise hold an empty array each, all of them alike.
+  NO_BACK = [].freeze
+
   attr_reader :front, :back, :foil, :etched, :hash
   def initialize(front, back, foil, etched)
     @front = front
-    @back = back
+    @back = back.empty? ? NO_BACK : back
     @foil = !!foil
     @etched = !!etched
     @hash = [main_front, foil, etched].hash

@@ -43,11 +43,19 @@ class String
   # * everything is both upper and lower case,
   #   even if only one case is actually in print
   #   (except Turkish ı)
+  ACCENTS_FROM = "ÀÁÂÄẤÃĀàáâäãấãāĆČÇćčçÈËÊÉĖèéêëēėǵÍÏĪÎíïīîıŁłÑñńÓÖŌØõöóøōÛÜÚúûüŠšÝýŻżˣ’\u2212"
+  ACCENTS_TO   = "AAAAAAAaaaaaaaaCCCcccEEEEEeeeeeegIIIIiiiiiLlNnnOOOOoooooUUUuuuSsYyZzx'-"
+
+  # Almost everything that comes through here is plain ASCII, and comes back out
+  # of gsub and tr byte for byte identical, having allocated two throwaway copies
+  # on the way. Those copies were most of the garbage that loading the index
+  # produced, and peak garbage sets the heap size the process then holds on to
+  # for the rest of its life, so it's worth a scan to learn there's nothing to do.
+  NORMALIZE_RX = Regexp.new("[" + Regexp.escape(LIGATURES.keys.join + ACCENTS_FROM) + "]")
+
   def normalize_accents
-    result = gsub(LIGATURES_RX, LIGATURES)
-      .tr(
-        "ÀÁÂÄẤÃĀàáâäãấãāĆČÇćčçÈËÊÉĖèéêëēėǵÍÏĪÎíïīîıŁłÑñńÓÖŌØõöóøōÛÜÚúûüŠšÝýŻżˣ’\u2212",
-        "AAAAAAAaaaaaaaaCCCcccEEEEEeeeeeegIIIIiiiiiLlNnnOOOOoooooUUUuuuSsYyZzx'-")
+    return -self unless NORMALIZE_RX.match?(self)
+    result = gsub(LIGATURES_RX, LIGATURES).tr(ACCENTS_FROM, ACCENTS_TO)
     result = self if result == self # Memory saving trick
     -result
   end
@@ -459,13 +467,17 @@ class CardDatabase
   end
 
   def setup_artists!
+    # One slug per artist, but this runs once per printing - a few thousand
+    # artists were being slugged a hundred thousand times over.
+    slugs = {}
     each_printing do |printing|
       artist_name = printing.artist_name
       if artist_name.nil?
         warn "No artist for #{printing}"
         artist_name = "unknown"
       end
-      artist_slug = artist_name.downcase.gsub(/[^a-z0-9\p{Han}\p{Katakana}\p{Hiragana}\p{Hangul}]+/, "_")
+      artist_slug = slugs[artist_name] ||=
+        artist_name.downcase.gsub(/[^a-z0-9\p{Han}\p{Katakana}\p{Hiragana}\p{Hangul}]+/, "_")
       @artists[artist_slug] ||= Artist.new(artist_name)
       artist = @artists[artist_slug]
       unless artist_name == artist.name
