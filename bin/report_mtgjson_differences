@@ -46,9 +46,10 @@ class ReportMtgjsonDifferences
     end
 
     mtgjson_cards = mtgjson_set["cards"]
-    db_names = db_set.printings.map(&:name).to_set
-
     mtgjson_names = mtgjson_cards.map{|c| alchemy_name_fix(c["faceName"] || c["name"]) }.to_set
+    db_name = db_name_map(db_set, mtgjson_names)
+
+    db_names = db_set.printings.map{|c| db_name[c.name] }.to_set
     if db_names != mtgjson_names
       if db_names.size == mtgjson_names.size
         puts "#{code} - card names (count same) - #{db_names.size} vs #{mtgjson_names.size}"
@@ -71,12 +72,12 @@ class ReportMtgjsonDifferences
       return
     end
 
-    db_numbers = db_set.printings.map{|c| [c.number, c.name] }.to_set
+    db_numbers = db_set.printings.map{|c| [c.number, db_name[c.name]] }.to_set
     mtgjson_numbers = mtgjson_cards.map{|c| [c["number"], alchemy_name_fix(c["faceName"] || c["name"])] }.to_set
 
     # Most common problem is mtgjson having non-unique numbers for multipart cards
     if db_numbers != mtgjson_numbers
-      db_numbers_i = db_set.printings.map{|c| [c.number.to_i, c.name] }.to_set
+      db_numbers_i = db_set.printings.map{|c| [c.number.to_i, db_name[c.name]] }.to_set
       mtgjson_numbers_i = mtgjson_cards.map{|c| [c["number"].to_i, alchemy_name_fix(c["faceName"] || c["name"])] }.to_set
 
       if db_numbers_i == mtgjson_numbers_i
@@ -129,12 +130,9 @@ class ReportMtgjsonDifferences
     mtgjson_only_set_codes.sort.each do |code|
       set = @mtgjson[code.upcase]
 
-      # Token only sets are currently excluded from the index
+      # Token / art / substitute card only sets are currently excluded from the index
       # We might revisit this someday
-      if set["cards"].size == 0
-        set_path = sets_base_path + "#{code}.json"
-        next if set_path.exist?
-      end
+      next if set["cards"].size == 0
 
       # Foreign only sets are maybe interesting if they're Japanese promos
       if set["isForeignOnly"] and %W[4bb fbb ren rin].include?(code)
@@ -151,10 +149,25 @@ class ReportMtgjsonDifferences
     end
   end
 
+  # We add these to disambiguate cards which share a name with another card,
+  # mtgjson just keeps the duplicate names
+  DISAMBIGUATION_TAGS = %W[Prepared Plane Playtest TBTH CMB1 UNK a b c d e f]
+  DISAMBIGUATION_TAG_RX = / \((#{DISAMBIGUATION_TAGS.join("|")})\)\z/
+
+  # Some of these tags are part of the real name in some sets
+  # (mtgjson has "Imaginary Friends (Plane)" in pssc), so only drop a tag
+  # if mtgjson doesn't use the tagged name itself
+  def db_name_map(db_set, mtgjson_names)
+    db_set.printings.map(&:name).uniq.to_h{|name|
+      [name, mtgjson_names.include?(name) ? name : name.sub(DISAMBIGUATION_TAG_RX, "")]
+    }
+  end
+
   def alchemy_name_fix(name)
     return unless name
     name.split(" // ").map{|s|
-      if s =~ /\AA-(.*)/
+      # A-Town is a joke card actually called that, not an Alchemy rebalance
+      if s =~ /\AA-(.*)/ and s != "A-Town"
         "#{$1} (Alchemy)"
       else
         s
