@@ -25,11 +25,17 @@ require "date"
 require "json"
 require "pathname"
 require_relative "../search-engine/lib/ban_list"
+require_relative "../search-engine/lib/format/format"
 
 data = BanList.all_ban_lists.map do |ban_list|
+  # The initial ban list has no announcement date of its own, it started with the format.
+  # Retired formats like Extended and disabled ones like Brawl keep their ban list but have
+  # no Format to ask, so like formats with no known start date they get FormatUnknown's nil.
+  start_date = Format[ban_list.format].new.format_start_date
+
   announcements = ban_list.changes.map do |event|
     {
-      "date" => (event[:date] == BanList::START ? nil : event[:date].to_s),
+      "date" => (event[:date] == BanList::START ? start_date : event[:date].to_s),
       "url" => event[:url],
       "comment" => event[:comment],
       "changes" => event[:changes],

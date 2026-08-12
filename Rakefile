@@ -170,6 +170,11 @@ task "update:ifnew" do
   end
 end
 
+desc "Update banlist history"
+task "update:banlist" do
+  sh "./bin/export_banlist_history index/banlist_history.json"
+end
+
 desc "Full update"
 task "update" do
   Pathname("tmp").mkpath
@@ -182,6 +187,7 @@ task "update" do
   Rake::Task["update:decks:metadata"].invoke
   Rake::Task["update:sealed"].invoke
   Rake::Task["export:decks"].invoke
+  Rake::Task["update:banlist"].invoke
 end
 
 desc "Update magic-preconstructed-decks metadata"
