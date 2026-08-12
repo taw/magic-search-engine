@@ -1,26 +1,38 @@
 #!/usr/bin/env ruby
 
 # Exports every B&R announcement we know about, for every format, as:
-#   {"modern": [{"date": "2011-09-20", "url": "...", "changes": {"Jace, the Mind Sculptor": "banned"}}, ...], ...}
+#   {"modern": [{"date": "2011-09-20", "url": "...", "comment": null, "changes": {"Jace, the Mind Sculptor": "banned"}}, ...], ...}
 #
-# Formats are sorted by name, announcements within a format are sorted by date.
-# Announcements which established the initial ban list have null date,
-# and announcements we have no source for have null url.
+# Source is either url or comment.
+# Some old banlist changes have no source.
 #
-# Statuses are BanList::LEGALITY_STATUSES - "legal", "banned", "restricted", and the
-# more specific "banned_as_commander", "banned_as_companion", "conjurable" and
-# "specialized", which used to all be spelled "restricted". See _LEGALITY.md.
+# Initial entry has start of format date if known, or null if unknown.
+#
+# Possible legalities:
+# * legal - normal rules apply
+# * banned - cannot be used in any way
+# * restricted - 1 copy only
+# * banned_as_commander - legal, but cannot be used as commander
+# * banned_as_companion - legal, but cannot be used as companion
+# * conjurable - cannot be used in deck construction, but can be conjured during the game
+# * specialized - cannot be used in deck construction, but can be specialized during the game
+#
+# More niche legalities like "prebanned", "suspended", "banned except in precons" etc. not handled.
+#
+# Penny Dreadful legality exists outside the banlist system.
 
 require "date"
 require "json"
+require "pathname"
 require_relative "../search-engine/lib/ban_list"
 
 data = BanList.all_ban_lists.map do |ban_list|
-  announcements = ban_list.changes.map do |date, url, legalities|
+  announcements = ban_list.changes.map do |event|
     {
-      "date" => (date == BanList::START ? nil : date.to_s),
-      "url" => url,
-      "changes" => legalities,
+      "date" => (event[:date] == BanList::START ? nil : event[:date].to_s),
+      "url" => event[:url],
+      "comment" => event[:comment],
+      "changes" => event[:changes],
     }
   end
   [ban_list.format, announcements]
