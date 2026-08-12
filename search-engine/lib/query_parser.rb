@@ -143,6 +143,13 @@ private
             break
           end
         end
+      when :metadata
+        # Eat it here, not in parse_cond, or it would swallow the token after it,
+        # like "//" or "or", which only parse_cond_list knows how to handle
+        @metadata.merge!(@tokens.shift[1])
+      when :time
+        @warnings << "Multiple time: clauses in same subquery" if @time
+        @time = @tokens.shift[1]
       when :slash_slash
         @tokens.shift
         # This is semantically meaningful
