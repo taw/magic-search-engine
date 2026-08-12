@@ -397,16 +397,8 @@ BanList.for_format("historic") do
     "Mox Opal" => "banned",
   )
 
-  change(
-    "2025-09-23",
-    "https://magic.wizards.com/en/news/mtg-arena/through-the-omenpaths-card-and-event-updates",
-    # pre-banned
-    "Broadside Bombardiers" => "banned",
-    "Gut, True Soul Zealot" => "banned",
-  )
-
-  # Not a banlist change. AA4 and the OMB bonus sheet put four of the five J21 conjured
-  # cards into the normal Arena card pool.
+  # The second half is not a banlist change. AA4 and the OMB bonus sheet put four of the
+  # five J21 conjured cards into the normal Arena card pool.
   #
   # AA4 is 28 cards, 25 of them new to Arena, and it conjures nothing - an ordinary
   # release, so a card printed in it is an ordinary card.
@@ -422,7 +414,10 @@ BanList.for_format("historic") do
   # Tropical Island is still conjure-only, J21 is still its only Arena printing.
   change(
     "2025-09-23",
-    "Previously conjurable only cards receive regular printings in AA4 and OMB",
+    "https://magic.wizards.com/en/news/mtg-arena/through-the-omenpaths-card-and-event-updates",
+    "Broadside Bombardiers" => "prebanned",
+    "Gut, True Soul Zealot" => "prebanned",
+    # Previously conjurable only cards receive regular printings in AA4 and OMB
     "Kraken Hatchling" => "legal", # aa4
     "Regal Force" => "legal", # aa4
     "Stormfront Pegasus" => "legal", # aa4

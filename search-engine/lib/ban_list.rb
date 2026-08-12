@@ -19,6 +19,17 @@ class BanList
     "specialized",
   ].freeze
 
+  # Statuses the DSL accepts on top of those, mapped to a real one before anything
+  # downstream sees them.
+  #
+  # "prebanned" is an ordinary ban announced before the card was available anywhere.
+  # We record when a change took effect, not when it was announced, so its date is the
+  # card's release date (Arena release date for digital-only formats) rather than the
+  # announcement date - which is what specs will eventually check it for.
+  DSL_STATUS_ALIASES = {
+    "prebanned" => "banned",
+  }.freeze
+
   attr_reader :format
 
   def initialize(format)
@@ -91,6 +102,7 @@ class BanList
   # downstream should assume that an event can't have both.
   def change(date, source, legalities)
     date = Date.parse(date) unless date.is_a?(Date)
+    legalities = legalities.transform_values{|legality| DSL_STATUS_ALIASES.fetch(legality, legality)}
     legalities.each_value do |legality|
       raise "#{self} has unknown legality status #{legality.inspect}" unless LEGALITY_STATUSES.include?(legality)
     end

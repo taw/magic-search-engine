@@ -113,7 +113,8 @@ BanList.for_format("commander") do
   )
 
   change(
-    "2006-02-02",
+    # Niv-Mizzet was only printed on 2006-02-03
+    "2006-02-03",
     nil,
     "Heartless Hidetsugu" => "banned_as_commander",
     "Niv-Mizzet, the Firemind" => "banned_as_commander",
