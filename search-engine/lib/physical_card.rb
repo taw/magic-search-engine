@@ -72,6 +72,10 @@ class PhysicalCard
     main_front.allowed_in_any_number?
   end
 
+  def decklimit
+    main_front.decklimit
+  end
+
   def commander?
     main_front.commander?
   end

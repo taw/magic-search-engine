@@ -109,6 +109,19 @@ class Format
     4
   end
 
+  # Card text overrides the format's limit in either direction (CR 100.2a) -
+  # "up to seven cards named" beats singleton, "only one card named" beats four.
+  def max_copies_allowed(card)
+    case card.decklimit
+    when nil
+      default_max_copies_allowed
+    when "any"
+      Float::INFINITY
+    else
+      card.decklimit
+    end
+  end
+
   def deck_card_issues(deck)
     issues = []
     deck.card_counts.each do |card, name, count|
@@ -118,8 +131,9 @@ class Format
       #   you just can't reveal them before game to use as your companion
       # banned_as_commander is checked by deck_commander_issues in format where it's applicable
       when "legal", "banned_as_companion", "banned_as_commander"
-        if count > default_max_copies_allowed and not card.allowed_in_any_number?
-          issues << "Deck contains #{count} copies of #{name}, only up to #{default_max_copies_allowed} allowed"
+        max_copies = max_copies_allowed(card)
+        if count > max_copies
+          issues << "Deck contains #{count} copies of #{name}, only up to #{max_copies} allowed"
         end
       when "restricted"
         if count > 1
