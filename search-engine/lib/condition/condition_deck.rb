@@ -23,17 +23,15 @@ class ConditionDeck < Condition
       warning %[Multiple decks matching "#{@deck_name}": #{deck_names.join(", ")}]
     end
 
-    results = Set[]
+    results = []
 
     decks.each do |deck|
       [*deck.cards, *deck.sideboard, *deck.commander].each do |count, card|
-        card.parts.each do |cp|
-          results << cp
-        end
+        results.concat(card.parts)
       end
     end
 
-    results
+    results.uniq
   end
 
   def to_s

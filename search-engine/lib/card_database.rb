@@ -93,7 +93,7 @@ class CardDatabase
   end
 
   def printings
-    @printings ||= enum_for(:each_printing).to_set
+    @printings ||= enum_for(:each_printing).to_a
   end
 
   def decks
@@ -228,12 +228,12 @@ class CardDatabase
 
     # Just don't bother with anything fancy if "e:foo" exists as a code
     if @sets[edition]
-      return Set[@sets[edition]]
+      return [@sets[edition]]
     end
 
-    matching_alternative_code = Set[]
-    matching_name = Set[]
-    matching_name_part = Set[]
+    matching_alternative_code = []
+    matching_name = []
+    matching_name_part = []
 
     normalized_edition = normalize_set_name(edition)
     normalized_edition_alt = normalize_set_name_alt(edition)
@@ -252,7 +252,7 @@ class CardDatabase
       matching_alternative_code,
       matching_name,
       matching_name_part,
-    ].find{|s| s.size > 0} || Set[]
+    ].find{|s| s.size > 0} || []
   end
 
   def resolve_deck_name(deck_name)

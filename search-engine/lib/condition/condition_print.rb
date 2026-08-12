@@ -15,9 +15,9 @@ class ConditionPrint < Condition
     query_date, precision = parse_query_date(db)
     if query_date
       max_date = db.resolve_time(@time)
-      candidates.select{|card| match_date?(get_date(card, max_date), query_date, precision)}.to_set
+      candidates.select{|card| match_date?(get_date(card, max_date), query_date, precision)}
     else
-      candidates.to_set
+      candidates
     end
   end
 

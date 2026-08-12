@@ -1,12 +1,8 @@
 class ConditionIn < Condition
   def search_all(db)
-    results = Set[]
+    results = []
     db.cards.each do |name, card|
-      if card.printings.any?{|cp| match?(cp)}
-        card.printings.each do |cp|
-          results << cp
-        end
-      end
+      results.concat(card.printings) if card.printings.any?{|cp| match?(cp)}
     end
     results
   end

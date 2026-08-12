@@ -14,11 +14,11 @@ class ConditionAlt < Condition
 
     matching = matching_cards(db)
     if candidates.equal?(db.printings)
-      results = Set[]
-      matching.each{|card| results.merge(card.printings)}
+      results = []
+      matching.each{|card| results.concat(card.printings)}
       results
     else
-      candidates.select{|printing| matching.include?(printing.card)}.to_set
+      candidates.select{|printing| matching.include?(printing.card)}
     end
   end
 
@@ -39,14 +39,12 @@ class ConditionAlt < Condition
 
   def search_simple(candidates)
     known = {}
-    results = Set[]
-    candidates.each do |printing|
+    candidates.select do |printing|
       card = printing.card
       matches = known[card]
       matches = known[card] = card.printings.any?{|cp| @cond.match?(cp)} if matches.nil?
-      results << printing if matches
+      matches
     end
-    results
   end
 
   def matching_cards(db)

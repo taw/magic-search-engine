@@ -13,9 +13,9 @@ class ConditionBooster < Condition
 
   def search_all(db)
     if @codes_star
-      db.printings.select(&:in_boosters).to_set
+      db.printings.select(&:in_boosters)
     else
-      @codes.flat_map{|code| matching_boosters(db, code)}.uniq.flat_map(&@query).flat_map(&:parts).to_set
+      @codes.flat_map{|code| matching_boosters(db, code)}.uniq.flat_map(&@query).flat_map(&:parts).uniq
     end
   end
 

@@ -26,14 +26,10 @@ class ConditionAnd < Condition
     @special_conds.each do |cond|
       results = cond.search(db, results)
     end
-    unless @simple_conds.empty?
-      # Array#select is a lot faster than Set#select, which goes through Enumerable
-      results = results.to_a
-      @simple_conds.each do |cond|
-        results = results.select{|card| cond.match?(card) }
-      end
+    @simple_conds.each do |cond|
+      results = results.select{|card| cond.match?(card) }
     end
-    results.to_set
+    results
   end
 
   def match?(card)

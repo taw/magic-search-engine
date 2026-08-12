@@ -4,8 +4,8 @@ class ConditionEdition < Condition
   end
 
   def search_all(db)
-    matching_sets = merge_into_set( @editions.map{|e| db.resolve_editions(e)} )
-    merge_into_set matching_sets.map(&:printings)
+    matching_sets = merge_results( @editions.map{|e| db.resolve_editions(e)} )
+    merge_disjoint_results matching_sets.map(&:printings)
   end
 
   def to_s

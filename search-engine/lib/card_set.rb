@@ -19,7 +19,7 @@ class CardSet
     @border        = data["border"]
     @types         = data["types"]
     @release_date  = data["release_date"] && Date.parse(data["release_date"])
-    @printings     = Set[]
+    @printings     = []
     @online_only   = !!data["online_only"]
     @custom        = !!data["custom"]
     @funny         = !!data["funny"]

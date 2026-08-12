@@ -3,18 +3,22 @@ class Condition
     to_s
   end
 
-  # Search restricted to a set of printings. The contract is:
+  # Search restricted to a list of printings. The contract is:
   # cond.search(db, candidates) == cond.search(db) & candidates
+  #
+  # Results are duplicate-free Arrays. Order is unspecified - Query sorts them
+  # by a unique key at the end anyway.
   #
   # Conditions which don't override #search only know how to search the whole
   # db, so they just throw away whatever isn't in candidates at the end.
   def search(db, candidates=db.printings)
     results = search_all(db)
-    return results.to_set if candidates.equal?(db.printings)
-    results.to_set & candidates
+    return results if candidates.equal?(db.printings)
+    results & candidates
   end
 
-  # Conditions which don't override #search need to provide this
+  # Conditions which don't override #search need to provide this.
+  # Must return a duplicate-free Array.
   def search_all(db)
     raise "SubclassResponsibility"
   end
@@ -89,12 +93,27 @@ class Condition
     end
   end
 
-  def merge_into_set(subresults)
-    return subresults[0].to_set if subresults.size == 1
+  # Union of subresults, each of which is already duplicate-free
+  def merge_results(subresults)
+    return [] if subresults.empty?
+    return subresults[0] if subresults.size == 1
 
-    result = Set[]
+    result = []
     subresults.each do |subresult|
-      result.merge(subresult)
+      result.concat(subresult)
+    end
+    result.uniq
+  end
+
+  # Same, for subresults which are disjoint by construction
+  # (like printings of distinct sets, or of distinct cards)
+  def merge_disjoint_results(subresults)
+    return [] if subresults.empty?
+    return subresults[0] if subresults.size == 1
+
+    result = []
+    subresults.each do |subresult|
+      result.concat(subresult)
     end
     result
   end

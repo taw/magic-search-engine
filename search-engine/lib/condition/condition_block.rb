@@ -7,7 +7,7 @@ class ConditionBlock < Condition
   # "in" is code for "Invasion", don't substring match "Innistrad" etc.
   # "Mirrodin" is name for "Mirrodin", don't substring match "Scars of Mirrodin"
   def search_all(db)
-    merge_into_set matching_sets(db).map(&:printings)
+    merge_disjoint_results matching_sets(db).map(&:printings)
   end
 
   def to_s
@@ -30,6 +30,6 @@ class ConditionBlock < Condition
         end
       end
     end
-    sets.map{|set_code| db.sets[set_code]}.to_set
+    sets.map{|set_code| db.sets[set_code]}
   end
 end

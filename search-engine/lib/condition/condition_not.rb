@@ -6,7 +6,7 @@ class ConditionNot < Condition
 
   def search(db, candidates=db.printings)
     if @simple
-      candidates.to_a.reject{|card| @cond.match?(card)}.to_set
+      candidates.reject{|card| @cond.match?(card)}
     else
       candidates - @cond.search(db, candidates)
     end

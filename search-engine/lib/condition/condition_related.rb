@@ -4,18 +4,16 @@ class ConditionRelated < Condition
   end
 
   def search_all(db)
-    results = Set[]
+    results = []
     @cond.search(db).each do |card|
       next unless card.related
       card.related.each do |related_name|
         related_card = db.cards[related_name.downcase.normalize_accents]
         next unless related_card # Not supposed to happen, but related is just a regexp
-        related_card.printings.each do |printing|
-          results << printing
-        end
+        results.concat(related_card.printings)
       end
     end
-    results
+    results.uniq
   end
 
   def metadata!(key, value)

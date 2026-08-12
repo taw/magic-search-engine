@@ -6,11 +6,7 @@ class ConditionExact < Condition
 
   def search_all(db)
     card = db.cards[@normalized_name]
-    if card
-      card.printings.to_set
-    else
-      Set[]
-    end
+    card ? card.printings : []
   end
 
   def to_s

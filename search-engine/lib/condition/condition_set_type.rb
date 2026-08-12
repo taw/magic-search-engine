@@ -22,7 +22,7 @@ class ConditionSetType < Condition
   end
 
   def search_all(db)
-    merge_into_set matching_sets(db).map(&:printings)
+    merge_disjoint_results matching_sets(db).map(&:printings)
   end
 
   def to_s

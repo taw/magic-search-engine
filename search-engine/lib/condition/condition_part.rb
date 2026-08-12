@@ -4,14 +4,14 @@ class ConditionPart < Condition
   end
 
   def search_all(db)
-    result = Set[]
+    result = []
     @cond.search(db).each do |c|
       if c.others
         result << c
-        result.merge(c.others)
+        result.concat(c.others)
       end
     end
-    result
+    result.uniq
   end
 
   def metadata!(key, value)

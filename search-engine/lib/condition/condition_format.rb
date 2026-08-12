@@ -9,7 +9,7 @@ class ConditionFormat < Condition
     @format = Format[@format_name].new(db.resolve_time(@time))
     # This is just performance hack - Standard/Modern can use this hack
     # Legacy/Vintage/Commander/etc. don't want it
-    @format.cards_probably_in_format(db).select{|card| card_ok?(card) }.flat_map(&:printings).to_set
+    @format.cards_probably_in_format(db).select{|card| card_ok?(card) }.flat_map(&:printings)
   end
 
   def metadata!(key, value)
