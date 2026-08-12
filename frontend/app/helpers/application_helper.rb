@@ -256,7 +256,7 @@ module ApplicationHelper
     matching_printings = matching_printings.to_set
     selected_printing
       .printings
-      .sort_by{|cp| [cp.release_date, cp]}
+      .sort_by{|cp| [cp.release_date_i, cp.default_sort_index]}
       .map{|cp|
         if cp == selected_printing
           [:selected, cp]
