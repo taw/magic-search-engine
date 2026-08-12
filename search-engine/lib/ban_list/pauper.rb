@@ -264,10 +264,9 @@ BanList.for_format("pauper") do
     "Cranial Ram" => "banned",
   )
 
-  # No official announcement, just new card falling under old rule that all sticker cards are banned
   change(
     "2025-03-24",
-    nil,
+    "New sticker card printed and falls under sticker card ban",
     "Sticker sheet" => "banned",
   )
 

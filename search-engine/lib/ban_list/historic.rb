@@ -102,7 +102,7 @@ BanList.for_format("historic") do
   # J21 conjured
   change(
     "2021-08-26",
-    nil,
+    "These cards are conjurable only",
     "Kraken Hatchling" => "conjurable",
     "Ponder" => "conjurable",
     "Regal Force" => "conjurable",
@@ -146,8 +146,7 @@ BanList.for_format("historic") do
   # HBG conjured/specialized
   change(
     "2022-07-07",
-    nil,
-    # Specialized cards
+    "These cards are specialized/conjurable only",
     "Alora, Cheerful Assassin" => "specialized",
     "Alora, Cheerful Mastermind" => "specialized",
     "Alora, Cheerful Scout" => "specialized",
@@ -278,8 +277,7 @@ BanList.for_format("historic") do
   # YDMU
   change(
     "2022-10-05",
-    nil,
-    # conjure only cards
+    "These cards are conjurable only",
     "Ancestral Recall" => "conjurable",
     "Time Walk" => "conjurable",
     "Timetwister" => "conjurable",
@@ -298,10 +296,12 @@ BanList.for_format("historic") do
     "Mishra's Bauble" => "banned",
   )
 
-  # MUL preemptively banned
+  # MUL preemptively banned. "All Multiverse Legends cards will be available to play in
+  # Historic upon release, except Ragavan, Nimble Pilferer, who is pre-banned in Historic
+  # but will still be available to play in Historic Brawl."
   change(
     "2023-04-21",
-    nil,
+    "https://magic.wizards.com/en/news/mtg-arena/mtg-arena-release-notes-march-of-the-machine",
     "Ragavan, Nimble Pilferer" => "banned",
   )
 
@@ -421,7 +421,7 @@ BanList.for_format("historic") do
   # Tropical Island is still conjure-only, J21 is still its only Arena printing.
   change(
     "2025-09-23",
-    nil,
+    "Previously conjurable only cards receive regular printings in AA4 and OMB",
     "Kraken Hatchling" => "legal", # aa4
     "Regal Force" => "legal", # aa4
     "Stormfront Pegasus" => "legal", # aa4

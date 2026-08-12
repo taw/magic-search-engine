@@ -6,8 +6,7 @@ BanList.for_format("alchemy") do
   # HBG conjured/specialized
   change(
     "2022-07-07",
-    nil,
-    # Specialized cards
+    "These cards are specialized/conjurable only",
     "Alora, Cheerful Assassin" => "specialized",
     "Alora, Cheerful Mastermind" => "specialized",
     "Alora, Cheerful Scout" => "specialized",
@@ -138,8 +137,7 @@ BanList.for_format("alchemy") do
   # YDMU - it would be better to move these to a separate set
   change(
     "2022-10-05",
-    nil,
-    # conjure only cards
+    "These cards are conjurable only",
     "Ancestral Recall" => "conjurable",
     "Time Walk" => "conjurable",
     "Timetwister" => "conjurable",
@@ -167,7 +165,7 @@ BanList.for_format("alchemy") do
   # got printed into Alchemy-legal set FDN
   change(
     "2024-12-15",
-    nil,
+    "Previously conjurable only card receive regular printing in FDN",
     "Voracious Greatshark" => "legal"
   )
 
