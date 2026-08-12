@@ -304,8 +304,7 @@ BanList.for_format("commander") do
     # Announcement was on 2020-04-20, but Lutri was only released on 2020-04-24
     "2020-04-24",
     "https://mtgcommander.net/index.php/2020/04/20/april-2020-rules-update/",
-    # Lutri was pre-banned, Flash was a regular ban
-    "Lutri, the Spellchaser" => "banned",
+    "Lutri, the Spellchaser" => "prebanned",
     "Flash" => "banned",
   )
 

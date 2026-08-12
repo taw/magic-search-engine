@@ -262,8 +262,7 @@ BanList.for_format("pauper") do
     # Announcement was on 2024-06-06, but Cranial Ram was only released 2024-06-14
     "2024-06-14",
     "https://magic.wizards.com/en/news/announcements/pauper-bans-for-june-6-2024",
-    # pre-banned
-    "Cranial Ram" => "banned",
+    "Cranial Ram" => "prebanned",
   )
 
   change(

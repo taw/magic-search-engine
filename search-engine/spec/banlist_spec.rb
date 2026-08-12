@@ -853,12 +853,15 @@ describe "Banlist" do
     end
   end
 
-  # Reports every event where the card wasn't out yet, the block saying what counts as
-  # released. Restricted to specific formats if a list is passed.
-  def check_ban_events_after_release(formats=nil)
+  # Timeless and any other digital-only format go here too once they get a ban list
+  ArenaFormats = ["alchemy", "historic"]
+
+  # Reports every event in the listed formats where the card wasn't out yet,
+  # the block saying what counts as released.
+  def check_ban_events_after_release(formats)
     cards_by_name = db.cards.values.map{|card| [card.name, card]}.to_h
     problems = BanList.all_ban_lists.flat_map do |ban_list|
-      next [] if formats and !formats.include?(ban_list.format)
+      next [] unless formats.include?(ban_list.format)
       ban_list.changes.flat_map do |event|
         # format_start is dated BanList::START, before any card was printed
         next [] if event[:date] == BanList::START
@@ -880,15 +883,14 @@ describe "Banlist" do
   # We track when a change took effect, not when it was announced, so a preemptive ban
   # belongs on the day the card became available, not on the day it was announced.
   it "no ban events before the card was printed" do
-    check_ban_events_after_release do |card|
+    # Arena formats get the stricter check below, no need to report their cards twice
+    check_ban_events_after_release(BanList.all_ban_lists.map(&:format) - ArenaFormats) do |card|
       card.first_release_date
     end
   end
 
   it "no ban events for Arena formats before the card was printed on Arena" do
-    # Timeless and any other digital-only format go here too once they get a ban list
-    arena_formats = ["alchemy", "historic"]
-    check_ban_events_after_release(arena_formats) do |card|
+    check_ban_events_after_release(ArenaFormats) do |card|
       card.printings.select(&:arena?).map(&:release_date).compact.min
     end
   end

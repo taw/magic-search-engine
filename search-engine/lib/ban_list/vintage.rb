@@ -50,7 +50,8 @@ BanList.for_format("vintage") do
   )
 
   change(
-    "1994-05-02",
+    # Only the year is known, dated to Recall's print date
+    "1994-06-01",
     nil,
     "Time Vault" => "banned",
     "Dingus Egg" => "legal",

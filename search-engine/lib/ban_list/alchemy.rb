@@ -1,9 +1,4 @@
-# "conjurable" and "specialized" are technically not a B&R issue, they're cards which
-# can't go into a deck at all. Format::RESTRICTED_STATUSES groups them with the
-# other restricted-family statuses for restricted: and f: searches - see _LEGALITY.md
-
 BanList.for_format("alchemy") do
-  # HBG conjured/specialized
   change(
     "2022-07-07",
     "These cards are specialized/conjurable only",
