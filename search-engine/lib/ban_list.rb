@@ -60,17 +60,17 @@ class BanList
     end
 
     events.sort.reverse.map do |date,evs|
-      url = @events.find{|d,_,_| d == date}[1]
+      url = @events.find{|event| event[:date] == date}[:url]
       date = nil if date == START
       [date, url, evs]
     end
   end
 
   def change_dates
-    @events.map{|d,_,_| d}
+    @events.map{|event| event[:date]}
   end
 
-  # Announcements as declared, [date, url, {card name => legality}]
+  # Announcements as declared, {date:, url:, comment:, changes: {card name => legality}}
   # Unlike events it doesn't split them by card or figure out previous legality
   def changes
     @events
@@ -82,16 +82,24 @@ class BanList
 
   private
 
-  def format_start(url, legalities)
-    change(START, url, legalities)
+  def format_start(source, legalities)
+    change(START, source, legalities)
   end
 
-  def change(date, url, legalities)
+  # source is either a link to the announcement, or a plain text comment saying
+  # where the information came from. The DSL only takes one of them, but nothing
+  # downstream should assume that an event can't have both.
+  def change(date, source, legalities)
     date = Date.parse(date) unless date.is_a?(Date)
     legalities.each_value do |legality|
       raise "#{self} has unknown legality status #{legality.inspect}" unless LEGALITY_STATUSES.include?(legality)
     end
-    @events << [date, url, legalities]
+    if source =~ %r{\Ahttps?://}
+      url, comment = source, nil
+    else
+      url, comment = nil, source
+    end
+    @events << {date: date, url: url, comment: comment, changes: legalities}
     legalities.each do |card, legality|
       @cards[card] ||= []
       @cards[card] << [date, legality]
@@ -99,7 +107,7 @@ class BanList
   end
 
   def validate
-    dates = @events.map(&:first)
+    dates = @events.map{|event| event[:date]}
     raise "#{self} not sorted" unless dates.sort == dates
       raise "#{self} has multiples of same date" if dates.uniq != dates
     @cards.each do |card_name, legalities|
