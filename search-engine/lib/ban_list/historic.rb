@@ -327,8 +327,9 @@ BanList.for_format("historic") do
   )
 
   change(
-    "2024-02-05",
+    "2024-02-09",
     "https://magic.wizards.com/en/news/mtg-arena/mtg-arena-announcements-february-5-2024",
+    # pre-banned
     "Show and Tell" => "banned",
   )
 
@@ -389,17 +390,17 @@ BanList.for_format("historic") do
     "Magus of the Moon" => "banned",
   )
 
-  # pre-banned, came to Arena with AA2 the next day
   change(
-    "2025-08-18",
+    "2025-08-19",
     "https://magic.wizards.com/en/news/mtg-arena/announcements-august-18-2025",
+    # pre-banned
     "Mox Opal" => "banned",
   )
 
-  # pre-banned, came to Arena with AA3 on 2025-09-23
   change(
-    "2025-09-16",
+    "2025-09-23",
     "https://magic.wizards.com/en/news/mtg-arena/through-the-omenpaths-card-and-event-updates",
+    # pre-banned
     "Broadside Bombardiers" => "banned",
     "Gut, True Soul Zealot" => "banned",
   )
