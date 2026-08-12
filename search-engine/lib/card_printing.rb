@@ -77,7 +77,7 @@ class CardPrinting
     @number_i = @number.to_i
     @multiverseid = data["m"]
     if data["a"]
-      @artist_name = data["a"].normalize_accents # TODO: move to indexer
+      @artist_name = data["a"].normalize_accents
     else
       warn "Card #{card.name} in #{set.code} lacks artist"
       @artist_name = "Unknown"

@@ -4,7 +4,7 @@ class Format
   # Statuses which all mean "in the format, but with a deckbuilding restriction".
   # They're displayed and validated differently, but restricted: and f: searches
   # treat them all the same way, which is how "restricted" behaved when it was
-  # the only name for all of them. See _LEGALITY.md.
+  # the only name for all of them.
   RESTRICTED_STATUSES = [
     "restricted",
     "banned_as_commander",
@@ -104,21 +104,31 @@ class Format
     issues
   end
 
+  # individual cards can override this
+  def default_max_copies_allowed
+    4
+  end
+
   def deck_card_issues(deck)
     issues = []
     deck.card_counts.each do |card, name, count|
       card_legality = legality(card)
       case card_legality
-      when "legal"
-        if count > 4 and not card.allowed_in_any_number?
-          issues << "Deck contains #{count} copies of #{name}, only up to 4 allowed"
+      # banned_as_companion is not deck construction issue - companion cards are always sideboard
+      #   you just can't reveal them before game to use as your companion
+      # banned_as_commander is checked by deck_commander_issues in format where it's applicable
+      when "legal", "banned_as_companion", "banned_as_commander"
+        if count > default_max_copies_allowed and not card.allowed_in_any_number?
+          issues << "Deck contains #{count} copies of #{name}, only up to #{default_max_copies_allowed} allowed"
         end
-      when *RESTRICTED_STATUSES
-        # FIXME: only correct for "restricted". "conjurable" and "specialized" cards
-        # can't go into a deck at all, so 1 copy isn't allowed either - see _LEGALITY.md
+      when "restricted"
         if count > 1
           issues << "Deck contains #{count} copies of #{name}, which is restricted to only up to 1 allowed"
         end
+      when "conjurable"
+        issues << "#{name} is conjurable only and cannot be used as part of deck construction"
+      when "specialized"
+        issues << "#{name} is specialized only and cannot be used as part of deck construction"
       when "banned"
         issues << "#{name} is banned"
       else

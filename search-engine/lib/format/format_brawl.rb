@@ -26,22 +26,8 @@ class FormatBrawl < FormatStandard
     issues
   end
 
-  def deck_card_issues(deck)
-    issues = []
-    deck.card_counts.each do |card, name, count|
-      card_legality = legality(card)
-      case card_legality
-      when "legal", *RESTRICTED_STATUSES
-        if count > 1 and not card.allowed_in_any_number?
-          issues << "Deck contains #{count} copies of #{name}, only up to 1 allowed"
-        end
-      when "banned"
-        issues << "#{name} is banned"
-      else
-        issues << "#{name} is not in the format"
-      end
-    end
-    issues
+  def default_max_copies_allowed
+    1
   end
 
   def deck_commander_issues(deck)
