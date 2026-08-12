@@ -38,8 +38,10 @@ BanList.for_format("brawl") do
   )
 
   change(
-    "2020-04-16",
+    # Announcement says effective 2020-04-16, but Lutri was only released on 2020-04-24
+    "2020-04-24",
     "https://magic.wizards.com/en/articles/archive/news/april-13-2020-banned-and-restricted-announcement",
+    # pre-banned
     "Lutri, the Spellchaser" => "banned",
   )
 
