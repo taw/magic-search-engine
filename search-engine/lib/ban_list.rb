@@ -61,6 +61,8 @@ class BanList
     result
   end
 
+  # Announcements split by card, newest first, as [date, url, comment, [{name:, old:, new:}, ...]]
+  # Date is nil for the announcement which established the initial ban list.
   def events
     events = {}
     @cards.each do |card_name, card_events|
@@ -71,9 +73,9 @@ class BanList
     end
 
     events.sort.reverse.map do |date,evs|
-      url = @events.find{|event| event[:date] == date}[:url]
+      announcement = @events.find{|event| event[:date] == date}
       date = nil if date == START
-      [date, url, evs]
+      [date, announcement[:url], announcement[:comment], evs]
     end
   end
 

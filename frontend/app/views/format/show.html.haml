@@ -35,11 +35,13 @@
 
     - if @events.present?
       %h4 Ban history
-      - @events.each do |date, url, events|
+      - @events.each do |date, url, comment, events|
         - if date
           %h6= date
           - if url
             %div= link_to "Announcement", url
+          - if comment
+            %div= comment
           %ul
             - events.each do |event|
               %li
@@ -52,6 +54,8 @@
           %h6 Format start
           - if url
             %div= link_to "Announcement", url
+          - if comment
+            %div= comment
           %ul
             - events.each do |event|
               %li

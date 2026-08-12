@@ -821,6 +821,7 @@ describe "Banlist" do
       [
         Date.parse("2017-04-24"),
         "http://mtgcommander.net/Forum/viewtopic.php?f=1&t=18588",
+        nil,
         [
           {:name=>"Protean Hulk", :old=>"banned", :new=>"legal"},
           {:name=>"Leovold, Emissary of Trest", :old=>"legal", :new=>"banned"},
@@ -844,7 +845,7 @@ describe "Banlist" do
 
   it "all ban events have correctly named cards" do
     Format.all_format_classes.each do |format_class|
-      format_class.new.ban_events.each do |_, _, cards|
+      format_class.new.ban_events.each do |_, _, _, cards|
         cards.each do |card|
           name = card[:name]
           db.has_card_named?(name).should eq(true), "Card named `#{name}' in banlist for #{format_class} is a typo"
