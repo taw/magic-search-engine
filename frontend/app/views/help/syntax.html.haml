@@ -16,6 +16,7 @@
       = search_help "channel", %[cards with "channel" in name]
       = search_help 'name="channel"', %[cards with name exactly "channel"]
       = search_help "!channel", %[cards with name exactly "channel" (everything after ! is treated as card name, so add any extra conditions before !, or use name= instead)]
+      = search_help "!Alive // Well", %[cards with parts named exactly "Alive" and "Well" (both parts are returned, and the order you list them in doesn't matter)]
       = search_help %["sword of"], %[cards with "sword of" in name]
       = search_help 'name>"Boros Guildgate" name<"Dimir Guildgate"', %[cards with name alphabetically after "Boros Guildgate" and before "Dimir Guildgate". This is mostly useful for guessing the gaps in an incompletely spoiled set.]
 
@@ -358,6 +359,7 @@
       = search_help "is:secondary", "parts of double-faced/meld/flip/aftermath card that's not directly playable"
       = search_help "is:front", "cards on front face"
       = search_help "is:back", "cards on back face of double-faced/meld cards"
+      = search_help "is:mainfront", "the single face each physical card is filed under - the front of a double-faced card, the left half of a split card, or the creature half of an adventure. Every physical card has exactly one, so use this with <code>++</code> to get one result per card you could hold rather than one per face. Meld parts are separate physical cards, so both of them count."
       = search_help "is:digital", "MTGO/Arena only"
       = search_help "is:oversized", "oversized cards"
       = search_help "is:tournament", "tournament printings (normal back, not oversized, not gold-bordered)"
@@ -389,6 +391,7 @@
       = search_help "has:spellbook", "card has an associated spellbook (Arena digital only cards)"
       = search_help "is:spellbook", "card is in a spellbook (for one of Arena digital only cards)"
       = search_help "is:token", "card is actually a token (only a few special ones like dungeons and The Ring are included in search)"
+      = search_help "is:card", "card is not one of those tokens, that is every other card in the database (<code>-is:token</code> works too)"
 
     %h4#booster Search by booster contents
     %div You can search all cards present in specific booster, or in specific print sheet.
@@ -571,6 +574,7 @@
     %div Regular expressions follow ruby syntax and are case insensitive by default.
     %ul
       = search_help 'o:/\\d{3,}/', "cards with three digit numbers in Oracle text"
+      = search_help 'fo:/\\d{3,}/', "cards with three digit numbers in Oracle text, including reminder text"
       = search_help 'ft:/\\d{3,}/', "cards with three digit numbers in flavor text"
       = search_help 'ft:/\bice\b/', 'cards with word "ice" in flavor text'
       = search_help 'a:/.{40}/', "cards with artist credit of 40 or more characters"
@@ -675,6 +679,10 @@
     %div Results with equal sort key are then sorted by name.
     %div Missing values (like cards with no mana value when sorting by mana value) go last.
     %div You can use minus to reverse search order, or comma to specify multiple search keys.
+    %div
+      <code>direction:</code> says whether to keep or reverse the order the sort keys already produce, it doesn't name the order of the values themselves.
+      <code>direction:asc</code> keeps it and is the default, <code>direction:desc</code> reverses every key, same as putting a minus in front of each one.
+      So <code>sort:power</code> puts the highest power first (as it always does), and <code>sort:power direction:desc</code> puts the lowest first.
     %ul
       = search_help "sort:name", "sort by name alphabetically (default)"
       = search_help "sort:new", "sort results by most recent first, counting only regular sets for sake of order (other printings will go at end of results)"
@@ -701,8 +709,9 @@
       = search_help "sort:-lastprint", "sort by oldest first, counting only date of most recent printing"
       = search_help "sort:-number", "sort results by set name and collector number, backwards"
       = search_help "sort:pow,-tou,color", "sort results by power (highest first), then toughness (lowest first), then color"
-      = search_help "sort:power direction:asc", "sort results by power (highest first; synonym of sort:power)"
-      = search_help "sort:power direction:desc", "sort results by power (lowest first; synonym of sort:-power)"
+      = search_help "sort:power direction:asc", "keep the order sort:power produces, so highest power first (synonym of sort:power)"
+      = search_help "sort:power direction:desc", "reverse the order sort:power produces, so lowest power first (synonym of sort:-power)"
+      = search_help "sort:pow,-tou direction:desc", "reverse every key, so lowest power first, then highest toughness (synonym of sort:-pow,tou)"
 
     %h4#all-printings Display all printings
     %div If multiple printings of same card match, by default only one is shown (with most recent Standard-legal printing having priority). You can choose to see all printings with <code>++</code>:
