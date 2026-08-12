@@ -40,6 +40,7 @@ class Card
     :mana_cost,
     :mana_hash,
     :name,
+    :name_slug,
     :names,
     :power,
     :produces,
@@ -138,6 +139,15 @@ class Card
     calculate_color_indicator
     calculate_reminder_text
     @front = (!@secondary or @layout == "aftermath" or @layout == "flip" or @layout == "adventure")
+    @name_slug = name
+      .normalize_accents
+      .gsub("'s", "s")
+      .gsub("I'm", "Im")
+      .gsub("You're", "Youre")
+      .gsub("R&D", "RnD")
+      .gsub(/[^a-zA-Z0-9\-]+/, "-")
+      .gsub(/(\A-)|(-\z)/, "")
+      .freeze
   end
 
   def partner?
@@ -228,30 +238,19 @@ class Card
   end
 
   def count_prints
-    @count_prints ||= printings.size
+    printings.size
   end
 
   def count_paperprints
-    @count_paperprints ||= printings.count(&:paper?)
+    printings.count(&:paper?)
   end
 
   def count_sets
-    @count_sets ||= printings.map(&:set).uniq.size
+    printings.map(&:set).uniq.size
   end
 
   def count_papersets
-    @count_papersets ||= printings.select(&:paper?).map(&:set).uniq.size
-  end
-
-  def name_slug
-    name
-      .normalize_accents
-      .gsub("'s", "s")
-      .gsub("I'm", "Im")
-      .gsub("You're", "Youre")
-      .gsub("R&D", "RnD")
-      .gsub(/[^a-zA-Z0-9\-]+/, "-")
-      .gsub(/(\A-)|(-\z)/, "")
+    printings.select(&:paper?).map(&:set).uniq.size
   end
 
   private
