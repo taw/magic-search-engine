@@ -114,8 +114,11 @@ class Sorter
     end + [c.default_sort_index]
   end
 
-  # This is a stupid hack, and also really slow
+  # Sort key which orders strings in reverse.
+  # Complementing the bytes reverses byte order, and UTF-8 byte order is codepoint
+  # order, so this reverses exactly. Result is a binary string, and it's only ever
+  # used as a <=> key, never displayed.
   def reverse_string_order(s)
-    s.unpack("U*").map{|code| -code}
+    s.unpack("C*").map{|b| 255 - b}.pack("C*")
   end
 end
