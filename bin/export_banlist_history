@@ -39,7 +39,7 @@ data = BanList.all_ban_lists.map do |ban_list|
       "url" => event[:url],
       "comment" => event[:comment],
       "changes" => event[:changes],
-    }
+    }.compact
   end
   [ban_list.format, announcements]
 end.to_h
