@@ -503,6 +503,7 @@ module AbilityWord
     "Still Point in Time",
     "Storeroom",
     "Stowage",
+    "Strange new worlds",
     "Strategic Coordinator",
     "Strive",
     "Stunning Strike",
