@@ -76,12 +76,7 @@ class CardPrinting
     @number = data["n"]
     @number_i = @number.to_i
     @multiverseid = data["m"]
-    if data["a"]
-      @artist_name = data["a"].normalize_accents
-    else
-      warn "Card #{card.name} in #{set.code} lacks artist"
-      @artist_name = "Unknown"
-    end
+    @artist_name = data["a"].normalize_accents
     @flavor = data["fl"] || -""
     @flavor_name = data["fn"]
     @flavor_normalized = @flavor.normalize_accents

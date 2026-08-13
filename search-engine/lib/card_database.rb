@@ -472,10 +472,6 @@ class CardDatabase
     slugs = {}
     each_printing do |printing|
       artist_name = printing.artist_name
-      if artist_name.nil?
-        warn "No artist for #{printing}"
-        artist_name = "unknown"
-      end
       artist_slug = slugs[artist_name] ||=
         artist_name.downcase.gsub(/[^a-z0-9\p{Han}\p{Katakana}\p{Hiragana}\p{Hangul}]+/, "_")
       @artists[artist_slug] ||= Artist.new(artist_name)
