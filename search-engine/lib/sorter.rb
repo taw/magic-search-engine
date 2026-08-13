@@ -1,6 +1,16 @@
 class Sorter
   COLOR_ORDER = ["", "w", "u", "b", "r", "g", "uw", "bu", "br", "gr", "gw", "bw", "ru", "bg", "rw", "gu", "guw", "buw", "bru", "bgr", "grw", "bgw", "ruw", "bgu", "brw", "gru", "bruw", "bgru", "bgrw", "gruw", "bguw", "bgruw"].each_with_index.to_h.freeze
   SORT_ORDERS = ["default", "ci", "cmc", "color", "name", "new", "newall", "number", "old", "oldall", "pow", "power", "rand", "random", "rarity", "tou", "toughness", "artist", "released", "set", "firstprint", "lastprint", "mv"].sort
+  PT_ORDER = {
+    nil => 0,
+    "?" => 1,
+    "*" => 2,
+    "1+*" => 2,
+    "2+*" => 3,
+    "7-*" => 4,
+    "*²" => 5,
+    "∞" => 1000,
+  }
 
   # Fallback sorting for printings of each card:
   # * not MTGO/Arena only
@@ -43,6 +53,15 @@ class Sorter
 
   private
 
+  def map_pt(value)
+    PT_ORDER[value] || 10 + (2 * value).to_i
+  end
+
+  def map_mv(value)
+    return 1000 if value > 1000
+    (value * 2).to_i
+  end
+
   def card_key(c)
     @sort_order.flat_map do |part|
       case part
@@ -67,17 +86,17 @@ class Sorter
       when "-lastprint"
         [c.last_release_date.to_i_sort]
       when "mv"
-        [c.mv ? 0 : 1, -c.mv.to_i]
+        [-map_mv(c.mv)]
       when "-mv"
-        [c.mv ? 0 : 1, c.mv.to_i]
+        [map_mv(c.mv)]
       when "power"
-        [c.power ? 0 : 1, -c.power.to_i]
+        [-map_pt(c.power)]
       when "-power"
-        [c.power ? 0 : 1, c.power.to_i]
+        [map_pt(c.power)]
       when "toughness"
-        [c.toughness ? 0 : 1, -c.toughness.to_i]
+        [-map_pt(c.toughness)]
       when "-toughness"
-        [c.toughness ? 0 : 1, c.toughness.to_i]
+        [map_pt(c.toughness)]
       when "random"
         [Zlib.crc32(@seed + c.name)]
       when "number"

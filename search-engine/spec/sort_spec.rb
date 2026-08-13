@@ -456,4 +456,116 @@ describe "Sorting" do
     order = db.search("sort:rarity").printings.map(&:rarity).chunk(&:itself).map(&:first)
     order.should eq(["special", "mythic", "rare", "uncommon", "common", "basic"])
   end
+
+  # sort:pow / sort:tou / sort:mv map their values onto small integers, so the
+  # sort key can eventually be one number instead of an array. The mapping
+  # raises on any special value it hasn't been taught, and it only keeps the
+  # right order while the data stays inside the range it assumes, so check the
+  # whole database against it rather than waiting for a mis-sorted card.
+  describe "power/toughness/mv sort keys" do
+    let(:sorter) { Sorter.new(nil, "") }
+    let(:power_toughness) { db.cards.each_value.flat_map{|c| [c.power, c.toughness]}.uniq }
+    let(:numbers) { power_toughness.grep(Numeric).sort }
+    let(:specials) { power_toughness - numbers }
+    let(:mvs) { db.cards.each_value.map(&:mv).uniq }
+
+    def map_pt(value)
+      sorter.send(:map_pt, value)
+    end
+
+    def map_mv(value)
+      sorter.send(:map_mv, value)
+    end
+
+    it "knows every special power/toughness in the database" do
+      (specials - Sorter::PT_ORDER.keys).should eq([])
+    end
+
+    it "has no power/toughness fraction except halves" do
+      numbers.reject{|v| v * 2 == (v * 2).to_i}.should eq([])
+    end
+
+    it "has an mv for every card" do
+      mvs.should_not include(nil)
+    end
+
+    it "has no mv fraction except halves" do
+      mvs.reject{|v| v * 2 == (v * 2).to_i}.should eq([])
+    end
+
+    # Numbers map to 10 + 2 * value, so they clear the specials while they stay
+    # above -2.5, and stay under ∞ while they stay below 495
+    it "orders every power/toughness number above the special values" do
+      highest_special = Sorter::PT_ORDER.reject{|value, _| value == "∞"}.values.max
+      numbers.select{|v| map_pt(v) <= highest_special}.should eq([])
+    end
+
+    it "orders every power/toughness number below ∞" do
+      numbers.select{|v| map_pt(v) >= Sorter::PT_ORDER.fetch("∞")}.should eq([])
+    end
+
+    it "maps power/toughness numbers in ascending order" do
+      numbers.each_cons(2).reject{|a, b| map_pt(a) < map_pt(b)}.should eq([])
+    end
+
+    # Everything above 1000 collapses onto one key, which only orders correctly
+    # while Gleemax is the single card up there
+    it "maps mv in ascending order, including the values it clamps" do
+      mvs.sort.each_cons(2).reject{|a, b| map_mv(a) < map_mv(b)}.should eq([])
+    end
+
+    it "sorts half power between the numbers around it" do
+      ordered_search("e:unh t:creature pow<=1 sort:-pow", :name, :power).should eq([
+        ["Emcee", 0],
+        ["Pygmy Giant", 0],
+        ["Six-y Beast", 0],
+        ["Little Girl", 0.5],
+        ["Artful Looter", 1],
+        ["B-I-N-G-O", 1],
+        ["Bosom Buddy", 1],
+        ["Cheap Ass", 1],
+        ["Fraction Jackson", 1],
+        ["Johnny, Combo Player", 1],
+        ["Magical Hacker", 1],
+        ["Monkey Monkey Monkey", 1],
+        ["Mons's Goblin Waiters", 1],
+        ["Tainted Monkey", 1],
+        ["Zombie Fanboy", 1],
+        ["_____", 1],
+      ])
+    end
+
+    it "sorts half mv between the numbers around it" do
+      ordered_search("e:unh mv<=1 (t:creature or t:land) sort:-mv", :name, :mv).should eq([
+        ["City of Ass", 0],
+        ["Forest", 0],
+        ["Island", 0],
+        ["Mountain", 0],
+        ["Plains", 0],
+        ["R&D's Secret Lair", 0],
+        ["Swamp", 0],
+        ["Little Girl", 0.5],
+        ["Mons's Goblin Waiters", 1],
+        ["S.N.O.T.", 1],
+      ])
+    end
+
+    it "sorts special power below every number" do
+      ordered_search("e:unh t:creature (pow=* or pow=*² or pow=0) sort:-pow", :name, :power).should eq([
+        ["Avatar of Me", "*"],
+        ["Elvish House Party", "*"],
+        ["S.N.O.T.", "*²"],
+        ["Emcee", 0],
+        ["Pygmy Giant", 0],
+        ["Six-y Beast", 0],
+      ])
+    end
+
+    it "sorts ∞ above every number" do
+      ordered_search("e:ulst t:creature pow>=9 sort:pow", :name, :power).should eq([
+        ["Infinity Elemental", "∞"],
+        ["Infernius Spawnington III, Esq.", 9],
+      ])
+    end
+  end
 end
