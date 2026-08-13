@@ -224,45 +224,47 @@ describe "Sorting" do
     ])
   end
 
+  # sort:set is by set name, not set code
   it "set" do
-    ordered_search("t:chandra -is:digital -is:promo -e:sld time=2021-11-01 sort:set", :name, :set_code, :number).should eq([
-      ["Chandra, Flamecaller", "c20", "145"],
-      ["Chandra Nalaar", "dd2", "34"],
-      ["Chandra, Bold Pyromancer", "dom", "275"],
-      ["Chandra, Pyromaster", "e01", "42"],
-      ["Chandra, Torch of Defiance", "kld", "110"],
-      ["Chandra, Pyrogenius", "kld", "265"],
-      ["Chandra, the Firebrand", "m12", "124"],
-      ["Chandra, Acolyte of Flame", "m20", "126"],
-      ["Chandra, Awakened Inferno", "m20", "127"],
-      ["Chandra, Novice Pyromancer", "m20", "128"],
-      ["Chandra, Flame's Fury", "m20", "294"],
-      ["Chandra, Heart of Fire", "m21", "135"],
-      ["Chandra, Flame's Catalyst", "m21", "332"],
-      ["Chandra, Roaring Flame", "ori", "135b"],
-      ["Chandra, Fire Artisan", "war", "119"],
-      ["Chandra Ablaze", "zen", "120"],
+    ordered_search("t:chandra -is:digital -is:promo -e:sld time=2021-11-01 sort:set", :name, :set_name, :set_code, :number).should eq([
+      ["Chandra, Pyromaster", "Archenemy: Nicol Bolas", "e01", "42"],
+      ["Chandra, Flamecaller", "Commander 2020", "c20", "145"],
+      ["Chandra, Acolyte of Flame", "Core Set 2020", "m20", "126"],
+      ["Chandra, Awakened Inferno", "Core Set 2020", "m20", "127"],
+      ["Chandra, Flame's Fury", "Core Set 2020", "m20", "294"],
+      ["Chandra, Novice Pyromancer", "Core Set 2020", "m20", "128"],
+      ["Chandra, Flame's Catalyst", "Core Set 2021", "m21", "332"],
+      ["Chandra, Heart of Fire", "Core Set 2021", "m21", "135"],
+      ["Chandra, Bold Pyromancer", "Dominaria", "dom", "275"],
+      ["Chandra Nalaar", "Duel Decks Anthology: Jace vs. Chandra", "jvc", "34"],
+      ["Chandra, Roaring Flame", "From the Vault: Transform", "v17", "6b"],
+      ["Chandra, Pyrogenius", "Kaladesh", "kld", "265"],
+      ["Chandra, Torch of Defiance", "Kaladesh", "kld", "110"],
+      ["Chandra, the Firebrand", "Magic 2012", "m12", "124"],
+      ["Chandra, Fire Artisan", "War of the Spark", "war", "119"],
+      ["Chandra Ablaze", "Zendikar", "zen", "120"],
     ])
   end
 
+  # Only set order is reversed, printings within a set keep default order
   it "-set" do
-    ordered_search("t:chandra -is:digital -is:promo -e:sld time=2021-11-01 sort:-set", :name, :set_code, :number).should eq([
-      ["Chandra Ablaze", "zen", "120"],
-      ["Chandra, Fire Artisan", "war", "119"],
-      ["Chandra, Roaring Flame", "v17", "6b"],
-      ["Chandra, Torch of Defiance", "ss3", "1"],
-      ["Chandra, Flamecaller", "ogw", "104"],
-      ["Chandra, Flame's Catalyst", "m21", "332"],
-      ["Chandra, Heart of Fire", "m21", "301"],
-      ["Chandra, Flame's Fury", "m20", "294"],
-      ["Chandra, Novice Pyromancer", "m20", "128"],
-      ["Chandra, Awakened Inferno", "m20", "127"],
-      ["Chandra, Acolyte of Flame", "m20", "126"],
-      ["Chandra, Pyromaster", "m15", "134"],
-      ["Chandra, the Firebrand", "m13", "123"],
-      ["Chandra Nalaar", "m11", "127"],
-      ["Chandra, Pyrogenius", "kld", "265"],
-      ["Chandra, Bold Pyromancer", "dom", "275"],
+    ordered_search("t:chandra -is:digital -is:promo -e:sld time=2021-11-01 sort:-set", :name, :set_name, :set_code, :number).should eq([
+      ["Chandra Ablaze", "Zendikar", "zen", "120"],
+      ["Chandra, Fire Artisan", "War of the Spark", "war", "119"],
+      ["Chandra, Torch of Defiance", "Signature Spellbook: Chandra", "ss3", "1"],
+      ["Chandra, Flamecaller", "Oath of the Gatewatch", "ogw", "104"],
+      ["Chandra, Roaring Flame", "Magic Origins", "ori", "135b"],
+      ["Chandra, Pyromaster", "Magic 2015", "m15", "134"],
+      ["Chandra, the Firebrand", "Magic 2013", "m13", "123"],
+      ["Chandra Nalaar", "Magic 2011", "m11", "127"],
+      ["Chandra, Pyrogenius", "Kaladesh", "kld", "265"],
+      ["Chandra, Bold Pyromancer", "Dominaria", "dom", "275"],
+      ["Chandra, Flame's Catalyst", "Core Set 2021", "m21", "332"],
+      ["Chandra, Heart of Fire", "Core Set 2021", "m21", "135"],
+      ["Chandra, Acolyte of Flame", "Core Set 2020", "m20", "126"],
+      ["Chandra, Awakened Inferno", "Core Set 2020", "m20", "127"],
+      ["Chandra, Flame's Fury", "Core Set 2020", "m20", "294"],
+      ["Chandra, Novice Pyromancer", "Core Set 2020", "m20", "128"],
     ])
   end
 
@@ -314,6 +316,21 @@ describe "Sorting" do
       ["Chandra, Fire Artisan", 4],
       ["Chandra, Roaring Flame", 3],
       ["Chandra, Acolyte of Flame", 3],
+    ])
+  end
+
+  # What sort:set is for - narrow with an e: list, then order within each set
+  it "sort:set with a secondary order" do
+    ordered_search("t:goblin e:m10,m12 sort:set,rarity", :name, :set_name, :rarity).should eq([
+      ["Goblin Chieftain", "Magic 2010", "rare"],
+      ["Siege-Gang Commander", "Magic 2010", "rare"],
+      ["Goblin Artillery", "Magic 2010", "uncommon"],
+      ["Goblin Piker", "Magic 2010", "common"],
+      ["Raging Goblin", "Magic 2010", "common"],
+      ["Goblin Bangchuckers", "Magic 2012", "uncommon"],
+      ["Goblin Arsonist", "Magic 2012", "common"],
+      ["Goblin Fireslinger", "Magic 2012", "common"],
+      ["Goblin Tunneler", "Magic 2012", "common"],
     ])
   end
 
