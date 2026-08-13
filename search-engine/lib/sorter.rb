@@ -43,12 +43,19 @@ class Sorter
         nil
       end
     end.compact
-    # Every key is a function of the printing, so repeating one changes nothing
-    @sort_order = @sort_order.uniq
-    if final = @sort_order.index{|part| FINAL_SORT_ORDERS.include?(part)}
-      @sort_order = @sort_order[0..final]
+    if @sort_order.empty?
+      @sort_order = nil
+    else
+      # The key has to end in something that orders every printing, so that the
+      # order is total. Adding it here rather than in card_key lets uniq and
+      # FINAL_SORT_ORDERS drop it whenever the sort order already ends in one.
+      @sort_order << "default"
+      # Every key is a function of the printing, so repeating one changes nothing
+      @sort_order = @sort_order.uniq
+      if final = @sort_order.index{|part| FINAL_SORT_ORDERS.include?(part)}
+        @sort_order = @sort_order[0..final]
+      end
     end
-    @sort_order = nil if @sort_order.empty?
   end
 
   def sort(results)
@@ -141,6 +148,6 @@ class Sorter
       else # unknown key, should have been caught by initializer
         raise "Invalid sort order #{part}"
       end
-    end + [c.default_sort_index]
+    end
   end
 end

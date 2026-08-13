@@ -463,7 +463,7 @@ describe "Sorting" do
     it "final sort orders are unique per printing" do
       Sorter::FINAL_SORT_ORDERS.each do |part|
         sorter = Sorter.new(part, "seed")
-        keys = db.printings.map{|c| sorter.send(:card_key, c)[0...-1]}
+        keys = db.printings.map{|c| sorter.send(:card_key, c)}
         keys.uniq.size.should eq(db.printings.size), "#{part} does not order every printing"
       end
     end
