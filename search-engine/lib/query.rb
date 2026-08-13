@@ -1,12 +1,18 @@
 require_relative "query_parser"
 require_relative "search_results"
 require_relative "sorter"
+require "date"
 require "zlib"
 
 class Date
-  # Any kind of key for sorting
+  UNIX_EPOCH_JD = Date.new(1970, 1, 1).jd
+
+  # Any kind of key for sorting. Days since the epoch, as the only thing that
+  # matters is the order, and every date in the index fits in 15 bits that way.
+  # Julian day is what Date stores anyway, so this is also much faster than
+  # going through Time.
   def to_i_sort
-    to_time.to_i
+    jd - UNIX_EPOCH_JD
   end
 end
 
