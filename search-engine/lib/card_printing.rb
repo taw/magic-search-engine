@@ -63,6 +63,8 @@ class CardPrinting
 
   # Set by CardDatabase initialization
   attr_accessor :others, :artist, :default_sort_index, :partner, :in_boosters
+  # Set by CardDatabase initialization, printings ordered by [number_i, number]
+  attr_accessor :number_sort_index
   # Set by the frontend
   attr_accessor :image_path
 
@@ -279,7 +281,7 @@ class CardPrinting
   include Comparable
 
   def <=>(other)
-    [name, set, number_i, number] <=> [other.name, other.set, other.number_i, other.number]
+    [name, set, number_sort_index] <=> [other.name, other.set, other.number_sort_index]
   end
 
   def age

@@ -112,6 +112,10 @@ class PhysicalCard
     main_front.number_i
   end
 
+  def number_sort_index
+    main_front.number_sort_index
+  end
+
   def arena?
     main_front.arena?
   end

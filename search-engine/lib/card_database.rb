@@ -486,6 +486,13 @@ class CardDatabase
 
   # Indexes to speed up sort:
   def setup_sort_indexes!
+    # Card numbers sort as [number_i, number], and there are only a few thousand
+    # distinct ones, so index them once instead of comparing pairs every sort
+    number_sort_indexes = printings.map{|c| [c.number_i, c.number]}.uniq.sort.each_with_index.to_h
+    printings.each do |c|
+      c.number_sort_index = number_sort_indexes[[c.number_i, c.number]]
+    end
+
     printings.sort_by{|c|
       [
         c.name,
@@ -495,8 +502,7 @@ class CardDatabase
         c.set.regular? ? 0 : 1,
         -c.release_date_i,
         c.set.name,
-        c.number_i,
-        c.number,
+        c.number_sort_index,
       ]
     }.each_with_index do |c, i|
       c.default_sort_index = i

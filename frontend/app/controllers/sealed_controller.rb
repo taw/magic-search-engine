@@ -38,8 +38,7 @@ class SealedController < ApplicationController
           -c.main_front.rarity_code,
           c.name,
           c.set_code,
-          c.number_i,
-          c.number,
+          c.number_sort_index,
           c.foil ? 0 : 1,
         ]
       }

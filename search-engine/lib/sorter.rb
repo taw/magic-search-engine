@@ -81,9 +81,9 @@ class Sorter
       when "random"
         [Zlib.crc32(@seed + c.name)]
       when "number"
-        [c.set.name_sort_index, c.number_i, c.number]
+        [c.set.name_sort_index, c.number_sort_index]
       when "-number"
-        [-c.set.name_sort_index, -c.number_i, reverse_string_order(c.number)]
+        [-c.set.name_sort_index, -c.number_sort_index]
       when "set"
         [c.set.name_sort_index]
       when "-set"
@@ -112,13 +112,5 @@ class Sorter
         raise "Invalid sort order #{part}"
       end
     end + [c.default_sort_index]
-  end
-
-  # Sort key which orders strings in reverse.
-  # Complementing the bytes reverses byte order, and UTF-8 byte order is codepoint
-  # order, so this reverses exactly. Result is a binary string, and it's only ever
-  # used as a <=> key, never displayed.
-  def reverse_string_order(s)
-    s.unpack("C*").map{|b| 255 - b}.pack("C*")
   end
 end
