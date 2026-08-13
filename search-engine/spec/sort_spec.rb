@@ -457,6 +457,35 @@ describe "Sorting" do
     order.should eq(["special", "mythic", "rare", "uncommon", "common", "basic"])
   end
 
+  # Sorter throws away everything after a FINAL_SORT_ORDERS key, which is only
+  # allowed while those keys really do order every printing by themselves
+  describe "redundant sort keys" do
+    it "final sort orders are unique per printing" do
+      Sorter::FINAL_SORT_ORDERS.each do |part|
+        sorter = Sorter.new(part, "seed")
+        keys = db.printings.map{|c| sorter.send(:card_key, c)[0...-1]}
+        keys.uniq.size.should eq(db.printings.size), "#{part} does not order every printing"
+      end
+    end
+
+    it "ignores a repeated sort key" do
+      db.search("sort:name,name").printings.should eq(db.search("sort:name").printings)
+      db.search("sort:mv,rarity,mv").printings.should eq(db.search("sort:mv,rarity").printings)
+    end
+
+    it "ignores sort keys after a final one" do
+      db.search("sort:default,name,rarity").printings.should eq(db.search("sort:default").printings)
+      db.search("sort:number,rarity,newall").printings.should eq(db.search("sort:number").printings)
+      db.search("sort:name,number,artist").printings.should eq(db.search("sort:name,number").printings)
+    end
+
+    # random is per card name, not per printing, so it is not a final key
+    it "keeps sort keys after random" do
+      Query.new("sort:random,rarity", "seed").search(db).printings
+        .should_not eq(Query.new("sort:random", "seed").search(db).printings)
+    end
+  end
+
   # sort:pow / sort:tou / sort:mv map their values onto small integers, so the
   # sort key can eventually be one number instead of an array. The mapping
   # raises on any special value it hasn't been taught, and it only keeps the

@@ -12,6 +12,12 @@ class Sorter
     "∞" => 1000,
   }
 
+  # These order every printing on their own, so any key after one of them is
+  # unreachable. `random` is not one of them - it's the same number for every
+  # printing of a card, so `sort:random,rarity` really does order the printings
+  # of each card by rarity.
+  FINAL_SORT_ORDERS = ["default", "-default", "number", "-number"]
+
   # Fallback sorting for printings of each card:
   # * not MTGO/Arena only
   # * new frame
@@ -37,6 +43,11 @@ class Sorter
         nil
       end
     end.compact
+    # Every key is a function of the printing, so repeating one changes nothing
+    @sort_order = @sort_order.uniq
+    if final = @sort_order.index{|part| FINAL_SORT_ORDERS.include?(part)}
+      @sort_order = @sort_order[0..final]
+    end
     @sort_order = nil if @sort_order.empty?
   end
 
