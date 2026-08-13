@@ -62,6 +62,9 @@ class Card
 
   alias cmc mv
 
+  # Set by CardDatabase initialization, cards ordered by name
+  attr_accessor :name_sort_index
+
   def initialize(name, data)
     @printings = []
     # The name is the key the card is stored under in the index, not part of its data

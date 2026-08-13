@@ -243,6 +243,7 @@ class CardPrinting
     mv
     name
     name_slug
+    name_sort_index
     names
     partner?
     power

@@ -484,6 +484,7 @@ class CardDatabase
     end
   end
 
+  # Indexes to speed up sort:
   def setup_sort_indexes!
     printings.sort_by{|c|
       [
@@ -501,9 +502,16 @@ class CardDatabase
       c.default_sort_index = i
     end
 
-    # So sorting by artist is an integer compare, not a downcase per printing
     @artists.each_value.sort_by{|a| a.name.downcase}.each_with_index do |a, i|
       a.sort_index = i
+    end
+
+    @cards.each_value.sort_by(&:name).each_with_index do |c, i|
+      c.name_sort_index = i
+    end
+
+    @sets.each_value.sort_by(&:name).each_with_index do |s, i|
+      s.name_sort_index = i
     end
   end
 

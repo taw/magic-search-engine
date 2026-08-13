@@ -8,6 +8,9 @@ class CardSet
   attr_reader :token_set_code
   attr_reader :normalized_name, :normalized_name_alt, :printing_by_number
 
+  # Set by CardDatabase initialization, sets ordered by name
+  attr_accessor :name_sort_index
+
   def initialize(db, data)
     @db = db
     @name          = data["name"]

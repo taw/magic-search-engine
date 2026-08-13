@@ -81,9 +81,9 @@ class Sorter
       when "random"
         [Zlib.crc32(@seed + c.name)]
       when "number"
-        [c.set.name, c.number_i, c.number]
+        [c.set.name_sort_index, c.number_i, c.number]
       when "-number"
-        [reverse_string_order(c.set.name), -c.number_i, reverse_string_order(c.number)]
+        [-c.set.name_sort_index, -c.number_i, reverse_string_order(c.number)]
       when "set"
         [c.set_code, c.number_i, c.number]
       when "-set"
@@ -101,9 +101,9 @@ class Sorter
       when "-rarity"
         [c.rarity_code]
       when "name"
-        [c.name]
+        [c.name_sort_index]
       when "-name"
-        [reverse_string_order(c.name)]
+        [-c.name_sort_index]
       when "artist"
         [c.artist.sort_index]
       when "-artist"
