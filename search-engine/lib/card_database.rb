@@ -519,6 +519,12 @@ class CardDatabase
     @sets.each_value.sort_by(&:name).each_with_index do |s, i|
       s.name_sort_index = i
     end
+
+    # sort:number is set name then card number, and that pair is unique per
+    # printing, so one index covers both - needs the two above to be set first
+    printings.sort_by{|c| [c.set.name_sort_index, c.number_sort_index]}.each_with_index do |c, i|
+      c.set_number_sort_index = i
+    end
   end
 
   # These method seem to occur in every single class out there

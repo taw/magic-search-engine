@@ -65,6 +65,8 @@ class CardPrinting
   attr_accessor :others, :artist, :default_sort_index, :partner, :in_boosters
   # Set by CardDatabase initialization, printings ordered by [number_i, number]
   attr_accessor :number_sort_index
+  # Set by CardDatabase initialization, printings ordered by [set name, number]
+  attr_accessor :set_number_sort_index
   # Set by the frontend
   attr_accessor :image_path
 

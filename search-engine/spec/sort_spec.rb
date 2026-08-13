@@ -457,6 +457,67 @@ describe "Sorting" do
     order.should eq(["special", "mythic", "rare", "uncommon", "common", "basic"])
   end
 
+  # card_key packs the whole sort order into one integer, one field per sort
+  # order, which only holds while every field stays non-negative and inside the
+  # width OFFSET gives it. Nothing about that is visible in the results until a
+  # field overflows into its neighbour, so check the widths against the data.
+  describe "packed sort keys" do
+    # The query parser rewrites these into their opposites, so card_key never
+    # sees them and they get no packing
+    unpacked_sort_orders = ["-new", "-old", "-newall", "-oldall", "-random"]
+
+    # One field on its own, so card_key returns just that field, unshifted
+    def field_sorter(part)
+      sorter = Sorter.new(nil, "seed")
+      sorter.instance_variable_set(:@sort_order, [part])
+      sorter
+    end
+
+    it "packs every sort order except the ones the parser rewrites" do
+      not_packed = Sorter::OFFSET.keys.select do |part|
+        begin
+          field_sorter(part).send(:card_key, db.printings.first)
+          false
+        rescue RuntimeError
+          true
+        end
+      end
+      not_packed.sort.should eq(unpacked_sort_orders.sort)
+    end
+
+    it "keeps every sort field inside its OFFSET" do
+      too_wide = []
+      negative = []
+      (Sorter::OFFSET.keys - unpacked_sort_orders).each do |part|
+        sorter = field_sorter(part)
+        values = db.printings.map{|c| sorter.send(:card_key, c)}
+        negative << "#{part} (#{values.min})" if values.min < 0
+        if values.max >= (1 << Sorter::OFFSET.fetch(part))
+          too_wide << "#{part} needs #{values.max.bit_length} bits, OFFSET gives #{Sorter::OFFSET.fetch(part)}"
+        end
+      end
+      negative.should eq([])
+      too_wide.should eq([])
+    end
+
+    it "packs to the same order as the unpacked key" do
+      # Every printing is in the OFFSET spec above; this only needs enough of a
+      # spread to catch a field packed in the wrong place
+      sample = db.printings.each_slice(37).map(&:first)
+      orders = %w[default -default number -number name -name artist -artist set -set
+                  color -color ci -ci rarity -rarity mv -mv power -power
+                  toughness -toughness new old newall oldall
+                  firstprint -firstprint lastprint -lastprint random] +
+               ["name,rarity", "set,number", "mv,power,toughness", "color,ci,name",
+                "random,rarity", "new,name", "artist,mv,-rarity"]
+      mismatched = orders.reject do |order|
+        sorter = Sorter.new(order, "seed")
+        sorter.sort(sample) == sample.sort_by{|c| sorter.send(:old_card_key, c)}
+      end
+      mismatched.should eq([])
+    end
+  end
+
   # Sorter throws away everything after a FINAL_SORT_ORDERS key, which is only
   # allowed while those keys really do order every printing by themselves
   describe "redundant sort keys" do
