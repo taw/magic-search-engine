@@ -3,26 +3,27 @@
 # This patch ended up as dumping ground for far too much random stuff
 
 class PatchMtgjsonVersions < Patch
-  def get_cmc(card)
-    cmc = [card.delete("convertedManaCost"), card.delete("cmc")].compact.first
-    fcmc = card.delete("faceConvertedManaCost")
+  # convertedManaCost / cmc are just mtgjson's older names for mana value
+  def get_mv(card)
+    mv = [card.delete("convertedManaCost"), card.delete("cmc")].compact.first
+    face_mv = card.delete("faceConvertedManaCost")
 
-    if fcmc
+    if face_mv
       case card["layout"]
       when "split", "aftermath", "adventure", "prepare"
-        cmc = fcmc
+        mv = face_mv
       when "transform"
         # ignore because
         # https://github.com/mtgjson/mtgjson/issues/294
       else
-        if cmc != fcmc
-          warn "#{card["layout"]} #{card["name"]} has fcmc #{fcmc} != cmc #{cmc}"
+        if mv != face_mv
+          warn "#{card["layout"]} #{card["name"]} has face mv #{face_mv} != mv #{mv}"
         end
       end
     end
 
-    cmc = cmc.to_i if cmc.to_i == cmc
-    cmc
+    mv = mv.to_i if mv.to_i == mv
+    mv
   end
 
   def assign_number(card)
@@ -140,7 +141,7 @@ class PatchMtgjsonVersions < Patch
     calculate_prepared_spells
 
     each_printing do |card|
-      card["cmc"] = get_cmc(card)
+      card["mv"] = get_mv(card)
 
       # Reversible cards are totally ridiculous, and mtgjson shouldn't be pretending it's a single damn card.
       # With SLD it was at least 2 faces we could split but TDM has ridiculous 4-faced cards.

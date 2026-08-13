@@ -1,6 +1,6 @@
 class ConditionExpr < ConditionSimple
   # Everything eval_expr knows how to look up on a card, anything else is a plain value
-  Variables = %W[pow tou pt cmc mv loy sets papersets prints paperprints year defense defence life hand decklimit]
+  Variables = %W[pow tou pt mv loy sets papersets prints paperprints year defense defence life hand decklimit]
 
   def initialize(a, op, b)
     @a = a
@@ -66,8 +66,8 @@ class ConditionExpr < ConditionSimple
       eval_card_value(card.toughness)
     when :pt
       eval_sum(eval_card_value(card.power), eval_card_value(card.toughness))
-    when :cmc, :mv
-      eval_card_value(card.cmc)
+    when :mv
+      eval_card_value(card.mv)
     when :loy
       eval_card_value(card.loyalty)
     when :sets

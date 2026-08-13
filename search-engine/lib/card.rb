@@ -12,7 +12,6 @@ class Card
     :alchemy,
     :augment,
     :brawler,
-    :cmc,
     :color_identity,
     :color_indicator_colors,
     :color_indicator,
@@ -39,6 +38,7 @@ class Card
     :loyalty,
     :mana_cost,
     :mana_hash,
+    :mv,
     :name,
     :name_slug,
     :names,
@@ -59,6 +59,8 @@ class Card
     :typeline,
     :types,
   )
+
+  alias cmc mv
 
   def initialize(name, data)
     @printings = []
@@ -86,7 +88,7 @@ class Card
     @types = [types, subtypes, supertypes]
       .flat_map{|t| t || []}
       .map{|t| -t.downcase.tr("’\u2212", "'-").gsub("'s", "").tr(" ", "-")}
-    @cmc = data["v"] || 0
+    @mv = data["v"] || 0
     @power = data["p"] ? smart_convert_powtou(data["p"]) : nil
     @toughness = data["to"] ? smart_convert_powtou(data["to"]) : nil
     @loyalty = data["ly"] ? smart_convert_powtou(data["ly"]) : nil

@@ -148,7 +148,7 @@ class IndexSerializer
         "tb" => printing["subtypes"],
         "to" => printing["toughness"],
         "tp" => printing["supertypes"],
-        "v" => printing["cmc"],
+        "v" => printing["mv"],
       }.compact
 
       rarity = printing["rarity"]

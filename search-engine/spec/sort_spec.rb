@@ -141,7 +141,7 @@ describe "Sorting" do
   end
 
   it "cmc" do
-    ordered_search("t:chandra -is:digital -is:promo -e:sld time=2021-11-01 sort:cmc", :name, :cmc).should eq([
+    ordered_search("t:chandra -is:digital -is:promo -e:sld time=2021-11-01 sort:cmc", :name, :mv).should eq([
       ["Chandra Ablaze", 6],
       ["Chandra, Awakened Inferno", 6],
       ["Chandra, Bold Pyromancer", 6],
@@ -162,7 +162,7 @@ describe "Sorting" do
   end
 
   it "-cmc" do
-    ordered_search("t:chandra -is:digital -is:promo -e:sld time=2021-11-01 sort:-cmc", :name, :cmc).should eq([
+    ordered_search("t:chandra -is:digital -is:promo -e:sld time=2021-11-01 sort:-cmc", :name, :mv).should eq([
       ["Chandra, Acolyte of Flame", 3],
       ["Chandra, Roaring Flame", 3],
       ["Chandra, Fire Artisan", 4],
@@ -183,7 +183,7 @@ describe "Sorting" do
   end
 
   it "mv" do
-    ordered_search("t:chandra -is:digital -is:promo -e:sld time=2021-11-01 sort:mv", :name, :cmc).should eq([
+    ordered_search("t:chandra -is:digital -is:promo -e:sld time=2021-11-01 sort:mv", :name, :mv).should eq([
       ["Chandra Ablaze", 6],
       ["Chandra, Awakened Inferno", 6],
       ["Chandra, Bold Pyromancer", 6],
@@ -204,7 +204,7 @@ describe "Sorting" do
   end
 
   it "-mv" do
-    ordered_search("t:chandra -is:digital -is:promo -e:sld time=2021-11-01 sort:-mv", :name, :cmc).should eq([
+    ordered_search("t:chandra -is:digital -is:promo -e:sld time=2021-11-01 sort:-mv", :name, :mv).should eq([
       ["Chandra, Acolyte of Flame", 3],
       ["Chandra, Roaring Flame", 3],
       ["Chandra, Fire Artisan", 4],
@@ -297,7 +297,7 @@ describe "Sorting" do
   end
 
   it "mixing orders" do
-    ordered_search("t:chandra -is:digital -is:promo -e:sld time=2021-11-01 sort:cmc,-name", :name, :cmc).should eq([
+    ordered_search("t:chandra -is:digital -is:promo -e:sld time=2021-11-01 sort:cmc,-name", :name, :mv).should eq([
       ["Chandra, Pyrogenius", 6],
       ["Chandra, Flamecaller", 6],
       ["Chandra, Flame's Fury", 6],

@@ -240,6 +240,7 @@ class CardPrinting
     loyalty
     mana_cost
     mana_hash
+    mv
     name
     name_slug
     names

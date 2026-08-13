@@ -133,9 +133,8 @@
       = search_help "mv=3", "cards with mana value 3"
       = search_help "mv>=3", "cards with mana value 3 or more"
       = search_help "mv<2", "cards with mana value less than 2"
-      = search_help "cmc=3", "cards with converted mana cost 3"
-      = search_help "cmc>=3", "cards with converted mana cost 3 or more"
-      = search_help "cmc<2", "cards with converted mana cost less than 2"
+      = search_help "cmc=3", "cards with mana value 3"
+      = search_help "manavalue=3", "cards with mana value 3"
 
     %h4#mana-cost Search by mana cost
     %div For sake of this search every mana symbol is treated as non-comparable, so "{u}" is neither greater or less than "{u/b}" etc. There's a lot of flexibility, so "{up}", "{u/p}", "{P/U}" etc. all work for Phyrexian blue mana. Curly braces are only needed for non-standard mana types.
@@ -691,7 +690,7 @@
       = search_help "sort:oldall", "sort results by oldest first, counting all printings"
       = search_help "sort:artist", "sort results by artist"
       = search_help "sort:mv", "sort results by mana value (highest first)"
-      = search_help "sort:cmc", "sort results by converted mana cost (highest first; synonym of sort:mv)"
+      = search_help "sort:cmc", "sort results by mana value (highest first; synonym of sort:mv)"
       = search_help "sort:power", "sort results by power (highest first)"
       = search_help "sort:pow", "sort results by power (highest first; synonym of sort:power)"
       = search_help "sort:toughness", "sort results by toughness (highest first)"

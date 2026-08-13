@@ -3,7 +3,8 @@ describe "Expressions Test" do
 
   it "warns about values it cannot parse" do
     db.search("pow>=1.2.3").warnings.should include(%[Unknown value "1.2.3" in "pow>=1.2.3"])
-    db.search("cmc>=2+2").warnings.should include(%[Unknown value "2+2" in "cmc>=2+2"])
+    # cmc is normalized to mv, so that's how the warning echoes it back
+    db.search("cmc>=2+2").warnings.should include(%[Unknown value "2+2" in "mv>=2+2"])
     db.search("pow>=xx").warnings.should include(%[Unknown value "xx" in "pow>=xx"])
     # Values which are perfectly fine, just no card matches them
     db.search("pow>=1d4+1").warnings.should be_empty
@@ -189,7 +190,7 @@ describe "Expressions Test" do
     end
   end
 
-  context "cmc / mv" do
+  context "mv / cmc" do
     context "Magic 2010" do
       include_context "db", "m10"
 
@@ -254,7 +255,7 @@ describe "Expressions Test" do
         end
       end
 
-      it "mv is an alias of cmc" do
+      it "cmc is an alias of mv" do
         assert_search_equal "layout:transform mv=5", "layout:transform cmc=5"
       end
     end

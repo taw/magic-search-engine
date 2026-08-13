@@ -37,7 +37,7 @@ class PatchBfm < Patch
         "B.F.M. (Big Furry Monster, Right Side)",
       ]
       card["text"] = "You must play both B.F.M. cards to put B.F.M. into play. If either B.F.M. card leaves play, sacrifice the other.\nB.F.M. can be blocked only by three or more creatures."
-      card["cmc"] = 15
+      card["mv"] = 15
       card["power"] = 99
       card["toughness"] = 99
       card["mana"] = "{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}"

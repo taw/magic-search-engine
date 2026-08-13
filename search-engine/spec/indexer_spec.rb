@@ -21,7 +21,7 @@ describe "Indexer hacks" do
       bfm.funny.should eq(true)
       bfm.mana_cost.should eq("{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}{b}")
       bfm.types.should eq(["creature", "the-biggest-baddest-nastiest-scariest-creature-you'll-ever-see"])
-      bfm.cmc.should eq(15)
+      bfm.mv.should eq(15)
       bfm.power.should eq(99)
       bfm.toughness.should eq(99)
       bfm.card.color_identity.should eq("b")

@@ -67,9 +67,9 @@ class Sorter
       when "-lastprint"
         [c.last_release_date.to_i_sort]
       when "mv"
-        [c.cmc ? 0 : 1, -c.cmc.to_i]
+        [c.mv ? 0 : 1, -c.mv.to_i]
       when "-mv"
-        [c.cmc ? 0 : 1, c.cmc.to_i]
+        [c.mv ? 0 : 1, c.mv.to_i]
       when "power"
         [c.power ? 0 : 1, -c.power.to_i]
       when "-power"

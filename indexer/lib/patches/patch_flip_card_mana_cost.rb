@@ -1,4 +1,4 @@
-# Flip cards keep primary side's mana cost and cmc for gameplay reasons
+# Flip cards keep primary side's mana cost and mana value for gameplay reasons
 # But we don't want to actually show it on their title line
 
 class PatchFlipCardManaCost < Patch
