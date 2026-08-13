@@ -73,8 +73,9 @@ class CardSet
   end
 
   include Comparable
+
   def <=>(other)
-    @code <=> other.code
+    name_sort_index <=> other.name_sort_index
   end
 
   def hash

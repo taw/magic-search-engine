@@ -191,8 +191,9 @@ class Card
   end
 
   include Comparable
+
   def <=>(other)
-    name <=> other.name
+    name_sort_index <=> other.name_sort_index
   end
 
   def to_s

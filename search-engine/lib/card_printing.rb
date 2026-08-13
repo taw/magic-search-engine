@@ -281,7 +281,7 @@ class CardPrinting
   include Comparable
 
   def <=>(other)
-    [name, set, number_sort_index] <=> [other.name, other.set, other.number_sort_index]
+    default_sort_index <=> other.default_sort_index
   end
 
   def age

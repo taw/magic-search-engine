@@ -13,6 +13,6 @@ class Artist
   include Comparable
 
   def <=>(other)
-    @name <=> other.name
+    sort_index <=> other.sort_index
   end
 end
