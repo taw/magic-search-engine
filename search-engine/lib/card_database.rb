@@ -391,7 +391,7 @@ class CardDatabase
     end
     resolve_references!
     setup_artists!
-    setup_sort_index!
+    setup_sort_indexes!
     DeckDatabase.new(self).load!
     load_products!
     load_limited_formats!
@@ -484,7 +484,7 @@ class CardDatabase
     end
   end
 
-  def setup_sort_index!
+  def setup_sort_indexes!
     printings.sort_by{|c|
       [
         c.name,
@@ -499,6 +499,11 @@ class CardDatabase
       ]
     }.each_with_index do |c, i|
       c.default_sort_index = i
+    end
+
+    # So sorting by artist is an integer compare, not a downcase per printing
+    @artists.each_value.sort_by{|a| a.name.downcase}.each_with_index do |a, i|
+      a.sort_index = i
     end
   end
 

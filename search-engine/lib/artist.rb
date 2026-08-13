@@ -1,6 +1,8 @@
 class Artist
   attr_reader :name, :slug
   attr_accessor :printings
+  # Set by CardDatabase initialization, artists ordered by downcased name
+  attr_accessor :sort_index
 
   def initialize(name)
     @name = name

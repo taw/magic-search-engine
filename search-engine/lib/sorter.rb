@@ -105,9 +105,9 @@ class Sorter
       when "-name"
         [reverse_string_order(c.name)]
       when "artist"
-        [c.artist_name.downcase]
+        [c.artist.sort_index]
       when "-artist"
-        [reverse_string_order(c.artist_name.downcase)]
+        [-c.artist.sort_index]
       else # unknown key, should have been caught by initializer
         raise "Invalid sort order #{part}"
       end
