@@ -62,6 +62,7 @@ class FormatPioneer < Format
       "tmt",
       "sos",
       "msh",
+      "hob",
     ]
   end
 end

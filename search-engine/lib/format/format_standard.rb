@@ -51,7 +51,7 @@ class FormatStandard < Format
       # Sets released in 2027 will be added here as they come out.
       # This rotation didn't happen yet, only f:future looks at it.
       "2027-02-05" => ["fdn", "dft", "tdm", "fin", "eoe", "spm", "tla", "ecl", "tmt", "sos", "msh", "hob", "fra", "trk"],
-      "2025-07-29" => ["woe", "lci", "mkm", "otj", "big", "blb", "dsk", "fdn", "dft", "tdm", "fin", "eoe", "spm", "tla", "ecl", "tmt", "sos", "msh"],
+      "2025-07-29" => ["woe", "lci", "mkm", "otj", "big", "blb", "dsk", "fdn", "dft", "tdm", "fin", "eoe", "spm", "tla", "ecl", "tmt", "sos", "msh", "hob"],
       # FDN has special rotation
       "2024-08-02" => ["dmu", "bro", "one", "mom", "mat", "woe", "lci", "mkm", "otj", "big", "blb", "dsk", "fdn", "dft", "tdm", "fin"],
       # Standard changed so sets last 3 years so 2023 rotation skipped

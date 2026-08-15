@@ -86,6 +86,7 @@ class FormatModern < Format
       "tmt",
       "sos",
       "msh",
+      "hob",
     ]
   end
 end
