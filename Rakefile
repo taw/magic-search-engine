@@ -164,6 +164,7 @@ task "update:ifnew" do
   latest = `bin/latest_mtgjson_version_number`.strip
   if current != latest
     puts "New mtgjson version available: #{latest} (current: #{current}), updating..."
+    Rake::Task["clean"].invoke
     Rake::Task["mtgjson:update"].invoke
   else
     puts "Mtgjson is up to date (version #{current})"
