@@ -55,10 +55,17 @@ sheets:
     use: showcase_uncommon
     count: 79 + 9
   showcase_rare_mythic:
-    use: rare_mythic
+    any:
+    - rawquery: "((e:ltr number:452-712) or (e:ltc number:411-490)) r:r"
+      rate: 2
+      count: 60 + 72
+    - rawquery: "((e:ltr number:452-712) or (e:ltc number:411-490)) r:m"
+      rate: 1
+      count: 20 + 8
   silver_showcase_rare_mythic:
     foil: true
     use: showcase_rare_mythic
+    count: 60 + 20 + 72 + 8
   surge_map_land:
     foil: true
     rawquery: "e:ltr number:713-722"
