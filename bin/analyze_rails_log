@@ -6,8 +6,11 @@
 #   bin/analyze_rails_log production.log            # full report
 #   bin/analyze_rails_log production.log --top 40   # more rows per table
 #   bin/analyze_rails_log production.log --slow 5000 --dump-slow
+#   bin/analyze_rails_log production.log --since-last-boot   # only the running version
 #
 # Requests are correlated by the [request-id] tag Rails puts on every line.
+# BOOT lines (config/initializers/boot_log.rb) mark server restarts, so a log
+# that spans a deploy can be cut down to one version of the code.
 
 require "json"
 require "optparse"
@@ -74,13 +77,14 @@ class LogAnalysis
     (?<msg>.*)
   /xm
 
-  attr_reader :requests, :unparsed, :errors, :pids
+  attr_reader :requests, :unparsed, :errors, :pids, :boots
 
   def initialize
     @requests = {}
     @unparsed = 0
     @errors = []
     @pids = Hash.new(0)
+    @boots = []
     @orphan_completions = 0
   end
 
@@ -93,13 +97,25 @@ class LogAnalysis
       end
       @pids[m[:pid]] += 1
       rid = m[:rid]
-      next unless rid
+      unless rid
+        handle_boot(m[:msg], m[:ts])
+        next
+      end
       handle(rid, m[:msg], m[:ts], m[:sev])
     end
     self
   end
 
   private
+
+  # BOOT pid=... env=... version=... deployed=... - one per server restart
+  def handle_boot(msg, ts)
+    return unless msg =~ /\ABOOT (?<fields>.*)/
+    fields = {}
+    $~[:fields].scan(FIELD) { |_| fields[$~[:k]] = $~[:qv] || $~[:v] }
+    fields["at"] = Time.parse(ts) rescue nil
+    @boots << fields
+  end
 
   def req(rid)
     @requests[rid] ||= RequestRecord.new(rid)
@@ -428,10 +444,11 @@ end
 
 # ---------------------------------------------------------------- main
 
-options = { top: 20, slow: nil, dump_slow: false, json: nil }
+options = { top: 20, slow: nil, dump_slow: false, json: nil, since_last_boot: false }
 OptionParser.new do |o|
   o.banner = "Usage: analyze_rails_log LOGFILE [options]"
   o.on("--top N", Integer, "rows per table (default 20)") { |v| options[:top] = v }
+  o.on("--since-last-boot", "ignore requests from before the last server restart") { options[:since_last_boot] = true }
   o.on("--slow MS", Integer, "threshold for --dump-slow (default 1000)") { |v| options[:slow] = v }
   o.on("--dump-slow", "print every request slower than --slow") { options[:dump_slow] = true }
   o.on("--json FILE", "also write parsed requests as JSONL") { |v| options[:json] = v }
@@ -441,6 +458,29 @@ file = ARGV.shift or abort("Usage: analyze_rails_log LOGFILE [options]")
 
 analysis = LogAnalysis.new.parse_file(file)
 reqs = analysis.requests.values
+
+boots = analysis.boots.select { |b| b["at"] }
+unless boots.empty?
+  puts "Server restarts in this log:"
+  boots.each do |b|
+    puts "  #{b['at']}  pid=#{b['pid']}  version=#{(b['version'] || '?')[0, 12]}" \
+         "#{b['deployed'] ? "  deployed=#{b['deployed']}" : ''}"
+  end
+end
+
+if options[:since_last_boot]
+  if boots.empty?
+    abort "--since-last-boot: no BOOT lines in #{file} (server predates config/initializers/boot_log.rb)"
+  end
+  cutoff = boots.last["at"]
+  before = reqs.size
+  reqs = reqs.select { |r| r.started_at && r.started_at >= cutoff }
+  puts "Keeping #{reqs.size} of #{before} requests started at or after #{cutoff}" \
+       " (version #{(boots.last['version'] || '?')[0, 12]})"
+elsif boots.map { |b| b["version"] }.uniq.size > 1
+  puts "WARNING: this log spans #{boots.size} restarts of #{boots.map { |b| b['version'] }.uniq.size}" \
+       " different versions - the numbers below mix them. Use --since-last-boot."
+end
 
 incomplete = reqs.reject(&:complete?)
 puts "Parsed #{reqs.size} requests from #{file} " \
