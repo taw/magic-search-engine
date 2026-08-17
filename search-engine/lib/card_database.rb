@@ -209,7 +209,8 @@ class CardDatabase
   # Exclude Arena boosters
   # It will generally be XXX-play now
   def most_recent_booster_type
-    @most_recent_booster_type ||= supported_booster_types[supported_booster_types.reject{|k,v| k.include?("-")}.first.first].code
+    # nil if the db has no boosters at all, which only happens on subsets
+    @most_recent_booster_type ||= supported_booster_types.find{|k,v| !k.include?("-")}&.last&.code
   end
 
   def resolve_time(time)

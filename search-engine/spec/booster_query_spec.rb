@@ -61,3 +61,40 @@ describe "booster:" do
     assert_search_equal "booster-nonfoil:* e:akh", "booster-nonfoil:akh-* e:akh"
   end
 end
+
+# Every db here iterates the whole booster index, most of which names sets a
+# subset doesn't have. Those boosters are skipped, they aren't an error.
+describe "booster index" do
+  include_context "db"
+
+  # PackFactory skips boosters whose set it can't resolve, which is how subset
+  # databases work at all. On the full db that would hide a typo, so check here
+  it "only names sets we have" do
+    set_codes = db.booster_data.keys.map{|code| code.split("-", 2).first}.uniq
+    set_codes.reject{|set_code| db.resolve_edition(set_code)}.should eq([])
+  end
+end
+
+describe "booster: on a subset database" do
+  include_context "db", "mrd", "arn"
+
+  it "supports regular queries" do
+    assert_search_equal "booster:mrd", "e:mrd"
+  end
+
+  it "only knows the boosters of the sets it has" do
+    db.supported_booster_types.keys.should eq(
+      ["mrd", "mrd-draft", "mrd-fat-pack", "mrd-tournament", "arn"]
+    )
+    db.most_recent_booster_type.should eq("mrd-draft")
+  end
+end
+
+describe "boosters on a subset database with none" do
+  include_context "db", "cmd"
+
+  it "has no booster types" do
+    db.supported_booster_types.should eq({})
+    db.most_recent_booster_type.should eq(nil)
+  end
+end

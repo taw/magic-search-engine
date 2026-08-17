@@ -117,8 +117,11 @@ class PackFactory
 
   def for(set_code, variant=nil)
     variant = nil if variant == "default"
+    # No such set is just no such pack, same as a set with no booster data.
+    # On a subset db every caller iterates the full booster index, so this is
+    # the normal case there, not an error.
     set = @db.resolve_edition(set_code)
-    raise "Invalid set code #{set_code}" unless set
+    return nil unless set
     set_code = set.code # Normalize
     booster_code = [set_code, variant].compact.join("-")
     data = @db.booster_data[booster_code]
