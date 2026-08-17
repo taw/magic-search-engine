@@ -1,1 +1,4 @@
-= render "card_row_full", card: @card, printings: printings_view_full(@card, @card.printings)
+-# `printings` is the list of printings the search matched, which _card_row_full
+-# passes to printings_view_full to highlight them among the card's other
+-# printings. There's no search here, so nothing is highlighted.
+= render "card_row_full", card: @card, printings: []
