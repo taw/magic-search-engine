@@ -64,6 +64,46 @@ class Sorter
     "lastprint",
   ].to_h{|k| [k, (2**OFFSET[k])-1]}
 
+  # What each sort order contributes to the key, as source we can paste into a
+  # compiled one. The sign is part of the expression, because the descending
+  # fields are the ones with a BIAS to subtract from. Every key in OFFSET that
+  # is missing here is one the query parser rewrites into its opposite before
+  # a Sorter ever sees it (-new, -old, -newall, -oldall, -random), so asking
+  # for one is a bug rather than a user error.
+  FIELD = {
+    "default" => "c.default_sort_index",
+    "-default" => "-c.default_sort_index",
+    "new" => "((c.set.regular? ? 0 : 1) << DATE_BITS) + DATE_BIAS - c.release_date_i",
+    "old" => "((c.set.regular? ? 0 : 1) << DATE_BITS) + c.release_date_i",
+    "newall" => "-c.release_date_i",
+    "oldall" => "c.release_date_i",
+    "firstprint" => "-c.first_release_date.to_i_sort",
+    "-firstprint" => "c.first_release_date.to_i_sort",
+    "lastprint" => "-c.last_release_date.to_i_sort",
+    "-lastprint" => "c.last_release_date.to_i_sort",
+    "mv" => "-map_mv(c.mv)",
+    "-mv" => "map_mv(c.mv)",
+    "power" => "-map_pt(c.power)",
+    "-power" => "map_pt(c.power)",
+    "toughness" => "-map_pt(c.toughness)",
+    "-toughness" => "map_pt(c.toughness)",
+    "random" => "Zlib.crc32(@seed + c.name)",
+    "number" => "c.set_number_sort_index",
+    "-number" => "-c.set_number_sort_index",
+    "set" => "c.set.name_sort_index",
+    "-set" => "-c.set.name_sort_index",
+    "color" => "COLOR_ORDER.fetch(c.colors)",
+    "-color" => "-COLOR_ORDER.fetch(c.colors)",
+    "ci" => "COLOR_ORDER.fetch(c.color_identity)",
+    "-ci" => "-COLOR_ORDER.fetch(c.color_identity)",
+    "rarity" => "-c.rarity_code",
+    "-rarity" => "c.rarity_code",
+    "name" => "c.name_sort_index",
+    "-name" => "-c.name_sort_index",
+    "artist" => "c.artist.sort_index",
+    "-artist" => "-c.artist.sort_index",
+  }.freeze
+
   # These order every printing on their own, so any key after one of them is
   # unreachable. `random` is not one of them - it's the same number for every
   # printing of a card, so `sort:random,rarity` really does order the printings
@@ -112,9 +152,7 @@ class Sorter
 
   def sort(results)
     return results.sort_by(&:default_sort_index) unless @sort_order
-    results.sort_by do |c|
-      card_key(c)
-    end
+    results.sort_by(&key_function)
   end
 
   def ==(other)
@@ -132,84 +170,38 @@ class Sorter
     (value * 2).to_i
   end
 
+  def card_key(c)
+    key_function.call(c)
+  end
+
+  def key_function
+    @key_function ||= eval(key_source)
+  end
+
   # The sort key is one integer, with the first sort order in the high bits.
   # Building it back to front means each field only needs to know how far the
   # ones after it have already shifted.
-  def card_key(c)
-    result = 0
+  #
+  # Walking @sort_order and dispatching on it per printing costs more than the
+  # comparisons do - a full-database sort runs that once per printing per sort
+  # order, 112k times over. Doing it once per query and pasting the fields into
+  # a single expression instead is about twice as fast, for the same key.
+  #
+  # eval rather than a chain of procs, because one flat expression is the whole
+  # point; and eval here rather than anywhere else, so the source sees the same
+  # constants, private methods and @seed that writing it out by hand would.
+  def key_source
     offset = 0
-    @sort_order.reverse_each do |part|
-      value = BIAS[part] || 0
-      case part
-      when "default"
-        value += c.default_sort_index
-      when "-default"
-        value -= c.default_sort_index
-      when "new"
-        value += ((c.set.regular? ? 0 : 1) << DATE_BITS) + DATE_BIAS - c.release_date_i
-      when "old"
-        value += ((c.set.regular? ? 0 : 1) << DATE_BITS) + c.release_date_i
-      when "newall"
-        value -= c.release_date_i
-      when "oldall"
-        value += c.release_date_i
-      when "firstprint"
-        value -= c.first_release_date.to_i_sort
-      when "-firstprint"
-        value += c.first_release_date.to_i_sort
-      when "lastprint"
-        value -= c.last_release_date.to_i_sort
-      when "-lastprint"
-        value += c.last_release_date.to_i_sort
-      when "mv"
-        value -= map_mv(c.mv)
-      when "-mv"
-        value += map_mv(c.mv)
-      when "power"
-        value -= map_pt(c.power)
-      when "-power"
-        value += map_pt(c.power)
-      when "toughness"
-        value -= map_pt(c.toughness)
-      when "-toughness"
-        value += map_pt(c.toughness)
-      when "random"
-        value += Zlib.crc32(@seed + c.name)
-      when "number"
-        value += c.set_number_sort_index
-      when "-number"
-        value -= c.set_number_sort_index
-      when "set"
-        value += c.set.name_sort_index
-      when "-set"
-        value -= c.set.name_sort_index
-      when "color"
-        value += COLOR_ORDER.fetch(c.colors)
-      when "-color"
-        value -= COLOR_ORDER.fetch(c.colors)
-      when "ci"
-        value += COLOR_ORDER.fetch(c.color_identity)
-      when "-ci"
-        value -= COLOR_ORDER.fetch(c.color_identity)
-      when "rarity"
-        value -= c.rarity_code
-      when "-rarity"
-        value += c.rarity_code
-      when "name"
-        value += c.name_sort_index
-      when "-name"
-        value -= c.name_sort_index
-      when "artist"
-        value += c.artist.sort_index
-      when "-artist"
-        value -= c.artist.sort_index
-      else # unknown key, should have been caught by initializer
-        raise "Invalid sort order #{part}"
-      end
-      result += value << offset
+    fields = @sort_order.reverse_each.map do |part|
+      # unknown key, should have been caught by initializer
+      raise "Invalid sort order #{part}" unless FIELD.key?(part)
+      bias = BIAS[part]
+      field = bias ? "(#{bias} + #{FIELD[part]})" : "(#{FIELD[part]})"
+      field = "(#{field} << #{offset})" unless offset.zero?
       offset += OFFSET.fetch(part)
+      field
     end
-    result
+    "lambda{|c| #{fields.join(" + ")} }"
   end
 
   # This method is kept for equivalence spec only
