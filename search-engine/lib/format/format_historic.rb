@@ -19,6 +19,20 @@ class FormatHistoric < FormatVintage
     end
   end
 
+  # Same ban-list-first order as Format, without the card.extra term - Alchemy
+  # cards are real cards here, and in_format? is what decides instead
+  def banned?(card)
+    card = card.main_front if card.is_a?(PhysicalCard)
+    return false unless @ban_list.legality(card.name, @time) == "banned"
+    in_format?(card)
+  end
+
+  def restricted?(card)
+    card = card.main_front if card.is_a?(PhysicalCard)
+    return false unless RESTRICTED_STATUSES.include?(@ban_list.legality(card.name, @time))
+    in_format?(card)
+  end
+
   def in_format?(card)
     return false if card.has_alchemy
     card.printings.each do |printing|

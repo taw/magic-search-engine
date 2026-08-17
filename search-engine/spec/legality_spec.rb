@@ -8,8 +8,9 @@ describe "Legality information" do
   # BanList says which statuses exist, Format says which of them count as restricted.
   # They're separate lists in separate files, so make sure they stay in sync.
   it "every legality status is accounted for" do
-    (Format::RESTRICTED_STATUSES - BanList::LEGALITY_STATUSES).should eq([])
-    (BanList::LEGALITY_STATUSES - ["legal", "banned"] - Format::RESTRICTED_STATUSES).should eq([])
+    (Format::RESTRICTED_STATUSES.to_a - BanList::LEGALITY_STATUSES).should eq([])
+    (BanList::LEGALITY_STATUSES - ["legal", "banned"] - Format::RESTRICTED_STATUSES.to_a).should eq([])
+    Format::LEGAL_OR_RESTRICTED_STATUSES.to_a.should match_array(["legal", *Format::RESTRICTED_STATUSES])
   end
 
   it "legal everywhere" do

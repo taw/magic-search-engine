@@ -5,13 +5,21 @@ class Format
   # They're displayed and validated differently, but restricted: and f: searches
   # treat them all the same way, which is how "restricted" behaved when it was
   # the only name for all of them.
-  RESTRICTED_STATUSES = [
+  #
+  # Sets rather than arrays because these are only ever asked include?, and the
+  # value asked about is usually nil (card isn't in the format) - which is the
+  # one case where Array#include? falls off a cliff, comparing a String to a
+  # non-String five times through respond_to?(:to_str).
+  RESTRICTED_STATUSES = Set[
     "restricted",
     "banned_as_commander",
     "banned_as_companion",
     "conjurable",
     "specialized",
   ].freeze
+
+  # What f: and format: match: in the format at all, restricted or not
+  LEGAL_OR_RESTRICTED_STATUSES = Set["legal", *RESTRICTED_STATUSES].freeze
 
   attr_reader :included_sets, :excluded_sets
 
@@ -37,12 +45,28 @@ class Format
     end
   end
 
+  # These deliberately don't go through legality, because they want the two
+  # checks in the opposite order. legality has to return the real status, so it
+  # asks in_format? first and only then the ban list. banned? and restricted?
+  # only need to know whether one specific answer applies, and a card the ban
+  # list has never heard of can't be either - which is 99.8% of the index,
+  # settled by a hash lookup instead of walking every printing of every card.
+  #
+  # The card.extra term is what legality applies too. mtgjson files Alchemy
+  # cards in the same set as the paper cards they rebalance instead of giving
+  # them their own set, so without it every format would count them as printings
+  # of its own sets. Alchemy and Historic, where they're real cards rather than
+  # noise, override these.
   def banned?(card)
-    legality(card) == "banned"
+    card = card.main_front if card.is_a?(PhysicalCard)
+    return false unless @ban_list.legality(card.name, @time) == "banned"
+    !card.extra and in_format?(card)
   end
 
   def restricted?(card)
-    RESTRICTED_STATUSES.include?(legality(card))
+    card = card.main_front if card.is_a?(PhysicalCard)
+    return false unless RESTRICTED_STATUSES.include?(@ban_list.legality(card.name, @time))
+    !card.extra and in_format?(card)
   end
 
   def legal?(card)
@@ -50,8 +74,7 @@ class Format
   end
 
   def legal_or_restricted?(card)
-    l = legality(card)
-    l == "legal" or RESTRICTED_STATUSES.include?(l)
+    LEGAL_OR_RESTRICTED_STATUSES.include?(legality(card))
   end
 
   def in_format?(card)
