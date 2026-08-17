@@ -1,17 +1,30 @@
-BanList.for_format("timeless") do
-  # "conjurable" and "specialized" are technically not a B&R issue, they're cards which
-  # can't go into a deck at all. Format::RESTRICTED_STATUSES groups them with the
-  # other restricted-family statuses for restricted: and f: searches - see _LEGALITY.md
+BanList.for_format("competitive brawl") do
+  # The format launched with this list and has not changed since, and everything on it
+  # was already true on day one, so it's all one undated block.
   #
-  # Same list as Historic's - conjure-only is a property of the card on Arena, not of a
-  # format - but kept as its own copy so a new conjure-only set gets its own dated entry
-  # here instead of being backdated into this block. Lightning Bolt is the one card
-  # Historic has that this doesn't: it files it as conjurable because it's pre-banned
-  # there anyway, but it's an ordinary craftable card (STA, FCA, TLE, MSC) here.
+  # The ten bans are not Brawl's list plus or minus anything - Competitive Brawl bans
+  # commanders only, and starts from "almost every card being legal to include in the
+  # 99", so everything Brawl bans in the 99 is legal here. Nadu is the rebalanced
+  # version, as everything in Brawl is; "Brawl: Our Plans" spells it "A-Nadu, Winged
+  # Wisdom" where the launch article just says "Nadu, Winged Wisdom".
   #
-  # Every one of these predates the format, hence the single undated block.
+  # The rest is the conjure-only list, which is not a B&R issue at all - those cards
+  # can't go into a deck in any Arena format. Format::RESTRICTED_STATUSES groups them
+  # with the other restricted-family statuses for restricted: and f: searches - see
+  # _LEGALITY.md. It's Historic's list minus Lightning Bolt, which Historic only files
+  # as conjurable because it's pre-banned there anyway.
   format_start(
-    "Cards which can only be conjured or specialized into, never put in a deck",
+    "https://magic.wizards.com/en/news/mtg-arena/introducing-ranked-brawl",
+    "Ajani, Nacatl Pariah" => "banned",
+    "Lutri, the Spellchaser" => "banned",
+    "Nadu, Winged Wisdom (Alchemy)" => "banned",
+    "Oko, Thief of Crowns" => "banned",
+    "Old Stickfingers" => "banned",
+    "Ragavan, Nimble Pilferer" => "banned",
+    "Rusko, Clockmaker" => "banned",
+    "Tajic, Legion's Valor" => "banned",
+    "Tamiyo, Inquisitive Student" => "banned",
+    "Wrenn and Six" => "banned",
     "Alora, Cheerful Assassin" => "specialized",
     "Alora, Cheerful Mastermind" => "specialized",
     "Alora, Cheerful Scout" => "specialized",
@@ -63,7 +76,6 @@ BanList.for_format("timeless") do
     "Klement, Life Acolyte" => "specialized",
     "Klement, Nature Acolyte" => "specialized",
     "Klement, Tempest Acolyte" => "specialized",
-    "Kraken Hatchling" => "conjurable",
     "Lae'zel, Blessed Warrior" => "specialized",
     "Lae'zel, Callous Warrior" => "specialized",
     "Lae'zel, Illithid Thrall" => "specialized",
@@ -84,13 +96,11 @@ BanList.for_format("timeless") do
     "Mox Pearl" => "conjurable",
     "Mox Ruby" => "conjurable",
     "Mox Sapphire" => "conjurable",
-    "Ponder" => "conjurable",
     "Rasaad, Dragon Monk" => "specialized",
     "Rasaad, Radiant Monk" => "specialized",
     "Rasaad, Shadow Monk" => "specialized",
     "Rasaad, Sylvan Monk" => "specialized",
     "Rasaad, Warrior Monk" => "specialized",
-    "Regal Force" => "conjurable",
     "Sarevok, Deadly Usurper" => "specialized",
     "Sarevok, Deceitful Usurper" => "specialized",
     "Sarevok, Divine Usurper" => "specialized",
@@ -106,7 +116,6 @@ BanList.for_format("timeless") do
     "Skanos, Green Dragon Vassal" => "specialized",
     "Skanos, Red Dragon Vassal" => "specialized",
     "Skanos, White Dragon Vassal" => "specialized",
-    "Stormfront Pegasus" => "conjurable",
     "Time Walk" => "conjurable",
     "Timetwister" => "conjurable",
     "Tropical Island" => "conjurable",
@@ -130,32 +139,5 @@ BanList.for_format("timeless") do
     "Wyll of the Elder Pact" => "specialized",
     "Wyll of the Fey Pact" => "specialized",
     "Wyll of the Fiend Pact" => "specialized",
-  )
-
-  # Timeless has never banned anything - "basically no bans" is the whole point of the
-  # format - so restriction is all there is below.
-  change(
-    "2023-12-12",
-    "https://magic.wizards.com/en/news/mtg-arena/introducing-timeless-a-new-mtg-arena-format",
-    "Channel" => "restricted",
-    "Demonic Tutor" => "restricted",
-    "Tibalt's Trickery" => "restricted",
-  )
-
-  # Not a ban list change - Arena Anthology 4 printed these four as ordinary cards, so
-  # they stopped being conjure-only
-  change(
-    "2025-09-23",
-    "https://magic.wizards.com/en/news/mtg-arena/through-the-omenpaths-card-and-event-updates",
-    "Kraken Hatchling" => "legal",
-    "Ponder" => "legal",
-    "Regal Force" => "legal",
-    "Stormfront Pegasus" => "legal",
-  )
-
-  change(
-    "2026-02-09",
-    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-february-9-2026",
-    "Necropotence" => "restricted",
   )
 end

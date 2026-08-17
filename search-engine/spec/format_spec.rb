@@ -326,7 +326,7 @@ describe "Formats" do
     }
 
     actual = {}
-    ["alchemy", "historic", "timeless"].each do |format_name|
+    ["alchemy", "historic", "timeless", "brawl", "competitive brawl"].each do |format_name|
       format = Format[format_name].new
       db.cards.each_value do |card|
         next unless ["conjurable", "specialized"].include?(format.legality(card))
@@ -341,7 +341,7 @@ describe "Formats" do
   # This direction doesn't need the game:arena tag at all - a conjured card has to be
   # conjured from somewhere
   it "conjurable and specialized cards come from a conjure-only set" do
-    orphans = ["alchemy", "historic", "timeless"].flat_map do |format_name|
+    orphans = ["alchemy", "historic", "timeless", "brawl", "competitive brawl"].flat_map do |format_name|
       format = Format[format_name].new
       db.cards.each_value.select{|card|
         next false unless ["conjurable", "specialized"].include?(format.legality(card))
@@ -405,7 +405,9 @@ describe "Formats" do
       banned:"Innistrad Block" or
       banned:"Tempest Block" or
       banned:premodern or
-      banned:alchemy
+      banned:alchemy or
+      banned:brawl or
+      banned:"Competitive Brawl"
     ]
   end
 
@@ -419,6 +421,8 @@ describe "Formats" do
       legal:unsets or
       legal:historic or
       legal:timeless or
+      legal:brawl or
+      legal:"Competitive Brawl" or
       legal:commander or
       legal:"Urza Block" or
       legal:penny or

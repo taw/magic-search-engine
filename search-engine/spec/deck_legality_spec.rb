@@ -236,7 +236,9 @@ describe "Deck legality" do
               "Deck's commander must be exactly 1 card or 2 partner cards designated as commander, has 0",
             ])
 
-          when FormatCommander, FormatDuelCommander
+          # Brawl and Competitive Brawl are 100-card singleton commander decks too, and
+          # BrawlDeckRules words its messages exactly like FormatCommander's
+          when FormatCommander, FormatDuelCommander, FormatBrawl
             legality_40_0.should match_array([
               "Deck must contain exactly 100 cards, has 40",
               "Deck's commander must be exactly 1 card or 2 partner cards designated as commander, has 0",

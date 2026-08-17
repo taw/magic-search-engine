@@ -281,11 +281,15 @@ class Format
         # Not a real format, just Standard as it will be after the next rotation
         "future"                     => FormatFuture,
         "futurestandard"             => FormatFuture,
-        # Disabled for now. Arena has three Brawl queues and the official B&R list only
-        # tracks two of them - Historic Brawl (which it just calls "Brawl") and Ranked
-        # Brawl - so Standard Brawl is the one nobody plays. "brawl" is deliberately left
-        # unclaimed for Historic Brawl rather than pointing here.
+        # Disabled for now. Arena runs three Brawl queues and the official B&R list
+        # tracks only the other two, so this is the one nobody plays.
         # "standardbrawl"              => FormatStandardBrawl,
+        "brawl"                      => FormatBrawl,
+        # What it was called until the 2023-12-12 client update
+        "historicbrawl"              => FormatBrawl,
+        "competitivebrawl"           => FormatCompetitiveBrawl,
+        # What it was called for the week between announcement and launch
+        "rankedbrawl"                => FormatCompetitiveBrawl,
         "modern"                     => FormatModern,
         "pioneer"                    => FormatPioneer,
         "legacy"                     => FormatLegacy,
@@ -321,6 +325,8 @@ end
 require_relative "format_vintage"
 require_relative "format_standard"
 require_relative "format_commander"
-# FormatTimeless subclasses it
+# FormatTimeless and FormatBrawl subclass it
 require_relative "format_historic"
+# The Brawl formats include it
+require_relative "brawl_deck_rules"
 Dir["#{__dir__}/format_*.rb"].each do |path| require_relative path end
