@@ -17,62 +17,60 @@ class FormatAlchemy < FormatStandard
   # https://mtg.fandom.com/wiki/Alchemy
   #
   # This is such a mess, I can't find historical data anywhere
-  def rotation_schedule
-    {
-      "2025-08-01" => [ # rotation on EOE release
-        "anb",
-        "blb", "yblb",
-        "dsk", "ydsk",
-        "fdn", # will likely have unusual rotation matching Standard
-        "dft", "ydft",
-        "tdm", "ytdm",
-        "fin",
-        "eoe", "yeoe",
-        "spm",
-        "tla",
-        "ecl", "yecl",
-        "tmt",
-        "sos", "ysos",
-        "msh",
-        "hob",
-      ],
-      "2024-08-02" => [ # rotation on BLB release?
-        "anb",
-        "woe", "ywoe",
-        "lci", "ylci",
-        "mkm", "ymkm",
-        "otj", "big", "yotj",
-        "blb", "yblb",
-        "dsk", "ydsk",
-        "fdn", # will likely have unusual rotation matching Standard
-        "dft", "ydft",
-        "tdm", "ytdm",
-        "fin",
-      ],
-      "2023-08-02" => [
-        "anb",
-        "dmu", "ydmu",
-        "bro", "ybro",
-        "one", "yone",
-        "mom", "mat",
-        "ltr",
-        "woe", "ywoe",
-        "lci", "ylci",
-        "mkm", "ymkm",
-        "otj", "big", "yotj",
-      ],
-      "2022-09-09" => [
-        "anb",
-        "mid", "vow", "ymid", "neo", "yneo", "snc", "ysnc", "hbg",
-        "dmu", "ydmu", "bro", "ybro", "one", "yone", "mom", "mat", "ltr", "woe", "ywoe", "lci", "ylci", "mkm", "ymkm", "otj", "big", "yotj",
-      ],
-      "2021-12-02" => [
-        "anb",
-        "znr", "khm", "stx", "afr",
-        "mid", "vow", "ymid", "neo", "yneo", "snc", "ysnc", "hbg",
-      ],
-    }
-  end
+  ROTATION_SCHEDULE = {
+    "2025-08-01" => [ # rotation on EOE release
+      "anb",
+      "blb", "yblb",
+      "dsk", "ydsk",
+      "fdn", # will likely have unusual rotation matching Standard
+      "dft", "ydft",
+      "tdm", "ytdm",
+      "fin",
+      "eoe", "yeoe",
+      "spm",
+      "tla",
+      "ecl", "yecl",
+      "tmt",
+      "sos", "ysos",
+      "msh",
+      "hob",
+    ],
+    "2024-08-02" => [ # rotation on BLB release?
+      "anb",
+      "woe", "ywoe",
+      "lci", "ylci",
+      "mkm", "ymkm",
+      "otj", "big", "yotj",
+      "blb", "yblb",
+      "dsk", "ydsk",
+      "fdn", # will likely have unusual rotation matching Standard
+      "dft", "ydft",
+      "tdm", "ytdm",
+      "fin",
+    ],
+    "2023-08-02" => [
+      "anb",
+      "dmu", "ydmu",
+      "bro", "ybro",
+      "one", "yone",
+      "mom", "mat",
+      "ltr",
+      "woe", "ywoe",
+      "lci", "ylci",
+      "mkm", "ymkm",
+      "otj", "big", "yotj",
+    ],
+    "2022-09-09" => [
+      "anb",
+      "mid", "vow", "ymid", "neo", "yneo", "snc", "ysnc", "hbg",
+      "dmu", "ydmu", "bro", "ybro", "one", "yone", "mom", "mat", "ltr", "woe", "ywoe", "lci", "ylci", "mkm", "ymkm", "otj", "big", "yotj",
+    ],
+    "2021-12-02" => [
+      "anb",
+      "znr", "khm", "stx", "afr",
+      "mid", "vow", "ymid", "neo", "yneo", "snc", "ysnc", "hbg",
+    ],
+  }.map{|rotation_time, rotation_sets| [Date.parse(rotation_time), rotation_sets.freeze].freeze}.freeze
 
   def legality(card)
     card = card.main_front if card.is_a?(PhysicalCard)

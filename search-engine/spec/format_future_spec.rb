@@ -4,7 +4,7 @@ describe "Formats - Future Standard" do
   # Future Standard is Standard one rotation ahead, so time traveling to just before
   # any rotation must give the same answer as Standard right after it
   describe "one rotation ahead of Standard" do
-    let(:rotations) { FormatStandard.new.rotation_schedule.keys.map{|date| Date.parse(date)}.sort }
+    let(:rotations) { FormatStandard.new.rotations.map(&:first).sort }
 
     it do
       rotations.each do |rotation|
@@ -71,7 +71,7 @@ describe "Formats - Future Standard" do
 
   # There's no rotation after the last one we know about
   it "is empty once we run out of schedule" do
-    last_rotation = FormatStandard.new.rotation_schedule.keys.map{|date| Date.parse(date)}.max
+    last_rotation = FormatStandard.new.rotations.map(&:first).max
     FormatFuture.new(last_rotation).included_sets.should eq(Set[])
     assert_search_results "f:future time:#{last_rotation}"
   end

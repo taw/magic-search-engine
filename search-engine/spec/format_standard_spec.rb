@@ -10,7 +10,7 @@ describe "Formats - Standard" do
     # Early Standard was not regular so we need to tweak expectations a bit
     let(:start_date) { db.sets["drk"].release_date }
     let(:expected) { regular_sets.select{|set| set.release_date >= start_date}.map(&:code) + ["3ed", "chr"] }
-    let(:actual) { FormatStandard.new.rotation_schedule.values.flatten.uniq.reject{|code| db.sets[code].types.include?("preview") } }
+    let(:actual) { FormatStandard.new.rotations.flat_map(&:last).uniq.reject{|code| db.sets[code].types.include?("preview") } }
     it do
       expected.should match_array(actual)
     end
@@ -23,10 +23,21 @@ describe "Formats - Standard" do
   describe "rotation schedule set order" do
     Format.all_format_classes.select{|format_class| format_class.new.display_rotation_schedule?}.each do |format_class|
       it "#{format_class} rotations are sorted by set release date" do
-        format_class.new.rotation_schedule.each do |rotation_date, set_codes|
+        format_class.new.rotations.each do |rotation_date, set_codes|
           release_dates = set_codes.map{|set_code| db.sets[set_code].release_date}
           release_dates.should eq(release_dates.sort), "#{format_class} rotation #{rotation_date} is not sorted by set release date: #{set_codes.inspect}"
         end
+      end
+    end
+  end
+
+  # rotation_history returns rotations newest first by taking them in schedule
+  # order, so the schedule itself has to be written newest first
+  describe "rotation schedule order" do
+    Format.all_format_classes.select{|format_class| format_class.new.display_rotation_schedule?}.each do |format_class|
+      it "#{format_class} rotations are newest first" do
+        dates = format_class.new.rotations.map(&:first)
+        dates.should eq(dates.sort.reverse)
       end
     end
   end
