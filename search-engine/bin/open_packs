@@ -19,13 +19,16 @@ class OpenPacks
       banner <<~EOS
         Open packs. You can also add predefined cards to the results.
 
+        Counts need a space after them, so quote them for the shell.
+
         Usage:
           #{$0} m10
-          #{$0} 6xm10
-          #{$0} 36xmh1 mh1/255
-          #{$0} 36xm19 m19/306/foil
-          #{$0} 10xiko-set
-          #{$0} 2xsom 2xmbs 2xnph
+          #{$0} "6x m10"
+          #{$0} "36 m10"
+          #{$0} "36x mh1" mh1/255
+          #{$0} "36x m19" "2x m19/306/foil"
+          #{$0} "10x iko-collector"
+          #{$0} "2x som" "2x mbs" "2x nph"
 
         Options:
         EOS
@@ -98,4 +101,10 @@ class OpenPacks
   end
 end
 
-OpenPacks.new.call
+begin
+  OpenPacks.new.call
+rescue RuntimeError => e
+  # Bad descriptors are a usage error, and `36xm10` is now one of them
+  STDERR.puts e.message
+  exit 1
+end
