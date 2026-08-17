@@ -52,10 +52,13 @@ class WeightedPack < Pack
     @packs.each do |pack, weight|
       if pack.is_a?(WeightedPack)
         pack.packs.each do |subpack, subweight|
-          result[subpack] = Rational(weight * subweight, pack.total_weight)
+          # A pack can be reachable more than one way - directly and through a
+          # subpack, or through two of them - and then it gets the sum of the
+          # weights, not whichever one happens to be flattened last
+          result[subpack] += Rational(weight * subweight, pack.total_weight)
         end
       else
-        result[pack] = weight
+        result[pack] += weight
       end
     end
     lcm = result.values.map(&:denominator).inject(&:lcm)
