@@ -61,7 +61,9 @@ class ConditionPrint < Condition
       if date =~ /\A\d{4}\z/
         date = Date.parse("#{date}-01-01")
         [date.year, 1]
-      elsif date =~ /\A\d{4}-\d{1,2}\z/
+      # The month has to be checked before parsing, as this is already the
+      # rescue clause - Date.parse("2012-13-01") would raise out of here
+      elsif date =~ /\A\d{4}-(\d{1,2})\z/ and (1..12).cover?($1.to_i)
         date = Date.parse("#{date}-01")
         [date.year*12 + date.month, 2]
       else

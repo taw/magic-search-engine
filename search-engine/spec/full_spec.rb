@@ -97,6 +97,35 @@ describe "Full Database Test" do
     assert_search_equal %[print="12 july 2012"], %[print=2012-07-12]
   end
 
+  # Dates are compared at the precision they were typed at, so a yyyy-mm
+  # query means the whole month, not its first day
+  it "print month" do
+    assert_search_results "t:planeswalker print=2012-07",
+      "Ajani, Caller of the Pride",
+      "Chandra, the Firebrand",
+      "Garruk, Primal Hunter",
+      "Jace, Memory Adept",
+      "Liliana of the Dark Realms",
+      "Nicol Bolas, Planeswalker"
+
+    assert_search_equal "t:jace print=2012-7", "t:jace print=2012-07"
+    assert_search_equal "t:jace print=2012-07", "t:jace print>=2012-07-01 print<=2012-07-31"
+    assert_search_equal "t:jace print>=2012-07", "t:jace print>=2012-07-01"
+    assert_search_equal "t:jace print>2012-07", "t:jace print>2012-07-31"
+    assert_search_equal "t:jace print<=2012-07", "t:jace print<=2012-07-31"
+    assert_search_equal "t:jace print<2012-07", "t:jace print<2012-07-01"
+  end
+
+  it "print date that isn't a date" do
+    # A month out of range looks like a date until it's parsed, and used to
+    # raise Date::Error instead of warning
+    ["lolwtf", "2012-13", "2012-00"].each do |date|
+      results = db.search("print>=#{date}")
+      results.warnings.to_a.should eq([%[Doesn't look like correct date, ignored: "#{date}"]])
+      results.printings.size.should eq(db.printings.size)
+    end
+  end
+
   # Digital only cards with their bullshit release dates are really messing up with this test
   it "print" do
     assert_search_equal "t:planeswalker print=m12", "t:planeswalker e:m12"

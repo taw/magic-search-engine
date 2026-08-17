@@ -12,6 +12,11 @@ describe "Time Travel Test" do
     assert_search_results "t:jace print=vma", "Jace, the Mind Sculptor"
     assert_search_results "time:nph t:jace lastprint=wwk", "Jace, the Mind Sculptor"
     assert_search_results "time:nph t:jace print=vma"
+
+    # firstprint only considers printings up to that point too, it just takes
+    # a lot more than time travel to change which printing came first
+    assert_search_results "time:nph t:jace firstprint=wwk", "Jace, the Mind Sculptor"
+    assert_search_equal_cards "time:nph t:jace firstprint<=wwk", "t:jace firstprint<=wwk"
   end
 
   it "time travel Gatherer/MCI names" do

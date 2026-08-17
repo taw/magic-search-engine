@@ -156,6 +156,7 @@ describe "Any queries" do
 
     it "nicknames" do
       assert_search_equal "any:battleland", "is:battleland"
+      assert_search_equal "any:bondland", "is:bondland"
       assert_search_equal "any:bounceland", "is:bounceland"
       assert_search_equal "any:canland", "is:canland"
       assert_search_equal "any:canopyland", "is:canopyland"
@@ -171,12 +172,67 @@ describe "Any queries" do
       assert_search_equal "any:keywordsoup", "is:keywordsoup"
       assert_search_equal "any:manland", "is:manland"
       assert_search_equal "any:painland", "is:painland"
+      assert_search_equal "any:pathway", "is:pathway or (pathway) or ft:pathway"
       assert_search_equal "any:scryland", "is:scryland"
       assert_search_equal "any:shadowland", "is:shadowland"
       assert_search_equal "any:shockland", "is:shockland or (May the Mana Be with You)"
+      assert_search_equal "any:slowland", "is:slowland"
       assert_search_equal "any:storageland", "is:storageland"
+      assert_search_equal "any:surveilland", "is:surveilland"
       assert_search_equal "any:tangoland", "is:tangoland"
       assert_search_equal "any:triland", "is:triland"
+      assert_search_equal "any:vergeland", "is:vergeland"
+    end
+
+    # any: matches names exactly, so unlike a bare word search it doesn't
+    # drag in Surveillance Monitor, Lowland Oaf, or Blighted Woodland
+    it "nicknames are not spell-corrected into names" do
+      assert_search_equal "any:surveilland", "-(surveilland) any:surveilland"
+      assert_search_equal "any:slowland", "-(slowland) any:slowland"
+      assert_search_equal "any:bondland", "-(bondland) any:bondland"
+    end
+
+    it "nickname aliases" do
+      assert_search_equal "any:battlebondland", "any:bondland"
+      assert_search_equal "any:bbdland", "any:bondland"
+      assert_search_equal "any:crowdland", "any:bondland"
+      # Unlike the other aliases this one is also a word on real cards
+      # (Vineglimmer Snarl, Snarling Wolf), so it can only be a superset
+      assert_include_search "any:snarl", "is:shadowland"
+      assert_search_equal "any:p9", "any:power9"
+    end
+
+    it "bear" do
+      assert_search_equal "any:bear",
+        "is:bear or (bear) or a:bear or ft:bear or o:bear or t:bear or foreign:bear"
+    end
+
+    it "colorshifted" do
+      assert_search_equal "any:colorshifted", "is:colorshifted"
+    end
+
+    it "companion" do
+      assert_search_equal "any:companion", "is:companion or (companion) or ft:companion or o:companion"
+    end
+
+    it "meldpart" do
+      assert_search_equal "any:meldpart", "is:meldpart"
+    end
+
+    it "meldresult" do
+      assert_search_equal "any:meldresult", "is:meldresult"
+    end
+
+    it "outlaw" do
+      assert_search_equal "any:outlaw", "is:outlaw or (outlaw) or ft:outlaw or o:outlaw"
+    end
+
+    it "party" do
+      assert_search_equal "any:party", "is:party or (party) or ft:party or o:party or foreign:party"
+    end
+
+    it "power9" do
+      assert_search_equal "any:power9", "is:power9"
     end
 
     it "commander" do
