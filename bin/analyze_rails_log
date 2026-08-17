@@ -18,7 +18,7 @@ require "cgi"
 class RequestRecord
   attr_accessor :id, :started_at, :verb, :path, :ip, :controller, :action,
                 :format, :status, :duration, :view_time, :db_time, :allocations,
-                :redirected, :user_agent, :cache, :results, :stages
+                :redirected, :user_agent, :cache, :results, :stages, :error
 
   def initialize(id)
     @id = id
@@ -117,6 +117,7 @@ class LogAnalysis
       when "ip" then r.ip ||= v
       when "path" then r.path ||= v
       when "cache" then r.cache = v
+      when "error" then r.error = v
       when "results" then r.results = v.to_i
       when "status" then r.status ||= v.to_i
       when /\At\.(.+)/ then r.stages[$1] = v.to_i
@@ -234,6 +235,7 @@ class Report
     clients_by_kind(done, total_time)
     stage_breakdown(done)
     cache_effectiveness(done)
+    exceptions(done)
     slowest(done)
     search_queries(done, total_time)
     heavy_clients(done, total_time)
@@ -277,6 +279,21 @@ class Report
        fmt_ms(rs.sum(&:duration).to_f / rs.size)]
     }
     table("Search cache", rows, ["", "count", "%", "total", "mean"])
+  end
+
+  # Needs the error= field, so old logs get nothing here rather than a wrong
+  # "no exceptions" - before it existed, a request that raised was logged as
+  # whatever status the response happened to be holding, usually 200.
+  def exceptions(done)
+    failed = done.select(&:error)
+    return if failed.empty?
+    rows = failed.group_by { |r| [r.error, r.endpoint] }
+                 .sort_by { |_, rs| -rs.size }.first(@top)
+                 .map { |(err, ep), rs|
+                   [err, ep, rs.size, rs.first.status, fmt_ms(rs.sum(&:duration).to_f / rs.size),
+                    truncate(rs.max_by(&:duration).path, 60)]
+                 }
+    table("Requests that raised", rows, ["error", "endpoint", "count", "st", "mean", "slowest path"])
   end
 
   def overview(done, total_time)

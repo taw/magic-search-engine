@@ -10,6 +10,11 @@
 #     t.search=11800 results=35657 \
 #     ip=1.2.3.4 ua="Mozilla/5.0 (compatible; Whatever/1.0)" path="/page/1319/card?q=in%3Apaper"
 #
+# A request that raised gets the status the error page will end up with, plus
+# the exception class, so failures are findable by `grep error= production.log`:
+#
+#   METRICS ms=5247 status=500 error=Timeout::Error endpoint=CardController#index ...
+#
 # bin/analyze_rails_log reads these back.
 module RequestMetrics
   extend ActiveSupport::Concern
@@ -43,14 +48,20 @@ module RequestMetrics
   def record_request_metrics
     started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
     yield
+  rescue Exception => e
+    # The middleware that turns this into an error page runs long after we're
+    # gone, so this is the only chance to see that the request failed at all.
+    error = e
+    raise
   ensure
     begin
       ms = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started) * 1000).round
       fields = {
         "ms" => ms,
-        "status" => response&.status,
-        "endpoint" => "#{self.class.name}##{action_name}",
+        "status" => error ? status_for_exception(error) : response&.status,
       }
+      fields["error"] = error.class.name if error
+      fields["endpoint"] = "#{self.class.name}##{action_name}"
       fields.merge!(@request_metrics || {})
       fields["ip"] = request.remote_ip
       fields["ua"] = quote(request.user_agent)
@@ -63,6 +74,18 @@ module RequestMetrics
       # Never let instrumentation break a response
       logger.error "RequestMetrics failed: #{e.class}: #{e.message}" rescue nil
     end
+  end
+
+  # What ActionDispatch::ShowExceptions will turn this exception into, by the
+  # same table it uses. Not every failure is a 500: UnknownFormat is a 406,
+  # ParameterMissing a 400. Template errors carry the real one as their cause.
+  def status_for_exception(error)
+    wrapper = ActionDispatch::ExceptionWrapper
+    class_name = error.class.name
+    if wrapper.wrapper_exceptions.include?(class_name) && error.cause
+      class_name = error.cause.class.name
+    end
+    wrapper.status_code_for_exception(class_name)
   end
 
   def quote(value)
