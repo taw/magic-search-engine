@@ -1,4 +1,4 @@
-BanList.for_format("brawl") do
+BanList.for_format("standard brawl") do
   # It started with Standard ban list
   format_start(
     "https://magic.wizards.com/en/articles/archive/ways-play/join-brawl-2018-03-22",
@@ -69,6 +69,11 @@ BanList.for_format("brawl") do
     "Pithing Needle" => "banned",
   )
 
+  # Everything from here down is Historic Brawl, not Standard Brawl - none of these
+  # cards is Standard-legal. The official B&R list's "Brawl" section has meant the
+  # Arena Historic Brawl queue for years, and these were tracked as if this file were
+  # it. Move them when Historic Brawl gets a format of its own; the format is disabled
+  # either way, so nothing serves them today.
   change(
     "2025-11-10",
     "https://magic.wizards.com/en/news/announcements/banned-and-restricted-november-10-2025",

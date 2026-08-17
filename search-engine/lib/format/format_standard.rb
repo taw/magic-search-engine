@@ -17,7 +17,7 @@ class FormatStandard < Format
   end
 
   # Subclasses with their own schedule (Alchemy) define their own constant;
-  # the ones without (Future, Brawl) inherit Standard's through the ancestors.
+  # the ones without (Future, Standard Brawl) inherit Standard's through the ancestors.
   def rotations
     self.class::ROTATION_SCHEDULE
   end

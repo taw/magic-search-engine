@@ -9,7 +9,7 @@ class BanList
     "banned",
     # only 1 copy in a deck instead of 4 (Vintage, historically Standard)
     "restricted",
-    # legal in the deck, but may not be your commander (Commander, Duel Commander, Brawl)
+    # legal in the deck, but may not be your commander (Commander, Duel Commander, Standard Brawl)
     "banned_as_commander",
     # legal in the deck, but may not be your companion (Commander, Duel Commander)
     "banned_as_companion",

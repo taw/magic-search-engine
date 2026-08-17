@@ -173,7 +173,7 @@ describe "Deck legality" do
     let(:legality_61_15) { format.deck_size_issues(build_deck_of_size(61, 15)) }
     let(:legality_240_15) { format.deck_size_issues(build_deck_of_size(240, 15)) }
 
-    # Brawl
+    # Standard Brawl
     let(:legality_59_1) { format.deck_size_issues(build_deck_of_size(59, 1)) }
     let(:legality_58_2) { format.deck_size_issues(build_deck_of_size(58, 2)) }
 
@@ -190,7 +190,7 @@ describe "Deck legality" do
         let(:format) { format_class.new }
         it do
           case format
-          when FormatBrawl
+          when FormatStandardBrawl
             legality_40_0.should match_array([
               "Deck must contain exactly 60 cards, has 40",
               "Deck's commander must be exactly 1 card or 2 partner cards designated as commander, has 0",
@@ -412,9 +412,9 @@ describe "Deck legality" do
     end
   end
 
-  describe "deck_card_issues for brawl" do
+  describe "deck_card_issues for Standard Brawl" do
     # Lock time as it's a rotating format
-    let(:brawl) { FormatBrawl.new(Date.parse("2019-07-01")) }
+    let(:standard_brawl) { FormatStandardBrawl.new(Date.parse("2019-07-01")) }
     let(:deck) {
       parse_decklist <<~EOF
       1x Lightning Bolt
@@ -431,7 +431,7 @@ describe "Deck legality" do
     }
 
     it do
-      brawl.deck_card_issues(deck).should match_array([
+      standard_brawl.deck_card_issues(deck).should match_array([
         "Lightning Bolt is not in the format",
         "Sorcerous Spyglass is banned",
         "Black Lotus is not in the format",
@@ -532,7 +532,7 @@ describe "Deck legality" do
 
   describe "deck_commander_issues" do
     # Lock time as it's a rotating format
-    let(:format) { FormatBrawl.new(Date.parse("2019-07-01")) }
+    let(:format) { FormatStandardBrawl.new(Date.parse("2019-07-01")) }
 
     it do
       format.deck_commander_issues(parse_decklist_for_commander()).should be_empty
@@ -540,7 +540,7 @@ describe "Deck legality" do
       format.deck_commander_issues(parse_decklist_for_commander("1x Arcades, the Strategist")).should be_empty
       format.deck_commander_issues(parse_decklist_for_commander("1x Gideon Blackblade")).should be_empty
 
-      # Never occurs in Brawl, but test anyway
+      # Never occurs in Standard Brawl, but test anyway
       format.deck_commander_issues(parse_decklist_for_commander("Sylvia Brightspear")).should be_empty
       format.deck_commander_issues(parse_decklist_for_commander("Khorvath Brightflame", "Sylvia Brightspear")).should be_empty
       format.deck_commander_issues(parse_decklist_for_commander("Khorvath Brightflame", "Karn, Silver Golem")).should match_array([
@@ -556,7 +556,7 @@ describe "Deck legality" do
 
   describe "#deck_color_identity_issues" do
     let(:commander) { FormatCommander.new }
-    let(:brawl) { FormatBrawl.new }
+    let(:standard_brawl) { FormatStandardBrawl.new }
     let(:deck) do
       parse_decklist <<~EOF
       Lightning Bolt
@@ -577,12 +577,12 @@ describe "Deck legality" do
         "Birds of Paradise is outside deck color identity",
         "Mox Sapphire is outside deck color identity",
       ])
-      commander.deck_color_identity_issues(deck).should eq brawl.deck_color_identity_issues(deck)
+      commander.deck_color_identity_issues(deck).should eq standard_brawl.deck_color_identity_issues(deck)
     end
   end
 
-  describe "#deck_color_identity_issues - brawl basic land exception" do
-    let(:brawl) { FormatBrawl.new }
+  describe "#deck_color_identity_issues - Standard Brawl basic land exception" do
+    let(:standard_brawl) { FormatStandardBrawl.new }
     let(:deck_no_basics) {
       parse_decklist <<~EOF
       1x Aether Hub
@@ -621,15 +621,15 @@ describe "Deck legality" do
     }
 
     it do
-      brawl.deck_color_identity_issues(deck_no_basics).should match_array([
+      standard_brawl.deck_color_identity_issues(deck_no_basics).should match_array([
         "Lightning Bolt is outside deck color identity",
         "Birds of Paradise is outside deck color identity",
       ])
-      brawl.deck_color_identity_issues(deck_same_basics).should match_array([
+      standard_brawl.deck_color_identity_issues(deck_same_basics).should match_array([
         "Lightning Bolt is outside deck color identity",
         "Birds of Paradise is outside deck color identity",
       ])
-      brawl.deck_color_identity_issues(deck_mixed_basics).should match_array([
+      standard_brawl.deck_color_identity_issues(deck_mixed_basics).should match_array([
         "Lightning Bolt is outside deck color identity",
         "Birds of Paradise is outside deck color identity",
         "Deck with colorless commander can contain basic lands of only one color",
@@ -698,8 +698,8 @@ describe "Deck legality" do
     end
   end
 
-  describe "deck_issues integration test for Brawl" do
-    let(:format) { FormatBrawl.new(Date.parse("2019-07-01")) }
+  describe "deck_issues integration test for Standard Brawl" do
+    let(:format) { FormatStandardBrawl.new(Date.parse("2019-07-01")) }
     let(:deck) {
       parse_decklist <<~EOF
       10x Forest

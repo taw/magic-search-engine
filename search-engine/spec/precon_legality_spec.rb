@@ -83,7 +83,7 @@ describe Deck do
     when "modern"
       FormatModern.new(date)
     when "brawl"
-      FormatBrawl.new(date)
+      FormatStandardBrawl.new(date)
     when "pioneer"
       FormatPioneer.new(date)
     else

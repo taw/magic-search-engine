@@ -1,4 +1,4 @@
-# Previously supported formats: (Standard) Brawl, Frontier, MTGO Commander
+# Previously supported formats: Standard Brawl, Frontier, MTGO Commander
 
 class Format
   # Statuses which all mean "in the format, but with a deckbuilding restriction".
@@ -281,9 +281,11 @@ class Format
         # Not a real format, just Standard as it will be after the next rotation
         "future"                     => FormatFuture,
         "futurestandard"             => FormatFuture,
-        # Disabled for now, as this is "Standard Brawl" and the one that's actually being played is different "Historic Brawl"
-        # at some point it might be worth resurrecting the format
-        # "brawl"                      => FormatBrawl,
+        # Disabled for now. Arena has three Brawl queues and the official B&R list only
+        # tracks two of them - Historic Brawl (which it just calls "Brawl") and Ranked
+        # Brawl - so Standard Brawl is the one nobody plays. "brawl" is deliberately left
+        # unclaimed for Historic Brawl rather than pointing here.
+        # "standardbrawl"              => FormatStandardBrawl,
         "modern"                     => FormatModern,
         "pioneer"                    => FormatPioneer,
         "legacy"                     => FormatLegacy,

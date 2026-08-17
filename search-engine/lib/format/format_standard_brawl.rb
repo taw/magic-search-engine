@@ -1,6 +1,6 @@
-class FormatBrawl < FormatStandard
+class FormatStandardBrawl < FormatStandard
   def format_pretty_name
-    "Brawl"
+    "Standard Brawl"
   end
 
   def deck_issues(deck)
@@ -43,7 +43,7 @@ class FormatBrawl < FormatStandard
       end
     end
 
-    # Brawl never had any partners, it's copy&pasted commander logic
+    # Standard Brawl never had any partners, it's copy&pasted commander logic
     if cards.size == 2
       a, b = cards
       issues << "#{a.name} is not a valid partner card" unless a.partner?
