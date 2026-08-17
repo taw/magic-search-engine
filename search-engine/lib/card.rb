@@ -38,6 +38,7 @@ class Card
     :loyalty,
     :mana_cost,
     :mana_hash,
+    :modal,
     :mv,
     :name,
     :name_slug,
@@ -82,6 +83,7 @@ class Card
     @text = -@text.sub(/\s*\z/, "").gsub(/ *\n/, "\n").sub(/\A\s*/, "")
     @text_normalized = -@text.normalize_accents
     @augment = !!(@text =~ /augment \{/i)
+    @modal = !!(@text =~ /(choose|opponent chooses) .*\n•/im)
     @mana_cost = data["m"]
     @reserved = data["rs"] || false
     @game_changer = data["gc"] || false

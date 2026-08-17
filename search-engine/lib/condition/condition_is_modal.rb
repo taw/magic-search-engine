@@ -1,6 +1,6 @@
 class ConditionIsModal < ConditionSimple
   def match?(card)
-    card.text =~ /(choose|opponent chooses) .*\n•/im
+    card.modal
   end
 
   def to_s

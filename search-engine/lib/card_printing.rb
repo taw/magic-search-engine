@@ -244,6 +244,7 @@ class CardPrinting
     loyalty
     mana_cost
     mana_hash
+    modal
     mv
     name
     name_slug
