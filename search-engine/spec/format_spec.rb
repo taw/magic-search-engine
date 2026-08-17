@@ -313,15 +313,20 @@ describe "Formats" do
   # game:arena for sets which never were on Arena, because Arena store decks reference
   # them, so a new entry here can equally be a genuine reprint (=> "legal", like the
   # J21 four when AA4 and OMB picked them up) or just another mis-tagged paper printing.
+  #
+  # It's also what guards Timeless's ban list, which derives its conjurable/specialized
+  # list from Historic's minus a hardcoded exception. A new "historic: ..." entry here
+  # means a card that's conjurable in Historic only because it's pre-banned there anyway,
+  # and Timeless needs to except it too.
   it "conjurable and specialized cards have no Arena printing outside conjure-only sets" do
     expected = {
       # Legitimately both - it was pre-banned out of STA, and only later got a
-      # conjurable version in HBG
+      # conjurable version in HBG. Excepted in Timeless, where it's an ordinary card.
       "historic: Lightning Bolt" => ["fca", "msc", "sta", "tle"],
     }
 
     actual = {}
-    ["alchemy", "historic"].each do |format_name|
+    ["alchemy", "historic", "timeless"].each do |format_name|
       format = Format[format_name].new
       db.cards.each_value do |card|
         next unless ["conjurable", "specialized"].include?(format.legality(card))
@@ -336,7 +341,7 @@ describe "Formats" do
   # This direction doesn't need the game:arena tag at all - a conjured card has to be
   # conjured from somewhere
   it "conjurable and specialized cards come from a conjure-only set" do
-    orphans = ["alchemy", "historic"].flat_map do |format_name|
+    orphans = ["alchemy", "historic", "timeless"].flat_map do |format_name|
       format = Format[format_name].new
       db.cards.each_value.select{|card|
         next false unless ["conjurable", "specialized"].include?(format.legality(card))
@@ -405,7 +410,7 @@ describe "Formats" do
   end
 
   it "restricted:*" do
-    assert_search_equal "restricted:*", "restricted:vintage or restricted:duel or restricted:unsets or restricted:historic or restricted:alchemy or restricted:commander"
+    assert_search_equal "restricted:*", "restricted:vintage or restricted:duel or restricted:unsets or restricted:historic or restricted:timeless or restricted:alchemy or restricted:commander"
   end
 
   it "legal:*" do
@@ -413,6 +418,7 @@ describe "Formats" do
       legal:vintage or
       legal:unsets or
       legal:historic or
+      legal:timeless or
       legal:commander or
       legal:"Urza Block" or
       legal:penny or

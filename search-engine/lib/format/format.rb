@@ -298,6 +298,7 @@ class Format
         "dueledh"                    => FormatDuelCommander,
         "duel"                       => FormatDuelCommander,
         "historic"                   => FormatHistoric,
+        "timeless"                   => FormatTimeless,
         "premodern"                  => FormatPremodern,
         "alchemy"                    => FormatAlchemy,
       }
@@ -318,4 +319,6 @@ end
 require_relative "format_vintage"
 require_relative "format_standard"
 require_relative "format_commander"
+# FormatTimeless subclasses it
+require_relative "format_historic"
 Dir["#{__dir__}/format_*.rb"].each do |path| require_relative path end
