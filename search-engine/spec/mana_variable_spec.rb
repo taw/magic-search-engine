@@ -66,3 +66,62 @@ describe "mana variables" do
     assert_search_equal "mana={m}{w/b}", "mana={w}{w/b} OR mana={u}{w/b} OR mana={b}{w/b} OR mana={r}{w/b} OR mana={g}{w/b}"
   end
 end
+
+# Resolving variables against every printing is expensive and pointless, as the
+# answer only depends on the mana cost and there are ~870 of those in the whole
+# index, so ConditionMana memoizes by cost.
+describe "ConditionMana caching" do
+  include_context "db"
+
+  let(:printings) { db.printings }
+
+  def uncached(op, mana)
+    cond = ConditionMana.new(op, mana)
+    printings.select{|card| cond.send(:match_mana?, card.mana_hash) }
+  end
+
+  def cached(op, mana)
+    cond = ConditionMana.new(op, mana)
+    printings.select{|card| cond.match?(card) }
+  end
+
+  # A mana query answers "no" for most of the index, so caching that has to
+  # work as well as caching "yes" - `@cache[cost] ||= ...` would recompute
+  # every miss and quietly give back all of the cost with none of the benefit
+  # `@cache[cost] ||= ...` would answer correctly and cache nothing useful: a
+  # mana query says "no" for most of the index, and every one of those misses
+  # would be recomputed on the next printing with the same cost
+  it "computes each distinct mana cost once, negative answers included" do
+    cond = ConditionMana.new("=", "hh")
+    calls = 0
+    cond.define_singleton_method(:match_mana?) do |card_mana|
+      calls += 1
+      super(card_mana)
+    end
+    printings.each{|card| cond.match?(card) }
+    calls.should eq(printings.map(&:mana_cost).uniq.size)
+    cond.instance_variable_get(:@cache).values.count(false).should be > 0
+  end
+
+  it "gives the same results as recomputing per printing" do
+    mismatched = []
+    %w[= != > >= < <=].each do |op|
+      ["", "2g", "m", "mm", "hh", "mno", "{2/w}{2/w}", "wubrg"].each do |mana|
+        mismatched << "mana#{op}#{mana}" unless cached(op, mana) == uncached(op, mana)
+      end
+    end
+    mismatched.should eq([])
+  end
+
+  # ConditionAnd .uniqs subconditions by #hash, so cache contents must stay out
+  # of equality or a condition would stop matching itself once it has run
+  it "stays equal to an identical condition after running" do
+    used = ConditionMana.new(">", "mm")
+    fresh = ConditionMana.new(">", "mm")
+    printings.each{|card| used.match?(card) }
+    used.should eq(fresh)
+    used.hash.should eq(fresh.hash)
+    [used, fresh].uniq.size.should eq(1)
+    used.should_not eq(ConditionMana.new(">", "gg"))
+  end
+end

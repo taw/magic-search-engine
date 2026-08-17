@@ -5,10 +5,31 @@ class ConditionMana < ConditionSimple
     @op = op
     @query_mana = parse_query_mana(mana.downcase)
     @needs_resolution = !!(@query_mana.keys.join =~ /[mnoh]/)
+    @cache = {}
   end
 
+  # The whole comparison is a function of the card's mana cost, and 112k
+  # printings only have ~870 distinct ones between them, so nearly all of this
+  # is the same handful of answers recomputed. Variable mana (mnoh) has to
+  # re-resolve the query against each cost, which is what makes it worth
+  # caching rather than just fast. Not `||=` - a mana query says "no" far more
+  # often than "yes", and a cached false has to count as an answer.
   def match?(card)
-    card_mana = card.mana_hash
+    cost = card.mana_cost
+    @cache.fetch(cost) { @cache[cost] = match_mana?(card.mana_hash) }
+  end
+
+  def state_ivars
+    super - [:@cache]
+  end
+
+  def to_s
+    "mana#{@op}#{query_mana_to_s}"
+  end
+
+  private
+
+  def match_mana?(card_mana)
     if @query_mana.empty?
       case @op
       when "="
@@ -47,12 +68,6 @@ class ConditionMana < ConditionSimple
       end
     end
   end
-
-  def to_s
-    "mana#{@op}#{query_mana_to_s}"
-  end
-
-  private
 
   def parse_query_mana(mana)
     pool = Hash.new(0)

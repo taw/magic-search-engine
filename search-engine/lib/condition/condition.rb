@@ -43,17 +43,26 @@ class Condition
     @logger = value if key == :logger
   end
 
+  # Which instance variables are part of what the condition asks. Anything a
+  # condition memoizes while running has to be left out, or it would stop being
+  # equal to an identical condition that hasn't run yet - and ConditionAnd
+  # .uniqs its subconditions by #hash, so a hash that changes mid-search is
+  # worse than a wrong ==.
+  def state_ivars
+    instance_variables
+  end
+
   def ==(other)
     # structural equality, subclass if you need something fancier
     self.class == other.class and
-      instance_variables == other.instance_variables and
-      instance_variables.all?{|ivar| instance_variable_get(ivar) == other.instance_variable_get(ivar) }
+      state_ivars == other.state_ivars and
+      state_ivars.all?{|ivar| instance_variable_get(ivar) == other.instance_variable_get(ivar) }
   end
 
   def hash
     [
       self.class,
-      instance_variables.map{|ivar| [ivar, instance_variable_get(ivar)] }
+      state_ivars.map{|ivar| [ivar, instance_variable_get(ivar)] }
     ].hash
   end
 
