@@ -110,12 +110,7 @@ class CardController < ApplicationController
   def paginate_card_groups(card_groups, page, per_page)
     WillPaginate::Collection.create(page, per_page, card_groups.size) do |pager|
       window = card_groups[pager.offset, pager.per_page] || []
-      pager.replace(window.map{|printings| choose_best_printing(printings)})
+      pager.replace(window.map{|printings| [SearchResults.best_printing(printings), printings]})
     end
-  end
-
-  def choose_best_printing(printings)
-    best_printing = printings.find(&:image_path) || printings[0]
-    [best_printing, printings]
   end
 end

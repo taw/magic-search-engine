@@ -27,9 +27,8 @@ class FormatController < ApplicationController
   private
 
   def search_best_printings(query)
-    results = $CardDatabase.search(query).printings
-    results.group_by(&:name).sort.map do |name, printings|
-      printings.find(&:image_path) || printings[0]
+    $CardDatabase.search(query).printings.group_by(&:name).sort.map do |name, printings|
+      SearchResults.best_printing(printings)
     end
   end
 end

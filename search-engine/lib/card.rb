@@ -188,6 +188,29 @@ class Card
     !!@names
   end
 
+  # Decklists group cards by type. A card with more than one type goes into the
+  # first group matching here, which is not the order the groups are displayed
+  # in - Dryad Arbor is a creature, Urza's Saga is a land, and every artifact
+  # creature is a creature.
+  TYPE_GROUPS = [
+    ["creature",     [1, "Creature"].freeze],
+    ["land",         [7, "Land"].freeze],
+    ["planeswalker", [2, "Planeswalker"].freeze],
+    ["instant",      [3, "Instant"].freeze],
+    ["sorcery",      [4, "Sorcery"].freeze],
+    ["artifact",     [5, "Artifact"].freeze],
+    ["enchantment",  [6, "Enchantment"].freeze],
+  ].freeze
+  OTHER_TYPE_GROUP = [8, "Other"].freeze
+
+  # [sort index, name] of the decklist section this card belongs to
+  def type_group
+    TYPE_GROUPS.each do |type, group|
+      return group if @types.include?(type)
+    end
+    OTHER_TYPE_GROUP
+  end
+
   def inspect
     "Card(#{name})"
   end

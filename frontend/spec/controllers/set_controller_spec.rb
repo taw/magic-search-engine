@@ -28,6 +28,29 @@ RSpec.describe SetController, type: :controller do
     expect(css_select(".results_summary").text).to match(/Individual cards released between 2019-01-25 and 2021-12-08/)
   end
 
+  it "links everything else we know about the set" do
+    get "show", params: {id: "nph"}
+    assert_response 200
+    assert_select %[a[href="/pack/nph-draft"]:contains("New Phyrexia Draft Booster")]
+    assert_select %[a[href="/product/nph/new_phyrexia_booster_box"]:contains("New Phyrexia Booster Box")]
+    assert_select %[a[href="/limited_format/nph/draft"]:contains("New Phyrexia Draft")]
+    assert_select %[a[href="/deck/nph/war-of-attrition"]]
+  end
+
+  # The summary is only worth a page of its own, so page 2 is just cards
+  it "paginates" do
+    get "show", params: {id: "nph"}
+    assert_response 200
+    assert_select ".card_row", 25
+    first_page = css_select(".card_row .card_title").map(&:text)
+
+    get "show", params: {id: "nph", page: "2"}
+    assert_response 200
+    assert_select ".card_row", 25
+    assert_select ".results_summary", text: ""
+    assert_empty first_page & css_select(".card_row .card_title").map(&:text)
+  end
+
   it "fake set" do
     get "show", params: {id: "lolwtf"}
     assert_response 404

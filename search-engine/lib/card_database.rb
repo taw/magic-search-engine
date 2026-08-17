@@ -13,6 +13,7 @@ require_relative "card_sheet"
 require_relative "card"
 require_relative "color_balanced_card_sheet"
 require_relative "card_sheet_with_duplicates"
+require_relative "fixed_card_list"
 require_relative "fixed_card_sheet"
 require_relative "limited_format"
 require_relative "color"
@@ -165,6 +166,17 @@ class CardDatabase
   # Whenever we list supported booster types, skip aliases
   def unique_supported_booster_types
     @unique_supported_booster_types ||= supported_booster_types.select{|code, booster| code == booster.code}
+  end
+
+  # Boosters a descriptor asks for. Usually one - a booster code like
+  # "dgm-draft", or a set code like "dgm" for that set's default booster. A
+  # pack the player got at random out of a few, like the allied guild booster
+  # of the Dragon's Maze prerelease, is described as its alternatives joined
+  # by "|".
+  #
+  # Descriptors come out of urls, so codes we have no booster for are skipped.
+  def boosters_for_descriptor(descriptor)
+    descriptor.to_s.split("|").filter_map{|code| supported_booster_types[code]}
   end
 
   def promo_types

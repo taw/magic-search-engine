@@ -20,6 +20,42 @@ RSpec.describe DeckController, type: :controller do
     end
   end
 
+  # Commander 2011 is as settled as precon data gets
+  describe "a commander deck" do
+    before do
+      get "show", params: {set: "cmd", id: "counterpunch"}
+      assert_response 200
+    end
+
+    it "puts the commander first, then the cards by type" do
+      groups = css_select(".card_group h6").map(&:text).map{|t| t.sub(/ \(\d+\)\z/, "")}
+      assert_equal groups.first, "Commander"
+      assert_equal groups.last, "Display Commander"
+      assert_includes groups, "Creature"
+      assert_includes groups, "Land"
+      assert_equal groups, groups.uniq
+    end
+
+    it "counts the cards of each group" do
+      assert_select %[.card_group h6:contains("Commander (1)")]
+      counts = css_select(".card_group h6").map{|h| h.text[/\((\d+)\)/, 1].to_i}
+      # 99 main deck cards, the commander, and the three oversized commanders
+      assert_equal counts.sum, 103
+    end
+
+    # Hovering a card name swaps the big picture, so every card needs one,
+    # and exactly one of them starts out visible
+    it "previews the commander by default" do
+      previews = css_select(".card_picture_cell")
+      shown = previews.reject{|cell| cell["style"].to_s.include?("display: none")}
+      assert_equal shown.map{|cell| cell["data-preview"]}, ["cmd-200"]
+      ids = previews.map{|cell| cell["data-preview"]}
+      assert_equal ids, ids.uniq
+      # The oversized commanders are foil, and a different card from cmd-200
+      assert_includes ids, "ocmd-200-foil"
+    end
+  end
+
   it "fake set" do
     get "show", params: {set: "m99", id: "Homarids"}
     assert_response 404
@@ -163,6 +199,70 @@ RSpec.describe DeckController, type: :controller do
       assert_response 200
       assert_equal "Deck Visualizer - #{APP_NAME}", html_document.title
       assert_equal deck_list, ["40 Lightning Bolt {R}", "20 Pod of Greed"]
+    end
+
+    # Cockatrice, XMage and friends export xml, not text
+    it "shows a deck exported by another program" do
+      path = "#{__dir__}/decks/cockatrice.cod"
+      post "visualize", params: {deck_upload: Rack::Test::UploadedFile.new(path)}
+      assert_response 200
+      assert_equal deck_list, ["4 Lightning Bolt {R}", "20 Mountain", "2 Dandân {U}{U}"]
+    end
+
+    it "says so instead of blowing up on a file that isn't a deck at all" do
+      path = "#{__dir__}/decks/binary.dat"
+      post "visualize", params: {deck_upload: Rack::Test::UploadedFile.new(path)}
+      assert_response 200
+      assert_select %[.warning:contains("Can't parse uploaded deck.")]
+      assert_equal deck_list, []
+    end
+
+    def visible_preview
+      previews = css_select(".card_picture_cell")
+      shown = previews.reject{|cell| cell["style"].to_s.include?("display: none")}
+      shown.map{|cell| cell["data-preview"]}
+    end
+
+    it "previews the commander" do
+      post "visualize", params: {deck: "COMMANDER: 1 Ghave, Guru of Spores\n40 Lightning Bolt"}
+      assert_response 200
+      commander = css_select(".previewable_card_name").first
+      assert_includes commander.text, "Ghave, Guru of Spores"
+      assert_equal visible_preview, [commander["data-preview-link"]]
+    end
+
+    # There is no picture to preview for a card we know nothing about, so the
+    # preview box would have been blank
+    it "previews something else if the commander is a card we don't know" do
+      post "visualize", params: {deck: "COMMANDER: 1 Pod of Greed\n40 Lightning Bolt"}
+      assert_response 200
+      assert_equal visible_preview.size, 1
+    end
+
+    it "has nothing to preview if we know none of the cards" do
+      post "visualize", params: {deck: "40x Pod of Greed"}
+      assert_response 200
+      assert_equal visible_preview, []
+    end
+
+    # Cards are grouped by type, in the order decklists are usually printed in
+    it "groups cards by type" do
+      deck = <<~EOF
+        1 Karn Liberated
+        1 Alpha Myr
+        1 Ancient Den
+        1 Aether Spellbomb
+        1 Altar's Light
+        1 Barter in Blood
+        1 Arrest
+        1 Adriana's Valor
+      EOF
+      post "visualize", params: {deck: deck}
+      assert_response 200
+      assert_equal css_select(".decklist h6").map(&:text), [
+        "Creature (1)", "Planeswalker (1)", "Instant (1)", "Sorcery (1)",
+        "Artifact (1)", "Enchantment (1)", "Land (1)", "Other (1)",
+      ]
     end
   end
 end

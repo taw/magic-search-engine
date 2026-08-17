@@ -125,13 +125,8 @@ module ApplicationHelper
     "/sealed?" + url_query(
       count: boosters.map{|count, code| count},
       set: boosters.map{|count, code| code},
-      fixed: pool.promo_cards.map{|card| fixed_card_line(card)}.join("\n").presence,
+      fixed: pool.promo_cards.map{|card| FixedCardList.line_for(card)}.join("\n").presence,
     )
-  end
-
-  # Format the sealed simulator's "fixed cards" box understands
-  def fixed_card_line(card)
-    "1x #{card.set_code}:#{card.number}#{card.foil ? ":foil" : ""}"
   end
 
   def link_to_product(product, &blk)
@@ -271,6 +266,54 @@ module ApplicationHelper
       .reverse
   end
 
+  def language_name(language_code)
+    {
+      cs: "Simplified Chinese",
+      ct: "Traditional Chinese",
+      fr: "French",
+      de: "German",
+      it: "Italian",
+      jp: "Japanese",
+      kr: "Korean",
+      pt: "Brazilian Portuguese",
+      ru: "Russian",
+      sp: "Spanish",
+    }.fetch(language_code)
+  end
+
+  # We should probably just use this everywhere
+  def official_language_code(language_code)
+    {
+      cs: "zh-CN",
+      ct: "zh-TW",
+      sp: "es",
+      jp: "ja",
+    }[language_code] || language_code.to_s
+  end
+
+  def language_flag(language_code)
+    {
+      cs: "cn",
+      ct: "tw",
+      fr: "fr",
+      de: "de",
+      it: "it",
+      jp: "jp",
+      kr: "kr",
+      pt: "br",
+      ru: "ru",
+      sp: "es",
+    }.fetch(language_code)
+  end
+
+  def preview_id(card)
+    [card.set_code, card.number, card.foil ? "foil" : nil].compact.join("-")
+  end
+
+  def format_display(text)
+    text.gsub(/(\[(.*?):(.*?)\])/) { link_to_query("e:#{$2} number:#{$3} ++") { $1 } }.gsub("\n", "<br/>").html_safe
+  end
+
   private
 
   def format_mana_symbols(syms)
@@ -311,53 +354,5 @@ module ApplicationHelper
       "wup", "wbp", "rwp", "gwp", "ubp", "urp", "gup", "brp", "bgp", "rgp",
       "tk",
     ]
-  end
-
-  def language_name(language_code)
-    {
-      cs: "Simplified Chinese",
-      ct: "Traditional Chinese",
-      fr: "French",
-      de: "German",
-      it: "Italian",
-      jp: "Japanese",
-      kr: "Korean",
-      pt: "Brazilian Portuguese",
-      ru: "Russian",
-      sp: "Spanish",
-    }.fetch(language_code)
-  end
-
-  # We should probably just use this everywhere
-  def official_language_code(language_code)
-    {
-      cs: "zh-CN",
-      ct: "zh-TW",
-      sp: "es",
-      jp: "ja",
-    }[language_code] || language_code
-  end
-
-  def language_flag(language_code)
-    {
-      cs: "cn",
-      ct: "tw",
-      fr: "fr",
-      de: "de",
-      it: "it",
-      jp: "jp",
-      kr: "kr",
-      pt: "br",
-      ru: "ru",
-      sp: "es",
-    }.fetch(language_code)
-  end
-
-  def preview_id(card)
-    [card.set_code, card.number, card.foil ? "foil" : nil].compact.join("-")
-  end
-
-  def format_display(text)
-    text.gsub(/(\[(.*?):(.*?)\])/) { link_to_query("e:#{$2} number:#{$3} ++") { $1 } }.gsub("\n", "<br/>").html_safe
   end
 end

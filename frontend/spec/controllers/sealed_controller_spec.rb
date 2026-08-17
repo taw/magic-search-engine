@@ -51,4 +51,56 @@ RSpec.describe SealedController, type: :controller do
     assert_response 200
     assert_select %[option:contains("Random: ")], false
   end
+
+  # The pack codes come straight out of the url
+  it "ignores packs it doesn't have" do
+    get "index", params: {count: ["1", "1", "1"], set: ["lolwtf", "nph-lolwtf", "arn"]}
+    assert_response 200
+    assert_select ".card_picture_container", count: 8
+  end
+
+  it "ignores a random pack whose alternatives it doesn't have" do
+    get "index", params: {count: ["1"], set: ["lolwtf|nolwtf"]}
+    assert_response 200
+    assert_select ".card_picture_container", 0
+  end
+
+  describe "fixed cards" do
+    it "hands out the fixed cards along with the packs" do
+      get "index", params: {count: ["1"], set: ["arn"], fixed: "2x nph:1\nnph:2:foil"}
+      assert_response 200
+      assert_select ".card_picture_container", count: 8 + 3
+      assert_select %[a[href="/card/nph/1/Karn-Liberated"]], 2
+      assert_select ".warning", 0
+    end
+
+    # The box is hand-edited, so a bad line must not cost the player their pool
+    it "reports lines it can't parse, and opens the packs anyway" do
+      get "index", params: {count: ["1"], set: ["arn"], fixed: "whatever\nnph:1"}
+      assert_response 200
+      assert_select ".card_picture_container", count: 8 + 1
+      assert_select %[.warning:contains("Invalid line: whatever")]
+    end
+
+    it "reports cards it can't find" do
+      get "index", params: {count: ["1"], set: ["arn"], fixed: "lolwtf:1\nnph:9999"}
+      assert_response 200
+      assert_select %[.warning:contains("Cannot find set with code: lolwtf")]
+      assert_select %[.warning:contains("Cannot find card set with number 9999 in set nph")]
+    end
+
+    # Whatever the player typed stays in the box, so they can fix it and retry
+    it "keeps the box filled in" do
+      get "index", params: {count: ["1"], set: ["arn"], fixed: "nph:1"}
+      assert_response 200
+      assert_select %[textarea#fixed], text: "nph:1"
+    end
+
+    # No packs means nothing was opened yet, just the form being shown
+    it "does not hand out fixed cards on their own" do
+      get "index", params: {fixed: "nph:1"}
+      assert_response 200
+      assert_select ".card_picture_container", 0
+    end
+  end
 end

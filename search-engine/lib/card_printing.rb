@@ -267,6 +267,7 @@ class CardPrinting
     text
     text_normalized
     toughness
+    type_group
     typeline
   ].each do |m|
     eval("def #{m}; @card.#{m}; end")

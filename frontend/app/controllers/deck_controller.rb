@@ -107,52 +107,20 @@ class DeckController < ApplicationController
   end
 
   def choose_default_preview_card
-    # Choose best card to preview
-    if @commander.size.between?(1,2)
-      # Commander
-      @default_preview_card = @commander.first.last
-    elsif @sideboard.size.between?(1,2)
-      # Commander, if it didn't get migrated to new system
-      @default_preview_card = @sideboard.first.last
-    else
-      @default_preview_card = @card_previews.min_by do |c|
-        rarity = c.rarity
-        types = c.main_front.types
-        score = 0
-        score += 10000 if rarity == "mythic"
-        score += 1000 if rarity == "rare"
-        score += 100 if types.include?("planeswalker")
-        score += 10 if types.include?("legendary")
-        score += 1 if types.include?("creature")
-        [-score, c.name]
-      end
+    # A deck is about its commander, so preview that - looking in the sideboard
+    # too, for decks whose commander never got migrated to the new system
+    commander = [@commander, @sideboard].find{|section| section.size.between?(1,2)}
+    @default_preview_card = commander&.first&.last
+    # A pasted decklist can name a card we know nothing about, and there is no
+    # picture to preview for that one
+    unless @card_previews.include?(@default_preview_card)
+      @default_preview_card = PhysicalCard.best_preview(@card_previews)
     end
   end
 
   def group_cards
     @card_groups = @cards.group_by do |count, card|
-      if card.is_a?(UnknownCard) or card.nil?
-        [9, "Other"]
-      else
-        types = card.main_front.types
-        if types.include?("creature")
-          [1, "Creature"]
-        elsif types.include?("land")
-          [7, "Land"]
-        elsif types.include?("planeswalker")
-          [2, "Planeswalker"]
-        elsif types.include?("instant")
-          [3, "Instant"]
-        elsif types.include?("sorcery")
-          [4, "Sorcery"]
-        elsif types.include?("artifact")
-          [5, "Artifact"]
-        elsif types.include?("enchantment")
-          [6, "Enchantment"]
-        else
-          [8, "Other"]
-        end
-      end
+      card.nil? ? UnknownCard::TYPE_GROUP : card.type_group
     end
     unless @sideboard.blank?
       @card_groups[[10, "Sideboard"]] = @sideboard

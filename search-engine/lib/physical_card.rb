@@ -100,6 +100,28 @@ class PhysicalCard
     main_front.rarity
   end
 
+  def type_group
+    main_front.type_group
+  end
+
+  # Deck pages show one card of the deck as a big picture. Without a commander
+  # to point at, the most interesting card is the best guess - a mythic
+  # planeswalker beats a rare creature beats yet another Mountain.
+  def preview_score
+    types = main_front.types
+    score = 0
+    score += 10000 if rarity == "mythic"
+    score += 1000 if rarity == "rare"
+    score += 100 if types.include?("planeswalker")
+    score += 10 if types.include?("legendary")
+    score += 1 if types.include?("creature")
+    score
+  end
+
+  def self.best_preview(cards)
+    cards.min_by{|card| [-card.preview_score, card.name]}
+  end
+
   def oversized
     main_front.oversized
   end

@@ -40,6 +40,36 @@ RSpec.describe FormatController, type: :controller do
     assert_select %[p:contains("There are no restricted cards.")]
   end
 
+  # These two moved on the Standard banlist in 2011 and never came back
+  it "show - ban history" do
+    get "show", params: {id: "standard"}
+    assert_response 200
+    assert_select %[h4:contains("Ban history")]
+    assert_select %[h6:contains("2011-07-01")]
+    assert_select %[li a[href="/card?q=%21Jace%2C+the+Mind+Sculptor"]]
+    assert_select %[a:contains("Announcement")]
+    events = css_select("li").map{|li| li.text.split(/\s+/).join(" ").strip}
+    assert_includes events, "Jace, the Mind Sculptor: legal → banned"
+    assert_includes events, "Stoneforge Mystic: legal → banned"
+  end
+
+  it "show - rotation history" do
+    get "show", params: {id: "standard"}
+    assert_response 200
+    assert_select %[h4:contains("Rotation history")]
+    assert_select %[li:contains("Currently:")]
+    assert_select %[li:contains("Until 2011-09-30:")] do |items|
+      assert_includes items.first.text, "Scars of Mirrodin"
+    end
+  end
+
+  it "show - restricted cards" do
+    get "show", params: {id: "vintage"}
+    assert_response 200
+    assert_select %[h4:contains("Restricted cards")]
+    assert_select %[li a:contains("Black Lotus")]
+  end
+
   Format.all_format_classes.each do |format_class|
     format = format_class.new
     it "format - #{format}" do

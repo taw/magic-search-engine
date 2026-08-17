@@ -1,13 +1,7 @@
 class ArtistController < ApplicationController
   def index
     @title = "Artists"
-    @artists = Hash.new(0)
-    $CardDatabase.sets.each_value do |set|
-      set.printings.each do |printing|
-        @artists[printing.artist] += 1
-      end
-    end
-    @artists = @artists.sort
+    @artists = $CardDatabase.artists.each_value.sort.map{|artist| [artist, artist.printings.size]}
   end
 
   def show

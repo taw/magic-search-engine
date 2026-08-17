@@ -27,6 +27,18 @@ class SearchResults
     end
   end
 
+  # Everything showing one printing per card - search results, format banlists,
+  # the API - wants the one we have a picture of, or the page is a wall of
+  # blank card frames.
+  def self.best_printing(printings)
+    printings.find(&:image_path) || printings[0]
+  end
+
+  # One printing per card, in result order
+  def best_printings
+    card_groups.map{|printings| SearchResults.best_printing(printings)}
+  end
+
   def size
     @printings.size
   end

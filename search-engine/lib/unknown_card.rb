@@ -1,8 +1,16 @@
 class UnknownCard
   attr_reader :name
 
+  # We know nothing about it, so it can't go into any of Card's groups,
+  # and it sorts after all of them
+  TYPE_GROUP = [9, "Other"].freeze
+
   def initialize(name)
     @name = name
+  end
+
+  def type_group
+    TYPE_GROUP
   end
 
   def ==(other)
