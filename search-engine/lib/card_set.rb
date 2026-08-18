@@ -6,7 +6,7 @@ class CardSet
   attr_reader :products, :subsets, :languages
   attr_reader :limited_formats
   attr_reader :token_set_code
-  attr_reader :normalized_name, :normalized_name_alt, :printing_by_number
+  attr_reader :normalized_name, :normalized_name_alt
 
   # Set by CardDatabase initialization, sets ordered by name
   attr_accessor :name_sort_index
