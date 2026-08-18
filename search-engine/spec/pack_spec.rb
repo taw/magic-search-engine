@@ -1,8 +1,7 @@
 describe Pack do
   include_context "db"
-  let(:pack_factory) { PackFactory.new(db) }
-  let(:pack_ala) { pack_factory.for("ala", "draft") }
-  let(:pack_4ed) { pack_factory.for("4ed", nil) }
+  let(:pack_ala) { db.supported_booster_types["ala-draft"] }
+  let(:pack_4ed) { db.supported_booster_types["4ed"] }
 
   ## All these are used just by tests, but it's good to sanity check them
 

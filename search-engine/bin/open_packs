@@ -10,10 +10,6 @@ class OpenPacks
     @db ||= CardDatabase.load
   end
 
-  def factory
-    @factory ||= PackFactory.new(db)
-  end
-
   def option_parser
     @option_parser ||= Optimist::Parser.new do
       banner <<~EOS
@@ -56,7 +52,7 @@ class OpenPacks
 
   def show_unsupported
     db.sets.values.select{|set|
-      set.types.include?("booster") and !factory.for(set.code)
+      set.types.include?("booster") and !db.supported_booster_types[set.code]
     }.each do |set|
       puts "%3s %s" % [set.code.upcase, set.name]
     end

@@ -46,8 +46,6 @@ describe "is:booster" do
   # realistically it would be far too complex
 
   describe "Arena and play boosters" do
-    let(:pack_factory) { PackFactory.new(db) }
-
     let(:standard_arena_sets) do
       db.sets.values.select{|s|
         (s.types.include?("standard") or s.code == "ltr") and
@@ -90,33 +88,33 @@ describe "is:booster" do
     it do
       db.sets.each do |set_code, set|
         if set_code == "sir"
-          pack_factory.for(set_code, "arena-1").should_not(be_nil, "#{set_code} should have Arena boosters")
-          pack_factory.for(set_code, "arena-2").should_not(be_nil, "#{set_code} should have Arena boosters")
-          pack_factory.for(set_code, "arena-3").should_not(be_nil, "#{set_code} should have Arena boosters")
-          pack_factory.for(set_code, "arena-4").should_not(be_nil, "#{set_code} should have Arena boosters")
-          pack_factory.for(set_code, nil).should(be_nil, "#{set_code} should not have default boosters")
+          db.supported_booster_types["#{set_code}-arena-1"].should_not(be_nil, "#{set_code} should have Arena boosters")
+          db.supported_booster_types["#{set_code}-arena-2"].should_not(be_nil, "#{set_code} should have Arena boosters")
+          db.supported_booster_types["#{set_code}-arena-3"].should_not(be_nil, "#{set_code} should have Arena boosters")
+          db.supported_booster_types["#{set_code}-arena-4"].should_not(be_nil, "#{set_code} should have Arena boosters")
+          db.unique_supported_booster_types[set_code].should(be_nil, "#{set_code} should not have default boosters")
         elsif arena_only_sets.include?(set_code)
-          pack_factory.for(set_code, "arena").should_not(be_nil, "#{set_code} should have Arena boosters")
-          pack_factory.for(set_code, "draft").should(be_nil, "#{set_code} should not have draft boosters")
+          db.supported_booster_types["#{set_code}-arena"].should_not(be_nil, "#{set_code} should have Arena boosters")
+          db.supported_booster_types["#{set_code}-draft"].should(be_nil, "#{set_code} should not have draft boosters")
         elsif standard_arena_sets.include?(set_code)
           # MKM
           if set.release_date >=  Date.parse("2024-02-09")
             # not sure if these should be xxx-play-arena or just xxx-arena
             # They should be supported, but support is so poor that just print a warning
-            if pack_factory.for(set_code, "play-arena") == nil
+            if db.supported_booster_types["#{set_code}-play-arena"] == nil
               warn "#{set_code} should have Arena Play boosters"
             end
-            pack_factory.for(set_code, "play").should_not(be_nil, "#{set_code} should have regular boosters")
-            pack_factory.for(set_code, "draft").should(be_nil, "#{set_code} should not have draft boosters")
+            db.supported_booster_types["#{set_code}-play"].should_not(be_nil, "#{set_code} should have regular boosters")
+            db.supported_booster_types["#{set_code}-draft"].should(be_nil, "#{set_code} should not have draft boosters")
           elsif set_code == "mat"
-            pack_factory.for(set_code, "arena").should_not(be_nil, "#{set_code} should have Arena boosters")
-            pack_factory.for(set_code, nil).should_not(be_nil, "#{set_code} should have default boosters")
+            db.supported_booster_types["#{set_code}-arena"].should_not(be_nil, "#{set_code} should have Arena boosters")
+            db.unique_supported_booster_types[set_code].should_not(be_nil, "#{set_code} should have default boosters")
           else
-            pack_factory.for(set_code, "arena").should_not(be_nil, "#{set_code} should have Arena boosters")
-            pack_factory.for(set_code, "draft").should_not(be_nil, "#{set_code} should have draft boosters")
+            db.supported_booster_types["#{set_code}-arena"].should_not(be_nil, "#{set_code} should have Arena boosters")
+            db.supported_booster_types["#{set_code}-draft"].should_not(be_nil, "#{set_code} should have draft boosters")
           end
         else
-          pack_factory.for(set_code, "arena").should(be_nil, "#{set_code} should not have Arena boosters")
+          db.supported_booster_types["#{set_code}-arena"].should(be_nil, "#{set_code} should not have Arena boosters")
         end
       end
     end

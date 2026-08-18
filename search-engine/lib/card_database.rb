@@ -130,10 +130,6 @@ class CardDatabase
     end
   end
 
-  def pack_factory
-    @pack_factory ||= PackFactory.new(self)
-  end
-
   # Excluding unsupported ones
   # It's a very slow method, so memoize, but better just make it fast
   def supported_booster_types
@@ -334,6 +330,13 @@ class CardDatabase
   end
 
   private
+
+  # Boosters are reached through supported_booster_types, which is what builds
+  # them all in the first place. Nothing outside a load has any reason to build
+  # another one.
+  def pack_factory
+    @pack_factory ||= PackFactory.new(self)
+  end
 
   # Read once by load_products! and load_limited_formats! and never looked at
   # again, so there is nothing to memoize - holding the parsed copy afterwards

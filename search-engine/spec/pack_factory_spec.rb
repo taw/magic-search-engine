@@ -6,7 +6,6 @@
 # I might delete this whole spec at some point
 describe PackFactory do
   include_context "db"
-  let(:factory) { PackFactory.new(db) }
   let(:variant) { nil }
   let(:foil) { false }
   let(:pack) { db.supported_booster_types[[set_code, variant].compact.join("-")] }
@@ -840,7 +839,7 @@ describe PackFactory do
   end
 
   context "Alara Premium" do
-    let(:pack) { factory.for("ala", "premium") }
+    let(:pack) { db.supported_booster_types["ala-premium"] }
     let(:foil) { true }
     let(:basic) { card("r:basic") }
     let(:common) { card("r:common") }

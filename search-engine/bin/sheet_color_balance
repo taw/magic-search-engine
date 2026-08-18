@@ -6,7 +6,6 @@ require "z3"
 require "pry"
 
 db = CardDatabase.load
-factory = PackFactory.new(db)
 
 sets = db.sets.values.select{|set| set.types.include?("booster")}
 
