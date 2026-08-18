@@ -191,8 +191,9 @@ class PhysicalCard
   end
 
   def self.for(card, foil=false, etched=false)
-    # meld really doesn't fit this model, as we have one CardPrinting that's on two physical card backs
-    # just fake something that works
+    # Meld really doesn't fit this model, as we have one CardPrinting that's on
+    # two physical card backs. Attach it to the one whose back is its top half,
+    # which the indexer's PatchMeld lists first.
     if card.back? and card.layout == "meld"
       self.for(card.others[0], foil, etched)
     elsif !card.has_multiple_parts? or card.name == "B.F.M. (Big Furry Monster)" or card.name == "B.F.M. (Big Furry Monster, Right Side)"

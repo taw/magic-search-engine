@@ -97,14 +97,16 @@ describe PhysicalCard do
     end
   end
 
-  # This doesn't quite fit the model, so just doing our best
+  # This doesn't quite fit the model, so just doing our best. The melded card is
+  # on both physical cards' backs, and belongs to the one whose back is its top
+  # half - Gisela's here.
   context "meld" do
     let(:card1) { find_unique("bruna e:emn") }
     let(:card2) { find_unique("gisela e:emn") }
     let(:card3) { find_unique("brisela e:emn") }
     it do
       physical_card1.should_not eq(physical_card2)
-      physical_card1.should eq(physical_card3)
+      physical_card2.should eq(physical_card3)
 
       physical_card1.front.should eq([card1])
       physical_card1.back.should eq([card3])
@@ -113,6 +115,22 @@ describe PhysicalCard do
       physical_card2.front.should eq([card2])
       physical_card2.back.should eq([card3])
       physical_card2.foil.should eq(false)
+    end
+
+    # Which half is on top is not in mtgjson, it is hardcoded in PatchMeld, so
+    # check every pair rather than trusting the one above to be representative.
+    it "melded card belongs to the physical card whose back is its top half" do
+      {
+        "brisela e:emn" => "gisela e:emn",
+        "chittering host e:emn" => "graf rats e:emn",
+        "hanweir, the writhing township e:emn" => "hanweir battlements e:emn",
+        "mishra, lost to phyrexia e:bro" => "mishra, claimed by gix e:bro",
+        "titania, gaea incarnate e:bro" => "titania, voice of gaea e:bro",
+        "urza, planeswalker e:bro" => "urza, lord protector e:bro",
+        "ragnarok, divine deliverance e:fin number:99b" => "vanille, cheerful l'cie e:fin number:211",
+      }.each do |melded, top|
+        PhysicalCard.for(find_unique(melded)).should eq(PhysicalCard.for(find_unique(top)))
+      end
     end
   end
 
@@ -141,8 +159,9 @@ describe PhysicalCard do
     it "meld cards use the number of the front they are part of" do
       physical_card_number("bruna e:emn").should eq("15")
       physical_card_number("gisela e:emn").should eq("28")
-      # This one is only ever half of a back, mtgjson numbers it 15b
-      physical_card_number("brisela e:emn").should eq("15")
+      # This one is only ever half of a back, and belongs to Gisela's physical
+      # card, so it takes Gisela's number rather than the 15 of mtgjson's 15b
+      physical_card_number("brisela e:emn").should eq("28")
       # Prerelease promos have a suffix which is not a face letter
       physical_card_number("bruna e:pemn").should eq("15s")
     end

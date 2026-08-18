@@ -140,8 +140,6 @@ class Indexer
       # Needs final reconciled text
       PatchShortName,
 
-      # One more round of normalization, it throws away some information
-      PatchNormalizeNames,
 
       # Deck Indexer
       PatchDecks,
