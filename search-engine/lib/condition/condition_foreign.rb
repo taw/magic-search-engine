@@ -29,13 +29,11 @@ class ConditionForeign < ConditionSimple
       end
     else
       if @lang_match_all
-        card.foreign_names_normalized.any? do |lang, data|
-          data.any? do |n|
-            n =~ @query_regexp
-          end
+        card.foreign_names_normalized.values.flatten.any? do |n|
+          n =~ @query_regexp
         end
       else
-        card.foreign_names_normalized[@lang]&.any? do |n|
+        [*card.foreign_names_normalized[@lang]].any? do |n|
           n =~ @query_regexp
         end
       end

@@ -124,17 +124,14 @@ class Card
     @specializes = data["ss"]
     @spellbook = data["sb"]
     @in_spellbook = data["is"]
-    if data["f"]
-      # A single name per language is stored unwrapped
-      @foreign_names = data["f"].map{|k,v| [k.to_sym, v.is_a?(Array) ? v : [v]]}.to_h
-      raise "Foreign data with empty value for #{name}" if @foreign_names.any?{|k,v| v.empty?}
-    else
-      @foreign_names = {}
-    end
-    @foreign_names_normalized = {}
-    @foreign_names.each do |lang, names|
-      @foreign_names_normalized[lang] = names.map{|n| hard_normalize(n)}
-    end
+    # A single name per language is stored unwrapped, and stays that way -
+    # wrapping each of them in an array of its own was 488,000 arrays.
+    # Splat on use, [*names] copes with either shape.
+    @foreign_names = data["f"] ? data["f"].transform_keys(&:to_sym) : {}
+    raise "Foreign data with empty value for #{name}" if @foreign_names.any?{|_, v| [*v].empty?}
+    @foreign_names_normalized = @foreign_names.transform_values{|names|
+      names.is_a?(Array) ? names.map{|n| hard_normalize(n)} : hard_normalize(names)
+    }
     @related = data["rl"]
     @typeline = [supertypes, types].compact.flatten.join(" ")
     if subtypes

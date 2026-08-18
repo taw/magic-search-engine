@@ -254,4 +254,47 @@ describe "Foreign language queries" do
     assert_search_equal "e:sta is:foreign", "e:sta number>=64"
     assert_search_equal "e:dmu is:foreign", "e:dmu number:369-370"
   end
+
+  # Wizards has retranslated cards over the years, so a card reprinted for long
+  # enough has more than one name in a language. Only 765 of 245,000 names, so
+  # a card holds its name for a language as a plain string and only these hold
+  # an array - which is why everything reading them splats. These are all old
+  # cards whose printing history cannot change, so they stay multi-translation.
+  context "cards with more than one translation in a language" do
+    it "keeps every translation" do
+      db.cards["shivan dragon"].foreign_names[:fr].should eq ["Dragon Shîvan", "Dragon shivân"]
+      db.cards["shivan dragon"].foreign_names[:pt].should eq ["Dragão de Shiva", "Dragão de Shiv"]
+      db.cards["sol ring"].foreign_names[:jp].should eq ["太陽のリング", "太陽の指輪"]
+      db.cards["wrath of god"].foreign_names[:sp].should eq ["Ira de Dios", "Ira de Díos"]
+      db.cards["serra angel"].foreign_names[:pt].should eq ["Anjo Serra", "Anjo de Serra"]
+      db.cards["llanowar elves"].foreign_names[:cs].should eq ["罗堰地精", "罗堰妖精"]
+      # Three, one of them a typo Wizards printed and then fixed
+      db.cards["elixir of immortality"].foreign_names[:fr].should eq [
+        "Elixir d'immortalité", "Exilir d'immortalité", "Élixir d'immortalité",
+      ]
+    end
+
+    it "finds the card by any of them" do
+      assert_search_results %[fr:"Dragon Shîvan"], "Shivan Dragon"
+      assert_search_results %[fr:"Dragon shivân"], "Shivan Dragon"
+      assert_search_results %[jp:"太陽のリング"], "Sol Ring"
+      assert_search_results %[jp:"太陽の指輪"], "Sol Ring"
+      assert_search_results %[pt:"Anjo Serra"], "Serra Angel"
+      assert_search_results %[pt:"Anjo de Serra"], "Serra Angel"
+      assert_search_results %[fr:"Exilir d'immortalité"], "Elixir of Immortality"
+      assert_search_results %[fr:"Élixir d'immortalité"], "Elixir of Immortality"
+    end
+
+    it "finds the card by any of them with foreign: and regexps" do
+      assert_search_results %[foreign:"太陽の指輪"], "Sol Ring"
+      assert_search_results %q[fr:/^Exilir d'immortalite$/], "Elixir of Immortality"
+      assert_search_results %q[foreign:/^Dragon shivan$/], "Shivan Dragon"
+    end
+
+    # The common shape, kept distinct from the above on purpose
+    it "leaves a card with one translation per language as a plain string" do
+      db.cards["counterspell"].foreign_names[:fr].should eq "Contresort"
+      db.cards["counterspell"].foreign_names_normalized[:fr].should eq "contresort"
+    end
+  end
 end
