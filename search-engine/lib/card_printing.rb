@@ -1,60 +1,76 @@
+require_relative "bitmap_flag"
 require_relative "index_format"
 
 class CardPrinting
-  # Boolean flags packed into the "!" string, see IndexFormat::FLAGS
-  ARENA_FLAG            = IndexFormat::FLAGS.fetch("arena")
-  DIGITAL_FLAG          = IndexFormat::FLAGS.fetch("digital")
-  DREAMCAST_FLAG        = IndexFormat::FLAGS.fetch("dreamcast")
-  ETCHED_FLAG           = IndexFormat::FLAGS.fetch("etched")
-  FULLART_FLAG          = IndexFormat::FLAGS.fetch("fullart")
-  NONTOURNAMENT_FLAG    = IndexFormat::FLAGS.fetch("nontournament")
-  OVERSIZED_FLAG        = IndexFormat::FLAGS.fetch("oversized")
-  SHANDALAR_FLAG        = IndexFormat::FLAGS.fetch("shandalar")
-  SPOTLIGHT_FLAG        = IndexFormat::FLAGS.fetch("spotlight")
-  TEXTLESS_FLAG         = IndexFormat::FLAGS.fetch("textless")
-  TIMESHIFTED_FLAG      = IndexFormat::FLAGS.fetch("timeshifted")
-  TOKEN_FLAG            = IndexFormat::FLAGS.fetch("token")
-  VARIANT_FOREIGN_FLAG  = IndexFormat::FLAGS.fetch("variant_foreign")
-  VARIANT_MISPRINT_FLAG = IndexFormat::FLAGS.fetch("variant_misprint")
-  NOT_MTGO_FLAG         = IndexFormat::NEGATED_FLAGS.fetch("mtgo")
-  NOT_PAPER_FLAG        = IndexFormat::NEGATED_FLAGS.fetch("paper")
-  NOT_XMAGE_FLAG        = IndexFormat::NEGATED_FLAGS.fetch("xmage")
+  extend BitmapFlag
+
+  # The six game flags come first so GAMES below stays a 64 entry table
+  FLAG_BITS = bitmap_flags(
+    :paper,
+    :mtgo,
+    :arena,
+    :shandalar,
+    :dreamcast,
+    :xmage,
+    :baseset,
+    :digital,
+    :etched,
+    :fullart,
+    :in_boosters,
+    :main_front,
+    :nontournament,
+    :oversized,
+    :spotlight,
+    :textless,
+    :timeshifted,
+    :token,
+    :variant_foreign,
+    :variant_misprint,
+  )
+
+  # Which flag each character of the index's "!" string sets, see IndexFormat.
+  # The negated ones start out set and their character clears them.
+  FLAG_SETTERS = IndexFormat::FLAGS.to_h{|name, char| [char, :"#{name}="] }.freeze
+  NEGATED_FLAG_SETTERS = IndexFormat::NEGATED_FLAGS.to_h{|name, char| [char, :"#{name}="] }.freeze
+
+  GAME_NAMES = {
+    "paper"     => :paper,
+    "mtgo"      => :mtgo,
+    "arena"     => :arena,
+    "shandalar" => :shandalar,
+    "dreamcast" => :dreamcast,
+    "xmage"     => :xmage,
+  }.freeze
+  GAMES_MASK = FLAG_BITS.values_at(*GAME_NAMES.values).inject(:|)
+  raise "game flags must be declared first" unless GAMES_MASK == (1 << GAME_NAMES.size) - 1
+  # Only 64 combinations, so build them all rather than memoize one per printing
+  GAMES = (0..GAMES_MASK).map{|bits|
+    GAME_NAMES.filter_map{|name, flag| name if bits & FLAG_BITS[flag] != 0 }.freeze
+  }.freeze
 
   attr_reader(
     :artist_name,
     :attraction_lights,
     :border,
     :card,
-    :date,
-    :digital,
-    :etched,
     :flavor_name,
     :flavor_normalized,
     :flavor,
     :foiling,
     :frame_effects,
     :frame,
-    :fullart,
     :language,
     :multiverseid,
-    :nontournament,
     :number,
-    :oversized,
     :print_sheet,
     :promo_types,
     :rarity_code,
     :release_date,
     :set,
     :signature,
-    :spotlight,
     :stamp,
     :stemmed_flavor_name,
     :subsets,
-    :textless,
-    :timeshifted,
-    :token,
-    :variant_foreign,
-    :variant_misprint,
     :watermark,
   )
 
@@ -62,7 +78,7 @@ class CardPrinting
   attr_reader :stemmed_name, :set_code, :release_date_i, :number_i, :types
 
   # Set by CardDatabase initialization
-  attr_accessor :others, :artist, :default_sort_index, :partner, :in_boosters
+  attr_accessor :others, :artist, :default_sort_index, :partner
   # Set by CardDatabase initialization, printings ordered by [number_i, number]
   attr_accessor :number_sort_index
   # Set by CardDatabase initialization, printings ordered by [set name, number]
@@ -71,6 +87,7 @@ class CardPrinting
   attr_accessor :image_path
 
   def initialize(card, set, data)
+    @flags = 0
     @card = card
     @set = set
     @others = nil
@@ -102,78 +119,27 @@ class CardPrinting
     @stamp = data["s"] && IndexFormat::STAMPS.fetch(data["s"])
     @subsets = data["ss"]
 
-    flags = data["!"] || ""
-    @arena = flags.include?(ARENA_FLAG)
-    @digital = flags.include?(DIGITAL_FLAG)
-    @dreamcast = flags.include?(DREAMCAST_FLAG)
-    @etched = flags.include?(ETCHED_FLAG)
-    @fullart = flags.include?(FULLART_FLAG)
-    @nontournament = flags.include?(NONTOURNAMENT_FLAG)
-    @oversized = flags.include?(OVERSIZED_FLAG)
-    @shandalar = flags.include?(SHANDALAR_FLAG)
-    @spotlight = flags.include?(SPOTLIGHT_FLAG)
-    @textless = flags.include?(TEXTLESS_FLAG)
-    @timeshifted = flags.include?(TIMESHIFTED_FLAG)
-    @token = flags.include?(TOKEN_FLAG)
-    @variant_foreign = flags.include?(VARIANT_FOREIGN_FLAG)
-    @variant_misprint = flags.include?(VARIANT_MISPRINT_FLAG)
-    @mtgo = !flags.include?(NOT_MTGO_FLAG)
-    @paper = !flags.include?(NOT_PAPER_FLAG)
-    @xmage = !flags.include?(NOT_XMAGE_FLAG)
-
-    @baseset = calculate_baseset
+    self.mtgo = true
+    self.paper = true
+    self.xmage = true
+    (data["!"] || "").each_char do |char|
+      if (setter = FLAG_SETTERS[char])
+        send(setter, true)
+      else
+        send(NEGATED_FLAG_SETTERS.fetch(char), false)
+      end
+    end
+    self.baseset = calculate_baseset
 
     # Performance cache
     @stemmed_name = @card.stemmed_name
     @set_code = @set.code
     @types = @card.types
-
-    # Initialized after boosters are loaded
-    @in_boosters = false
-  end
-
-  def arena?
-    !!@arena
-  end
-
-  def paper?
-    !!@paper
-  end
-
-  def mtgo?
-    !!@mtgo
-  end
-
-  def shandalar?
-    !!@shandalar
-  end
-
-  def dreamcast?
-    !!@dreamcast
-  end
-
-  def xmage?
-    !!@xmage
   end
 
   # Same games as game: queries know about
   def games
-    @games ||= [
-      ("paper" if @paper),
-      ("mtgo" if @mtgo),
-      ("arena" if @arena),
-      ("shandalar" if @shandalar),
-      ("dreamcast" if @dreamcast),
-      ("xmage" if @xmage),
-    ].compact.freeze
-  end
-
-  def in_boosters?
-    @in_boosters
-  end
-
-  def baseset?
-    @baseset
+    GAMES[@flags & GAMES_MASK]
   end
 
   def rarity
@@ -337,14 +303,11 @@ class CardPrinting
 
   # Is this printing the face that PhysicalCard identity is based on?
   # Precomputed, as `is:mainfront` would otherwise build a PhysicalCard for every card it looks at.
-  def main_front?
-    @main_front
-  end
 
   # Called by CardDatabase once `others` references are resolved.
   # This must stay in sync with PhysicalCard.for.
   def calculate_main_front!
-    @main_front =
+    self.main_front =
       if !has_multiple_parts? or name == "B.F.M. (Big Furry Monster)" or name == "B.F.M. (Big Furry Monster, Right Side)"
         true
       elsif !front?

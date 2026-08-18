@@ -2,6 +2,7 @@
 # (thinking in solr/lucene terms)
 require "date"
 require_relative "ban_list"
+require_relative "bitmap_flag"
 require_relative "legality_information"
 
 # 86,000 of these across the index. A two-member Struct fits in the smallest
@@ -10,32 +11,42 @@ require_relative "legality_information"
 Ruling = Struct.new(:date, :text)
 
 class Card
+  extend BitmapFlag
+
+  bitmap_flags(
+    :alchemy,
+    :augment,
+    :brawler,
+    :commander,
+    :extra,
+    :front,
+    :funny,
+    :game_changer,
+    :has_alchemy,
+    :modal,
+    :partner,
+    :reserved,
+    :secondary,
+  )
+
   attr_reader :data, :printings
   attr_writer :printings # For db subset
 
   attr_reader(
-    :alchemy,
-    :augment,
-    :brawler,
     :color_identity,
     :color_indicator_colors,
     :color_indicator,
     :colors,
-    :commander,
     :decklimit,
     :defense,
     :display_mana_cost,
     :display_power,
     :display_toughness,
-    :extra,
     :foreign_names_normalized,
     :foreign_names,
     :fulltext_normalized,
     :fulltext,
-    :funny,
-    :game_changer,
     :hand,
-    :has_alchemy,
     :in_spellbook,
     :keywords,
     :layout,
@@ -43,7 +54,6 @@ class Card
     :loyalty,
     :mana_cost,
     :mana_hash,
-    :modal,
     :mv,
     :name,
     :name_slug,
@@ -52,7 +62,6 @@ class Card
     :produces,
     :related,
     :reminder_text,
-    :reserved,
     :rulings,
     :short_name,
     :specialized,
@@ -73,6 +82,7 @@ class Card
 
   def initialize(name, data)
     @printings = []
+    @flags = 0
     # The name is the key the card is stored under in the index, not part of its data
     @name = name
     @stemmed_name = -@name.downcase.normalize_accents.gsub(/s\b/, "").tr("-", " ")
@@ -80,18 +90,18 @@ class Card
     @layout = data["l"]
     @colors = data["c"] || ""
     @color_identity = data["ci"]
-    @funny = data["fu"]
+    self.funny = data["fu"]
     @fulltext = -(data["o"] || "")
     @fulltext_normalized = -@fulltext.normalize_accents
     @text = @fulltext
-    @text = @text.gsub(/\s*\([^\(\)]*\)/, "") unless @funny or @layout == "dungeon"
+    @text = @text.gsub(/\s*\([^\(\)]*\)/, "") unless funny? or @layout == "dungeon"
     @text = -@text.sub(/\s*\z/, "").gsub(/ *\n/, "\n").sub(/\A\s*/, "")
     @text_normalized = -@text.normalize_accents
-    @augment = !!(@text =~ /augment \{/i)
-    @modal = !!(@text =~ /(choose|opponent chooses) .*\n•/im)
+    self.augment = @text =~ /augment \{/i
+    self.modal = @text =~ /(choose|opponent chooses) .*\n•/im
     @mana_cost = data["m"]
-    @reserved = data["rs"] || false
-    @game_changer = data["gc"] || false
+    self.reserved = data["rs"]
+    self.game_changer = data["gc"]
     types = data["t"]
     subtypes = data["tb"]
     supertypes = data["tp"]
@@ -105,21 +115,17 @@ class Card
     @display_power = data["dp"] ? data["dp"] : @power
     @display_toughness = data["dt"] ? data["dt"] : @toughness
     @display_mana_cost = data["hm"] ? nil : @mana_cost
-    @alchemy = data["al"]
-    @has_alchemy = data["ha"]
-    if ["vanguard", "planar", "scheme"].include?(@layout) or @types.include?("conspiracy") or @alchemy
-      @extra = true
-    else
-      @extra = false
-    end
+    self.alchemy = data["al"]
+    self.has_alchemy = data["ha"]
+    self.extra = ["vanguard", "planar", "scheme"].include?(@layout) || @types.include?("conspiracy") || alchemy?
     @decklimit = data["dl"]
     @hand = data["hd"]
     @life = data["lf"]
     @rulings = data["r"]&.flat_map{|date, texts| texts.map{|text| Ruling.new(date, text)}}
-    @secondary = data["s"]
-    @partner = data["ip"]
-    @commander = data["cm"]
-    @brawler = data["br"]
+    self.secondary = data["s"]
+    self.partner = data["ip"]
+    self.commander = data["cm"]
+    self.brawler = data["br"]
     @specialized = data["sd"]
     @specializes = data["ss"]
     @spellbook = data["sb"]
@@ -147,7 +153,7 @@ class Card
     calculate_mana_hash
     calculate_color_indicator
     calculate_reminder_text
-    @front = (!@secondary or @layout == "aftermath" or @layout == "flip" or @layout == "adventure")
+    self.front = (!secondary? or @layout == "aftermath" or @layout == "flip" or @layout == "adventure")
     @name_slug = name
       .normalize_accents
       .gsub("'s", "s")
@@ -159,24 +165,12 @@ class Card
       .freeze
   end
 
-  def partner?
-    !!@partner
-  end
-
-  def front?
-    @front
-  end
-
   def back?
     !front?
   end
 
   def primary?
-    !@secondary
-  end
-
-  def secondary?
-    @secondary
+    !secondary?
   end
 
   def custom?
@@ -260,14 +254,6 @@ class Card
     @types.include?("basic") or (
       @text and @text.include?("A deck can have any number of cards named")
     )
-  end
-
-  def commander?
-    !!@commander
-  end
-
-  def brawler?
-    !!@brawler
   end
 
   def count_prints
