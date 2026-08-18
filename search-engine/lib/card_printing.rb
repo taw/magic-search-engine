@@ -28,6 +28,9 @@ class CardPrinting
     :variant_misprint,
   )
 
+  # Most physical cards have no back, so they can all share one empty array.
+  NO_PARTS = [].freeze
+
   # Which flag each character of the index's "!" string sets, see IndexFormat.
   # The negated ones start out set and their character clears them.
   FLAG_SETTERS = IndexFormat::FLAGS.to_h{|name, char| [char, :"#{name}="] }.freeze
@@ -297,25 +300,44 @@ class CardPrinting
     text.include?("Doctor's companion")
   end
 
+  # The printing whose physical card this one is a face of, which is what
+  # PhysicalCard is built from. A melded card is on two physical cards' backs,
+  # and `others` lists both of its fronts, the top half first - see PatchMeld -
+  # so it goes with the physical card whose back is its top half.
   def main_front
-    physical_card.main_front
+    main_front? ? self : @others.find(&:main_front?)
+  end
+
+  # The faces of the physical card this printing is the main front of, split
+  # into front and back, in printed order. Nothing here sorts: `others` already
+  # arrives in printed order, because the indexer builds it from mtgjson's
+  # `names`, the same order it turns into the "a" / "b" number suffixes.
+  def physical_front_parts
+    return [self] unless multipart_physical_card?
+    [self, *@others].select(&:front?)
+  end
+
+  def physical_back_parts
+    return NO_PARTS unless multipart_physical_card?
+    back_parts = @others.select(&:back?)
+    back_parts.empty? ? NO_PARTS : back_parts
   end
 
   # Is this printing the face that PhysicalCard identity is based on?
   # Precomputed, as `is:mainfront` would otherwise build a PhysicalCard for every card it looks at.
 
   # Called by CardDatabase once `others` references are resolved.
-  # This must stay in sync with PhysicalCard.for.
   def calculate_main_front!
     self.main_front =
-      if !has_multiple_parts? or name == "B.F.M. (Big Furry Monster)" or name == "B.F.M. (Big Furry Monster, Right Side)"
+      if !multipart_physical_card?
         true
       elsif !front?
         false
       else
-        # Meld pairs have two fronts, and only the lower numbered one is the main front.
-        # Numbers are strings, so "10" sorts before "9" - number_sort_index is the
-        # [number_i, number] order every other sort uses.
+        # Split cards and the like have every face on the front, and only the
+        # first printed one is the main front. `others` cannot say which that
+        # is, as it leaves out the printing itself, so compare numbers - by
+        # number_sort_index, as numbers are strings that put "10" before "9".
         [self, *@others].select(&:front?).min_by(&:number_sort_index).equal?(self)
       end
   end
@@ -330,6 +352,12 @@ class CardPrinting
 
   def nonfoilonly?
     foiling == :nonfoil
+  end
+
+  # mtgjson has B.F.M.'s two halves as one multipart card, but they are two
+  # separate physical cards, each just its own face.
+  def multipart_physical_card?
+    has_multiple_parts? and name != "B.F.M. (Big Furry Monster)" and name != "B.F.M. (Big Furry Monster, Right Side)"
   end
 
   def calculate_baseset

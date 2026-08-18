@@ -1,33 +1,41 @@
 class PhysicalCard
-  # Only meld and multipart cards have a back, so the great majority of these
-  # objects would otherwise hold an empty array each, all of them alike.
-  NO_BACK = [].freeze
-
-  attr_reader :front, :back, :foil, :etched, :hash
-  def initialize(front, back, foil, etched)
-    @front = front
-    @back = back.empty? ? NO_BACK : back
+  # A physical card is one printing's main front plus a finish. Every other
+  # face it has follows from the main front, so none of them are stored.
+  attr_reader :main_front, :foil, :etched
+  def initialize(main_front, foil, etched)
+    @main_front = main_front
     @foil = !!foil
     @etched = !!etched
-    @hash = [main_front, foil, etched].hash
+  end
+
+  def front
+    @main_front.physical_front_parts
+  end
+
+  def back
+    @main_front.physical_back_parts
   end
 
   def name
-    @front.map(&:name).join(" // ")
+    if @main_front.has_multiple_parts?
+      front.map(&:name).join(" // ")
+    else
+      @main_front.name
+    end
   end
 
   def flavor_name
-    if @front[0].flavor_name
-      @front.map(&:flavor_name).join(" // ")
+    if @main_front.flavor_name
+      front.map(&:flavor_name).join(" // ")
     end
   end
 
   def name_slug
-    main_front.name_slug
+    @main_front.name_slug
   end
 
   def back_name
-    @back.map(&:name).join(" // ")
+    back.map(&:name).join(" // ")
   end
 
   def to_s
@@ -35,19 +43,16 @@ class PhysicalCard
   end
 
   def inspect
+    back_parts = back
     [
       "PhysicalCard[",
       name,
-      @back != [] ? "; #{back_name}}" : "",
+      back_parts.empty? ? "" : "; #{back_parts.map(&:name).join(" // ")}}",
       "; #{set_code}/#{number}",
       foil ? "; foil" : "",
       etched ? "; etched" : "",
       "]",
     ].join
-  end
-
-  def main_front
-    @front[0]
   end
 
   # A lot of things can be forwarded to main_front
@@ -167,12 +172,9 @@ class PhysicalCard
   end
 
   def parts
-    [*@front, *@back]
+    [*front, *back]
   end
 
-  # @front[0] uniquely determines @front / @back
-  # as does any non-nil @front[i]
-  # @back[0] doesn't, as two different meld cards can have same CardPrinting on the back
   def ==(other)
     other.instance_of?(PhysicalCard) and sort_key == other.sort_key
   end
@@ -187,25 +189,16 @@ class PhysicalCard
   end
 
   def sort_key
-    main_front.default_sort_index * 4 + (foil ? 2 : 0) + (etched ? 1 : 0)
+    @main_front.default_sort_index * 4 + (foil ? 2 : 0) + (etched ? 1 : 0)
+  end
+
+  # Agrees with `==` by construction, as both are the sort key. That matters:
+  # `default_sort_index` is unique per printing, so the key identifies the card.
+  def hash
+    sort_key
   end
 
   def self.for(card, foil=false, etched=false)
-    # Meld really doesn't fit this model, as we have one CardPrinting that's on
-    # two physical card backs. Attach it to the one whose back is its top half,
-    # which the indexer's PatchMeld lists first.
-    if card.back? and card.layout == "meld"
-      self.for(card.others[0], foil, etched)
-    elsif !card.has_multiple_parts? or card.name == "B.F.M. (Big Furry Monster)" or card.name == "B.F.M. (Big Furry Monster, Right Side)"
-      PhysicalCard.new([card], [], foil, etched)
-    else
-      # By number_sort_index rather than by number, which is a string that
-      # would put "10" before "9". Set by CardDatabase#setup_sort_indexes!,
-      # which runs before anything builds a physical card.
-      front_parts, back_parts = [card, *card.others].partition(&:front?)
-      front_parts = front_parts.sort_by(&:number_sort_index)
-      back_parts = back_parts.sort_by(&:number_sort_index)
-      PhysicalCard.new(front_parts, back_parts, foil, etched)
-    end
+    new(card.main_front, foil, etched)
   end
 end
