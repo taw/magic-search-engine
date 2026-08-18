@@ -1,5 +1,5 @@
 class Product
-  attr_reader :name, :slug, :set, :data
+  attr_reader :name, :slug, :set
   attr_accessor :contents
 
   def initialize(set, data)
@@ -14,6 +14,14 @@ class Product
     @set.code
   end
 
+  # Linking is the only thing that ever reads the raw index entry, and
+  # products.json is 4MB of them. Hand it over and drop the reference so the
+  # parsed copy can be collected once every product has been linked.
+  def take_data!
+    data, @data = @data, nil
+    data
+  end
+
   def self.link_products(database)
     decks = database.decks.to_h{|d| [[d.set_code, d.name], d] }
     products = database.products.to_h{|p| [[p.set_code, p.name], p] }
@@ -21,7 +29,7 @@ class Product
 
     database.products.each do |product|
       product.contents = link(
-        product.data["contents"],
+        product.take_data!["contents"],
         decks: decks,
         products: products,
         packs: database.supported_booster_types,

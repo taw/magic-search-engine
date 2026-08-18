@@ -102,16 +102,11 @@ class CardDatabase
     @decks ||= @sets.values.flat_map(&:decks)
   end
 
+  # Unlike the other two index files this one is not read once and finished
+  # with - PackFactory looks a booster up in it every time it builds one, 695
+  # times during a load alone, so it stays parsed
   def booster_data
     @booster_data ||= JSON.parse(BOOSTER_INDEX_PATH.read)
-  end
-
-  def products_data
-    @products_data ||= JSON.parse(PRODUCTS_PATH.read)
-  end
-
-  def limited_formats_data
-    @limited_formats_data ||= JSON.parse(LIMITED_FORMATS_PATH.read)
   end
 
   # This used to allow all other cards with same name from same set,
@@ -194,17 +189,6 @@ class CardDatabase
 
   def token_set_code_to_set_code
     @token_set_code_to_set_code ||= sets.values.select(&:token_set_code).to_h{|set| [set.token_set_code, set.code] }
-  end
-
-  # CardPrinting.in_boosters is only available from this point
-  def initialize_booster_flag
-    @supported_booster_types.each_value do |booster|
-      booster.cards.each do |physical_card|
-        physical_card.parts.each do |card_printing|
-          card_printing.in_boosters = true
-        end
-      end
-    end
   end
 
   # Exclude Arena boosters
@@ -310,14 +294,6 @@ class CardDatabase
     end
   end
 
-  def normalize_set_name(name)
-    normalize_text(name).downcase.gsub("'s", "s").split(/[^a-z0-9]+/).join(" ")
-  end
-
-  def normalize_set_name_alt(name)
-    normalize_text(name).downcase.gsub("'s", "").split(/[^a-z0-9]+/).join(" ")
-  end
-
   def resolve_edition(edition)
     editions = resolve_editions(edition).to_a
     return editions[0] if editions.size <= 1
@@ -351,7 +327,43 @@ class CardDatabase
     !!c and c.name == name
   end
 
+  # Without this every rspec failure and every pry prompt tries to print the
+  # whole database
+  def inspect
+    "CardDatabase"
+  end
+
   private
+
+  # Read once by load_products! and load_limited_formats! and never looked at
+  # again, so there is nothing to memoize - holding the parsed copy afterwards
+  # was several MB for nobody
+  def products_data
+    JSON.parse(PRODUCTS_PATH.read)
+  end
+
+  def limited_formats_data
+    JSON.parse(LIMITED_FORMATS_PATH.read)
+  end
+
+  # CardPrinting#in_boosters? is only meaningful from this point
+  def initialize_booster_flag
+    @supported_booster_types.each_value do |booster|
+      booster.cards.each do |physical_card|
+        physical_card.parts.each do |card_printing|
+          card_printing.in_boosters = true
+        end
+      end
+    end
+  end
+
+  def normalize_set_name(name)
+    normalize_text(name).downcase.gsub("'s", "s").split(/[^a-z0-9]+/).join(" ")
+  end
+
+  def normalize_set_name_alt(name)
+    normalize_text(name).downcase.gsub("'s", "").split(/[^a-z0-9]+/).join(" ")
+  end
 
   def load_from_subset!(db, set_codes)
     @blocks = db.blocks
@@ -569,7 +581,4 @@ class CardDatabase
     end
   end
 
-  def inspect
-    "CardDatabase"
-  end
 end
