@@ -67,7 +67,8 @@ class CardDatabase
   attr_reader :limited_formats
 
   INDEX_ROOT = Pathname(__dir__) + "../../index"
-  INDEX_PATH = INDEX_ROOT + "index.json"
+  SETS_PATH = INDEX_ROOT + "sets.json"
+  CARDS_PATH = INDEX_ROOT + "cards.jsonl"
   BOOSTER_INDEX_PATH = INDEX_ROOT + "booster_index.json"
   PRODUCTS_PATH = INDEX_ROOT + "products.json"
   LIMITED_FORMATS_PATH = INDEX_ROOT + "limited_formats.json"
@@ -326,9 +327,9 @@ class CardDatabase
   class <<self
     private :new
 
-    def load(path=INDEX_PATH)
+    def load(root=INDEX_ROOT)
       new do |db|
-        db.send(:load_from_json!, Pathname(path))
+        db.send(:load_from_index!, Pathname(root))
       end
     end
   end
@@ -368,9 +369,20 @@ class CardDatabase
     end
   end
 
-  def load_from_json!(path)
-    data = JSON.parse(path.open.read, freeze: true)
-    data["sets"].each do |set_code, set_data|
+  def load_from_index!(root)
+    load_sets!(root + "sets.json")
+    load_cards!(root + "cards.jsonl")
+    resolve_references!
+    setup_artists!
+    setup_sort_indexes!
+    DeckDatabase.new(self).load!
+    load_products!
+    load_limited_formats!
+    index_cards_in_precons!
+  end
+
+  def load_sets!(path)
+    JSON.parse(path.read, freeze: true).each do |set_code, set_data|
       @sets[set_code] = CardSet.new(self, set_data)
       block_code = set_data["block_code"]
       next unless block_code
@@ -384,10 +396,15 @@ class CardDatabase
       @blocks[normalize_name(set_data["name"])] ||= block
       block << set_code
     end
+  end
 
-    data["cards"].each do |card_name, card_data|
+  # One card per line, so each card's parsed JSON can be collected as soon as
+  # the card is built. Parsing the whole index at once left a 190MB object
+  # graph behind, and the heap it grew to is never given back to the OS.
+  def load_cards!(path)
+    path.each_line do |line|
       # Indexer removes most tokens, we allow only a very selected group of very special ones
-      # next if card_data["layout"] == "token"
+      card_name, card_data = JSON.parse(line, freeze: true)
       normalized_name = card_name.downcase.normalize_accents
       card = @cards[normalized_name] = Card.new(card_name, card_data)
       card_data["*"].each do |set_code, printing_data|
@@ -402,13 +419,6 @@ class CardDatabase
       card.first_release_date
       card.last_release_date
     end
-    resolve_references!
-    setup_artists!
-    setup_sort_indexes!
-    DeckDatabase.new(self).load!
-    load_products!
-    load_limited_formats!
-    index_cards_in_precons!
   end
 
   def load_products!

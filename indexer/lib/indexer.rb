@@ -24,7 +24,8 @@ class Indexer
 
   # In verbose mode we validate each patch to make sure it actually does something
   def initialize(verbose=false)
-    @save_path = INDEX_ROOT + "index.json"
+    @sets_path = INDEX_ROOT + "sets.json"
+    @cards_path = INDEX_ROOT + "cards.jsonl"
     @uuids_path = INDEX_ROOT + "uuids.txt"
     @token_uuids_path = INDEX_ROOT + "token_uuids.txt"
     @scryfall_ids_path = INDEX_ROOT + "scryfall_ids.txt"
@@ -40,11 +41,13 @@ class Indexer
       exit 1
     end
 
-    @save_path.parent.mkpath
+    INDEX_ROOT.mkpath
     load_database
     load_decks
     apply_patches
-    @save_path.write(IndexSerializer.new(@sets, @cards, @products).to_s)
+    index = IndexSerializer.new(@sets, @cards, @products)
+    @sets_path.write(index.sets_json)
+    @cards_path.write(index.cards_jsonl)
     @uuids_path.write(UuidsSerializer.new(@cards).to_s)
     @token_uuids_path.write(TokenUuidsSerializer.new(@tokens).to_s)
     @scryfall_ids_path.write(ScryfallIdsSerializer.new(@cards).to_s)

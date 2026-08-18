@@ -7,24 +7,28 @@ class IndexSerializer
     @products = products.group_by{|x| x["set_code"]}
   end
 
-  def to_s
-    sets_h = @sets.map{|s| [s["code"], index_set(s)]}.to_h
-    set_order = sets_h.keys.each_with_index.to_h
-    index_data = {
-      "sets" => sets_h,
-      "cards" => @cards.map{|name, card_data|
-        [name, index_card(name, card_data, set_order)]
-      }.sort.to_h,
-    }
-    # Keep set index order as is, normalize everything else
-    index_data["cards"] = json_normalize(index_data["cards"])
-    index_data["sets"].each do |set_code, set|
-      index_data["sets"][set_code] = set
-    end
-    index_data.to_json
+  # Set index order is kept as is, everything else is normalized
+
+  def sets_json
+    sets_data.to_json
+  end
+
+  # One card per line, so the database can parse them one at a time instead of
+  # holding the whole index as parsed JSON before it builds anything
+  def cards_jsonl
+    set_order = sets_data.keys.each_with_index.to_h
+    @cards
+      .map{|name, card_data| [name, json_normalize(index_card(name, card_data, set_order))] }
+      .sort_by(&:first)
+      .map{|entry| entry.to_json << "\n" }
+      .join
   end
 
   private
+
+  def sets_data
+    @sets_data ||= @sets.map{|s| [s["code"], index_set(s)]}.to_h
+  end
 
   def json_normalize(data)
     if data.is_a?(Array)

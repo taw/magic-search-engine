@@ -1,6 +1,6 @@
 describe "Indexer hacks" do
   include_context "db"
-  let(:index_path) { Pathname(__dir__) + "../../index/index.json" }
+  let(:index_path) { Pathname(__dir__) + "../../index/cards.jsonl" }
   let(:index_json) { index_path.read }
 
   it "W16 release date" do

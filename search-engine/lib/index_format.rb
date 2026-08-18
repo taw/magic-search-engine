@@ -1,5 +1,5 @@
-# Vocabularies shared between the indexer, which writes index.json,
-# and CardDatabase, which reads it.
+# Vocabularies shared between the indexer, which writes sets.json and
+# cards.jsonl, and CardDatabase, which reads them.
 #
 # Values from these lists are stored in the index as their integer index,
 # which is a lot smaller than spelling the string out on every printing.

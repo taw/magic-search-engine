@@ -7,11 +7,11 @@ require "pathname"
 
 class CardsWithoutPicsFast
   def index_path
-    Pathname(__dir__) + "../index/index.json"
+    Pathname(__dir__) + "../index/cards.jsonl"
   end
 
   def card_list
-    `jq -c '.cards[] | .["*"][] | [.[0], .[1]["n"]]' <"#{index_path}"`.lines.map{|line| JSON.parse(line)}
+    `jq -c '.[1]["*"][] | [.[0], .[1]["n"]]' <"#{index_path}"`.lines.map{|line| JSON.parse(line)}
   end
 
   def cards_with_missing_pictures
