@@ -115,4 +115,41 @@ describe PhysicalCard do
       physical_card2.foil.should eq(false)
     end
   end
+
+  # We number every face separately, Gatherer style, but some exports want
+  # Scryfall style numbers, with one number for the whole physical card
+  context "physical_card_number" do
+    def physical_card_number(query)
+      PhysicalCard.for(find_unique(query), false).physical_card_number
+    end
+
+    it "single faced cards keep their number" do
+      physical_card_number("lightning bolt e:m10").should eq("146")
+      physical_card_number("void beckoner e:iko number:373a").should eq("373a")
+    end
+
+    it "multipart cards drop the face letter" do
+      physical_card_number("crime e:di").should eq("150")
+      physical_card_number("punishment e:di").should eq("150")
+      physical_card_number("budoka pupil e:bok").should eq("122")
+      physical_card_number("appeal e:hou").should eq("152")
+      physical_card_number("beanstalk giant e:eld number:149a").should eq("149")
+      physical_card_number("delver of secrets e:isd").should eq("51")
+      physical_card_number("insectile aberration e:isd").should eq("51")
+    end
+
+    it "meld cards use the number of the front they are part of" do
+      physical_card_number("bruna e:emn").should eq("15")
+      physical_card_number("gisela e:emn").should eq("28")
+      # This one is only ever half of a back, mtgjson numbers it 15b
+      physical_card_number("brisela e:emn").should eq("15")
+      # Prerelease promos have a suffix which is not a face letter
+      physical_card_number("bruna e:pemn").should eq("15s")
+    end
+
+    it "reversible cards are one physical card in Scryfall numbering" do
+      physical_card_number("blightsteel colossus e:sld number:1079a").should eq("1079")
+      physical_card_number("blightsteel colossus e:sld number:1079b").should eq("1079")
+    end
+  end
 end

@@ -130,6 +130,22 @@ class PhysicalCard
     main_front.number
   end
 
+  # We number each face of a multipart card separately, Gatherer style (10a / 10b),
+  # but exports which follow Scryfall convention want just one number per physical card.
+  # Those numbers are just the mtgjson number with a letter appended by the indexer,
+  # so dropping that letter recovers it. The main front always got "a" appended;
+  # reversible cards are two separate physical cards sharing a number, so either letter.
+  def physical_card_number
+    number = main_front.number
+    if main_front.promo_types&.include?("reversiblefront") or main_front.promo_types&.include?("reversibleback")
+      number.sub(/[ab]\z/, "")
+    elsif main_front.has_multiple_parts?
+      number.sub(/a\z/, "")
+    else
+      number
+    end
+  end
+
   def number_i
     main_front.number_i
   end
