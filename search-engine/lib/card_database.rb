@@ -398,6 +398,9 @@ class CardDatabase
     resolve_references!
     setup_artists!
     setup_sort_indexes!
+    # Needs `others` of every printing resolved, and number_sort_index to say
+    # which of two fronts is the lower numbered one
+    each_printing(&:calculate_main_front!)
     DeckDatabase.new(self).load!
     load_products!
     load_limited_formats!
@@ -495,8 +498,6 @@ class CardDatabase
         end
       end
     end
-    # Needs a second pass, as it looks at `others` of other printings
-    each_printing(&:calculate_main_front!)
   end
 
   def index_cards_in_precons!

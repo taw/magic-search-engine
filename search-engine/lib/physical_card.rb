@@ -198,9 +198,12 @@ class PhysicalCard
     elsif !card.has_multiple_parts? or card.name == "B.F.M. (Big Furry Monster)" or card.name == "B.F.M. (Big Furry Monster, Right Side)"
       PhysicalCard.new([card], [], foil, etched)
     else
+      # By number_sort_index rather than by number, which is a string that
+      # would put "10" before "9". Set by CardDatabase#setup_sort_indexes!,
+      # which runs before anything builds a physical card.
       front_parts, back_parts = [card, *card.others].partition(&:front?)
-      front_parts = front_parts.sort_by(&:number)
-      back_parts = back_parts.sort_by(&:number)
+      front_parts = front_parts.sort_by(&:number_sort_index)
+      back_parts = back_parts.sort_by(&:number_sort_index)
       PhysicalCard.new(front_parts, back_parts, foil, etched)
     end
   end

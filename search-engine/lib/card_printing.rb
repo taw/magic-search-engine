@@ -313,8 +313,10 @@ class CardPrinting
       elsif !front?
         false
       else
-        # Meld pairs have two fronts, and only the lower numbered one is the main front
-        [self, *@others].select(&:front?).min_by(&:number).equal?(self)
+        # Meld pairs have two fronts, and only the lower numbered one is the main front.
+        # Numbers are strings, so "10" sorts before "9" - number_sort_index is the
+        # [number_i, number] order every other sort uses.
+        [self, *@others].select(&:front?).min_by(&:number_sort_index).equal?(self)
       end
   end
 
