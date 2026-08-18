@@ -192,10 +192,16 @@ class PhysicalCard
     @main_front.default_sort_index * 4 + (foil ? 2 : 0) + (etched ? 1 : 0)
   end
 
-  # Agrees with `==` by construction, as both are the sort key. That matters:
-  # `default_sort_index` is unique per printing, so the key identifies the card.
+  # The sort key without the finish, so the three finishes of a printing land
+  # in one bucket and `eql?` tells them apart. That is deliberate: it makes the
+  # values dense and consecutive, which is what Ruby wants, as it takes the low
+  # bits of this as the bucket and does not mix them. The sort key itself is
+  # spaced 4 apart, which wastes three quarters of the buckets. Collections big
+  # enough for that to matter hold a single finish anyway - card sheets and set
+  # listings both take `foil` as a parameter - and ones that mix finishes are
+  # small enough to be a linear scan.
   def hash
-    sort_key
+    @main_front.default_sort_index
   end
 
   def self.for(card, foil=false, etched=false)
