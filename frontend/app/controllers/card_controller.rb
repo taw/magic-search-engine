@@ -54,14 +54,6 @@ class CardController < ApplicationController
       return
     end
 
-    # Temporary issue with bots
-    # (user agents are on every request's METRICS line now, see RequestMetrics)
-    if request.headers['HTTP_USER_AGENT'] =~ /MJ12bot|PetalBot|Bytespider/ and params[:page]
-      render_403
-      return
-    end
-    # End of temporary bot code
-
     @title = @search
     query = Query.new(@search, params[:random_seed])
     @seed = query.seed

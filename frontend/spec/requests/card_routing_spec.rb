@@ -25,27 +25,6 @@ RSpec.describe "card routing", type: :request do
     expect(response).to have_http_status(200)
   end
 
-  # Crawlers walking every page of every search were most of the load on a
-  # small server, and none of it was anyone reading the site
-  describe "crawlers" do
-    ["MJ12bot", "PetalBot", "Bytespider"].each do |bot|
-      it "turns #{bot} away from paginated searches" do
-        get "/page/2/card", params: {q: "e:nph"}, headers: {"HTTP_USER_AGENT" => bot}
-        expect(response).to have_http_status(403)
-      end
-    end
-
-    it "lets them read the first page" do
-      get "/card", params: {q: "e:nph"}, headers: {"HTTP_USER_AGENT" => "PetalBot"}
-      expect(response).to have_http_status(200)
-    end
-
-    it "lets everyone else paginate" do
-      get "/page/2/card", params: {q: "e:nph"}, headers: {"HTTP_USER_AGENT" => "Mozilla/5.0"}
-      expect(response).to have_http_status(200)
-    end
-  end
-
   it "serves a card with and without its name in the url" do
     get "/card/nph/1"
     expect(response).to have_http_status(200)
