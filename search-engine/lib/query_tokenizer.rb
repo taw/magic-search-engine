@@ -145,8 +145,11 @@ class QueryTokenizer
         )/
         ]xi)
         begin
-          # Denormalization is highly questionable here
-          rxstr = s[2].unicode_normalize(:nfd).gsub(/\p{Mn}/, "").downcase
+          # Foreign names are stored with their accents stripped, so the pattern
+          # has to lose them too. Case is IGNORECASE's job - downcasing the
+          # pattern also turned \A into \a, \P{...} into \p{...}, and every
+          # other uppercase escape into a different one.
+          rxstr = s[2].unicode_normalize(:nfd).gsub(/\p{Mn}/, "")
           rx = Regexp.new(rxstr, Regexp::IGNORECASE)
           tokens << [:test, ConditionForeignRegexp.new(s[1], rx)]
         rescue RegexpError => e

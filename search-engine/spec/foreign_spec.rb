@@ -225,6 +225,16 @@ describe "Foreign language queries" do
     assert_search_equal_cards "t:planeswalker fr:* -sp:* -(Quintorius, History Chaser)", "t:planeswalker e:cmm -alt:-e:cmm"
   end
 
+  # The pattern used to be downcased before it was compiled, on top of the
+  # IGNORECASE it is compiled with anyway. That turned \A into \a, \Z into \z,
+  # \P{...} into \p{...}, and every other uppercase escape into a different one.
+  it "does not mangle uppercase escapes in the pattern" do
+    assert_search_equal %q[fr:/\AContresort\z/], %q[fr:/^Contresort$/]
+    assert_search_results %q[fr:/\AContresort\Z/], "Counterspell"
+    assert_search_differ %q[foreign:/\p{Han}/], %q[foreign:/\P{Han}/]
+    assert_search_differ %q[foreign:/\d/], %q[foreign:/\D/]
+  end
+
   it "only matches full words (except CJK and German)" do
     assert_search_differ %q[foreign:/red/], %q[foreign:/\bred\b/]
     assert_search_differ %q[foreign:/电击/], %q[foreign:/\b电击\b/]
@@ -287,8 +297,8 @@ describe "Foreign language queries" do
 
     it "finds the card by any of them with foreign: and regexps" do
       assert_search_results %[foreign:"太陽の指輪"], "Sol Ring"
-      assert_search_results %q[fr:/^Exilir d'immortalite$/], "Elixir of Immortality"
-      assert_search_results %q[foreign:/^Dragon shivan$/], "Shivan Dragon"
+      assert_search_results %q[fr:/\AExilir d'immortalite\z/], "Elixir of Immortality"
+      assert_search_results %q[foreign:/\ADragon shivan\z/], "Shivan Dragon"
     end
 
     # The common shape, kept distinct from the above on purpose
