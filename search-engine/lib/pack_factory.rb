@@ -1,8 +1,39 @@
+# One of these per booster, built while the index loads and thrown away once
+# the pack is. The database is still needed - CardSheetFactory runs queries
+# against it, and a sheet can be built out of another set's deck - but
+# everything about *this* booster is passed in.
 class PackFactory
-  def initialize(db)
+  def initialize(db, set, variant, data)
     @db = db
-    @sheet_factory = CardSheetFactory.new(@db)
+    @set = set
+    @data = data
+    @code = [set.code, variant].compact.join("-")
+    @sheet_factory = CardSheetFactory.new(db)
   end
+
+  def build_pack
+    sheets = @data["sheets"].to_h{|sheet_name, sheet_data|
+      [sheet_name, build_top_level_sheet(sheet_name, sheet_data)]
+    }
+    subpacks = @data["pack"].map{|subpack_data, chance|
+      [build_simple_pack(subpack_data, sheets), chance]
+    }
+    pack = subpacks.size == 1 ? subpacks[0][0] : WeightedPack.new(subpacks.to_h)
+
+    pack.set = @set
+    pack.code = @code
+    pack.name = @data["name"]&.gsub("{set_name}", @set.name) || @code
+    pack.languages = @data["languages"] || @set.languages
+    # Sanity check against mtgjson - a booster can be printed in fewer languages
+    # than its set, never in more. Report only, as mtgjson set data changes too.
+    extra_languages = pack.languages - @set.languages
+    unless extra_languages.empty?
+      warn "#{@code}: languages #{extra_languages.join(", ")} not printed for set #{@set.code} (#{@set.languages.join(", ")})"
+    end
+    pack
+  end
+
+  private
 
   def raise_sheet_error(message)
     raise "Error building #{@sheet_full_name}: #{message}"
@@ -99,8 +130,8 @@ class PackFactory
     end
   end
 
-  def build_top_level_sheet(set_code, sheet_name, data)
-    @sheet_full_name = "#{set_code}/#{sheet_name}"
+  def build_top_level_sheet(sheet_name, data)
+    @sheet_full_name = "#{@set.code}/#{sheet_name}"
     sheet = build_sheet(data)
     sheet.name = sheet_name
     sheet
@@ -113,44 +144,5 @@ class PackFactory
       sheet = sheets[name] or raise "Can't build sheet #{name}"
       [sheet, count]
     }.to_h)
-  end
-
-  def for(set_code, variant=nil)
-    variant = nil if variant == "default"
-    # No such set is just no such pack, same as a set with no booster data.
-    # On a subset db every caller iterates the full booster index, so this is
-    # the normal case there, not an error.
-    set = @db.resolve_edition(set_code)
-    return nil unless set
-    set_code = set.code # Normalize
-    booster_code = [set_code, variant].compact.join("-")
-    data = @db.booster_data[booster_code]
-
-    return nil unless data
-
-    sheets = data["sheets"].map{|sheet_name, sheet_data|
-      [sheet_name, build_top_level_sheet(set_code, sheet_name, sheet_data)]
-    }.to_h
-    subpacks = data["pack"].map{|subpack_data, chance|
-      subpack = build_simple_pack(subpack_data, sheets)
-      [subpack, chance]
-    }
-    if subpacks.size == 1
-      pack = subpacks[0][0]
-    else
-      pack = WeightedPack.new(subpacks.to_h)
-    end
-
-    pack.set = set
-    pack.code = booster_code
-    pack.name = data["name"]&.gsub("{set_name}", set.name) || booster_code
-    pack.languages = data["languages"] || set.languages
-    # Sanity check against mtgjson - a booster can be printed in fewer languages
-    # than its set, never in more. Report only, as mtgjson set data changes too.
-    extra_languages = pack.languages - set.languages
-    unless extra_languages.empty?
-      warn "#{booster_code}: languages #{extra_languages.join(", ")} not printed for set #{set_code} (#{set.languages.join(", ")})"
-    end
-    pack
   end
 end

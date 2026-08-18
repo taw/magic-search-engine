@@ -102,13 +102,6 @@ class CardDatabase
     @decks ||= @sets.values.flat_map(&:decks)
   end
 
-  # Unlike the other two index files this one is not read once and finished
-  # with - PackFactory looks a booster up in it every time it builds one, 695
-  # times during a load alone, so it stays parsed
-  def booster_data
-    @booster_data ||= JSON.parse(BOOSTER_INDEX_PATH.read)
-  end
-
   # This used to allow all other cards with same name from same set,
   # but this is no longer the case
   def decks_containing(card_printing)
@@ -135,10 +128,22 @@ class CardDatabase
   def supported_booster_types
     unless @supported_booster_types
       @supported_booster_types = {}
-      booster_data.each_key do |booster_code|
+      # Read once and held only for this loop. Every pack there is gets built
+      # here, and nothing afterwards wants the data, only the packs.
+      data_by_code = booster_data
+      data_by_code.each_key do |booster_code|
         set_code, variant = booster_code.split("-", 2)
-        booster = pack_factory.for(set_code, variant)
-        @supported_booster_types[booster.code] = booster if booster
+        # No such set is just no such pack. On a subset db most of the booster
+        # index names sets that aren't loaded, so this is the normal case there,
+        # not an error.
+        set = resolve_edition(set_code) or next
+        # resolve_edition matches on name and alternative code too, so on a
+        # subset a code can land on some other set - "mma" finds Commander 2011
+        # when that is the only set loaded. Take the data for the set's own
+        # code, and if there is none, there is no booster.
+        data = data_by_code[[set.code, variant].compact.join("-")] or next
+        booster = PackFactory.new(self, set, variant, data).build_pack
+        @supported_booster_types[booster.code] = booster
       end
 
       # Aliases
@@ -331,16 +336,13 @@ class CardDatabase
 
   private
 
-  # Boosters are reached through supported_booster_types, which is what builds
-  # them all in the first place. Nothing outside a load has any reason to build
-  # another one.
-  def pack_factory
-    @pack_factory ||= PackFactory.new(self)
+  # Read once each, by supported_booster_types, load_products! and
+  # load_limited_formats!, and never looked at again - so nothing to memoize,
+  # and nothing to hold on to afterwards
+  def booster_data
+    JSON.parse(BOOSTER_INDEX_PATH.read)
   end
 
-  # Read once by load_products! and load_limited_formats! and never looked at
-  # again, so there is nothing to memoize - holding the parsed copy afterwards
-  # was several MB for nobody
   def products_data
     JSON.parse(PRODUCTS_PATH.read)
   end
@@ -382,6 +384,12 @@ class CardDatabase
       @cards[card_name] = card.dup
       @cards[card_name].printings = printings
     end
+    # A subset shares its parent's sets and printings, so it can share the
+    # boosters built out of them instead of building all 694 again for the
+    # handful of sets it kept. Aliases come along, as they are keyed by set too.
+    @supported_booster_types = db.supported_booster_types.select{|code, booster|
+      set_codes.include?(booster.set_code)
+    }
   end
 
   def load_from_index!(root)

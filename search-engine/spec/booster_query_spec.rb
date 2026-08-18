@@ -70,7 +70,8 @@ describe "booster index" do
   # PackFactory skips boosters whose set it can't resolve, which is how subset
   # databases work at all. On the full db that would hide a typo, so check here
   it "only names sets we have" do
-    set_codes = db.booster_data.keys.map{|code| code.split("-", 2).first}.uniq
+    booster_codes = JSON.parse(CardDatabase::BOOSTER_INDEX_PATH.read).keys
+    set_codes = booster_codes.map{|code| code.split("-", 2).first}.uniq
     set_codes.reject{|set_code| db.resolve_edition(set_code)}.should eq([])
   end
 end
