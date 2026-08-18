@@ -4,6 +4,11 @@ require "date"
 require_relative "ban_list"
 require_relative "legality_information"
 
+# 86,000 of these across the index. A two-member Struct fits in the smallest
+# object ruby has; the {"date" =>, "text" =>} hash this used to be needed four
+# times as much memory to say the same thing.
+Ruling = Struct.new(:date, :text)
+
 class Card
   attr_reader :data, :printings
   attr_writer :printings # For db subset
@@ -110,7 +115,7 @@ class Card
     @decklimit = data["dl"]
     @hand = data["hd"]
     @life = data["lf"]
-    @rulings = data["r"]&.flat_map{|date, texts| texts.map{|text| {"date" => date, "text" => text}}}
+    @rulings = data["r"]&.flat_map{|date, texts| texts.map{|text| Ruling.new(date, text)}}
     @secondary = data["s"]
     @partner = data["ip"]
     @commander = data["cm"]

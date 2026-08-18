@@ -1,6 +1,6 @@
 class ConditionRulingsRegexp < ConditionRegexp
   def match?(card)
-    card.rulings and card.rulings.any?{|r| r["text"] =~ @regexp}
+    card.rulings and card.rulings.any?{|r| r.text =~ @regexp}
   end
 
   def to_s

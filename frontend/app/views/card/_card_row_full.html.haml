@@ -67,8 +67,8 @@
       %ul.rulings
         - card.rulings.each do |ruling|
           %li
-            = ruling["date"]
-            = format_oracle_text(ruling["text"])
+            = ruling.date
+            = format_oracle_text(ruling.text)
 
     - if card.gatherer_link.present?
       %h5 Links

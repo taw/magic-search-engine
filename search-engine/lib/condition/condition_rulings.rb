@@ -8,7 +8,7 @@ class ConditionRulings < ConditionSimple
   def match?(card)
     return false unless card.rulings
     return true if @ruling == "*"
-    card.rulings.any?{|r| r["text"] =~ @ruling_rx }
+    card.rulings.any?{|r| r.text =~ @ruling_rx }
   end
 
   def to_s
