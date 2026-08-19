@@ -76,30 +76,30 @@ sheets:
       rate: 2
     - rawquery: "e:ltc number:348-377"
       count: 30
-      rate: 2
+      rate: 1
   borderless_scene:
     filter: "e:{set} number:399-451"
     any:
-    - query: "r:c -alt:frame:showcase"
-      rate: 16
-    - query: "r:u -alt:frame:showcase"
-      rate: 8
-    - query: "r:r -alt:(frame:showcase or t:land)"
-      rate: 4
-    - query: "r:m -alt:frame:showcase"
-      rate: 2
-    - query: "r:c alt:frame:showcase"
+    - query: "r:c" # Commons
       count: 9
-      rate: 8
-    - query: "r:u alt:frame:showcase"
+      chance: 375 # 37.5%
+    - query: "r:u" # Uncommons
       count: 14
-      rate: 4
-    - query: "r:r alt:(frame:showcase or t:land)"
-      count: 21
-      rate: 2
-    - query: "r:m alt:frame:showcase"
-      count: 9
-      rate: 1
+      chance: 292 # 29.2%
+    - any: # Rare and mythics
+      - query: "r:r -alt:(e:{set} number:302-331,340-345)"
+        count: 10
+        rate: 4
+      - query: "r:r alt:(e:{set} number:302-331,340-345)"
+        count: 11
+        rate: 2
+      - query: "r:m -alt:(e:{set} number:302-331,340-345)"
+        count: 5
+        rate: 2
+      - query: "r:m alt:(e:{set} number:302-331,340-345)"
+        count: 4
+        rate: 1
+      chance: 333 # 27.3% + 6%
   foil_uncommon_showcase:
     foil: true
     any:
@@ -157,15 +157,17 @@ sheets:
     - rawquery: "e:{set} r:m frame:showcase promo:boosterfun -alt:(e:{set} number:399-451) -number:299-300 -number>451"
       count: 2
       rate: 2
-    - rawquery: "e:{set} r:r number:399-451 alt:(frame:showcase or t:land)"
-      count: 21
+    - rawquery: "e:{set} r:r number:399-451 alt:(e:{set} number:302-331,340-345)"
+      count: 11
       rate: 2
-    - rawquery: "e:{set} r:m number:399-451 alt:(frame:showcase)"
-      count: 9
+    - rawquery: "e:{set} r:m number:399-451 alt:(e:{set} number:302-331,340-345)"
+      count: 4
       rate: 1
-    - rawquery: "e:{set} r:r number:399-451 -alt:(frame:showcase or t:land)"
+    - rawquery: "e:{set} r:r number:399-451 -alt:(e:{set} number:302-331,340-345)"
+      count: 10
       rate: 4
-    - rawquery: "e:{set} r:m number:399-451 -alt:(frame:showcase)"
+    - rawquery: "e:{set} r:m number:399-451 -alt:(e:{set} number:302-331,340-345)"
+      count: 5
       rate: 2
     - rawquery: "e:{set} r:r number:340-345 alt:(e:{set} number:399-451)"
       count: 2
