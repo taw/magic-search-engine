@@ -340,11 +340,11 @@ class Card
       # Including uncards
       # "*" < "*²" < "1+*" < "2+*"
       # but let's not get anywhere near that
+      # PatchDisplayPowerToughness spells these N+*, never *+N, and Sorter::PT_ORDER
+      # needs an entry for each of them, so this stays a closed list
       case val
       when "*", "*²", "1+*", "2+*", "7-*", "X", "∞", "?", "1d4+1"
         val
-      when "*+1"
-        "1+*"
       else
         raise "Unrecognized value #{val.inspect}"
       end

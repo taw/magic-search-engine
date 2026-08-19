@@ -3,7 +3,7 @@ class PatchNonTournament < Patch
   # is where they meet:
   #
   # * the object isn't a traditional Magic card - oversized, thick, gold-bordered,
-  #   Collectors' Edition. Set by PatchMtgjsonVersions as `nontraditional`.
+  #   Collectors' Edition. Set by PatchMtgjsonFields as `nontraditional`.
   # * the card is one of CR 100.7's "intended for casual play" cards - Mystery Booster
   #   playtest cards, silver-bordered un-cards, acorn-stamped Unfinity cards, and the
   #   rest of the products that list is not exhaustive about.

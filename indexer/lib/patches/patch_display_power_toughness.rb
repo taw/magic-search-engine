@@ -37,6 +37,10 @@ class PatchDisplayPowerToughness < Patch
       $1.to_i + 0.5
     when "*{^2}"
       "*²"
+    # WotC prints these both ways round, but N+* is much more common than *+N,
+    # so that's the spelling we use. Note that 7-* can't be flipped like this.
+    when /\A\*\+(\d+)\z/
+      "#{$1}+*"
     when /\*/, "∞", "?"
       value
     when "{Defense:4}"

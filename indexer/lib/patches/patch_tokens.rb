@@ -3,11 +3,29 @@
 # * CLB dungeons
 # * The Initiative
 # * The Ring / The Ring Tempts You
+# * the Theros challenge deck sets, which are cards mtgjson files as tokens
 class PatchTokens < Patch
+  # mtgjson has some of these as cards and some as tokens,
+  # and that's just nonsense, it needs to be consistent
+  TOKEN_ONLY_SETS = %W[TBTH TDAG TFTH].freeze
+
   def call
     add_tafr
     add_tclb
     add_tltr
+    promote_token_only_sets
+  end
+
+  # These sets have no cards at all, so there is nothing to keep the tokens
+  # separate from - we unilaterally decided all of them are cards
+  def promote_token_only_sets
+    each_set do |set|
+      next unless TOKEN_ONLY_SETS.include?(set["official_code"])
+      set.delete("tokens").each do |token|
+        token["rarity"] = "common"
+        (@cards[token["name"]] ||= []) << token
+      end
+    end
   end
 
   def add_tafr

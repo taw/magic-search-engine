@@ -65,16 +65,24 @@ class Indexer
     [
       # Load data
       PatchTokens,
-      # For transition period we support any mix of mtgjson v3 and v4
-      PatchMtgjsonVersions,
+
+      # Every card rename happens here, before anything indexes cards by name
+      PatchCardNames,
+
+      # Patch mtgjson bugs, while its own field names are still around
+      PatchMtgjsonBugs,
+
+      # Translate mtgjson's field names and value formats into ours
+      PatchMtgjsonFields,
+      PatchTextCleanup,
+      # Splits reversible cards apart, so it must precede the number checks
+      PatchReversibleCards,
+
       # Each set needs unique code, by convention all lowercase
       PatchSetCodes,
       PatchMB1,
       PatchRemoveEmptySets,
       PatchReleaseDates,
-
-      # This renames cards so it needs to be done early
-      PatchPlaytestCards,
 
       # All cards absolutely need unique numbers
       PatchMultipartCardNumbers,
@@ -127,7 +135,6 @@ class Indexer
       PatchProduces,
 
       # Patch more mtg.wtf bugs
-      PatchAeLigature, # is this even needed anymore?
       PatchFlipCardManaCost,
       PatchArtistNames,
 
