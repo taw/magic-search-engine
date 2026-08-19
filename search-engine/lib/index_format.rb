@@ -27,7 +27,7 @@ module IndexFormat
     "dreamcast"        => "d",
     "etched"           => "e",
     "fullart"          => "f",
-    "nontournament"    => "n",
+    "nontraditional"   => "n",
     "oversized"        => "o",
     "shandalar"        => "h",
     "spotlight"        => "s",

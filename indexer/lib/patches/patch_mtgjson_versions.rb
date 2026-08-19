@@ -294,7 +294,7 @@ class PatchMtgjsonVersions < Patch
 
       # This logic changed at some point, I like old logic better
       if card["oversized"] or %W[CEI CED 30A].include?(card["set"]["official_code"]) or card["border"] == "gold"
-        card["nontournament"] = true
+        card["nontraditional"] = true
         card.delete("arena")
         card.delete("paper")
         card.delete("mtgo")
