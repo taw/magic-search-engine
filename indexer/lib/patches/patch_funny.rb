@@ -5,7 +5,7 @@ class PatchFunny < Patch
   #
   # This is only for sets where the funny cards are the exception. Sets whose
   # unique cards are mostly funny (mb2, mbc, pcel, past, un-sets) stay funny sets.
-  SetsWithSomeFunnyCards = %W[j17 o90p olep p30m pal04 pf24 pf25]
+  SetsWithSomeFunnyCards = %W[j17 o90p olep p30m pal04 pf24 pf25 pf26]
 
   def call
     # additional funny cards that don't follow the rules

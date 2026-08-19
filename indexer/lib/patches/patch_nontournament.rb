@@ -21,11 +21,14 @@ class PatchNonTournament < Patch
   # instead, which is the per-printing fact WotC actually publishes.
   SetsWithNoTournamentPrintings = %W[mb2].to_set.freeze
 
-  # Black-bordered promo reprints of un-cards. Nothing in the data distinguishes these
-  # from an ordinary promo - no silver border, no stamp, no promo type - so they have to
-  # be named. o90p and olep only.
-  UncardPromos = [
+  # Printings nothing in the data marks - no silver border, no stamp, no promo type,
+  # ordinary-looking set - so they have to be named:
+  #
+  # * black-bordered o90p / olep promo reprints of un-cards, and the sld Blacker Lotus
+  # * Gleemox, an MTGO promo whose own rules text is "This card is banned."
+  NamedNonTournamentCards = [
     "Blacker Lotus",
+    "Gleemox",
     "Incoming!",
     "Infernal Spawn of Evil",
     "Mirror Mirror",
