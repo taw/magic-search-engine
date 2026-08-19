@@ -21,18 +21,18 @@ class PatchNonTournament < Patch
   # instead, which is the per-printing fact WotC actually publishes.
   SetsWithNoTournamentPrintings = %W[mb2].to_set.freeze
 
-  # Printings nothing in the data marks - no silver border, no stamp, no promo type,
-  # ordinary-looking set - so they have to be named:
+  # Printings no rule above marks - no silver border, no stamp, no promo type, and a set
+  # that looks entirely ordinary - so they have to be named:
   #
-  # * black-bordered o90p / olep promo reprints of un-cards, and the sld Blacker Lotus
+  # * Blacker Lotus, whose sld reprint is a normal-size borderless card with a triangle stamp
   # * Gleemox, an MTGO promo whose own rules text is "This card is banned."
+  #
+  # The other black-bordered promo reprints of un-cards - Incoming! (o90p), Infernal Spawn
+  # of Evil, Mirror Mirror, Squirrel Farm (olep) - do not need naming. o90p and olep are
+  # oversized, so `nontraditional` already covers every one of their printings.
   NamedNonTournamentCards = [
     "Blacker Lotus",
     "Gleemox",
-    "Incoming!",
-    "Infernal Spawn of Evil",
-    "Mirror Mirror",
-    "Squirrel Farm",
   ].to_set.freeze
 
   def call
@@ -44,7 +44,7 @@ class PatchNonTournament < Patch
       nontournament ||= printing["stamp"] == "acorn" || printing["stamp"] == "heart"
       nontournament ||= printing["promo_types"]&.include?("playtest")
       nontournament ||= funny_sets.include?(printing["set_code"])
-      nontournament ||= UncardPromos.include?(printing["name"])
+      nontournament ||= NamedNonTournamentCards.include?(printing["name"])
 
       printing["nontournament"] = true if nontournament
     end
