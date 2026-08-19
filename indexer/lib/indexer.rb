@@ -103,6 +103,7 @@ class Indexer
       PatchSetTypes,
       PatchFunny,
       PatchSpecialFormat,
+      PatchNonTournament,
       PatchSpellbook, # before LinkRelated
       PatchSpecialize, # before LinkRelated
       PatchLinkRelated,

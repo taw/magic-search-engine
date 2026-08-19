@@ -76,19 +76,17 @@ class Format
   end
 
   def in_format?(card)
-    # Funny check is disabled for Alchemy/Historic
-    # as Arena cards sometimes get paper reprints with acorn stamp like in MB2
-    return false if card.funny
     # mtgjson files Alchemy cards in the same set as the paper cards they rebalance
     # instead of giving them their own set, so without this every format would count
     # them as printings of its own sets. Alchemy, Historic and Timeless, where they're
     # real cards rather than noise, override this method.
     return false if card.alchemy
     card.printings.each do |printing|
-      # A playtest printing is not a real Magic card and can't make one legal. Almost
-      # every playtest card is funny and already gone by here; this is for the few that
-      # aren't, like Call from the Grave, whose only other printing is a Shandalar one.
-      next if printing.promo_types&.include?("playtest")
+      # Only a printing you could bring to a sanctioned event can make a card legal.
+      # This is per-printing rather than per-card so that mixed products come out right
+      # without anyone maintaining a list: MB2's ordinary reprints are legal while its
+      # playtest cards are not, and Counterspell stays legal despite sld/sctlr.
+      next if printing.nontournament
       next if @time and printing.release_date > @time
       if @included_sets
         next unless @included_sets.include?(printing.set_code)

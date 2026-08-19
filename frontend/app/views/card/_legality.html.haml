@@ -3,8 +3,12 @@
   -# CardController#show precomputes this for @card. Index views render many cards,
   -# so there's nothing to hoist and they compute it here.
   - legality = @legality || card.legality_information
+  -# A printing you can't bring to a sanctioned event, or can't get at all, while the
+  -# card itself has legality from elsewhere. is:tournament covers oversized and
+  -# gold-bordered printings as well as playtest, silver-bordered and acorn ones.
+  - printing_not_legal = card.nontournament || !(card.paper? or card.mtgo? or card.arena?)
   - if legality.legal_everywhere?
-    - unless card.paper? or card.mtgo? or card.arena?
+    - if printing_not_legal
       %li This printing of #{card.name} is not legal. The card has other legal printings.
     %li
       #{card.name} is legal in every format.
@@ -12,7 +16,7 @@
     %li
       #{card.name} is not legal in any format.
   - else
-    - unless card.paper? or card.mtgo? or card.arena?
+    - if printing_not_legal
       %li This printing of #{card.name} is not legal. The card has other legal printings.
     - if card.card.not_released_yet?
       %li This card is not released yet. Legality information only applies after its release.

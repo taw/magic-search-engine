@@ -18,6 +18,7 @@ class CardPrinting
     :fullart,
     :in_boosters,
     :main_front,
+    :nontournament,
     :nontraditional,
     :oversized,
     :spotlight,

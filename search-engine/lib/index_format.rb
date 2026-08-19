@@ -28,6 +28,7 @@ module IndexFormat
     "etched"           => "e",
     "fullart"          => "f",
     "nontraditional"   => "n",
+    "nontournament"    => "u",
     "oversized"        => "o",
     "shandalar"        => "h",
     "spotlight"        => "s",
