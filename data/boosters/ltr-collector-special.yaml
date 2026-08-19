@@ -17,22 +17,22 @@ pack:
     chance: 500
   - surge_booster_fun_u: 1
     foil_hildebrant_poster_rm: 1
-    chance: 499
+    chance: 498
   - surge_booster_fun_u: 1
     serialized_poster: 1
-    chance: 1
+    chance: 2
   - surge_booster_fun_rm: 1
     hildebrant_u: 1
-    chance: 500
+    chance: 498
   - surge_booster_fun_rm: 1
     silver_hildebrant_u: 1
     chance: 498
   - serialized_topper: 1
     hildebrant_u: 1
-    chance: 1
+    chance: 2
   - serialized_topper: 1
     silver_hildebrant_u: 1
-    chance: 1
+    chance: 2
 sheets:
   showcase_common:
     query: "r:c"
@@ -112,6 +112,12 @@ sheets:
     - rawquery: "e:ltc number:535-558 r:m"
       rate: 1
       count: 4
+    - rawquery: "e:ltr number:751-756 r:r" # Rare borderless lands
+      rate: 2
+      count: 5
+    - rawquery: "e:ltr number:751-756 r:m" # Mythic borderless lands
+      rate: 1
+      count: 1
   serialized_topper:
     foil: true
     rawquery: "e:ltc number:/z/ -(Sol Ring)"
