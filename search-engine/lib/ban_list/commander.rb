@@ -344,12 +344,6 @@ BanList.for_format("commander") do
   )
 
   change(
-    "2025-03-24",
-    "New sticker card printed and falls under sticker card ban",
-    "Sticker sheet" => "banned",
-  )
-
-  change(
     "2025-04-22",
     "https://magic.wizards.com/en/news/announcements/commander-bans-and-restrictions-april-22-2025",
     "Gifts Ungiven" => "legal",
