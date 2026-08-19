@@ -34,6 +34,7 @@ module IndexFormat
     "textless"         => "l",
     "timeshifted"      => "i",
     "token"            => "t",
+    "variant_arena"    => "r",
     "variant_foreign"  => "v",
     "variant_misprint" => "m",
   }.freeze

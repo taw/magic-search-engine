@@ -24,6 +24,7 @@ class CardPrinting
     :textless,
     :timeshifted,
     :token,
+    :variant_arena,
     :variant_foreign,
     :variant_misprint,
   )
@@ -361,7 +362,7 @@ class CardPrinting
   end
 
   def calculate_baseset
-    return false if variant_foreign or variant_misprint or promo_types&.include?("reversibleback")
+    return false if variant_arena or variant_foreign or variant_misprint or promo_types&.include?("reversibleback")
     base_set_size = set.base_set_size
     return false unless base_set_size
     number_i >= 1 and number_i <= base_set_size

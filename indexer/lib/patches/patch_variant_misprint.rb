@@ -6,6 +6,9 @@ class PatchVariantMisprint < Patch
   end
 
   def is_variant_misprint?(card)
+    # variant:arena cards in mid and znr use †
+    return false if card["variant_arena"]
+
     number = card["number"]
     case card["set_code"]
     when "arn"
@@ -16,9 +19,6 @@ class PatchVariantMisprint < Patch
     when "inv"
       # This is some promo, should be in PINV not INV
       number =~ /★/
-    when "dom", "ktk"
-      # Arena version not misprint, but I don't want a separate flag for a single card
-      number =~ /y/
     when "mkm"
       number =~ /★|†/
     else

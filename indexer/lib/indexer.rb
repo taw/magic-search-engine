@@ -96,6 +96,7 @@ class Indexer
       PatchAlchemy,
       PatchBlocks,
       PatchSecondary,
+      PatchVariantArena, # before VariantMisprint
       PatchVariantMisprint,
       PatchVariantForeign,
       PatchFoiling,

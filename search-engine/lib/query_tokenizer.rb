@@ -482,7 +482,7 @@ class QueryTokenizer
         kind = s[1].downcase
         kind = "borderless" if kind == "none"
         tokens << [:test, ConditionBorder.new(kind)]
-      elsif s.scan(/variant\s*[:=]\s*(misprint|foreign)\b/)
+      elsif s.scan(/variant\s*[:=]\s*(misprint|foreign|arena)\b/)
         cond = s[1].capitalize
         klass = Kernel.const_get("ConditionVariant#{cond}")
         tokens << [:test, klass.new]
