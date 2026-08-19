@@ -85,6 +85,10 @@ class Format
     # real cards rather than noise, override this method.
     return false if card.alchemy
     card.printings.each do |printing|
+      # A playtest printing is not a real Magic card and can't make one legal. Almost
+      # every playtest card is funny and already gone by here; this is for the few that
+      # aren't, like Call from the Grave, whose only other printing is a Shandalar one.
+      next if printing.promo_types&.include?("playtest")
       next if @time and printing.release_date > @time
       if @included_sets
         next unless @included_sets.include?(printing.set_code)

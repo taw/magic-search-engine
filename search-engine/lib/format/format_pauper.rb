@@ -10,6 +10,7 @@ class FormatPauper < FormatVintage
     # plenty of those are commons.
     return false if card.alchemy
     card.printings.each do |printing|
+      next if printing.promo_types&.include?("playtest")
       next if @time and printing.release_date > @time
       next if @excluded_sets.include?(printing.set_code)
       return true if printing.rarity == "common" or printing.rarity == "basic"
