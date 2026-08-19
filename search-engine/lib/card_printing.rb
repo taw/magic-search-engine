@@ -193,7 +193,6 @@ class CardPrinting
     display_mana_cost
     display_power
     display_toughness
-    extra
     first_regular_release_date
     first_release_date
     foreign_names
@@ -231,6 +230,7 @@ class CardPrinting
     rulings
     secondary?
     short_name
+    special_format
     specialized
     specializes
     spellbook

@@ -38,7 +38,7 @@ class Format
 
   def legality(card)
     card = card.main_front if card.is_a?(PhysicalCard)
-    if card.extra or !in_format?(card)
+    if card.special_format or !in_format?(card)
       nil
     else
       @ban_list.legality(card.name, @time)
@@ -52,21 +52,19 @@ class Format
   # list has never heard of can't be either - which is 99.8% of the index,
   # settled by a hash lookup instead of walking every printing of every card.
   #
-  # The card.extra term is what legality applies too. mtgjson files Alchemy
-  # cards in the same set as the paper cards they rebalance instead of giving
-  # them their own set, so without it every format would count them as printings
-  # of its own sets. Alchemy and Historic, where they're real cards rather than
-  # noise, override these.
+  # The card.special_format term is what legality applies too - planes, schemes,
+  # vanguards, conspiracies and Hero's Path cards are legal in no format at any
+  # date, so the ban list never gets a say about them.
   def banned?(card)
     card = card.main_front if card.is_a?(PhysicalCard)
     return false unless @ban_list.legality(card.name, @time) == "banned"
-    !card.extra and in_format?(card)
+    !card.special_format and in_format?(card)
   end
 
   def restricted?(card)
     card = card.main_front if card.is_a?(PhysicalCard)
     return false unless RESTRICTED_STATUSES.include?(@ban_list.legality(card.name, @time))
-    !card.extra and in_format?(card)
+    !card.special_format and in_format?(card)
   end
 
   def legal?(card)
@@ -81,6 +79,10 @@ class Format
     # Funny check is disabled for Alchemy/Historic
     # as Arena cards sometimes get paper reprints with acorn stamp like in MB2
     return false if card.funny
+    # mtgjson files Alchemy cards in the same set as the paper cards they rebalance
+    # instead of giving them their own set, so without this every format would count
+    # them as printings of its own sets. Alchemy, Historic and Timeless, where they're
+    # real cards rather than noise, override this method.
     return false if card.alchemy
     card.printings.each do |printing|
       next if @time and printing.release_date > @time

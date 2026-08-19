@@ -110,7 +110,11 @@ class PatchSetTypes < Patch
       #
       # mbc is on neither list. It is legal in Commander, Legacy, and Vintage, and its only
       # non-legal cards are the Alchemy conversions, which the acorn stamp already catches.
-      funny_sets = %W[unh ugl pcel hho ust pust ppc1 h17 tbth tdag tfth thp1 thp2 thp3 ptg cmb1 cmb2 und punh ulst mb2 unk punk past]
+      #
+      # The Theros Hero's Path decks (thp1 thp2 thp3) and challenge decks (tbth tfth tdag)
+      # used to be here. Nothing about them is funny - they were only ever on this list to
+      # keep them out of formats, which PatchSpecialFormat now does for the right reason.
+      funny_sets = %W[unh ugl pcel hho ust pust ppc1 h17 ptg cmb1 cmb2 und punh ulst mb2 unk punk past]
       if funny_sets.include?(set_code) or set["name"] =~ /Heroes of the Realm/
         set_types << "funny"
         set["funny"] = true

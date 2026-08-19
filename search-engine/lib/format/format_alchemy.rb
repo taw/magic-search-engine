@@ -81,8 +81,8 @@ class FormatAlchemy < FormatStandard
     end
   end
 
-  # Same ban-list-first order as Format, without the card.extra term - Alchemy
-  # cards are real cards here, and in_format? is what decides instead
+  # Same ban-list-first order as Format, without the card.special_format term -
+  # nothing in those formats is a special format card, and in_format? decides
   def banned?(card)
     card = card.main_front if card.is_a?(PhysicalCard)
     return false unless @ban_list.legality(card.name, @time) == "banned"

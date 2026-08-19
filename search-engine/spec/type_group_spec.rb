@@ -27,8 +27,8 @@ describe "#type_group" do
   end
 
   it "has a bucket for cards which are none of these" do
-    type_group("e:cns t:conspiracy is:extra").should eq [8, "Other"]
-    type_group("e:ohop t:plane is:extra").should eq [8, "Other"]
+    type_group("e:cns t:conspiracy is:specialformat").should eq [8, "Other"]
+    type_group("e:ohop t:plane is:specialformat").should eq [8, "Other"]
   end
 
   it "sorts cards we know nothing about last" do

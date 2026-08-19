@@ -13,7 +13,7 @@ describe "is:maindeck" do
   end
 
   it "is:maindeck" do
-    assert_search_equal "not:maindeck", "t:plane or t:phenomenon or t:vanguard or t:scheme or t:conspiracy or t:stickers or t:attraction or t:contraption or is:dungeon or is:hero"
-    assert_search_equal "is:maindeck", "-(t:plane or t:phenomenon or t:vanguard or t:scheme or t:conspiracy or t:stickers or t:attraction or t:contraption or is:dungeon or is:hero)"
+    assert_search_equal "not:maindeck", "t:plane or t:phenomenon or t:phenome-nom or t:vanguard or t:scheme or t:conspiracy or t:stickers or t:attraction or t:contraption or is:dungeon or is:hero"
+    assert_search_equal "is:maindeck", "-(t:plane or t:phenomenon or t:phenome-nom or t:vanguard or t:scheme or t:conspiracy or t:stickers or t:attraction or t:contraption or is:dungeon or is:hero)"
   end
 end

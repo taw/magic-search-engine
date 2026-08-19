@@ -102,6 +102,7 @@ class Indexer
       PatchFoiling,
       PatchSetTypes,
       PatchFunny,
+      PatchSpecialFormat,
       PatchSpellbook, # before LinkRelated
       PatchSpecialize, # before LinkRelated
       PatchLinkRelated,

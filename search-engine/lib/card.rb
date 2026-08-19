@@ -18,7 +18,6 @@ class Card
     :augment,
     :brawler,
     :commander,
-    :extra,
     :front,
     :funny,
     :game_changer,
@@ -27,6 +26,7 @@ class Card
     :partner,
     :reserved,
     :secondary,
+    :special_format,
   )
 
   attr_reader :data, :printings
@@ -91,10 +91,15 @@ class Card
     @colors = data["c"] || ""
     @color_identity = data["ci"]
     self.funny = data["fu"]
+    self.special_format = data["sf"]
     @fulltext = -(data["o"] || "")
     @fulltext_normalized = -@fulltext.normalize_accents
     @text = @fulltext
-    @text = @text.gsub(/\s*\([^\(\)]*\)/, "") unless funny? or @layout == "dungeon"
+    # Parenthetical text is reminder text on ordinary cards, but on funny, special format
+    # and dungeon cards it is often the only statement of a rule that appears nowhere else -
+    # "Hidden agenda" and "(An ongoing scheme remains face up until it's abandoned.)" have no
+    # other printing to explain them.
+    @text = @text.gsub(/\s*\([^\(\)]*\)/, "") unless funny? or special_format? or @layout == "dungeon"
     @text = -@text.sub(/\s*\z/, "").gsub(/ *\n/, "\n").sub(/\A\s*/, "")
     @text_normalized = -@text.normalize_accents
     self.augment = @text =~ /augment \{/i
@@ -117,7 +122,6 @@ class Card
     @display_mana_cost = data["hm"] ? nil : @mana_cost
     self.alchemy = data["al"]
     self.has_alchemy = data["ha"]
-    self.extra = ["vanguard", "planar", "scheme"].include?(@layout) || @types.include?("conspiracy") || alchemy?
     @decklimit = data["dl"]
     @hand = data["hd"]
     @life = data["lf"]
