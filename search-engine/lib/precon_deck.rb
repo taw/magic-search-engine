@@ -35,71 +35,9 @@ class PreconDeck < Deck
     "http://mtg.wtf/deck/#{set.code}/#{slug}"
   end
 
-  # Everything except "Main Deck" and "Commander", which get special treatment
-  EXPORTED_SECTIONS = ["Sideboard", "Planar Deck", "Display Commander", "Scheme Deck"]
-
-  def to_text
-    deck_text{|cards| group_by_name(cards) }
-  end
-
-  def to_text_with_printings
-    deck_text{|cards| cards.map{|count, card| [count, card_details(card)] } }
-  end
-
-  # This groups multiple different basics etc. together
-  def card_names(section_name=nil)
-    group_by_name(section_name ? section(section_name) : @cards)
-  end
-
-  def card_details(card)
-    [
-      "#{card}",
-      " [#{card.set_code.upcase}:#{card.number}]",
-      card.foil ? " [foil]" : "",
-      card.etched ? " [etched]" : "",
-    ].join
-  end
-
-  private
-
-  def group_by_name(cards)
-    result = Hash.new(0)
-    cards.each do |count, card|
-      result[card.to_s] += count
-    end
-    result.map{|k,v| [v,k]}
-  end
-
-  # Display text can have multiple lines, and every one of them needs to be
-  # commented out, or a parser will read the rest as cards
-  def display_comment
-    @display.to_s.lines.map(&:chomp).map.with_index do |line, i|
-      i == 0 ? "// DISPLAY: #{line}" : "// #{line}"
-    end
-  end
-
-  # Both exports have the same structure, they only differ in how much
-  # information each card line carries
-  def deck_text(&format)
-    output = []
-    output << "// NAME: #{@name} - #{@set.name} #{@type}"
-    output << "// URL: #{canonical_url}"
-    output.concat(display_comment)
-    output << "// DATE: #{@release_date}" if @release_date
-    format[@commander].each do |count, card|
-      output << "COMMANDER: #{count} #{card}"
-    end
-    format[@cards].each do |count, card|
-      output << "#{count} #{card}"
-    end
-    EXPORTED_SECTIONS.each do |section_name|
-      next if section(section_name).empty?
-      output << ""
-      output << section_name
-      format[section(section_name)].each do |count, card|
-        output << "#{count} #{card}"
-      end
-    end
-    output.join("\n") + "\n"
+  # "Blood Rush - Dragon's Maze Event Deck" - the deck's name plus what it is,
+  # which is what the page title and the export header both want
+  def full_name
+    "#{@name} - #{@set.name} #{@type}"
   end
 end

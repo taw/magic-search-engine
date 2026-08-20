@@ -12,7 +12,7 @@ class DeckController < ApplicationController
     @deck = @set.decks.find{|d| d.slug == params[:id]} or return render_404
 
     headers["Content-Disposition"] = %Q[attachment; filename="#{@deck.name}.txt"]
-    render plain: @deck.to_text
+    render plain: @deck.export("names").text
   end
 
   def download_with_printings
@@ -20,7 +20,7 @@ class DeckController < ApplicationController
     @deck = @set.decks.find{|d| d.slug == params[:id]} or return render_404
 
     headers["Content-Disposition"] = %Q[attachment; filename="#{@deck.name}.txt"]
-    render plain: @deck.to_text_with_printings
+    render plain: @deck.export("text").text
   end
 
   def show

@@ -513,17 +513,17 @@ describe DeckParser do
 
     let(:decks) { db.sets.values.flat_map(&:decks) }
 
-    it "to_text" do
+    it "card names only export round trips" do
       # Without printings all we can round trip is names
       mismatched = decks.reject do |deck|
-        cards_by_name(DeckParser.new(db, deck.to_text).deck) == cards_by_name(deck)
+        cards_by_name(DeckParser.new(db, deck.export("names").text).deck) == cards_by_name(deck)
       end
       mismatched.should eq([])
     end
 
-    it "to_text_with_printings" do
+    it "text export round trips" do
       mismatched = decks.reject do |deck|
-        cards_by_printing(DeckParser.new(db, deck.to_text_with_printings).deck) == cards_by_printing(deck)
+        cards_by_printing(DeckParser.new(db, deck.export("text").text).deck) == cards_by_printing(deck)
       end
       mismatched.should eq([])
     end

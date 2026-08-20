@@ -39,6 +39,37 @@ class Deck
     @sections[name] || []
   end
 
+  def section_names
+    @sections.keys
+  end
+
+  # Metadata every exporter asks for. A decklist someone pasted has none of it,
+  # a PreconDeck has all of it.
+  def name
+    nil
+  end
+
+  def full_name
+    nil
+  end
+
+  def canonical_url
+    nil
+  end
+
+  def release_date
+    nil
+  end
+
+  def display
+    nil
+  end
+
+  def export(format)
+    exporter = DeckExporter[format] or raise "Unknown export format: #{format}"
+    exporter.new(self)
+  end
+
   def number_of_cards(section)
     return 0 unless @sections[section]
     @sections[section].sum(&:first)
