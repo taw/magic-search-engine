@@ -18,28 +18,74 @@ class DeckExporter::Xmage < DeckExporter
 
   private
 
-  # XMage has no foil, so the two finishes of a printing are one line
-  def merge_key(card)
-    printing_key(card)
-  end
-
-  def card_name(card)
-    joined_name(card, JOINED_LAYOUTS)
-  end
-
   def generate
     main, sideboard = main_and_sideboard
+    resolve_printings
     output = metadata_lines
     output.concat(merge_cards(main).map{|count, card| card_line(count, card) })
     output.concat(merge_cards(sideboard).map{|count, card| "SB: #{card_line(count, card)}" })
+    warn_about_substituted_printings
+    warn_about_missing_cards
     warn_about_unknown_cards
     warn_about_dropped_finishes
     output.join("\n") + "\n"
   end
 
   def card_line(count, card)
-    return "#{count} #{card.name}" unless known?(card)
-    "#{count} [#{card.set_code.upcase}:#{card_number(card)}] #{card_name(card)}"
+    printing = printing_for(card)
+    # Only a card we know nothing about gets here without a printing, and a
+    # line with no bracket does not match XMage's importer at all - it is
+    # skipped without a word, which is the one thing we cannot help
+    return "#{count} #{card_name(card)}" unless printing
+    "#{count} [#{printing.set_code.upcase}:#{card_number(printing)}] #{card_name(card)}"
+  end
+
+  # XMage's card database is not ours: it has no The List, no Secret Lair, and
+  # no Doctor Who planes. Rather than write a printing it will reject, write
+  # the printing it would have picked itself: from
+  # CardRepository#findPreferredOrLatestCard, the newest printing from a set
+  # which was ever standard legal, and otherwise just the newest.
+  #
+  # When it has no printing of the card at all, we write ours anyway. XMage
+  # answers that with "can't find card" in its import report, which is the
+  # point: a card it cannot have should be something the person importing sees,
+  # not a line quietly missing from their deck.
+  def resolve_printings
+    @printings = {}
+    @substituted = []
+    @missing = []
+    deck.physical_cards.grep(PhysicalCard).each do |card|
+      if card.main_front.xmage
+        @printings[card] = card
+        next
+      end
+      printing = preferred_xmage_printing(card)
+      @printings[card] = printing || card
+      (printing ? @substituted : @missing) << card
+    end
+  end
+
+  def preferred_xmage_printing(card)
+    printings = card.main_front.card.printings.select(&:xmage)
+    return nil if printings.empty?
+    PhysicalCard.for(printings.max_by{|printing|
+      [printing.set.types.include?("standard") ? 1 : 0, printing.set.release_date]
+    })
+  end
+
+  def printing_for(card)
+    @printings[card] if known?(card)
+  end
+
+  # Two cards XMage writes the same way are one line, and after a substitution
+  # that can be two printings which are one printing to XMage
+  def merge_key(card)
+    printing = printing_for(card)
+    printing ? printing_key(printing) : card_name(card)
+  end
+
+  def card_name(card)
+    joined_name(card, JOINED_LAYOUTS)
   end
 
   # NAME: is XMage's own metadata line; anything else has to be a comment, and
@@ -50,6 +96,16 @@ class DeckExporter::Xmage < DeckExporter
     output << "# URL: #{deck.canonical_url}" if deck.canonical_url
     output << "# DATE: #{deck.release_date}" if deck.release_date
     output
+  end
+
+  def warn_about_substituted_printings
+    return if @substituted.empty?
+    warn_about "XMage does not have these printings, so another printing of the same card is used: #{card_list(@substituted.map(&:name))}"
+  end
+
+  def warn_about_missing_cards
+    return if @missing.empty?
+    warn_about "Not in XMage at all, so it will report them as missing: #{card_list(@missing.map(&:name))}"
   end
 
   # XMage drops a line it cannot parse, and a card with no printing has no

@@ -542,6 +542,42 @@ describe DeckExporter do
     end
   end
 
+  # XMage ships its own card database, and it is not ours: no The List, no
+  # Secret Lair, and none of the Doctor Who planes
+  describe "printings XMage does not have" do
+    it "writes the printing XMage would have picked itself" do
+      deck = DeckParser.new(db, "1 Putrefy (PLST) KHC-91\n1 Rhys the Redeemed (PLST) SHM-237\n").deck
+      # The newest printing from a set which was ever standard legal, which is
+      # what CardRepository#findPreferredOrLatestCard does
+      deck.export("xmage").text.should eq("1 [DGM:93] Putrefy\n1 [SHM:237] Rhys the Redeemed\n")
+      deck.export("xmage").warnings.should include(
+        "XMage does not have these printings, so another printing of the same card is used: Putrefy, Rhys the Redeemed"
+      )
+    end
+
+    it "asks for our own printing when XMage has no printing of the card" do
+      deck = db.sets["who"].deck_named("Blast from the Past")
+      # XMage reports this one as a card it cannot find, which is the point -
+      # a line with no bracket would be skipped without a word
+      deck.export("xmage").text.should include("SB: 1 [WHO:597] The Pyramid of Mars\n")
+      deck.export("xmage").warnings.should include(
+        a_string_starting_with("Not in XMage at all, so it will report them as missing: Antarctic Research Base,")
+      )
+    end
+
+    it "keeps our own printing when XMage has it" do
+      deck = DeckParser.new(db, "1 Putrefy (RAV) 221\n").deck
+      deck.export("xmage").text.should eq("1 [RAV:221] Putrefy\n")
+      deck.export("xmage").warnings.should eq([])
+    end
+
+    # Two printings which substitute to the same one are one line
+    it "merges cards which become the same printing" do
+      deck = DeckParser.new(db, "1 Putrefy (PLST) KHC-91\n1 Putrefy (C13) 168\n").deck
+      deck.export("xmage").text.should eq("2 [DGM:93] Putrefy\n")
+    end
+  end
+
   describe "metadata" do
     let(:deck) { db.sets["jou"].deck_named("Wrath of the Mortals") }
 
