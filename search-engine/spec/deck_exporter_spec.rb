@@ -439,21 +439,26 @@ describe DeckExporter do
   describe "finishes" do
     let(:decklist) do
       <<~EOF
-      1 Sol Ring (C21) 263 *F*
-      1 Jeweled Lotus (CMR) 319 *E*
+      1 Sol Ring (M3C) 305 *F*
+      1 Talisman of Progress (SLD) 1052 *F* *E*
       EOF
     end
 
     it "our own format tags them, arena style marks them, csv has a column" do
-      deck.export("text").text.should eq("1 Sol Ring [C21:263] [foil]\n1 Jeweled Lotus [CMR:319] [etched]\n")
-      deck.export("arena").text.should eq("Deck\n1 Sol Ring (C21) 263 *F*\n1 Jeweled Lotus (CMR) 319 *E*\n")
+      deck.export("text").text.should eq("1 Sol Ring [M3C:305] [foil]\n1 Talisman of Progress [SLD:1052] [foil] [etched]\n")
       deck.export("csv").text.lines.map(&:chomp).map{|line| line.split(",").last }.should eq(["Finish", "Foil", "Etched"])
+    end
+
+    # Every etched card is foil too, so this is the only shape that occurs -
+    # `*F* *E*` would be asking for two finishes at once
+    it "arena style says etched, not etched and foil" do
+      deck.export("arena").text.should eq("Deck\n1 Sol Ring (M3C) 305 *F*\n1 Talisman of Progress (SLD) 1052 *E*\n")
     end
 
     it "the formats which cannot say so warn about it" do
       %W[xmage cockatrice mtgo].each do |format|
         deck.export(format).warnings.should eq([
-          "Exported as normal cards, as the format cannot mark a finish: Jeweled Lotus, Sol Ring",
+          "Exported as normal cards, as the format cannot mark a finish: Sol Ring, Talisman of Progress",
         ])
       end
       deck.export("arena").warnings.should eq([])

@@ -36,9 +36,21 @@ class DeckExporter::Arena < DeckExporter
     [
       "#{count} #{card_name(card)}",
       " (#{card.set_code.upcase}) #{card_number(card)}",
-      card.foil ? " *F*" : "",
-      card.etched ? " *E*" : "",
+      finish_marker(card),
     ].join
+  end
+
+  # Etched is a finish of its own everywhere this format is read, and every etched
+  # card is foil as well, so `*E*` alone says it - `*F* *E*` would be asking for two
+  # finishes at once. Same precedence the CSV's Finish column uses.
+  def finish_marker(card)
+    if card.etched
+      " *E*"
+    elsif card.foil
+      " *F*"
+    else
+      ""
+    end
   end
 
   # The commander is a section of its own here, so only the exotic sections
