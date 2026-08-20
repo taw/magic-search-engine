@@ -17,9 +17,10 @@
 # The blank line goes before the sideboard and nowhere else, which is the rule
 # our own text format has always used, arrived at here independently.
 #
-# It writes both faces of a double faced card and spells accents out, but it
-# read our front list names and our accents when we sent them, so those stay as
-# every other format writes them.
+# It writes both faces of a double faced card where we write the front list,
+# but it read our front list names when we sent them, so those stay as every
+# other format writes them. Checked by round trip: a file this writes imports
+# there and comes back the same deck, zones and finishes included.
 class DeckExporter::MythicHub < DeckExporter
   format "mythichub", "MythicHub", "txt"
 

@@ -744,6 +744,54 @@ describe DeckExporter do
     end
   end
 
+  # Deckbox reads a blank line as "sideboard from here" and skips the headers,
+  # so the blank after the commander block put its whole deck in the sideboard
+  describe "blank lines between blocks" do
+    let(:decklist) do
+      <<~EOF
+      Commander
+      1 Kitsa, Otterball Elite (BLB) 54
+
+      Deck
+      1 Sol Ring (M3C) 305
+
+      Sideboard
+      1 Naturalize (M10) 195
+      EOF
+    end
+
+    it "arena style separates every block, which is what Arena wants" do
+      deck.export("arena").text.should eq(<<~EOF)
+        Commander
+        1 Kitsa, Otterball Elite (BLB) 54
+
+        Deck
+        1 Sol Ring (M3C) 305
+
+        Sideboard
+        1 Naturalize (M10) 195
+      EOF
+    end
+
+    it "the compatible one blanks before the sideboard and nowhere else" do
+      deck.export("arena_compatible").text.should eq(<<~EOF)
+        Commander
+        1 Kitsa, Otterball Elite (BLB) 54
+        Deck
+        1 Sol Ring (M3C) 305
+
+        Sideboard
+        1 Naturalize (M10) 195
+      EOF
+    end
+
+    it "writes no separator at all when a deck has one section" do
+      deck = DeckParser.new(db, "1 Sol Ring (M3C) 305\n").deck
+      deck.export("arena").text.should eq("Deck\n1 Sol Ring (M3C) 305\n")
+      deck.export("arena_compatible").text.should eq("Deck\n1 Sol Ring (M3C) 305\n")
+    end
+  end
+
   describe "the format list" do
     it "is what the dialog offers, in order" do
       DeckExporter.codes.should eq(

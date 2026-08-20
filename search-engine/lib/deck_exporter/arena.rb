@@ -22,20 +22,22 @@ class DeckExporter::Arena < DeckExporter
 
   def generate
     commander, main, sideboard = commander_main_and_sideboard
-    blocks = [
-      block("Commander", commander),
-      block("Main Deck", main),
-      block("Sideboard", sideboard),
-    ].compact
+    blocks = {"Commander" => commander, "Main Deck" => main, "Sideboard" => sideboard}
+      .filter_map{|name, cards| [name, block(name, cards)] unless cards.empty? }
     warn_about_unknown_cards
-    # The blank line between blocks is not decoration - Arena needs it to see
-    # the next header. It is also what breaks Deckbox, where a blank line means
-    # "sideboard from here"
-    blocks.map{|lines| lines.join("\n") }.join("\n\n") + "\n"
+    blocks.each_with_index.map{|(name, lines), index|
+      (index.zero? ? "" : block_separator(name)) + lines.join("\n")
+    }.join + "\n"
+  end
+
+  # The blank line between blocks is not decoration - Arena needs it to see the
+  # next header. It is also what breaks Deckbox, where a blank line means
+  # "sideboard from here", so the compatible subclass writes only one
+  def block_separator(name)
+    "\n\n"
   end
 
   def block(name, cards)
-    return nil if cards.empty?
     [HEADERS.fetch(name)] + merge_cards(cards).map{|count, card| card_line(count, card) }
   end
 

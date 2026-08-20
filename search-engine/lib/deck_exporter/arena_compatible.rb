@@ -26,6 +26,16 @@ class DeckExporter::ArenaCompatible < DeckExporter::Arena
     text
   end
 
+  # One blank line, before the sideboard and nowhere else. Deckbox reads a
+  # blank line as "sideboard from here" and skips the headers, so with a blank
+  # after the commander block its whole deck lands in the sideboard; with this
+  # one, a reader which splits on blank lines and a reader which reads the
+  # header both put the card in the same place. Our own text format and
+  # MythicHub's both do it this way.
+  def block_separator(name)
+    name == "Sideboard" ? "\n\n" : "\n"
+  end
+
   # Nothing is written which could say which finish a card is
   def finish_marker(card)
     ""
