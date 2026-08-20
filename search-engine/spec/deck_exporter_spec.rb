@@ -467,6 +467,7 @@ describe DeckExporter do
     it "exports the name and nothing else" do
       deck.export("arena").text.should eq("Deck\n1 Delver of Secrets (ISD) 51\n3 Not A Real Card\n")
       deck.export("csv").text.should include("Main Deck,3,Not A Real Card,,,,\r\n")
+      # No set, no number, and no uuid either
       deck.export("cockatrice").text.should include(%Q[<card number="3" name="Not A Real Card"/>])
     end
 
@@ -512,6 +513,35 @@ describe DeckExporter do
     end
   end
 
+  # 4 foil and 4 nonfoil Islands of one printing are 8 Islands to any format
+  # which cannot say which finish a card is
+  describe "cards a format cannot tell apart" do
+    let(:deck) { db.sets["mid"].deck_named("Innistrad: Midnight Hunt Bundle Land Pack") }
+
+    it "merges them into one line" do
+      deck.export("xmage").text.should include("8 [MID:381] Island\n")
+      deck.export("cockatrice").text.should include(
+        %Q[<card number="8" name="Island" setShortName="MID" collectorNumber="381"]
+      )
+      deck.export("mtgo").text.should include(%Q[Quantity="8" Sideboard="false" Name="Island"])
+      deck.export("names").text.should include("8 Island\n")
+    end
+
+    it "leaves them alone where the finish can be written" do
+      deck.export("text").text.should include("4 Island [MID:381]\n4 Island [MID:381] [foil]\n")
+      deck.export("arena").text.should include("4 Island (MID) 381\n4 Island (MID) 381 *F*\n")
+      deck.export("csv").text.should include("Main Deck,4,Island,MID,Innistrad: Midnight Hunt,381,Foil")
+    end
+
+    # Names is the one that merges across printings too, having nothing else
+    # to tell them apart by
+    it "merges different printings only where the printing is gone" do
+      deck = DeckParser.new(db, "1 Island (MID) 270\n1 Island (MID) 271\n").deck
+      deck.export("names").text.should eq("2 Island\n")
+      deck.export("xmage").text.should eq("1 [MID:270] Island\n1 [MID:271] Island\n")
+    end
+  end
+
   describe "metadata" do
     let(:deck) { db.sets["jou"].deck_named("Wrath of the Mortals") }
 
@@ -545,6 +575,26 @@ describe DeckExporter do
       deck.export("mtgo").filename.should eq("Wrath of the Mortals.dek")
       deck.export("cockatrice").filename.should eq("Wrath of the Mortals.cod")
       DeckParser.new(db, "1 Sol Ring\n").deck.export("text").filename.should eq("deck.txt")
+    end
+  end
+
+  # Cockatrice picks the printing from the uuid and nothing else: a card
+  # without one falls back to whichever printing it prefers, which is not the
+  # one we wrote in the set and number columns
+  describe "cockatrice provider ids" do
+    let(:decklist) { "1 Delver of Secrets (ISD) 51\n2 Fire // Ice (APC) 128\n" }
+
+    it "writes a scryfall id for every card it knows" do
+      deck.export("cockatrice").text.should include(
+        %Q[<card number="1" name="Delver of Secrets" setShortName="ISD" collectorNumber="51" uuid="11bf83bb-c95b-4b4f-9a56-ce7a1816307a"/>],
+        %Q[<card number="2" name="Fire // Ice" setShortName="APC" collectorNumber="128" uuid="f98f4538-5b5b-475d-b98f-49d01dae6f04"/>],
+      )
+    end
+
+    it "is the only format which writes them" do
+      %W[text names arena csv mtgo xmage].each do |format|
+        deck.export(format).text.should_not include("11bf83bb")
+      end
     end
   end
 

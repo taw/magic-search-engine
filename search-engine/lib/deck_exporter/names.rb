@@ -7,8 +7,13 @@ class DeckExporter::Names < DeckExporter::Text
 
   private
 
+  # Without a printing there is nothing to tell two Islands apart by
+  def merge_key(card)
+    card_name(card)
+  end
+
   def card_lines(cards)
-    group_by_name(cards).map{|count, name| "#{count} #{name}" }
+    merge_cards(cards).map{|count, card| "#{count} #{card_name(card)}" }
   end
 
   # Nothing here has a printing to warn about

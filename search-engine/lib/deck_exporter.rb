@@ -110,14 +110,29 @@ class DeckExporter
     [main, sideboard]
   end
 
-  # Different printings of the same card become one line as soon as a format
-  # stops printing which printing it means
-  def group_by_name(cards)
-    result = Hash.new(0)
+  # Two cards a format writes identically have to come out as one line: to
+  # anything which cannot say which finish a card is, 4 foil and 4 nonfoil
+  # Islands of one printing are 8 Islands, and to anything which drops the
+  # printing entirely they are 8 Islands even across sets. The first card of a
+  # group stands for all of them, so the line is written from a real card.
+  def merge_cards(cards)
+    merged = {}
     cards.each do |count, card|
-      result[card_name(card)] += count
+      entry = (merged[merge_key(card)] ||= [0, card])
+      entry[0] += count
     end
-    result.map{|name, count| [count, name] }
+    merged.values
+  end
+
+  # Our own format writes every distinction we know about, so nothing merges
+  def merge_key(card)
+    card
+  end
+
+  # For formats which name a printing but not its finish. A card we know
+  # nothing about has only its name to be told apart by.
+  def printing_key(card)
+    known?(card) ? [card.set_code, card_number(card)] : card.name
   end
 
   # The front list: "Fire // Ice" for a split card, but "Delver of Secrets" for

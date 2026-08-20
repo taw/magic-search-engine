@@ -1,6 +1,14 @@
-# Cockatrice's .cod file. Current Cockatrice writes and reads setShortName,
-# collectorNumber and uuid on every card, so unlike the plain text it also
-# writes, this one keeps the printing.
+# Cockatrice's .cod file. It writes and reads setShortName, collectorNumber
+# and uuid on every card, so unlike the plain text it also writes, this one
+# keeps the printing.
+#
+# The uuid is the load-bearing one. Opening a .cod resolves each card by name
+# and uuid only (`DecklistCardNode::toCardRef`), and a card with no uuid gets
+# `getPreferredPrinting` - whichever printing Cockatrice itself favours - so
+# without it the set and number we wrote are shown in the columns while the
+# actual card in the deck is some other printing. Only its clipboard, website
+# and Archidekt importers run `ResolveProviderId`, which is the code path that
+# looks a printing up by set and number.
 #
 # Its card database is built from mtgjson, so the set code is the mtgjson code
 # uppercased and the number is the physical-card number. Names are mtgjson's
@@ -16,6 +24,7 @@ class DeckExporter::Cockatrice < DeckExporter
 
   def generate
     main, sideboard = main_and_sideboard
+    @scryfall_ids = ScryfallIds.lookup(deck.physical_cards.grep(PhysicalCard))
     warn_about_unknown_cards
     warn_about_dropped_finishes
     [
@@ -34,7 +43,7 @@ class DeckExporter::Cockatrice < DeckExporter
     return nil if cards.empty?
     [
       %Q[    <zone name="#{name}">],
-      *cards.map{|count, card| card_element(count, card) },
+      *merge_cards(cards).map{|count, card| card_element(count, card) },
       %Q[    </zone>],
     ].join("\n")
   end
@@ -44,8 +53,14 @@ class DeckExporter::Cockatrice < DeckExporter
     if known?(card)
       attributes["setShortName"] = card.set_code.upcase
       attributes["collectorNumber"] = card_number(card)
+      attributes["uuid"] = @scryfall_ids[card] if @scryfall_ids[card]
     end
     %Q[        <card #{attributes.map{|k,v| %Q[#{k}="#{escape(v)}"] }.join(" ")}/>]
+  end
+
+  # Cockatrice has no foil, so the two finishes of a printing are one card
+  def merge_key(card)
+    printing_key(card)
   end
 
   # Cockatrice keeps a flip card's faces as two cards named after one face

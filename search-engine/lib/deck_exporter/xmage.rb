@@ -18,6 +18,11 @@ class DeckExporter::Xmage < DeckExporter
 
   private
 
+  # XMage has no foil, so the two finishes of a printing are one line
+  def merge_key(card)
+    printing_key(card)
+  end
+
   def card_name(card)
     joined_name(card, JOINED_LAYOUTS)
   end
@@ -25,8 +30,8 @@ class DeckExporter::Xmage < DeckExporter
   def generate
     main, sideboard = main_and_sideboard
     output = metadata_lines
-    output.concat(main.map{|count, card| card_line(count, card) })
-    output.concat(sideboard.map{|count, card| "SB: #{card_line(count, card)}" })
+    output.concat(merge_cards(main).map{|count, card| card_line(count, card) })
+    output.concat(merge_cards(sideboard).map{|count, card| "SB: #{card_line(count, card)}" })
     warn_about_unknown_cards
     warn_about_dropped_finishes
     output.join("\n") + "\n"

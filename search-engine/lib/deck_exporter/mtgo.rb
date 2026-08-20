@@ -28,7 +28,7 @@ class DeckExporter::Mtgo < DeckExporter
   end
 
   def card_elements(cards, sideboard)
-    cards.filter_map do |count, card|
+    merge_cards(cards).filter_map do |count, card|
       id = @ids[card] if known?(card)
       unless id
         missing << card
@@ -36,6 +36,14 @@ class DeckExporter::Mtgo < DeckExporter
       end
       %Q[  <Cards CatID="#{id}" Quantity="#{count}" Sideboard="#{sideboard}" Name="#{escape(card_name(card))}" />]
     end
+  end
+
+  # A catalog id is one entry in MTGO's collection, so anything which lands on
+  # the same id is one line - both finishes of a printing, and any two
+  # printings which fell back to the same id. Cards with no id are dropped
+  # anyway, and only need to be told apart for the warning.
+  def merge_key(card)
+    @ids[card] || card.name
   end
 
   # MTGO writes a split card's halves with a bare slash between them and knows
