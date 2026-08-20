@@ -3,7 +3,7 @@ class BanList
 
   # Every status a ban list is allowed to say. The last four used to be spelled
   # "restricted" as well, which meant nothing downstream could tell them apart -
-  # Format::RESTRICTED_STATUSES is what groups them back together now. See _LEGALITY.md.
+  # Format::RESTRICTED_STATUSES is what groups them back together now.
   LEGALITY_STATUSES = [
     "legal",
     "banned",

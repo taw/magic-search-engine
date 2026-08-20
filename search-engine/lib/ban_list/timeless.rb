@@ -1,7 +1,7 @@
 BanList.for_format("timeless") do
   # "conjurable" and "specialized" are technically not a B&R issue, they're cards which
   # can't go into a deck at all. Format::RESTRICTED_STATUSES groups them with the
-  # other restricted-family statuses for restricted: and f: searches - see _LEGALITY.md
+  # other restricted-family statuses for restricted: and f: searches.
   #
   # Same list as Historic's - conjure-only is a property of the card on Arena, not of a
   # format - but kept as its own copy so a new conjure-only set gets its own dated entry

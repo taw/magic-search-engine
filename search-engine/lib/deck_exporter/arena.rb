@@ -1,9 +1,10 @@
 # The line format MTG Arena introduced. What every destination shares is the
-# *line* - "1 Arid Mesa (MH2) 244" - and not much else: of the seven tried, only
+# *line* - "1 Arid Mesa (MH2) 244" - and not much else: of the eight tried, only
 # Archidekt and Moxfield read this file whole. MTGGoldfish ignores the Commander
 # header, Deckstats reports every header as an unmatched card, TappedOut pastes
-# into two boxes, and Arena, Deckstats and MTGGoldfish each drop a card that
-# carries a finish marker. See _DECK_EXPORT_FRONTEND_v2.md §4.3.
+# into two boxes, Deckbox reads a blank line as "sideboard from here" and so puts
+# the whole deck in the sideboard, and four of the eight drop any card that
+# carries a finish marker.
 #
 # It is "Arena style" rather than Arena: paper set codes and paper collector
 # numbers are what all of those want, and most paper cards are not on Arena
@@ -13,7 +14,7 @@ class DeckExporter::Arena < DeckExporter
 
   # Arena's own headers. Archidekt and Moxfield put the cards in the right zones;
   # MTGGoldfish reads Sideboard and ignores Commander; Deckstats and MPC Fill look
-  # a header up as a card name.
+  # a header up as a card name; Deckbox skips them and splits on the blank line.
   HEADERS = {"Commander" => "Commander", "Main Deck" => "Deck", "Sideboard" => "Sideboard"}
 
   private
@@ -27,7 +28,8 @@ class DeckExporter::Arena < DeckExporter
     ].compact
     warn_about_unknown_cards
     # The blank line between blocks is not decoration - Arena needs it to see
-    # the next header
+    # the next header. It is also what breaks Deckbox, where a blank line means
+    # "sideboard from here"
     blocks.map{|lines| lines.join("\n") }.join("\n\n") + "\n"
   end
 

@@ -285,7 +285,7 @@ describe "Formats" do
   # rotation_schedule, while Historic's is "every printing mtgjson tags game:arena",
   # and that tag is not reliable - Arena store decks make mtgjson tag cards from
   # sets which never were on Arena, so Regal Force looks like it was printed in
-  # Eventide "on Arena". See _LEGALITY.md.
+  # Eventide "on Arena".
   def conjurable_cards_in_pool(time=nil)
     format = Format["alchemy"].new(time)
     db.cards.each_value.select{|card|

@@ -17,6 +17,11 @@ class DeckExporter::Text < DeckExporter
     output.concat(card_lines(deck.section("Main Deck")))
     sections.each do |name, cards|
       next if name == "Commander" or name == "Main Deck"
+      # One blank line, and only before a section that is not the main deck.
+      # That is compatibility, not formatting: a reader which splits on a blank
+      # line and skips "Sideboard" as an unknown card, and a reader which reads
+      # the header and ignores blank lines, both put the card in the sideboard.
+      # Deckbox is the first kind, Archidekt the second
       output << ""
       output << name
       output.concat(card_lines(cards))

@@ -39,7 +39,7 @@ BanList.for_format("brawl") do
 
   # "conjurable" and "specialized" are technically not a B&R issue, they're cards which
   # can't go into a deck at all. Format::RESTRICTED_STATUSES groups them with the
-  # other restricted-family statuses for restricted: and f: searches - see _LEGALITY.md
+  # other restricted-family statuses for restricted: and f: searches.
   #
   # Same cards as Historic's copy of this list, minus Lightning Bolt - Historic files
   # that one as conjurable because it's pre-banned there anyway, but it's an ordinary

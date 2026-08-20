@@ -10,9 +10,9 @@ BanList.for_format("competitive brawl") do
   #
   # The rest is the conjure-only list, which is not a B&R issue at all - those cards
   # can't go into a deck in any Arena format. Format::RESTRICTED_STATUSES groups them
-  # with the other restricted-family statuses for restricted: and f: searches - see
-  # _LEGALITY.md. It's Historic's list minus Lightning Bolt, which Historic only files
-  # as conjurable because it's pre-banned there anyway.
+  # with the other restricted-family statuses for restricted: and f: searches. It's
+  # Historic's list minus Lightning Bolt, which Historic only files as conjurable
+  # because it's pre-banned there anyway.
   format_start(
     "https://magic.wizards.com/en/news/mtg-arena/introducing-ranked-brawl",
     "Ajani, Nacatl Pariah" => "banned",

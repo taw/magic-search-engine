@@ -4,8 +4,7 @@
 # /deck/visualize - so the only thing the subclasses know about metadata is
 # what Deck promises: a name, a url, a date, and a display blurb, any of which
 # can be missing. Which collector numbers, card names and set codes each format
-# wants was checked against those programs' own source, and is written down in
-# _DECK_EXPORT_FRONTEND_v2.md.
+# wants was checked against those programs' own source.
 #
 # Subclasses implement #generate, and collect a warning whenever the format
 # cannot carry something the deck has.
@@ -153,9 +152,8 @@ class DeckExporter
     card.name.gsub(" // ", separator)
   end
 
-  # Scryfall numbers a physical card, we number each face - see
-  # _DECK_FORMATS.md §7.1. Everything built on Scryfall data rejects our
-  # numbers, so this is what all the new formats use.
+  # Scryfall numbers a physical card, we number each face. Everything built on
+  # Scryfall data rejects our numbers, so this is what all the new formats use.
   def card_number(card)
     card.physical_card_number
   end
