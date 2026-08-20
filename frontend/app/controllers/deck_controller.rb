@@ -7,20 +7,32 @@ class DeckController < ApplicationController
     @title = "Preconstructed Decks"
   end
 
+  # The two urls which predate the export dialog, and which MythicHub links to
   def download
-    @set = $CardDatabase.sets[params[:set]] or return render_404
-    @deck = @set.decks.find{|d| d.slug == params[:id]} or return render_404
-
-    headers["Content-Disposition"] = %Q[attachment; filename="#{@deck.name}.txt"]
-    render plain: @deck.export("names").text
+    deck = precon_deck or return render_404
+    send_export deck.export("names")
   end
 
   def download_with_printings
-    @set = $CardDatabase.sets[params[:set]] or return render_404
-    @deck = @set.decks.find{|d| d.slug == params[:id]} or return render_404
+    deck = precon_deck or return render_404
+    send_export deck.export("text")
+  end
 
-    headers["Content-Disposition"] = %Q[attachment; filename="#{@deck.name}.txt"]
-    render plain: @deck.export("text").text
+  # One format at a time, as json, for the export dialog. A precon is named by
+  # its url; a pasted decklist has no url of its own, so the page posts the
+  # text back and it is parsed again - which is what rendering the page cost in
+  # the first place, and only happens when someone opens the dialog.
+  def export
+    return render_404 unless DeckExporter[params[:format]]
+    deck = params[:set] ? precon_deck : pasted_deck
+    return render_404 unless deck
+
+    export = deck.export(params[:format])
+    render json: {
+      filename: export.filename,
+      text: export.text,
+      warnings: export.warnings,
+    }
   end
 
   def show
@@ -94,6 +106,21 @@ class DeckController < ApplicationController
   end
 
   private
+
+  def precon_deck
+    set = $CardDatabase.sets[params[:set]] or return nil
+    set.decks.find{|deck| deck.slug == params[:id] }
+  end
+
+  def pasted_deck
+    return nil if params[:deck].blank?
+    DeckParser.new($CardDatabase, params[:deck]).deck
+  end
+
+  def send_export(export)
+    headers["Content-Disposition"] = %Q[attachment; filename="#{export.filename}"]
+    render plain: export.text
+  end
 
   def sort_section(section)
     section.sort_by{|_,c| [c.name, c.set_code, c.number] }

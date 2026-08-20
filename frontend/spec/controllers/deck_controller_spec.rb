@@ -73,14 +73,14 @@ RSpec.describe DeckController, type: :controller do
     it "download" do
       get "download", params: {set: set.code, id: deck.slug}
       assert_response 200
-      expect(response.body).to eq(deck.to_text)
+      expect(response.body).to eq(deck.export("names").text)
       expect(response.headers["Content-Disposition"]).to include(deck.name)
     end
 
     it "download_with_printings" do
       get "download_with_printings", params: {set: set.code, id: deck.slug}
       assert_response 200
-      expect(response.body).to eq(deck.to_text_with_printings)
+      expect(response.body).to eq(deck.export("text").text)
       expect(response.headers["Content-Disposition"]).to include(deck.name)
     end
 
@@ -101,6 +101,73 @@ RSpec.describe DeckController, type: :controller do
 
     it "download_with_printings - fake deck" do
       get "download_with_printings", params: {set: set.code, id: "lolwtf"}
+      assert_response 404
+    end
+  end
+
+  describe "export" do
+    let(:set) { $CardDatabase.sets["cmd"] }
+    let(:deck) { set.decks.find{|d| d.slug == "counterpunch"} }
+    let(:json) { JSON.parse(response.body) }
+
+    it "returns one format of a precon deck" do
+      get "export", params: {set: set.code, id: deck.slug, format: "arena"}
+      assert_response 200
+      expect(json["text"]).to eq(deck.export("arena").text)
+      expect(json["filename"]).to eq("Counterpunch.txt")
+      expect(json["warnings"]).to eq(deck.export("arena").warnings)
+    end
+
+    it "returns every format we offer" do
+      DeckExporter.codes.each do |code|
+        get "export", params: {set: set.code, id: deck.slug, format: code}
+        assert_response 200
+        body = JSON.parse(response.body)
+        expect(body["text"]).to eq(deck.export(code).text)
+        expect(body["filename"]).to end_with(".#{DeckExporter[code].extension}")
+      end
+    end
+
+    it "returns the warnings the format collected" do
+      get "export", params: {set: set.code, id: deck.slug, format: "xmage"}
+      assert_response 200
+      expect(json["warnings"]).to include(
+        "Commander goes to the sideboard, as the format has no place to mark it"
+      )
+    end
+
+    it "exports a decklist posted back from the visualizer" do
+      post "export", params: {deck: "4x Lightning Bolt\n20x Mountain", format: "names"}
+      assert_response 200
+      expect(json["text"]).to eq("4 Lightning Bolt\n20 Mountain\n")
+      # A pasted deck has no name of its own
+      expect(json["filename"]).to eq("deck.txt")
+    end
+
+    it "keeps the printings a pasted decklist named" do
+      post "export", params: {deck: "1 Sol Ring (C21) 263 *F*", format: "arena"}
+      assert_response 200
+      expect(json["text"]).to eq("Deck\n1 Sol Ring (C21) 263 *F*\n")
+    end
+
+    it "404s for a format we do not have" do
+      get "export", params: {set: set.code, id: deck.slug, format: "mwdeck"}
+      assert_response 404
+      get "export", params: {set: set.code, id: deck.slug}
+      assert_response 404
+    end
+
+    it "404s for a deck we do not have" do
+      get "export", params: {set: "m99", id: deck.slug, format: "text"}
+      assert_response 404
+      get "export", params: {set: set.code, id: "lolwtf", format: "text"}
+      assert_response 404
+    end
+
+    it "404s for an empty decklist" do
+      post "export", params: {deck: "", format: "text"}
+      assert_response 404
+      post "export", params: {format: "text"}
       assert_response 404
     end
   end
