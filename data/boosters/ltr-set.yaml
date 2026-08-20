@@ -20,6 +20,14 @@ sheets:
   common:
     query: "r:c -number>451"
     count: 101
+  uncommon:
+    any:
+    - query: 'r:u -name:"Nazgûl"'
+      count: 79
+      chance: 79
+    - rawquery: 'e:{set} name:"Nazgûl" -number>451'
+      count: 9
+      chance: 1
   with_showcase:
     any:
     # Scene range is 405-447 only: the Bilbo's Birthday Party (399-404) and
