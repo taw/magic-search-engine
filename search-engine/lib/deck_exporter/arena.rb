@@ -1,6 +1,9 @@
-# The line format MTG Arena introduced, which is the one thing nearly every
-# site reads: Moxfield, Archidekt, Cockatrice, ManaBox, TappedOut, Deckstats,
-# Scryfall, TopDecked, MythicHub, Draftmancer, and every proxy site.
+# The line format MTG Arena introduced. What every destination shares is the
+# *line* - "1 Arid Mesa (MH2) 244" - and not much else: of the seven tried, only
+# Archidekt and Moxfield read this file whole. MTGGoldfish ignores the Commander
+# header, Deckstats reports every header as an unmatched card, TappedOut pastes
+# into two boxes, and Arena, Deckstats and MTGGoldfish each drop a card that
+# carries a finish marker. See _DECK_EXPORT_FRONTEND_v2.md §4.3.
 #
 # It is "Arena style" rather than Arena: paper set codes and paper collector
 # numbers are what all of those want, and most paper cards are not on Arena
@@ -8,7 +11,9 @@
 class DeckExporter::Arena < DeckExporter
   format "arena", "Arena style", "txt"
 
-  # Arena's own headers. Every other reader either knows them or ignores them.
+  # Arena's own headers. Archidekt and Moxfield put the cards in the right zones;
+  # MTGGoldfish reads Sideboard and ignores Commander; Deckstats and MPC Fill look
+  # a header up as a card name.
   HEADERS = {"Commander" => "Commander", "Main Deck" => "Deck", "Sideboard" => "Sideboard"}
 
   private
