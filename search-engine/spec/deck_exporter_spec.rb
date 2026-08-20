@@ -455,6 +455,22 @@ describe DeckExporter do
       deck.export("arena").text.should eq("Deck\n1 Sol Ring (M3C) 305 *F*\n1 Talisman of Progress (SLD) 1052 *E*\n")
     end
 
+    it "mythichub spells them out, and etched still wins" do
+      deck.export("mythichub").text.should eq(
+        "== MAINBOARD ==\n1 Sol Ring [M3C] #305 foil\n1 Talisman of Progress [SLD] #1052 etched\n"
+      )
+      deck.export("mythichub").warnings.should eq([])
+    end
+
+    it "the compatible arena style writes no marker, and says so" do
+      deck.export("arena_compatible").text.should eq(
+        "Deck\n1 Sol Ring (M3C) 305\n1 Talisman of Progress (SLD) 1052\n"
+      )
+      deck.export("arena_compatible").warnings.should eq([
+        "Exported as normal cards, as the format cannot mark a finish: Sol Ring, Talisman of Progress",
+      ])
+    end
+
     it "the formats which cannot say so warn about it" do
       %W[xmage cockatrice mtgo].each do |format|
         deck.export(format).warnings.should eq([
@@ -509,6 +525,19 @@ describe DeckExporter do
         "Commander goes to the sideboard, as the format has no place to mark it",
       )
       deck.export("cockatrice").text.should include(%Q[<zone name="side">\n        <card number="1" name="The Fourth Doctor"])
+    end
+
+    it "mythichub keeps the commander and merges the rest" do
+      text = deck.export("mythichub").text
+      text.should include("== COMMANDER ==\n1 The Fourth Doctor [WHO] #2 foil\n")
+      text.should include("\n== MAINBOARD ==\n")
+      # The one blank line in the file, and it is before the sideboard
+      text.should include("\n\n== SIDEBOARD ==\n")
+      text.lines.count("\n").should eq(1)
+      deck.export("mythichub").warnings.should include(
+        "Planar Deck cards go to the sideboard, as the format has no planar deck",
+        "Display Commander left out, as it is an oversized copy of a card the deck already has",
+      )
     end
 
     it "csv says which section each card came from, so nothing moves" do
@@ -663,11 +692,68 @@ describe DeckExporter do
     end
   end
 
+  # The List's collector number is the printing it copies, so the three
+  # destinations which have no PLST can be given that printing instead
+  describe "The List printings" do
+    let(:decklist) { "1 Amulet of Vigor (PLST) WWK-121\n1 Fire // Ice (PLST) UMA-225\n" }
+
+    it "arena style writes the physical card" do
+      deck.export("arena").text.should eq(
+        "Deck\n1 Amulet of Vigor (PLST) WWK-121\n1 Fire // Ice (PLST) UMA-225\n"
+      )
+      deck.export("arena").warnings.should eq([])
+    end
+
+    it "the compatible one writes what the physical card is a copy of" do
+      deck.export("arena_compatible").text.should eq(
+        "Deck\n1 Amulet of Vigor (WWK) 121\n1 Fire // Ice (UMA) 225\n"
+      )
+      deck.export("arena_compatible").warnings.should eq([
+        "The List printings exported as the printing they copy, as most readers have no PLST: Amulet of Vigor, Fire // Ice",
+      ])
+    end
+
+    it "leaves every other format alone" do
+      deck.export("text").text.should include("1 Amulet of Vigor [PLST:WWK-121]\n")
+      deck.export("csv").text.should include("Amulet of Vigor,PLST,The List,WWK-121")
+    end
+
+    # XMage substitutes a printing here too, for its own reason - it has no The
+    # List at all - and picks by what its database has rather than by the number
+    it "is not the substitution xmage does" do
+      deck.export("xmage").text.should include("1 [WWK:121] Amulet of Vigor\n")
+      deck.export("xmage").warnings.should include(
+        a_string_matching(/XMage does not have/)
+      )
+    end
+
+    # Which is the one substitution that can produce a line we already have
+    it "merges a card with the printing it was written as" do
+      deck = DeckParser.new(db, "1 Amulet of Vigor (PLST) WWK-121\n1 Amulet of Vigor (WWK) 121\n").deck
+      deck.export("arena_compatible").text.should eq("Deck\n2 Amulet of Vigor (WWK) 121\n")
+      deck.export("arena").text.should eq(
+        "Deck\n1 Amulet of Vigor (PLST) WWK-121\n1 Amulet of Vigor (WWK) 121\n"
+      )
+    end
+
+    # Five of them name a number their own set spells differently, and any
+    # printing from the right set beats a set code nothing has
+    it "falls back to another printing when the number is not in that set" do
+      deck = DeckParser.new(db, "1 Brothers Yamazaki (PLST) CHK-160\n").deck
+      deck.export("arena_compatible").text.should eq("Deck\n1 Brothers Yamazaki (CHK) 160a\n")
+    end
+  end
+
   describe "the format list" do
     it "is what the dialog offers, in order" do
-      DeckExporter.codes.should eq(["text", "names", "arena", "csv", "mtgo", "xmage", "cockatrice"])
+      DeckExporter.codes.should eq(
+        ["text", "names", "arena", "arena_compatible", "csv", "mtgo", "xmage", "cockatrice", "mythichub"]
+      )
       DeckExporter.all.map(&:name).should eq(
-        ["Text", "Card names only", "Arena style", "CSV", "MTGO", "XMage", "Cockatrice"]
+        [
+          "Text", "Card names only", "Arena style", "Arena style (maximum compatibility)",
+          "CSV", "MTGO", "XMage", "Cockatrice", "MythicHub",
+        ]
       )
     end
 

@@ -21,7 +21,8 @@ class DeckExporter::Text < DeckExporter
       # That is compatibility, not formatting: a reader which splits on a blank
       # line and skips "Sideboard" as an unknown card, and a reader which reads
       # the header and ignores blank lines, both put the card in the sideboard.
-      # Deckbox is the first kind, Archidekt the second
+      # Deckbox is the first kind, Archidekt the second. MythicHub's own format
+      # does it the same way, which is where the idea can be seen from outside
       output << ""
       output << name
       output.concat(card_lines(cards))

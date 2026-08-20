@@ -1,10 +1,10 @@
 # The line format MTG Arena introduced. What every destination shares is the
-# *line* - "1 Arid Mesa (MH2) 244" - and not much else: of the eight tried, only
-# Archidekt and Moxfield read this file whole. MTGGoldfish ignores the Commander
-# header, Deckstats reports every header as an unmatched card, TappedOut pastes
-# into two boxes, Deckbox reads a blank line as "sideboard from here" and so puts
-# the whole deck in the sideboard, and four of the eight drop any card that
-# carries a finish marker.
+# *line* - "1 Arid Mesa (MH2) 244" - and not much else: of the nine tried, only
+# Archidekt and Moxfield read this file whole. MythicHub keeps every card and
+# flattens every section, MTGGoldfish ignores the Commander header, Deckstats
+# reports every header as an unmatched card, TappedOut pastes into two boxes,
+# Deckbox reads a blank line as "sideboard from here" and so puts the whole deck
+# in the sideboard, and four of the nine drop any card carrying a finish marker.
 #
 # It is "Arena style" rather than Arena: paper set codes and paper collector
 # numbers are what all of those want, and most paper cards are not on Arena
@@ -14,15 +14,16 @@ class DeckExporter::Arena < DeckExporter
 
   # Arena's own headers. Archidekt and Moxfield put the cards in the right zones;
   # MTGGoldfish reads Sideboard and ignores Commander; Deckstats and MPC Fill look
-  # a header up as a card name; Deckbox skips them and splits on the blank line.
+  # a header up as a card name; Deckbox skips them and splits on the blank line;
+  # MythicHub ignores all three and flattens the deck.
   HEADERS = {"Commander" => "Commander", "Main Deck" => "Deck", "Sideboard" => "Sideboard"}
 
   private
 
   def generate
-    main, sideboard = main_and_sideboard
+    commander, main, sideboard = commander_main_and_sideboard
     blocks = [
-      block("Commander", deck.section("Commander")),
+      block("Commander", commander),
       block("Main Deck", main),
       block("Sideboard", sideboard),
     ].compact
@@ -35,16 +36,21 @@ class DeckExporter::Arena < DeckExporter
 
   def block(name, cards)
     return nil if cards.empty?
-    [HEADERS.fetch(name)] + cards.map{|count, card| card_line(count, card) }
+    [HEADERS.fetch(name)] + merge_cards(cards).map{|count, card| card_line(count, card) }
   end
 
   def card_line(count, card)
     return "#{count} #{card.name}" unless known?(card)
     [
       "#{count} #{card_name(card)}",
-      " (#{card.set_code.upcase}) #{card_number(card)}",
+      " (#{card_set_code(card).upcase}) #{card_number(card)}",
       finish_marker(card),
     ].join
+  end
+
+  # Its own set code, unless a subclass writes the printing as something else
+  def card_set_code(card)
+    card.set_code
   end
 
   # Etched is a finish of its own everywhere this format is read, and every etched
@@ -60,19 +66,4 @@ class DeckExporter::Arena < DeckExporter
     end
   end
 
-  # The commander is a section of its own here, so only the exotic sections
-  # have nowhere to go
-  def main_and_sideboard
-    main = deck.section("Main Deck")
-    sideboard = deck.section("Sideboard").dup
-    EXTRA_SECTIONS.each do |name|
-      next if deck.section(name).empty?
-      warn_about "#{name} cards go to the sideboard, as the format has no #{name.downcase}"
-      sideboard += deck.section(name)
-    end
-    unless deck.section(DISPLAY_SECTION).empty?
-      warn_about "#{DISPLAY_SECTION} left out, as it is an oversized copy of a card the deck already has"
-    end
-    [main, sideboard]
-  end
 end

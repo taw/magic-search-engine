@@ -109,6 +109,21 @@ class DeckExporter
     [main, sideboard]
   end
 
+  # What a format with a commander zone can do with our sections: only the
+  # exotic ones have nowhere to go, and the display commander is still dropped.
+  def commander_main_and_sideboard
+    sideboard = deck.section("Sideboard").dup
+    EXTRA_SECTIONS.each do |name|
+      next if deck.section(name).empty?
+      warn_about "#{name} cards go to the sideboard, as the format has no #{name.downcase}"
+      sideboard += deck.section(name)
+    end
+    unless deck.section(DISPLAY_SECTION).empty?
+      warn_about "#{DISPLAY_SECTION} left out, as it is an oversized copy of a card the deck already has"
+    end
+    [deck.section("Commander"), deck.section("Main Deck"), sideboard]
+  end
+
   # Two cards a format writes identically have to come out as one line: to
   # anything which cannot say which finish a card is, 4 foil and 4 nonfoil
   # Islands of one printing are 8 Islands, and to anything which drops the
@@ -193,6 +208,6 @@ end
 
 # Listed rather than globbed, because this is the order the dialog offers them
 # in, and because the two legacy formats are one class and its subclass
-%W[text names arena csv mtgo xmage cockatrice].each do |format|
+%W[text names arena arena_compatible csv mtgo xmage cockatrice mythichub].each do |format|
   require_relative "deck_exporter/#{format}"
 end
