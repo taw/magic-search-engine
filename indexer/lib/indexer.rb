@@ -13,6 +13,7 @@ require_relative "decks_serializer"
 require_relative "token_uuids_serializer"
 require_relative "deck_printing_resolver"
 require_relative "scryfall_ids_serializer"
+require_relative "mtgo_ids_serializer"
 
 require_relative "patches/patch"
 Dir["#{__dir__}/patches/*.rb"].each do |path| require_relative path end
@@ -29,6 +30,7 @@ class Indexer
     @uuids_path = INDEX_ROOT + "uuids.txt"
     @token_uuids_path = INDEX_ROOT + "token_uuids.txt"
     @scryfall_ids_path = INDEX_ROOT + "scryfall_ids.txt"
+    @mtgo_ids_path = INDEX_ROOT + "mtgo_ids.txt"
     @products_path = INDEX_ROOT + "products.json"
     @decks_path = INDEX_ROOT + "deck_index.json"
     @verbose = verbose
@@ -51,6 +53,7 @@ class Indexer
     @uuids_path.write(UuidsSerializer.new(@cards).to_s)
     @token_uuids_path.write(TokenUuidsSerializer.new(@tokens).to_s)
     @scryfall_ids_path.write(ScryfallIdsSerializer.new(@cards).to_s)
+    @mtgo_ids_path.write(MtgoIdsSerializer.new(@cards).to_s)
     @products_path.write(ProductsSerializer.new(@products).to_s)
     @decks_path.write(DecksSerializer.new(@decks).to_s)
   end
