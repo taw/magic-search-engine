@@ -18,9 +18,9 @@ describe PhysicalCard do
     end
   end
 
-  let(:physical_card1) { PhysicalCard.for(card1, false) }
-  let(:physical_card2) { PhysicalCard.for(card2, false) }
-  let(:physical_card3) { PhysicalCard.for(card3, false) }
+  let(:physical_card1) { PhysicalCard.for(card1) }
+  let(:physical_card2) { PhysicalCard.for(card2) }
+  let(:physical_card3) { PhysicalCard.for(card3) }
 
   context "for normal cards it's just one front" do
     let(:card1) { find_unique("lightning bolt e:m10") }
@@ -138,7 +138,7 @@ describe PhysicalCard do
   # Scryfall style numbers, with one number for the whole physical card
   context "physical_card_number" do
     def physical_card_number(query)
-      PhysicalCard.for(find_unique(query), false).physical_card_number
+      PhysicalCard.for(find_unique(query)).physical_card_number
     end
 
     it "single faced cards keep their number" do

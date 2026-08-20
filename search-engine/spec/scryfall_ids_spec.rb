@@ -28,7 +28,7 @@ describe ScryfallIds do
   end
 
   it "answers for both finishes of a printing" do
-    foil = PhysicalCard.for(fire.main_front, true)
+    foil = PhysicalCard.for(fire.main_front, finish: :foil)
     ScryfallIds.lookup([fire, foil]).should eq(
       fire => "f98f4538-5b5b-475d-b98f-49d01dae6f04",
       foil => "f98f4538-5b5b-475d-b98f-49d01dae6f04",

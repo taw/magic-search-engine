@@ -49,7 +49,7 @@ class Product
         card = cards[[content[0], content[1]]]
         if card
           # no etched support
-          PhysicalCard.for(card, content[3], false)
+          PhysicalCard.for(card, foil: content[3])
         else
           "unknown card: #{content[2]} [#{content[0].upcase}:#{content[1]}]#{ content[3] ? " [foil]": ""}"
         end

@@ -96,7 +96,7 @@ class CardSet
         end
       end
       .map do |card|
-        PhysicalCard.for(card, foil)
+        PhysicalCard.for(card, foil: foil)
       end
       .uniq
   end

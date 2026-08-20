@@ -37,7 +37,7 @@ class Sealed
     set_code, number, foil = description.split("/", 3)
     set = @db.sets[set_code.downcase] or raise "Can't find set #{set_code}"
     card = set.printings.find{|c| c.number.downcase == number.downcase} or raise "Can't find card #{set_code}/#{number}"
-    physical_card = PhysicalCard.for(card, foil == "foil")
+    physical_card = PhysicalCard.for(card, foil: foil == "foil")
     count.times{ @fixed << physical_card }
   end
 

@@ -441,7 +441,7 @@ describe Deck do
     let(:commander) { deck.commander }
     let(:all) { deck.cards_in_all_zones }
     let(:korvold) {
-      PhysicalCard.for db.search("Korvold, Fae-Cursed King e:eld").printings.first, true
+      PhysicalCard.for db.search("Korvold, Fae-Cursed King e:eld").printings.first, finish: :foil
     }
 
     it do

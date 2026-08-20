@@ -1,12 +1,32 @@
 class PhysicalCard
   # A physical card is one printing's main front plus a finish. Every other
   # face it has follows from the main front, so none of them are stored.
-  attr_reader :main_front, :foil, :etched
-  def initialize(main_front, foil, etched)
+  #
+  # The finish is one value, not a pair of booleans. WotC printed one premium
+  # version of a card for years, so `foil: true / false` said everything; the
+  # pair only appeared when they started shipping two premium versions of one
+  # card, and it can express `foil: false, etched: true`, which is not a thing
+  # - etched is a kind of foiling. One symbol cannot. If a third premium
+  # treatment ever arrives it is one more value here rather than a third flag.
+  FINISHES = [:nonfoil, :foil, :etched]
+
+  attr_reader :main_front, :finish
+  def initialize(main_front, finish = :nonfoil)
+    raise "Unknown finish #{finish.inspect}" unless FINISHES.include?(finish)
     @main_front = main_front
-    @foil = !!foil
-    @etched = !!etched
+    @finish = finish
   end
+
+  # Most callers only want to know whether the card is premium at all, which is
+  # the question card sheets, packs and picture urls are asking.
+  def foil
+    @finish != :nonfoil
+  end
+
+  def etched
+    @finish == :etched
+  end
+
 
   def front
     @main_front.physical_front_parts
@@ -49,8 +69,7 @@ class PhysicalCard
       name,
       back_parts.empty? ? "" : "; #{back_parts.map(&:name).join(" // ")}}",
       "; #{set_code}/#{number}",
-      foil ? "; foil" : "",
-      etched ? "; etched" : "",
+      @finish == :nonfoil ? "" : "; #{@finish}",
       "]",
     ].join
   end
@@ -189,22 +208,41 @@ class PhysicalCard
   end
 
   def sort_key
-    @main_front.default_sort_index * 4 + (foil ? 2 : 0) + (etched ? 1 : 0)
+    @main_front.default_sort_index * FINISHES.size + FINISHES.index(@finish)
   end
 
   # The sort key without the finish, so the three finishes of a printing land
   # in one bucket and `eql?` tells them apart. That is deliberate: it makes the
   # values dense and consecutive, which is what Ruby wants, as it takes the low
   # bits of this as the bucket and does not mix them. The sort key itself is
-  # spaced 4 apart, which wastes three quarters of the buckets. Collections big
-  # enough for that to matter hold a single finish anyway - card sheets and set
+  # spaced `FINISHES.size` apart, so it wastes buckets. Collections big enough
+  # for that to matter hold a single finish anyway - card sheets and set
   # listings both take `foil` as a parameter - and ones that mix finishes are
   # small enough to be a linear scan.
   def hash
     @main_front.default_sort_index
   end
 
-  def self.for(card, foil=false, etched=false)
-    new(card.main_front, foil, etched)
+  # Some callers know the finish; others hold the booleans their data source
+  # gave them - mtgjson finishes, sealed product contents, the deck index, a
+  # decklist's `*F*` / `*E*` markers - so both ways in are supported, and asking
+  # in both at once is a mistake rather than a precedence question.
+  #
+  # Between the booleans, etched wins: it is a kind of foiling, so `etched`
+  # alone is someone saying less rather than something else, and `foil` next to
+  # it is redundant rather than contradictory. That is the one combination the
+  # old pair of instance variables could hold and mean nothing by.
+  def self.for(card, finish: nil, foil: nil, etched: nil)
+    unless finish.nil?
+      raise "Pass finish: or foil:/etched:, not both" unless foil.nil? and etched.nil?
+    end
+    finish ||= if etched
+      :etched
+    elsif foil
+      :foil
+    else
+      :nonfoil
+    end
+    new(card.main_front, finish)
   end
 end

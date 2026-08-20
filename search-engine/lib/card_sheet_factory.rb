@@ -29,7 +29,7 @@ class CardSheetFactory
       base_query += " is:nonfoil"
     end
     full_query = "(#{query}) #{base_query}"
-    cards = @db.search(full_query).printings.map{|c| PhysicalCard.for(c, foil)}.uniq
+    cards = @db.search(full_query).printings.map{|c| PhysicalCard.for(c, foil: foil)}.uniq
     if assert_count and assert_count != cards.size
       warn "Expected query #{full_query} to return #{assert_count}, got #{cards.size}"
     end
@@ -48,7 +48,7 @@ class CardSheetFactory
       warn "Expected sheet #{set_code}/#{print_sheet_code} to return #{count}, got #{cards.size}"
     end
     groups = cards.group_by{|c| c.print_sheet[mult_rx, 1].to_i }
-    subsheets = groups.map{|mult,cards| [kind.new(cards.map{|c| PhysicalCard.for(c, foil) }.uniq), mult] }
+    subsheets = groups.map{|mult,cards| [kind.new(cards.map{|c| PhysicalCard.for(c, foil: foil) }.uniq), mult] }
     mix_sheets(*subsheets, kind: kind)
   end
 end

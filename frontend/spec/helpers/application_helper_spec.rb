@@ -310,7 +310,7 @@ RSpec.describe ApplicationHelper, type: :helper do
   describe "#preview_id" do
     it "tells foil and nonfoil copies of a card apart" do
       expect(helper.preview_id(PhysicalCard.for(karn))).to eq "nph-1"
-      expect(helper.preview_id(PhysicalCard.for(karn, true))).to eq "nph-1-foil"
+      expect(helper.preview_id(PhysicalCard.for(karn, finish: :foil))).to eq "nph-1-foil"
     end
   end
 

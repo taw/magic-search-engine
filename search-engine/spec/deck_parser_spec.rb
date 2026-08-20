@@ -4,13 +4,13 @@ describe DeckParser do
   def physical_by_query(query, foil=false)
     printings = db.search(query).printings
     raise "Ambiguous query #{query.inspect}" if printings.size != 1
-    PhysicalCard.for(printings[0], foil)
+    PhysicalCard.for(printings[0], foil: foil)
   end
 
   def physical_by_best(name, foil=false, etched=false)
     printing = db.cards[name].printings.min_by(&:default_sort_index)
     raise "No such printing #{name}" unless printing
-    PhysicalCard.for(printing, foil, etched)
+    PhysicalCard.for(printing, foil: foil, etched: etched)
   end
 
   let(:parser) { DeckParser.new(db, text) }
@@ -438,7 +438,7 @@ describe DeckParser do
         [4, physical_by_query("counterspell e:cmr number=632", true)],
         [1, physical_by_query("ashnod's altar e:ema", true)],
         [1, physical_by_query("amulet of vigor e:plst", true)],
-        [1, PhysicalCard.for(db.cards["lightning bolt"].printings.find{|c| c.set_code == "a25"}, false, true)],
+        [1, PhysicalCard.for(db.cards["lightning bolt"].printings.find{|c| c.set_code == "a25"}, finish: :etched)],
         [1, physical_by_query("goblin guide e:zen")],
         [1, physical_by_query("black lotus e:lea")],
       ])

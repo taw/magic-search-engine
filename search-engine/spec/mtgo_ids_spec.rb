@@ -46,7 +46,7 @@ describe MtgoIds do
   end
 
   it "gives a foil card the normal id, as MTGO's premium ids are not indexed" do
-    foil = PhysicalCard.for(ancestors_chosen.main_front, true)
+    foil = PhysicalCard.for(ancestors_chosen.main_front, finish: :foil)
     MtgoIds.lookup([foil]).should eq(foil => "27500")
     # Two cards here, one printing in the file, and the name fallback must not
     # answer for either of them

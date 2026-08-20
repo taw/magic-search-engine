@@ -196,7 +196,7 @@ describe LimitedFormat do
   it "promo cards" do
     nph_prerelease.playable_promo_cards.should eq([])
     nph_prerelease.unplayable_promo_cards.should eq([
-      PhysicalCard.for(db.sets["pnph"].printing_by_number["73★"], true),
+      PhysicalCard.for(db.sets["pnph"].printing_by_number["73★"], finish: :foil),
     ])
     promo = nph_prerelease.unplayable_promo_cards[0]
     promo.name.should eq("Sheoldred, Whispering One")

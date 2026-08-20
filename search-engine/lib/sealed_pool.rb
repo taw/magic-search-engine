@@ -75,6 +75,6 @@ class SealedPool
       warn "#{inspect} has unknown promo card #{promo_data["name"]} [#{promo_data["set_code"].upcase}:#{promo_data["number"]}]"
       return nil
     end
-    PhysicalCard.for(printing, promo_data["foil"])
+    PhysicalCard.for(printing, foil: promo_data["foil"])
   end
 end

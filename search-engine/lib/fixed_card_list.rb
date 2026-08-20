@@ -50,7 +50,7 @@ class FixedCardList
       return
     end
 
-    card = PhysicalCard.for(printing, foil == "foil")
+    card = PhysicalCard.for(printing, foil: foil == "foil")
     count.times{ @cards << card }
   end
 end

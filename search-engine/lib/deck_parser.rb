@@ -192,13 +192,13 @@ class DeckParser
     name = card_description[:name]
     set_code = card_description[:set_code]
     number = card_description[:number]
-    foil = !!card_description[:foil]
-    etched = !!card_description[:etched]
+    foil = card_description[:foil]
+    etched = card_description[:etched]
     card = @db.cards[normalize_name(name)]
     if card
       printings = card.printings
       best_printing = select_best_printing(printings, set_code, number)
-      return PhysicalCard.for(best_printing, foil, etched)
+      return PhysicalCard.for(best_printing, foil: foil, etched: etched)
     end
     parts = name.split(%r[(?:&|/)+]).map{|n| normalize_name(n)}
     if parts.size > 1
@@ -206,7 +206,7 @@ class DeckParser
       if card
         printings = card.printings
         best_printing = select_best_printing(printings, set_code, number)
-        return PhysicalCard.for(best_printing, foil, etched)
+        return PhysicalCard.for(best_printing, foil: foil, etched: etched)
       end
     end
 

@@ -5,11 +5,12 @@ class DeckDatabase
     @db = db
   end
 
+  # The deck index writes the finish as trailing "foil" / "etched" tokens
   def resolve_card(count, set_code, card_number, foil=false, etched=false)
     set = @db.sets[set_code] or raise "Set not found #{set_code}"
     printing = set.printing_by_number[card_number]
     raise "Card not found #{set_code}/#{card_number}" unless printing
-    [count, PhysicalCard.for(printing, !!foil, !!etched)]
+    [count, PhysicalCard.for(printing, foil: foil, etched: etched)]
   end
 
   def load!(path=DECK_INDEX_PATH)
