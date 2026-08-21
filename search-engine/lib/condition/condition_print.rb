@@ -45,6 +45,7 @@ class ConditionPrint < Condition
   def parse_query_date(db)
     date = @date
     return [@date, 3] if @date.is_a?(Date)
+    return [Date.today, 3] if date.downcase == "now" or date.downcase == "today"
 
     set = db.sets.values.find{|set|
       set.code.downcase == @date.downcase or set.alternative_code&.downcase == @date.downcase

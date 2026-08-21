@@ -129,6 +129,19 @@ describe "QueryParser" do
     assert_search_parse %[time:rtr r:common], %[time:RTR r:common]
   end
 
+  it "now and today" do
+    assert_search_parse "time:now r:common", %[time:"#{Date.today}" r:common]
+    assert_search_parse "time:today r:common", "time:now r:common"
+    assert_search_parse "time:NOW r:common", "time:now r:common"
+  end
+
+  it "include:extras is accepted and ignored" do
+    # We never hide extra cards, so there is nothing for it to let back in
+    assert_search_parse "include:extras t:goblin", "t:goblin"
+    assert_search_parse "include=extras t:goblin", "t:goblin"
+    Query.new("include:extras t:goblin").warnings.should eq([])
+  end
+
   it "color aliases with =" do
     # Single colors
     assert_search_parse "c=w", "c=white"

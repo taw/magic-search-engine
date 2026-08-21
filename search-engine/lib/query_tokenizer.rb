@@ -515,6 +515,9 @@ class QueryTokenizer
         tokens << [:time, parse_time(s[1] || s[2])]
       elsif s.scan(/"(.*?)"/i)
         tokens << [:test, ConditionWord.new(s[1])]
+      # We never hide extra cards the way scryfall does, so there's nothing to include
+      elsif s.scan(/include\s*[:=]\s*extras\b/i)
+        # pass
       elsif s.scan(/other\s*[:=]\s*/i)
         tokens << [:other]
       elsif s.scan(/part\s*[:=]\s*/i)
@@ -577,6 +580,8 @@ private
   def parse_time(time)
     time = time.downcase
     case time
+    when "now", "today"
+      Date.today
     when /\A\d{4}\z/
       # It would probably be easier if we had end-of-period semantics, but we'd need to hack Date.parse for it
       # It parses "March 2010" as "2010.3.1"

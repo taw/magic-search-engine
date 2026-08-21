@@ -57,6 +57,19 @@ describe "Time Travel Test" do
     assert_search_equal %[time:"battle for homelands" f:standard], "f:standard"
   end
 
+  it "now and today" do
+    today = Date.today
+    assert_search_equal "print<=now", "print<=#{today}"
+    assert_search_equal "print>today", "print>#{today}"
+    assert_search_equal "firstprint<=now", "firstprint<=#{today}"
+    assert_search_equal "lastprint>=today", "lastprint>=#{today}"
+    assert_search_equal "print<=NOW", "print<=now"
+    assert_search_equal "time:now f:standard", %[time:"#{today}" f:standard]
+    assert_search_equal "time:today f:standard", "time:now f:standard"
+    # Spoiler season cards are what tells "now" apart from no restriction at all
+    assert_search_equal "print>now", "-print<=now"
+  end
+
   it "time travel scoped" do
     assert_search_equal "(time:KLD f:standard) -(time:AER f:standard)",
       "(Emrakul, the Promised End -e:sir,sld,inr) or (time:OGW Reflector Mage) or (Smuggler's Copter -e:nec,sld,plst,fca)"
