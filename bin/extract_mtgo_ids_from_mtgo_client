@@ -17,6 +17,9 @@
 # numbers, which face and which finish an id belongs to, are all the indexer's
 # problem. This just states what the client says, so it can be saved once and
 # refreshed whenever MTGO patches.
+#
+# A build MTGO has not patched since has nothing new to say, so a plain run
+# stops after the 12kB manifest that names it. --force reruns it anyway.
 
 require "csv"
 require "fileutils"
@@ -41,8 +44,13 @@ class ExtractMtgoIdsFromMtgoClient
     "Sub Card",
   ]
 
+  def initialize(force:)
+    @force = force
+  end
+
   def call
-    warn "MTGO client build #{build}"
+    return unless @force or build != saved_build
+
     save_ids
     save_build
   end
@@ -127,6 +135,10 @@ class ExtractMtgoIdsFromMtgoClient
     build_path.write("#{build}\n")
   end
 
+  def saved_build
+    build_path.read.chomp if build_path.exist?
+  end
+
   def rows_of(path)
     doc = parse(path)
     set_code = doc.root["id"]
@@ -172,4 +184,11 @@ class ExtractMtgoIdsFromMtgoClient
   end
 end
 
-ExtractMtgoIdsFromMtgoClient.new.call
+force = !!ARGV.delete("--force")
+
+unless ARGV.empty?
+  STDERR.puts "Usage: extract_mtgo_ids_from_mtgo_client [--force]"
+  exit 1
+end
+
+ExtractMtgoIdsFromMtgoClient.new(force: force).call
