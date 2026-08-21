@@ -3,9 +3,21 @@ describe "Formats" do
 
   ## General queries
 
+  it "unknown format warns" do
+    # Without the warning an unsupported format is indistinguishable from one
+    # we support but no card is legal in
+    db.search("f:gladiator").warnings.should include(%[Unknown format "gladiator"])
+    db.search("banned:gladiator").warnings.should include(%[Unknown format "gladiator"])
+    db.search("restricted:gladiator").warnings.should include(%[Unknown format "gladiator"])
+    db.search("legal:gladiator").warnings.should include(%[Unknown format "gladiator"])
+    # Spelled with the separators the tokenizer strips, and one we do support
+    db.search("f:penny-dreadful").warnings.should_not include(%[Unknown format "pennydreadful"])
+    db.search("f:*").warnings.should be_empty
+  end
+
   it "formats" do
     assert_search_equal "f:standard", "legal:standard"
-    assert_search_results "f:extended" # Does not exist according to mtgjson
+    assert_search_results "f:extended" # We never supported it, see "unknown format warns"
     assert_search_equal_cards "f:standard",
       %[
         e:woe,lci,mkm,otj,big,blb,dsk,fdn,dft,tdm,fin,eoe,spm,tla,ecl,tmt,sos,msh,hob

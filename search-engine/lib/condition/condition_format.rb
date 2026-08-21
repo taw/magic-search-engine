@@ -6,7 +6,14 @@ class ConditionFormat < Condition
   end
 
   def search_all(db)
-    @format = Format[@format_name].new(db.resolve_time(@time))
+    format_class = Format[@format_name]
+    if format_class == FormatUnknown
+      # Otherwise this silently returns nothing, which looks just like a format
+      # we support but no card is legal in
+      warning %[Unknown format "#{@format_name}"]
+      return []
+    end
+    @format = format_class.new(db.resolve_time(@time))
     # This is just performance hack - Standard/Modern can use this hack
     # Legacy/Vintage/Commander/etc. don't want it
     @format.cards_probably_in_format(db).select{|card| card_ok?(card) }.flat_map(&:printings)
