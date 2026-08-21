@@ -12,7 +12,7 @@
 # instead, which is a different printing rather than no card. Every one of our
 # 5,135 The List printings resolves that way.
 class DeckExporter::ArenaCompatible < DeckExporter::Arena
-  format "arena_compatible", "Arena style (maximum compatibility)", "txt"
+  format "arena_compatible", "Arena style (maximum compatibility)", "txt", "MTGGoldfish, TappedOut, Deckbox, Deckstats"
 
   # The only set whose collector numbers name another printing
   THE_LIST = "plst"

@@ -10,7 +10,7 @@
 # numbers are what all of those want, and most paper cards are not on Arena
 # under any spelling.
 class DeckExporter::Arena < DeckExporter
-  format "arena", "Arena style", "txt"
+  format "arena", "Arena style", "txt", "Archidekt, Moxfield"
 
   # Arena's own headers. Archidekt and Moxfield put the cards in the right zones;
   # MTGGoldfish reads Sideboard and ignores Commander; Deckstats and MPC Fill look

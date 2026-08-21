@@ -805,6 +805,17 @@ describe DeckExporter do
       )
     end
 
+    # Only the formats a name does not already explain. A program's name says
+    # what reads the file; "Arena style" says the shape of the line and not one
+    # word about where it goes, and there are two of those to choose between.
+    it "says under which formats need it where the file is read" do
+      DeckExporter.all.to_h{|exporter| [exporter.code, exporter.description] }.compact.should eq({
+        "text" => "All information included",
+        "arena" => "Archidekt, Moxfield",
+        "arena_compatible" => "MTGGoldfish, TappedOut, Deckbox, Deckstats",
+      })
+    end
+
     it "raises for anything else" do
       deck = DeckParser.new(db, "1 Sol Ring\n").deck
       lambda { deck.export("mwdeck") }.should raise_error(/Unknown export format/)

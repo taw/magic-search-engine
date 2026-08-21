@@ -5,7 +5,7 @@
 # XMage, MythicHub and mtg.wtf itself read it; nothing else does, which is what
 # every other exporter here is for.
 class DeckExporter::Text < DeckExporter
-  format "text", "Text", "txt"
+  format "text", "Text", "txt", "All information included"
 
   private
 

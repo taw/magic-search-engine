@@ -63,13 +63,15 @@ class DeckExporter
     end
 
     # Subclasses declare themselves with `format "arena", "Arena style", "txt"`,
-    # which is also what puts them in the list above
-    def format(code, name, extension)
-      @code, @name, @extension = code, name, extension
+    # which is also what puts them in the list above. The description is what
+    # the export dialog prints under the format's name, and most formats have
+    # none - a name which is a program's name says everything already.
+    def format(code, name, extension, description=nil)
+      @code, @name, @extension, @description = code, name, extension, description
       DeckExporter.all << self
     end
 
-    attr_reader :code, :name, :extension
+    attr_reader :code, :name, :extension, :description
   end
 
   private
