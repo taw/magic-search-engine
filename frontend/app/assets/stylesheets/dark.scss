@@ -91,4 +91,19 @@
   .select2-container--default.select2-container--open .select2-selection--single {
     border-color: #375a7f;
   }
+
+  // Bootstrap paints a modal white, which the body's own light text is not
+  // readable on
+  .modal-content {
+    background-color: black;
+    border-color: #444;
+  }
+  .modal-header,
+  .modal-footer {
+    border-color: #444;
+  }
+  .close {
+    color: #dedad6;
+    text-shadow: none;
+  }
 }

@@ -16,6 +16,22 @@ RSpec.describe SealedController, type: :controller do
     assert_select ".card_picture_container", count: 15 + 2 * 8
   end
 
+  # A pool is a decklist too, and exporting it here saves the trip through the
+  # visualizer. The dialog posts the same hidden field the preview form does.
+  it "offers the export dialog for a pool" do
+    get "index", params: {count: ["1"], set: ["arn"]}
+    assert_response 200
+    assert_select %[#deck_export input[name="format"]], DeckExporter.codes.size
+    assert_select %[button[data-target="#deck_export"]]
+    assert_select %[.sealed_preview_form input[name="deck"]]
+  end
+
+  it "has no export dialog before any packs are opened" do
+    get "index"
+    assert_response 200
+    assert_select %[#deck_export], 0
+  end
+
   # A pack the player got at random out of a few, like the allied guild booster
   # of the Dragon's Maze prerelease
   it "open a pack picked at random out of a few" do

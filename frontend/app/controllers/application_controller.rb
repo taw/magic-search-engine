@@ -14,6 +14,15 @@ class ApplicationController < ActionController::Base
     render file: "#{Rails.root}/public/403.html", layout: false, status: 403
   end
 
+  # The format the export dialog opens on, from the settings page's cookie. A
+  # saved choice can name a format we have since dropped, so anything we do not
+  # recognize falls back the same way default_view does.
+  def default_deck_export_format
+    code = cookies["default_deck_export"]
+    DeckExporter.codes.include?(code) ? code : DeckExporter.default.code
+  end
+  helper_method :default_deck_export_format
+
   private
 
   def paginate_by_set(printings, page)

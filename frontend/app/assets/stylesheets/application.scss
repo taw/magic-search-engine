@@ -556,3 +556,27 @@ textarea.fixed {
   width: 100%;
   font-size: 0.9rem;
 }
+
+#deck_export_preview {
+  width: 100%;
+  font-family: monospace;
+  font-size: 0.8rem;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: black;
+    color: #dedad6;
+  }
+}
+.deck_export_format {
+  small {
+    display: block;
+    margin-left: 1.4em;
+    color: #6c757d;
+  }
+  + .deck_export_format {
+    margin-top: 0.2em;
+  }
+}
+.deck_export_warnings {
+  margin-top: 0.5em;
+}

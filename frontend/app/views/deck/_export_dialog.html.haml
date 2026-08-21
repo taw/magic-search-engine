@@ -1,0 +1,35 @@
+-# Everything the dialog asks for is in the form: the radios are named "format",
+-# and a precon names itself with two hidden fields. The visualizer has no url of
+-# its own, so there the deck is whatever is in the paste box, and the JavaScript
+-# sends that instead.
+#deck_export.modal.fade{tabindex: -1, role: "dialog"}
+  .modal-dialog.modal-lg{role: "document"}
+    .modal-content
+      .modal-header
+        %h5.modal-title Export deck
+        %button.close{type: "button", "data-dismiss": "modal", "aria-label": "Close"}
+          %span{"aria-hidden": true}
+            &times;
+      .modal-body
+        .row
+          .col-md-5
+            %form#deck_export_form
+              - if deck
+                %input{type: "hidden", name: "set", value: deck.set_code}
+                %input{type: "hidden", name: "id", value: deck.slug}
+              - DeckExporter.all.each do |exporter|
+                .deck_export_format
+                  %label
+                    %input{type: "radio", name: "format", value: exporter.code, checked: exporter.code == default_deck_export_format}
+                    = exporter.name
+                  - if exporter.description
+                    %small= exporter.description
+          .col-md-7
+            %textarea#deck_export_preview{readonly: true, rows: 18}
+        .deck_export_warnings.alert.alert-warning{style: "display: none;"}
+        %label
+          %input#deck_export_remember{type: "checkbox"}
+          Remember this choice
+      .modal-footer
+        %button#deck_export_copy.btn.btn-outline-primary{type: "button"} Copy
+        %button#deck_export_download.btn.btn-primary{type: "button"} Download

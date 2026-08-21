@@ -1,12 +1,8 @@
 .decklist
   %header
     %h4= @name
-    %button.btn.btn-outline-primary
-      = download_link_to_deck(@deck, {download: true}) do
-        Download
-    %button.btn.btn-outline-primary
-      = download_with_printings_link_to_deck(@deck, {download: true}) do
-        Download (with printings)
+    %button.btn.btn-outline-primary{type: "button", "data-toggle": "modal", "data-target": "#deck_export"}
+      Export
   - if @display
     .row
       .col-12
@@ -60,3 +56,5 @@
         - @card_previews.each_with_index do |preview_card, i|
           .card_picture_cell{"data-preview": preview_id(preview_card), style: (preview_card == @default_preview_card ? nil : "display: none;")}
             = render "card/picture", card: preview_card
+
+= render "deck/export_dialog", deck: @deck

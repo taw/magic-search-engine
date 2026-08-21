@@ -19,6 +19,11 @@
     %input{type: "hidden", name: "deck", value: @deck}
     %button.btn.btn-outline-primary
       Preview as Deck
+    -# Exporting a pool is what most people want the visualizer for, so it is
+    -# offered here rather than one page further on
+    %button.btn.btn-outline-primary{type: "button", "data-toggle": "modal", "data-target": "#deck_export"}
+      Export
+  = render "deck/export_dialog", deck: nil
   .row.multicard_row
     - @cards.each_with_index do |card, i|
       .col-4.col-sm-3.card_picture_cell

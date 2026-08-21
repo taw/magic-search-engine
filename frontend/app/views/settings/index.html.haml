@@ -22,3 +22,13 @@
         %label
           %input{type: "radio", name: "default_view", value: "checklist"}
           Checklist (view:checklist)
+    %hr
+    %div Choose the deck export format to offer first. Every format stays available on the deck page.
+    %form
+      - DeckExporter.all.each do |exporter|
+        %div
+          %label
+            %input{type: "radio", name: "default_deck_export", value: exporter.code, checked: exporter == DeckExporter.default}
+            = "#{exporter.name} (.#{exporter.extension})"
+            - if exporter.description
+              %small= " — #{exporter.description}"

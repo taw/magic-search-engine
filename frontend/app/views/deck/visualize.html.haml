@@ -8,6 +8,10 @@
 
 - if @card_groups.present?
   .decklist
+    %header
+      %h4 Decklist
+      %button.btn.btn-outline-primary{type: "button", "data-toggle": "modal", "data-target": "#deck_export"}
+        Export
     .row
       .col-8.two-columns
         - @card_groups.each do |(i, group), cards|
@@ -28,6 +32,9 @@
           - @card_previews.each_with_index do |preview_card, i|
             .card_picture_cell{"data-preview": preview_id(preview_card), style: (preview_card == @default_preview_card ? nil : "display: none;")}
               = render "card/picture", card: preview_card
+
+  -# A pasted deck has no url of its own, so the dialog posts the text back
+  = render "deck/export_dialog", deck: nil
 
 %h3 Paste or upload a deck
 = form_tag("/deck/visualize", method: :post, class: "deck_submit", enforce_utf8: false, multipart: true) do

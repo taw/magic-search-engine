@@ -172,6 +172,48 @@ RSpec.describe DeckController, type: :controller do
     end
   end
 
+  describe "the export dialog" do
+    it "offers every format on a deck page, and says which the deck is" do
+      get "show", params: {set: "cmd", id: "counterpunch"}
+      assert_response 200
+      assert_select %[#deck_export input[name="format"]], DeckExporter.codes.size
+      # What the dialog posts back, so the endpoint knows which deck it is
+      assert_select %[#deck_export_form input[name="set"][value="cmd"]]
+      assert_select %[#deck_export_form input[name="id"][value="counterpunch"]]
+      assert_select %[button[data-target="#deck_export"]]
+    end
+
+    # The visualizer's deck is the text in the paste box, which is what the
+    # dialog sends instead of a url
+    it "names no deck on the visualizer" do
+      post "visualize", params: {deck: "40x Lightning Bolt"}
+      assert_response 200
+      assert_select %[#deck_export input[name="format"]], DeckExporter.codes.size
+      assert_select %[#deck_export_form input[name="set"]], 0
+      assert_select %[#deck_export_form input[name="id"]], 0
+    end
+
+    it "is not there when the visualizer has no deck" do
+      get "visualize"
+      assert_response 200
+      assert_select %[#deck_export], 0
+    end
+
+    it "starts on the format the settings page saved" do
+      request.cookies["default_deck_export"] = "mythichub"
+      get "show", params: {set: "cmd", id: "counterpunch"}
+      assert_select %[#deck_export input[name="format"][checked]], 1
+      assert_select %[#deck_export input[name="format"][value="mythichub"][checked]]
+    end
+
+    it "falls back to our own format when the cookie is nonsense" do
+      request.cookies["default_deck_export"] = "lolwtf"
+      get "show", params: {set: "cmd", id: "counterpunch"}
+      assert_select %[#deck_export input[name="format"][checked]], 1
+      assert_select %[#deck_export input[name="format"][value="text"][checked]]
+    end
+  end
+
   describe "visualizer" do
     let(:deck_list) { html_document.css(".card_entry").map(&:text).map { |x| x.split(/\s+/).join(" ").strip } }
 

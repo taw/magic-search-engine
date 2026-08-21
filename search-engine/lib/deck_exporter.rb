@@ -62,6 +62,14 @@ class DeckExporter
       all.map(&:code)
     end
 
+    # What the export dialog opens on when nobody has chosen otherwise, and
+    # what a saved choice falls back to when it names a format we no longer
+    # have. First in the list, which is our own - the one that carries
+    # everything a deck has.
+    def default
+      all.first
+    end
+
     # Subclasses declare themselves with `format "arena", "Arena style", "txt"`,
     # which is also what puts them in the list above. The description is what
     # the export dialog prints under the format's name, and most formats have
