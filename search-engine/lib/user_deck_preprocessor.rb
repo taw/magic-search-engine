@@ -23,8 +23,8 @@ class UserDeckPreprocessor
 
     case doc.root.name
     when "cockatrice_deck"
-      main = doc.css("zone[name=main] card").map{|c| "#{c["number"]}x #{c["name"]}\n" }.join
-      side = doc.css("zone[name=side] card").map{|c| "SB: #{c["number"]}x #{c["name"]}\n" }.join
+      main = doc.css("zone[name=main] card").map{|c| "#{cockatrice_card(c)}\n" }.join
+      side = doc.css("zone[name=side] card").map{|c| "SB: #{cockatrice_card(c)}\n" }.join
       @text = "#{main}\n#{side}"
       return true
     when "Deck"
@@ -36,6 +36,16 @@ class UserDeckPreprocessor
     else
       return false
     end
+  end
+
+  # A .cod card carries a printing as well as a name - our own export writes one
+  # on every card - and the collector number in it is the physical card's, which
+  # is what DeckParser falls back to when our per-face number does not match.
+  def cockatrice_card(card)
+    line = "#{card["number"]}x #{card["name"]}"
+    return line unless card["setShortName"]
+    return line + " [#{card["setShortName"]}]" unless card["collectorNumber"]
+    line + " [#{card["setShortName"]}:#{card["collectorNumber"]}]"
   end
 
   def normalize_text
@@ -53,7 +63,7 @@ class UserDeckPreprocessor
     @data = @data.gsub(/\r\n|\r|\n/, "\n")
     # XMage has metadata we seriously don't care for
     # (maybe we could use NAME: ???)
-    @data = @data.gsub(/^(NAME:|LAYOUT MAIN:|LAYOUT SIDEBOARD:).*\n/, "")
+    @data = @data.gsub(/^(NAME:|AUTHOR:|LAYOUT MAIN:|LAYOUT SIDEBOARD:).*\n/, "")
 
     # MTGO text Format marks sideboard with empty line
     # Every other text format ignores empty lines

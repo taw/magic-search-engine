@@ -89,6 +89,16 @@ describe UserDeckPreprocessor do
     end
   end
 
+  # Cockatrice writes the printing on every card, and so do we
+  describe "cockatrice .cod xml with printings" do
+    let(:filename) { "printings.cod" }
+    let(:output) { Pathname("#{__dir__}/decklists/printings.out").read }
+    it do
+      preprocessor.should be_valid
+      preprocessor.text.should eq(output)
+    end
+  end
+
   describe "mtgo .dek xml" do
     let(:filename) { "allies.dek" }
     let(:output) { Pathname("#{__dir__}/decklists/allies.out").read }

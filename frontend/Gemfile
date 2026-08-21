@@ -41,6 +41,7 @@ if RUBY_VERSION >= "3.3"
   gem "observer"
   gem "abbrev"
   gem "benchmark" # not a default gem from Ruby 4.0, warns under 3.4
+  gem "csv" # DeckParser reads the CSV export back
 end
 
 # Use ActiveModel has_secure_password

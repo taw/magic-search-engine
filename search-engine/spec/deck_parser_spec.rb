@@ -1,10 +1,10 @@
 describe DeckParser do
   include_context "db"
 
-  def physical_by_query(query, foil=false)
+  def physical_by_query(query, foil=false, etched=false)
     printings = db.search(query).printings
     raise "Ambiguous query #{query.inspect}" if printings.size != 1
-    PhysicalCard.for(printings[0], foil: foil)
+    PhysicalCard.for(printings[0], foil: foil, etched: etched)
   end
 
   def physical_by_best(name, foil=false, etched=false)
@@ -495,6 +495,248 @@ describe DeckParser do
     end
   end
 
+  # MythicHub rules its section headers off, puts the number after a hash, and
+  # spells the finish out instead of marking it
+  describe "mythichub format" do
+    let(:text) do
+      <<~EOF
+      == COMMANDER ==
+      1 Kitsa, Otterball Elite [BLB] #54
+
+      == MAINBOARD ==
+      1 Delver of Secrets [ISD] #51
+      1 Talisman of Progress [SLD] #1052 etched
+      1 Sol Ring [C21] #263 foil
+      1 Amulet of Vigor [PLST] #WWK-121
+      1 Foil [UMA] #55
+
+      == SIDEBOARD ==
+      1 Naturalize [M10] #195
+      EOF
+    end
+
+    it do
+      parser.commander.should eq([
+        {name: "Kitsa, Otterball Elite", count: 1, set_code: "BLB", number: "54"},
+      ])
+      parser.main.should eq([
+        {name: "Delver of Secrets", count: 1, set_code: "ISD", number: "51"},
+        {name: "Talisman of Progress", count: 1, set_code: "SLD", number: "1052", etched: true},
+        {name: "Sol Ring", count: 1, set_code: "C21", number: "263", foil: true},
+        {name: "Amulet of Vigor", count: 1, set_code: "PLST", number: "WWK-121"},
+        {name: "Foil", count: 1, set_code: "UMA", number: "55"},
+      ])
+      parser.side.should eq([
+        {name: "Naturalize", count: 1, set_code: "M10", number: "195"},
+      ])
+      # Its numbers are physical cards, ours are faces, so 51 finds 51a
+      parser.main_cards.should eq([
+        [1, physical_by_query("delver of secrets e:isd")],
+        [1, physical_by_query("talisman of progress e:sld", true, true)],
+        [1, physical_by_query("sol ring e:c21", true)],
+        [1, physical_by_query("amulet of vigor e:plst")],
+        [1, physical_by_query("foil e:uma")],
+      ])
+    end
+  end
+
+  # Moxfield's tags start with a hash too, and are not collector numbers
+  describe "hash tags are not collector numbers" do
+    let(:text) do
+      <<~EOF
+      4 Counterspell (CMR) 632 #TargetedDisruption
+      1 Sol Ring [C21] #263 #!Collection
+      EOF
+    end
+
+    it do
+      parser.main.should eq([
+        {name: "Counterspell", count: 4, set_code: "CMR", number: "632"},
+        {name: "Sol Ring", count: 1, set_code: "C21"},
+      ])
+    end
+  end
+
+  # XMage writes its own metadata above the cards, and none of it is a card
+  describe "xmage format" do
+    let(:text) do
+      <<~EOF
+      NAME: Wrath of the Mortals
+      AUTHOR: Wizards of the Coast
+      # URL: http://mtg.wtf/deck/jou/wrath-of-the-mortals
+      LAYOUT MAIN:(1,1)(A)|
+      1 [ISD:51] Delver of Secrets
+      40 [A25:141] Lightning Bolt
+      SB: 15 [ZEN:125] Goblin Guide
+      EOF
+    end
+
+    it do
+      parser.main.should eq([
+        {name: "Delver of Secrets", count: 1, set_code: "ISD", number: "51"},
+        {name: "Lightning Bolt", count: 40, set_code: "A25", number: "141"},
+      ])
+      parser.side.should eq([
+        {name: "Goblin Guide", count: 15, set_code: "ZEN", number: "125"},
+      ])
+    end
+  end
+
+  # The CSV export has a column for the section, so nothing here has to be
+  # guessed from where a card is in the file
+  describe "csv format" do
+    let(:text) do
+      <<~EOF
+      Section,Count,Name,Set code,Set name,Collector number,Finish
+      Commander,1,"Kydele, Chosen of Kruphix",C16,Commander 2016,35,Foil
+      Main Deck,40,Lightning Bolt,A25,Masters 25,141,Normal
+      Main Deck,1,Delver of Secrets,ISD,Innistrad,51,Normal
+      Main Deck,1,Talisman of Progress,SLD,Secret Lair Drop Series,1052,Etched
+      Sideboard,15,Goblin Guide,ZEN,Zendikar,125,Normal
+      Planar Deck,1,Naya,OHOP,Planechase,27,Normal
+      EOF
+    end
+
+    it do
+      parser.sections.should eq({
+        "Main Deck" => [
+          {name: "Lightning Bolt", count: 40, set_code: "A25", number: "141"},
+          {name: "Delver of Secrets", count: 1, set_code: "ISD", number: "51"},
+          {name: "Talisman of Progress", count: 1, set_code: "SLD", number: "1052", etched: true},
+        ],
+        "Commander" => [{name: "Kydele, Chosen of Kruphix", count: 1, set_code: "C16", number: "35", foil: true}],
+        "Sideboard" => [{name: "Goblin Guide", count: 15, set_code: "ZEN", number: "125"}],
+        "Planar Deck" => [{name: "Naya", count: 1, set_code: "OHOP", number: "27"}],
+        "Scheme Deck" => [],
+        "Display Commander" => [],
+      })
+      parser.commander_cards.should eq([[1, physical_by_query("kydele, chosen of kruphix e:c16", true)]])
+      parser.main_cards.should eq([
+        [40, physical_by_query("lightning bolt e:a25")],
+        [1, physical_by_query("delver of secrets e:isd")],
+        [1, physical_by_query("talisman of progress e:sld", true, true)],
+      ])
+    end
+  end
+
+  # Every collection site exports the same table under its own column names,
+  # and the ones we have no use for are ignored rather than rejected
+  describe "csv from somewhere else" do
+    let(:text) do
+      <<~EOF
+      "Count","Tradelist Count","Name","Edition","Condition","Foil","Collector Number"
+      "4","0","Lightning Bolt","a25","Near Mint","","141"
+      "1","0","Sol Ring","c21","Near Mint","foil","263"
+      "1","0","Talisman of Progress","sld","Near Mint","etched","1052"
+      EOF
+    end
+
+    it do
+      parser.main.should eq([
+        {name: "Lightning Bolt", count: 4, set_code: "a25", number: "141"},
+        {name: "Sol Ring", count: 1, set_code: "c21", number: "263", foil: true},
+        {name: "Talisman of Progress", count: 1, set_code: "sld", number: "1052", etched: true},
+      ])
+    end
+  end
+
+  # A decklist has commas in it, so a table is only a table when the first row
+  # says which columns it has
+  describe "a decklist with commas in it is not a csv" do
+    let(:text) do
+      <<~EOF
+      1 Bruna, the Fading Light
+      1 Kydele, Chosen of Kruphix
+      EOF
+    end
+
+    it do
+      parser.main.should eq([
+        {name: "Bruna, the Fading Light", count: 1},
+        {name: "Kydele, Chosen of Kruphix", count: 1},
+      ])
+    end
+  end
+
+  # The two formats which are XML. UserDeckPreprocessor does this for a file
+  # someone uploaded; this is the same file pasted into the box.
+  describe "cockatrice .cod pasted in" do
+    let(:text) do
+      <<~EOF
+      <?xml version="1.0" encoding="UTF-8"?>
+      <cockatrice_deck version="1">
+          <deckname>Not A Real Deck</deckname>
+          <comments></comments>
+          <zone name="main">
+              <card number="1" name="Delver of Secrets" setShortName="ISD" collectorNumber="51" uuid="11bf83bb-c95b-4b4f-9a56-ce7a1816307a"/>
+              <card number="40" name="Lightning Bolt" setShortName="A25" collectorNumber="141" uuid="a1b2c3d4-0000-0000-0000-000000000000"/>
+          </zone>
+          <zone name="side">
+              <card number="15" name="Goblin Guide" setShortName="ZEN" collectorNumber="125"/>
+          </zone>
+      </cockatrice_deck>
+      EOF
+    end
+
+    it do
+      parser.main_cards.should eq([
+        [1, physical_by_query("delver of secrets e:isd")],
+        [40, physical_by_query("lightning bolt e:a25")],
+      ])
+      parser.sideboard_cards.should eq([[15, physical_by_query("goblin guide e:zen")]])
+    end
+  end
+
+  describe "mtgo .dek pasted in" do
+    let(:text) do
+      <<~EOF
+      <?xml version="1.0" encoding="utf-8"?>
+      <Deck xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <NetDeckID>0</NetDeckID>
+        <PreconstructedDeckID>0</PreconstructedDeckID>
+        <Cards CatID="50572" Quantity="40" Sideboard="false" Name="Lightning Bolt" />
+        <Cards CatID="42466" Quantity="15" Sideboard="true" Name="Goblin Guide" />
+      </Deck>
+      EOF
+    end
+
+    # A .dek has no set codes in it at all, so all it can say is the name
+    it do
+      parser.main_cards.should eq([[40, physical_by_best("lightning bolt")]])
+      parser.sideboard_cards.should eq([[15, physical_by_best("goblin guide")]])
+    end
+  end
+
+  # World Championship decks number a card with the player's initials, and the
+  # decks we ship are full of them
+  describe "collector numbers that are not just a number" do
+    let(:text) do
+      <<~EOF
+      4 Fire // Ice (WC01) jt128
+      3 Fire // Ice [WC02:shh128]
+      2 Brushland [PTC] #et352
+      1 Nezumi Graverobber (PSAL) A39
+      EOF
+    end
+
+    it do
+      parser.main.should eq([
+        {name: "Fire // Ice", count: 4, set_code: "WC01", number: "jt128"},
+        {name: "Fire // Ice", count: 3, set_code: "WC02", number: "shh128"},
+        {name: "Brushland", count: 2, set_code: "PTC", number: "et352"},
+        {name: "Nezumi Graverobber", count: 1, set_code: "PSAL", number: "A39"},
+      ])
+      # We number the faces, everyone else numbers the physical card, so jt128
+      # has to find jt128a rather than falling back to whatever is numbered 128
+      parser.main_cards.should eq([
+        [4, physical_by_query("fire e:wc01 number=jt128a")],
+        [3, physical_by_query("fire e:wc02 number=shh128a")],
+        [2, physical_by_query("brushland e:ptc number=et352")],
+        [1, physical_by_query("nezumi graverobber e:psal number=A39a")],
+      ])
+    end
+  end
+
   # Whatever we hand out has to be something we can take back
   describe "it parses back every deck we export" do
     def count_cards(cards)
@@ -512,6 +754,9 @@ describe DeckParser do
     end
 
     let(:decks) { db.sets.values.flat_map(&:decks) }
+    # Three of the decks we ship are tokens only, and an export with no cards in
+    # it has nothing to round trip
+    let(:decks_with_cards) { decks.reject{|deck| deck.number_of_total_cards.zero? } }
 
     it "card names only export round trips" do
       # Without printings all we can round trip is names
@@ -524,6 +769,55 @@ describe DeckParser do
     it "text export round trips" do
       mismatched = decks.reject do |deck|
         cards_by_printing(DeckParser.new(db, deck.export("text").text).deck) == cards_by_printing(deck)
+      end
+      mismatched.should eq([])
+    end
+
+    # The metadata comments belong to a precon, and what we read back is a
+    # decklist rather than one
+    def strip_metadata(text, code)
+      case code
+      when "xmage" then text.lines.reject{|line| line =~ /\A(#|NAME:)/ }.join
+      when "cockatrice" then text.sub(%r[ *<comments>.*?</comments>\n]m, "").sub(%r[ *<deckname>.*</deckname>\n], "")
+      else text
+      end
+    end
+
+    # Every other format says less than ours does - some cannot mark a finish,
+    # none of them has every section - so what has to survive is what the format
+    # itself wrote. What it left out is already missing from the file we compare
+    # against, which is what makes one comparison do for all of them.
+    def round_trips?(deck, code)
+      export = deck.export(code).text
+      strip_metadata(DeckParser.new(db, export).deck.export(code).text, code) == strip_metadata(export, code)
+    end
+
+    %W[arena arena_compatible csv mythichub xmage].each do |code|
+      it "#{code} export round trips" do
+        decks_with_cards.reject{|deck| round_trips?(deck, code) }.should eq([])
+      end
+    end
+
+    # One pass over index/scryfall_ids.txt per export, so this one takes a
+    # sample of the decks rather than all three thousand
+    it "cockatrice export round trips" do
+      sample = decks_with_cards.each_slice(60).map(&:first)
+      sample.reject{|deck| round_trips?(deck, "cockatrice") }.should eq([])
+    end
+
+    # An .dek names no set and no number, so the printing a card comes back on
+    # is whichever one we would have picked ourselves
+    it "mtgo export round trips by name" do
+      sample = decks_with_cards.each_slice(60).map(&:first)
+      mismatched = sample.reject do |deck|
+        export = deck.export("mtgo")
+        # Cards MTGO does not have are not in the file to be read back
+        next true if export.warnings.any?
+        parsed = DeckParser.new(db, export.text).deck
+        counts = Hash.new(0)
+        deck.all_cards.each{|count, card| counts[card.name] += count }
+        parsed.all_cards.each{|count, card| counts[card.name] -= count }
+        counts.values.all?(&:zero?)
       end
       mismatched.should eq([])
     end
