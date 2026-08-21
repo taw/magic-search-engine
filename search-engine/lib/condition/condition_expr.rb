@@ -2,6 +2,10 @@ class ConditionExpr < ConditionSimple
   # Everything eval_expr knows how to look up on a card, anything else is a plain value
   Variables = %W[pow tou pt mv loy sets papersets prints paperprints year defense defence life hand decklimit]
 
+  # mv:even and friends ask about the value's parity, not its magnitude,
+  # so the right hand side isn't a value to compare with at all
+  Parities = %W[even odd]
+
   def initialize(a, op, b)
     @a = a
     @op = op
@@ -10,15 +14,22 @@ class ConditionExpr < ConditionSimple
     # so parse them once here instead of once per card in #match?
     # The ones which are get turned into symbols, as eval_expr dispatches on them a lot.
     Variables.include?(@a) ? @a_var = @a.to_sym : @a_value = eval_card_value(@a)
-    Variables.include?(@b) ? @b_var = @b.to_sym : @b_value = eval_card_value(@b)
+    if Parities.include?(@b)
+      @parity = @b.to_sym
+    else
+      Variables.include?(@b) ? @b_var = @b.to_sym : @b_value = eval_card_value(@b)
+    end
   end
 
   # warning needs @logger, which we only get here, not in initialize
   def metadata!(key, value)
     super
     return unless key == :logger
+    if @parity and @op != "="
+      warning %[Only = is supported for #{@b} queries, ignoring #{@op} in "#{self}"]
+    end
     [@a, @b].each do |expr|
-      next if Variables.include?(expr)
+      next if Variables.include?(expr) or Parities.include?(expr)
       next unless eval_card_value(expr) == [nil, nil]
       warning %[Unknown value "#{expr}" in "#{self}"]
     end
@@ -26,6 +37,9 @@ class ConditionExpr < ConditionSimple
 
   def match?(card)
     ac, av = @a_value || eval_expr(card, @a_var)
+    # Only whole numbers have a parity - not */X/?, not Little Girl's half mana value,
+    # and not the infinity that "any" stands for
+    return ac == :number && av.is_a?(Integer) && av.send(:"#{@parity}?") if @parity
     bc, bv = @b_value || eval_expr(card, @b_var)
     # p [:comparing, [@a, @op, @b], card.name, [ac, av], [bc, bv]]
     return false unless ac and bc and ac == bc

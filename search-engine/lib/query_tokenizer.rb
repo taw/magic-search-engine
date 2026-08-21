@@ -182,7 +182,7 @@ class QueryTokenizer
         tokens << [:test, ConditionForeign.new(s[1], "*")]
       # Before the foreign name search, as pt: is both "power plus toughness" and Portuguese.
       # Values here are numbers and such, so pt:goblin is still a Portuguese name search.
-      elsif s.scan(/(pow|power|pt|powtou|loy|loyalty|tou|toughness|cmc|manavalue|mv|year|sets|papersets|prints|paperprints|defen[cs]e|hand|life|decklimit)\s*(>=|>|<=|<|=|≥|≤|:)\s*(pow\b|power\b|pt\b|powtou\b|tou\b|toughness\b|cmc\b|manavalue\b|mv\b|loy\b|loyalty\b|year\b|defen[cs]e\b|hand\b|life\b|decklimit\b|any\b|[²\d\.\-\*\+½x∞\?]+|"[²\d\.\-\*\+½x∞\?]+")/i)
+      elsif s.scan(/(pow|power|pt|powtou|loy|loyalty|tou|toughness|cmc|manavalue|mv|year|sets|papersets|prints|paperprints|defen[cs]e|hand|life|decklimit)\s*(>=|>|<=|<|=|≥|≤|:)\s*(pow\b|power\b|pt\b|powtou\b|tou\b|toughness\b|cmc\b|manavalue\b|mv\b|loy\b|loyalty\b|year\b|defen[cs]e\b|hand\b|life\b|decklimit\b|any\b|even\b|odd\b|[²\d\.\-\*\+½x∞\?]+|"[²\d\.\-\*\+½x∞\?]+")/i)
         aliases = {"power" => "pow", "loyalty" => "loy", "toughness" => "tou", "cmc" => "mv", "manavalue" => "mv", "powtou" => "pt"}
         a = s[1].downcase
         a = aliases[a] || a

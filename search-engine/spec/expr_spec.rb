@@ -194,6 +194,31 @@ describe "Expressions Test" do
     context "Magic 2010" do
       include_context "db", "m10"
 
+      it "even / odd" do
+        assert_search_equal "mv:even", "cmc=0 or cmc=2 or cmc=4 or cmc=6 or cmc=8"
+        assert_search_equal "mv:odd", "cmc=1 or cmc=3 or cmc=5 or cmc=7 or cmc=11"
+        # Every card here has a whole number mana value, so the two partition the set
+        assert_search_equal "mv:even", "-mv:odd"
+        assert_search_equal "mv:even", "manavalue:even"
+        assert_search_equal "mv:odd", "cmc=odd"
+        # Parity is not specific to mana value
+        assert_search_results "loy:even", "Ajani Goldmane", "Chandra Nalaar"
+        assert_search_equal "pow:odd", "pow=1 or pow=3 or pow=5 or pow=7 or pow=9 or pow=11"
+        # Darksteel Colossus is 11/11, Nightmare's power is *
+        assert_search_include "pow:odd", "Darksteel Colossus"
+        assert_search_exclude "pow:odd", "Nightmare"
+        assert_search_exclude "pow:even", "Nightmare"
+      end
+
+      it "even / odd only compares with =" do
+        db.search("mv:even").warnings.should be_empty
+        db.search("mv>even").warnings.should include(
+          %[Only = is supported for even queries, ignoring > in "mv>even"]
+        )
+        # It still answers the question it can answer
+        assert_search_equal "mv>even", "mv:even"
+      end
+
       it "cmc" do
         assert_search_results "cmc=0",
           "Dragonskull Summit",
@@ -291,6 +316,11 @@ describe "Expressions Test" do
         "cmc<1"  .should include_cards "Little Girl"
         "cmc=1"  .should exclude_cards "Little Girl"
         "cmc>1"  .should exclude_cards "Little Girl"
+      end
+
+      it "half mv has no parity" do
+        "mv:even".should exclude_cards "Little Girl"
+        "mv:odd" .should exclude_cards "Little Girl"
       end
 
       it "half mv" do
