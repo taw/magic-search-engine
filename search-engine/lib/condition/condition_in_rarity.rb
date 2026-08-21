@@ -1,6 +1,7 @@
 class ConditionInRarity < ConditionIn
   def initialize(rarity)
     @rarity = rarity
+    @rarity = "special" if @rarity == "bonus"
   end
 
   def match?(card)

@@ -379,7 +379,7 @@ class QueryTokenizer
         cond = GAME_ALIASES.fetch(s[1].downcase, s[1].downcase).capitalize
         klass = Kernel.const_get("ConditionIn#{cond}")
         tokens << [:test, klass.new]
-      elsif s.scan(/in\s*[:=]\s*(basic|common|uncommon|rare|mythic|special)\b/i)
+      elsif s.scan(/in\s*[:=]\s*(basic|common|uncommon|rare|mythic|special|bonus)\b/i)
         kind = s[1].downcase
         tokens << [:test, ConditionInRarity.new(kind)]
       elsif s.scan(/in\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)

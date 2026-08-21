@@ -33,4 +33,13 @@ describe "Rarity" do
     assert_search_equal "r:m", "r:mythic"
     assert_search_equal "r:s", "r:special"
   end
+
+  it "bonus is our special" do
+    # The indexer folds mtgjson's "bonus" rarity into "special", so accept the
+    # name other search engines use for it instead of warning and matching everything
+    assert_search_equal "r:bonus", "r:special"
+    assert_search_equal "in:bonus", "in:special"
+    db.search("r:bonus").warnings.should be_empty
+    db.search("r:nosuchrarity").warnings.should include("unknown rarity: nosuchrarity")
+  end
 end
