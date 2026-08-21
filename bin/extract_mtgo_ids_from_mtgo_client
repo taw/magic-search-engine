@@ -30,19 +30,18 @@ require "pathname"
 class ExtractMtgoIdsFromMtgoClient
   CLIENT_URL = "http://mtgo.patch.daybreakgames.com/patch/mtg/live/client"
 
-  COLUMNS = [
-    "Set",         # the file's CardSet, which is an MTGO set code, not ours
-    "Id",          # the catalog id, the only thing a .dek file cares about
-    "Name",        # only to make the file readable and checkable by hand
-    "Number",      # as printed, so "161a", "53/1158", and blanks all happen
-    "Printed Set", # set on promos, whose Set is the PRM bucket they live in
-    "Type",        # CARD, TOKN, SUBC for half of a split or a back face
-    "Foil",        # premium ids, which are objects of their own
-    "Clone Id",    # what a premium id is a premium version of
-    "Front Face",
-    "Back Face",
-    "Sub Card",
-  ]
+  COLUMNS = {
+    "Set"         => :set,          # the file's CardSet, an MTGO set code, not ours
+    "Id"          => :id,           # the catalog id, all a .dek file cares about
+    "Foil Id"     => :foil_id,      # the premium id of the same printing, if any
+    "Name"        => :name,         # only to make the file readable by hand
+    "Number"      => :number,       # as printed: "161a", "53/1158", and blanks
+    "Printed Set" => :printed_set,  # set on promos, whose Set is their PRM bucket
+    "Type"        => :type,         # CARD, TOKN, SUBC for a split half or back face
+    "Front Face"  => :front_face,
+    "Back Face"   => :back_face,
+    "Sub Card"    => :sub_card,
+  }
 
   def initialize(force:)
     @force = force
@@ -125,10 +124,40 @@ class ExtractMtgoIdsFromMtgoClient
   end
 
   def save_ids
-    rows = set_files.flat_map{|name| rows_of(download(name)) }
-      .sort_by{|row| [row[0], row[1].to_i] }
-    warn "#{rows.size} catalog ids in #{set_files.size} sets"
-    csv_path.write(CSV.generate{|csv| csv << COLUMNS; rows.each{|row| csv << row } })
+    objects = set_files.flat_map{|name| objects_of(download(name)) }
+    rows = merge_foils(objects).sort_by{|row| [row[:set], row[:id].to_i] }
+    warn "#{objects.size} catalog ids on #{rows.size} printings in #{set_files.size} sets"
+    csv_path.write(CSV.generate do |csv|
+      csv << COLUMNS.keys
+      rows.each{|row| csv << COLUMNS.values.map{|key| row[key] } }
+    end)
+  end
+
+  # The client gives a premium printing a DigitalObject of its own in which
+  # every field but IS_FOIL and the CLONE_ID naming its non-premium twin is
+  # blank - half the catalog spent on indirection. So each clone's id is
+  # folded into the row it points at as Foil Id and the clone itself dropped.
+  # Clones are 1:1, never chain, and never leave their set; the handful of
+  # printings with no premium version (vanguard avatars, mostly) get no id.
+  # A premium id that clones nothing would be a printing in its own right,
+  # which no set has ever had - it is kept, and said out loud.
+  def merge_foils(objects)
+    clones, printings = objects.partition{|object| object[:clone_id] }
+    printings.each do |printing|
+      warn "Id #{printing[:id]} is premium but clones nothing" if printing[:foil]
+    end
+    by_id = printings.to_h{|printing| [printing[:id], printing] }
+    clones.sort_by{|clone| clone[:id].to_i }.each do |clone|
+      printing = by_id[clone[:clone_id]]
+      if !printing
+        warn "Premium id #{clone[:id]} clones #{clone[:clone_id]}, which is not a printing"
+      elsif printing[:foil_id]
+        warn "Printing #{printing[:id]} has premium ids #{printing[:foil_id]} and #{clone[:id]}"
+      else
+        printing[:foil_id] = clone[:id]
+      end
+    end
+    printings
   end
 
   def save_build
@@ -139,23 +168,23 @@ class ExtractMtgoIdsFromMtgoClient
     build_path.read.chomp if build_path.exist?
   end
 
-  def rows_of(path)
+  def objects_of(path)
     doc = parse(path)
     set_code = doc.root["id"]
     doc.css("DigitalObject").map do |object|
-      [
-        set_code,
-        object["DigitalObjectCatalogID"].delete_prefix("DOC_"),
-        string(object, "CARDNAME_STRING"),
-        value(object, "COLLECTOR_INFO_STRING"),
-        string(object, "PRINTEDCARDSET_STRING"),
-        value(object, "DIGITAL_OBJECT_TYPE_CODE_STRING"),
-        flag(object, "IS_FOIL"),
-        value(object, "CLONE_ID"),
-        flag(object, "IS_FRONT_FACE"),
-        flag(object, "IS_BACK_FACE"),
-        flag(object, "IS_SUB_CARD"),
-      ]
+      {
+        set: set_code,
+        id: object["DigitalObjectCatalogID"].delete_prefix("DOC_"),
+        name: string(object, "CARDNAME_STRING"),
+        number: value(object, "COLLECTOR_INFO_STRING"),
+        printed_set: string(object, "PRINTEDCARDSET_STRING"),
+        type: value(object, "DIGITAL_OBJECT_TYPE_CODE_STRING"),
+        foil: flag(object, "IS_FOIL"),
+        clone_id: value(object, "CLONE_ID"),
+        front_face: flag(object, "IS_FRONT_FACE"),
+        back_face: flag(object, "IS_BACK_FACE"),
+        sub_card: flag(object, "IS_SUB_CARD"),
+      }
     end
   end
 
