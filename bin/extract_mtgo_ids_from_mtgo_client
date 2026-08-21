@@ -1,0 +1,175 @@
+#!/usr/bin/env ruby
+
+# MTGO catalog ids, taken from the MTGO client's own card data.
+#
+# The client is a ClickOnce deployment, so every file it installs is a plain
+# HTTP GET off Daybreak's patch server - no client, no account, no Windows.
+# The deployment manifest names the current build, that build's application
+# manifest lists its files, and CardDataSource/client_<SET>.xml holds one
+# DigitalObject per printing, keyed by the catalog id .dek files ask for.
+#
+# This is the same data Scryfall gets its mtgo ids from, except that a card
+# with two faces has a DigitalObject per face, two catalog ids apart, and
+# Scryfall keeps picking a different one of the pair from day to day. Here
+# both are recorded, flagged as the client flags them.
+#
+# Nothing here is mapped onto our own printings: our set codes, our collector
+# numbers, which face and which finish an id belongs to, are all the indexer's
+# problem. This just states what the client says, so it can be saved once and
+# refreshed whenever MTGO patches.
+
+require "csv"
+require "fileutils"
+require "nokogiri"
+require "open-uri"
+require "pathname"
+
+class ExtractMtgoIdsFromMtgoClient
+  CLIENT_URL = "http://mtgo.patch.daybreakgames.com/patch/mtg/live/client"
+
+  COLUMNS = [
+    "Set",         # the file's CardSet, which is an MTGO set code, not ours
+    "Id",          # the catalog id, the only thing a .dek file cares about
+    "Name",        # only to make the file readable and checkable by hand
+    "Number",      # as printed, so "161a", "53/1158", and blanks all happen
+    "Printed Set", # set on promos, whose Set is the PRM bucket they live in
+    "Type",        # CARD, TOKN, SUBC for half of a split or a back face
+    "Foil",        # premium ids, which are objects of their own
+    "Clone Id",    # what a premium id is a premium version of
+    "Front Face",
+    "Back Face",
+    "Sub Card",
+  ]
+
+  def call
+    warn "MTGO client build #{build}"
+    save_ids
+    save_build
+  end
+
+  private
+
+  # The .application is the one URL that never moves. It names the directory
+  # this build's files live under, which is also the only thing worth
+  # comparing to decide whether a refresh has anything new in it.
+  def build
+    @build ||= begin
+      codebase = deployment_manifest.at_css("dependentAssembly")["codebase"]
+      codebase.split("\\").first
+    end
+  end
+
+  # Always refetched, never cached - it is the only thing that would tell us
+  # a new build exists, and it is 12kB
+  def deployment_manifest
+    @deployment_manifest ||= parse(fetch("#{CLIENT_URL}/MTGO.application", tmp_path("MTGO.application")))
+  end
+
+  def application_manifest
+    @application_manifest ||= parse(download("MTGO.exe.manifest"))
+  end
+
+  # The card data proper, one file per set, plus the string tables its names
+  # live in. The client writes paths with backslashes; URLs want the others.
+  def card_data_files
+    application_manifest.css("file")
+      .map{|file| file["name"].tr("\\", "/") }
+      .grep(%r{\ACardDataSource/})
+  end
+
+  # client_<SET>_DO.xml is the same set's boosters and other products, which
+  # have catalog ids too but no collector number to hang them off.
+  def set_files
+    card_data_files.grep(%r{/client_.*\.xml\z}).reject{|name| name.end_with?("_DO.xml") }.sort
+  end
+
+  def parse(path)
+    doc = Nokogiri::XML(path.read)
+    doc.remove_namespaces!
+    doc
+  end
+
+  # tmp is scoped by build so a refresh after a patch can't mix two of them,
+  # and nothing is ever deleted - cleaning up after this is someone else's job
+  def download(name)
+    path = tmp_path("#{build}/#{name}")
+    path.exist? ? path : fetch("#{CLIENT_URL}/#{build}/#{name}", path)
+  end
+
+  def fetch(url, path)
+    warn "Fetching #{url}"
+    FileUtils.mkdir_p(path.dirname)
+    path.open("wb"){|out| URI.open(url){|remote| IO.copy_stream(remote, out) } }
+    path
+  end
+
+  def tmp_path(name)
+    Pathname("#{__dir__}/../tmp/mtgo_client/#{name}")
+  end
+
+  # {"ID771_4" => "+2 Mace"} - every string in the client is stored once and
+  # referenced by id, so a row's name is two lookups away from the row.
+  def string_table(name)
+    @string_tables ||= {}
+    @string_tables[name] ||= parse(download("CardDataSource/#{name}.xml"))
+      .css("#{name}_ITEM")
+      .to_h{|item| [item["id"], item.text] }
+  end
+
+  def save_ids
+    rows = set_files.flat_map{|name| rows_of(download(name)) }
+      .sort_by{|row| [row[0], row[1].to_i] }
+    warn "#{rows.size} catalog ids in #{set_files.size} sets"
+    csv_path.write(CSV.generate{|csv| csv << COLUMNS; rows.each{|row| csv << row } })
+  end
+
+  def save_build
+    build_path.write("#{build}\n")
+  end
+
+  def rows_of(path)
+    doc = parse(path)
+    set_code = doc.root["id"]
+    doc.css("DigitalObject").map do |object|
+      [
+        set_code,
+        object["DigitalObjectCatalogID"].delete_prefix("DOC_"),
+        string(object, "CARDNAME_STRING"),
+        value(object, "COLLECTOR_INFO_STRING"),
+        string(object, "PRINTEDCARDSET_STRING"),
+        value(object, "DIGITAL_OBJECT_TYPE_CODE_STRING"),
+        flag(object, "IS_FOIL"),
+        value(object, "CLONE_ID"),
+        flag(object, "IS_FRONT_FACE"),
+        flag(object, "IS_BACK_FACE"),
+        flag(object, "IS_SUB_CARD"),
+      ]
+    end
+  end
+
+  def value(object, tag)
+    node = object.at_css(tag)
+    node && node["value"]
+  end
+
+  def string(object, tag)
+    node = object.at_css(tag)
+    node && string_table(tag)[node["id"]]
+  end
+
+  # The client writes these as either value="1" or an empty tag, so their
+  # presence is the whole of what they say
+  def flag(object, tag)
+    "1" if object.at_css(tag)
+  end
+
+  def csv_path
+    Pathname("#{__dir__}/../data/mtgo_ids.csv")
+  end
+
+  def build_path
+    Pathname("#{__dir__}/../data/mtgo_client_build.txt")
+  end
+end
+
+ExtractMtgoIdsFromMtgoClient.new.call
