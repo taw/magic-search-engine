@@ -75,7 +75,7 @@ class QueryTokenizer
       elsif s.scan(/\)/i)
         tokens << [:close]
       elsif s.scan(%r[
-        (o|oracle|fo|fulloracle|ft|flavor|a|art|artist|n|name|cn|number|rulings)
+        (o|oracle|fo|fulloracle|ft|flavor|a|art|artist|n|name|cn|number|rulings|t|type)
         \s*[:=]\s*
         /(
           (?:[^\\/]|\\.)*
@@ -97,6 +97,8 @@ class QueryTokenizer
             "number" => ConditionNumberRegexp,
             "cn" => ConditionNumberRegexp,
             "rulings" => ConditionRulingsRegexp,
+            "t" => ConditionTypeRegexp,
+            "type" => ConditionTypeRegexp,
           }[s[1].downcase] or raise "Internal Error: #{s[0]}"
           # Expand shortcuts
           # \+ and \k in gsub right side has special meaning
@@ -130,6 +132,8 @@ class QueryTokenizer
             "number" => ConditionNumber,
             "cn" => ConditionNumber,
             "rulings" => ConditionRulings,
+            "t" => ConditionTypes,
+            "type" => ConditionTypes,
           }[s[1].downcase] or raise "Internal Error: #{s[0]}"
           @warnings << "bad regular expression in #{s[0]} - #{e.message}"
           tokens << [:test, cond.new(s[2])]

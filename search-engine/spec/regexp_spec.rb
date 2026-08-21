@@ -23,6 +23,11 @@ describe "Regexp" do
       Query.new('n:/[a-z]/').warnings.should eq([])
     end
 
+    it "t:" do
+      Query.new('t:/[a-z/').warnings.should eq(["bad regular expression in t:/[a-z/ - premature end of char-class: /[a-z/mi"])
+      Query.new('t:/[a-z]/').warnings.should eq([])
+    end
+
     it "rulings:" do
       Query.new('rulings:/[a-z/').warnings.should eq(["bad regular expression in rulings:/[a-z/ - premature end of char-class: /[a-z/mi"])
       Query.new('rulings:/[a-z]/').warnings.should eq([])
@@ -106,6 +111,22 @@ describe "Regexp" do
       "Okina, Temple to the Grandfathers",
       "World Champion, Celestial Weapon",
       "Yellowjacket, Heartless Marauder"
+  end
+
+  it "regexp type line" do
+    # The separator is a plain "-", the em dash of the printed type line is
+    # not something anyone can type
+    assert_search_equal 't:/^Creature - Dragon$/', 't="creature dragon"'
+    assert_search_equal 'type:/^Legendary/', "t:legendary"
+    # What the set operators can't ask: how many subtypes, and which one is last
+    assert_search_equal 't:/^Creature - \S+ \S+ \S+$/', 't:/^Creature - [^ ]+ [^ ]+ [^ ]+$/'
+    assert_search_results 'e:m10 t:/^Creature - \S+$/ t:beast',
+      "Enormous Baloth",
+      "Kalonian Behemoth"
+    assert_search_results 'e:m10 t:/- Dragon$/',
+      "Bogardan Hellkite",
+      "Dragon Whelp",
+      "Shivan Dragon"
   end
 
   it "regexp rulings text" do
