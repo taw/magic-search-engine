@@ -169,7 +169,7 @@ class CardPrinting
     @set.name
   end
 
-  %W[block_code block_name online_only?].each do |m|
+  %W[block_code block_name].each do |m|
     eval("def #{m}; @set.#{m}; end")
   end
   %W[

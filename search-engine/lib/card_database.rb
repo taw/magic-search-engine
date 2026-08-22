@@ -547,7 +547,7 @@ class CardDatabase
       [
         c.name,
         c.nontraditional ? 1 : 0,
-        c.online_only? ? 1 : 0,
+        c.digital ? 1 : 0,
         c.frame == "old" ? 1 : 0,
         c.set.regular? ? 0 : 1,
         -c.release_date_i,
