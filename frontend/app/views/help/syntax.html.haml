@@ -61,12 +61,14 @@
     %h4#edition Search by edition
     %div You can search by set with <code>e:</code>, using either its code or its name.
     %div Secret Lair Drop also has "subsets" which you can search with <code>subset:</code>
+    %div Nonstandard set names from MTGO and Arena are supported when they don't conflict with anything, including pseudo-sets that match multiple sets (Arena's y22, y23, y24 etc.)
     %ul
       = search_help "e:bfz", %[cards from "Battle for Zendikar" set]
       = search_help %[e:"scars of mirrodin"], %[cards from "Scars of Mirrodin" set]
       = search_help %[e:ascension], %[cards from all sets including "ascension" in name (only if there's no exact match)]
       = search_help "e:isd,dka", %[cards from "Innistrad" and "Dark Ascension" sets]
       = search_help %[subset:"Happy Little Gathering"], %[Secret Lair Drop cards from "Happy Little Gathering" subset]
+      = search_help "e:y24", "cards from Alchemy sets Arena groups into y24 (ywoe ylci ymkm yotj)"
 
     %h4#block Search by block
     %div

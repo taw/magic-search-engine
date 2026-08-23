@@ -391,6 +391,31 @@ describe DeckParser do
     end
   end
 
+  # Arena has one code per Arena year for every Alchemy set of that year, so
+  # (Y22) is ymid, yneo and ysnc at once and its numbers collide - all three
+  # start at 1. The name is what picks the card; the code and number only pick
+  # the printing, exactly as they do for a real set.
+  describe "Arena's Alchemy year codes" do
+    let(:text) do
+      <<~EOF
+      Deck
+      1 Big Spender (Y22) 10
+      1 Goblin Morale Sergeant (Y23) 14
+      EOF
+    end
+
+    it do
+      parser.main.should eq([
+        {name: "Big Spender", count: 1, set_code: "Y22", number: "10"},
+        {name: "Goblin Morale Sergeant", count: 1, set_code: "Y23", number: "14"},
+      ])
+      parser.main_cards.should eq([
+        [1, physical_by_query("big spender e:ysnc number=10")],
+        [1, physical_by_query("goblin morale sergeant e:ydmu number=14")],
+      ])
+    end
+  end
+
   describe "companion not repeated in the sideboard" do
     let(:text) do
       <<~EOF

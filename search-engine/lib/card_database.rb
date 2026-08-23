@@ -76,6 +76,31 @@ class CardDatabase
   PRODUCTS_PATH = INDEX_ROOT + "products.json"
   LIMITED_FORMATS_PATH = INDEX_ROOT + "limited_formats.json"
 
+  # Arena has no code for an individual Alchemy set. It files all of them under
+  # one pseudo-set per Arena year, and that is the code its own decklists carry
+  # ("1 Big Spender (Y22) 10"), so it has to resolve to something. One
+  # alternative_code per set cannot express many-to-one, so it lives here.
+  #
+  # No rule reproduces the grouping. It is not the calendar year - Alchemy:
+  # Innistrad is Y22 and came out in December 2021 - and any date cut that keeps
+  # Alchemy: Bloomburrow (2024-08-20) and Alchemy: Edge of Eternities
+  # (2025-08-19) both in Y25 is one day wide. It is nearly the Alchemy rotation
+  # calendar, and 16 of these 17 sets do fall in the rotation window they belong
+  # to, but Edge of Eternities rotates on the paper set's release and its
+  # Alchemy set follows three weeks later, so that one lands a window late.
+  #
+  # The table is therefore read out of Arena's own card data rather than worked
+  # out, and set_codes_spec pins what does hold: the year is the calendar year
+  # of the last Alchemy set in it, years do not interleave, and every Alchemy
+  # set is listed exactly once - so a new one fails the spec until it is added.
+  ARENA_ALCHEMY_YEARS = {
+    "y22" => %W[ymid yneo ysnc],
+    "y23" => %W[ydmu ybro yone],
+    "y24" => %W[ywoe ylci ymkm yotj],
+    "y25" => %W[yblb ydsk ydft ytdm yeoe],
+    "y26" => %W[yecl ysos],
+  }.freeze
+
   def initialize
     @sets = {}
     @blocks = {}
@@ -212,7 +237,11 @@ class CardDatabase
     when 1
       sets.first.release_date
     else
-      raise "Can't parse time #{time}"
+      # An Arena Alchemy year is several sets on purpose, and it starts when the
+      # first of them comes out. Anything else resolving to several sets is an
+      # ambiguous name, which has no time.
+      raise "Can't parse time #{time}" unless ARENA_ALCHEMY_YEARS[time.downcase]
+      sets.map(&:release_date).min
     end
   end
 
@@ -222,6 +251,7 @@ class CardDatabase
   #
   # Priority:
   # * exact code (official)
+  # * Arena's Alchemy year code, which names several sets
   # * exact alternative code (mci)
   # * name exact match
   # * name substring match
@@ -231,6 +261,12 @@ class CardDatabase
     # Just don't bother with anything fancy if "e:foo" exists as a code
     if @sets[edition]
       return [@sets[edition]]
+    end
+
+    # Arena's Alchemy year, which is a code for several of our sets at once.
+    # filter_map because subset databases have only some of them, or none.
+    if ARENA_ALCHEMY_YEARS[edition]
+      return ARENA_ALCHEMY_YEARS[edition].filter_map{|set_code| @sets[set_code] }
     end
 
     matching_alternative_code = []
