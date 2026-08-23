@@ -70,27 +70,11 @@ sheets:
     foil: true
     any:
     - any:
-      - rawquery: "e:blc r:r number:73-92"
-        rate: 4
-        count: 12
-      - rawquery: "e:blc r:m number:73-92"
-        rate: 2
-        count: 8
-      - rawquery: "e:blb r:r number:282-342,356-368 -(three tree city)"
-        rate: 4
-        count: 13+35+1
-      - rawquery: "e:blb number:337-340"
-        rate: 1
-        count: 4
-      - rawquery: "e:blb r:m number:282-342,356-368 -lumra"
-        rate: 2
-        count: 5+6+7+1
-      - rawquery: "e:blb number:282-342,356-368 Lumra"
-        rate: 1
-        count: 2
+      - use: showcase_rare_mythic
+        chance: 304
       - set: spg
         code: "BLB"
-        rate: 1
+        chance: 10
         count: 10
       chance: 314
     - any:
