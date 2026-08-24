@@ -146,4 +146,10 @@ class Deck
   def all_cards
     @sections.values.flatten(1)
   end
+
+  # The same thing without the copy. Scanning every deck for one card is a hot
+  # enough loop that flattening 3000 decklists to throw them away showed up.
+  def each_card(&block)
+    @sections.each_value{|section| section.each(&block) }
+  end
 end

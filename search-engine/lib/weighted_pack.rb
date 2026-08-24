@@ -42,7 +42,11 @@ class WeightedPack < Pack
   end
 
   def source_set_codes
-    @packs.keys.flat_map(&:source_set_codes).uniq.sort
+    @source_set_codes ||= @packs.keys.flat_map(&:source_set_codes).uniq.sort
+  end
+
+  def each_sheet(&block)
+    @packs.each_key{|pack| pack.each_sheet(&block) }
   end
 
   private

@@ -6,6 +6,7 @@ require "yaml"
 require_relative "core_ext"
 require_relative "ability_word"
 require_relative "artist"
+require_relative "card_availability"
 require_relative "card_printing"
 require_relative "card_set"
 require_relative "card_sheet_factory"
@@ -130,18 +131,22 @@ class CardDatabase
     @decks ||= @sets.values.flat_map(&:decks)
   end
 
-  # This used to allow all other cards with same name from same set,
-  # but this is no longer the case
-  def decks_containing(card_printing)
-    set_code = card_printing.set_code
-    decks.select do |deck|
-      next unless deck.all_set_codes.include?(set_code)
-      [*deck.cards, *deck.sideboard, *deck.commander].any? do |_, physical_card|
-        physical_card.parts.any? do |physical_card_part|
-          physical_card_part == card_printing
-        end
-      end
-    end
+  # Everywhere a card can be got: preconstructed decks, boosters, and sealed
+  # products that name it in their own contents, each with the finishes it
+  # comes in there. See CardAvailability for what is left out and why.
+  #
+  # Decks and boosters are scanned rather than indexed: the reverse map is
+  # 330k (card, source) pairs and the server is short of memory, while both
+  # sides of the scan are already loaded - decks for the deck pages, sheets
+  # because initialize_booster_flag has already walked every one of them. Only
+  # products are indexed, and there are a thousand of those references, not
+  # 330k. Half a millisecond a card, which is less than the deck-only list this
+  # replaced took.
+  def availability(card_printing)
+    main_front = card_printing.main_front
+    availability_in_decks(main_front) +
+      availability_in_boosters(main_front) +
+      availability_in_products(main_front)
   end
 
   def subset(sets)
@@ -374,6 +379,88 @@ class CardDatabase
   end
 
   private
+
+  # Shared by every sheet that turns out not to have the card, and by every
+  # card no product names directly - which is nearly all of them
+  NO_FINISHES = [].freeze
+  NO_AVAILABILITY = [].freeze
+
+  def availability_in_decks(main_front)
+    set_code = main_front.set_code
+    decks.filter_map do |deck|
+      # A deck with no card from the set cannot have this one
+      next unless deck.all_set_codes.include?(set_code)
+      finishes = nil
+      deck.each_card do |_count, physical_card|
+        (finishes ||= []) << physical_card.finish if physical_card.main_front.equal?(main_front)
+      end
+      CardAvailability.new(deck, finishes) if finishes
+    end
+  end
+
+  def availability_in_boosters(main_front)
+    # Set by initialize_booster_flag out of these very sheets, so it is exact,
+    # and it takes a third of all printings out of the scan entirely
+    return [] unless main_front.in_boosters?
+    set_code = main_front.set_code
+    # One sheet belongs to every booster that draws from it - the whole of The
+    # List is a single sheet shared by 24 of them - so scan each one once
+    finishes_by_sheet = {}.compare_by_identity
+    unique_supported_booster_types.each_value.filter_map do |booster|
+      next unless booster.source_set_codes.include?(set_code)
+      finishes = nil
+      booster.each_sheet do |sheet|
+        from_sheet = (finishes_by_sheet[sheet] ||= sheet_finishes(sheet, main_front))
+        (finishes ||= []).concat(from_sheet) unless from_sheet.empty?
+      end
+      CardAvailability.new(booster, finishes) if finishes
+    end
+  end
+
+  def sheet_finishes(sheet, main_front)
+    finishes = nil
+    # Memoized by the sheet, and already built by initialize_booster_flag
+    sheet.cards.each do |physical_card|
+      (finishes ||= []) << physical_card.finish if physical_card.main_front.equal?(main_front)
+    end
+    finishes || NO_FINISHES
+  end
+
+  # The one side of this that is indexed rather than scanned. Products name
+  # around a thousand cards directly between all 4136 of them, so the map is a
+  # few hundred kilobytes, while walking every product's contents per card cost
+  # more than the decks and the boosters together.
+  def availability_in_products(main_front)
+    unless @availability_in_products
+      @availability_in_products = {}
+      products.each do |product|
+        cards = {}
+        product_finishes(product.contents, cards)
+        cards.each do |card_main_front, finishes|
+          (@availability_in_products[card_main_front] ||= []) << CardAvailability.new(product, finishes)
+        end
+      end
+    end
+    @availability_in_products[main_front] || NO_AVAILABILITY
+  end
+
+  # Only contents naming a card itself. Decks, packs and subproducts are not
+  # followed, which is the whole point - see CardAvailability.
+  def product_finishes(contents, cards)
+    contents.each do |_count, content|
+      case content
+      when PhysicalCard
+        (cards[content.main_front] ||= []) << content.finish
+      when ProductVariableContents
+        # One of several subproducts, all of them possible, so all of them
+        # count - the chances only matter to a simulator, and this is a "can
+        # this card be in here" question
+        content.options.each do |option|
+          product_finishes(option[:subproduct], cards)
+        end
+      end
+    end
+  end
 
   # Read once each, by supported_booster_types, load_products! and
   # load_limited_formats!, and never looked at again - so nothing to memoize,

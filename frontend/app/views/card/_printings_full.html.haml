@@ -42,14 +42,16 @@
               = link_to_card(printing) do
                 = printing.number
         %span.rarity= "(#{rarity})"
-- decks = $CardDatabase.decks_containing(card)
-- unless decks.empty?
+- availability = $CardDatabase.availability(card)
+- unless availability.empty?
   %p.infolabel
-    Card is in preconstructed decks:
+    Availability:
   %ul.printings_list
-    - decks.each do |deck|
+    - availability.each do |entry|
       %li
-        = link_to_deck(deck) do
-          = "#{deck.name} (#{deck.set.name} #{deck.type})"
+        = link_to_availability(entry) do
+          = availability_name(entry)
+        - if entry.finish_label
+          %span.finishes= "(#{entry.finish_label})"
 %p.infolabel
   = link_to "View gallery of all printings", card_gallery_path(card)

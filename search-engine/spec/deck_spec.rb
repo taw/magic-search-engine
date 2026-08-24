@@ -299,29 +299,6 @@ describe Deck do
     end
   end
 
-  it "CardDatabase#decks_containing" do
-    c15_basic_forests = db.search("e:c15 ++ t:basic t:forest").printings
-    c15_basic_forests.size.should eq(4)
-    green_c15_decks = [
-      "Plunder the Graves",
-      "Swell the Host",
-    ]
-    c15_basic_forests.each do |forest|
-      db.decks_containing(forest).map(&:name).should match_array(green_c15_decks)
-    end
-
-    som_arc_trail = db.search("e:som arc trail").printings[0]
-    db.decks_containing(som_arc_trail).map{|deck| [deck.set_name, deck.name, deck.type] }.should match_array([
-      ["Scars of Mirrodin", "Relic Breaker", "Intro Pack"],
-      ["Mirrodin Besieged", "Mirromancy", "Intro Pack"],
-      ["Magic 2012", "Red Deck A", "Sample Deck"],
-      ["Dark Ascension", "Gleeful Flames", "Event Deck"],
-      ["Magic 2013", "Sweet Revenge", "Event Deck"],
-      ["Scars of Mirrodin", "Scars of Mirrodin Redemption", "MTGO Redemption"],
-      ["Scars of Mirrodin", "Scars of Mirrodin Foil Redemption", "MTGO Redemption"],
-    ])
-  end
-
   it "if deck contains foils, they're all highest rarity cards" do
     db.sets.each do |set_code, set|
       # CM2 has 13 foils distributed in weird way

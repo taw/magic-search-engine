@@ -137,6 +137,28 @@ module ApplicationHelper
     link_to(deck_url(deck), &blk)
   end
 
+  # An availability list mixes three unrelated classes with three unrelated
+  # pages, and there is no common base class to hang this off
+  def link_to_availability(entry, &blk)
+    if entry.deck?
+      link_to_deck(entry.source, &blk)
+    elsif entry.booster?
+      link_to_pack(entry.source, &blk)
+    else
+      link_to_product(entry.source, &blk)
+    end
+  end
+
+  # Booster and product names already say which set they belong to
+  # ("Zendikar Rising Set Booster", "Bloomburrow Bundle"); deck names do not.
+  def availability_name(entry)
+    if entry.deck?
+      "#{entry.source.name} (#{entry.source.set_name} #{entry.source.type})"
+    else
+      entry.source.name
+    end
+  end
+
   def download_link_to_deck(deck, *html_options, &blk)
     link_to(deck_download_url(deck), *html_options, &blk)
   end

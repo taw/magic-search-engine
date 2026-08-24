@@ -24,8 +24,17 @@ class Pack
     @set&.code
   end
 
+  # Memoized because CardDatabase#availability asks every booster there is
+  # whether it could hold a card from one set before it scans any of them
   def source_set_codes
-    @sheets.keys.flat_map(&:source_set_codes).uniq.sort
+    @source_set_codes ||= @sheets.keys.flat_map(&:source_set_codes).uniq.sort
+  end
+
+  # Every sheet the pack can draw from, for callers that want to look inside
+  # rather than open it. A sheet is shared by every booster that uses it, so
+  # the same one can come up twice and it is the caller that dedupes.
+  def each_sheet(&block)
+    @sheets.each_key(&block)
   end
 
   # Testing support
