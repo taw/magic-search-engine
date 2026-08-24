@@ -1,10 +1,6 @@
 class CardController < ApplicationController
   def show
-    set = params[:set]
-    number = params[:id]
-    if $CardDatabase.sets[set]
-      @card = $CardDatabase.sets[set].printings.find{|cp| cp.number == number}
-    end
+    @card = $CardDatabase.printing(params[:set], params[:id])
     if @card
       @title = @card.name
       @legality = @card.legality_information
@@ -14,12 +10,7 @@ class CardController < ApplicationController
   end
 
   def gallery
-    set = params[:set]
-    number = params[:id]
-    if $CardDatabase.sets[set]
-      @card = $CardDatabase.sets[set].printings.find{|cp| cp.number == number}
-    end
-
+    @card = $CardDatabase.printing(params[:set], params[:id])
     if @card
       first_printing = @card.printings.first
       if @card == first_printing
@@ -27,6 +18,29 @@ class CardController < ApplicationController
         page = [1, params[:page].to_i].max
         @total_printings = @card.printings.size
         @printings = paginate_by_set(@card.printings, page)
+      else
+        redirect_to set: first_printing.set_code, id: first_printing.number
+      end
+    else
+      render_404
+    end
+  end
+
+  # Where every printing of a card can be got from, as one page. Keyed by the
+  # card's first printing like the gallery is, since there is no per-card url,
+  # and any other printing redirects onto it.
+  def availability
+    @card = $CardDatabase.printing(params[:set], params[:id])
+    if @card
+      first_printing = @card.printings.first
+      if @card == first_printing
+        @title = @card.name
+        @total_printings = @card.printings.size
+        # One pass for all of them. Calling `availability` per printing rescans
+        # the decks and the booster sheets every time, which Forest's 943
+        # printings feel very keenly.
+        @availability = $CardDatabase.availability_of_all_printings(@card)
+        @printings = group_by_set(@card.printings)
       else
         redirect_to set: first_printing.set_code, id: first_printing.number
       end

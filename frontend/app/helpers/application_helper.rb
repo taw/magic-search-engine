@@ -25,6 +25,10 @@ module ApplicationHelper
     "/card/gallery/#{url_segment card.set_code}/#{url_segment card.number}"
   end
 
+  def card_availability_url(card)
+    "/card/availability/#{url_segment card.set_code}/#{url_segment card.number}"
+  end
+
   def search_url(query)
     "/card?#{url_query(q: query)}"
   end
@@ -159,6 +163,18 @@ module ApplicationHelper
     end
   end
 
+  # On a page already grouped by set, a deck from that set only needs its type:
+  # "Death Toll (Commander Deck)", not "Death Toll (Duskmourn: House of Horror
+  # Commander Commander Deck)". A deck from another set still has to say so -
+  # The List's printings are given out by other sets' decks and boosters.
+  def availability_name_in_set(entry, set)
+    if entry.deck? and entry.source.set.equal?(set)
+      "#{entry.source.name} (#{entry.source.type})"
+    else
+      availability_name(entry)
+    end
+  end
+
   def download_link_to_deck(deck, *html_options, &blk)
     link_to(deck_download_url(deck), *html_options, &blk)
   end
@@ -248,6 +264,45 @@ module ApplicationHelper
 
   def card_gallery_path(card)
     card_gallery_url(card.printings.first)
+  end
+
+  # Both per-card pages are keyed by the card's first printing
+  def card_availability_path(card)
+    card_availability_url(card.printings.first)
+  end
+
+  # A set's worth of per-printing availability, turned inside out: one row per
+  # (source, finishes), naming every printing that source gives in those
+  # finishes. A booster whose foil sheet holds printings its nonfoil sheet does
+  # not is two rows, and a printing nothing reaches lands in the last row.
+  #
+  #   Strixhaven Draft Booster - 100 101 102 (foil)
+  #   Strixhaven Draft Booster - 103 104 (nonfoil and foil)
+  #   Strixhaven Collector Booster - 100 101 102 103 104 (nonfoil and foil)
+  #
+  # Rows keep the order availability itself is in - decks, then boosters, then
+  # products - with a source's own rows kept together.
+  def availability_view(printings, availability)
+    rows = {}
+    source_order = {}.compare_by_identity
+    unavailable = []
+    # Collector number order, since the numbers are what the rows are made of.
+    # It decides row order too - a source is first named by the lowest numbered
+    # printing it gives.
+    printings.sort_by(&:number_sort_index).each do |printing|
+      entries = availability[printing]
+      unavailable << printing if entries.empty?
+      entries.each do |entry|
+        source_order[entry.source] ||= source_order.size
+        # CardAvailability has no hash/eql?, and two entries for one source are
+        # only the same row if they are the same finishes
+        row = (rows[[entry.source.object_id, entry.finishes]] ||= [entry, []])
+        row[1] << printing
+      end
+    end
+    rows = rows.values.sort_by.with_index{|(entry, _), i| [source_order[entry.source], i]}
+    rows << [nil, unavailable] unless unavailable.empty?
+    rows
   end
 
   def printings_view(selected_printing, matching_printings)

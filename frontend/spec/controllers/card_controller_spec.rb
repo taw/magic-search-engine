@@ -77,6 +77,63 @@ RSpec.describe CardController, type: :controller do
     assert_empty first_page & second_page
   end
 
+  # availability
+  it "show card availability - bad set" do
+    get "availability", params: {set: "lolwtf", id: "1"}
+    assert_response 404
+  end
+
+  it "show card availability - bad collector number" do
+    get "availability", params: {set: "nph", id: "1000"}
+    assert_response 404
+  end
+
+  it "show card availability - not first printing" do
+    get "availability", params: {set: "nph", id: "1"}
+    assert_response 302
+    assert_redirected_to action: "availability", set: "prm", id: "82876"
+  end
+
+  it "show card availability - first printing" do
+    get "availability", params: {set: "prm", id: "82876"}
+    assert_response 200
+    assert_equal "Karn Liberated - #{APP_NAME}", html_document.title
+    assert_select %[.results_summary:contains("Karn Liberated has 10 printings")]
+    assert_select %[.printings_list a:contains("New Phyrexia Draft Booster")]
+    assert_select %[.printings_list .finishes:contains("nonfoil and foil")]
+  end
+
+  # One row per source and finishes, naming every printing it gives
+  it "show card availability - groups printings by source and finishes" do
+    get "availability", params: {set: "prm", id: "82876"}
+    assert_response 200
+    assert_select %[.printings_list li:contains("Double Masters VIP Edition")] do |rows|
+      assert_equal 1, rows.size
+      assert_equal "Double Masters VIP Edition \u2014 1 333 (foil)", rows[0].text.split.join(" ")
+    end
+  end
+
+  # The section already names the set, so a deck from it only needs its type
+  it "show card availability - deck from the section's own set" do
+    get "availability", params: {set: "prm", id: "82876"}
+    assert_response 200
+    assert_select %[.printings_list a:contains("New Phyrexia Redemption (MTGO Redemption)")]
+  end
+
+  # The promo Karn is in no deck, no booster, and no product's own contents
+  it "show card availability - printing with no source" do
+    get "availability", params: {set: "prm", id: "82876"}
+    assert_response 200
+    assert_select %[.printings_list li:contains("Not in any deck, booster, or product")]
+  end
+
+  # Unlike the gallery, every set is on the one page
+  it "show card availability - does not paginate" do
+    get "availability", params: {set: "lea", id: "174"}
+    assert_response 200
+    assert_operator css_select("h3.col-12").size, :>, 10
+  end
+
   # search
   it "search nothing" do
     get "index"

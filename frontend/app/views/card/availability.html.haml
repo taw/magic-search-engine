@@ -1,0 +1,32 @@
+.row
+  .col-12
+    %h3= @card.name
+
+.row.results_summary
+  .col-12
+    #{@card.name} has #{pluralize(@total_printings, "printing")}.
+
+- @printings.each do |set, printings|
+  .row
+    %h3.col-12
+      = set.name
+  .row
+    .col-12
+      %ul.printings_list
+        - availability_view(printings, @availability).each do |entry, entry_printings|
+          %li
+            - if entry
+              = link_to_availability(entry) do
+                = availability_name_in_set(entry, set)
+            - else
+              %span.not_matching Not in any deck, booster, or product we know of
+            &mdash;
+            - entry_printings.each do |printing|
+              %span.matching
+                = link_to_card(printing) do
+                  = printing.number
+            - if entry&.finish_label
+              %span.finishes= "(#{entry.finish_label})"
+
+%p.infolabel
+  = link_to "View gallery of all printings", card_gallery_path(@card)

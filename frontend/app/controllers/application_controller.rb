@@ -25,11 +25,15 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def paginate_by_set(printings, page)
+  # Newest set first, and every printing of a set together
+  def group_by_set(printings)
     printings
              .sort_by{|c| [-c.release_date_i, c.set_name, c.name]}
              .group_by(&:set)
              .to_a
-             .paginate(page: page, per_page: 10)
+  end
+
+  def paginate_by_set(printings, page)
+    group_by_set(printings).paginate(page: page, per_page: 10)
   end
 end
