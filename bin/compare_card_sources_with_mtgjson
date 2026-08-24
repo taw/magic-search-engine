@@ -10,10 +10,18 @@
 # data differs from theirs. Which is the point: the disagreements are short
 # enough to read one by one.
 #
-# Two passes over the same data. The first compares finish by finish, the way
-# both sides store it. The second merges foil and etched, because booster
-# sheets drop etched (pack_factory.rb) and file those cards under foil, and
-# that one known skew otherwise buries everything else.
+# Both sides are folded to nonfoil and premium before anything is compared.
+# Nonfoil versus premium is the only finish distinction either side enforces
+# consistently: our booster sheets carry one finish for the whole sheet, so a
+# sheet that mixes etched with other premium printings has to call all of them
+# one or the other, and mtgjson splits the same cards differently again.
+# Comparing foil against etched therefore reports on how the two sides happen
+# to bucket a card, not on which products contain it.
+#
+# Products are split three ways - only ours, only theirs, and listed by both
+# sides under a different finish. The last is a disagreement about the finish
+# and not about the product, and folding it into the other two would put one
+# product at the top of two opposite lists at once.
 
 require "json"
 require "pathname"
@@ -21,21 +29,23 @@ require "set"
 
 class CompareCardSourcesWithMtgjson
   SETS_ROOT = Pathname(__dir__) + "../../magic-search-engine-data/data/sets"
+  DEFAULT_PATH = Pathname(__dir__) + "../tmp/card_sources.jsonl"
+  FINISHES = %W[nonfoil foil etched].freeze
 
   def initialize(path)
-    @path = Pathname(path)
-    @ours = {}          # card uuid => {finish => Set[product uuid]}
-    @theirs = {}        # card uuid => {finish => Set[product uuid]}
+    @path = path
+    @ours = {}          # card uuid => {"nonfoil"/"premium" => Set[product uuid]}
+    @theirs = {}        # card uuid => {"nonfoil"/"premium" => Set[product uuid]}
     @card_names = {}    # card uuid => "SOI 265 Tamiyo's Journal"
     @product_names = {} # product uuid => "SOI Shadows over Innistrad Booster Pack"
+    @unknown_finishes = Set[]
   end
 
   def call
     load_ours
     load_mtgjson
     report_dangling
-    report("As stored, finish by finish", &:itself)
-    report("With foil and etched merged", &method(:merge_premium))
+    report
   end
 
   def load_ours
@@ -53,7 +63,7 @@ class CompareCardSourcesWithMtgjson
         end
         sources[finish] = products unless products.empty?
       end
-      @ours[uuid] = sources unless sources.empty?
+      @ours[uuid] = merge_premium(sources) unless sources.empty?
     end
   end
 
@@ -72,7 +82,7 @@ class CompareCardSourcesWithMtgjson
         source_products = card["sourceProducts"] or next
         sources = source_products.map{|finish, uuids| [finish, Set.new(uuids)] }.to_h
         next if sources.each_value.all?(&:empty?)
-        @theirs[card["uuid"]] = sources
+        @theirs[card["uuid"]] = merge_premium(sources)
         @card_names[card["uuid"]] ||= "#{set_code} #{card["number"]} #{card["name"]}"
       end
     end
@@ -98,7 +108,14 @@ class CompareCardSourcesWithMtgjson
     puts
   end
 
+  # foil and etched are one bucket, so that the report is about which products
+  # contain a card rather than about which premium finish each side chose
   def merge_premium(sources)
+    # WotC keeps inventing premium treatments. A fourth finish would land in
+    # neither bucket and quietly shrink both sides, so say so once and go on.
+    (sources.keys - FINISHES).each do |finish|
+      warn "Ignoring unknown finish #{finish.inspect}" if @unknown_finishes.add?(finish)
+    end
     premium = (sources["foil"] || Set[]) | (sources["etched"] || Set[])
     result = {}
     result["nonfoil"] = sources["nonfoil"] if sources["nonfoil"]
@@ -106,15 +123,32 @@ class CompareCardSourcesWithMtgjson
     result
   end
 
-  def report(title)
+  # Rows differ for two quite different reasons, and they have to be counted
+  # apart. A product one side lists and the other does not know about at all is
+  # a real disagreement. A product both sides list for the card, just under the
+  # other finish, is a disagreement about the finish alone - counting it as
+  # "only ours" on one row and "only theirs" on the next would put the same
+  # product at the top of both lists.
+  #
+  # Counts are cards, not rows, for the same reason: one such card is two
+  # differing rows and must not vote twice.
+  def report
     same = 0
     differences = []
     only_ours = Hash.new(0)
     only_theirs = Hash.new(0)
+    moved = Hash.new(0)
 
     (@ours.keys | @theirs.keys).each do |uuid|
-      ours = yield(@ours[uuid] || {})
-      theirs = yield(@theirs[uuid] || {})
+      ours = @ours[uuid] || {}
+      theirs = @theirs[uuid] || {}
+      # Everything either side lists for this card under any finish at all
+      ours_any = ours.each_value.inject(Set[]){|all, products| all | products }
+      theirs_any = theirs.each_value.inject(Set[]){|all, products| all | products } - @dangling
+      card_only_ours = Set[]
+      card_only_theirs = Set[]
+      card_moved = Set[]
+
       (ours.keys | theirs.keys).each do |finish|
         mine = ours[finish] || Set[]
         yours = (theirs[finish] || Set[]) - @dangling
@@ -122,20 +156,30 @@ class CompareCardSourcesWithMtgjson
           same += 1
           next
         end
-        differences << [uuid, finish, mine - yours, yours - mine]
-        (mine - yours).each{|product| only_ours[product] += 1 }
-        (yours - mine).each{|product| only_theirs[product] += 1 }
+        ours_moved, ours_new = (mine - yours).partition{|product| theirs_any.include?(product) }
+        theirs_moved, theirs_new = (yours - mine).partition{|product| ours_any.include?(product) }
+        differences << [uuid, finish, ours_new, ours_moved, theirs_new, theirs_moved]
+        card_only_ours.merge(ours_new)
+        card_only_theirs.merge(theirs_new)
+        card_moved.merge(ours_moved).merge(theirs_moved)
       end
+
+      card_only_ours.each{|product| only_ours[product] += 1 }
+      card_only_theirs.each{|product| only_theirs[product] += 1 }
+      card_moved.each{|product| moved[product] += 1 }
     end
 
-    puts "#{title}: #{same} card/finish pairs agree, #{differences.size} differ"
+    puts "#{same} card/finish rows agree, #{differences.size} differ, over nonfoil and premium"
     print_products("  products only we list", only_ours)
     print_products("  products only mtgjson lists", only_theirs)
+    print_products("  products both list, under the other finish", moved)
     if differences.size <= 100
-      differences.sort_by{|uuid, finish, _, _| [@card_names[uuid].to_s, finish] }.each do |uuid, finish, mine, yours|
+      differences.sort_by{|uuid, finish, *_| [@card_names[uuid].to_s, finish] }.each do |uuid, finish, ours_new, ours_moved, theirs_new, theirs_moved|
         puts "  #{@card_names[uuid] || uuid} [#{finish}]"
-        puts "    +#{mine.size} ours: #{sample_products(mine)}" unless mine.empty?
-        puts "    +#{yours.size} theirs: #{sample_products(yours)}" unless yours.empty?
+        puts "    +#{ours_new.size} ours: #{sample_products(ours_new)}" unless ours_new.empty?
+        puts "    +#{ours_moved.size} ours, mtgjson has them under the other finish: #{sample_products(ours_moved)}" unless ours_moved.empty?
+        puts "    +#{theirs_new.size} theirs: #{sample_products(theirs_new)}" unless theirs_new.empty?
+        puts "    +#{theirs_moved.size} theirs, we have them under the other finish: #{sample_products(theirs_moved)}" unless theirs_moved.empty?
       end
     end
     puts
@@ -145,7 +189,7 @@ class CompareCardSourcesWithMtgjson
     return if counts.empty?
     puts "#{label} (#{counts.size} distinct, top 10):"
     counts.sort_by{|product, count| [-count, product] }.first(10).each do |product, count|
-      puts "    #{count} x #{@product_names[product] || product}"
+      puts "    #{count} #{count == 1 ? "card" : "cards"} x #{@product_names[product] || product}"
     end
   end
 
@@ -155,5 +199,8 @@ class CompareCardSourcesWithMtgjson
   end
 end
 
-path = ARGV[0] or abort "Usage: #{$0} card_sources.jsonl"
+path = ARGV[0] ? Pathname(ARGV[0]) : CompareCardSourcesWithMtgjson::DEFAULT_PATH
+unless path.exist?
+  abort "No #{path}, run ./bin/report_card_sources first, or pass a path"
+end
 CompareCardSourcesWithMtgjson.new(path).call

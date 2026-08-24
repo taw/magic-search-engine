@@ -2,6 +2,10 @@
 
 # Where every card comes from, one line of JSON per printing.
 #
+#   ./bin/report_card_sources            # writes tmp/card_sources.jsonl
+#   ./bin/report_card_sources some.jsonl # or wherever
+#   ./bin/report_card_sources -          # or stdout
+#
 # Four separate categories, because they answer different questions and mtgjson
 # flattens all of them into one `sourceProducts` list:
 #
@@ -16,11 +20,11 @@
 #              since a booster box reaching every common in the set is a very
 #              different claim from a deck box reaching the 100 cards in it.
 #
-# Finishes: precons carry nonfoil/foil/etched, product contents carry only a
-# foil boolean (mtgjson has no etched card in any sealed product), and booster
-# sheets drop etched entirely (pack_factory.rb), so an etched card in a booster
-# lands under "foil" here. Everything is grouped by finish anyway, the way
-# mtgjson's sourceProducts is, so the skew is visible rather than averaged out.
+# Finishes: precons and booster sheets both carry nonfoil/foil/etched; product
+# contents carry only a foil boolean, and no card entry in any sealed product
+# is etched, so nothing is lost there. Everything is grouped by finish the way
+# mtgjson's sourceProducts is, so what skew is left is visible rather than
+# averaged out.
 
 require_relative "../search-engine/lib/card_database"
 require "json"
@@ -28,6 +32,9 @@ require "json"
 class ReportCardSources
   UUIDS_PATH = Pathname(__dir__) + "../index/uuids.txt"
   PRODUCTS_PATH = Pathname(__dir__) + "../index/products.json"
+  # Where bin/compare_card_sources_with_mtgjson looks for it by default. 200MB
+  # of JSON, so it goes to a file rather than down a pipe unless asked.
+  DEFAULT_PATH = Pathname(__dir__) + "../tmp/card_sources.jsonl"
 
   # Which edge reached the card, packed into one integer per (product, card)
   VIA = {deck: 1, pack: 2, product: 4}.freeze
@@ -205,4 +212,16 @@ class ReportCardSources
   end
 end
 
-ReportCardSources.new($stdout).call
+# `-` for stdout, a path to write there, nothing for the default
+if ARGV[0] == "-"
+  ReportCardSources.new($stdout).call
+else
+  path = ARGV[0] ? Pathname(ARGV[0]) : ReportCardSources::DEFAULT_PATH
+  path.parent.mkpath
+  # A run takes 16s and the comparison script reads this path without being
+  # told to, so a half-written file must not be sitting at it
+  partial = path.sub_ext(".partial")
+  partial.open("w"){|io| ReportCardSources.new(io).call }
+  partial.rename(path.to_s)
+  warn "Wrote #{path}"
+end

@@ -149,7 +149,7 @@ Sheets and subsheets can always include a `count` variable to assist in troubles
 
 Parent sheets can also include a `foil` boolean to indicate if the sheet is foil. You cannot mix foil/non-foil cards in the same sheet. To achieve this, use a [Variable slot](#variable-slots)
 
-Sheets can also be marked `etched: true` to record that the cards are etched foils. Currently this is just for documentation, and nothing uses this flag yet. An etched sheet still needs `foil: true` if its cards are foil. Example from [cmr-collector.yaml](cmr-collector.yaml):
+Sheets can also be marked `etched: true` for etched foils. Cards drawn from such a sheet carry the etched finish, and it follows them all the way into the exported sealed data. Etched is a kind of foiling, so `etched: true` on its own is enough; most sheets write `foil: true` next to it anyway, which is redundant rather than contradictory. As with `foil`, one sheet means one finish - a sheet whose query also returns premium cards that are not etched will call those etched too. Example from [cmr-collector.yaml](cmr-collector.yaml):
 
 ```yaml
   etched_uncommon:
@@ -222,7 +222,7 @@ Example from [cmr-collector.yaml](cmr-collector.yaml) that returns uncommon or s
 
 #### Any
 
-Sheets can use the `any` tag to combine different subsheets together. Each subsheet can use any sheet variation but cannot change the parent foil parameters. There are two types of `any` sheets: `rate` and `chance`. The two variations cannot be mixed in the same set of subsheets, but multi-layer `any` subsheets can use both `rate` and `chance` if they are consistent within a layer.
+Sheets can use the `any` tag to combine different subsheets together. Each subsheet can use any sheet variation, and inherits the parent's finish unless it names a `foil` or `etched` of its own. There are two types of `any` sheets: `rate` and `chance`. The two variations cannot be mixed in the same set of subsheets, but multi-layer `any` subsheets can use both `rate` and `chance` if they are consistent within a layer.
 
 ##### Rate
 
