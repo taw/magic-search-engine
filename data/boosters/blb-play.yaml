@@ -47,8 +47,7 @@ sheets:
       rate: 2
     - use: mythic_has_showcase
       rate: 4
-    - use: mythic_has_no_showcase
-      rate: 6
+      count: 20
   rare_with_showcase:
     # Showcase treatments 1/3 for relevant cards
     any:
@@ -60,8 +59,10 @@ sheets:
       rate: 4
     - use: rare_has_showcase
       rate: 8
+      count: 37
     - use: rare_has_no_showcase
       rate: 12
+      count: 23
   rare_mythic_with_showcase:
     any:
     - use: rare_with_showcase
