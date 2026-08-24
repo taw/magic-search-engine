@@ -190,6 +190,7 @@ class CardPrinting
     count_sets
     custom?
     decklimit
+    default_printing
     defense
     display_mana_cost
     display_power

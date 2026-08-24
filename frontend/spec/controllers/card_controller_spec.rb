@@ -43,20 +43,20 @@ RSpec.describe CardController, type: :controller do
     assert_response 404
   end
 
-  it "show card gallery - not first printing" do
+  it "show card gallery - not the default printing" do
+    island = $CardDatabase.printing("lea", "288").default_printing
     get "gallery", params: {set: "nph", id: "168"}
     assert_response 302
-    assert_redirected_to action: "gallery", set: "lea", id: "288"
-  end
+    assert_redirected_to action: "gallery", set: island.set_code, id: island.number
 
-  it "show card gallery - not first card in first printing" do
     get "gallery", params: {set: "lea", id: "289"}
     assert_response 302
-    assert_redirected_to action: "gallery", set: "lea", id: "288"
+    assert_redirected_to action: "gallery", set: island.set_code, id: island.number
   end
 
-  it "show card gallery - first card in first printing" do
-    get "gallery", params: {set: "lea", id: "288"}
+  it "show card gallery - default printing" do
+    island = $CardDatabase.printing("lea", "288").default_printing
+    get "gallery", params: {set: island.set_code, id: island.number}
     assert_response 200
     assert_equal "Island - #{APP_NAME}", html_document.title
     assert_select %[.results_summary:contains("Island has")]
@@ -64,11 +64,12 @@ RSpec.describe CardController, type: :controller do
 
   # Ten sets to a page, newest first, and no set on two pages
   it "show card gallery - paginates by set" do
-    get "gallery", params: {set: "lea", id: "288"}
+    island = $CardDatabase.printing("lea", "288").default_printing
+    get "gallery", params: {set: island.set_code, id: island.number}
     assert_response 200
     first_page = css_select("h3.col-12").map(&:text)
 
-    get "gallery", params: {set: "lea", id: "288", page: "2"}
+    get "gallery", params: {set: island.set_code, id: island.number, page: "2"}
     assert_response 200
     second_page = css_select("h3.col-12").map(&:text)
 
@@ -88,14 +89,17 @@ RSpec.describe CardController, type: :controller do
     assert_response 404
   end
 
-  it "show card availability - not first printing" do
-    get "availability", params: {set: "nph", id: "1"}
+  # Karn's oldest printing is a Magic Online promo, and a page keyed by that
+  # would be "Karn Liberated (Magic Online Promos)" - the default printing is
+  # the New Phyrexia one, the same the site picks everywhere else
+  it "show card availability - not the default printing" do
+    get "availability", params: {set: "prm", id: "82876"}
     assert_response 302
-    assert_redirected_to action: "availability", set: "prm", id: "82876"
+    assert_redirected_to action: "availability", set: "nph", id: "1"
   end
 
-  it "show card availability - first printing" do
-    get "availability", params: {set: "prm", id: "82876"}
+  it "show card availability - default printing" do
+    get "availability", params: {set: "nph", id: "1"}
     assert_response 200
     assert_equal "Karn Liberated - #{APP_NAME}", html_document.title
     assert_select %[.results_summary:contains("Karn Liberated has 10 printings")]
@@ -105,7 +109,7 @@ RSpec.describe CardController, type: :controller do
 
   # One row per source and finishes, naming every printing it gives
   it "show card availability - groups printings by source and finishes" do
-    get "availability", params: {set: "prm", id: "82876"}
+    get "availability", params: {set: "nph", id: "1"}
     assert_response 200
     assert_select %[.printings_list li:contains("Double Masters VIP Edition")] do |rows|
       assert_equal 1, rows.size
@@ -115,21 +119,22 @@ RSpec.describe CardController, type: :controller do
 
   # The section already names the set, so a deck from it only needs its type
   it "show card availability - deck from the section's own set" do
-    get "availability", params: {set: "prm", id: "82876"}
+    get "availability", params: {set: "nph", id: "1"}
     assert_response 200
     assert_select %[.printings_list a:contains("New Phyrexia Redemption (MTGO Redemption)")]
   end
 
   # The promo Karn is in no deck, no booster, and no product's own contents
   it "show card availability - printing with no source" do
-    get "availability", params: {set: "prm", id: "82876"}
+    get "availability", params: {set: "nph", id: "1"}
     assert_response 200
     assert_select %[.printings_list li:contains("Not in any deck, booster, or product")]
   end
 
   # Unlike the gallery, every set is on the one page
   it "show card availability - does not paginate" do
-    get "availability", params: {set: "lea", id: "174"}
+    shivan = $CardDatabase.printing("lea", "174").default_printing
+    get "availability", params: {set: shivan.set_code, id: shivan.number}
     assert_response 200
     assert_operator css_select("h3.col-12").size, :>, 10
   end

@@ -229,6 +229,10 @@ class Card
     LegalityInformation.new(self, date)
   end
 
+  def default_printing
+    @printings.min_by(&:default_sort_index)
+  end
+
   def first_release_date
     @first_release_date ||= @printings.map(&:release_date).compact.min
   end

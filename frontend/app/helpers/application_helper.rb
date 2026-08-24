@@ -263,12 +263,11 @@ module ApplicationHelper
   end
 
   def card_gallery_path(card)
-    card_gallery_url(card.printings.first)
+    card_gallery_url(card.default_printing)
   end
 
-  # Both per-card pages are keyed by the card's first printing
   def card_availability_path(card)
-    card_availability_url(card.printings.first)
+    card_availability_url(card.default_printing)
   end
 
   # A set's worth of per-printing availability, turned inside out: one row per

@@ -283,8 +283,9 @@ RSpec.describe ApplicationHelper, type: :helper do
       expect(helper.card_picture_path_lq(missing)).to eq nil
     end
 
-    it "links the gallery of a card to its first printing" do
-      expect(helper.card_gallery_path(printing("uma", "5"))).to eq "/card/gallery/prm/82876"
+    it "links the per-card pages to the card's default printing" do
+      expect(helper.card_gallery_path(printing("uma", "5"))).to eq "/card/gallery/nph/1"
+      expect(helper.card_availability_path(printing("uma", "5"))).to eq "/card/availability/nph/1"
     end
   end
 

@@ -12,37 +12,31 @@ class CardController < ApplicationController
   def gallery
     @card = $CardDatabase.printing(params[:set], params[:id])
     if @card
-      first_printing = @card.printings.first
-      if @card == first_printing
+      default_printing = @card.default_printing
+      if @card == default_printing
         @title = @card.name
         page = [1, params[:page].to_i].max
         @total_printings = @card.printings.size
         @printings = paginate_by_set(@card.printings, page)
       else
-        redirect_to set: first_printing.set_code, id: first_printing.number
+        redirect_to set: default_printing.set_code, id: default_printing.number
       end
     else
       render_404
     end
   end
 
-  # Where every printing of a card can be got from, as one page. Keyed by the
-  # card's first printing like the gallery is, since there is no per-card url,
-  # and any other printing redirects onto it.
   def availability
     @card = $CardDatabase.printing(params[:set], params[:id])
     if @card
-      first_printing = @card.printings.first
-      if @card == first_printing
+      default_printing = @card.default_printing
+      if @card == default_printing
         @title = @card.name
         @total_printings = @card.printings.size
-        # One pass for all of them. Calling `availability` per printing rescans
-        # the decks and the booster sheets every time, which Forest's 943
-        # printings feel very keenly.
         @availability = $CardDatabase.availability_of_all_printings(@card)
         @printings = group_by_set(@card.printings)
       else
-        redirect_to set: first_printing.set_code, id: first_printing.number
+        redirect_to set: default_printing.set_code, id: default_printing.number
       end
     else
       render_404
