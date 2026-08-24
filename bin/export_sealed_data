@@ -90,7 +90,11 @@ class ExportFormatterBasic < ExportFormatter
 
     cards = ev.map do |e,w|
       name = "#{e.set_code}:#{e.number}"
-      name = "#{name}:foil" if e.foil
+      if e.etched
+        name = "#{name}:etched"
+      elsif e.foil
+        name = "#{name}:foil"
+      end
       [name, w]
     end.sort.to_h
 
@@ -134,15 +138,18 @@ class ExportFormatterExtended < ExportFormatter
       ev = integerize_evs sheet.probabilities
     end
 
+    # `etched` rides on top of `foil` rather than replacing it, and is only
+    # written where it applies, so nothing reading `foil` needs to change.
     cards = ev.map do |e,w|
       {
         set: e.set_code,
         number: e.number,
         weight: w,
         foil: e.foil,
+        etched: (true if e.etched),
         uuid: uuid_for(e.set_code, e.number)
-      }
-    end.sort_by{|x| [x[:set], x[:number].to_i, x[:number], x[:foil] ? 0 : 1] }
+      }.compact
+    end.sort_by{|x| [x[:set], x[:number].to_i, x[:number], x[:foil] ? 0 : 1, x[:etched] ? 0 : 1] }
 
     {
       allow_duplicates: sheet.is_a?(CardSheetWithDuplicates) ? true : nil,
@@ -186,6 +193,7 @@ class ExportFormatterExperimental < ExportFormatter
       ev = integerize_evs sheet.probabilities
     end
 
+    # mtgjson v5.x sealed format has no etched, we treat them as regular foils
     foil_status = ev.keys.map(&:foil).uniq
     raise "Sheet #{sheet.name} must not be empty" if foil_status.empty?
     raise "Sheet #{sheet.name} must be all-foil or all-nonfoil" unless foil_status == [true] or foil_status == [false]

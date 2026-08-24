@@ -45,7 +45,8 @@ class OpenPacksJSON
         uuid: uuid_for(card.set_code,
         card.number),
         foil: card.foil,
-      }
+        etched: (true if card.etched),
+      }.compact
     }.sort_by{|c|
       [c[:name], c[:set], c[:number]]
     }

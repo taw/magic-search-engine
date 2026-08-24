@@ -46,9 +46,9 @@ class HumanExportSealedData
     fixed = sheet.is_a?(FixedCardSheet)
 
     if fixed
-      ev = sheet.elements.zip(sheet.weights).sort_by{|c,w| [c.set, c.number.to_i, c.number, c.foil ? 0 : 1] }
+      ev = sheet.elements.zip(sheet.weights).sort_by{|c,w| [c.set, c.number.to_i, c.number, c.foil ? 0 : 1, c.etched ? 0 : 1] }
     else
-      ev = integerize_evs(sheet.probabilities).sort_by{|c,w| [c.set, c.number.to_i, c.number, c.foil ? 0 : 1] }
+      ev = integerize_evs(sheet.probabilities).sort_by{|c,w| [c.set, c.number.to_i, c.number, c.foil ? 0 : 1, c.etched ? 0 : 1] }
     end
 
     file.puts "  - balanced: true" if balanced
@@ -56,7 +56,14 @@ class HumanExportSealedData
     file.puts "  - fixed: true" if fixed
 
     ev.each do |c, w|
-      file.puts "  - [#{c.set_code}/#{c.number}#{'/foil' if c.foil}] #{c.name} - #{w}"
+      if c.etched
+        finish_tag = "/etched"
+      elsif c.foil
+        finish_tag = "/foil"
+      else
+        finish_tag = ""
+      end
+      file.puts "  - [#{c.set_code}/#{c.number}#{finish_tag}] #{c.name} - #{w}"
     end
   end
 

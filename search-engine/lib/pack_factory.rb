@@ -58,31 +58,47 @@ class PackFactory
     result
   end
 
-  def build_sheet_from_deck(deck_code, foil: false, count: nil)
+  def build_sheet_from_deck(deck_code, finish: :nonfoil, count: nil)
     set_code, deck_name = deck_code.split("/", 2)
     set = @db.sets[set_code]
     raise_sheet_error "Cannot resolve deck #{deck_code}, no set #{set_code} found" unless set
     deck = set.decks.find{|d| d.name == deck_name}
     raise_sheet_error "Cannot resolve deck #{deck_code}, no deck with such name found for #{set_code}" unless deck
-    deck_cards = deck.all_cards.select{|k,v| v.foil == foil}
+    deck_cards = deck.all_cards.select{|k,v| v.finish == finish}
     if count
       actual_count = deck_cards.map(&:first).sum
       unless actual_count == count
-        warn "Expected deck #{deck_code} to return #{count} with foil: #{foil}, got #{actual_count}"
+        warn "Expected deck #{deck_code} to return #{count} with finish: #{finish}, got #{actual_count}"
       end
     end
     FixedCardSheet.new(deck_cards.map(&:last), deck_cards.map(&:first))
   end
 
-  def build_sheet(data)
+  # Sheets name their finish as `foil` and `etched` flags, the way the sealed
+  # data does, but everything below here wants the one value PhysicalCard
+  # stores. `inherited_finish` is what an `any` subsheet gets when it does not
+  # name a finish of its own.
+  def read_finish(data, inherited_finish)
+    return inherited_finish unless data.has_key?("foil") or data.has_key?("etched")
+    etched = data.delete("etched")
+    foil = data.delete("foil")
+    # etched is a kind of foiling, so the `foil: true` next to it is redundant
+    # rather than contradictory, same as in PhysicalCard.for
+    if etched
+      :etched
+    elsif foil
+      :foil
+    else
+      :nonfoil
+    end
+  end
+
+  def build_sheet(data, inherited_finish=:nonfoil)
     data = data.dup
-    foil = false
     balanced = false
     fixed = false
 
-    # etched flag isn't propagated anywhere yet
-    data.delete("etched") if data.has_key?("etched")
-    foil = data.delete("foil") if data.has_key?("foil")
+    finish = read_finish(data, inherited_finish)
     balanced = data.delete("balanced") if data.has_key?("balanced")
     duplicates = data.delete("duplicates") if data.has_key?("duplicates")
     count = data.delete("count") if data.has_key?("count")
@@ -104,19 +120,19 @@ class PackFactory
     when ["code"]
       raise_sheet_error "No balanced support for code" if balanced
       parts = data["code"].split("/", 2)
-      @sheet_factory.explicit_sheet(parts[0], parts[1], foil: foil, count: count, kind: kind)
+      @sheet_factory.explicit_sheet(parts[0], parts[1], finish: finish, count: count, kind: kind)
     when ["query"]
-      @sheet_factory.from_query(data["query"], count, foil: foil, kind: kind)
+      @sheet_factory.from_query(data["query"], count, finish: finish, kind: kind)
     when ["any"]
       subsheets = data["any"].map(&:dup)
       if subsheets.all?{|s| s["rate"]}
         rates = subsheets.map{|d| d.delete("rate")}
-        sheets = subsheets.map{|d| build_sheet({"foil" => foil}.merge(d)) }
+        sheets = subsheets.map{|d| build_sheet(d, finish) }
         chances = rates.zip(sheets).map{|r,s| r*s.elements.size}
         build_sheet_from_subsheets(sheets, chances, kind: kind, count: count)
       elsif subsheets.all?{|s| s["chance"]}
         chances = subsheets.map{|d| d.delete("chance")}
-        sheets = subsheets.map{|d| build_sheet({"foil" => foil}.merge(d)) }
+        sheets = subsheets.map{|d| build_sheet(d, finish) }
         build_sheet_from_subsheets(sheets, chances, kind: kind, count: count)
       else
         raise_sheet_error "Incorrect subsheet data for any"
@@ -124,7 +140,7 @@ class PackFactory
     when ["deck"]
       raise_sheet_error "No balanced support for code" if balanced
       raise_sheet_error "No duplicates support for code" if duplicates
-      build_sheet_from_deck(data["deck"], foil: foil, count: count)
+      build_sheet_from_deck(data["deck"], finish: finish, count: count)
     else
       raise_sheet_error "Unknown sheet type #{data.keys.join(", ")}"
     end
