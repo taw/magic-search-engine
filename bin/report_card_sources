@@ -1,0 +1,208 @@
+#!/usr/bin/env ruby
+
+# Where every card comes from, one line of JSON per printing.
+#
+# Four separate categories, because they answer different questions and mtgjson
+# flattens all of them into one `sourceProducts` list:
+#
+# * precons  - decks from the deck index that contain the card. This is what the
+#              card page shows today. Not products; mtgjson has no id for them.
+# * direct   - products whose own contents name the card. These are the ones
+#              nothing else can tell us about - a card that is only ever in a
+#              product directly is invisible to both the deck index and the
+#              booster index.
+# * indirect - products that reach the card through a deck, a booster pack, or
+#              a subproduct. Recorded with which of the three paths got there,
+#              since a booster box reaching every common in the set is a very
+#              different claim from a deck box reaching the 100 cards in it.
+#
+# Finishes: precons carry nonfoil/foil/etched, product contents carry only a
+# foil boolean (mtgjson has no etched card in any sealed product), and booster
+# sheets drop etched entirely (pack_factory.rb), so an etched card in a booster
+# lands under "foil" here. Everything is grouped by finish anyway, the way
+# mtgjson's sourceProducts is, so the skew is visible rather than averaged out.
+
+require_relative "../search-engine/lib/card_database"
+require "json"
+
+class ReportCardSources
+  UUIDS_PATH = Pathname(__dir__) + "../index/uuids.txt"
+  PRODUCTS_PATH = Pathname(__dir__) + "../index/products.json"
+
+  # Which edge reached the card, packed into one integer per (product, card)
+  VIA = {deck: 1, pack: 2, product: 4}.freeze
+
+  def initialize(io)
+    @io = io
+    @db = CardDatabase.load
+    @unresolved = Hash.new(0)
+  end
+
+  def call
+    index_precons!
+    index_products!
+    report_unresolved
+    emit_cards
+  end
+
+  # Card -> decks containing it, in any zone and any finish
+  def index_precons!
+    @precons_by_card = {}
+    @db.decks.each do |deck|
+      deck.cards_in_all_zones.each do |_count, card|
+        (@precons_by_card[card] ||= []) << deck
+      end
+    end
+    @precons_by_card.each_value(&:uniq!)
+  end
+
+  def index_products!
+    @direct_by_card = {}
+    @indirect_by_card = {}
+
+    # Sets of cards per product, kept while the closure is being built because
+    # a subproduct is reached from every box and case above it
+    @direct = {}
+    @via = {}
+    @reachable = {}
+    @in_progress = Set[]
+
+    @db.products.each{|product| resolve(product) }
+
+    @db.products.each do |product|
+      @direct[product].each do |card|
+        (@direct_by_card[card] ||= []) << product
+      end
+      @via[product].each do |card, bits|
+        (@indirect_by_card[card] ||= {})[product] = bits
+      end
+    end
+  end
+
+  # Fills in @direct / @via / @reachable for one product, depth first.
+  # Returns everything the product reaches, which is what its parents want.
+  def resolve(product)
+    return @reachable[product] if @reachable[product]
+
+    # Products do not contain themselves, but nothing in the data guarantees it
+    if @in_progress.include?(product)
+      warn "Cycle in product contents at #{product.set_code} #{product.name}"
+      return Set[]
+    end
+    @in_progress << product
+
+    direct = Set[]
+    via = Hash.new(0)
+    walk_contents(product.contents, direct, via)
+
+    @in_progress.delete(product)
+    @direct[product] = direct
+    @via[product] = via
+    @reachable[product] = direct + via.keys
+  end
+
+  def walk_contents(contents, direct, via)
+    contents.each do |_count, content|
+      case content
+      when PhysicalCard
+        direct << content
+      when PreconDeck
+        content.cards_in_all_zones.each{|_c, card| via[card] |= VIA[:deck] }
+      when Pack
+        content.cards.each{|card| via[card] |= VIA[:pack] }
+      when Product
+        resolve(content).each{|card| via[card] |= VIA[:product] }
+      when ProductVariableContents
+        # A variable slot is one of several subproducts, all of which are
+        # possible, so all of them count. The chances only matter to a
+        # simulator, and this is a "can this card be in here" question.
+        content.options.each{|option| walk_contents(option[:subproduct], direct, via) }
+      when String
+        # Contents we could not link - "unknown card: ...", "other: ..." and
+        # friends. Always some, always growing around a new set's release.
+        @unresolved[content[/\A[^:]+/]] += 1
+      else
+        raise "Unknown linked contents: #{content.class}"
+      end
+    end
+  end
+
+  def report_unresolved
+    return if @unresolved.empty?
+    warn "Unlinked product contents (not counted as sources):"
+    @unresolved.sort_by{|kind, count| [-count, kind] }.each do |kind, count|
+      warn "  #{count} x #{kind}"
+    end
+  end
+
+  def card_uuids
+    @card_uuids ||= UUIDS_PATH.each_line.map{|line|
+      set_code, number, uuid, _name = line.chomp.split("\t")
+      [[set_code, number], uuid]
+    }.to_h
+  end
+
+  # Product drops its index entry once it is linked, and the uuid goes with it.
+  # It is only wanted for the mtgjson comparison, so read it back off disk here
+  # instead of making every Product carry one.
+  def product_uuids
+    @product_uuids ||= JSON.parse(PRODUCTS_PATH.read).to_h{|product|
+      [[product["set_code"], product["name"]], product["uuid"]]
+    }
+  end
+
+  # One line per printing, finishes grouped inside it the way mtgjson's
+  # sourceProducts groups them
+  def emit_cards
+    @db.printings.select(&:main_front?).sort_by{|printing|
+      [printing.release_date_i, printing.set_code, printing.number_sort_index]
+    }.each do |printing|
+      sources = PhysicalCard::FINISHES.map{|finish|
+        card = PhysicalCard.new(printing, finish)
+        entry = sources_for(card)
+        entry.empty? ? nil : [finish, entry]
+      }.compact.to_h
+
+      @io.puts JSON.generate({
+        set_code: printing.set_code,
+        number: printing.number,
+        name: PhysicalCard.new(printing).name,
+        mtgjson_uuid: card_uuids[[printing.set_code, printing.number]],
+        sources: sources,
+      })
+    end
+  end
+
+  def sources_for(card)
+    result = {}
+
+    precons = @precons_by_card[card]
+    result[:precons] = precons.sort_by{|deck| [deck.set_code, deck.name] }.map{|deck|
+      {set_code: deck.set_code, name: deck.name, type: deck.type}
+    } if precons
+
+    direct = @direct_by_card[card]
+    result[:products_direct] = sort_products(direct).map{|product| product_json(product) } if direct
+
+    indirect = @indirect_by_card[card]
+    result[:products_indirect] = sort_products(indirect.keys).map{|product|
+      product_json(product).merge(via: VIA.keys.select{|kind| indirect[product] & VIA[kind] != 0 })
+    } if indirect
+
+    result
+  end
+
+  def sort_products(products)
+    products.sort_by{|product| [product.set_code, product.name] }
+  end
+
+  def product_json(product)
+    {
+      uuid: product_uuids[[product.set_code, product.name]],
+      set_code: product.set_code,
+      name: product.name,
+    }
+  end
+end
+
+ReportCardSources.new($stdout).call
