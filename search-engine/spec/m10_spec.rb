@@ -2,8 +2,8 @@ describe "Magic 2010" do
   include_context "db", "m10"
 
   it "db_loads_and_contains_sets" do
-    db.number_of_cards.should eq(234)
-    db.number_of_printings.should eq(249)
+    db.cards.size.should eq(234)
+    db.printings.size.should eq(249)
   end
 
   it "search_full_name" do

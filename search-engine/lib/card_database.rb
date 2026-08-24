@@ -383,12 +383,9 @@ class CardDatabase
     spelling_suggestions.suggest(word)
   end
 
-  def number_of_cards
-    @cards.size
-  end
-
-  def number_of_printings
-    printings.size
+  def printing(set_code, number)
+    set = @sets[set_code] or return
+    set.printing_by_number[number]
   end
 
   def has_card_named?(name)
