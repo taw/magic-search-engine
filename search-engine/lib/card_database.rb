@@ -149,6 +149,30 @@ class CardDatabase
       availability_in_products(main_front)
   end
 
+  # The same thing for every printing of a card at once, as printing =>
+  # availability, in `card.printings` order and including the printings that
+  # have none. Calling `availability` in a loop is pathological for a card with
+  # many printings, since each call rescans the decks and the booster sheets
+  # from the start: Forest has 943 printings and costs 406ms that way against
+  # 29ms for one pass collecting all of them (dev machine, loaded database).
+  #
+  # One pass is not free either - it is two full scans - so the per-printing
+  # prefilters are kept, widened to the sets the card is in. A card in one set
+  # skips almost every deck and booster here, the same way it does above, and
+  # only a card printed everywhere pays for the whole walk.
+  def availability_of_all_printings(card)
+    printings_by_front = {}.compare_by_identity
+    card.printings.each{|printing| printings_by_front[printing.main_front] = printing }
+    result = card.printings.to_h{|printing| [printing, []] }
+
+    availability_in_decks_of_card(printings_by_front, result)
+    availability_in_boosters_of_card(printings_by_front, result)
+    printings_by_front.each do |main_front, printing|
+      result[printing].concat(availability_in_products(main_front))
+    end
+    result
+  end
+
   def subset(sets)
     # puts "Loading subset: #{sets}"
     self.class.send(:new) do |db|
@@ -384,6 +408,8 @@ class CardDatabase
   # card no product names directly - which is nearly all of them
   NO_FINISHES = [].freeze
   NO_AVAILABILITY = [].freeze
+  # Same, for the batch scans, which group the finishes by printing
+  NO_SHEET_FINISHES = {}.freeze
 
   def availability_in_decks(main_front)
     set_code = main_front.set_code
@@ -415,6 +441,56 @@ class CardDatabase
       end
       CardAvailability.new(booster, finishes) if finishes
     end
+  end
+
+  # The batch forms of the two scans above. They collect every printing of the
+  # card in one walk instead of restarting for each one, so the hit is a
+  # printing rather than a finish, and a source can reach several printings at
+  # once - a deck with three different Forests is three separate lines.
+
+  def availability_in_decks_of_card(printings_by_front, result)
+    set_codes = printings_by_front.each_key.map(&:set_code).to_set
+    decks.each do |deck|
+      next unless deck.all_set_codes.intersect?(set_codes)
+      finishes = nil
+      deck.each_card do |_count, physical_card|
+        printing = printings_by_front[physical_card.main_front] or next
+        ((finishes ||= {}.compare_by_identity)[printing] ||= []) << physical_card.finish
+      end
+      next unless finishes
+      finishes.each{|printing, printing_finishes| result[printing] << CardAvailability.new(deck, printing_finishes) }
+    end
+  end
+
+  def availability_in_boosters_of_card(printings_by_front, result)
+    # in_boosters? is exact, so the sets of the printings that are not in any
+    # booster cannot widen the prefilter, and a card in no booster at all skips
+    # the scan entirely
+    set_codes = printings_by_front.each_key.select(&:in_boosters?).map(&:set_code).to_set
+    return if set_codes.empty?
+    finishes_by_sheet = {}.compare_by_identity
+    unique_supported_booster_types.each_value do |booster|
+      next unless booster.source_set_codes.any?{|set_code| set_codes.include?(set_code)}
+      finishes = nil
+      booster.each_sheet do |sheet|
+        from_sheet = (finishes_by_sheet[sheet] ||= sheet_finishes_of_card(sheet, printings_by_front))
+        next if from_sheet.empty?
+        from_sheet.each do |printing, sheet_finishes|
+          ((finishes ||= {}.compare_by_identity)[printing] ||= []).concat(sheet_finishes)
+        end
+      end
+      next unless finishes
+      finishes.each{|printing, printing_finishes| result[printing] << CardAvailability.new(booster, printing_finishes) }
+    end
+  end
+
+  def sheet_finishes_of_card(sheet, printings_by_front)
+    finishes = nil
+    sheet.cards.each do |physical_card|
+      printing = printings_by_front[physical_card.main_front] or next
+      ((finishes ||= {}.compare_by_identity)[printing] ||= []) << physical_card.finish
+    end
+    finishes || NO_SHEET_FINISHES
   end
 
   def sheet_finishes(sheet, main_front)

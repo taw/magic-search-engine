@@ -81,6 +81,44 @@ describe "CardDatabase#availability" do
   end
 end
 
+describe "CardDatabase#availability_of_all_printings" do
+  include_context "db"
+
+  # The batch form exists because calling availability once per printing
+  # rescans the decks and the booster sheets every time, which is 400ms on a
+  # basic land. It has to answer exactly what that loop answers.
+  def same_as_per_printing(card_name)
+    card = db.cards.each_value.find{|c| c.name == card_name} or raise "No such card: #{card_name}"
+    batch = db.availability_of_all_printings(card)
+    batch.keys.should eq(card.printings)
+    card.printings.each do |printing|
+      batch[printing].should eq(db.availability(printing))
+    end
+    batch
+  end
+
+  it "one printing" do
+    same_as_per_printing("A Display of My Dark Power")
+  end
+
+  it "a card in decks, boosters and products at once" do
+    same_as_per_printing("Ajani, Mentor of Heroes")
+  end
+
+  # The case the batch form is for. One deck or one sheet can reach several
+  # printings here, which the per-printing scan never sees.
+  it "a basic land" do
+    batch = same_as_per_printing("Forest")
+    batch.size.should be > 500
+    batch.values.any?{|availability| availability.size > 2}.should eq(true)
+  end
+
+  it "a card in nothing at all" do
+    batch = same_as_per_printing("1996 World Champion")
+    batch.values.flatten.should eq([])
+  end
+end
+
 describe CardAvailability do
   def label(*finishes)
     CardAvailability.new(nil, finishes).finish_label
