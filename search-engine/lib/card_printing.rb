@@ -357,6 +357,23 @@ class CardPrinting
     foiling == :nonfoil
   end
 
+  # Whether the card was printed in one of PhysicalCard's finishes. `:foil` is
+  # any premium finish, the same question `is:foil` asks - mtgjson lists plain
+  # foil and etched separately, but the index only keeps `etched`, so a card
+  # that came etched cannot be asked whether it also came in plain foil.
+  def has_finish?(finish)
+    case finish
+    when :nonfoil
+      foiling != :foilonly
+    when :foil
+      foiling != :nonfoil
+    when :etched
+      etched
+    else
+      raise "Unknown finish #{finish.inspect}"
+    end
+  end
+
   # mtgjson has B.F.M.'s two halves as one multipart card, but they are two
   # separate physical cards, each just its own face.
   def multipart_physical_card?
