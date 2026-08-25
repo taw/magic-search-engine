@@ -47,7 +47,7 @@ class PatchABUR < Patch
     sheet_assignments
   end
 
-  # Most sheets are frow http://www.lethe.xyz/mtg/collation/lea.html
+  # Most sheets are from http://www.lethe.xyz/mtg/collation/lea.html
   #
   # The uncommon and rare sheets for Alpha are not known exactly,
   # but the evidence from pack openings is consistent with the popular theory

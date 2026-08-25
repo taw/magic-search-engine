@@ -130,7 +130,7 @@ class ConditionExpr < ConditionSimple
     when /\A[\-\+]?\d*\.\d+\z/
       [:number, expr.to_f]
     when /\A(-?\d*)½\z/
-      # Negative half numbers never happen or real cards, but for sake of completeness
+      # Negative half numbers never happen on real cards, but for sake of completeness
       if expr[0] == "-"
         [:number, $1.to_i - 0.5]
       else

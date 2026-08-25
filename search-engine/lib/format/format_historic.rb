@@ -37,7 +37,7 @@ class FormatHistoric < FormatVintage
     return false if card.has_alchemy
     card.printings.each do |printing|
       next if @time and printing.release_date > @time
-      # These is currently one excluded set - XANA
+      # There is currently one excluded set - XANA
       if printing.arena? and printing.set_code != "xana"
         return true
       end

@@ -61,7 +61,7 @@ class CardsWithBadDfcPics
 
       fail_type = "duplicate for DFC"
     else
-      # They hae same fronts, different backs
+      # They have same fronts, different backs
       if pics.map(&:set_code).sort == ["ced", "cei"] and pics.map(&:name).all_same? and pics.map(&:number).all_same?
         return
       end

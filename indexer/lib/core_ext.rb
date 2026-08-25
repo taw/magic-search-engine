@@ -1,4 +1,3 @@
-# ActiveRecord FTW
 # Shims for Ruby versions older than the newest we support.
 # Guard each so newer Ruby uses the fast C builtin.
 class Hash

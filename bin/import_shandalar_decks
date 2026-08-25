@@ -165,7 +165,6 @@ class ShandalarDeckParser
   def call
     lines = @str.split("\n")
 
-    # Parse name and comment from first line
     if first_line = lines.shift
       if match = first_line.match(/^(.+?)(\s*\(.*\)\s*)?$/)
         @result[:name] = match[1].strip
@@ -173,18 +172,15 @@ class ShandalarDeckParser
       end
     end
 
-    # Process remaining lines
     lines.each do |line|
       line = line.strip
       next if line.empty?
 
-      # Check for section marker
       if line.start_with?(".v")
         @current_section = normalize_section(line)
         next
       end
 
-      # Parse card entry
       if match = line.match(/^\.\d+\s+(\d+)\s+(.+)$/)
         count = match[1].to_i
         name = fix_card_name(match[2].strip)

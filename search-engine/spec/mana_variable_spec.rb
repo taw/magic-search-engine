@@ -85,9 +85,6 @@ describe "ConditionMana caching" do
     printings.select{|card| cond.match?(card) }
   end
 
-  # A mana query answers "no" for most of the index, so caching that has to
-  # work as well as caching "yes" - `@cache[cost] ||= ...` would recompute
-  # every miss and quietly give back all of the cost with none of the benefit
   # `@cache[cost] ||= ...` would answer correctly and cache nothing useful: a
   # mana query says "no" for most of the index, and every one of those misses
   # would be recomputed on the next printing with the same cost

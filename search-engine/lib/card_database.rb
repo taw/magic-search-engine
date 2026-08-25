@@ -808,7 +808,6 @@ class CardDatabase
     end
   end
 
-  # These method seem to occur in every single class out there
   def normalize_text(text)
     text.downcase.normalize_accents.strip
   end

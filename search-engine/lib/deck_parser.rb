@@ -112,7 +112,7 @@ class DeckParser
     commander_detection_heuristic!
   end
 
-  # This method is really messy, but is has decent test coverage
+  # This method is really messy, but it has decent test coverage
   def parse_lines
     current = @sections["Main Deck"]
     @lines.each do |line|
@@ -348,7 +348,6 @@ class DeckParser
     printings.min_by(&:default_sort_index)
   end
 
-  # These method seem to occur in every single class out there
   def normalize_text(text)
     text.downcase.normalize_accents.strip
   end
