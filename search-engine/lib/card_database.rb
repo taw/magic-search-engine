@@ -173,6 +173,41 @@ class CardDatabase
     result
   end
 
+  # The other side of the same question: which printings nothing reaches at
+  # all, which is what `is:productless` asks. Finish makes no difference here -
+  # a card any deck, booster or product has in any of them is not productless.
+  #
+  # It is the same three scans as `availability`, but without the per-card
+  # prefilters, since every card is being asked about at once: one walk of the
+  # decks, the sheets and the products, 30ms on a loaded database (dev machine).
+  # What it finds is deliberately not memoized - it is 98k printings' worth of
+  # set, the server is short of memory, and a query asks this once.
+  def productless_printings(candidates=printings)
+    available = {}.compare_by_identity
+
+    decks.each do |deck|
+      deck.each_card{|_count, physical_card| available[physical_card.main_front] = true }
+    end
+
+    # One sheet belongs to every booster that draws from it, so walk each once
+    seen_sheets = {}.compare_by_identity
+    unique_supported_booster_types.each_value do |booster|
+      booster.each_sheet do |sheet|
+        next if seen_sheets[sheet]
+        seen_sheets[sheet] = true
+        sheet.cards.each{|physical_card| available[physical_card.main_front] = true }
+      end
+    end
+
+    product_cards = {}
+    products.each{|product| product_finishes(product.contents, product_cards) }
+    product_cards.each_key{|main_front| available[main_front] = true }
+
+    # A face is as available as the physical card it is on, so ask about the
+    # main front rather than the printing itself
+    candidates.reject{|printing| available[printing.main_front] }
+  end
+
   def subset(sets)
     # puts "Loading subset: #{sets}"
     self.class.send(:new) do |db|

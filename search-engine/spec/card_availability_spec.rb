@@ -144,3 +144,56 @@ describe CardAvailability do
     label(:etched, :foil, :etched).should eq("foil and etched")
   end
 end
+
+describe "is:productless" do
+  include_context "db"
+
+  def productless(query)
+    db.search("is:productless #{query}").printings.map{|printing| "#{printing.set_code}/#{printing.number}" }
+  end
+
+  def printings(query)
+    db.search(query).printings.map{|printing| "#{printing.set_code}/#{printing.number}" }
+  end
+
+  it "printings nothing in the database can be got from" do
+    # A promo handed out on its own, the same one CardDatabase#availability
+    # returns an empty list for
+    productless("e:pdrc").should eq(["pdrc/1"])
+  end
+
+  it "not printings a deck, a booster or a product has" do
+    "is:productless e:som".should return_no_cards
+  end
+
+  # These are the whole reason it is not "is:boosterless" - a card that only
+  # ever came in one premium finish is still a card you can get
+  it "any finish counts, not just nonfoil" do
+    printings("e:2x2 number:413").should eq(["2x2/413"]) # collector booster, etched only
+    printings("e:blb number:386").should eq(["blb/386"]) # bundle promo, foil only
+    "is:productless (e:2x2 number:413 or e:blb number:386)".should return_no_cards
+  end
+
+  # Availability is a property of the physical card, so a back face has to
+  # answer the same as the front it is printed on
+  it "faces of one physical card are productless together" do
+    results = db.search("is:productless").printings.to_set
+    db.search("is:back").printings.each do |back|
+      [back.name, results.include?(back)].should eq([back.name, results.include?(back.main_front)])
+    end
+  end
+
+  # The reason for the separate scan is speed, not a different question, so it
+  # has to agree with what the card page shows, printing by printing
+  it "is exactly the printings CardDatabase#availability finds nothing for" do
+    expected = db.sets["znr"].printings.select{|printing| db.availability(printing).empty? }
+    db.search("is:productless e:znr").printings.should match_array(expected)
+    expected.should_not be_empty
+  end
+
+  it "judge gift promos are in no product at all" do
+    # Handed out on their own, so most of the set is genuinely productless -
+    # only the few reprinted into something else are not
+    productless("promo:judgegift").size.should be > 100
+  end
+end
