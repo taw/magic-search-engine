@@ -14,7 +14,6 @@ class CardPrinting
     :xmage,
     :baseset,
     :digital,
-    :etched,
     :fullart,
     :in_boosters,
     :main_front,
@@ -32,6 +31,10 @@ class CardPrinting
 
   # Most physical cards have no back, so they can all share one empty array.
   NO_PARTS = [].freeze
+
+  # Every kind of foiling there is, for the questions that only ask whether the
+  # card is premium at all
+  PREMIUM_FINISHES = IndexFormat::FINISH_BITS[:foil] | IndexFormat::FINISH_BITS[:etched]
 
   # Which flag each character of the index's "!" string sets, see IndexFormat.
   # The negated ones start out set and their character clears them.
@@ -61,7 +64,7 @@ class CardPrinting
     :flavor_name,
     :flavor_normalized,
     :flavor,
-    :foiling,
+    :finishes,
     :frame_effects,
     :frame,
     :language,
@@ -109,7 +112,7 @@ class CardPrinting
     if @flavor_name
       @stemmed_flavor_name = -@flavor_name.downcase.normalize_accents.gsub(/s\b/, "").tr("-", " ")
     end
-    @foiling = IndexFormat::FOILING_SYMBOLS.fetch(data["fo"] || 0)
+    @finishes = data["fo"] || IndexFormat::DEFAULT_FINISHES
     @border = IndexFormat::BORDERS.fetch(data["b"] || 0)
     @frame = IndexFormat::FRAMES.fetch(data["f"] || 0)
     @frame_effects = data["fe"] || []
@@ -349,29 +352,36 @@ class CardPrinting
     PhysicalCard.for(self)
   end
 
+  # The finishes are a bitmask - see IndexFormat::FINISH_BITS - because a
+  # printing comes in any combination of the three.
+  def has_finish?(finish)
+    @finishes & IndexFormat::FINISH_BITS.fetch(finish) != 0
+  end
+
+  # Foil and etched are one thing to nearly everything that asks: etched is a
+  # kind of foiling, and a card sheet, a decklist or a picture only wants to
+  # know whether the card is premium. `has_finish?(:foil)` is the plain foil
+  # printing itself, and only two queries are that specific.
+  def any_foil?
+    @finishes & PREMIUM_FINISHES != 0
+  end
+
   def foilonly?
-    foiling == :foilonly
+    !has_finish?(:nonfoil)
   end
 
   def nonfoilonly?
-    foiling == :nonfoil
+    @finishes == IndexFormat::FINISH_BITS[:nonfoil]
   end
 
-  # Whether the card was printed in one of PhysicalCard's finishes. `:foil` is
-  # any premium finish, the same question `is:foil` asks - mtgjson lists plain
-  # foil and etched separately, but the index only keeps `etched`, so a card
-  # that came etched cannot be asked whether it also came in plain foil.
-  def has_finish?(finish)
-    case finish
-    when :nonfoil
-      foiling != :foilonly
-    when :foil
-      foiling != :nonfoil
-    when :etched
-      etched
-    else
-      raise "Unknown finish #{finish.inspect}"
-    end
+  # Comes both ways, whichever premium finish it is
+  def foilboth?
+    has_finish?(:nonfoil) and any_foil?
+  end
+
+  # In IndexFormat::FINISH_BITS order, for display
+  def finish_names
+    IndexFormat::FINISH_BITS.each_key.select{|finish| has_finish?(finish) }
   end
 
   # mtgjson has B.F.M.'s two halves as one multipart card, but they are two

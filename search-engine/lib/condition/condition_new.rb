@@ -11,9 +11,9 @@ class ConditionNew < ConditionSimple
     "artist"    => ->(c) { c.artist_name },
     "border"    => ->(c) { c.border },
     "flavor"    => ->(c) { flavor = c.flavor_normalized; flavor unless flavor.empty? },
-    "foil"      => ->(c) { "foil" unless c.foiling == :nonfoil },
+    "foil"      => ->(c) { "foil" if c.any_foil? },
     "frame"     => ->(c) { c.frame },
-    "nonfoil"   => ->(c) { "nonfoil" unless c.foiling == :foilonly },
+    "nonfoil"   => ->(c) { "nonfoil" if c.has_finish?(:nonfoil) },
     "rarity"    => ->(c) { c.rarity },
     "watermark" => ->(c) { c.watermark },
   }.freeze

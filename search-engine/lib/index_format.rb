@@ -9,15 +9,20 @@
 # All these lists are append-only. Reordering or removing an entry silently
 # changes the meaning of every card already in the index.
 module IndexFormat
-  # For BORDERS, FRAMES and FOILINGS the first entry is the default,
-  # and is left out of the index entirely.
+  # For BORDERS and FRAMES the first entry is the default, and is left out of
+  # the index entirely.
   RARITIES = %W[basic common uncommon rare mythic special].each(&:freeze).freeze
   BORDERS  = %W[black white silver gold borderless yellow].each(&:freeze).freeze
   FRAMES   = %W[2015 2003 1997 1993 future].each(&:freeze).freeze
-  FOILINGS = %W[both nonfoil foilonly].each(&:freeze).freeze
   STAMPS   = %W[oval triangle arena acorn circle heart].each(&:freeze).freeze
 
-  FOILING_SYMBOLS = FOILINGS.map(&:to_sym).freeze
+  # Finishes are not one of those lists: a printing comes in any combination of
+  # the three, so "fo" holds their bits added up rather than an index into
+  # anything. nonfoil+foil is most of them, so it is the default that is left
+  # out of the index entirely. PhysicalCard::FINISHES takes its order and its
+  # names from here.
+  FINISH_BITS = {nonfoil: 1, foil: 2, etched: 4}.freeze
+  DEFAULT_FINISHES = FINISH_BITS[:nonfoil] | FINISH_BITS[:foil]
 
   # Boolean printing flags are packed into a single string under the "!" key,
   # one character each, instead of a `"key":true,` pair each.
@@ -25,7 +30,6 @@ module IndexFormat
     "arena"            => "a",
     "digital"          => "g",
     "dreamcast"        => "d",
-    "etched"           => "e",
     "fullart"          => "f",
     "nontraditional"   => "n",
     "nontournament"    => "u",

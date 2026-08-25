@@ -1,6 +1,6 @@
 class ConditionIsNonfoilonly < ConditionSimple
   def match?(card)
-    card.foiling == :nonfoil
+    card.nonfoilonly?
   end
 
   def to_s

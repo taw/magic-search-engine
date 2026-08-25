@@ -83,6 +83,14 @@ class IndexSerializer
     index
   end
 
+  # A printing comes in any combination of the three finishes, so these are
+  # bits added up rather than an index into a list. The usual nonfoil+foil is
+  # left out and CardPrinting substitutes it back.
+  def index_finishes(finishes)
+    bits = finishes.sum{|finish| IndexFormat::FINISH_BITS.fetch(finish.to_sym) }
+    bits == IndexFormat::DEFAULT_FINISHES ? nil : bits
+  end
+
   # Rulings share a date far more often than not, so group by it
   def index_rulings(rulings)
     return nil unless rulings
@@ -171,7 +179,7 @@ class IndexSerializer
           "fe" => printing["frame_effects"],
           "fl" => printing["flavor"],
           "fn" => printing["flavor_name"],
-          "fo" => index_enum(printing["foiling"], IndexFormat::FOILINGS, "foilings", default: true),
+          "fo" => index_finishes(printing["finishes"]),
           "l" => printing["language"],
           "m" => printing["multiverseid"],
           "n" => printing["number"],

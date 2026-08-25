@@ -18,12 +18,11 @@
         %li.infolabel
           Oversized card
       %li.infolabel
-        - if card.foilonly?
-          Available only as foil
-        - elsif card.nonfoilonly?
-          Available only as nonfoil
+        - finishes = card.finish_names
+        - if finishes.size == 1
+          = "Available only as #{finishes[0]}"
         - else
-          Available foil and nonfoil
+          = "Available #{finishes.to_sentence}"
       - if card.frame_effects.present?
         %li.infolabel
           = "Frame Effects: #{card.frame_effects.join(", ")}"

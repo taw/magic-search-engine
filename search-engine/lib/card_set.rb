@@ -90,9 +90,9 @@ class CardSet
     @printings
       .select do |card|
         if foil
-          card.foiling != :nonfoil
+          card.any_foil?
         else
-          card.foiling != :foilonly
+          card.has_finish?(:nonfoil)
         end
       end
       .map do |card|

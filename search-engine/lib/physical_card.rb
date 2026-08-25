@@ -1,3 +1,5 @@
+require_relative "index_format"
+
 class PhysicalCard
   # A physical card is one printing's main front plus a finish. Every other
   # face it has follows from the main front, so none of them are stored.
@@ -8,7 +10,10 @@ class PhysicalCard
   # card, and it can express `foil: false, etched: true`, which is not a thing
   # - etched is a kind of foiling. One symbol cannot. If a third premium
   # treatment ever arrives it is one more value here rather than a third flag.
-  FINISHES = [:nonfoil, :foil, :etched]
+  #
+  # The index gives each finish a bit, so it already names them all - one list,
+  # not two, and the sort order below is that order.
+  FINISHES = IndexFormat::FINISH_BITS.keys.freeze
 
   attr_reader :main_front, :finish
   def initialize(main_front, finish = :nonfoil)

@@ -173,17 +173,13 @@ class CardDatabase
     result
   end
 
-  # One bit per finish, so the scan below can remember which finishes reach a
-  # card in a single integer instead of a list
-  FINISH_BIT = PhysicalCard::FINISHES.each_with_index.to_h{|finish, i| [finish, 1 << i] }.freeze
-
   # The other side of the same question: which printings nothing reaches, which
   # is what `is:productless` asks. With no finish that means nothing reaches
   # them at all, in any finish; with one it means the card was printed in that
   # finish and nothing reaches it in that finish, whatever the other finishes
-  # do - `is:productlessfoil` and friends. `:foil` is any premium finish, the
-  # same question `is:foil` asks, so an etched card in an etched booster is not
-  # productlessfoil.
+  # do - `is:productlessfoil` and friends. Unlike `is:foil`, that foil is the
+  # plain foil printing alone, so an etched card in an etched booster answers
+  # `is:productlessetched` and nothing else.
   #
   # It is the same three scans as `availability`, but without the per-card
   # prefilters, since every card is being asked about at once: one walk of the
@@ -194,7 +190,7 @@ class CardDatabase
     available = Hash.new(0).compare_by_identity
 
     decks.each do |deck|
-      deck.each_card{|_count, physical_card| available[physical_card.main_front] |= FINISH_BIT[physical_card.finish] }
+      deck.each_card{|_count, physical_card| available[physical_card.main_front] |= IndexFormat::FINISH_BITS[physical_card.finish] }
     end
 
     # One sheet belongs to every booster that draws from it, so walk each once
@@ -203,22 +199,20 @@ class CardDatabase
       booster.each_sheet do |sheet|
         next if seen_sheets[sheet]
         seen_sheets[sheet] = true
-        sheet.cards.each{|physical_card| available[physical_card.main_front] |= FINISH_BIT[physical_card.finish] }
+        sheet.cards.each{|physical_card| available[physical_card.main_front] |= IndexFormat::FINISH_BITS[physical_card.finish] }
       end
     end
 
     product_cards = {}
     products.each{|product| product_finishes(product.contents, product_cards) }
     product_cards.each do |main_front, finishes|
-      finishes.each{|product_finish| available[main_front] |= FINISH_BIT[product_finish] }
+      finishes.each{|product_finish| available[main_front] |= IndexFormat::FINISH_BITS[product_finish] }
     end
 
     # A face is as available as the physical card it is on, so ask about the
     # main front rather than the printing itself
     return candidates.reject{|printing| available[printing.main_front] != 0 } unless finish
-    # Sources name etched as its own finish, so a foil question takes either
-    wanted = FINISH_BIT[finish]
-    wanted |= FINISH_BIT[:etched] if finish == :foil
+    wanted = IndexFormat::FINISH_BITS.fetch(finish)
     candidates.select do |printing|
       printing.has_finish?(finish) and (available[printing.main_front] & wanted) == 0
     end

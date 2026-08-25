@@ -45,13 +45,13 @@ class GenerateSetRedemptionDecklists
 
   def regular_number_range
     set.printings.select{
-      @numbers.include?(_1.number.to_i) and _1.mtgo? and _1.foiling != :foilonly and !_1.variant_foreign and !_1.variant_misprint
+      @numbers.include?(_1.number.to_i) and _1.mtgo? and _1.has_finish?(:nonfoil) and !_1.variant_foreign and !_1.variant_misprint
     }
   end
 
   def foil_number_range
     set.printings.select{
-      @numbers.include?(_1.number.to_i) and _1.mtgo? and _1.foiling != :nonfoil and !_1.variant_foreign and !_1.variant_misprint
+      @numbers.include?(_1.number.to_i) and _1.mtgo? and _1.any_foil? and !_1.variant_foreign and !_1.variant_misprint
     }
   end
 

@@ -219,24 +219,32 @@ describe "is:productless<finish>" do
     "is:productlessetched -is:etched".should return_no_cards
   end
 
-  # is:foil means any premium finish everywhere else, so it does here too
-  it "an etched card in an etched booster is neither foilless nor etchedless" do
+  # is:foil folds etched in everywhere else, but these two do not - the whole
+  # point of them is which finish exactly is missing
+  it "etched is not foil" do
+    # Etched only, from an etched booster
     "e:2x2 number:413 (is:productlessfoil or is:productlessetched)".should return_no_cards
+    # Etched only, from a booster our data calls plain foil, so the etched
+    # printing it names is in nothing
+    "e:m3c number:17 is:productlessetched".should return_cards("Azlask, the Swelling Scourge")
+    "e:m3c number:17 is:productlessfoil".should return_no_cards
   end
 
-  it "a printing productless in every finish it has is is:productless" do
-    productless = db.search("is:productless").printings.to_set
-    db.search("is:productlessnonfoil is:productlessfoil").printings.each do |printing|
-      [printing.name, productless.include?(printing)].should eq([printing.name, true])
+  it "a productless printing is productless in each finish it has" do
+    per_finish = PhysicalCard::FINISHES.to_h{|finish| [finish, db.search("is:productless#{finish}").printings.to_set] }
+    db.search("is:productless").printings.each do |printing|
+      printing.finish_names.each do |finish|
+        [printing.name, finish, per_finish[finish].include?(printing)].should eq([printing.name, finish, true])
+      end
     end
   end
 
   # Same agreement with the card page as is:productless has, per finish. vow
   # is an ordinary set with printings missing in each of the three
   it "is exactly what CardDatabase#availability finds no source for" do
-    {nonfoil: [:nonfoil], foil: [:foil, :etched], etched: [:etched]}.each do |finish, counts_as|
+    PhysicalCard::FINISHES.each do |finish|
       expected = db.sets["vow"].printings.select do |printing|
-        printing.has_finish?(finish) and (db.availability(printing).flat_map(&:finishes) & counts_as).empty?
+        printing.has_finish?(finish) and !db.availability(printing).flat_map(&:finishes).include?(finish)
       end
       db.search("is:productless#{finish} e:vow").printings.should match_array(expected)
       expected.should_not be_empty

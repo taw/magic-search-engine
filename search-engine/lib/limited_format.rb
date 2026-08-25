@@ -112,9 +112,9 @@ class LimitedFormat
   # rather than failing - the card db is regenerated from mtgjson.
   def verify_promo_cards!
     promo_cards.each do |promo|
-      foiling = promo.main_front.foiling
-      next if foiling == (promo.foil ? :foilonly : :nonfoil)
-      warn "#{inspect} promo #{promo.inspect} disagrees with the card db, which says foiling=#{foiling}"
+      printing = promo.main_front
+      next if promo.foil ? printing.foilonly? : printing.nonfoilonly?
+      warn "#{inspect} promo #{promo.inspect} disagrees with the card db, which says #{printing.finish_names.join(", ")}"
     end
   end
 

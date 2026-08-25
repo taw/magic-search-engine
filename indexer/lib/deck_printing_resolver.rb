@@ -210,7 +210,10 @@ class DeckPrintingResolver
 
     # prefer cards with matching foil status
     # this is also necessary to correctly round-robin 7ed/8ed/9ed
-    printings = filter_preferred(printings) {|c| c["foiling"] != (@card["foil"] ? "nonfoil" : "foilonly") }
+    # foil and etched are one thing to a decklist, so any premium finish will do
+    printings = filter_preferred(printings) {|c|
+      @card["foil"] ? (c["finishes"] - ["nonfoil"]).any? : c["finishes"].include?("nonfoil")
+    }
 
     return printings[0] if printings.size == 1
 
@@ -247,7 +250,7 @@ class DeckPrintingResolver
   def finalize(printing_card, count = @card["count"])
     if @card["foil"]
       foil_res = ["foil"]
-    elsif printing_card["foiling"] == "foilonly"
+    elsif !printing_card["finishes"].include?("nonfoil")
       # These should be fixed in decklists
       warn "#{@deck["set_code"]} #{@deck["name"]}: Card #{printing_card["name"]} [#{printing_card["set"]["code"]}:#{printing_card["number"]}]) automatically corrected to foil, as it is available as foil only"
       foil_res = ["foil"]

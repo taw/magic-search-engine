@@ -1,6 +1,6 @@
 class ConditionIsEtched < ConditionSimple
   def match?(card)
-    card.etched
+    card.has_finish?(:etched)
   end
 
   def to_s

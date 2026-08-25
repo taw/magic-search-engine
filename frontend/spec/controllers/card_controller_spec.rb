@@ -11,6 +11,19 @@ RSpec.describe CardController, type: :controller do
     assert_equal "Karn Liberated - #{APP_NAME}", html_document.title
   end
 
+  # The details list names every finish the printing came in, and etched is one
+  # of them rather than a kind of foil
+  it "show finishes" do
+    get "show", params: {set: "nph", id: "1"}
+    assert_select %[.cardinfo li:contains("Available nonfoil and foil")]
+    get "show", params: {set: "pdrc", id: "1"}
+    assert_select %[.cardinfo li:contains("Available only as nonfoil")]
+    get "show", params: {set: "vow", id: "408"}
+    assert_select %[.cardinfo li:contains("Available only as etched")]
+    get "show", params: {set: "sld", id: "589"}
+    assert_select %[.cardinfo li:contains("Available nonfoil, foil, and etched")]
+  end
+
   it "bad set" do
     get "show", params: {set: "lolwtf", id: "1"}
     assert_response 404

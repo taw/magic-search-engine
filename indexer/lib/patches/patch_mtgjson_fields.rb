@@ -48,7 +48,6 @@ class PatchMtgjsonFields < Patch
       card["mv"] = mana_value(card)
       card["mana"] = card.delete("manaCost")&.downcase
       card["layout"] = LAYOUTS.fetch(card["layout"], card["layout"])
-      card["etched"] = true if card["finishes"]&.include?("etched")
 
       normalize_availability(card)
       normalize_multiverseid(card)

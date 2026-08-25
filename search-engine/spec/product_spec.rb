@@ -15,11 +15,10 @@ describe "product queries" do
       when Product, Pack, Deck
         # OK
       when PhysicalCard
-        product_foil = item.foil
-        db_foiling = item.main_front.foiling
-        if item.foil and db_foiling == :nonfoil
+        printing = item.main_front
+        if item.foil and printing.nonfoilonly?
           warn "Product #{product_name} contains foil card #{item.set_code} #{item.number} #{item.name}, but it's only available nonfoil"
-        elsif (!item.foil) and db_foiling == :foilonly
+        elsif (!item.foil) and printing.foilonly?
           warn "Product #{product_name} contains nonfoil card #{item.set_code} #{item.number} #{item.name}, but it's only available foil"
         end
       when String # other, variable, unknown contents, or unknown <type>
