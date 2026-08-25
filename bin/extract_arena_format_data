@@ -1,0 +1,288 @@
+#!/usr/bin/env ruby
+
+# Arena's own view of its constructed formats, saved for comparison with ours.
+#
+# mtgjson's Arena legalities lag every B&R announcement and every new set by
+# days or weeks, so they can't confirm anything about Alchemy, Historic,
+# Timeless or Brawl, and they're not much of a check on Standard either. The
+# client knows all of it the moment Arena does.
+#
+# Two sources, because Arena splits the data:
+#
+#   * The card database is a plain SQLite file off Akamai, no client and no
+#     account (see extract_mtgo_ids_from_mtgo_client for MTGO's equivalent):
+#     version -> External_<build> -> Manifest_<id> -> Raw_CardDatabase. It has
+#     every printing Arena has, with its set code and its rebalance links, and
+#     the string table every id in the format table points into.
+#
+#   * The format table itself is in no asset - the client asks for it over an
+#     authenticated connection after login. mtgatool-metadata publishes a
+#     snapshot of that response taken from a live client, and that is what this
+#     downloads. It's the one part of this that isn't first-party data, so its
+#     date is saved with it and the report says how old it is.
+#
+# Everything lands in tmp/arena_format_data, downloads included, and nothing is
+# ever deleted - cleaning up tmp is someone else's job. A build we already have
+# is not downloaded again unless --force says so; the format table always is,
+# because it changes without the build changing.
+
+require "csv"
+require "fileutils"
+require "json"
+require "open-uri"
+require "pathname"
+require "sqlite3"
+require "zlib"
+
+class ExtractArenaFormatData
+  VERSION_URL = "https://mtgarena.downloads.wizards.com/Live/Windows64/version"
+  ASSETS_URL = "https://assets.mtgarena.wizards.com"
+  FORMATS_URL = "https://raw.githubusercontent.com/mtgatool/mtgatool-metadata/master/formats.json"
+  FORMATS_COMMITS_URL = "https://api.github.com/repos/mtgatool/mtgatool-metadata/commits?path=formats.json&per_page=1"
+
+  # Columns of Cards worth keeping - what it takes to decide which printings a
+  # format's legalSets cover, and which half of a rebalanced pair a printing is.
+  CARD_COLUMNS = %W[
+    GrpId TitleId ExpansionCode DigitalReleaseSet CollectorNumber Rarity
+    IsPrimaryCard IsDigitalOnly IsRebalanced RebalancedCardGrpId
+    DefunctRebalancedCardGrpId
+  ]
+
+  # The markup Arena's rendered strings carry. The sprite draws the A- of a
+  # rebalanced card as an icon, so it has to come back as text, not vanish.
+  ARENA_A_SPRITE = /<sprite="SpriteSheet_MiscIcons" name="arena_a">/
+  MARKUP = /<[^>]*>/
+
+  # Id lists in the format table, all of them pointing into the string table
+  ID_LISTS = {
+    "bannedTitleIds" => "banned",
+    "suspendedTitleIds" => "suspended",
+    "supressedTitleIds" => "supressed",
+    "allowedTitleIds" => "allowed",
+  }
+
+  def initialize(force:)
+    @force = force
+  end
+
+  def call
+    warn "Arena build #{build}#{" - already downloaded" unless stale?}"
+    save_card_database
+    save_titles
+    save_cards
+    save_formats
+    save_readme
+    build_path.write("#{build}\n")
+  end
+
+  private
+
+  # The version endpoint is JSON with one entry in Versions, and it's the only
+  # thing that would say a new build exists, so it's never cached.
+  def build
+    @build ||= JSON.parse(URI.open(VERSION_URL, &:read))["Versions"].keys.first
+  end
+
+  def saved_build
+    build_path.read.chomp if build_path.exist?
+  end
+
+  def stale?
+    @force or build != saved_build
+  end
+
+  # 0.1.14056.1313448 -> 14056_1313448
+  def asset_build
+    build.sub(/\A0\.1\./, "").sub(".", "_")
+  end
+
+  # External_<build> is 32 bytes naming the manifest, and the manifest is 14MB
+  # of JSON naming every asset in the build. Both are kept: the manifest is the
+  # only inventory of what else Arena serves, and it costs 3MB to fetch again.
+  def manifest
+    @manifest ||= JSON.parse(Zlib::GzipReader.open(cached("Manifest_#{manifest_id}.mtga", manifest_path), &:read))
+  end
+
+  def manifest_id
+    cached("External_#{asset_build}.mtga", tmp_path("External.txt")).read.strip
+  end
+
+  def save_card_database
+    return if card_database_path.exist? and !stale?
+    asset = manifest["Assets"].find{|a| a["Name"].start_with?("Raw_CardDatabase") }
+    raise "Build #{build} has no Raw_CardDatabase asset" unless asset
+    name = asset["Name"] + (asset["wrapper"].to_s.empty? ? "" : ".#{asset["wrapper"]}")
+    gz = cached(name, tmp_path("Raw_CardDatabase.gz"))
+    card_database_path.open("wb"){|out| Zlib::GzipReader.open(gz){|src| IO.copy_stream(src, out) } }
+  end
+
+  # Card names, and every other string the format table's ids can point at.
+  #
+  # A string exists in up to three variants. Formatted 1 is what the client
+  # renders and the only variant most strings have; 0 and 2 are a plain form
+  # for searching, which is not the card's name - it strips diacritics, so
+  # Araña, Dáin and Mjölnir come out spelled wrong. So variant 1 it is, with
+  # the markup taken back out: <nobr> around a hyphenated word, one stray <i>,
+  # and the sprite that draws the A- of a rebalanced card as an icon.
+  def save_titles
+    titles = {}
+    db.execute("SELECT LocId, Loc FROM Localizations_enUS WHERE Formatted = 1") do |loc_id, loc|
+      titles[loc_id] = loc.sub(ARENA_A_SPRITE, "A-").gsub(MARKUP, "")
+    end
+    warn "#{titles.size} English strings"
+    write_csv(titles_path, %W[TitleId Name], titles.sort)
+  end
+
+  # Tokens have no format legality and nothing points at them. Everything else
+  # is kept, back faces and split halves (IsPrimaryCard=0) included, because a
+  # ban can name a face and the pool has to know which printing it belongs to.
+  def save_cards
+    rows = db.execute("SELECT #{CARD_COLUMNS.join(", ")} FROM Cards WHERE IsToken = 0 ORDER BY GrpId")
+    warn "#{rows.size} Arena printings"
+    write_csv(cards_path, CARD_COLUMNS + %W[Name], rows.map{|row| row + [titles[row[1]]] })
+  end
+
+  # The published snapshot, with every id resolved to a name and the fields
+  # nothing reads dropped. Ids that resolve to nothing are printings Arena has
+  # since removed - kept as numbers, so the report can say how many it ignored.
+  def save_formats
+    data = JSON.parse(fetch(FORMATS_URL, raw_formats_path).read)
+    date = JSON.parse(fetch(FORMATS_COMMITS_URL, formats_commit_path).read).first["commit"]["committer"]["date"]
+    warn "#{data["Formats"].size} Arena formats, snapshot taken #{date}"
+    formats_path.write(JSON.pretty_generate(
+      "arena_build" => build,
+      "formats_snapshot_date" => date,
+      "formats_snapshot_url" => FORMATS_URL,
+      "formats" => data["Formats"].map{|format| format_data(format) },
+    ))
+  end
+
+  def format_data(format)
+    unresolved = []
+    lists = ID_LISTS.to_h do |key, name|
+      known, unknown = (format[key] || []).partition{|id| titles[id] }
+      unresolved.concat(unknown)
+      [name, known.map{|id| titles[id] }.sort]
+    end
+    {
+      "name" => format["name"],
+      "type" => format["FormatType"],
+      "legal_sets" => format["legalSets"] || [],
+      **lists,
+      "quotas" => (format["individualCardQuotas"] || {}).to_h{|id, quota| [titles[id.to_i] || id, quota["max"]] },
+      "unresolved_title_ids" => unresolved.uniq.sort,
+      "main_deck" => format["mainDeckQuota"],
+      "sideboard" => format["sideBoardQuota"],
+    }
+  end
+
+  # tmp is gitignored and everything here is a download or one command away from
+  # one, so the only thing worth keeping alongside is what each file is.
+  def save_readme
+    tmp_path("README.md").write(<<~MARKDOWN)
+      # Arena format data
+
+      Saved by `bin/extract_arena_format_data` from Arena build #{build}.
+      Read by `bin/report_arena_legality_differences`. Nothing here is committed.
+
+      | file | what it is |
+      |---|---|
+      | `build.txt` | the build everything else came from |
+      | `External.txt` | the id of that build's manifest, 32 bytes off Akamai |
+      | `manifest.json.gz` | the build's whole asset list, ~27k entries |
+      | `Raw_CardDatabase.gz` | the card database as served, 70MB on the wire |
+      | `CardDatabase.sqlite` | the same file gunzipped, a plain SQLite database |
+      | `titles.csv` | `TitleId` to English name, which is what every id in the format table points at |
+      | `cards.csv` | one row per Arena printing, tokens excluded |
+      | `formats.json` | the GetFormats snapshot as published, ids unresolved |
+      | `formats_commit.json` | the commit that published it, for its date |
+      | `arena_formats.json` | the same table with every id resolved to a name |
+
+      `formats.json` is the only file here that isn't first-party: Arena serves
+      the format table over an authenticated connection after login, so it comes
+      from #{FORMATS_URL}, taken from a live client.
+      Everything else is a plain HTTP GET off Wizards' asset server.
+
+      `Rarity` in `cards.csv` is Arena's enum: 0 token, 1 land, 2 common,
+      3 uncommon, 4 rare, 5 mythic. `CollectorNumber` is `0` where Arena has no
+      number. `ExpansionCode` is what a format's `legal_sets` are matched
+      against; `DigitalReleaseSet` names the digital drop a printing shipped in
+      (`AHA3`, `Y25-EOE`, `MSC-JUMPSTART`), which is not the same thing.
+      `IsPrimaryCard` is 0 on back faces, split halves and specialize forms.
+    MARKDOWN
+  end
+
+  def titles
+    @titles ||= CSV.read(titles_path, headers: true).to_h{|row| [row["TitleId"].to_i, row["Name"]] }
+  end
+
+  def db
+    @db ||= SQLite3::Database.new(card_database_path.to_s, readonly: true)
+  end
+
+  # Every asset is named after the build or its own content hash, so the saved
+  # copy is only the file we want as long as the build hasn't moved.
+  def cached(name, path)
+    return path if path.exist? and !stale?
+    fetch("#{ASSETS_URL}/#{name}", path)
+  end
+
+  def fetch(url, path)
+    warn "Fetching #{url}"
+    FileUtils.mkdir_p(path.dirname)
+    path.open("wb"){|out| URI.open(url){|remote| IO.copy_stream(remote, out) } }
+    path
+  end
+
+  def write_csv(path, header, rows)
+    path.write(CSV.generate do |csv|
+      csv << header
+      rows.each{|row| csv << row }
+    end)
+  end
+
+  def tmp_path(name)
+    Pathname("#{__dir__}/../tmp/arena_format_data/#{name}")
+  end
+
+  def build_path
+    tmp_path("build.txt")
+  end
+
+  def manifest_path
+    tmp_path("manifest.json.gz")
+  end
+
+  def card_database_path
+    tmp_path("CardDatabase.sqlite")
+  end
+
+  def titles_path
+    tmp_path("titles.csv")
+  end
+
+  def cards_path
+    tmp_path("cards.csv")
+  end
+
+  def raw_formats_path
+    tmp_path("formats.json")
+  end
+
+  def formats_commit_path
+    tmp_path("formats_commit.json")
+  end
+
+  def formats_path
+    tmp_path("arena_formats.json")
+  end
+end
+
+force = !!ARGV.delete("--force")
+
+unless ARGV.empty?
+  STDERR.puts "Usage: extract_arena_format_data [--force]"
+  exit 1
+end
+
+ExtractArenaFormatData.new(force: force).call
