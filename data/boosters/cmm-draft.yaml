@@ -47,8 +47,8 @@ sheets:
     - rawquery: "e:cmm r:r -t:legendary is:baseset alt:(e:cmm promo:boosterfun -is:foilonly)"
       count: 23
       rate: 4
-    - rawquery: "e:cmm r:r -t:legendary promo:boosterfun -is:foilonly alt:is:baseset"
-      count: 27
+    - rawquery: "e:cmm r:r -t:legendary promo:boosterfun -is:foilonly alt:(e:cmm is:baseset)"
+      count: 23
       rate: 2
     - rawquery: "e:cmm r:m -t:legendary is:baseset -alt:(e:cmm promo:boosterfun -is:foilonly)"
       count: 9
@@ -56,7 +56,7 @@ sheets:
     - rawquery: "e:cmm r:m -t:legendary is:baseset alt:(e:cmm promo:boosterfun -is:foilonly)"
       count: 9
       rate: 2
-    - rawquery: "e:cmm r:m -t:legendary promo:boosterfun -is:foilonly alt:is:baseset"
+    - rawquery: "e:cmm r:m -t:legendary promo:boosterfun -is:foilonly alt:(e:cmm is:baseset)"
       count: 9
       rate: 1
   legendary_rare_mythic:
@@ -67,7 +67,7 @@ sheets:
     - rawquery: "e:cmm r:r t:legendary is:baseset alt:(e:cmm promo:boosterfun -is:foilonly)"
       count: 11
       rate: 4
-    - rawquery: "e:cmm r:r t:legendary promo:boosterfun -is:foilonly alt:is:baseset"
+    - rawquery: "e:cmm r:r t:legendary promo:boosterfun -is:foilonly alt:(e:cmm is:baseset)"
       count: 11
       rate: 2
     - rawquery: "e:cmm r:m t:legendary is:baseset -alt:(e:cmm promo:boosterfun -is:foilonly)"
@@ -76,7 +76,7 @@ sheets:
     - rawquery: "e:cmm r:m t:legendary is:baseset alt:(e:cmm promo:boosterfun -is:foilonly)"
       count: 9
       rate: 2
-    - rawquery: "e:cmm r:m t:legendary promo:boosterfun -is:foilonly alt:is:baseset"
+    - rawquery: "e:cmm r:m t:legendary promo:boosterfun -is:foilonly alt:(e:cmm is:baseset)"
       count: 9
       rate: 1
   foil:
