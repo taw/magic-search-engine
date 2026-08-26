@@ -333,4 +333,4 @@ require_relative "format_commander"
 require_relative "format_historic"
 # The Brawl formats include it
 require_relative "brawl_deck_rules"
-Dir["#{__dir__}/format_*.rb"].each do |path| require_relative path end
+Dir["#{__dir__}/format_*.rb"].sort.each do |path| require_relative path end

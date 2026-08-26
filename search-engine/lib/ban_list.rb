@@ -157,4 +157,4 @@ class BanList
   end
 end
 
-Dir["#{__dir__}/ban_list/*.rb"].each do |path| require_relative path end
+Dir["#{__dir__}/ban_list/*.rb"].sort.each do |path| require_relative path end
