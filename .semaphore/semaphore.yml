@@ -16,3 +16,4 @@ blocks:
             - (cd frontend; bundle install)
             - (cd search-engine; bundle exec rspec)
             - (cd frontend; bundle exec rspec)
+            - (cd frontend; SECRET_KEY_BASE=fake_ci_key RAILS_ENV=production bundle exec rails assets:precompile)
