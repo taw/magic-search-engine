@@ -1,6 +1,6 @@
 class ConditionExpr < ConditionSimple
   # Everything eval_expr knows how to look up on a card, anything else is a plain value
-  Variables = %W[pow tou pt mv loy sets papersets prints paperprints year defense defence life hand decklimit]
+  Variables = %W[decklimit defence defense hand life loy mv paperprints papersets pow prints pt sets tou year]
 
   # mv:even and friends ask about the value's parity, not its magnitude,
   # so the right hand side isn't a value to compare with at all

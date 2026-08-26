@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
 require "json"
-require "yaml"
 require "pathname"
+require "yaml"
 
 class LimitedFormatsIndexer
   def input_path

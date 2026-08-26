@@ -2,8 +2,8 @@
 
 # This doesn't load the DB, so it's much more reasonable to use on a memory constrained server
 require "json"
-require "pathname-glob"
 require "pathname"
+require "pathname-glob"
 
 class CardsWithoutPicsFast
   def index_path

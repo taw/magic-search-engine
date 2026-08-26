@@ -1,5 +1,5 @@
-require "pathname"
 require "fileutils"
+require "pathname"
 
 def db
   @db ||= begin

@@ -2,8 +2,8 @@
 
 require_relative "../lib/card_database"
 require "paint"
-require "z3"
 require "pry"
+require "z3"
 
 db = CardDatabase.load
 

@@ -9,8 +9,8 @@ require "pry"
 require "stringio"
 require_relative "../lib/card_database"
 require_relative "../lib/cli_frontend"
-require_relative "../lib/sealed"
 require_relative "../lib/mtgo_redemption"
+require_relative "../lib/sealed"
 
 RSpec.configure do |config|
   config.expect_with(:rspec) do |c|

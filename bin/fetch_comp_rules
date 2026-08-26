@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
 require "nokogiri"
-require "pathname"
 require "open-uri"
+require "pathname"
 
 class FetchComprehensiveRules
   def page_url

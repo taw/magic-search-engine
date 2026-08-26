@@ -15,8 +15,8 @@
 #
 # Compare two revisions by running it on each and diffing the summary.
 
-require "optparse"
 require "json"
+require "optparse"
 
 options = { n: 200, endpoint: nil, slowest: false, paths: nil, warmup: false, verbose: false }
 OptionParser.new do |o|

@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
-require "pathname"
 require "json"
+require "pathname"
 
 data_sets_root = Pathname(__dir__) + "../../magic-search-engine-data/data/sets"
 

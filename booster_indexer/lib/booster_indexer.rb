@@ -2,8 +2,8 @@ require "calc"
 require "json"
 require "pathname"
 require "pry"
-require "yaml"
 require "set"
+require "yaml"
 
 class Hash
   # Builtin since Ruby 3.0; needed for 2.7.

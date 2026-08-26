@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
+require "digest/sha1"
 require "pathname"
 require "pathname-glob"
-require "digest/sha1"
 
 class SaveHqPicsHashes
   def initialize

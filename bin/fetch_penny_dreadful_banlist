@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
-require "pathname"
 require "open-uri"
+require "pathname"
 
 url = "https://pennydreadfulmtg.github.io/legal_cards.txt"
 path = Pathname("#{__dir__}/../index/penny_dreadful_legal_cards.txt")

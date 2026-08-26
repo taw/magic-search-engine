@@ -12,11 +12,11 @@
 # BOOT lines (config/initializers/boot_log.rb) mark server restarts, so a log
 # that spans a deploy can be cut down to one version of the code.
 
+require "cgi"
 require "json"
 require "optparse"
 require "time"
 require "uri"
-require "cgi"
 
 class RequestRecord
   attr_accessor :id, :started_at, :verb, :path, :ip, :controller, :action,

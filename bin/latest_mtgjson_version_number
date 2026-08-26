@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
-require "open-uri"
 require "json"
+require "open-uri"
 
 uri = "https://mtgjson.com/api/v5/Meta.json"
 

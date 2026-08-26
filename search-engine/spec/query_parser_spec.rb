@@ -410,7 +410,7 @@ describe "QueryParser" do
   end
 
   it "warns for bad view:" do
-    Query.new('view:cardback').warnings.should eq(["Unknown view: cardback. Known options are: checklist, full, images, text, default."])
+    Query.new('view:cardback').warnings.should eq(["Unknown view: cardback. Known options are: checklist, default, full, images, text."])
   end
 
   it "warns for bad frame:" do

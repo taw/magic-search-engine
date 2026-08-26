@@ -1,6 +1,6 @@
 class Sorter
   COLOR_ORDER = ["", "w", "u", "b", "r", "g", "uw", "bu", "br", "gr", "gw", "bw", "ru", "bg", "rw", "gu", "guw", "buw", "bru", "bgr", "grw", "bgw", "ruw", "bgu", "brw", "gru", "bruw", "bgru", "bgrw", "gruw", "bguw", "bgruw"].each_with_index.to_h.freeze
-  SORT_ORDERS = ["default", "ci", "cmc", "color", "name", "new", "newall", "number", "old", "oldall", "pow", "power", "rand", "random", "rarity", "tou", "toughness", "artist", "released", "set", "firstprint", "lastprint", "mv"].sort
+  SORT_ORDERS = ["artist", "ci", "cmc", "color", "default", "firstprint", "lastprint", "mv", "name", "new", "newall", "number", "old", "oldall", "pow", "power", "rand", "random", "rarity", "released", "set", "tou", "toughness"]
   PT_ORDER = {
     nil => 0,
     "?" => 1,

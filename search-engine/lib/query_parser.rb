@@ -1,15 +1,17 @@
 # Where's autoloader when we need it
+# Condition and ConditionSimple go first as everything else subclasses one of them,
+# the rest alphabetically
 require_relative "condition/condition"
-require_relative "condition/query_mana_to_s"
 require_relative "condition/condition_simple"
 require_relative "condition/condition_format"
+require_relative "condition/condition_in"
+require_relative "condition/condition_nickname"
+require_relative "condition/condition_or"
+require_relative "condition/condition_oracle"
 require_relative "condition/condition_print"
 require_relative "condition/condition_regexp"
-require_relative "condition/condition_or"
-require_relative "condition/condition_in"
 require_relative "condition/condition_set_type"
-require_relative "condition/condition_nickname"
-require_relative "condition/condition_oracle"
+require_relative "condition/query_mana_to_s"
 Dir["#{__dir__}/condition/condition_*.rb"].sort.each do |path| require_relative path end
 require_relative "query_tokenizer"
 

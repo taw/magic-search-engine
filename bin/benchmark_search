@@ -14,8 +14,8 @@
 #   bin/benchmark_search --repeat 3 --queries-from queries.txt
 
 require_relative "../search-engine/lib/card_database"
-require "optparse"
 require "benchmark"
+require "optparse"
 require "pathname"
 
 options = { page: 1, per_page: 25, repeat: 1, file: nil }
