@@ -54,16 +54,16 @@ sheets:
       chance: 9
   rare_mythic_showcase:
     any:
-    - rawquery: "e:{set} r:r promo:boosterfun frame:showcase alt:(is:borderless -frame:showcase) -is:foilonly -number:299-300 -number>451"
+    - rawquery: "e:{set} r:r promo:boosterfun frame:showcase alt:(e:{set} is:borderless -frame:showcase) -is:foilonly -number:299-300 -number>451"
       count: 9
       rate: 2
-    - rawquery: "e:{set} r:r promo:boosterfun frame:showcase -alt:(is:borderless -frame:showcase) -number:299-300 -number>451"
+    - rawquery: "e:{set} r:r promo:boosterfun frame:showcase -alt:(e:{set} is:borderless -frame:showcase) -number:299-300 -number>451"
       count: 5
       rate: 4
-    - rawquery: "e:{set} r:m promo:boosterfun frame:showcase alt:(is:borderless -frame:showcase) -is:foilonly -number:299-300 -number>451"
+    - rawquery: "e:{set} r:m promo:boosterfun frame:showcase alt:(e:{set} is:borderless -frame:showcase) -is:foilonly -number:299-300 -number>451"
       count: 6
       rate: 1
-    - rawquery: "e:{set} r:m promo:boosterfun frame:showcase -alt:(is:borderless -frame:showcase) -number:299-300 -number>451"
+    - rawquery: "e:{set} r:m promo:boosterfun frame:showcase -alt:(e:{set} is:borderless -frame:showcase) -number:299-300 -number>451"
       rate: 2
     - rawquery: "e:{set} r:r number:340-345 alt:(e:{set} number:399-451)"
       count: 2

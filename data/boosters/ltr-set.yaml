@@ -33,7 +33,7 @@ sheets:
     # Scene range is 405-447 only: the Bilbo's Birthday Party (399-404) and
     # Mount Doom (448-451) scenes are NOT in Set Boosters (per the card image
     # gallery), so their borderless scene cards are excluded here.
-    - query: "promo:boosterfun alt:(number:302-331,340-345) alt:(e:{set} number:405-447) -number:299-300 -number>451"
+    - query: "promo:boosterfun alt:(e:{set} number:302-331,340-345) alt:(e:{set} number:405-447) -number:299-300 -number>451"
       rate: 1
     - query: "(number:302-331,340-345) -alt:(e:{set} number:405-447)"
       rate: 2

@@ -39,7 +39,7 @@ sheets:
   foil_rare_mythic_showcase:
     foil: true
     any: 
-    - rawquery: "e:mkm ((number:317-323 -alt:(is:serialized)) or is:serialized)"
+    - rawquery: "e:mkm ((number:317-323 -alt:(e:mkm is:serialized)) or is:serialized)"
       count: 7
       chance: 1
     - chance: 99
