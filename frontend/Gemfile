@@ -53,8 +53,9 @@ gem "damerau-levenshtein"
 gem "famfamfam_flags_rails"
 gem "nokogiri"
 
-# It doesn't work with 4.0
-gem "sprockets", "3.7.2"
+# 4.x needs app/assets/config/manifest.js to say what to precompile; without one it
+# builds nothing. Pinned to 4.x because sprockets 3 caps rack below 3.
+gem "sprockets", "~> 4.0"
 
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
