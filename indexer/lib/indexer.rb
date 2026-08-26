@@ -1,7 +1,6 @@
 require "date"
 require "json"
 require "pathname"
-require "pathname-glob"
 require "pry"
 require "set"
 require_relative "card_sets_data"
