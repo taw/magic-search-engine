@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby ">= 2.7"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "~> 6.1.7.10"
+gem "rails", "~> 7.1.5"
 # Use SCSS for stylesheets
 gem "sass-rails"
 # Use Terser as compressor for JavaScript assets
@@ -19,25 +19,17 @@ gem "turbolinks"
 gem "bootstrap", "~> 4.3.1"
 gem "select2-rails"
 
-gem "concurrent-ruby", "1.3.4" # 1.3.5 has some dependency issues
-gem "ffi", "1.16.3" # 1.17 only ships native gems for Ruby 3.0+
+gem "ffi", "1.16.3" if RUBY_VERSION < "3.0" # 1.17 only ships native gems for Ruby 3.0+
 
-# Ruby 3.4 demoted these from default gems to bundled gems, so they're no longer
-# on the load path of a bundled app, but Rails 6.1 still requires them implicitly.
-# Must stay conditional: from 2.7 through 3.2 they are still default gems that load
-# on their own, so naming them here would only add versions we never asked for to
+# Ruby 3.4 demoted csv from a default gem to a bundled gem, so it's no longer on
+# the load path of a bundled app, and DeckParser reads the CSV export back.
+# Must stay conditional: from 2.7 through 3.2 it's still a default gem that loads
+# on its own, so naming it here would only add a version we never asked for to
 # the lockfile.
 #
-# Ruby 3.3 doesn't need any of them, but still warns
+# Ruby 3.3 doesn't need it, but still warns
 if RUBY_VERSION >= "3.3"
-  gem "mutex_m"
-  gem "drb"
-  gem "base64"
-  gem "bigdecimal"
-  gem "observer"
-  gem "abbrev"
-  gem "benchmark" # not a default gem from Ruby 4.0, warns under 3.4
-  gem "csv" # DeckParser reads the CSV export back
+  gem "csv"
 end
 
 # Use ActiveModel has_secure_password
