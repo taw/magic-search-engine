@@ -72,7 +72,9 @@ end
 
 Row = Struct.new(:q, :results, :parse, :search, :group, :best, :paginate, :total)
 
-def ms(t) = format("%8.1f", t * 1000)
+def ms(t)
+  format("%8.1f", t * 1000)
+end
 
 rows = []
 queries.each do |q|
