@@ -1,7 +1,3 @@
-require "csv"
-require "yaml"
-require "pathname"
-
 # Which sets can be redeemed for a physical set on MTGO. Both data files can be
 # read without running anything - the decklist generator is only one of their
 # users. Redemption is announced per set on https://www.mtgo.com/news/

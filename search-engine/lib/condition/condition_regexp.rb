@@ -1,5 +1,3 @@
-require "timeout"
-
 # This needs timeout check, as it can be exponentially slow
 class ConditionRegexp < ConditionSimple
   def initialize(regexp)

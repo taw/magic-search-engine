@@ -1,6 +1,5 @@
 # This class represents card from index point of view, not from data point of view
 # (thinking in solr/lucene terms)
-require "date"
 require_relative "ban_list"
 require_relative "bitmap_flag"
 require_relative "legality_information"

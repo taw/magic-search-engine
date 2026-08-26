@@ -1,5 +1,3 @@
-require "strscan"
-
 class QueryTokenizer
   # The game was only ever released for the Sega Dreamcast, so people call it either way
   GAME_ALIASES = {

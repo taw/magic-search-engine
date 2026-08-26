@@ -345,7 +345,6 @@ describe "CLI Frontend" do
   end
 
   def capture_io
-    require "stringio"
     orig_stdout, orig_stderr         = $stdout, $stderr
     captured_stdout, captured_stderr = StringIO.new, StringIO.new
     $stdout, $stderr                 = captured_stdout, captured_stderr

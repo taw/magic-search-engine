@@ -1,6 +1,3 @@
-require "yaml"
-require "pathname"
-
 # Which limited formats a set ought to have, judging by the boosters it has.
 # Only limited_format_coverage_spec uses this, so it lives here and not in lib.
 # A set with a draft booster was drafted, a set with a prerelease booster had a

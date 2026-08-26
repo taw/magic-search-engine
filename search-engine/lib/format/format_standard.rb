@@ -1,5 +1,3 @@
-require "date"
-
 class FormatStandard < Format
   # Newest first, so the rotation in effect is the first one that already happened
   def build_included_sets

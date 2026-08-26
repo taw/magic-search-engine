@@ -1,5 +1,3 @@
-require "damerau-levenshtein"
-
 class SpellingSuggestions
   def initialize
     @words = Set[]

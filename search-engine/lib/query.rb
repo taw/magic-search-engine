@@ -1,8 +1,6 @@
 require_relative "query_parser"
 require_relative "search_results"
 require_relative "sorter"
-require "date"
-require "zlib"
 
 class Date
   UNIX_EPOCH_JD = Date.new(1970, 1, 1).jd

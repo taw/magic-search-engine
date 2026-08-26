@@ -1,5 +1,3 @@
-require "csv"
-
 class DeckParser
   # Sections mtg.wtf decks can have, and the headers other tools write for them.
   # A header has to be the whole line (or the part before the colon), so these

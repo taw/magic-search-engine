@@ -3,11 +3,14 @@ if ENV["COVERAGE"]
   SimpleCov.start
 end
 
+# Every external library the specs use is required here, the same way lib/
+# requires everything it needs from card_database.
+require "pry"
+require "stringio"
 require_relative "../lib/card_database"
 require_relative "../lib/cli_frontend"
 require_relative "../lib/sealed"
 require_relative "../lib/mtgo_redemption"
-require "pry"
 
 RSpec.configure do |config|
   config.expect_with(:rspec) do |c|
