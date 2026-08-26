@@ -29,7 +29,7 @@ Tests for library and for Rails frontend are separate:
     $ (cd search-engine; bundle install)
     $ (cd search-engine; bundle exec rspec)
     $ (cd frontend; bundle install)
-    $ (cd frontend; bundle exec rake test)
+    $ (cd frontend; bundle exec rspec)
 
 ### How to update database
 
