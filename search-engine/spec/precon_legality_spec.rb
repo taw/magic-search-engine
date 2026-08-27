@@ -17,7 +17,7 @@ describe Deck do
           # no risk of accidentally tagging them wrong
         when "casual", "historic brawl", "dandan"
           verify_deck_is_casual(deck)
-        when "commander", "modern", "standard", "brawl", "pioneer", "standard", "casual standard"
+        when "commander", "modern", "standard", "brawl", "pioneer", "casual standard"
           verify_deck_is_legal(deck)
         when nil
           # random boxes etc.
