@@ -76,6 +76,8 @@ class Product
         end
       when "other"
         "other: #{content[0]}"
+      when "token"
+        "token: #{content[2]} [#{content[0].upcase}:#{content[1]}]#{content[2] && ' [foil]'}"
       when "unknown"
         "unknown contents"
       when "variable"
