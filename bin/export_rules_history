@@ -1,0 +1,93 @@
+#!/usr/bin/env ruby
+
+require "pathname"
+require "fileutils"
+require "digest"
+
+class ExportRulesHistory
+  TRACKED_PATH = "data/MagicCompRules.txt"
+
+  def repo_root
+    @repo_root ||= Pathname(__dir__) + ".."
+  end
+
+  def tmp_dir
+    @tmp_dir ||= (repo_root + "tmp").tap(&:mkpath)
+  end
+
+  def manifest_path
+    tmp_dir + "rules-manifest.txt"
+  end
+
+  def commits
+    # --follow to survive any renames of the file over the years.
+    # oldest first, so index order == chronological order.
+    log = git("log", "--follow", "--reverse", "--format=%H\t%ad", "--date=short", "--", TRACKED_PATH)
+    log.each_line.map { |line| line.chomp.split("\t", 2) } # [[sha, date], ...]
+  end
+
+  def call
+    entries = commits
+    raise "No history found for #{TRACKED_PATH} - wrong repo/path?" if entries.empty?
+
+    width = entries.size.to_s.size
+    prev_digest = nil
+    manifest = []
+
+    entries.each_with_index do |(sha, date), i|
+      index = i + 1
+      filename = "rules-#{index.to_s.rjust([width, 3].max, "0")}.txt"
+      out_path = tmp_dir + filename
+
+      content = git_show(sha)
+      out_path.binwrite(content)
+
+      digest = Digest::SHA256.hexdigest(content)
+      warnings = check(content, prev_digest == digest)
+      prev_digest = digest
+
+      manifest << [filename, sha, date, content.bytesize, warnings.join(";")].join("\t")
+
+      status = warnings.empty? ? "ok" : "WARN: #{warnings.join(", ")}"
+      puts "#{index.to_s.rjust(width)}/#{entries.size}  #{date}  #{sha[0,10]}  #{filename}  (#{content.bytesize}b)  #{status}"
+    end
+
+    manifest_path.write(manifest.join("\n") + "\n")
+    puts "\nWrote #{entries.size} versions to #{tmp_dir}"
+    puts "Manifest: #{manifest_path}"
+  end
+
+  private
+
+  def check(content, duplicate_of_previous)
+    bytes = content.b # reinterpret as raw bytes, no encoding assumptions
+    warnings = []
+    warnings << "identical to previous version" if duplicate_of_previous
+    warnings << "contains CR" if bytes.include?("\r".b)
+    warnings << "leading BOM" if bytes.start_with?("\xEF\xBB\xBF".b, "\xFE\xFF".b, "\xFF\xFE".b)
+    warnings << "contains NBSP" if bytes.include?("\xC2\xA0".b) || bytes.include?("\xA0".b)
+    warnings << "contains U+2028/2029 line separator" if bytes.include?("\xE2\x80\xA8".b) || bytes.include?("\xE2\x80\xA9".b)
+    warnings << "not valid UTF-8" unless content.dup.force_encoding("UTF-8").valid_encoding?
+    warnings << "suspiciously small (<100KB)" if bytes.bytesize < 100_000
+    warnings << "missing expected header" unless bytes.start_with?("Magic: The Gathering Comprehensive Rules".b)
+    warnings
+  end
+
+  def git(*args)
+    Dir.chdir(repo_root) do
+      out = IO.popen(["git", *args], "r:UTF-8", err: [:child, :out]) { |io| io.read }
+      raise "git #{args.join(" ")} failed:\n#{out}" unless $?.success?
+      out
+    end
+  end
+
+  def git_show(sha)
+    Dir.chdir(repo_root) do
+      out = IO.popen(["git", "show", "#{sha}:#{TRACKED_PATH}"], "rb", err: [:child, :out]) { |io| io.read }
+      raise "git show #{sha}:#{TRACKED_PATH} failed:\n#{out}" unless $?.success?
+      out
+    end
+  end
+end
+
+ExportRulesHistory.new.call

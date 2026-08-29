@@ -83,11 +83,20 @@ class FormatCompRulesText
   # Same whitespace/line-break cleanup as FormatCompRules#text_rules,
   # minus the html_escape call (nothing here produces markup).
   def text_rules
-    @text_rules ||= @source_path
-      .read
-      .tr("\r", "")
-      .tr("\u2028\u2029", "\n")
-      .gsub(/^[[:blank:]]+|[[:blank:]]+$/, "")
+    @text_rules ||= begin
+      raw = @source_path.read(encoding: "BINARY") # read raw bytes, decide encoding ourselves
+
+      raw = if raw.dup.force_encoding("UTF-8").valid_encoding?
+        raw.force_encoding("UTF-8")
+      else
+        raw.force_encoding("Windows-1252").encode("UTF-8")
+      end
+
+      raw
+        .tr("\r", "")
+        .tr("\u2028\u2029", "\n")
+        .gsub(/^[[:blank:]]+|[[:blank:]]+$/, "")
+    end
   end
 end
 
