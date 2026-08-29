@@ -1,0 +1,162 @@
+#!/usr/bin/env ruby
+
+require "pathname"
+
+class String
+  def oneline
+    gsub(/\s+/, " ")
+  end unless method_defined?(:oneline)
+end
+
+module CompRulesParser
+  Rule = Struct.new(:id, :text)
+  GlossaryEntry = Struct.new(:term, :text)
+
+  # Same encoding fallback as format_comp_rules_text: some early exports
+  # (2015-2016) aren't valid UTF-8 and need to be read as Windows-1252.
+  def self.normalize(raw)
+    utf8 = if raw.dup.force_encoding("UTF-8").valid_encoding?
+      raw.dup.force_encoding("UTF-8")
+    else
+      raw.dup.force_encoding("Windows-1252").encode("UTF-8")
+    end
+    utf8.tr("\r", "").tr("\u2028\u2029", "\n").gsub(/^[[:blank:]]+|[[:blank:]]+$/, "")
+  end
+
+  # Returns {rules: [Rule...], glossary: [GlossaryEntry...]}
+  def self.parse(raw)
+    paras = normalize(raw).split(/\n{2,}/)
+
+    raise "unexpected format: missing title" unless paras[0] == "Magic: The Gathering Comprehensive Rules"
+    paras.shift
+    paras.shift while paras[0] != "Introduction"
+    paras.shift
+    paras.shift while paras[0] != "Contents"
+    paras.shift
+    paras.shift while paras[0] != "1. Game Concepts" # skip table of contents blocks
+
+    rules = []
+    last_rule = nil
+    while paras[0] =~ /\A(\d+\.\S*|Example:)/
+      para = paras.shift
+      if para.start_with?("Example:")
+        # Examples illustrate the immediately preceding rule, not a rule of
+        # their own - fold them into that rule's text so they show up
+        # (and diff) together with the rule they belong to.
+        last_rule.text = "#{last_rule.text}\n\n#{para.oneline.strip}" if last_rule
+        next
+      end
+      id, body = para.split(" ", 2)
+      rule = Rule.new(id.strip, body ? body.oneline.strip : "")
+      rules << rule
+      last_rule = rule
+    end
+
+    raise "unexpected format: missing glossary" unless paras[0] == "Glossary"
+    paras.shift
+
+    glossary = []
+    while paras[0] != "Credits"
+      term, definition = paras.shift.split("\n", 2)
+      glossary << GlossaryEntry.new(term.strip, definition ? definition.oneline.strip : "")
+    end
+
+    {rules: rules, glossary: glossary}
+  end
+end
+
+class CompRulesHistory
+  def initialize(label)
+    @label = label
+  end
+
+  def repo_root
+    Pathname(__dir__) + ".."
+  end
+
+  def manifest_path
+    repo_root + "tmp/rules-manifest.txt"
+  end
+
+  def tmp_dir
+    repo_root + "tmp"
+  end
+
+  def entries
+    @entries ||= manifest_path.readlines.map do |line|
+      filename, sha, date, = line.chomp.split("\t")
+      {filename: filename, sha: sha, date: date}
+    end
+  end
+
+  def call
+    unless manifest_path.exist?
+      abort "No manifest at #{manifest_path} - run bin/export_rules_history first"
+    end
+
+    history = entries.map do |entry|
+      raw = (tmp_dir + entry[:filename]).binread
+      parsed = CompRulesParser.parse(raw)
+      match = find_match(parsed, @label)
+      {date: entry[:date], filename: entry[:filename], text: match&.text}
+    end
+
+    if history.all? { |h| h[:text].nil? }
+      report_not_found(history)
+      exit 1
+    end
+
+    print_history(history)
+  end
+
+  private
+
+  def find_match(parsed, label)
+    if label.end_with?(".")
+      matches = parsed[:rules].select { |r| r.id.start_with?(label) }
+      return nil if matches.empty?
+      combined = matches.map { |r| "#{r.id} #{r.text}" }.join("\n\n")
+      Struct.new(:text).new(combined)
+    else
+      parsed[:rules].find { |r| r.id == label } ||
+        parsed[:glossary].find { |g| g.term.casecmp?(label) }
+    end
+  end
+
+  def report_not_found(history)
+    warn "No rule or glossary term matching #{@label.inspect} found in any version."
+    prefix = @label.end_with?(".") ? @label : @label
+    candidates = history.each_with_object({}) do |h, ids|
+      raw = (tmp_dir + h[:filename]).binread
+      CompRulesParser.parse(raw)[:rules].each do |r|
+        ids[r.id] = true if r.id.start_with?(prefix)
+      end
+    rescue
+      nil
+    end.keys.sort
+    unless candidates.empty?
+      warn "Rule numbers starting with #{@label.inspect} appear in at least one version: #{candidates.join(", ")}"
+      warn "(rule numbers can shift between versions - try one of these)"
+    end
+  end
+
+  def print_history(history)
+    last_text = :unset
+    history.each do |h|
+      next if h[:text] == last_text
+      last_text = h[:text]
+
+      if h[:text].nil?
+        puts "#{h[:date]} (#{h[:filename]}): [not present in this version]"
+      else
+        puts "== #{h[:date]}  (#{h[:filename]}, #{entries.find { |e| e[:filename] == h[:filename] }[:sha][0, 10]}) =="
+        puts h[:text]
+      end
+      puts
+    end
+  end
+end
+
+label = ARGV[0] or abort "Usage: bin/comp_rules_history <rule number, e.g. 606.4b, or glossary term>"
+
+CompRulesHistory.new(label).call
