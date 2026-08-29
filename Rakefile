@@ -1,4 +1,5 @@
 require "fileutils"
+require "open3"
 require "pathname"
 
 def db
@@ -6,6 +7,12 @@ def db
     require_relative "search-engine/lib/card_database"
     CardDatabase.load
   end
+end
+
+def capture!(command)
+  output, status = Open3.capture2(command)
+  raise "Command failed: #{command}" unless status.success?
+  output
 end
 
 task "default" => "spec"
@@ -194,7 +201,7 @@ end
 desc "Update magic-preconstructed-decks metadata"
 task "update:decks:metadata" do
   # It would be better to do both steps from here, and to also include flavor names as valid names
-  sh "./search-engine/bin/find_cards '*' >~/github/magic-preconstructed-decks/lib/valid_card_names.txt"
+  Pathname("#{ENV['HOME']}/github/magic-preconstructed-decks/lib/valid_card_names.txt").write(capture!("./search-engine/bin/find_cards '*'"))
   Dir.chdir("#{ENV['HOME']}/github/magic-preconstructed-decks") do
     sh "rake sets"
   end
