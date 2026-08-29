@@ -1,0 +1,98 @@
+#!/usr/bin/env ruby
+
+require "pathname"
+
+class String
+  def oneline
+    gsub(/\s+/, " ")
+  end
+end
+
+class FormatCompRulesText
+  def initialize(source_path:, output_path:)
+    @source_path = source_path
+    @output_path = output_path
+  end
+
+  def call
+    @output = []
+    paras = text_rules.split(/\n{2,}/)
+
+    raise "unexpected format" unless paras[0] == "Magic: The Gathering Comprehensive Rules"
+    primary_header! paras.shift
+    para! paras.shift while paras[0] != "Introduction"
+    secondary_header! paras.shift
+    para! paras.shift while paras[0] != "Contents"
+    secondary_header! paras.shift
+
+    tos_section! paras.shift while paras[0] != "1. Game Concepts"
+
+    rule! paras.shift while paras[0] =~ /\A(\d|Example:)/
+
+    raise "unexpected format" unless paras[0] == "Glossary"
+    secondary_header! paras.shift
+
+    glossary_entry! paras.shift while paras[0] != "Credits"
+
+    secondary_header! paras.shift
+    para! paras.shift while paras[0]
+
+    save!
+  end
+
+  private
+
+  # Each of these appends ONE block (possibly multi-line) to @output.
+  # Blocks are joined with blank lines, mirroring the paragraph structure
+  # of the source text - this keeps things grep/diff friendly per rule id.
+
+  def rule!(text)
+    @output << text.split("\n").map { |line| line.oneline.strip }.join("\n")
+  end
+
+  def glossary_entry!(text)
+    term, definition = text.split("\n", 2)
+    @output << "#{term.strip}\n#{definition.oneline.strip}"
+  end
+
+  def tos_section!(text)
+    @output << text.split("\n").map { |line| line.oneline.strip }.join("\n")
+  end
+
+  def primary_header!(text)
+    @output << text.oneline.strip
+  end
+
+  def secondary_header!(text)
+    @output << text.oneline.strip
+  end
+
+  def para!(text)
+    @output << text.oneline.strip
+  end
+
+  def save!
+    content = @output.join("\n\n") + "\n"
+    if @output_path
+      Pathname(@output_path).write(content)
+    else
+      $stdout.write(content)
+    end
+  end
+
+  # Same whitespace/line-break cleanup as FormatCompRules#text_rules,
+  # minus the html_escape call (nothing here produces markup).
+  def text_rules
+    @text_rules ||= @source_path
+      .read
+      .tr("\r", "")
+      .tr("\u2028\u2029", "\n")
+      .gsub(/^[[:blank:]]+|[[:blank:]]+$/, "")
+  end
+end
+
+default_source_path = Pathname(__dir__) + "../data/MagicCompRules.txt"
+source_path = ARGV[0] ? Pathname(ARGV[0]) : default_source_path
+output_path = ARGV[1] # nil => stdout
+
+FormatCompRulesText.new(source_path: source_path, output_path: output_path).call
