@@ -12,7 +12,7 @@ class ExportRulesHistory
   end
 
   def tmp_dir
-    @tmp_dir ||= (repo_root + "tmp").tap(&:mkpath)
+    @tmp_dir ||= (repo_root + "tmp" + "rules").tap(&:mkpath)
   end
 
   def manifest_path

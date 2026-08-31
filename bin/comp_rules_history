@@ -75,11 +75,11 @@ class CompRulesHistory
   end
 
   def manifest_path
-    repo_root + "tmp/rules-manifest.txt"
+    tmp_dir + "rules-manifest.txt"
   end
 
   def tmp_dir
-    repo_root + "tmp"
+    repo_root + "tmp" + "rules"
   end
 
   def entries
