@@ -1,20 +1,11 @@
 #!/usr/bin/env ruby
 
 require_relative "../search-engine/lib/card_database"
+require_relative "../search-engine/lib/card_picture_paths"
 
 # I'm developing on OSX with case insensitive file system,
 # but the servers run Linux with case sensitive file system,
 # so we need to do some checks here
-
-class CardPrinting
-  def path_lq
-    "frontend/public/cards/#{set_code}/#{number}.png"
-  end
-
-  def path_hq
-    "frontend/public/cards_hq/#{set_code}/#{number}.png"
-  end
-end
 
 class FixPictureFileCapitalization
   attr_reader :db
@@ -24,7 +15,7 @@ class FixPictureFileCapitalization
   end
 
   def actual_pics
-    @actual_pics ||= Dir["frontend/public/cards/*/*.png"] + Dir["frontend/public/cards_hq/*/*.png"]
+    @actual_pics ||= Dir["#{CardPicturePaths::LQ_ROOT}/*/*.png"] + Dir["#{CardPicturePaths::HQ_ROOT}/*/*.png"]
   end
 
   def actual_pic_capitalizations
@@ -43,14 +34,14 @@ class FixPictureFileCapitalization
 
   def call
     db.printings.each do |card|
-      actual_hq = actual_pic_capitalizations[card.path_hq.downcase]
-      actual_lq = actual_pic_capitalizations[card.path_lq.downcase]
+      actual_hq = actual_pic_capitalizations[card.path_hq.to_s.downcase]
+      actual_lq = actual_pic_capitalizations[card.path_lq.to_s.downcase]
 
-      if actual_hq and actual_hq != card.path_hq
+      if actual_hq and actual_hq != card.path_hq.to_s
         handle_mismatch actual_hq, card.path_hq
       end
 
-      if actual_lq and actual_lq != card.path_lq
+      if actual_lq and actual_lq != card.path_lq.to_s
         handle_mismatch actual_lq, card.path_lq
       end
     end

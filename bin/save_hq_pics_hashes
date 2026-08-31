@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 
-require "digest/sha1"
 require "pathname"
+require_relative "../search-engine/lib/card_picture_paths"
 
 class SaveHqPicsHashes
   def initialize
-    @root = Pathname(__dir__) + "../frontend/public/cards_hq"
+    @root = CardPicturePaths::HQ_ROOT
   end
 
   def call
@@ -13,7 +13,7 @@ class SaveHqPicsHashes
     @root.glob("*/*.png").each do |path|
       set_code = path.dirname.basename.to_s
       number = path.basename(".png").to_s
-      sha1 = Digest::SHA1.hexdigest(path.read)
+      sha1 = path.sha1
       results << [set_code, number.to_i, number, sha1]
     end
     open("data/hq_scan_files_sha1.txt", "w") do |fh|

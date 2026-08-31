@@ -1,16 +1,7 @@
 #!/usr/bin/env ruby
 
 require_relative "../search-engine/lib/card_database"
-
-class CardPrinting
-  def path_lq
-    Pathname("frontend/public/cards/#{set_code}/#{number}.png")
-  end
-
-  def path_hq
-    Pathname("frontend/public/cards_hq/#{set_code}/#{number}.png")
-  end
-end
+require_relative "../search-engine/lib/card_picture_paths"
 
 class CardsWithoutPics
   attr_reader :db
@@ -30,10 +21,10 @@ class CardsWithoutPics
     missing.each do |c|
       puts "#{c.set_code}/#{c.number} #{c.name}"
       if c.number =~ /\A(.*)[ab]/
-        if Pathname("frontend/public/cards/#{c.set_code}/#{$1}.png").exist?
+        if CardPicturePaths.lq(c.set_code, $1).exist?
           puts "- LQ exists as #{c.set_code}/#{$1}"
         end
-        if Pathname("frontend/public/cards_hq/#{c.set_code}/#{$1}.png").exist?
+        if CardPicturePaths.hq(c.set_code, $1).exist?
           puts "- HQ exists as #{c.set_code}/#{$1}"
         end
       end

@@ -2,6 +2,7 @@
 
 require "pp"
 require_relative "../search-engine/lib/card_database"
+require_relative "../search-engine/lib/card_picture_paths"
 
 def db
   @db ||= CardDatabase.load
@@ -36,7 +37,7 @@ db.sets.each do |set_code, set|
     end
 
     nth_card[card.name] += 1
-    target_path = Pathname("frontend/public/cards_hq/#{card.set_code}/#{card.number}.png")
+    target_path = card.path_hq
     next if target_path.exist?
 
     clean_name = card.name.tr("®", "r").tr(':"?', "")
@@ -82,7 +83,7 @@ db.sets.each do |set_code, set|
       FileUtils.cp((source_dir+match), target_path)
     else
       total["miss"] += 1
-      has_lq = Pathname("frontend/public/cards/#{card.set_code}/#{card.number}.png").exist?
+      has_lq = card.path_lq.exist?
       if has_lq
         warn "LQ only: #{card.set.code} - #{card.name}"
       else

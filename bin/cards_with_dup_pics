@@ -1,35 +1,11 @@
 #!/usr/bin/env ruby
 
-require "digest"
 require_relative "../search-engine/lib/card_database"
+require_relative "../search-engine/lib/card_picture_paths"
 
 class Array
   def all_same?
     uniq.size == 1
-  end
-end
-
-class Pathname
-  def sha1
-    Digest::SHA1.hexdigest(read)
-  end
-end
-
-class CardPrinting
-  def path_lq
-    Pathname("frontend/public/cards/#{set_code}/#{number}.png")
-  end
-
-  def path_lq_sha1
-    path_lq.sha1 if path_lq.exist?
-  end
-
-  def path_hq
-    Pathname("frontend/public/cards_hq/#{set_code}/#{number}.png")
-  end
-
-  def path_hq_sha1
-    path_hq.sha1 if path_hq.exist?
   end
 end
 

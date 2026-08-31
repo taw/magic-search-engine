@@ -1,16 +1,7 @@
 #!/usr/bin/env ruby
 
 require_relative "../search-engine/lib/card_database"
-
-class CardPrinting
-  def path_lq
-    Pathname("frontend/public/cards/#{set_code}/#{number}.png")
-  end
-
-  def path_hq
-    Pathname("frontend/public/cards_hq/#{set_code}/#{number}.png")
-  end
-end
+require_relative "../search-engine/lib/card_picture_paths"
 
 class PrintPicsStatistics
   attr_reader :db
@@ -34,13 +25,13 @@ class PrintPicsStatistics
 
   def unconnected_lq
     @unconnected_lq ||= begin
-      Pathname("frontend/public/cards").glob("*/*.png") - db.printings.map(&:path_lq)
+      CardPicturePaths::LQ_ROOT.glob("*/*.png") - db.printings.map(&:path_lq)
     end
   end
 
   def unconnected_hq
     @unconnected_hq ||= begin
-      Pathname("frontend/public/cards_hq").glob("*/*.png") - db.printings.map(&:path_hq)
+      CardPicturePaths::HQ_ROOT.glob("*/*.png") - db.printings.map(&:path_hq)
     end
   end
 
