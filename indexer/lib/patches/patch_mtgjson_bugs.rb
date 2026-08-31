@@ -21,6 +21,15 @@ class PatchMtgjsonBugs < Patch
   # O90P and OLEP are just mtgjson bug
   OVERSIZED_SETS = %W[OC21 OAFC O90P OLEP].freeze
 
+  # Oversized means "a bigger copy of a card that also exists at normal size".
+  # mtgjson instead stamps it on every printing of the layouts that have no
+  # normal size to be bigger than - planes, phenomena, schemes, and paper
+  # vanguards - digital printings included, where size is not even a thing.
+  # That makes the flag useless, so we drop it for those layouts entirely.
+  # Matching the layout rather than the type catches the joke type lines,
+  # pssc/sAnS mERcY ("pLAnE") and punk/That's Enough Slices ("Phenome-nom").
+  INHERENTLY_BIG_LAYOUTS = %W[planar scheme vanguard].to_set.freeze
+
   def call
     each_printing do |card|
       set_code = card["setCode"]
@@ -33,8 +42,8 @@ class PatchMtgjsonBugs < Patch
         card["isOversized"] = true
       end
 
-      if set_code == "MOC" and (card["types"].include?("Plane") or card["types"].include?("Phenomenon"))
-        card["isOversized"] = true
+      if INHERENTLY_BIG_LAYOUTS.include?(card["layout"])
+        card.delete("isOversized")
       end
 
       # MBC is a paper set, but a few cards are marked as arena-only
