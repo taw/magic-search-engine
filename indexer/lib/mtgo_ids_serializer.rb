@@ -11,7 +11,7 @@ class MtgoIdsSerializer
   def to_s
     @cards.flat_map do |name, printings|
       printings.filter_map do |data|
-        id = data.dig("identifiers", "mtgoId")
+        id = data["mtgo_id"]
         [data["set_code"], data["number"], id, name] if id
       end
     end

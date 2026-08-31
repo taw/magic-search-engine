@@ -152,6 +152,9 @@ class Indexer
       # Needs final reconciled text
       PatchShortName,
 
+      # Needs final set codes, numbers, and names
+      PatchMtgoIds,
+
 
       # Deck Indexer
       PatchDecks,
@@ -199,6 +202,7 @@ class Indexer
         "base_set_size" => set_data["baseSetSize"],
         "partial_preview" => set_data["isPartialPreview"],
         "token_set_code" => set_data["tokenSetCode"]&.downcase,
+        "mtgo_code" => set_data["mtgoCode"],
       ).compact
       @sets << set
       set_data["cards"].each do |card_data|
