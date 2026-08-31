@@ -32,7 +32,7 @@ class PatchMtgoIds < Patch
 
   def call
     build_name_index
-    @fallbacks = Hash.new(0)
+    @fallbacks = Hash.new{|hash, set_code| hash[set_code] = [] }
     @paper_only = Hash.new(0)
     @paper_only_ids = Set[]
     @contested = Hash.new(0)
@@ -83,7 +83,7 @@ class PatchMtgoIds < Patch
       owners[id] = card_key
       card["mtgo_id"] = id
       if rank == FROM_MTGJSON
-        @fallbacks[card["set_code"]] += 1
+        @fallbacks[card["set_code"]] << card
       else
         @matched << id
         @matched_printings += 1
@@ -99,6 +99,7 @@ class PatchMtgoIds < Patch
         id: row["Id"],
         mtgo_set: row["Set"],
         name: normalize_name(row["Name"]),
+        printed_name: row["Name"],
         number: normalize_number(row["Number"]),
       }}
   end
@@ -295,13 +296,17 @@ class PatchMtgoIds < Patch
   #   only one the two sides punctuate differently.
   # - the Unfinity name stickers, whose blank is a run of underscores that the
   #   two of them count differently
+  # - the Magic Online Avatars, which the client calls "Avatar - Serra Angel"
+  #   where we call them "Serra Angel Avatar", and where it tells two of one
+  #   name apart with an "(Alt.)" that our collector numbers already tell apart
   def normalize_name(name)
-    name.to_s
+    name = name.to_s
       .unicode_normalize(:nfd)
       .gsub(/\p{Mn}/, "")
       .delete(":\uA789")
       .gsub(/_+/, "_")
       .downcase
+    name.sub(/\Aavatar - (.*?)(?: \(alt\.\))?\z/) { "#{$1} avatar" }
   end
 
   def mtgjson_id(card)
@@ -318,16 +323,20 @@ class PatchMtgoIds < Patch
       .reject{|row| @matched.include?(row[:id]) or @paper_only_ids.include?(row[:id]) }
       .group_by{|row| our_set_codes[row[:mtgo_set]]&.first }
 
-    puts "MTGO ids: #{@matched_printings} printings took a client id, #{@fallbacks.values.sum} fell back to mtgjson"
+    puts "MTGO ids: #{@matched_printings} printings took a client id, #{@fallbacks.values.sum(&:size)} fell back to mtgjson"
 
     set_codes = (@fallbacks.keys + @contested.keys + unclaimed.keys).compact.uniq
-    set_codes.sort_by{|set_code| [-@fallbacks[set_code], set_code] }.each do |set_code|
+    set_codes.sort_by{|set_code| [-@fallbacks[set_code].size, set_code] }.each do |set_code|
+      cards = @fallbacks[set_code]
       rows = unclaimed[set_code].to_a
-      line = "  #{set_code}: #{@fallbacks[set_code]} cards fell back, #{rows.size} client entries unmapped"
+      line = "  #{set_code}: #{cards.size} cards fell back, #{rows.size} client entries unmapped"
       line << ", #{@contested[set_code]} lost a contested id" if @contested[set_code] > 0
       puts line
+      cards.sort_by{|card| [card["number"].to_i, card["number"]] }.each do |card|
+        puts "    fallback #{card["mtgo_id"]} #{card["name"]} [#{set_code}:#{card["number"]}]"
+      end
       rows.sort_by{|row| row[:id].to_i }.each do |row|
-        puts "    #{row[:id]} #{row[:name]} [#{row[:mtgo_set]}:#{row[:number]}]"
+        puts "    unmapped #{row[:id]} #{row[:printed_name]} [#{row[:mtgo_set]}:#{row[:number]}]"
       end
     end
 
