@@ -39,6 +39,7 @@ class PatchMtgoIds < Patch
   BY_PRINTED_SET = 1
 
   def call
+    build_face_index
     build_name_index
     @fallbacks = Hash.new{|hash, set_code| hash[set_code] = [] }
     @paper_only_ids = Set[]
@@ -226,10 +227,28 @@ class PatchMtgoIds < Patch
   # A multi-face card is one row in the client, named either after the whole
   # card or after its front face, so both faces of ours look for the same row.
   # The client goes by the printed name where a card has one, which for om1 is
-  # every card in the set, and for sld is every Universes Beyond drop.
+  # every card in the set, and for sld is every Universes Beyond drop - and
+  # that printed name lives on the face it belongs to, so a back face has to
+  # ask its front for it. om1/71b is Venom, Lethal Protector to us and the back
+  # of "Viggo, Enforcer of Ig's Crossing" to MTGO.
   def name_candidates(card)
     names = card["names"] ? [card["names"].join(" // "), card["names"].first] : []
-    (names + [card["name"], card["flavor_name"]]).compact.uniq.map{|name| normalize_name(name) }
+    names += [card["name"]]
+    names += faces_of(card).map{|face| face["flavor_name"] }
+    names.compact.uniq.map{|name| normalize_name(name) }
+  end
+
+  # Every face of the card this printing is one face of, front first
+  def faces_of(card)
+    @faces.fetch([card["set_code"], base_number(card)], [card])
+  end
+
+  def build_face_index
+    @faces = {}
+    each_printing do |card|
+      (@faces[[card["set_code"], base_number(card)]] ||= []) << card
+    end
+    @faces.each_value{|cards| cards.sort_by!{|card| card["number"] } }
   end
 
   # A name on its own is not enough: MTGO has one object where we have a

@@ -79,5 +79,23 @@ describe MtgoIds do
       set_codes.should include("10e", "7ed", "mmq", "inv", "ody")
       set_codes.should_not include("ced", "cei")
     end
+
+    # These sets exist nowhere but MTGO, so every printing of theirs that MTGO
+    # has is a printing MTGO released, and an id it must know. A gap here is a
+    # printing our matching failed to place, not a card MTGO skipped.
+    # (`online_only?` is no help picking them out - it is true of the Arena
+    # sets too, and of Astral Cards and the Sega Dreamcast cards.)
+    MTGO_ONLY_SETS = %w[
+      pmoa me1 me2 me3 td0 me4 td2 vma tpr pz1 pz2 prm om1 omb
+    ]
+
+    it "has an id for every printing in the MTGO-only sets" do
+      keys = rows.map{|set_code, number, _, _| [set_code, number] }.to_set
+      missing = MTGO_ONLY_SETS.flat_map do |set_code|
+        set = db.sets[set_code] or raise "No such set: #{set_code}"
+        set.printings.select(&:mtgo?).reject{|printing| keys.include?([printing.set_code, printing.number]) }
+      end
+      missing.map{|printing| "#{printing.set_code}:#{printing.number} #{printing.name}" }.should eq([])
+    end
   end
 end
