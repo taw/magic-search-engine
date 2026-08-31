@@ -103,30 +103,55 @@ class PatchMtgoIds < Patch
       }}
   end
 
-  # {our set code => {name => [row, ...]}}
+  # {our set code => {name => [row, ...]}}. An MTGO set that holds cards from
+  # several sets of ours offers its rows to each of them, and the one card one
+  # id rule sorts out anything that two of them both want.
   def client_index
-    @client_index ||= client_rows
-      .group_by{|row| our_set_codes[row[:mtgo_set]] }
-      .except(nil)
-      .transform_values{|rows| rows.group_by{|row| row[:name] } }
+    @client_index ||= begin
+      index = {}
+      client_rows.each do |row|
+        our_set_codes.fetch(row[:mtgo_set], []).each do |set_code|
+          ((index[set_code] ||= {})[row[:name]] ||= []) << row
+        end
+      end
+      index
+    end
   end
 
-  # mtgjson knows MTGO's set codes, and only disagrees with our own codes for
-  # sets MTGO renamed. A handful of MTGO sets have no set of ours at all -
-  # mostly paper sets its catalog was seeded with but never released.
+  # {MTGO set code => [our set code, ...]}, most of them one to one. mtgjson
+  # knows MTGO's set codes and only disagrees with our own for sets MTGO
+  # renamed; mtgo_set_codes.txt covers what it and mci get wrong, and the MTGO
+  # sets that are more than one set to us.
   def our_set_codes
-    @our_set_codes ||= known_set_codes.merge(guessed_set_codes)
+    @our_set_codes ||= begin
+      codes = mtgo_set_codes.dup
+      known_set_codes.each{|code, ours| codes[code] ||= ours }
+      guessed_set_codes(codes).each{|code, ours| codes[code] ||= ours }
+      codes
+    end
+  end
+
+  def mtgo_set_codes
+    @mtgo_set_codes ||= begin
+      codes = (Indexer::ROOT + "mtgo_set_codes.txt")
+        .readlines
+        .map{|line| line.sub(/#.*/, "").split }
+        .reject(&:empty?)
+        .to_h{|code, *set_codes| [code.upcase, set_codes] }
+      warn_about_unknown_sets(codes)
+      codes
+    end
   end
 
   def known_set_codes
     codes = {}
     each_set do |set|
-      codes[set["code"].upcase] = set["code"]
+      codes[set["code"].upcase] = [set["code"]]
     end
     # An MTGO code wins over a set of ours that happens to share it,
     # e.g. MTGO's EVG is Elves vs Goblins, which we call dd1
     each_set do |set|
-      codes[set["mtgo_code"].upcase] = set["code"] if set["mtgo_code"]
+      codes[set["mtgo_code"].upcase] = [set["code"]] if set["mtgo_code"]
     end
     codes
   end
@@ -137,9 +162,8 @@ class PatchMtgoIds < Patch
   # Legions where MTGO's LE is Legends, its `al` is Alpha where MTGO's AL is
   # Alliances. So it only gets a say where nothing else does: the client code
   # is otherwise unclaimed, and that set of ours has no client set already.
-  def guessed_set_codes
-    known = known_set_codes
-    already_matched = client_rows.filter_map{|row| known[row[:mtgo_set]] }.to_set
+  def guessed_set_codes(known)
+    already_matched = client_rows.flat_map{|row| known[row[:mtgo_set]].to_a }.to_set
     by_mtgo_set = client_rows.group_by{|row| row[:mtgo_set] }
     codes = {}
     each_set do |set|
@@ -147,9 +171,18 @@ class PatchMtgoIds < Patch
       next if known.has_key?(code.upcase) or already_matched.include?(set["code"])
       rows = by_mtgo_set[code.upcase] or next
       next unless same_set?(rows, set["code"])
-      codes[code.upcase] = set["code"]
+      codes[code.upcase] = [set["code"]]
     end
     codes
+  end
+
+  # Sets get deleted and renamed, and a mapping to one we no longer have is
+  # silently no mapping at all
+  def warn_about_unknown_sets(codes)
+    ours = Set[]
+    each_set{|set| ours << set["code"] }
+    unknown = codes.values.flatten.uniq.reject{|set_code| ours.include?(set_code) }
+    warn "mtgo_set_codes.txt names sets we do not have: #{unknown.join(", ")}" unless unknown.empty?
   end
 
   # mci's `al` is Alpha where MTGO's AL is Alliances, and the two have no card
@@ -252,9 +285,23 @@ class PatchMtgoIds < Patch
   end
 
   # Diacritics are written the same way on both sides, but not always encoded
-  # the same way, so decompose and drop the combining marks
+  # the same way, so decompose and drop the combining marks. Two more the
+  # client spells its own way, and between them that is every name in the
+  # catalog the two sides disagree about:
+  # - Ratonhnhaké:ton, which the client spells with a colon and we spell with
+  #   nothing, PatchCardNames having dropped the modifier letter colon mtgjson
+  #   uses because nobody can type it. Dropping every colon costs nothing: 121
+  #   names have one (Circle of Protection:, Summon:, Bounty:) and this is the
+  #   only one the two sides punctuate differently.
+  # - the Unfinity name stickers, whose blank is a run of underscores that the
+  #   two of them count differently
   def normalize_name(name)
-    name.to_s.unicode_normalize(:nfd).gsub(/\p{Mn}/, "").downcase
+    name.to_s
+      .unicode_normalize(:nfd)
+      .gsub(/\p{Mn}/, "")
+      .delete(":\uA789")
+      .gsub(/_+/, "_")
+      .downcase
   end
 
   def mtgjson_id(card)
@@ -269,15 +316,19 @@ class PatchMtgoIds < Patch
   def report
     unclaimed = client_rows
       .reject{|row| @matched.include?(row[:id]) or @paper_only_ids.include?(row[:id]) }
-      .group_by{|row| our_set_codes[row[:mtgo_set]] }
+      .group_by{|row| our_set_codes[row[:mtgo_set]]&.first }
 
     puts "MTGO ids: #{@matched_printings} printings took a client id, #{@fallbacks.values.sum} fell back to mtgjson"
 
     set_codes = (@fallbacks.keys + @contested.keys + unclaimed.keys).compact.uniq
     set_codes.sort_by{|set_code| [-@fallbacks[set_code], set_code] }.each do |set_code|
-      line = "  #{set_code}: #{@fallbacks[set_code]} cards fell back, #{unclaimed[set_code].to_a.size} client entries unmapped"
+      rows = unclaimed[set_code].to_a
+      line = "  #{set_code}: #{@fallbacks[set_code]} cards fell back, #{rows.size} client entries unmapped"
       line << ", #{@contested[set_code]} lost a contested id" if @contested[set_code] > 0
       puts line
+      rows.sort_by{|row| row[:id].to_i }.each do |row|
+        puts "    #{row[:id]} #{row[:name]} [#{row[:mtgo_set]}:#{row[:number]}]"
+      end
     end
 
     if @paper_only_ids.any?

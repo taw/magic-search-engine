@@ -1,0 +1,35 @@
+# MTGO set codes that neither mtgjson's mtgoCode nor magiccards.info's code
+# gets right, and MTGO sets which hold cards from more than one set of ours.
+#
+# One MTGO code, then every set of ours it holds cards from, biggest first.
+
+# Sets whose MTGO code is simply not one we would guess. Most of these are
+# catalogue placeholders - MTGO seeded its catalogue with all of paper Magic in
+# release order and never released them - so mapping them buys honesty rather
+# than ids: their rows get matched and then dropped as not game:mtgo, instead
+# of sitting unexplained. ptk and sld are the two that carry real ids.
+1E lea
+2E leb
+2U 2ed
+3E 3ed
+AL all
+HM hml
+LE leg
+P2 p02
+P3 s99
+PK ptk
+SL2 sld
+
+# One MTGO set, several of ours
+H17 h17 ph17
+PC1 hop ohop
+PC2 pc2 opc2
+UMA uma puma
+
+# Deliberately absent, do not add without reading the whole story:
+# IA    Ice Age. Our ice already gets the client's own ICE, and a set fed from
+#       two client sets has two candidate rows for every card in it.
+# VAN   the avatars are pmoa, but the client names them "Avatar - Serra Angel"
+#       where we name them "Serra Angel Avatar", so the set mapping alone
+#       matches nothing.
+# PRM_RTO, PRM_25, P4, FK, CC, C02   not identified.
