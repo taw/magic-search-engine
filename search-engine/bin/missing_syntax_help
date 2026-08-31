@@ -2,7 +2,16 @@
 
 require_relative "../lib/card_database"
 require "haml"
-require "pry"
+
+# The help template is a Rails view, so it expects a few things Rails would
+# normally provide - the card database global, and String#html_safe.
+class String
+  def html_safe
+    self
+  end
+end
+
+$CardDatabase = CardDatabase.load
 
 $queries = []
 
