@@ -156,7 +156,7 @@ class Card
     calculate_mana_hash
     calculate_color_indicator
     calculate_reminder_text
-    self.front = (!secondary? or @layout == "aftermath" or @layout == "flip" or @layout == "adventure")
+    self.front = (!secondary? or @layout == "aftermath" or @layout == "flip" or @layout == "adventure" or @layout == "prepare")
     @name_slug = name
       .normalize_accents
       .gsub("'s", "s")

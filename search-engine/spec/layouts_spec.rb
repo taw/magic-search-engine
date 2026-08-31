@@ -24,6 +24,11 @@ describe "Card layouts" do
     assert_search_equal "is:dfc", "is:double-faced"
   end
 
+  it "is:back" do
+    assert_search_equal "is:back", "is:secondary is:dfc"
+    assert_search_equal "is:front", "-is:back"
+  end
+
   it "rules" do
     # These rules are mostly here to detect mtgjson errors
     # It's totally possible that a card will get printed which does not follow them
