@@ -18,6 +18,12 @@ require "csv"
 # mtgjson's ids come already attached to a printing, but they drift - on a
 # multi-face card it keeps changing which face's id it reports - so they are
 # only used where the match fails.
+#
+# Every row also carries the id of the premium (foil) object for the same card,
+# which is a catalog object of its own. It is usually the normal id plus one,
+# but not always - CMD, DDC, DDF and UNH file all their foils after all their
+# nonfoils, and a few tokens have the premium id first - so it is carried
+# through rather than derived.
 class PatchMtgoIds < Patch
   # Only CARD rows are cards a deck can name. SUBC is one face of a card the
   # client also lists as a CARD, TOKN is a token, PLAD a helper card.
@@ -57,7 +63,7 @@ class PatchMtgoIds < Patch
     Indexer::ROOT + "mtgo_ids.csv"
   end
 
-  # [where, rank, card, id] for every printing we have an id for at all
+  # [where, rank, card, id, foil id] for every printing we have an id for at all
   def proposals
     result = []
     each_printing do |card|
@@ -69,7 +75,8 @@ class PatchMtgoIds < Patch
         @paper_only_ids << row[:id] if row
         next
       end
-      result << [where(row, card), rank || FROM_MTGJSON, card, id]
+      foil_id = row ? row[:foil_id] : mtgjson_foil_id(card)
+      result << [where(row, card), rank || FROM_MTGJSON, card, id, foil_id]
     end
     result
   end
@@ -84,7 +91,7 @@ class PatchMtgoIds < Patch
   # worse attested of the two gets nothing rather than something wrong.
   def assign(proposals)
     owners = {}
-    proposals.each_with_index.sort_by{|(where, rank, _, _), order| [where, rank, order] }.each do |(where, rank, card, id), _|
+    proposals.each_with_index.sort_by{|(where, rank, _, _, _), order| [where, rank, order] }.each do |(where, rank, card, id, foil_id), _|
       card_key = [card["set_code"], base_number(card)]
       if owners.fetch(id, card_key) != card_key
         @contested[card["set_code"]] += 1
@@ -92,6 +99,7 @@ class PatchMtgoIds < Patch
       end
       owners[id] = card_key
       card["mtgo_id"] = id
+      card["mtgo_foil_id"] = foil_id if foil_id
       if rank == FROM_MTGJSON
         @fallbacks[card["set_code"]] << card
       else
@@ -112,6 +120,7 @@ class PatchMtgoIds < Patch
         name: normalize_name(row["Name"]),
         printed_name: row["Name"],
         number: normalize_number(row["Number"]),
+        foil_id: presence(row["Foil Id"]),
       }}
   end
 
@@ -357,6 +366,14 @@ class PatchMtgoIds < Patch
 
   def mtgjson_id(card)
     card.dig("identifiers", "mtgoId")
+  end
+
+  def mtgjson_foil_id(card)
+    card.dig("identifiers", "mtgoFoilId")
+  end
+
+  def presence(value)
+    value unless value.to_s.empty?
   end
 
   # A set needing fallback is a set we get wrong somewhere, so say how badly,

@@ -28,7 +28,8 @@ class MtgoIds
     by_card = {}
     lowest_by_name = {}
     path.each_line do |line|
-      set_code, number, id, name = line.chomp.split("\t")
+      # The premium (foil) id is in the file but nothing asks for it yet
+      set_code, number, id, _foil_id, name = line.chomp.split("\t")
       wanted_printings[[set_code, number]]&.each do |card|
         by_card[card] = id
       end

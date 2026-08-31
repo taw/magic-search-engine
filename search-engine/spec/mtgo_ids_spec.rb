@@ -59,9 +59,10 @@ describe MtgoIds do
   describe "the file it reads" do
     let(:rows) { MtgoIds::PATH.readlines.map{|line| line.chomp.split("\t") } }
 
-    it "is set code, our own collector number, id, and name" do
-      rows.reject{|row| row.size == 4 }.should eq([])
+    it "is set code, our own collector number, id, premium id, and name" do
+      rows.reject{|row| row.size == 5 }.should eq([])
       rows.reject{|row| row[2] =~ /\A\d+\z/ }.should eq([])
+      rows.reject{|row| row[3] =~ /\A\d*\z/ }.should eq([])
     end
 
     it "has one row per printing" do
