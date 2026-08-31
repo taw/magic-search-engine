@@ -9,10 +9,16 @@
 # no id falls back to another printing of the same card - the lowest id, which
 # is that card's first appearance on MTGO. Over the decks we ship that takes
 # full coverage from 1301 decks to 2733 of 3004.
+#
+# A premium (foil) copy is a catalog object of its own rather than a flag on
+# the normal one, so every printing has up to two ids. Which of them a card
+# wants is the caller's business - MTGO has only the one premium finish, and
+# not every printing has a premium id at all.
 class MtgoIds
   PATH = Pathname(__dir__) + "../../index/mtgo_ids.txt"
 
-  # cards -> {card => catalog id}, leaving out the cards MTGO does not have
+  # cards -> {card => [catalog id, premium id]}, leaving out the cards MTGO
+  # does not have. The premium id is nil where MTGO has no premium copy.
   def self.lookup(cards, path=PATH)
     return {} if cards.empty?
 
@@ -28,20 +34,20 @@ class MtgoIds
     by_card = {}
     lowest_by_name = {}
     path.each_line do |line|
-      # The premium (foil) id is in the file but nothing asks for it yet
-      set_code, number, id, _foil_id, name = line.chomp.split("\t")
+      set_code, number, id, foil_id, name = line.chomp.split("\t")
+      ids = [id, (foil_id unless foil_id.to_s.empty?)]
       wanted_printings[[set_code, number]]&.each do |card|
-        by_card[card] = id
+        by_card[card] = ids
       end
-      if wanted_names.key?(name) and (lowest_by_name[name].nil? or id.to_i < lowest_by_name[name].to_i)
-        lowest_by_name[name] = id
+      if wanted_names.key?(name) and (lowest_by_name[name].nil? or id.to_i < lowest_by_name[name][0].to_i)
+        lowest_by_name[name] = ids
       end
     end
 
     wanted_names.each do |name, name_cards|
-      id = lowest_by_name[name] or next
+      ids = lowest_by_name[name] or next
       name_cards.each do |card|
-        by_card[card] ||= id
+        by_card[card] ||= ids
       end
     end
     by_card

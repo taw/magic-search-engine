@@ -472,13 +472,25 @@ describe DeckExporter do
     end
 
     it "the formats which cannot say so warn about it" do
-      %W[xmage cockatrice mtgo].each do |format|
+      %W[xmage cockatrice].each do |format|
         deck.export(format).warnings.should eq([
           "Exported as normal cards, as the format cannot mark a finish: Sol Ring, Talisman of Progress",
         ])
       end
       deck.export("arena").warnings.should eq([])
       deck.export("csv").warnings.should eq([])
+    end
+
+    # MTGO has a catalog object per finish, so it is the one format here which
+    # writes the finish rather than dropping it - see "MTGO finishes" below
+    it "mtgo asks for the premium object instead" do
+      deck.export("mtgo").text.should include(
+        %Q[<Cards CatID="127156" Quantity="1" Sideboard="false" Name="Sol Ring" />],
+        %Q[<Cards CatID="19678" Quantity="1" Sideboard="false" Name="Talisman of Progress" />],
+      )
+      deck.export("mtgo").warnings.should eq([
+        "Exported as foil, as MTGO has no etched finish: Talisman of Progress",
+      ])
     end
   end
 
@@ -557,7 +569,6 @@ describe DeckExporter do
       deck.export("cockatrice").text.should include(
         %Q[<card number="8" name="Island" setShortName="MID" collectorNumber="381"]
       )
-      deck.export("mtgo").text.should include(%Q[Quantity="8" Sideboard="false" Name="Island"])
       deck.export("names").text.should include("8 Island\n")
     end
 
@@ -565,6 +576,11 @@ describe DeckExporter do
       deck.export("text").text.should include("4 Island [MID:381]\n4 Island [MID:381] [foil]\n")
       deck.export("arena").text.should include("4 Island (MID) 381\n4 Island (MID) 381 *F*\n")
       deck.export("csv").text.should include("Main Deck,4,Island,MID,Innistrad: Midnight Hunt,381,Foil")
+      # A finish is a catalog id of its own to MTGO
+      deck.export("mtgo").text.should include(
+        %Q[<Cards CatID="92908" Quantity="4" Sideboard="false" Name="Island" />],
+        %Q[<Cards CatID="92909" Quantity="4" Sideboard="false" Name="Island" />],
+      )
     end
 
     # Names is the one that merges across printings too, having nothing else
@@ -689,6 +705,76 @@ describe DeckExporter do
       deck = DeckParser.new(db, "1 Sol Ring (C21) 263\n1 Zephyr Falcon (POR) 71\n").deck
       deck.export("mtgo").text.lines.grep(/Cards/).size.should eq(1)
       deck.export("mtgo").warnings.should eq(["Not on MTGO, so left out: Zephyr Falcon"])
+    end
+  end
+
+  # MTGO sells a premium copy as a catalog object of its own, so a foil card is
+  # a different CatID and not a flag on the normal one
+  describe "MTGO finishes" do
+    def export(decklist)
+      DeckParser.new(db, decklist).deck.export("mtgo")
+    end
+
+    def cards(export)
+      export.text.lines.grep(/Cards/).map(&:strip)
+    end
+
+    it "asks for the normal object when no finish was asked for" do
+      exported = export("1 Sol Ring (M3C) 305\n")
+      cards(exported).should eq([%Q[<Cards CatID="127155" Quantity="1" Sideboard="false" Name="Sol Ring" />]])
+      exported.warnings.should eq([])
+    end
+
+    it "asks for the premium object when the card is foil" do
+      exported = export("1 Sol Ring (M3C) 305 *F*\n")
+      cards(exported).should eq([%Q[<Cards CatID="127156" Quantity="1" Sideboard="false" Name="Sol Ring" />]])
+      exported.warnings.should eq([])
+    end
+
+    it "keeps the two finishes of a printing apart" do
+      exported = export("3 Sol Ring (M3C) 305\n1 Sol Ring (M3C) 305 *F*\n")
+      cards(exported).should eq([
+        %Q[<Cards CatID="127155" Quantity="3" Sideboard="false" Name="Sol Ring" />],
+        %Q[<Cards CatID="127156" Quantity="1" Sideboard="false" Name="Sol Ring" />],
+      ])
+      exported.warnings.should eq([])
+    end
+
+    # one/435 is the foil-only Phyrexian language printing, and MTGO has one
+    # object for it, not two
+    it "falls back to the normal object where MTGO has no premium copy, and says so" do
+      exported = export("1 Blightbelly Rat (ONE) 435 *F*\n")
+      cards(exported).should eq([%Q[<Cards CatID="105968" Quantity="1" Sideboard="false" Name="Blightbelly Rat" />]])
+      exported.warnings.should eq([
+        "Exported as normal cards, as MTGO has no premium copy of them: Blightbelly Rat",
+      ])
+    end
+
+    # And then the two finishes are one object, so they are one line again
+    it "merges the finishes it could not tell apart" do
+      exported = export("1 Cancel (DPA) 3\n1 Cancel (DPA) 3 *F*\n")
+      cards(exported).should eq([%Q[<Cards CatID="34047" Quantity="2" Sideboard="false" Name="Cancel" />]])
+      exported.warnings.should eq([
+        "Exported as normal cards, as MTGO has no premium copy of them: Cancel",
+      ])
+    end
+
+    # MTGO has exactly one premium finish, so etched asks for the same object
+    # foil does
+    it "gives an etched card the foil object, and says so" do
+      exported = export("1 Abundant Harvest (STA) 48 *F* *E*\n")
+      cards(exported).should eq([%Q[<Cards CatID="89154" Quantity="1" Sideboard="false" Name="Abundant Harvest" />]])
+      exported.warnings.should eq([
+        "Exported as foil, as MTGO has no etched finish: Abundant Harvest",
+      ])
+    end
+
+    it "names every card each warning is about" do
+      exported = export("1 Blightbelly Rat (ONE) 435 *F*\n1 Cancel (DPA) 3 *F*\n1 Abundant Harvest (STA) 48 *F* *E*\n1 Adventurous Impulse (STA) 49 *F* *E*\n")
+      exported.warnings.should eq([
+        "Exported as normal cards, as MTGO has no premium copy of them: Blightbelly Rat, Cancel",
+        "Exported as foil, as MTGO has no etched finish: Abundant Harvest, Adventurous Impulse",
+      ])
     end
   end
 

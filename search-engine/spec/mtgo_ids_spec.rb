@@ -16,27 +16,33 @@ describe MtgoIds do
   # Fifth Edition never made it to MTGO, and this one was never reprinted
   let(:zephyr_falcon) { printing("zephyr falcon", "5ed", "137") }
 
-  it "finds the id of a printing MTGO has" do
+  it "finds the id of a printing MTGO has, and its premium id" do
     MtgoIds.lookup([ancestors_chosen, portal_plains]).should eq(
-      ancestors_chosen => "27500",
-      portal_plains => "9123",
+      ancestors_chosen => ["27500", "27501"],
+      portal_plains => ["9123", "9124"],
     )
+  end
+
+  it "has no premium id where MTGO never sold a premium copy" do
+    # Duels of the Planeswalkers cards came out of a promo code, not a booster
+    cancel = printing("cancel", "dpa", "3")
+    MtgoIds.lookup([cancel]).should eq(cancel => ["34047", nil])
   end
 
   it "falls back to the card's first appearance on MTGO" do
     # Portal is not on MTGO, but Blaze is, and MTGO does not care which
     # printing of it you mean
-    MtgoIds.lookup([portal_blaze]).should eq(portal_blaze => "15382")
-    MtgoIds.lookup([seventh_blaze]).should eq(seventh_blaze => "15382")
+    MtgoIds.lookup([portal_blaze]).should eq(portal_blaze => ["15382", "15383"])
+    MtgoIds.lookup([seventh_blaze]).should eq(seventh_blaze => ["15382", "15383"])
   end
 
   it "prefers the printing it was asked about" do
     tenth_blaze = printing("blaze", "10e", "190")
-    MtgoIds.lookup([tenth_blaze]).should eq(tenth_blaze => "27388")
+    MtgoIds.lookup([tenth_blaze]).should eq(tenth_blaze => ["27388", "27389"])
   end
 
   it "leaves out a card MTGO does not have" do
-    MtgoIds.lookup([zephyr_falcon, ancestors_chosen]).should eq(ancestors_chosen => "27500")
+    MtgoIds.lookup([zephyr_falcon, ancestors_chosen]).should eq(ancestors_chosen => ["27500", "27501"])
   end
 
   it "answers about many cards in one pass, and about nothing at all" do
@@ -45,14 +51,16 @@ describe MtgoIds do
     MtgoIds.lookup([]).should eq({})
   end
 
-  it "gives a foil card the normal id, as MTGO's premium ids are not indexed" do
+  # One printing is one row, whichever finish is being asked about: picking
+  # between the two ids is the caller's job, not the lookup's
+  it "gives a foil card the same pair of ids" do
     foil = PhysicalCard.for(ancestors_chosen.main_front, finish: :foil)
-    MtgoIds.lookup([foil]).should eq(foil => "27500")
+    MtgoIds.lookup([foil]).should eq(foil => ["27500", "27501"])
     # Two cards here, one printing in the file, and the name fallback must not
     # answer for either of them
     MtgoIds.lookup([foil, ancestors_chosen]).should eq(
-      foil => "27500",
-      ancestors_chosen => "27500",
+      foil => ["27500", "27501"],
+      ancestors_chosen => ["27500", "27501"],
     )
   end
 
