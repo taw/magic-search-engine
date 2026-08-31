@@ -2,12 +2,7 @@
 
 require "pathname"
 require "set"
-
-class String
-  def oneline
-    gsub(/\s+/, " ")
-  end
-end
+require_relative "../search-engine/lib/comp_rules"
 
 class FormatCompRules
   def call
@@ -15,32 +10,10 @@ class FormatCompRules
     @output << "<% content_for(:disable_turbolinks) do %>"
     @output << "true"
     @output << "<% end %>"
-    paras = text_rules.split(/\n{2,}/)
 
-    raise unless paras[0] == "Magic: The Gathering Comprehensive Rules"
-    primary_header! paras.shift
-    para! paras.shift while paras[0] != "Introduction"
-    secondary_header! paras.shift
-    para! paras.shift while paras[0] != "Contents"
-    secondary_header! paras.shift
-
-    while paras[0] != "1. Game Concepts"
-      tos_section! paras.shift
+    CompRules.each_block(text_rules) do |kind, text|
+      send("#{kind}!", text)
     end
-
-    while paras[0] =~ /\A(\d|Example:)/
-      rule! paras.shift
-    end
-
-    raise unless paras[0] == "Glossary"
-    secondary_header! paras.shift
-
-    while paras[0] != "Credits"
-      glossary_entry! paras.shift
-    end
-
-    secondary_header! paras.shift
-    para! paras.shift while paras[0]
 
     save!
   end
@@ -181,24 +154,8 @@ class FormatCompRules
     Pathname(__dir__) + "../frontend/app/views/help/rules.html.erb"
   end
 
-  def text_rules_path
-    Pathname(__dir__) + "../data/MagicCompRules.txt"
-  end
-
   def text_rules
-    # Assumes converted to UTF-8
-    # WotC's exports are not consistent about how they encode whitespace:
-    # * line breaks within a paragraph are sometimes U+2028, which Ruby does not
-    #   treat as a line break at all
-    # * lines are sometimes padded with non-breaking spaces, and "blank" lines
-    #   are sometimes a lone non-breaking space, which breaks the paragraph
-    #   split on /\n{2,}/ - [[:blank:]] covers NBSP, neither \s nor strip do
-    @text_rules ||= html_escape(text_rules_path
-                      .read
-                      .tr("\r", "")
-                      .tr("\u2028\u2029", "\n")
-                      .gsub(/^[[:blank:]]+|[[:blank:]]+$/, "")
-                    )
+    @text_rules ||= html_escape(CompRules.read)
   end
 
   def html_escape(txt)

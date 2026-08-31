@@ -3,6 +3,7 @@
 require "nokogiri"
 require "open-uri"
 require "pathname"
+require_relative "../search-engine/lib/comp_rules"
 
 class FetchComprehensiveRules
   def page_url
@@ -14,7 +15,7 @@ class FetchComprehensiveRules
   end
 
   def rules_path
-    Pathname("#{__dir__}/../data/MagicCompRules.txt")
+    CompRules::RULES_PATH
   end
 
   def rules_txt

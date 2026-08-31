@@ -3,6 +3,7 @@
 require "pathname"
 require "fileutils"
 require "digest"
+require_relative "../search-engine/lib/comp_rules"
 
 class ExportRulesHistory
   TRACKED_PATH = "data/MagicCompRules.txt"
@@ -12,11 +13,7 @@ class ExportRulesHistory
   end
 
   def tmp_dir
-    @tmp_dir ||= (repo_root + "tmp" + "rules").tap(&:mkpath)
-  end
-
-  def manifest_path
-    tmp_dir + "rules-manifest.txt"
+    @tmp_dir ||= CompRules::HISTORY_DIR.tap(&:mkpath)
   end
 
   def commits
@@ -52,9 +49,9 @@ class ExportRulesHistory
       puts "#{index.to_s.rjust(width)}/#{entries.size}  #{date}  #{sha[0,10]}  #{filename}  (#{content.bytesize}b)  #{status}"
     end
 
-    manifest_path.write(manifest.join("\n") + "\n")
+    CompRules::MANIFEST_PATH.write(manifest.join("\n") + "\n")
     puts "\nWrote #{entries.size} versions to #{tmp_dir}"
-    puts "Manifest: #{manifest_path}"
+    puts "Manifest: #{CompRules::MANIFEST_PATH}"
   end
 
   private
@@ -69,7 +66,7 @@ class ExportRulesHistory
     warnings << "contains U+2028/2029 line separator" if bytes.include?("\xE2\x80\xA8".b) || bytes.include?("\xE2\x80\xA9".b)
     warnings << "not valid UTF-8" unless content.dup.force_encoding("UTF-8").valid_encoding?
     warnings << "suspiciously small (<100KB)" if bytes.bytesize < 100_000
-    warnings << "missing expected header" unless bytes.start_with?("Magic: The Gathering Comprehensive Rules".b)
+    warnings << "missing expected header" unless bytes.start_with?(CompRules::TITLE.b)
     warnings
   end
 

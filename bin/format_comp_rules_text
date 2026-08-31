@@ -1,12 +1,7 @@
 #!/usr/bin/env ruby
 
 require "pathname"
-
-class String
-  def oneline
-    gsub(/\s+/, " ")
-  end
-end
+require_relative "../search-engine/lib/comp_rules"
 
 class FormatCompRulesText
   def initialize(source_path:, output_path:)
@@ -16,27 +11,9 @@ class FormatCompRulesText
 
   def call
     @output = []
-    paras = text_rules.split(/\n{2,}/)
-
-    raise "unexpected format" unless paras[0] == "Magic: The Gathering Comprehensive Rules"
-    primary_header! paras.shift
-    para! paras.shift while paras[0] != "Introduction"
-    secondary_header! paras.shift
-    para! paras.shift while paras[0] != "Contents"
-    secondary_header! paras.shift
-
-    tos_section! paras.shift while paras[0] != "1. Game Concepts"
-
-    rule! paras.shift while paras[0] =~ /\A(\d|Example:)/
-
-    raise "unexpected format" unless paras[0] == "Glossary"
-    secondary_header! paras.shift
-
-    glossary_entry! paras.shift while paras[0] != "Credits"
-
-    secondary_header! paras.shift
-    para! paras.shift while paras[0]
-
+    CompRules.each_block(CompRules.read(@source_path)) do |kind, text|
+      send("#{kind}!", text)
+    end
     save!
   end
 
@@ -79,29 +56,9 @@ class FormatCompRulesText
       $stdout.write(content)
     end
   end
-
-  # Same whitespace/line-break cleanup as FormatCompRules#text_rules,
-  # minus the html_escape call (nothing here produces markup).
-  def text_rules
-    @text_rules ||= begin
-      raw = @source_path.read(encoding: "BINARY") # read raw bytes, decide encoding ourselves
-
-      raw = if raw.dup.force_encoding("UTF-8").valid_encoding?
-        raw.force_encoding("UTF-8")
-      else
-        raw.force_encoding("Windows-1252").encode("UTF-8")
-      end
-
-      raw
-        .tr("\r", "")
-        .tr("\u2028\u2029", "\n")
-        .gsub(/^[[:blank:]]+|[[:blank:]]+$/, "")
-    end
-  end
 end
 
-default_source_path = Pathname(__dir__) + "../data/MagicCompRules.txt"
-source_path = ARGV[0] ? Pathname(ARGV[0]) : default_source_path
+source_path = ARGV[0] ? Pathname(ARGV[0]) : CompRules::RULES_PATH
 output_path = ARGV[1] # nil => stdout
 
 FormatCompRulesText.new(source_path: source_path, output_path: output_path).call
