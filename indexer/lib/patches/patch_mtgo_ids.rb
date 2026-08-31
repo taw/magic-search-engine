@@ -33,7 +33,6 @@ class PatchMtgoIds < Patch
   def call
     build_name_index
     @fallbacks = Hash.new{|hash, set_code| hash[set_code] = [] }
-    @paper_only = Hash.new(0)
     @paper_only_ids = Set[]
     @contested = Hash.new(0)
     @matched = Set[]
@@ -58,10 +57,7 @@ class PatchMtgoIds < Patch
       next unless id
       # MTGO having an object is not MTGO selling the card
       if !card["mtgo"]
-        if row
-          @paper_only[card["set_code"]] += 1
-          @paper_only_ids << row[:id]
-        end
+        @paper_only_ids << row[:id] if row
         next
       end
       result << [rank || FROM_MTGJSON, card, id]
@@ -262,18 +258,27 @@ class PatchMtgoIds < Patch
   end
 
   def only_card_named?(set_code, name)
-    @cards_by_name.dig(set_code, name)&.size == 1
+    cards = @cards_by_name.dig(set_code, name) or return false
+    cards.map{|card| base_number(card) }.uniq.size == 1
   end
 
-  # {set code => {name => Set[card number, ...]}} - our own printings under
-  # every name a client row could be listing them by, the faces sharing one
-  # number counting as the one card they are
+  # Could a row have produced an id whichever of our printings it picked? If
+  # every printing it could be about is one we do not call game:mtgo, no, and
+  # failing to choose between them cost nothing.
+  def could_have_mattered?(row)
+    our_set_codes.fetch(row[:mtgo_set], []).any? do |set_code|
+      @cards_by_name.dig(set_code, row[:name])&.any?{|card| card["mtgo"] }
+    end
+  end
+
+  # {set code => {name => [card, ...]}} - our own printings under every name a
+  # client row could be listing them by
   def build_name_index
     @cards_by_name = {}
     each_printing do |card|
       names = (@cards_by_name[card["set_code"]] ||= {})
       name_candidates(card).each do |name|
-        (names[name] ||= Set[]) << base_number(card)
+        (names[name] ||= []) << card
       end
     end
   end
@@ -315,13 +320,14 @@ class PatchMtgoIds < Patch
 
   # A set needing fallback is a set we get wrong somewhere, so say how badly,
   # and how many of its client rows are still unaccounted for - the leftovers
-  # are where the printings we missed are. A row we did match, to a printing
-  # our data calls paper only, is accounted for, so it belongs in the one-line
-  # total rather than against its set.
+  # are where the printings we missed are. A row that could never have produced
+  # an id is not a leftover: whether it matched a paper only printing or could
+  # not choose between several of them, no id was ever going to come of it.
   def report
     unclaimed = client_rows
       .reject{|row| @matched.include?(row[:id]) or @paper_only_ids.include?(row[:id]) }
-      .group_by{|row| our_set_codes[row[:mtgo_set]]&.first }
+      .select{|row| could_have_mattered?(row) }
+      .group_by{|row| our_set_codes.fetch(row[:mtgo_set]).first }
 
     puts "MTGO ids: #{@matched_printings} printings took a client id, #{@fallbacks.values.sum(&:size)} fell back to mtgjson"
 
@@ -340,13 +346,11 @@ class PatchMtgoIds < Patch
       end
     end
 
-    if @paper_only_ids.any?
-      biggest = @paper_only.sort_by{|set_code, count| [-count, set_code] }.first(10)
-      puts "  #{@paper_only_ids.size} client entries are printings we do not call game:mtgo: " +
-        biggest.map{|set_code, count| "#{set_code} (#{count})" }.join(", ") + ", ..."
-    end
-
-    unmapped_sets = unclaimed[nil].to_a.group_by{|row| row[:mtgo_set] }
+    # Not subject to any of the filtering above: a client set we have no set
+    # for is how a set MTGO has just added announces itself
+    unmapped_sets = client_rows
+      .reject{|row| our_set_codes.has_key?(row[:mtgo_set]) }
+      .group_by{|row| row[:mtgo_set] }
     unless unmapped_sets.empty?
       puts "  MTGO sets with no set of ours: " +
         unmapped_sets.sort_by{|code, rows| [-rows.size, code] }.map{|code, rows| "#{code} (#{rows.size})" }.join(", ")
