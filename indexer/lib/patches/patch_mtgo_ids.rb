@@ -30,6 +30,14 @@ class PatchMtgoIds < Patch
   BY_MTGJSON = 2  # several rows, and the client has the one mtgjson picked
   FROM_MTGJSON = 3 # no row at all, so mtgjson's word for it
 
+  # And which set the row was found in, which outranks all of the above: a row
+  # filed under a set of ours is about that set's printing, however well some
+  # other set's printing matches it. Our prm/86188 Karador is numbered after
+  # this very catalog id, and cmr/521 Karador matching the printed set's
+  # collector number is not a reason to take it away.
+  AT_HOME = 0
+  BY_PRINTED_SET = 1
+
   def call
     build_name_index
     @fallbacks = Hash.new{|hash, set_code| hash[set_code] = [] }
@@ -48,7 +56,7 @@ class PatchMtgoIds < Patch
     Indexer::ROOT + "mtgo_ids.csv"
   end
 
-  # [rank, card, id] for every printing we have an id for at all
+  # [where, rank, card, id] for every printing we have an id for at all
   def proposals
     result = []
     each_printing do |card|
@@ -60,9 +68,14 @@ class PatchMtgoIds < Patch
         @paper_only_ids << row[:id] if row
         next
       end
-      result << [rank || FROM_MTGJSON, card, id]
+      result << [where(row, card), rank || FROM_MTGJSON, card, id]
     end
     result
+  end
+
+  def where(row, card)
+    return BY_PRINTED_SET unless row
+    our_set_codes.fetch(row[:mtgo_set], []).include?(card["set_code"]) ? AT_HOME : BY_PRINTED_SET
   end
 
   # One id belongs to one card, however many faces that card has. Anything
@@ -70,7 +83,7 @@ class PatchMtgoIds < Patch
   # worse attested of the two gets nothing rather than something wrong.
   def assign(proposals)
     owners = {}
-    proposals.each_with_index.sort_by{|(rank, _, _), order| [rank, order] }.each do |(rank, card, id), _|
+    proposals.each_with_index.sort_by{|(where, rank, _, _), order| [where, rank, order] }.each do |(where, rank, card, id), _|
       card_key = [card["set_code"], base_number(card)]
       if owners.fetch(id, card_key) != card_key
         @contested[card["set_code"]] += 1
@@ -94,6 +107,7 @@ class PatchMtgoIds < Patch
       .map{|row| {
         id: row["Id"],
         mtgo_set: row["Set"],
+        printed_set: row["Printed Set"],
         name: normalize_name(row["Name"]),
         printed_name: row["Name"],
         number: normalize_number(row["Number"]),
@@ -107,12 +121,20 @@ class PatchMtgoIds < Patch
     @client_index ||= begin
       index = {}
       client_rows.each do |row|
-        our_set_codes.fetch(row[:mtgo_set], []).each do |set_code|
+        target_set_codes(row).each do |set_code|
           ((index[set_code] ||= {})[row[:name]] ||= []) << row
         end
       end
       index
     end
+  end
+
+  # A row's set is the bucket MTGO files it under, which for a promo or a
+  # supplementary product is not the set it was printed in: Vorinclex is filed
+  # under ONE and printed in KHM, and it is khm/406 to us. Both are tried, and
+  # a printing in the bucket beats one in the printed set when they collide.
+  def target_set_codes(row)
+    our_set_codes.fetch(row[:mtgo_set], []) | our_set_codes.fetch(row[:printed_set], [])
   end
 
   # {MTGO set code => [our set code, ...]}, most of them one to one. mtgjson
@@ -266,7 +288,7 @@ class PatchMtgoIds < Patch
   # every printing it could be about is one we do not call game:mtgo, no, and
   # failing to choose between them cost nothing.
   def could_have_mattered?(row)
-    our_set_codes.fetch(row[:mtgo_set], []).any? do |set_code|
+    target_set_codes(row).any? do |set_code|
       @cards_by_name.dig(set_code, row[:name])&.any?{|card| card["mtgo"] }
     end
   end
@@ -327,7 +349,7 @@ class PatchMtgoIds < Patch
     unclaimed = client_rows
       .reject{|row| @matched.include?(row[:id]) or @paper_only_ids.include?(row[:id]) }
       .select{|row| could_have_mattered?(row) }
-      .group_by{|row| our_set_codes.fetch(row[:mtgo_set]).first }
+      .group_by{|row| target_set_codes(row).first }
 
     puts "MTGO ids: #{@matched_printings} printings took a client id, #{@fallbacks.values.sum(&:size)} fell back to mtgjson"
 
@@ -349,7 +371,7 @@ class PatchMtgoIds < Patch
     # Not subject to any of the filtering above: a client set we have no set
     # for is how a set MTGO has just added announces itself
     unmapped_sets = client_rows
-      .reject{|row| our_set_codes.has_key?(row[:mtgo_set]) }
+      .select{|row| target_set_codes(row).empty? }
       .group_by{|row| row[:mtgo_set] }
     unless unmapped_sets.empty?
       puts "  MTGO sets with no set of ours: " +
