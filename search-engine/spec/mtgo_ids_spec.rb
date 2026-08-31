@@ -69,6 +69,11 @@ describe MtgoIds do
       keys.size.should eq(keys.uniq.size)
     end
 
+    it "only names printings MTGO has" do
+      printings = db.printings.to_h{|printing| [[printing.set_code, printing.number], printing] }
+      rows.reject{|set_code, number, _, _| printings[[set_code, number]]&.mtgo? }.should eq([])
+    end
+
     it "covers the sets which are on MTGO" do
       set_codes = rows.map(&:first).uniq
       set_codes.should include("10e", "7ed", "mmq", "inv", "ody")
