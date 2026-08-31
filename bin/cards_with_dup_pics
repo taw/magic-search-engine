@@ -36,7 +36,15 @@ end
 class CardsWithBadDfcPics
   attr_reader :db
 
-  def initialize
+  def initialize(*args)
+    if args == []
+      @delete = false
+    elsif args == ["--delete"]
+      @delete = true
+    else
+      STDERR.puts "Usage: #{$0} [--delete]"
+      exit 1
+    end
     @db = CardDatabase.load
   end
 
@@ -72,6 +80,14 @@ class CardsWithBadDfcPics
 
     bad = pics.map{|c| "#{c.set_code}/#{c.number} #{c.name}"}.join(", ")
     puts "#{kind} #{fail_type}: #{bad}"
+
+    # HQ pics can't be refetched, so only drop the LQ ones
+    if @delete and kind == "LQ"
+      pics.each do |c|
+        puts "Deleting #{c.path_lq}"
+        c.path_lq.delete
+      end
+    end
   end
 
   def call
@@ -85,4 +101,4 @@ class CardsWithBadDfcPics
   end
 end
 
-CardsWithBadDfcPics.new.call
+CardsWithBadDfcPics.new(*ARGV).call
