@@ -1,9 +1,11 @@
 #!/usr/bin/env ruby
 
 require_relative "../search-engine/lib/card_database"
+require "optparse"
 
 class ExportDecksData
-  def initialize
+  def initialize(simple_sections: false)
+    @simple_sections = simple_sections
     @db = CardDatabase.load
     @uuids_path = Pathname("#{__dir__}/../index/uuids.txt")
     @token_uuids_path = Pathname("#{__dir__}/../index/token_uuids.txt")
@@ -73,6 +75,22 @@ class ExportDecksData
     (deck.all_set_codes | deck.all_token_set_codes.map{|code| @db.token_set_code_to_set_code.fetch(code) }).sort
   end
 
+  def deck_sections(deck)
+    if @simple_sections
+      {
+        sideboard: deck.sideboard_and_commander.map{|n,c| export_card(n, c) },
+      }
+    else
+      {
+        sideboard: deck.section("Sideboard").map{|n,c| export_card(n, c) },
+        commander: deck.commander.map{|n,c| export_card(n, c) },
+        displayCommander: deck.section("Display Commander").map{|n,c| export_card(n, c) },
+        planarDeck: deck.section("Planar Deck").map{|n,c| export_card(n, c) },
+        schemeDeck: deck.section("Scheme Deck").map{|n,c| export_card(n, c) },
+      }
+    end
+  end
+
   def call(output_path)
     exported_data = []
     @db.decks.each do |deck|
@@ -85,11 +103,7 @@ class ExportDecksData
         set_name: deck.set_name,
         release_date: deck.release_date,
         cards: deck.cards.map{|n,c| export_card(n, c) },
-        sideboard: deck.section("Sideboard").map{|n,c| export_card(n, c) },
-        commander: deck.commander.map{|n,c| export_card(n, c) },
-        displayCommander: deck.section("Display Commander").map{|n,c| export_card(n, c) },
-        planarDeck: deck.section("Planar Deck").map{|n,c| export_card(n, c) },
-        schemeDeck: deck.section("Scheme Deck").map{|n,c| export_card(n, c) },
+        **deck_sections(deck),
         tokens: deck.tokens.map{|c| export_token(*c) },
         languages: Array(deck.languages),
         sourceSetCodes: deck_source_set_codes(deck),
@@ -102,5 +116,11 @@ class ExportDecksData
   end
 end
 
+simple_sections = false
+OptionParser.new do |o|
+  o.banner = "Usage: export_decks_data [--simple-sections] [OUTPUT_PATH]"
+  o.on("--simple-sections", "merge commander and extra sections into sideboard") { simple_sections = true }
+end.parse!
+
 output_path = ARGV[0] || "export_decks.json"
-ExportDecksData.new.call(output_path)
+ExportDecksData.new(simple_sections: simple_sections).call(output_path)
