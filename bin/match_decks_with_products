@@ -3,21 +3,21 @@
 require_relative "../search-engine/lib/card_database"
 require "pry"
 
-class Product
-  def initialize(row)
-    @row = row
+class ProductEntry
+  def initialize(data)
+    @data = data
   end
 
   def set_code
-    @row[0]
+    @data["set_code"]
   end
 
   def name
-    @row[1]
+    @data["name"]
   end
 
   def uuid
-    @row[3]
+    @data["uuid"]
   end
 
   def type
@@ -57,7 +57,7 @@ class Product
   end
 
   def inspect
-    "Product(#{set_code}, #{name})"
+    "ProductEntry(#{set_code}, #{name})"
   end
 end
 
@@ -119,12 +119,12 @@ class ProductMatcher
   end
 
   def products_path
-    Pathname("#{__dir__}/../index/products.txt")
+    Pathname("#{__dir__}/../index/products.json")
   end
 
   def products
-    @products ||= products_path.readlines.map{|row|
-      Product.new(row.chomp.split("\t"))
+    @products ||= JSON.parse(products_path.read).map{|data|
+      ProductEntry.new(data)
     }
   end
 

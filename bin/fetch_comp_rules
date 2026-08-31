@@ -21,9 +21,10 @@ class FetchComprehensiveRules
     txt_url = doc.css("a")
       .map{|a| a[:href]}
       .find{|link| link =~ /(MagicComp ?Rules|Comprehensive Rules).*txt\z/}
+    raise "Can't find rules text url, please check the site manually" unless txt_url
+    txt_url = txt_url
       .gsub(" ", "%20")
       .gsub("downloadsMagic", "downloads/Magic") # broken link on the site
-    raise "Can't find rules text url, please check the site manually" unless txt_url
     rules_txt = URI.open(txt_url).read
 
     # Sometimes it's UTF-8, sometimes it's not

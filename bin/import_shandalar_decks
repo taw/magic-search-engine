@@ -204,7 +204,7 @@ end
 
 class ImportShandalarDecks
   def deck_paths
-    SHANDALAR_DATA_ROOT.glob("*.dck")
+    SHANDALAR_DATA_ROOT.glob("*.dck", File::FNM_CASEFOLD)
   end
 
   def decks

@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require "digest"
 require "fastimage"
 require "pry"
 require_relative "../search-engine/lib/card_database"
