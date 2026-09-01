@@ -14,6 +14,9 @@ class FormatVintage < Format
     # This could be done programmatically instead
     #
     # Pauper format needs it for defining what counts as a "common"
+    #
+    # SLZ excluded from Pauper legality https://bsky.app/profile/gavinverhey.bsky.social/post/3mtu55rdm4c2f
+    # (it's here because it's just reprints and doesn't affect any other format)
 
     excluded_sets = Set[*%w[
       30a
@@ -40,6 +43,7 @@ class FormatVintage < Format
       rin
       sir
       sis
+      slz
       tafr
       tclb
       tltr
