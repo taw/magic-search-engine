@@ -13,7 +13,7 @@
 #
 #   * Only formats we model. Arena runs 142 of them - event queues, allow-list
 #     snapshots kept for old decklists, a dozen Brawl variants. Explorer is not
-#     Pioneer (see EXPLORER_NOTE) and Standard Brawl isn't in formats_index, so
+#     Pioneer and Standard Brawl isn't in formats_index, so
 #     neither is compared.
 #
 #   * Best-of-three, where Arena splits the queues. The Traditional variant is
@@ -60,11 +60,6 @@ class ReportArenaLegalityDifferences
     ["competitive brawl", "HistoricBrawlRanked", nil, true],
   ]
 
-  EXPLORER_NOTE =
-    "Explorer is skipped: it's Pioneer restricted to what Arena has, so it bans " \
-    "cards Pioneer doesn't (they'd be unanswerable without the missing cards) and " \
-    "can't ban what never reached Arena. Nothing about it is comparable card by card."
-
   # Same fixes as the indexer's, for names holding characters nobody can type
   UNICODE_NAME_FIXES = {
     "Ratonhnhaké꞉ton" => "Ratonhnhakéton",
@@ -92,7 +87,6 @@ class ReportArenaLegalityDifferences
     puts "Arena build #{arena["arena_build"]}, format table snapshot #{arena["formats_snapshot_date"]}"
     puts ""
     formats_to_check.each{|format| verify_format(*format) }
-    puts EXPLORER_NOTE if formats_to_check == FORMATS
   end
 
   private
