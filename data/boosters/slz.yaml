@@ -1,0 +1,89 @@
+# Full information in:
+#   https://magic.wizards.com/en/news/announcements/chaos-vault-the-zeta-set-puts-the-playtest-in-your-hands
+#
+# 7 Magic: The Gathering cards
+# * 3 Common cards from among 52 common cards
+# * 2 Uncommon cards from among 39 uncommon cards
+# * 1 Wildcard of any rarity from among 52 common (60%), 39 uncommon (30%), 20 rare (7.5%), and 10 mythic rare (2.5%) cards
+# * 1 Rare or mythic rare card from among 20 rare (75%) and 10 mythic rare (25%) cards
+#
+# Not every card will come out of the printer looking the same—and that's part of the charm. Most cards will appear in this classic black-and-white photocopy treatment. But 10% of the time, you'll find a photocopy negative card, flipping the colors for an even more striking look. And 5% of the time, when the printer decides to get really temperamental, your card will have this jittery CMYK look that we're calling the color banding treatment.
+#
+# According to https://mtg.wiki/page/Secret_Lair:_The_Zeta_Set#Bonus_cards
+# the set also has 17 bonus cards "Three each of the basic lands, Entomb and Ghostly Prison",
+# but it's not revealed how they're distributed yet.
+
+name: "Zeta Booster"
+
+queries:
+  photocopy: "number<=121"
+  negative: "number>=122 number<=242"
+  banding: "number>=243"
+
+pack:
+  common: 3
+  uncommon: 2
+  wildcard: 1
+  rare_mythic: 1
+
+sheets:
+  common:
+    any:
+    - query: "r:c {photocopy}"
+      count: 52
+      chance: 17
+    - query: "r:c {negative}"
+      count: 52
+      chance: 2
+    - query: "r:c {banding}"
+      count: 52
+      chance: 1
+  uncommon:
+    any:
+    - query: "r:u {photocopy}"
+      count: 39
+      chance: 17
+    - query: "r:u {negative}"
+      count: 39
+      chance: 2
+    - query: "r:u {banding}"
+      count: 39
+      chance: 1
+  rare:
+    any:
+    - query: "r:r {photocopy}"
+      count: 20
+      chance: 17
+    - query: "r:r {negative}"
+      count: 20
+      chance: 2
+    - query: "r:r {banding}"
+      count: 20
+      chance: 1
+  mythic:
+    any:
+    - query: "r:m {photocopy}"
+      count: 10
+      chance: 17
+    - query: "r:m {negative}"
+      count: 10
+      chance: 2
+    - query: "r:m {banding}"
+      count: 10
+      chance: 1
+  rare_mythic:
+    any:
+    - use: rare
+      chance: 3
+    - use: mythic
+      chance: 1
+  wildcard:
+    any:
+    - use: common
+      chance: 120
+    - use: uncommon
+      chance: 60
+    - use: rare
+      chance: 15
+    - use: mythic
+      chance: 5
