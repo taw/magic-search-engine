@@ -30,6 +30,13 @@ class PatchMtgjsonBugs < Patch
   # pssc/sAnS mERcY ("pLAnE") and punk/That's Enough Slices ("Phenome-nom").
   INHERENTLY_BIG_LAYOUTS = %W[planar scheme vanguard].to_set.freeze
 
+  INITIATIVE_TEXT = "Whenever one or more creatures a player controls deal " \
+    "combat damage to you, that player takes the initiative.\n" \
+    "Whenever you take the initiative and at the beginning of your upkeep, " \
+    "venture into Undercity. (If you're in a dungeon, advance to the next " \
+    "room. If you're not, enter Undercity. You can take the initiative even " \
+    "if you already have it.)".freeze
+
   def call
     each_printing do |card|
       set_code = card["setCode"]
@@ -68,6 +75,14 @@ class PatchMtgjsonBugs < Patch
       # so a permanent fix here
       if card["subtypes"]&.include?("Saga") and card["layout"] == "normal"
         card["layout"] = "saga"
+      end
+
+      # Scryfall mangled the Initiative face of CLB's dungeon token - "If you
+      # te not, enter Undercity" for "If you're not, enter Undercity." - and
+      # mtgjson copies whatever Scryfall says. PatchTokens has already split
+      # the two faces by the time we get here, so this is the whole card.
+      if card["name"] == "The Initiative" and set_code == "CLB"
+        card["text"] = INITIATIVE_TEXT
       end
 
       # Some cmb1/cmb2 cards not updated yet
