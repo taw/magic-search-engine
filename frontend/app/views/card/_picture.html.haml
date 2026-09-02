@@ -1,3 +1,7 @@
+-# Pages that show pictures and no card text pass searchable: true, so that the
+-# name is in the page for find-in-page. Pages that print the name anyway must
+-# not, or every card matches twice.
+- searchable = local_assigns[:searchable]
 - if card.is_a?(PhysicalCard)
   - foil = card.foil
   - card = card.main_front
@@ -5,6 +9,11 @@
   - foil = false
 - if card.image_path
   .card_picture_container
+    - if searchable
+      -# Every part shown here, joined the way the site names multi-part cards
+      -# elsewhere - one picture can hold several of them, and a transforming
+      -# card's back is a picture of its own.
+      %span.searchable_card_name{"aria-hidden": "true"}= [card, *card.others].map(&:name).join(" // ")
     - if card.layout == "flip"
       - if card.secondary?
         = render partial: "card/card_picture", locals: { card: card, foil: foil, card_layout: "flip_secondary" }
