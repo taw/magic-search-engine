@@ -46,6 +46,13 @@ class PatchXmage < Patch
     @all_card_names ||= @cards.keys.map{|n| normalize_name(n)}
   end
 
+  # Sets which are not out yet (st:preview). XMage routinely lists spoiled cards
+  # before mtgjson has them, so an unmatched name in such a set is expected,
+  # not a typo worth reporting.
+  def preview_sets
+    @preview_sets ||= @sets.select{|s| s["types"].include?("preview")}.map{|s| s["code"]}.to_set
+  end
+
   def xmage_card_name_to_sets
     @xmage_card_name_to_sets ||= xmage_cards.group_by(&:last).transform_values{|c| c.map(&:first).uniq }
   end
@@ -71,7 +78,7 @@ class PatchXmage < Patch
     unless likely_typos.empty?
       likely_typos.each do |name|
         sets = xmage_card_name_to_sets[name]
-        next if sets.all?{|set| KNOWN_ISSUES.include?([set, name]) }
+        next if sets.all?{|set| KNOWN_ISSUES.include?([set, name]) or preview_sets.include?(set) }
         puts "Likely typo or spoiler card in XMage card list: #{name} (#{sets.join(", ")})"
       end
     end
