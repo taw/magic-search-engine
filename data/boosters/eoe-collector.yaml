@@ -54,7 +54,9 @@ sheets:
 
   commander:
     any:
-    - rawquery: "e:eoc r=m is:fullart" # Full Art Commander Cards
+    # WotC calls these full art, but they are borderless in our data - the four
+    # deck commanders are the only borderless cards eoc has
+    - rawquery: "e:eoc r=m is:borderless" # Full Art Commander Cards
       rate: 1
       count: 4
     - rawquery: "e:eoc r=r is:extendedart" # Extended Art Commmander Cards
