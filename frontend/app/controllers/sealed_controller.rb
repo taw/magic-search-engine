@@ -1,11 +1,21 @@
 class SealedController < ApplicationController
+  # No real sealed event opens this many, and counts come straight out of the
+  # url, where they were once big enough to exhaust the server's memory
+  MAX_PACKS = 1000
+  # Capped rows still add up, so the pool as a whole gets a deadline
+  PACK_OPENING_TIME_LIMIT = 5.0
+
   # Controller supports >3 pack types
   def index
-    counts = Array(params[:count]).map(&:to_i)
+    requested_counts = Array(params[:count]).map(&:to_i)
+    counts = requested_counts.map{|count| count.clamp(0, MAX_PACKS)}
     set_codes = Array(params[:set])
     @fixed = params[:fixed]
     fixed_cards = FixedCardList.new($CardDatabase, params[:fixed])
     @warnings = fixed_cards.warnings
+    if counts != requested_counts
+      @warnings += ["At most #{MAX_PACKS} packs per row, ignoring the rest"]
+    end
 
     @packs_to_open = set_codes.zip(counts)
     packs_requested = !@packs_to_open.empty?
@@ -24,12 +34,24 @@ class SealedController < ApplicationController
 
     if packs_requested
       @cards = fixed_cards.cards.dup
+      deadline = Process.clock_gettime(Process::CLOCK_MONOTONIC) + PACK_OPENING_TIME_LIMIT
+      out_of_time = false
       @packs_to_open.each do |set_code, count|
         next unless set_code and count and count > 0
         packs = $CardDatabase.boosters_for_descriptor(set_code)
         # Error handling ?
         next if packs.empty?
-        @cards.push *count.times.flat_map{ packs.sample.open }
+        count.times do
+          # Checked per pack, so a slow pool stops partway instead of running
+          # the process out of memory
+          out_of_time = Process.clock_gettime(Process::CLOCK_MONOTONIC) > deadline
+          break if out_of_time
+          @cards.push *packs.sample.open
+        end
+        break if out_of_time
+      end
+      if out_of_time
+        @warnings += ["Opening packs took too long, this pool is incomplete"]
       end
       @cards.sort_by!{|c|
         [

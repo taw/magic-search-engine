@@ -81,6 +81,47 @@ RSpec.describe SealedController, type: :controller do
     assert_select ".card_picture_container", 0
   end
 
+  # Counts come out of the url, and a huge one used to keep allocating until the
+  # process ran out of memory
+  describe "limits" do
+    it "caps the number of packs per row" do
+      get "index", params: {count: ["#{SealedController::MAX_PACKS + 1}"], set: ["arn"]}
+      assert_response 200
+      assert_select ".card_picture_container", count: SealedController::MAX_PACKS * 8
+      assert_select %[.warning:contains("At most #{SealedController::MAX_PACKS} packs per row")]
+    end
+
+    it "does not complain about counts within the cap" do
+      get "index", params: {count: ["#{SealedController::MAX_PACKS}"], set: ["arn"]}
+      assert_response 200
+      assert_select %[.warning:contains("At most")], false
+    end
+
+    # A count of 47 digits parses fine, it is the opening that never finishes
+    it "refuses to open an absurd number of packs" do
+      get "index", params: {count: ["9" * 47], set: ["arn"]}
+      assert_response 200
+      assert_select ".card_picture_container", count: SealedController::MAX_PACKS * 8
+    end
+
+    # Capped rows still add up, so the pool stops when it runs out of time and
+    # the player keeps whatever was opened
+    it "stops opening packs once it runs out of time" do
+      stub_const("SealedController::PACK_OPENING_TIME_LIMIT", -1.0)
+      get "index", params: {count: ["1"], set: ["arn"]}
+      assert_response 200
+      assert_select ".card_picture_container", 0
+      assert_select %[.warning:contains("Opening packs took too long")]
+    end
+
+    it "keeps the fixed cards when it runs out of time" do
+      stub_const("SealedController::PACK_OPENING_TIME_LIMIT", -1.0)
+      get "index", params: {count: ["1"], set: ["arn"], fixed: "nph:1"}
+      assert_response 200
+      assert_select %[a[href="/card/nph/1/Karn-Liberated"]], 1
+    end
+  end
+
   describe "fixed cards" do
     it "hands out the fixed cards along with the packs" do
       get "index", params: {count: ["1"], set: ["arn"], fixed: "2x nph:1\nnph:2:foil"}

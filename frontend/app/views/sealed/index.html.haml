@@ -2,7 +2,7 @@
 %form.sealed_form
   - @packs_to_open.each_with_index do |(set_code, count), i|
     .pack_selection
-      %input.form-control.pack_count{type: "number", name: "count[]", value: count, min: 0, id: "count_#{i}", "aria-label": "Number of packs"}
+      %input.form-control.pack_count{type: "number", name: "count[]", value: count, min: 0, max: SealedController::MAX_PACKS, id: "count_#{i}", "aria-label": "Number of packs"}
       = select_tag "set[]", options_for_select(@booster_options, set_code), id: "set_#{i}", class: "form-control pack_set", "aria-label": "Booster type"
   .fixed_cards
     %label{for: "fixed"} Optional fixed cards
