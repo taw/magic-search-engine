@@ -104,6 +104,14 @@ RSpec.describe SealedController, type: :controller do
       assert_select ".card_picture_container", count: SealedController::MAX_PACKS * 8
     end
 
+    # The fixed cards box takes counts out of the url the same way the rows do
+    it "caps the number of fixed cards" do
+      get "index", params: {count: ["0"], set: ["arn"], fixed: "#{FixedCardList::MAX_CARDS + 1}x nph:1"}
+      assert_response 200
+      assert_select ".card_picture_container", count: FixedCardList::MAX_CARDS
+      assert_select %[.warning:contains("At most #{FixedCardList::MAX_CARDS} fixed cards")]
+    end
+
     # Capped rows still add up, so the pool stops when it runs out of time and
     # the player keeps whatever was opened
     it "stops opening packs once it runs out of time" do

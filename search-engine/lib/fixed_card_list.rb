@@ -6,6 +6,11 @@
 # make sense of is skipped with a warning, as the box is hand-edited and one
 # bad line shouldn't cost the player the rest of their pool.
 class FixedCardList
+  # No pool hands out this many, and both the counts and the number of lines
+  # come straight out of the url, where they were once big enough to exhaust
+  # the server's memory
+  MAX_CARDS = 1000
+
   attr_reader :cards, :warnings
 
   def initialize(db, text)
@@ -13,6 +18,10 @@ class FixedCardList
     @cards = []
     @warnings = []
     (text || "").lines.grep(/\S/).map(&:strip).each do |line|
+      if @cards.size >= MAX_CARDS
+        truncated!
+        break
+      end
       parse_line(line)
     end
   end
@@ -51,6 +60,18 @@ class FixedCardList
     end
 
     card = PhysicalCard.for(printing, foil: foil == "foil")
+    if count > MAX_CARDS - @cards.size
+      count = MAX_CARDS - @cards.size
+      truncated!
+    end
     count.times{ @cards << card }
+  end
+
+  # One warning however many lines were cut, as they were all cut for the
+  # same reason
+  def truncated!
+    return if @truncated
+    @truncated = true
+    @warnings << "At most #{MAX_CARDS} fixed cards, ignoring the rest"
   end
 end

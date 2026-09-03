@@ -82,6 +82,43 @@ describe FixedCardList do
     end
   end
 
+  # Counts and lines both come out of the url, and a huge one used to keep
+  # allocating until the process ran out of memory
+  describe "limits" do
+    describe "a count past the cap" do
+      let(:text) { "#{FixedCardList::MAX_CARDS + 1}x mrd:1" }
+      it do
+        list.cards.size.should eq FixedCardList::MAX_CARDS
+        list.warnings.should eq ["At most #{FixedCardList::MAX_CARDS} fixed cards, ignoring the rest"]
+      end
+    end
+
+    # A count of 47 digits parses fine, it is the allocating that never finishes
+    describe "an absurd count" do
+      let(:text) { "#{"9" * 47}x mrd:1" }
+      it do
+        list.cards.size.should eq FixedCardList::MAX_CARDS
+      end
+    end
+
+    # Capped lines still add up, so the list as a whole stops at the cap
+    describe "more lines than the cap" do
+      let(:text) { "mrd:1\n" * (FixedCardList::MAX_CARDS + 1) }
+      it do
+        list.cards.size.should eq FixedCardList::MAX_CARDS
+        list.warnings.should eq ["At most #{FixedCardList::MAX_CARDS} fixed cards, ignoring the rest"]
+      end
+    end
+
+    describe "a count right at the cap" do
+      let(:text) { "#{FixedCardList::MAX_CARDS}x mrd:1" }
+      it do
+        list.cards.size.should eq FixedCardList::MAX_CARDS
+        list.warnings.should eq []
+      end
+    end
+  end
+
   describe ".line_for" do
     let(:card) { physical_card("e:mrd number:1") }
     let(:foil_card) { physical_card("e:mrd number:1", true) }
