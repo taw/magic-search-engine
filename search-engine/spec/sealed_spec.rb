@@ -4,33 +4,38 @@
 describe Sealed do
   include_context "db"
 
-  def names(*descriptors)
-    Sealed.new(db, *descriptors).call.map(&:name)
+  def pool(*descriptors)
+    Sealed.new(db, *descriptors).call
+  end
+
+  # The pool is a multiset, so a card opened twice is one entry with a count
+  def counts(*descriptors)
+    pool(*descriptors).map{|card, count| [card.name, count]}
   end
 
   def size(*descriptors)
-    Sealed.new(db, *descriptors).call.size
+    pool(*descriptors).each_value.sum
   end
 
   it "adds a single card" do
-    names("mrd/1").should eq ["Altar's Light"]
+    counts("mrd/1").should eq [["Altar's Light", 1]]
   end
 
   it "adds a card multiple times" do
-    names("2x mrd/1").should eq ["Altar's Light", "Altar's Light"]
+    counts("2x mrd/1").should eq [["Altar's Light", 2]]
   end
 
   it "adds a foil card multiple times" do
-    Sealed.new(db, "2x m19/306/foil").call.map{|c| [c.name, c.foil]}.should eq(
-      [["Nexus of Fate", true], ["Nexus of Fate", true]]
+    pool("2x m19/306/foil").map{|c, count| [c.name, c.foil, count]}.should eq(
+      [["Nexus of Fate", true, 2]]
     )
   end
 
   # The whole reason the count needs a separator: without one this is either
   # two copies of card 100 of set `2`, or one copy of 2X2's card 100
   it "reads a set code that starts with a digit as a set code" do
-    names("2x2/100").should eq ["Abbot of Keral Keep"]
-    names("10e/1").should eq ["Ancestor's Chosen"]
+    counts("2x2/100").should eq [["Abbot of Keral Keep", 1]]
+    counts("10e/1").should eq [["Ancestor's Chosen", 1]]
   end
 
   it "opens a pack" do
@@ -40,7 +45,7 @@ describe Sealed do
   # A bare set code means that set's default booster, which only
   # CardDatabase#supported_booster_types knows how to resolve
   it "resolves a bare set code to its default booster" do
-    Sealed.new(db, "nph").call.map(&:set_code).uniq.should eq ["nph"]
+    pool("nph").keys.map(&:set_code).uniq.should eq ["nph"]
   end
 
   it "opens a variant pack" do

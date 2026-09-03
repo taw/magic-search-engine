@@ -46,26 +46,26 @@ class SealedController < ApplicationController
           # the process out of memory
           out_of_time = Process.clock_gettime(Process::CLOCK_MONOTONIC) > deadline
           break if out_of_time
-          @cards.push *packs.sample.open
+          packs.sample.open.each{|card| @cards[card] += 1}
         end
         break if out_of_time
       end
       if out_of_time
         @warnings += ["Opening packs took too long, this pool is incomplete"]
       end
-      @cards.sort_by!{|c|
+      # Still a multiset, now in the order the pool is shown and exported in
+      @cards = @cards.sort_by{|card, _count|
         [
-          -c.main_front.rarity_code,
-          c.name,
-          c.set_code,
-          c.number_sort_index,
-          c.foil ? 0 : 1,
+          -card.main_front.rarity_code,
+          card.name,
+          card.set_code,
+          card.number_sort_index,
+          card.foil ? 0 : 1,
         ]
-      }
-      decklist_entries = @cards.map do |c|
-        "#{c.name} [#{c.set_code.upcase}:#{c.number}]#{ c.foil ? ' [foil]' : ''}"
-      end
-      @deck = decklist_entries.group_by(&:itself).transform_values(&:size).map{|n,c| "#{c} #{n}\n"}.join
+      }.to_h
+      @deck = @cards.map{|card, count|
+        "#{count} #{card.name} [#{card.set_code.upcase}:#{card.number}]#{ card.foil ? ' [foil]' : ''}\n"
+      }.join
     end
 
     @title = "Sealed"

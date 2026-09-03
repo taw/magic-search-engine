@@ -25,7 +25,9 @@
       Export
   = render "deck/export_dialog", deck: nil
   .row.multicard_row
-    - @cards.each_with_index do |card, i|
-      .col-4.col-sm-3.card_picture_cell
-        = link_to_card(card.main_front) do
-          = render 'card/picture', card: card, searchable: true
+    -# The pool is a multiset, but every copy still gets a picture of its own
+    - @cards.each do |card, count|
+      - count.times do
+        .col-4.col-sm-3.card_picture_cell
+          = link_to_card(card.main_front) do
+            = render 'card/picture', card: card, searchable: true

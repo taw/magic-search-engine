@@ -66,8 +66,7 @@ class OpenPacks
     cards = sealed.call
     # There could be multiple basic arts etc., ignore everything except foil flag
     cards_with_counts = cards
-      .group_by{|x| [x.name, x.foil]}
-      .map{|k,v| [k, v.count]}
+      .each_with_object(Hash.new(0)){|(card, count), counts| counts[[card.name, card.foil]] += count}
       .sort_by{|(n,f),v| [n,f ? 1 : 0]}
     count_width = cards_with_counts.map(&:last).map(&:to_s).map(&:size).max
     cards_with_counts.each do |(name, foil), count|

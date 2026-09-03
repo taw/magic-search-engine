@@ -2,12 +2,13 @@ describe FixedCardList do
   include_context "db", "mrd", "arn"
 
   let(:list) { FixedCardList.new(db, text) }
-  let(:names) { list.cards.map(&:name) }
+  # The list is a multiset, so a card asked for twice is one entry with a count
+  let(:names) { list.cards.map{|card, count| [card.name, count]} }
 
   describe "one card per line" do
     let(:text) { "mrd:1\narn:1\n" }
     it do
-      names.should eq ["Altar's Light", "Abu Ja'far"]
+      names.should eq [["Altar's Light", 1], ["Abu Ja'far", 1]]
       list.warnings.should eq []
     end
   end
@@ -15,7 +16,7 @@ describe FixedCardList do
   describe "counts" do
     let(:text) { "3x mrd:1\n2 arn:3\n" }
     it do
-      names.should eq ["Altar's Light"] * 3 + ["Camel"] * 2
+      names.should eq [["Altar's Light", 3], ["Camel", 2]]
       list.warnings.should eq []
     end
   end
@@ -23,7 +24,7 @@ describe FixedCardList do
   describe "slash separator, as the CLI spells it" do
     let(:text) { "2x mrd/2" }
     it do
-      names.should eq ["Arrest", "Arrest"]
+      names.should eq [["Arrest", 2]]
       list.warnings.should eq []
     end
   end
@@ -31,7 +32,7 @@ describe FixedCardList do
   describe "case and spacing" do
     let(:text) { "  2 X MRD : 3  " }
     it do
-      names.should eq ["Auriok Bladewarden", "Auriok Bladewarden"]
+      names.should eq [["Auriok Bladewarden", 2]]
       list.warnings.should eq []
     end
   end
@@ -39,8 +40,8 @@ describe FixedCardList do
   describe "collector numbers which aren't just digits" do
     let(:text) { "arn:2†" }
     it do
-      names.should eq ["Army of Allah"]
-      list.cards.map(&:number).should eq ["2†"]
+      names.should eq [["Army of Allah", 1]]
+      list.cards.keys.map(&:number).should eq ["2†"]
       list.warnings.should eq []
     end
   end
@@ -48,7 +49,7 @@ describe FixedCardList do
   describe "foil" do
     let(:text) { "mrd:1:foil\nmrd:1\n" }
     it do
-      list.cards.map(&:foil).should eq [true, false]
+      list.cards.keys.map(&:foil).should eq [true, false]
       list.warnings.should eq []
     end
   end
@@ -56,7 +57,7 @@ describe FixedCardList do
   describe "blank lines are skipped" do
     let(:text) { "\n\nmrd:1\n   \n" }
     it do
-      names.should eq ["Altar's Light"]
+      names.should eq [["Altar's Light", 1]]
       list.warnings.should eq []
     end
   end
@@ -64,7 +65,7 @@ describe FixedCardList do
   describe "no text at all" do
     let(:text) { nil }
     it do
-      list.cards.should eq []
+      list.cards.should eq({})
       list.warnings.should eq []
     end
   end
@@ -73,7 +74,7 @@ describe FixedCardList do
   describe "bad lines are reported, good ones still open" do
     let(:text) { "mrd:1\nwhatever\nlolwtf:1\nmrd:9999\narn:3\n" }
     it do
-      names.should eq ["Altar's Light", "Camel"]
+      names.should eq [["Altar's Light", 1], ["Camel", 1]]
       list.warnings.should eq [
         "Invalid line: whatever",
         "Cannot find set with code: lolwtf for line: lolwtf:1",
@@ -88,7 +89,7 @@ describe FixedCardList do
     describe "a count past the cap" do
       let(:text) { "#{FixedCardList::MAX_CARDS + 1}x mrd:1" }
       it do
-        list.cards.size.should eq FixedCardList::MAX_CARDS
+        list.size.should eq FixedCardList::MAX_CARDS
         list.warnings.should eq ["At most #{FixedCardList::MAX_CARDS} fixed cards, ignoring the rest"]
       end
     end
@@ -97,7 +98,7 @@ describe FixedCardList do
     describe "an absurd count" do
       let(:text) { "#{"9" * 47}x mrd:1" }
       it do
-        list.cards.size.should eq FixedCardList::MAX_CARDS
+        list.size.should eq FixedCardList::MAX_CARDS
       end
     end
 
@@ -105,7 +106,7 @@ describe FixedCardList do
     describe "more lines than the cap" do
       let(:text) { "mrd:1\n" * (FixedCardList::MAX_CARDS + 1) }
       it do
-        list.cards.size.should eq FixedCardList::MAX_CARDS
+        list.size.should eq FixedCardList::MAX_CARDS
         list.warnings.should eq ["At most #{FixedCardList::MAX_CARDS} fixed cards, ignoring the rest"]
       end
     end
@@ -113,7 +114,7 @@ describe FixedCardList do
     describe "a count right at the cap" do
       let(:text) { "#{FixedCardList::MAX_CARDS}x mrd:1" }
       it do
-        list.cards.size.should eq FixedCardList::MAX_CARDS
+        list.size.should eq FixedCardList::MAX_CARDS
         list.warnings.should eq []
       end
     end
@@ -126,8 +127,8 @@ describe FixedCardList do
     it "round-trips through the parser" do
       FixedCardList.line_for(card).should eq "1x mrd:1"
       FixedCardList.line_for(foil_card).should eq "1x mrd:1:foil"
-      FixedCardList.new(db, FixedCardList.line_for(card)).cards.should eq [card]
-      FixedCardList.new(db, FixedCardList.line_for(foil_card)).cards.should eq [foil_card]
+      FixedCardList.new(db, FixedCardList.line_for(card)).cards.should eq({card => 1})
+      FixedCardList.new(db, FixedCardList.line_for(foil_card)).cards.should eq({foil_card => 1})
     end
   end
 end

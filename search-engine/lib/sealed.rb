@@ -11,7 +11,7 @@ class Sealed
 
   def initialize(db, *pack_descriptors)
     @db = db
-    @fixed = []
+    @fixed = Hash.new(0)
     @packs = []
     pack_descriptors.each do |descriptor|
       count = 1
@@ -38,14 +38,16 @@ class Sealed
     set = @db.sets[set_code.downcase] or raise "Can't find set #{set_code}"
     card = set.printings.find{|c| c.number.downcase == number.downcase} or raise "Can't find card #{set_code}/#{number}"
     physical_card = PhysicalCard.for(card, foil: foil == "foil")
-    count.times{ @fixed << physical_card }
+    @fixed[physical_card] += count
   end
 
+  # The pool as a multiset of PhysicalCard => count. Both callers count the
+  # cards back up, and a pool is mostly the same handful of commons over again.
   def call
     cards = @fixed.dup
     @packs.each do |count, pack|
       count.times do
-        cards.push *pack.open
+        pack.open.each{|card| cards[card] += 1}
       end
     end
     cards

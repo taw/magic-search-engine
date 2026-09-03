@@ -36,7 +36,7 @@ class OpenPacksJSON
   def open_some_packs
     cards = sealed.call
 
-    data = cards.tally.map{|card, count|
+    data = cards.map{|card, count|
       {
         name: card.name,
         set: card.set_code,

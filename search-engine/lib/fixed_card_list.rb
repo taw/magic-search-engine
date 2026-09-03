@@ -11,14 +11,18 @@ class FixedCardList
   # the server's memory
   MAX_CARDS = 1000
 
-  attr_reader :cards, :warnings
+  # `cards` is a multiset of PhysicalCard => count. A pool holds the same card
+  # over and over, and every caller counts it back up, so the count is the
+  # thing to carry around. `size` is the total, duplicates included.
+  attr_reader :cards, :size, :warnings
 
   def initialize(db, text)
     @db = db
-    @cards = []
+    @cards = Hash.new(0)
+    @size = 0
     @warnings = []
     (text || "").lines.grep(/\S/).map(&:strip).each do |line|
-      if @cards.size >= MAX_CARDS
+      if @size >= MAX_CARDS
         truncated!
         break
       end
@@ -60,11 +64,12 @@ class FixedCardList
     end
 
     card = PhysicalCard.for(printing, foil: foil == "foil")
-    if count > MAX_CARDS - @cards.size
-      count = MAX_CARDS - @cards.size
+    if count > MAX_CARDS - @size
+      count = MAX_CARDS - @size
       truncated!
     end
-    count.times{ @cards << card }
+    @cards[card] += count
+    @size += count
   end
 
   # One warning however many lines were cut, as they were all cut for the
