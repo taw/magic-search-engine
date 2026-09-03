@@ -31,6 +31,12 @@ describe Sealed do
     )
   end
 
+  it "adds an etched card" do
+    pool("2x mrd/1/etched").map{|card, count| [card.name, card.finish, count]}.should eq(
+      [["Altar's Light", :etched, 2]]
+    )
+  end
+
   # The whole reason the count needs a separator: without one this is either
   # two copies of card 100 of set `2`, or one copy of 2X2's card 100
   it "reads a set code that starts with a digit as a set code" do
@@ -64,6 +70,10 @@ describe Sealed do
   it "rejects a count with no separator" do
     proc{ size("6xm10") }.should raise_error(/No pack for 6xm10/)
     proc{ size("2xmrd/1") }.should raise_error(/Can't find set 2xmrd/)
+  end
+
+  it "rejects a finish it does not know" do
+    proc{ size("mrd/1/shiny") }.should raise_error(/Unknown finish shiny/)
   end
 
   it "rejects things it cannot open" do

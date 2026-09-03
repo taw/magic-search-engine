@@ -238,7 +238,7 @@ RSpec.describe ApplicationHelper, type: :helper do
     # The link writes the promos out, the simulator reads them back in
     it "writes promos in the format the simulator parses" do
       fixed = Rack::Utils.parse_nested_query(helper.sealed_simulator_url(pool).split("?", 2).last)["fixed"]
-      expect(FixedCardList.new($CardDatabase, fixed).cards).to eq pool.promo_cards
+      expect(FixedCardList.new($CardDatabase, fixed).cards).to eq pool.promo_cards.tally
     end
 
     it "has no fixed cards for a pool without promos" do

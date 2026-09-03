@@ -60,11 +60,14 @@ class SealedController < ApplicationController
           card.name,
           card.set_code,
           card.number_sort_index,
-          card.foil ? 0 : 1,
+          # Premium finishes first, etched before foil, nonfoil last
+          -PhysicalCard::FINISHES.index(card.finish),
         ]
       }.to_h
+      # Our own decklist format, the one DeckExporter::Text writes and
+      # DeckParser reads back, down to etched carrying the foil tag too
       @deck = @cards.map{|card, count|
-        "#{count} #{card.name} [#{card.set_code.upcase}:#{card.number}]#{ card.foil ? ' [foil]' : ''}\n"
+        "#{count} #{card.name} [#{card.set_code.upcase}:#{card.number}]#{card.foil ? " [foil]" : ""}#{card.etched ? " [etched]" : ""}\n"
       }.join
     end
 

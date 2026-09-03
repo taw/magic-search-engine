@@ -23,6 +23,7 @@ class OpenPacks
           #{$0} "36 m10"
           #{$0} "36x mh1" mh1/255
           #{$0} "36x m19" "2x m19/306/foil"
+          #{$0} "10x cmr-collector" cmr/559/etched
           #{$0} "10x iko-collector"
           #{$0} "2x som" "2x mbs" "2x nph"
 
@@ -64,19 +65,21 @@ class OpenPacks
 
   def open_some_packs
     cards = sealed.call
-    # There could be multiple basic arts etc., ignore everything except foil flag
+    # There could be multiple basic arts etc., ignore everything except the finish
     cards_with_counts = cards
-      .each_with_object(Hash.new(0)){|(card, count), counts| counts[[card.name, card.foil]] += count}
-      .sort_by{|(n,f),v| [n,f ? 1 : 0]}
+      .each_with_object(Hash.new(0)){|(card, count), counts| counts[[card.name, card.finish]] += count}
+      .sort_by{|(name, finish), _| [name, PhysicalCard::FINISHES.index(finish)]}
     count_width = cards_with_counts.map(&:last).map(&:to_s).map(&:size).max
-    cards_with_counts.each do |(name, foil), count|
-      foil_indicator = foil ? " [foil]" : ""
+    cards_with_counts.each do |(name, finish), count|
+      # A human listing, so the finish is named once - etched is a foiling, but
+      # saying "foil etched" here would only be noise
+      finish_indicator = finish == :nonfoil ? "" : " [#{finish}]"
       if count == 1
         count_indicator =  " " * (count_width+1)
       else
         count_indicator =  "%#{count_width}dx" % count
       end
-      puts "#{count_indicator} #{name}#{foil_indicator}"
+      puts "#{count_indicator} #{name}#{finish_indicator}"
     end
   end
 

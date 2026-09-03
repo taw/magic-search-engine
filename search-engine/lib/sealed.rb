@@ -1,5 +1,7 @@
+require_relative "physical_card"
+
 # Each descriptor is a pack (`mh1`, `iko-collector`) or a single card
-# (`mh1/255`, `m19/306/foil`), optionally prefixed by a count.
+# (`mh1/255`, `m19/306/foil`, `cmr/559/etched`), optionally prefixed by a count.
 #
 # The count must be followed by a space - `36x mh1` or `36 mh1`, not `36xmh1`,
 # so it needs quoting in the shell. Without the separator the prefix is
@@ -8,6 +10,10 @@
 # and only the second names a set that exists.
 class Sealed
   COUNT_PREFIX = %r[\A(\d+)\s*x?\s+(.*)\z]m
+
+  # Finishes are spelled out, the way PhysicalCard names them. A descriptor
+  # which names none is a plain card, which is most of them.
+  FINISHES = PhysicalCard::FINISHES.to_h{|finish| [finish.to_s, finish]}.freeze
 
   def initialize(db, *pack_descriptors)
     @db = db
@@ -34,10 +40,12 @@ class Sealed
   end
 
   def add_card(count, description)
-    set_code, number, foil = description.split("/", 3)
+    set_code, number, finish_text = description.split("/", 3)
+    finish = FINISHES[finish_text.to_s.empty? ? "nonfoil" : finish_text.downcase]
+    raise "Unknown finish #{finish_text}, known finishes are: #{FINISHES.keys.join(", ")}" unless finish
     set = @db.sets[set_code.downcase] or raise "Can't find set #{set_code}"
     card = set.printings.find{|c| c.number.downcase == number.downcase} or raise "Can't find card #{set_code}/#{number}"
-    physical_card = PhysicalCard.for(card, foil: foil == "foil")
+    physical_card = PhysicalCard.for(card, finish: finish)
     @fixed[physical_card] += count
   end
 

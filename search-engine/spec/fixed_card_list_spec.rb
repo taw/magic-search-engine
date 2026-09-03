@@ -46,11 +46,20 @@ describe FixedCardList do
     end
   end
 
-  describe "foil" do
-    let(:text) { "mrd:1:foil\nmrd:1\n" }
+  describe "finishes" do
+    let(:text) { "mrd:1:etched\nmrd:1:foil\nmrd:1\n" }
     it do
-      list.cards.keys.map(&:foil).should eq [true, false]
+      list.cards.keys.map(&:finish).should eq [:etched, :foil, :nonfoil]
       list.warnings.should eq []
+    end
+  end
+
+  # The box is hand-edited, so a finish nobody has heard of is one bad line
+  describe "a finish we don't know" do
+    let(:text) { "mrd:1:shiny\nmrd:2\n" }
+    it do
+      names.should eq [["Arrest", 1]]
+      list.warnings.should eq ["Unknown finish: shiny for line: mrd:1:shiny"]
     end
   end
 
@@ -123,12 +132,15 @@ describe FixedCardList do
   describe ".line_for" do
     let(:card) { physical_card("e:mrd number:1") }
     let(:foil_card) { physical_card("e:mrd number:1", true) }
+    let(:etched_card) { PhysicalCard.for(card.main_front, finish: :etched) }
 
     it "round-trips through the parser" do
       FixedCardList.line_for(card).should eq "1x mrd:1"
       FixedCardList.line_for(foil_card).should eq "1x mrd:1:foil"
+      FixedCardList.line_for(etched_card).should eq "1x mrd:1:etched"
       FixedCardList.new(db, FixedCardList.line_for(card)).cards.should eq({card => 1})
       FixedCardList.new(db, FixedCardList.line_for(foil_card)).cards.should eq({foil_card => 1})
+      FixedCardList.new(db, FixedCardList.line_for(etched_card)).cards.should eq({etched_card => 1})
     end
   end
 end
