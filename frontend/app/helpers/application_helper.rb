@@ -205,12 +205,27 @@ module ApplicationHelper
       end
   end
 
+  # Saga chapter abilities are lines like "I — ...", "I, II — ...".
+  # Must run while the text still has newlines, as ^ anchors to them.
+  SAGA_CHAPTERS = {"I" => 1, "II" => 2, "III" => 3, "IV" => 4, "V" => 5, "VI" => 6}
+  SAGA_CHAPTER_RX = /^(#{Regexp.union(SAGA_CHAPTERS.keys)}(?:, #{Regexp.union(SAGA_CHAPTERS.keys)})*) — /
+
+  def replace_saga_chapter_symbols(chapters)
+    chapters.split(", ").map{|chapter|
+      %[<i class="mana mana-saga mana-saga-#{SAGA_CHAPTERS[chapter]}"></i>]
+    }.join +
+    %[<span class="sr-only">#{chapters}</span> — ]
+  end
+
   def format_oracle_text(card_text)
     h(card_text || "")
       .gsub(/\A\n+/, "")
       .gsub("&#39;", "'") # regex doesn't work if we escape here, and later we have legit html in the output already
       .gsub(AbilityWord::ABILITY_WORD_RX) do |m|
         "<i class='ability_word'>#{$1}</i> —"
+      end
+      .gsub(SAGA_CHAPTER_RX) do
+        replace_saga_chapter_symbols($1)
       end
       .gsub("\n", "<br/>")
       .gsub(/(?:\{.*?\})+/) do

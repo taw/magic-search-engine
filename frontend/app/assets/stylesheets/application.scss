@@ -440,12 +440,21 @@ form.search {
 h3 .manacost {
   font-size: 19.6px;
 }
+// Upstream sizes the loyalty and defense badges at 1.5em but leaves saga at 1em,
+// which makes the chapter numerals unreadable next to the rest of the oracle text.
+.mana-saga {
+  font-size: 1.5em;
+  + .mana-saga {
+    margin-left: 0.1em;
+  }
+}
 @media (prefers-color-scheme: dark) {
   .mana-loyalty-up,
   .mana-loyalty-down,
   .mana-loyalty-zero,
   .mana-loyalty-start,
-  .mana-defense {
+  .mana-defense,
+  .mana-saga {
     color: #505050;
   }
 }
