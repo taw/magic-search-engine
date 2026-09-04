@@ -47,7 +47,9 @@
   %div
     %span.infolabel
       Defense:
-    = card.defense
+    %i{"class" => "mana mana-defense mana-defense-#{card.defense}"}
+    .sr-only
+      = card.defense
 
 - if card.attraction_lights
   %div
