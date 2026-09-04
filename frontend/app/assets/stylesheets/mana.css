@@ -5,6 +5,7 @@
   * renamed tap -> t
   * renamed untap -> q
   * renamed paw -> p
+  * renamed acorn -> a
   * renamed infinity -> ∞
   * added loyalty-n (for comprehensive rules)
   * (maybe these changes should be in application helper instead of manually applied)
@@ -152,7 +153,7 @@
 .mana-e::before, .mana-energy::before {
   content: "\e907";
 }
-.mana-acorn::before {
+.mana-a::before {
   content: "\e929";
 }
 .mana-ticket::before, .mana-tk::before {

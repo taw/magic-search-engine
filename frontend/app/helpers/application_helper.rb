@@ -428,7 +428,8 @@ module ApplicationHelper
       "chaos", "pw",
       "hw", "hr",
       "wup", "wbp", "rwp", "gwp", "ubp", "urp", "gup", "brp", "bgp", "rgp",
-      "tk",
+      "tk", "a",
+      "l", "d",
     ]
   end
 end
