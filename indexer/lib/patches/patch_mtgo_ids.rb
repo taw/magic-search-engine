@@ -140,10 +140,9 @@ class PatchMtgoIds < Patch
     end
   end
 
-  # One row per printing in the client's catalog, in the client's own terms
-  def client_rows
-    @client_rows ||= CSV.read(csv_path, headers: true)
-      .select{|row| row["Type"] == CARD_TYPE and row["Sub Card"].to_s.empty?}
+  # Every row in the client's catalog, in the client's own terms
+  def all_rows
+    @all_rows ||= CSV.read(csv_path, headers: true)
       .map{|row| {
         id: row["Id"],
         mtgo_set: row["Set"],
@@ -152,7 +151,17 @@ class PatchMtgoIds < Patch
         printed_name: row["Name"],
         number: normalize_number(row["Number"]),
         foil_id: presence(row["Foil Id"]),
+        whole_card: row["Type"] == CARD_TYPE && row["Sub Card"].to_s.empty?,
       }}
+  end
+
+  def rows_by_id
+    @rows_by_id ||= all_rows.to_h{|row| [row[:id], row] }
+  end
+
+  # One row per printing a deck can name, which is what gets matched
+  def client_rows
+    @client_rows ||= all_rows.select{|row| row[:whole_card] }
   end
 
   # {our set code => {name => [row, ...]}}. An MTGO set that holds cards from
@@ -419,22 +428,23 @@ class PatchMtgoIds < Patch
     name.sub(/\Aavatar - (.*?)(?: \(alt\.\))?\z/) { "#{$1} avatar" }
   end
 
-  # mtgjson's id, unless the client says that id is some other card. mtgjson
-  # matches by collector number, and where the client numbers a set its own
-  # way that is a coincidence and not a match: all fifteen of dpa's are
-  # another card that happens to carry our number, dpa/3 Cancel taking 34047
-  # where the client says 34047 is Angelic Blessing at 3/383. What survives is
-  # the ids we cannot contradict - premium objects, which have no CARD row of
-  # their own, and cards the client files somewhere we did not look.
+  # mtgjson's id, unless the client's own catalog contradicts it. Two ways it
+  # does. The id can be some other card: mtgjson matches by collector number,
+  # and where the client numbers a set its own way that is a coincidence and
+  # not a match, so all fifteen of dpa's were another card carrying our number
+  # (dpa/3 Cancel took 34047, which the client calls Angelic Blessing at
+  # 3/383). Or the id can be no whole card at all: pip's surge foil James,
+  # Wandering Dad took 132311, which is the SUBC row for the Follow Him half,
+  # and a .dek can no more name that than it can name a token.
+  #
+  # What survives is the ids we cannot contradict - premium objects, which
+  # have no row of their own, only a Foil Id - and cards the client files
+  # somewhere we did not look.
   def mtgjson_id(card)
     id = card.dig("identifiers", "mtgoId") or return
-    row = client_rows_by_id[id]
-    return if row and !name_candidates(card).include?(row[:name])
+    row = rows_by_id[id] or return id
+    return unless row[:whole_card] and name_candidates(card).include?(row[:name])
     id
-  end
-
-  def client_rows_by_id
-    @client_rows_by_id ||= client_rows.to_h{|row| [row[:id], row] }
   end
 
   def mtgjson_foil_id(card)
