@@ -26,7 +26,10 @@ require "csv"
 # through rather than derived.
 class PatchMtgoIds < Patch
   # Only CARD rows are cards a deck can name. SUBC is one face of a card the
-  # client also lists as a CARD, TOKN is a token, PLAD a helper card.
+  # client also lists as a CARD, TOKN is a token, PLAD a helper card. Four
+  # rows are typed CARD and flagged as a sub card all the same - the back
+  # faces of dka/125, inr/212, inr/468 and mom/72 - and a back face is a back
+  # face however it is typed.
   CARD_TYPE = "CARD"
 
   # How well an id is attested, best first. Two printings that both want one
@@ -44,6 +47,32 @@ class PatchMtgoIds < Patch
   AT_HOME = 0
   BY_PRINTED_SET = 1
 
+  # The rows the client files under a set of its own choosing, or numbers its
+  # own way, as {client set => {client number => [our set code, our number]}}.
+  # A row in here goes to that printing and nowhere else.
+  REMAPPED_CARDS = {
+    # Reversible cards are one piece of cardboard with the same card printed
+    # on both sides. We number the two sides 21a and 21b; MTGO has an object
+    # per side and no notion of a side, so it numbers them 21 and 22 and
+    # carries on, and its REX runs to 32 where ours runs to 26.
+    "REX" => {
+      "21" => ["rex", "21a"], "22" => ["rex", "21b"],  # Plains
+      "23" => ["rex", "22a"], "24" => ["rex", "22b"],  # Island
+      "25" => ["rex", "23a"], "26" => ["rex", "23b"],  # Swamp
+      "27" => ["rex", "24a"], "28" => ["rex", "24b"],  # Mountain
+      "29" => ["rex", "25a"], "30" => ["rex", "25b"],  # Forest
+      "31" => ["rex", "26a"], "32" => ["rex", "26b"],  # Command Tower
+    },
+    # The client's UMA holds the Ultimate Box Toppers, which are puma to us,
+    # and pads their numbers to two digits
+    "UMA" => (1..40).to_h{|n| ["U%02d" % n, ["puma", "U#{n}"]] },
+    # mtgjson has om1 Supportive Parents twice, and the one MTGO has is the
+    # dagger one - see PatchMtgjsonBugs, which takes the other off MTGO. The
+    # remap is still needed: the two of them are both named Supportive
+    # Parents, so nothing but the number could pick the right one.
+    "OM1" => {"117" => ["om1", "117†"]},
+  }
+
   def call
     build_face_index
     build_name_index
@@ -51,6 +80,7 @@ class PatchMtgoIds < Patch
     @paper_only_ids = Set[]
     @contested = Hash.new(0)
     @matched = Set[]
+    @matched_cards = Set[]
     @matched_printings = 0
 
     assign(proposals)
@@ -105,6 +135,7 @@ class PatchMtgoIds < Patch
       else
         @matched << id
         @matched_printings += 1
+        @matched_cards << printing_key(card)
       end
     end
   end
@@ -112,7 +143,7 @@ class PatchMtgoIds < Patch
   # One row per printing in the client's catalog, in the client's own terms
   def client_rows
     @client_rows ||= CSV.read(csv_path, headers: true)
-      .select{|row| row["Type"] == CARD_TYPE}
+      .select{|row| row["Type"] == CARD_TYPE and row["Sub Card"].to_s.empty?}
       .map{|row| {
         id: row["Id"],
         mtgo_set: row["Set"],
@@ -144,7 +175,20 @@ class PatchMtgoIds < Patch
   # under ONE and printed in KHM, and it is khm/406 to us. Both are tried, and
   # a printing in the bucket beats one in the printed set when they collide.
   def target_set_codes(row)
+    set_code, _number = remapped(row)
+    return [set_code] if set_code
     our_set_codes.fetch(row[:mtgo_set], []) | our_set_codes.fetch(row[:printed_set], [])
+  end
+
+  # [our set code, our number] for a row we have written down, else nil
+  def remapped(row)
+    REMAPPED_CARDS.dig(row[:mtgo_set], row[:number]) || []
+  end
+
+  # A row's number in the terms of the set of ours it is being offered to
+  def our_number(row, set_code)
+    remapped_set, number = remapped(row)
+    remapped_set == set_code ? number : row[:number]
   end
 
   # {MTGO set code => [our set code, ...]}, most of them one to one. mtgjson
@@ -265,7 +309,7 @@ class PatchMtgoIds < Patch
   # the row is about.
   def disambiguate(candidates, card)
     number_candidates(card).each do |number|
-      matching = candidates.select{|row| row[:number] == number }
+      matching = candidates.select{|row| our_number(row, card["set_code"]) == number }
       return [BY_NUMBER, matching.first] if matching.size == 1
     end
 
@@ -312,13 +356,24 @@ class PatchMtgoIds < Patch
     cards.map{|card| base_number(card) }.uniq.size == 1
   end
 
-  # Could a row have produced an id whichever of our printings it picked? If
-  # every printing it could be about is one we do not call game:mtgo, no, and
-  # failing to choose between them cost nothing.
+  # Could a row have produced an id whichever of our printings it picked? Only
+  # if one of them is still waiting for one. A printing we do not call
+  # game:mtgo was never going to take an id; one that already took a client id
+  # has the object it asked for, and this one is MTGO having more objects for
+  # a card than we have printings of it, which is nothing we can act on. A
+  # printing that only fell back to mtgjson does still count, because a row
+  # that could be it is a row that could have been matched properly.
   def could_have_mattered?(row)
     target_set_codes(row).any? do |set_code|
-      @cards_by_name.dig(set_code, row[:name])&.any?{|card| card["mtgo"] }
+      @cards_by_name.dig(set_code, row[:name])&.any? do |card|
+        card["mtgo"] and not @matched_cards.include?(printing_key(card))
+      end
     end
+  end
+
+  # A printing, which is a collector number in a set
+  def printing_key(card)
+    [card["set_code"], card["number"]]
   end
 
   # {set code => {name => [card, ...]}} - our own printings under every name a

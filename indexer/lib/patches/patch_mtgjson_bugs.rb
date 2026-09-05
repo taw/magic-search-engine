@@ -38,6 +38,8 @@ class PatchMtgjsonBugs < Patch
     "if you already have it.)".freeze
 
   def call
+    fix_meld_availability
+
     each_printing do |card|
       set_code = card["setCode"]
 
@@ -51,6 +53,15 @@ class PatchMtgjsonBugs < Patch
 
       if INHERENTLY_BIG_LAYOUTS.include?(card["layout"])
         card.delete("isOversized")
+      end
+
+      # OM1 is MTGO only, and mtgjson lists Supportive Parents in it twice, at
+      # 117 and at 117†. Only the dagger one is the printing MTGO has - its
+      # art gives one of the two women a fish tail, which is why Scryfall
+      # calls it "Fishy Supportive Parents" - so 117 is on no platform at all.
+      # Reported to mtgjson, no sign of a fix.
+      if set_code == "OM1" and card["number"] == "117"
+        card["availability"] = []
       end
 
       # MBC is a paper set, but a few cards are marked as arena-only
@@ -96,6 +107,31 @@ class PatchMtgjsonBugs < Patch
           warn "Rulings for #{card["name"]} in #{card["set"]["name"]} not in order"
         end
       end
+    end
+  end
+
+  private
+
+  # You can only meld where you have both halves, so a melded card is on every
+  # platform its halves have in common. mtgjson says so everywhere except INR,
+  # where all three melds are paper only while every half of all three is
+  # mtgo+paper, so `game:mtgo inr Brisela` found nothing.
+  #
+  # A half is the `side: "a"` card, which mtgjson names "<half> // <melded>"
+  # and PatchCardNames has already split into `names` by the time we get here;
+  # the melded card is the `side: "b"` one, named after itself, in the same set.
+  def fix_meld_availability
+    halves = Hash.new{|hash, key| hash[key] = [] }
+    each_printing do |card|
+      next unless card["layout"] == "meld" and card["side"] == "a"
+      melded = card["names"].to_a.last or next
+      halves[[card["setCode"], melded]] << card["availability"].to_a
+    end
+
+    each_printing do |card|
+      next unless card["layout"] == "meld" and card["side"] == "b"
+      shared = halves[[card["setCode"], card["name"]]].inject(:&) or next
+      card["availability"] = card["availability"].to_a | shared
     end
   end
 end
