@@ -28,14 +28,22 @@
 #     UNF being in Historic's puts every conjure-only card in the game in the
 #     format. Each side's extras are sorted into the ones the other side
 #     explains - a printing that only ever shipped in a cube or starter-deck
-#     drop, a set Arena leaves out of one format's legalSets and not another's -
-#     and the rest are differences like any other. --pool names the cards behind
-#     the explained ones.
+#     drop, a printing Arena has never distributed at all, a card Arena
+#     suppresses, a set Arena leaves out of one format's legalSets and not
+#     another's - and the rest are differences like any other. --pool names the
+#     cards behind the explained ones.
 #
-# Arena says "suspended" where we say banned, states Timeless's restricted list
-# as a per-card deck quota, and has no name at all for conjure-only or
-# specialize-only cards - it keeps those out of decks without a B&R entry. All
-# three are folded in below rather than reported as differences.
+# Arena says "suspended" where we say banned, "suppressed" for a card it keeps
+# out of a format with no B&R entry at all, states Timeless's restricted list as
+# a per-card deck quota, and has no name for conjure-only or specialize-only
+# cards. All of those are folded in below rather than reported as differences.
+#
+# Arena's table is a poor witness to what Arena actually distributed: its card
+# database carries printings no player can obtain, in the legalSets of formats
+# whose ban lists never name them. Those are listed in UNDISTRIBUTED_PRINTINGS
+# with what it took to establish each one, because nothing in Arena's own data
+# marks them. Adding "arena" to such a printing's mtgjson availability to quiet
+# this report would be backwards - mtgjson is the side that has it right.
 
 require_relative "../search-engine/lib/card_database"
 require "csv"
@@ -80,6 +88,26 @@ class ReportArenaLegalityDifferences
   # either "banned" or nothing, and both agree with us.
   UNPLAYABLE_STATUSES = Set["conjurable", "specialized"]
 
+  # Printings Arena's card database has and Arena never put in anyone's hands. A
+  # card object is what it takes to draw a card, not what it takes to own one,
+  # and nothing in the client data tells the two apart: the Cards row matches its
+  # neighbours' in all 58 columns bar art and rules text, AltToBasePrintings says
+  # nothing, and the art ships in the manifest like anything else.
+  #
+  # What settles Sol Ring is outside the client. The ranked Brawl queue
+  # suppresses it and no other card in any of Arena's 142 formats, and it has no
+  # recorded game in either Brawl queue across four meta periods and some two
+  # million games, while the twelve cards printed beside it in the same TLE slot
+  # have tens of thousands each. mtgjson leaving "arena" off that printing's
+  # availability is right, and this is the report agreeing with it rather than
+  # reporting it in three formats every run.
+  #
+  # Set code and collector number, so that a printing Arena does hand out later
+  # is a difference again instead of something this quietly swallows.
+  UNDISTRIBUTED_PRINTINGS = Set[
+    ["TLE", "316"], # Sol Ring
+  ]
+
   def initialize(formats, pool:)
     @formats = formats.map(&:downcase)
     @pool = pool
@@ -99,6 +127,12 @@ class ReportArenaLegalityDifferences
   # Every card Arena's table says something about, as name => status, plus the
   # pool the statuses apply to. Arena's ban list is stated on the best-of-three
   # queue where there is one, so the extra best-of-one bans never get here.
+  #
+  # Suppression is not a status. Where Arena suppresses a card it also bans,
+  # which is every case in the lists these formats are read from bar one, the
+  # suppression is how the client enforces the ban and says nothing the ban
+  # doesn't. On its own it says the card is not in the format at all, which is a
+  # statement about the pool - see suppressed_names.
   def arena_statuses(format)
     statuses = {}
     format["banned"].each{|name| statuses[our_name(name)] = ARENA_BANNED }
@@ -126,6 +160,7 @@ class ReportArenaLegalityDifferences
     pool = {}
     arena_cards.each do |card|
       next unless sets.include?(card["ExpansionCode"])
+      next if UNDISTRIBUTED_PRINTINGS.include?([card["ExpansionCode"], card["CollectorNumber"]])
       # A card with a live rebalance is played as one version or the other,
       # never both. Reverted rebalances (DefunctRebalancedCardGrpId) leave both
       # playable and aren't linked this way, so they never reach here.
@@ -136,6 +171,14 @@ class ReportArenaLegalityDifferences
     # its own behind it.
     format["allowed"].each{|name| pool[our_name(name)] ||= [] }
     pool
+  end
+
+  # The cards a format suppresses without banning. Arena has no word for "not in
+  # this format" - a card it never distributed, or one it takes out of a format
+  # quietly - so a suppression with no ban entry beside it is the whole of what
+  # it says, and it says the same as our "not in format".
+  def suppressed_names(format)
+    (format["supressed"] - format["banned"]).map{|name| our_name(name) }.to_set
   end
 
   # Every printing Arena has, by our name for it. arena_pool answers "does this
@@ -233,10 +276,18 @@ class ReportArenaLegalityDifferences
   # plays, which they always do.
   def compare_pools(format, arena_format, their_pool, differences, notes)
     ours = our_pool(format)
+    # A card Arena suppresses without banning is one its legalSets cover and it
+    # keeps out anyway, so it is not in the pool however many of the format's
+    # sets it appears in.
+    suppressed = suppressed_names(arena_format)
+    their_pool = their_pool.reject{|name, _| suppressed.include?(name) }
     only_ours = ours - their_pool.keys
     only_theirs = their_pool.keys.to_set - ours
     drop_only, drops = arena_extras_from_drops(their_pool, only_theirs)
-    unlisted, unlisted_sets = our_extras_from_unlisted_sets(arena_format, only_ours)
+    # A suppressed card we do play is Arena disagreeing about the card, so it
+    # has to stay a difference rather than be explained away as a set Arena
+    # leaves out - it doesn't leave the set out, it names the card.
+    unlisted, unlisted_sets = our_extras_from_unlisted_sets(arena_format, only_ours - suppressed)
 
     (only_theirs - drop_only).sort.each do |name|
       sets = their_pool[name].map{|card| card["ExpansionCode"] }.uniq.sort
@@ -244,7 +295,8 @@ class ReportArenaLegalityDifferences
         our_pool_status(format, name)]
     end
     (only_ours - unlisted).sort.each do |name|
-      differences << [name, "no card of that name", our_pool_status(format, name)]
+      differences << [name, suppressed.include?(name) ? "suppressed" : "no card of that name",
+        our_pool_status(format, name)]
     end
 
     notes << "pool: #{ours.size} cards for us, #{their_pool.size} for Arena"
@@ -337,15 +389,23 @@ class ReportArenaLegalityDifferences
       "in Arena's lists name no card Arena still has"
   end
 
-  # The best-of-one queues ban cards that are only a problem when there's no
-  # sideboard and no second game. We model the format, not the queue.
+  # The best-of-one queues keep out cards that are only a problem when there's no
+  # sideboard and no second game. We model the format, not the queue. Suppression
+  # counts here as much as a ban does: Timeless's best-of-one queue states its
+  # whole extra list that way, and a card kept out of a queue is kept out of it
+  # whichever list names it.
   def note_best_of_one_bans(bo1_name, bo3_name, notes)
     return unless bo3_name
     bo1, bo3 = [bo1_name, bo3_name].map{|name| arena_format(name) }
-    only_bo1 = (bo1["banned"] | bo1["suspended"]) - (bo3["banned"] | bo3["suspended"])
+    only_bo1 = kept_out_of(bo1) - kept_out_of(bo3)
     return if only_bo1.empty?
-    notes << "ignored, banned in #{bo1_name} but not #{bo3_name}: " \
+    notes << "ignored, kept out of #{bo1_name} but not #{bo3_name}: " \
       "#{only_bo1.map{|name| our_name(name) }.sort.join(", ")}"
+  end
+
+  # Every way Arena's table has of keeping a card out of a queue.
+  def kept_out_of(format)
+    format["banned"] | format["suspended"] | format["supressed"]
   end
 
   # ---- names -----------------------------------------------------------------
