@@ -24,9 +24,10 @@ describe MtgoIds do
   end
 
   it "has no premium id where MTGO never sold a premium copy" do
-    # Duels of the Planeswalkers cards came out of a promo code, not a booster
-    cancel = printing("cancel", "dpa", "3")
-    MtgoIds.lookup([cancel]).should eq(cancel => ["34047", nil])
+    # The Magic Online avatars were never premium, and they carry the lowest
+    # ids in the whole catalog
+    avatar = printing("serra angel avatar", "pmoa", "1")
+    MtgoIds.lookup([avatar]).should eq(avatar => ["9", nil])
   end
 
   it "falls back to the card's first appearance on MTGO" do

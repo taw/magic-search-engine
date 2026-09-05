@@ -752,10 +752,10 @@ describe DeckExporter do
 
     # And then the two finishes are one object, so they are one line again
     it "merges the finishes it could not tell apart" do
-      exported = export("1 Cancel (DPA) 3\n1 Cancel (DPA) 3 *F*\n")
-      cards(exported).should eq([%Q[<Cards CatID="34047" Quantity="2" Sideboard="false" Name="Cancel" />]])
+      exported = export("1 Blightbelly Rat (ONE) 435\n1 Blightbelly Rat (ONE) 435 *F*\n")
+      cards(exported).should eq([%Q[<Cards CatID="105968" Quantity="2" Sideboard="false" Name="Blightbelly Rat" />]])
       exported.warnings.should eq([
-        "Exported as normal cards, as MTGO has no premium copy of them: Cancel",
+        "Exported as normal cards, as MTGO has no premium copy of them: Blightbelly Rat",
       ])
     end
 
@@ -770,9 +770,9 @@ describe DeckExporter do
     end
 
     it "names every card each warning is about" do
-      exported = export("1 Blightbelly Rat (ONE) 435 *F*\n1 Cancel (DPA) 3 *F*\n1 Abundant Harvest (STA) 48 *F* *E*\n1 Adventurous Impulse (STA) 49 *F* *E*\n")
+      exported = export("1 Blightbelly Rat (ONE) 435 *F*\n1 Ambush Commander (EVG) 1 *F*\n1 Abundant Harvest (STA) 48 *F* *E*\n1 Adventurous Impulse (STA) 49 *F* *E*\n")
       exported.warnings.should eq([
-        "Exported as normal cards, as MTGO has no premium copy of them: Blightbelly Rat, Cancel",
+        "Exported as normal cards, as MTGO has no premium copy of them: Ambush Commander, Blightbelly Rat",
         "Exported as foil, as MTGO has no etched finish: Abundant Harvest, Adventurous Impulse",
       ])
     end

@@ -419,8 +419,22 @@ class PatchMtgoIds < Patch
     name.sub(/\Aavatar - (.*?)(?: \(alt\.\))?\z/) { "#{$1} avatar" }
   end
 
+  # mtgjson's id, unless the client says that id is some other card. mtgjson
+  # matches by collector number, and where the client numbers a set its own
+  # way that is a coincidence and not a match: all fifteen of dpa's are
+  # another card that happens to carry our number, dpa/3 Cancel taking 34047
+  # where the client says 34047 is Angelic Blessing at 3/383. What survives is
+  # the ids we cannot contradict - premium objects, which have no CARD row of
+  # their own, and cards the client files somewhere we did not look.
   def mtgjson_id(card)
-    card.dig("identifiers", "mtgoId")
+    id = card.dig("identifiers", "mtgoId") or return
+    row = client_rows_by_id[id]
+    return if row and !name_candidates(card).include?(row[:name])
+    id
+  end
+
+  def client_rows_by_id
+    @client_rows_by_id ||= client_rows.to_h{|row| [row[:id], row] }
   end
 
   def mtgjson_foil_id(card)
