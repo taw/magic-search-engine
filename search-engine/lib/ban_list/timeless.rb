@@ -9,7 +9,10 @@ BanList.for_format("timeless") do
   # Historic has that this doesn't: it files it as conjurable because it's pre-banned
   # there anyway, but it's an ordinary craftable card (STA, FCA, TLE, MSC) here.
   #
-  # Every one of these predates the format, hence the single undated block.
+  # Every one of these predates the format, hence the single undated block. Brawler's
+  # Plate, Soul of New Phyrexia and Thieving Magpie are there for that reason and not
+  # with the dated Alchemy appendices below: YONE, YWOE and YLCI all conjured them before
+  # Timeless existed.
   format_start(
     "Cards which can only be conjured or specialized into, never put in a deck",
     "Alora, Cheerful Assassin" => "specialized",
@@ -24,6 +27,7 @@ BanList.for_format("timeless") do
     "Ambergris, Agent of Tyranny" => "specialized",
     "Ancestral Recall" => "conjurable",
     "Black Lotus" => "conjurable",
+    "Brawler's Plate" => "conjurable",
     "Gale, Abyssal Conduit" => "specialized",
     "Gale, Holy Conduit" => "specialized",
     "Gale, Primeval Conduit" => "specialized",
@@ -106,7 +110,9 @@ BanList.for_format("timeless") do
     "Skanos, Green Dragon Vassal" => "specialized",
     "Skanos, Red Dragon Vassal" => "specialized",
     "Skanos, White Dragon Vassal" => "specialized",
+    "Soul of New Phyrexia" => "conjurable",
     "Stormfront Pegasus" => "conjurable",
+    "Thieving Magpie" => "conjurable",
     "Time Walk" => "conjurable",
     "Timetwister" => "conjurable",
     "Tropical Island" => "conjurable",
@@ -142,6 +148,25 @@ BanList.for_format("timeless") do
     "Tibalt's Trickery" => "restricted",
   )
 
+  # Most Alchemy sets since YBRO end with an appendix of conjure-only cards, numbered
+  # after every normal card in the set. mtgjson only shipped those printings in
+  # 5.3.0+20260901, dated to their original release, so they read as plainly legal here
+  # for years - hence entries backdated into the history rather than appended at the end.
+  #
+  # YDFT
+  change(
+    "2025-03-04",
+    "This card is conjurable only",
+    "Muraganda Petroglyphs" => "conjurable",
+  )
+
+  # YEOE
+  change(
+    "2025-08-19",
+    "This card is conjurable only",
+    "Flametongue Kavu" => "conjurable",
+  )
+
   # Not a ban list change - Arena Anthology 4 printed these four as ordinary cards, so
   # they stopped being conjure-only
   change(
@@ -153,9 +178,26 @@ BanList.for_format("timeless") do
     "Stormfront Pegasus" => "legal",
   )
 
+  # YECL
+  change(
+    "2026-02-03",
+    "These cards are conjurable only",
+    "Blowfly Infestation" => "conjurable",
+    "Rite of Flame" => "conjurable",
+    "Stonybrook Schoolmaster" => "conjurable",
+  )
+
   change(
     "2026-02-09",
     "https://magic.wizards.com/en/news/announcements/banned-and-restricted-february-9-2026",
     "Necropotence" => "restricted",
+  )
+
+  # YSOS
+  change(
+    "2026-05-19",
+    "These cards are conjurable only",
+    "Bridge from Below" => "conjurable",
+    "Storm Crow" => "conjurable",
   )
 end

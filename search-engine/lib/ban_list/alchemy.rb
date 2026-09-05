@@ -144,10 +144,36 @@ BanList.for_format("alchemy") do
     "Mox Sapphire" => "conjurable",
   )
 
+  # Most Alchemy sets since YBRO end with an appendix of conjure-only cards, numbered
+  # after every normal card in the set. mtgjson only shipped those printings in
+  # 5.3.0+20260901, dated to their original release, so they read as plainly legal here
+  # for years - hence entries backdated into the history rather than appended at the end.
+  #
+  # YONE
+  change(
+    "2023-02-28",
+    "This card is conjurable only",
+    "Soul of New Phyrexia" => "conjurable",
+  )
+
   change(
     "2023-07-18",
     "https://magic.wizards.com/en/news/mtg-arena/alchemy-rebalancing-for-july-18-2023",
     "Fable of the Mirror-Breaker" => "banned",
+  )
+
+  # YWOE
+  change(
+    "2023-10-10",
+    "This card is conjurable only",
+    "Brawler's Plate" => "conjurable",
+  )
+
+  # YLCI
+  change(
+    "2023-12-05",
+    "This card is conjurable only",
+    "Thieving Magpie" => "conjurable",
   )
 
   change(
@@ -164,6 +190,13 @@ BanList.for_format("alchemy") do
     "Voracious Greatshark" => "legal"
   )
 
+  # YDFT
+  change(
+    "2025-03-04",
+    "This card is conjurable only",
+    "Muraganda Petroglyphs" => "conjurable",
+  )
+
   change(
     "2025-06-30",
     "https://magic.wizards.com/en/news/announcements/banned-and-restricted-june-30-2025",
@@ -171,9 +204,33 @@ BanList.for_format("alchemy") do
     "Cori-Steel Cutter" => "banned",
   )
 
+  # YEOE
+  change(
+    "2025-08-19",
+    "This card is conjurable only",
+    "Flametongue Kavu" => "conjurable",
+  )
+
+  # YECL
+  change(
+    "2026-02-03",
+    "These cards are conjurable only",
+    "Blowfly Infestation" => "conjurable",
+    "Rite of Flame" => "conjurable",
+    "Stonybrook Schoolmaster" => "conjurable",
+  )
+
   change(
     "2026-05-18",
     "https://magic.wizards.com/en/news/announcements/banned-and-restricted-may-18-2026",
     "Sewer-veillance Cam" => "banned",
+  )
+
+  # YSOS
+  change(
+    "2026-05-19",
+    "These cards are conjurable only",
+    "Bridge from Below" => "conjurable",
+    "Storm Crow" => "conjurable",
   )
 end

@@ -285,12 +285,43 @@ describe "Formats" do
     assert_legality "historic", Date.parse("2023-08-01"), "Lightning Bolt", "conjurable"
   end
 
-  # The sets conjure-only cards are conjured from. A card printed into the format
-  # by anything else is an ordinary card, not a conjurable one.
-  CONJURE_ONLY_SETS = ["hbg", "ydmu", "j21"]
+  # Sets where a collector number can't tell a conjure-only printing from an ordinary
+  # one, so the whole set counts as a source. HBG is the only one: its specialize forms
+  # (5w, 5u, 5b, 5r, 5g and the rest of the nineteen) and its nine Hags (H17-H25) are
+  # numbered inside the main run, not after it.
+  CONJURE_ONLY_SETS = ["hbg"]
 
-  # Cards which are only conjurable, but which some set outside CONJURE_ONLY_SETS also
-  # puts into the format, stop being conjurable - the ban list then says => "legal",
+  # Where the rest put their conjure-only cards, which is after every normal card they
+  # have - J21 stops at 776 and resumes at 777, and an Alchemy set with an appendix keeps
+  # it above its thirty (forty for YEOE). Arena's own card database agrees printing for
+  # printing: IsPrimaryCard is 0 on exactly these and on nothing else numbered below them
+  # bar back faces and split halves, which carry a letter and so never reach a threshold.
+  #
+  # It has to be per printing rather than per set because these sets are otherwise
+  # ordinary - YECL 1-30 is a normal Alchemy release and YECL 31-33 is a spellbook - and
+  # because a card printed into the format by anything else is an ordinary card, not a
+  # conjurable one, however many spellbooks also conjure it.
+  CONJURE_ONLY_FROM = {
+    "j21" => 777,
+    "ydmu" => 31,
+    "ybro" => 31,
+    "yone" => 31,
+    "ywoe" => 31,
+    "ylci" => 31,
+    "ydft" => 31,
+    "yeoe" => 41,
+    "yecl" => 31,
+    "ysos" => 31,
+  }
+
+  def conjure_only?(printing)
+    return true if CONJURE_ONLY_SETS.include?(printing.set_code)
+    first = CONJURE_ONLY_FROM[printing.set_code]
+    !!first and printing.number.to_i >= first
+  end
+
+  # Cards which are only conjurable, but which some ordinary printing also puts into the
+  # format, stop being conjurable - the ban list then says => "legal",
   # like Voracious Greatshark did when FDN reprinted it. This catches the next one.
   #
   # Only Alchemy can be checked this way. Its card pool is the hand-maintained
@@ -303,8 +334,7 @@ describe "Formats" do
     db.cards.each_value.select{|card|
       next false unless ["conjurable", "specialized"].include?(format.legality(card))
       card.printings.any?{|printing|
-        format.included_sets.include?(printing.set_code) and
-        not CONJURE_ONLY_SETS.include?(printing.set_code)
+        format.included_sets.include?(printing.set_code) and not conjure_only?(printing)
       }
     }.map(&:name).sort
   end
@@ -330,7 +360,7 @@ describe "Formats" do
   # list from Historic's minus a hardcoded exception. A new "historic: ..." entry here
   # means a card that's conjurable in Historic only because it's pre-banned there anyway,
   # and Timeless needs to except it too.
-  it "conjurable and specialized cards have no Arena printing outside conjure-only sets" do
+  it "conjurable and specialized cards have no ordinary Arena printing" do
     expected = {
       # Legitimately both - it was pre-banned out of STA, and only later got a
       # conjurable version in HBG. Excepted in Timeless, where it's an ordinary card.
@@ -342,7 +372,8 @@ describe "Formats" do
       format = Format[format_name].new
       db.cards.each_value do |card|
         next unless ["conjurable", "specialized"].include?(format.legality(card))
-        sets = card.printings.select(&:arena?).map(&:set_code).uniq.sort - CONJURE_ONLY_SETS
+        sets = card.printings.select{|printing| printing.arena? and not conjure_only?(printing) }
+          .map(&:set_code).uniq.sort
         actual["#{format_name}: #{card.name}"] = sets unless sets.empty?
       end
     end
@@ -352,12 +383,12 @@ describe "Formats" do
 
   # This direction doesn't need the game:arena tag at all - a conjured card has to be
   # conjured from somewhere
-  it "conjurable and specialized cards come from a conjure-only set" do
+  it "conjurable and specialized cards come from a conjure-only printing" do
     orphans = ["alchemy", "historic", "timeless", "brawl", "competitive brawl"].flat_map do |format_name|
       format = Format[format_name].new
       db.cards.each_value.select{|card|
         next false unless ["conjurable", "specialized"].include?(format.legality(card))
-        card.printings.none?{|printing| CONJURE_ONLY_SETS.include?(printing.set_code) }
+        card.printings.none?{|printing| conjure_only?(printing) }
       }.map{|card| "#{format_name}: #{card.name}" }
     end
     orphans.sort.should eq([])

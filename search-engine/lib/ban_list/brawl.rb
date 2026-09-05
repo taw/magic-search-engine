@@ -218,11 +218,51 @@ BanList.for_format("brawl") do
     "Phyrexian Revoker" => "prebanned",
   )
 
+  # Most Alchemy sets since YBRO end with an appendix of conjure-only cards, numbered
+  # after every normal card in the set. mtgjson only shipped those printings in
+  # 5.3.0+20260901, dated to their original release, so they read as plainly legal here
+  # for years - hence entries backdated into the history rather than appended at the end.
+  #
+  # YONE
+  change(
+    "2023-02-28",
+    "This card is conjurable only",
+    "Soul of New Phyrexia" => "conjurable",
+  )
+
+  # YWOE
+  change(
+    "2023-10-10",
+    "This card is conjurable only",
+    "Brawler's Plate" => "conjurable",
+  )
+
+  # YLCI
+  change(
+    "2023-12-05",
+    "This card is conjurable only",
+    "Thieving Magpie" => "conjurable",
+  )
+
   # Announced 2024-06-03, effective when Modern Horizons 3 reached Arena on 2024-06-14
   change(
     "2024-06-14",
     "https://magic.wizards.com/en/news/mtg-arena/mtg-arena-announcements-june-3-2024",
     "Disruptor Flute" => "prebanned",
+  )
+
+  # YDFT
+  change(
+    "2025-03-04",
+    "This card is conjurable only",
+    "Muraganda Petroglyphs" => "conjurable",
+  )
+
+  # YEOE
+  change(
+    "2025-08-19",
+    "This card is conjurable only",
+    "Flametongue Kavu" => "conjurable",
   )
 
   # Announced 2025-09-16, effective when Arena Anthology 4 landed on 2025-09-23. The four
@@ -261,6 +301,23 @@ BanList.for_format("brawl") do
     "Fierce Guardianship" => "prebanned",
     "Flawless Maneuver" => "prebanned",
     "Obscuring Haze" => "prebanned",
+  )
+
+  # YECL
+  change(
+    "2026-02-03",
+    "These cards are conjurable only",
+    "Blowfly Infestation" => "conjurable",
+    "Rite of Flame" => "conjurable",
+    "Stonybrook Schoolmaster" => "conjurable",
+  )
+
+  # YSOS
+  change(
+    "2026-05-19",
+    "These cards are conjurable only",
+    "Bridge from Below" => "conjurable",
+    "Storm Crow" => "conjurable",
   )
 
   # Announced 2026-05-18, effective 2026-06-29

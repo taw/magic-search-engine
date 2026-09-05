@@ -291,6 +291,24 @@ BanList.for_format("historic") do
     "Mishra's Bauble" => "prebanned",
   )
 
+  # Most Alchemy sets since YBRO end with an appendix of conjure-only cards, numbered
+  # after every normal card in the set: YONE 31, YWOE 31, YLCI 31, YDFT 31, YEOE 41,
+  # YECL 31-33, YSOS 31-32. YBRO 31 History of Benalia is in the appendix too but is not
+  # conjure-only status - Arena has it as an ordinary DMU card, so its conjured printing
+  # changes nothing about what may go in a deck.
+  #
+  # mtgjson only shipped these printings in 5.3.0+20260901, dated to their original
+  # release, so they read as plainly legal here for years. The entries below are
+  # backdated to each set's Arena release instead of appended at the end, because that
+  # is when Arena got them - none of these was ever deck-legal for a day.
+  #
+  # YONE
+  change(
+    "2023-02-28",
+    "This card is conjurable only",
+    "Soul of New Phyrexia" => "conjurable",
+  )
+
   # MUL. "All Multiverse Legends cards will be available to play in
   # Historic upon release, except Ragavan, Nimble Pilferer, who is pre-banned in Historic
   # but will still be available to play in Historic Brawl."
@@ -312,6 +330,13 @@ BanList.for_format("historic") do
     "Spreading Seas" => "prebanned",
   )
 
+  # YWOE
+  change(
+    "2023-10-10",
+    "This card is conjurable only",
+    "Brawler's Plate" => "conjurable",
+  )
+
   change(
     "2023-12-04",
     "https://magic.wizards.com/en/news/mtg-arena/introducing-timeless-a-new-mtg-arena-format",
@@ -320,6 +345,13 @@ BanList.for_format("historic") do
     "Bloodstained Mire" => "banned",
     "Wooded Foothills" => "banned",
     "Windswept Heath" => "banned",
+  )
+
+  # YLCI
+  change(
+    "2023-12-05",
+    "This card is conjurable only",
+    "Thieving Magpie" => "conjurable",
   )
 
   change(
@@ -375,6 +407,13 @@ BanList.for_format("historic") do
     "Chrome Mox" => "banned",
   )
 
+  # YDFT
+  change(
+    "2025-03-04",
+    "This card is conjurable only",
+    "Muraganda Petroglyphs" => "conjurable",
+  )
+
   change(
     "2025-06-30",
     "https://magic.wizards.com/en/news/announcements/banned-and-restricted-june-30-2025",
@@ -390,10 +429,14 @@ BanList.for_format("historic") do
     "Magus of the Moon" => "prebanned",
   )
 
+  # YEOE's conjure-only appendix reached Arena the same day as the Mox Opal pre-ban, and
+  # a ban list takes one entry per date, so the two share a block. Flametongue Kavu is
+  # not part of the announcement the URL points at.
   change(
     "2025-08-19",
     "https://magic.wizards.com/en/news/mtg-arena/announcements-august-18-2025",
     "Mox Opal" => "prebanned",
+    "Flametongue Kavu" => "conjurable",
   )
 
   # The second half is not a banlist change. AA4 and the OMB bonus sheet put four of the
@@ -453,6 +496,15 @@ BanList.for_format("historic") do
     "Painter's Servant" => "prebanned",
   )
 
+  # YECL
+  change(
+    "2026-02-03",
+    "These cards are conjurable only",
+    "Blowfly Infestation" => "conjurable",
+    "Rite of Flame" => "conjurable",
+    "Stonybrook Schoolmaster" => "conjurable",
+  )
+
   change(
     "2026-02-09",
     "https://magic.wizards.com/en/news/announcements/banned-and-restricted-february-9-2026",
@@ -493,5 +545,13 @@ BanList.for_format("historic") do
     "Force of Will" => "prebanned",
     "Vampiric Tutor" => "prebanned",
     "Library of Alexandria" => "prebanned",
+  )
+
+  # YSOS
+  change(
+    "2026-05-19",
+    "These cards are conjurable only",
+    "Bridge from Below" => "conjurable",
+    "Storm Crow" => "conjurable",
   )
 end

@@ -12,7 +12,9 @@ BanList.for_format("competitive brawl") do
   # can't go into a deck in any Arena format. Format::RESTRICTED_STATUSES groups them
   # with the other restricted-family statuses for restricted: and f: searches. It's
   # Historic's list minus Lightning Bolt, which Historic only files as conjurable
-  # because it's pre-banned there anyway.
+  # because it's pre-banned there anyway. It is all undated for the same reason as the
+  # bans: every Alchemy set that ends with an appendix of conjure-only cards, YONE
+  # through YSOS, shipped one long before this format did.
   format_start(
     "https://magic.wizards.com/en/news/mtg-arena/introducing-ranked-brawl",
     "Ajani, Nacatl Pariah" => "banned",
@@ -37,6 +39,10 @@ BanList.for_format("competitive brawl") do
     "Ambergris, Agent of Tyranny" => "specialized",
     "Ancestral Recall" => "conjurable",
     "Black Lotus" => "conjurable",
+    "Blowfly Infestation" => "conjurable",
+    "Brawler's Plate" => "conjurable",
+    "Bridge from Below" => "conjurable",
+    "Flametongue Kavu" => "conjurable",
     "Gale, Abyssal Conduit" => "specialized",
     "Gale, Holy Conduit" => "specialized",
     "Gale, Primeval Conduit" => "specialized",
@@ -96,11 +102,13 @@ BanList.for_format("competitive brawl") do
     "Mox Pearl" => "conjurable",
     "Mox Ruby" => "conjurable",
     "Mox Sapphire" => "conjurable",
+    "Muraganda Petroglyphs" => "conjurable",
     "Rasaad, Dragon Monk" => "specialized",
     "Rasaad, Radiant Monk" => "specialized",
     "Rasaad, Shadow Monk" => "specialized",
     "Rasaad, Sylvan Monk" => "specialized",
     "Rasaad, Warrior Monk" => "specialized",
+    "Rite of Flame" => "conjurable",
     "Sarevok, Deadly Usurper" => "specialized",
     "Sarevok, Deceitful Usurper" => "specialized",
     "Sarevok, Divine Usurper" => "specialized",
@@ -116,6 +124,10 @@ BanList.for_format("competitive brawl") do
     "Skanos, Green Dragon Vassal" => "specialized",
     "Skanos, Red Dragon Vassal" => "specialized",
     "Skanos, White Dragon Vassal" => "specialized",
+    "Soul of New Phyrexia" => "conjurable",
+    "Stonybrook Schoolmaster" => "conjurable",
+    "Storm Crow" => "conjurable",
+    "Thieving Magpie" => "conjurable",
     "Time Walk" => "conjurable",
     "Timetwister" => "conjurable",
     "Tropical Island" => "conjurable",
