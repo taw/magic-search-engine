@@ -258,9 +258,7 @@ class Card
   end
 
   def allowed_in_any_number?
-    @types.include?("basic") or (
-      @text and @text.include?("A deck can have any number of cards named")
-    )
+    @decklimit == "any"
   end
 
   def count_prints
