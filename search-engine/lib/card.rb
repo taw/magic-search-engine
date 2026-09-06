@@ -102,7 +102,7 @@ class Card
     @text = -@text.sub(/\s*\z/, "").gsub(/ *\n/, "\n").sub(/\A\s*/, "")
     @text_normalized = -@text.normalize_accents
     self.augment = @text =~ /augment \{/i
-    self.modal = @text =~ /(choose|opponent chooses) .*\n•/im
+    self.modal = data["md"]
     @mana_cost = data["m"]
     self.reserved = data["rs"]
     self.game_changer = data["gc"]

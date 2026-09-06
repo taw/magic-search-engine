@@ -143,6 +143,7 @@ class IndexSerializer
         "lf" => printing["life"], # vanguard
         "ly" => printing["loyalty"],
         "m" => printing["mana"],
+        "md" => printing["is_modal"],
         "n" => printing["name"],
         "ns" => printing["names"],
         "o" => printing["text"],

@@ -150,6 +150,7 @@ class Indexer
       PatchUrza,
 
       # Needs final reconciled text
+      PatchIsModal,
       PatchShortName,
 
       # Needs final set codes, numbers, and names
