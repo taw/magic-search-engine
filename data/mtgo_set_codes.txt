@@ -41,11 +41,13 @@ PC1 hop ohop
 PC2 pc2 opc2
 UMA uma puma
 
-# The two sets MTGO has both a placeholder and a release for. IA and AL are
-# the seeded ones, from the 5000-6000 id range with no collector numbers; ICE
-# (46 rows) and ALL (16 rows) are the cards it really put online, numbered and
-# in the Coldsnap id range. Both codes map to the same set of ours, and the
-# real rows win everything they want on their numbers.
+# The two sets MTGO has both a placeholder and a release for. IA and AL are the
+# seeded ones, from the 5000-6000 id range with no collector numbers. ICE (46
+# rows) and ALL (16) are the Coldsnap theme deck reprints, which MTGO filed
+# under the sets they were printed in - they are our cst, but they carry Ice
+# Age's and Alliances' own numbers, and mtgjson puts their ids on ice and all.
+# So both codes map to the same set of ours, and the numbered rows win
+# everything they want.
 AL all
 IA ice
 
@@ -53,3 +55,4 @@ IA ice
 # C02 (1). The best name overlap the first three manage is 43%, 67% and 5 of 8,
 # against three different Commander sets, which is not enough to write down.
 # The last three are nine rows including Library of Congress and Planar Die.
+
