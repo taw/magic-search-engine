@@ -27,6 +27,7 @@ describe "Spelling" do
     assert_search_results "related:Acererak",
       "Acererak the Archlich",
       "Acererak the Archlich (Alchemy)",
+      "Baldur's Gate Wilderness",
       "Dungeon of the Mad Mage",
       "Lost Mine of Phandelver",
       "Tomb of Annihilation"

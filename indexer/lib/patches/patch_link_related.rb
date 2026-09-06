@@ -524,14 +524,21 @@ class PatchLinkRelated < Patch
       end
 
       # Dungeon
-      # This is maybe a bit questionable, "venture" can't do Undercity, but other dungeon abilities work with Undercity too
+      # CR 701.49a lets a venture choose any dungeon card its owner has outside the game,
+      # so every dungeon qualifies except Undercity, which says "You can't enter this
+      # dungeon unless you 'venture into Undercity.'" on the card itself.
+      # Baldur's Gate Wilderness has no such clause - it's an oversized promo, not a
+      # different kind of object - so venture reaches it like the three AFR dungeons.
       if text =~ /venture into the dungeon/i
+        add_link "Baldur's Gate Wilderness", name
         add_link "Dungeon of the Mad Mage", name
         add_link "Lost Mine of Phandelver", name
         add_link "Tomb of Annihilation", name
       end
 
+      # Other dungeon abilities work with Undercity too
       if text =~ /complete a dungeon|completed a dungeon|dungeons/i
+        add_link "Baldur's Gate Wilderness", name
         add_link "Undercity", name
         add_link "Dungeon of the Mad Mage", name
         add_link "Lost Mine of Phandelver", name
