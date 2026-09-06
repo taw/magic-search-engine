@@ -7,6 +7,14 @@
 class PatchIsModal < Patch
   Keywords = %W[spree tiered].to_set
 
+  BulletedModes = /(choose|opponent chooses) .*\n•/im
+
+  # Pawprint cards (CR 107.18) and their funny cousins print each mode behind the
+  # symbol it costs instead of a bullet, so the list is only recognizable from the
+  # instruction above it. Requiring the next line to start a list is what keeps out
+  # the cards that merely talk about modes, like Far Out and Chira, All In.
+  CountedModes = /(choose|chooses)[^\n]*\bmodes?\b[^\n]*\n(?=[•\[{♦])/i
+
   def call
     each_printing do |printing|
       printing["is_modal"] = true if modal?(printing)
@@ -17,6 +25,7 @@ class PatchIsModal < Patch
 
   def modal?(printing)
     return true if printing["keywords"]&.any?{|keyword| Keywords.include?(keyword)}
-    printing["text"] =~ /(choose|opponent chooses) .*\n•/im
+    text = printing["text"] or return false
+    text =~ BulletedModes or text =~ CountedModes
   end
 end

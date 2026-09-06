@@ -35,4 +35,11 @@ describe "DissentionTest" do
       "Tempest Hawk",
       "Templar Knight"
   end
+
+  # Canary: PatchDeckLimit only understands "only one" / "up to seven" / "up to nine" /
+  # "any number", and a wording it can't parse leaves the card on the default limit of
+  # 4. Anything landing here means the patch needs a new case.
+  it "no unparsed deck limit" do
+    assert_search_results %q[fo:/a deck can have/ decklimit=4]
+  end
 end

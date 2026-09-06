@@ -279,13 +279,21 @@ class CardPrinting
     inspect
   end
 
-  # There are 3 scenarios:
+  # There are 4 scenarios:
   # * both have "Partner"
   # * both have "Partner with" and they point at each other
   # * one is The Doctor, and the other has "Doctor's Companion"
+  # * one has "Precious", and the other is a legendary noncreature artifact
   def valid_partner_for?(other)
     return true if the_doctor? and other.doctors_companion?
     return true if other.the_doctor? and self.doctors_companion?
+    return true if precious? and other.precious_relic?
+    return true if other.precious? and precious_relic?
+
+    # Both of those are partner abilities, so they reach the plain "both have
+    # Partner" case below, where they would pair with anything
+    return false if doctors_companion? or other.doctors_companion?
+    return false if precious? or other.precious?
 
     return unless partner? and other.partner?
     if partner
@@ -304,6 +312,15 @@ class CardPrinting
 
   def doctors_companion?
     text.include?("Doctor's companion")
+  end
+
+  # For sake of Precious
+  def precious?
+    text.include?("Precious (You can have two commanders")
+  end
+
+  def precious_relic?
+    types.include?("legendary") and types.include?("artifact") and !types.include?("creature")
   end
 
   # The printing whose physical card this one is a face of, which is what
