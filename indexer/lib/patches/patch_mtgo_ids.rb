@@ -202,13 +202,12 @@ class PatchMtgoIds < Patch
 
   # {MTGO set code => [our set code, ...]}, most of them one to one. mtgjson
   # knows MTGO's set codes and only disagrees with our own for sets MTGO
-  # renamed; mtgo_set_codes.txt covers what it and mci get wrong, and the MTGO
-  # sets that are more than one set to us.
+  # renamed; mtgo_set_codes.txt covers what it gets wrong, and the MTGO sets
+  # that are more than one set to us.
   def our_set_codes
     @our_set_codes ||= begin
       codes = mtgo_set_codes.dup
       known_set_codes.each{|code, ours| codes[code] ||= ours }
-      guessed_set_codes(codes).each{|code, ours| codes[code] ||= ours }
       codes
     end
   end
@@ -238,26 +237,6 @@ class PatchMtgoIds < Patch
     codes
   end
 
-  # magiccards.info took a lot of its codes from MTGO, so alternative_code
-  # covers sets mtgjson has no mtgoCode for - but it is its own namespace, not
-  # MTGO's, and where the two disagree it disagrees silently. Its `le` is
-  # Legions where MTGO's LE is Legends, its `al` is Alpha where MTGO's AL is
-  # Alliances. So it only gets a say where nothing else does: the client code
-  # is otherwise unclaimed, and that set of ours has no client set already.
-  def guessed_set_codes(known)
-    already_matched = client_rows.flat_map{|row| known[row[:mtgo_set]].to_a }.to_set
-    by_mtgo_set = client_rows.group_by{|row| row[:mtgo_set] }
-    codes = {}
-    each_set do |set|
-      code = set["alternative_code"] or next
-      next if known.has_key?(code.upcase) or already_matched.include?(set["code"])
-      rows = by_mtgo_set[code.upcase] or next
-      next unless same_set?(rows, set["code"])
-      codes[code.upcase] = [set["code"]]
-    end
-    codes
-  end
-
   # Sets get deleted and renamed, and a mapping to one we no longer have is
   # silently no mapping at all
   def warn_about_unknown_sets(codes)
@@ -265,14 +244,6 @@ class PatchMtgoIds < Patch
     each_set{|set| ours << set["code"] }
     unknown = codes.values.flatten.uniq.reject{|set_code| ours.include?(set_code) }
     warn "mtgo_set_codes.txt names sets we do not have: #{unknown.join(", ")}" unless unknown.empty?
-  end
-
-  # mci's `al` is Alpha where MTGO's AL is Alliances, and the two have no card
-  # in common - which, with no third source to ask, is the whole of how we can
-  # tell a shared code from the same set
-  def same_set?(rows, set_code)
-    ours = @cards_by_name[set_code] or return false
-    rows.count{|row| ours.has_key?(row[:name]) } * 2 > rows.size
   end
 
   # [rank, row], or nil if nothing in the client is about this printing
