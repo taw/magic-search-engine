@@ -7,7 +7,9 @@ describe "Spelling" do
       "Mitotic Slime",         # Mitotic Ultimus
       "Scalespeaker Shepherd", # Alchemy version
       "Sift Through Sands",    # The Unspeakable
-      "Urborg Panther"         # Spirit of the Night
+      "Urborg Panther",        # Spirit of the Night
+      "Wurmcoil Engine",       # Wurmcoil Broodmother
+      "Wurmcoil Larva"         # Wurmcoil Broodmother
   end
 
   it "Battleborn partner" do
@@ -78,6 +80,64 @@ describe "Spelling" do
       "Pursued Whale"
   end
 
+  it "bulleted lists of card names" do
+    assert_search_results %Q[related:"Who's That Praetor?"],
+      "Elesh Norn, Mother of Machines",
+      "Jin-Gitaxias, Progress Tyrant",
+      "Sheoldred, the Apocalypse",
+      "Urabrask, Heretic Praetor",
+      "Vorinclex, Monstrous Raider",
+      "Ebon Praetor"
+
+    assert_search_results %Q[related:"Growth Charm"],
+      "Rampant Growth",
+      "Giant Growth",
+      "Regrowth"
+  end
+
+  it "lists of card names" do
+    assert_search_results %Q[related:"Mysterious Confluence"],
+      "Righteous Confluence",
+      "Mystic Confluence",
+      "Wretched Confluence",
+      "Fiery Confluence",
+      "Verdant Confluence",
+      "Brokers Confluence",
+      "Cabaretti Confluence",
+      "Maestros Confluence",
+      "Obscura Confluence",
+      "Riveteers Confluence"
+
+    assert_search_results %Q[related:"The Duke of Midrange"],
+      "Thoughtseize",
+      "Lightning Bolt",
+      "Abrupt Decay"
+  end
+
+  it "tokens which are copies of real cards" do
+    assert_search_results %Q[related:"Wurmcoil Broodmother"],
+      "Wurmcoil Engine",
+      "Wurmcoil Larva"
+
+    assert_search_results %Q[related:"Time Sidewalk"], "Time Walk"
+  end
+
+  it "token types are not card references" do
+    # not the card Blood, and not the card Treasure Hunter either
+    assert_search_results %Q[related:"Voldaren Epicure"]
+    # not the card Ether
+    assert_search_results %Q[related:"Tezzeret the Schemer"]
+  end
+
+  it "Urza lands" do
+    assert_search_results %Q[related:"Urza's Tower"],
+      "Golgothian Sylex",
+      "Urza's Construction Drone",
+      "Urza's Fun House",
+      "Urza's Mine",
+      "Urza's Power Plant"
+  end
+
   it "is:spellbook" do
     assert_search_include "is:spellbook",
       "Black Lotus"
@@ -113,7 +173,7 @@ describe "Spelling" do
   end
 
   it "Garth One-Eye" do
-    assert_search_results %Q[related:"Black Lotus"], "Garth One-Eye", "Oracle of the Alpha"
+    assert_search_results %Q[related:"Black Lotus"], "Arzakon", "Garth One-Eye", "Oracle of the Alpha"
     assert_search_results "related:Garth",
       "Disenchant",
       "Braingeyser",

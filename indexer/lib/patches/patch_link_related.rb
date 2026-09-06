@@ -295,10 +295,54 @@ class PatchLinkRelated < Patch
       "Winter Sky",
       "Wizards' School",
     ],
+    # The regexps can't see these, as the text spells the names differently
+    # ("Urza's Power-Plant"), or jokes about them ("Grotag ThrASHer")
+    "Urza's Mine" => [
+      "Urza's Power Plant",
+      "Urza's Tower",
+    ],
+    "Urza's Power Plant" => [
+      "Urza's Tower",
+    ],
+    "Urza's Fun House" => [
+      "Urza's Mine",
+      "Urza's Power Plant",
+      "Urza's Tower",
+    ],
+    "Command Mine" => [
+      "Command Power Plant",
+      "Command Tower",
+    ],
+    "Command Power Plant" => [
+      "Command Tower",
+    ],
+    "The Ash Lizard" => [
+      "Ash Zealot",
+      "Bog-Strider Ash",
+      "Grotag Thrasher",
+      "Seedguide Ash",
+      "Unstoppable Ash",
+      "Viashino Warrior",
+    ],
+    # Cards which refer to another card without ever naming it in a way
+    # any of the patterns below could pick up
+    "The Keeper of Kaldra" => [
+      "Helm of Kaldra",
+      "Shield of Kaldra",
+      "Sword of Kaldra",
+    ],
+    "Ensoul Ring" => ["Sol Ring"],
+    "Incubob" => ["Dark Confidant"],
+    "Questing Cosplayer" => ["Questing Beast"],
+
     # Special tokens
     "Undercity" => ["The Initiative"],
     "The Ring" => ["The Ring Tempts You"],
   }
+
+  # Basic land names in rules text are nearly always land types
+  # ("choose Island or Swamp"), not references to the cards
+  BasicLandNames = ["Plains", "Island", "Swamp", "Mountain", "Forest", "Wastes"]
 
   def add_link(name1, name2)
     return if name1 == name2
@@ -308,27 +352,121 @@ class PatchLinkRelated < Patch
     links[name2] << name1
   end
 
-  def call
+  # "create a Blood token" or "create a Treasure token" refer to token types,
+  # not to the cards Blood or Treasure Hunter
+  def token_subtypes
+    result = Set[]
+    each_printing do |printing|
+      result.merge(printing["subtypes"] || [])
+    end
+    each_set do |set|
+      (set["tokens"] || []).each do |token|
+        result.merge(token["subtypes"] || [])
+      end
+    end
+    result
+  end
+
+  def card_names_matched_by_text
     # The index has tokens as cards, CardDatabase filters them out
     # We should probably move them out of the way before that
-    all_card_names = @cards.values.flatten.select{|c| c["layout"] != "token"}.map{|c| c["name"]}.uniq
+    names = @cards.values.flatten.select{|c| c["layout"] != "token"}.map{|c| c["name"]}.uniq
     # Some token names to prevent fake matches
     # like Smoke Spirits' Aid -> Smoke
-    all_card_names += ["Smoke Blessing"]
+    names += ["Smoke Blessing"]
+    # "X" is a real card, but it only ever matches things like
+    # "create X tokens", never an actual reference to it
+    names.reject{|name| name.size == 1}
+  end
 
-    # Get longest match so
+  # All the ways one card's text can point at another card's name.
+  # It's just regexps, so it's neither complete nor completely accurate.
+  def text_patterns(all_card_names)
+    # Get longest match first, so
     # "Take Inventory" doesn't mistakenly seem to refer to "Take" etc.
-    # Second regexp for empire series
     any_card = Regexp.union(all_card_names.sort_by(&:size).reverse)
-    rx = /\b(?:named|Partner with|token copy of) (#{any_card})(?:(?:,|,? and|,? or) (#{any_card}))?(?:(?:,|,? and|,? or) (#{any_card}))?/
+    # And don't match just the beginning of a longer name,
+    # like "Scar" in "cards exiled with Scarlet Witch"
+    card = /#{any_card}(?![\w'’])/
+    # "A, B, and C", "A; B; C", "A or B"
+    separator = /(?:,\s*|;\s*)(?:and\s+|or\s+)?|\s+(?:and|or)\s+/
+    card_list = /#{card}(?:(?:#{separator})#{card})*/
+    # "from among the previous playtest cards A, B, or C"
+    filler = /(?:the\s+)?(?:[a-z]+\s+){0,3}/
+
+    # Phrases which introduce a list of card names
+    prefixes = Regexp.union(
+      /\bnamed /,
+      /\bPartner with /,
+      /\btoken cop(?:y|ies) of /,
+      /\bcop(?:y|ies) (?:respectively )?of (?:the card )?/,
+      /\bfrom among #{filler}/,
+      /\bat random among #{filler}/,
+      /\bone of the following[a-z ]*[:—] */,
+      /\bone of /,
+    )
+    # These are too vague to trust with a single name
+    # ("Discard a card at random: Regenerate target creature"),
+    # so we only take them when an actual list follows
+    weak_prefixes = Regexp.union(
+      /\b(?:chosen )?at random[:—] */,
+      /\b[Cc]hoose (?=[A-Z])/,
+    )
+
+    {
+      list: /(?:#{prefixes})(#{card_list})/,
+      weak_list: /(?:#{weak_prefixes})(#{card}(?:(?:#{separator})#{card})+)/,
+      # Matching every card name is expensive, so we look for the phrases first
+      # These need to match at least everything the two prefix lists match
+      list_hint: /\bnamed |\bPartner with |\bcop(?:y|ies) |\bfrom among |\bone of /,
+      weak_list_hint: /at random[:—]|\b[Cc]hoose [A-Z]/,
+      # "create a Black Lotus token", as opposed to
+      # "create a 1/1 white Soldier creature token"
+      token: /\b(?:[Cc]reates?|and)\s+(?:(?:[a-z]+|\d+(?:\/\d+)?|X)\s+){0,3}(#{card})\s+tokens?\b/,
+      # Cards which simply list other cards, like Who's That Praetor?
+      bullet: /^• (#{card})(?= \(|$)/,
+      card: card,
+    }
+  end
+
+  def cards_mentioned_in_text(text, rx, subtypes)
+    result = Set[]
+    if text =~ rx[:list_hint]
+      text.scan(rx[:list]) do |match|
+        result.merge match[0].scan(rx[:card])
+      end
+    end
+    if text =~ rx[:weak_list_hint]
+      text.scan(rx[:weak_list]) do |match|
+        result.merge match[0].scan(rx[:card]) - BasicLandNames
+      end
+    end
+    if text.include?("token")
+      text.scan(rx[:token]) do |match|
+        result << match[0] unless subtypes.include?(match[0])
+      end
+    end
+    if text.include?("•")
+      text.scan(rx[:bullet]) do |match|
+        result << match[0]
+      end
+    end
+    result
+  end
+
+  def call
+    rx = text_patterns(card_names_matched_by_text)
+    subtypes = token_subtypes
 
     # Extract links
     @links = Hash.new{|ht,k| ht[k] = Set[]}
+    seen = Set[]
     each_printing do |printing|
       name = printing["name"]
-      matching_cards = (printing["text"]||"").scan(rx).flatten.uniq - [name, nil]
-      next if matching_cards.empty?
-      matching_cards.each do |other|
+      text = printing["text"] || ""
+      # Same text on every printing of most cards, and this is not cheap
+      next unless seen.add?([name, text])
+      cards_mentioned_in_text(text, rx, subtypes).each do |other|
         add_link name, other
       end
     end
