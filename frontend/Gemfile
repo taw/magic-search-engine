@@ -4,6 +4,10 @@ ruby ">= 2.7"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
 gem "rails", "~> 7.1.5"
+# json 3 dropped the quirks_mode option, which activesupport 7.1's JSON encoder
+# still passes, so every `render json:` raises. Fixed in rails 8.1; until we get
+# there, json must stay on 2.x.
+gem "json", "< 3"
 # Use SCSS for stylesheets
 gem "sass-rails"
 # Use Terser as compressor for JavaScript assets
