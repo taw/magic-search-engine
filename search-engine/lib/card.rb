@@ -98,8 +98,10 @@ class Card
     # and dungeon cards it is often the only statement of a rule that appears nowhere else -
     # "Hidden agenda" and "(An ongoing scheme remains face up until it's abandoned.)" have no
     # other printing to explain them.
-    @text = @text.gsub(/\s*\([^\(\)]*\)/, "") unless funny? or special_format? or @layout == "dungeon"
-    @text = -@text.sub(/\s*\z/, "").gsub(/ *\n/, "\n").sub(/\A\s*/, "")
+    if @text.include?("(") and not keep_remainder_text?
+      @text = @text.gsub(/\s*\([^\(\)]*\)/, "") unless funny? or special_format? or @layout == "dungeon"
+      @text = -@text.sub(/\s*\z/, "").gsub(/ *\n/, "\n").sub(/\A\s*/, "")
+    end
     @text_normalized = -@text.normalize_accents
     self.augment = @text =~ /augment \{/i
     self.modal = data["md"]
@@ -166,6 +168,10 @@ class Card
       .gsub(/[^a-zA-Z0-9\-]+/, "-")
       .gsub(/(\A-)|(-\z)/, "")
       .freeze
+  end
+
+  def keep_remainder_text?
+    funny? or special_format? or @layout == "dungeon"
   end
 
   def back?
