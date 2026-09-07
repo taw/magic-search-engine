@@ -16,10 +16,11 @@
 #     Pioneer and Standard Brawl isn't in formats_index, so
 #     neither is compared.
 #
-#   * Best-of-three, where Arena splits the queues. The Traditional variant is
-#     the one whose list should match paper; the best-of-one queue bans extra
-#     cards for being miserable in a single game, which we don't model. Those
-#     bans are listed as ignored rather than dropped silently.
+#   * Best-of-three, where Arena splits the queues, and only that one. The
+#     Traditional variant is the one whose list should match paper; the
+#     best-of-one queue bans extra cards for being miserable in a single game,
+#     and we have nowhere to put a ban that belongs to a queue rather than a
+#     format. Nothing here reads that queue at all.
 #
 #   * Ban status card by card. That's the report, and it should come out empty.
 #
@@ -55,20 +56,23 @@ class ReportArenaLegalityDifferences
 
   DIR = "#{__dir__}/../tmp/arena_format_data"
 
-  # Our format, Arena's best-of-one queue, Arena's best-of-three queue, and
-  # whether the format plays the rebalanced half of a rebalanced pair.
+  # Our format, the Arena queue to read it from, and whether the format plays
+  # the rebalanced half of a rebalanced pair.
   #
-  # Brawl has no best-of-three split - every Brawl game is one game. Nothing
-  # derives the last column: Arena files a rebalanced card under the paper set
-  # it rebalances as often as under the Alchemy drop it shipped in, so which
-  # half a format plays doesn't follow from the set codes it lists.
+  # The Traditional queue where Arena splits one, because that's the list that
+  # states the format rather than the queue. Brawl has no split - every Brawl
+  # game is one game - so there its only queue is the one to read.
+  #
+  # Nothing derives the last column: Arena files a rebalanced card under the
+  # paper set it rebalances as often as under the Alchemy drop it shipped in, so
+  # which half a format plays doesn't follow from the set codes it lists.
   FORMATS = [
-    ["standard", "Standard", "TraditionalStandard", false],
-    ["alchemy", "Alchemy", "TraditionalAlchemy", true],
-    ["historic", "Historic", "TraditionalHistoric", true],
-    ["timeless", "Timeless", "TraditionalTimeless", false],
-    ["brawl", "HistoricBrawl", nil, true],
-    ["competitive brawl", "HistoricBrawlRanked", nil, true],
+    ["standard", "TraditionalStandard", false],
+    ["alchemy", "TraditionalAlchemy", true],
+    ["historic", "TraditionalHistoric", true],
+    ["timeless", "TraditionalTimeless", false],
+    ["brawl", "HistoricBrawl", true],
+    ["competitive brawl", "HistoricBrawlRanked", true],
   ]
 
   # Same fixes as the indexer's, for names holding characters nobody can type
@@ -232,16 +236,15 @@ class ReportArenaLegalityDifferences
 
   # Every difference goes in one list and every thing deliberately not counted
   # as one goes in the other, so the count in the heading is the whole verdict.
-  def verify_format(our_name, bo1_name, bo3_name, rebalanced)
+  def verify_format(our_name, arena_name, rebalanced)
     format = Format[our_name].new
-    arena_format = arena_format(bo3_name || bo1_name)
+    arena_format = arena_format(arena_name)
     differences = []
     notes = []
 
     compare_ban_lists(format, arena_format, differences, notes)
     compare_pools(format, arena_format, arena_pool(arena_format, rebalanced), differences, notes)
     note_unresolved_ids(arena_format, notes)
-    note_best_of_one_bans(bo1_name, bo3_name, notes)
 
     puts "Format #{our_name} vs Arena #{arena_format["name"]} - " \
       "#{differences.size} difference#{"s" unless differences.size == 1}"
@@ -299,16 +302,18 @@ class ReportArenaLegalityDifferences
         our_pool_status(format, name)]
     end
 
-    notes << "pool: #{ours.size} cards for us, #{their_pool.size} for Arena"
+    notes << "pool: #{ours.size} cards for us, #{their_pool.size} for Arena" unless ours.size == their_pool.size
     unless drop_only.empty?
-      # Named rather than counted together on purpose. What lands here is cube,
-      # starter-deck and conjuration content, which is in the set by its set
-      # code and never in a deck, and mtgjson doesn't count those as Arena
-      # printings either - so a drop that does go in decks showing up in this
-      # line is a real miss on our side, not more of the same noise.
+      # A drop tag is not a statement about whether the card can be owned, and
+      # nothing may be read into which drop it names. The cube's tag sits on
+      # both halves of a clean split: Black Lotus, the duals, Urza's Saga and
+      # Mana Crypt have no recorded Brawl game, while Zuran Orb has 5393, Dack
+      # Fayden 1008 and Figure of Destiny 39. mtgjson is the side that knows
+      # which is which, so the tag only marks a printing whose absence from our
+      # side mtgjson has already accounted for, and the count is all that is
+      # worth saying about it. --pool names them when the number looks wrong.
       notes << "ignored, #{drop_only.size} card#{"s" unless drop_only.size == 1} " \
-        "Arena has in the format's sets only as a drop printing: " \
-        "#{drops.sort_by{|drop, count| [-count, drop] }.map{|drop, count| "#{drop} #{count}" }.join(", ")}"
+        "Arena has in the format's sets only as a drop printing"
       notes << "  only Arena's: #{drop_only.sort.join(", ")}" if @pool
     end
     unless unlisted.empty?
@@ -387,25 +392,6 @@ class ReportArenaLegalityDifferences
     return if unresolved.empty?
     notes << "ignored, #{unresolved.size} id#{"s" unless unresolved.size == 1} " \
       "in Arena's lists name no card Arena still has"
-  end
-
-  # The best-of-one queues keep out cards that are only a problem when there's no
-  # sideboard and no second game. We model the format, not the queue. Suppression
-  # counts here as much as a ban does: Timeless's best-of-one queue states its
-  # whole extra list that way, and a card kept out of a queue is kept out of it
-  # whichever list names it.
-  def note_best_of_one_bans(bo1_name, bo3_name, notes)
-    return unless bo3_name
-    bo1, bo3 = [bo1_name, bo3_name].map{|name| arena_format(name) }
-    only_bo1 = kept_out_of(bo1) - kept_out_of(bo3)
-    return if only_bo1.empty?
-    notes << "ignored, kept out of #{bo1_name} but not #{bo3_name}: " \
-      "#{only_bo1.map{|name| our_name(name) }.sort.join(", ")}"
-  end
-
-  # Every way Arena's table has of keeping a card out of a queue.
-  def kept_out_of(format)
-    format["banned"] | format["suspended"] | format["supressed"]
   end
 
   # ---- names -----------------------------------------------------------------
