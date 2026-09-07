@@ -1,6 +1,7 @@
 class ConditionLight < ConditionSimple
   def initialize(light)
-    if light == "*"
+    @any = (light == "*")
+    if @any
       @light = "*"
     else
       @light = light.to_i
@@ -9,7 +10,7 @@ class ConditionLight < ConditionSimple
 
   def match?(card)
     return false unless card.attraction_lights
-    if @light == "*"
+    if @any
       true
     else
       card.attraction_lights.include?(@light)

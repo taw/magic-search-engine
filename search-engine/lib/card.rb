@@ -322,6 +322,7 @@ class Card
   # accent-stripping and downcasing can happen in it rather than allocating
   # two more. This runs for every foreign name on every card.
   def hard_normalize(s)
+    return -s.downcase if s.ascii_only?
     result = s.unicode_normalize(:nfd)
     result.gsub!(/\p{Mn}/, "")
     result.downcase!
@@ -381,11 +382,13 @@ class Card
     end
   end
 
+  BASIC_LAND_TYPES = ["forest", "island", "mountain", "plains", "swamp"].freeze
+
   def calculate_reminder_text
     @reminder_text = nil
-    basic_land_types = (["forest", "island", "mountain", "plains", "swamp"] & @types.to_a)
-      .sort.join(" ")
+    basic_land_types = BASIC_LAND_TYPES & @types
     if not basic_land_types.empty?
+      basic_land_types = basic_land_types.sort.join(" ")
       # Listing them all explicitly due to wubrg wheel order
       mana = case basic_land_types
       when "plains"

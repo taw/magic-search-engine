@@ -1,13 +1,14 @@
 class ConditionFlavorName < ConditionSimple
   def initialize(flavor_name)
     @flavor_name = flavor_name
+    @any = (flavor_name == "*")
     flavor_name_normalized = @flavor_name.normalize_accents
     @flavor_name_rx = Regexp.new("\\b(?:" + Regexp.escape(flavor_name_normalized) + ")\\b", Regexp::IGNORECASE)
   end
 
   def match?(card)
     return false unless card.flavor_name
-    return true if @flavor_name == "*"
+    return true if @any
     card.flavor_name.normalize_accents =~ @flavor_name_rx
   end
 

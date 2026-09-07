@@ -7,26 +7,23 @@ class ConditionNumber < ConditionSimple
 
   def match?(card)
     if @number_s == "set"
-      left = card.number_i
-      right = card.set.base_set_size
+      cmp = card.number_i <=> card.set.base_set_size
     else
-      card_number_s = card.number.downcase
-      card_number_i = card.number_i
-      left = [card_number_i, card_number_s]
-      right = [@number_i, @number_s]
+      cmp = card.number_i <=> @number_i
+      cmp = card.number.downcase <=> @number_s if cmp == 0
     end
 
     case @op
     when ">"
-      (left <=> right) > 0
+      cmp > 0
     when ">="
-      (left <=> right) >= 0
+      cmp >= 0
     when "<"
-      (left <=> right) < 0
+      cmp < 0
     when "<="
-      (left <=> right) <= 0
+      cmp <= 0
     else # = or :
-      left == right
+      cmp == 0
     end
   end
 

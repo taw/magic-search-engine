@@ -1,12 +1,13 @@
 class ConditionSignature < ConditionSimple
   def initialize(signature)
     @signature = signature
+    @any = (signature == "*")
     @signature_rx = Regexp.new("\\b(?:" + Regexp.escape(signature.normalize_accents) + ")\\b", Regexp::IGNORECASE)
   end
 
   def match?(card)
     return false unless card.signature
-    return true if @signature == "*"
+    return true if @any
     card.signature.normalize_accents =~ @signature_rx
   end
 

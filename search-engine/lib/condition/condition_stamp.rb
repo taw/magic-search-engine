@@ -1,10 +1,11 @@
 class ConditionStamp < ConditionSimple
   def initialize(stamp)
     @stamp = stamp.downcase
+    @any = (@stamp == "*")
   end
 
   def match?(card)
-    if @stamp == "*"
+    if @any
       !!card.stamp
     else
       card.stamp == @stamp

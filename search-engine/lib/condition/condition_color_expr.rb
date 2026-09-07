@@ -4,12 +4,14 @@ class ConditionColorExpr < ConditionSimple
     @op = op
     @b = b.downcase
     @bset = Color.matching(@op, @b)
+    @colors = (@a == "c")
+    @indicator = (@a == "ind")
   end
 
   def match?(card)
-    if @a == "c"
+    if @colors
       a = card.colors
-    elsif @a == "ind"
+    elsif @indicator
       a = card.color_indicator_colors
       return false unless a
     else
