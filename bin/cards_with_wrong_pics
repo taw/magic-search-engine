@@ -1,0 +1,385 @@
+#!/usr/bin/env ruby
+
+# Check that every card scan actually shows the card we filed it under, by
+# OCRing the title off the picture and comparing it with the database.
+#
+# Usage:
+#   bin/cards_with_wrong_pics                 # every set, two to three hours
+#   bin/cards_with_wrong_pics blb dsk fdn     # just these sets
+#   bin/cards_with_wrong_pics --threshold 0.6 # accept sloppier OCR
+#
+# One line per scan that could not be confirmed:
+#   set/number <tab> expected name <tab> what the OCR read
+#
+# OCR is Apple's Vision framework, driven by the Swift program at the bottom of
+# this file, which gets compiled into tmp/ on first use. Nothing to install.
+#
+# Four passes, cheapest first, each one only looking at what the last could not
+# confirm:
+#
+#   1. the title bar of the LQ scan, which is 37ms of OCR per card
+#   2. the whole LQ scan - full-art and pre-Mirage frames put the name
+#      somewhere other than the title bar
+#   3. the whole HQ scan - pre-Mirage sets are only 223x310 in cards/, and
+#      480x680 in cards_hq/, which is the difference between "Sllimmnor Djim"
+#      and "Mahamoti Djinn"
+#   4. the bottom left strip, to find the Japanese promos that mtgjson does not
+#      record a language for, which will never match an English name
+#
+# Over the whole corpus this confirms 99.9% of what it looks at. What is left is
+# Secret Lair typography, Alpha and Revised title fonts, and a handful of promos
+# printed in a language the data does not admit to.
+
+require "etc"
+require "optparse"
+require_relative "../search-engine/lib/card_database"
+require_relative "../search-engine/lib/card_picture_paths"
+
+# Layouts where one picture legitimately carries a different face's title.
+MIXED_TITLE_LAYOUTS = %w[
+  split aftermath adventure flip planar vanguard scheme prepare
+]
+
+# Vision has no idea the card is written in the Latin alphabet - language
+# correction is off - so a stylized letter often comes back as the Cyrillic or
+# Greek character that shares its shape, and a round O as a zero. The same fold
+# runs on the expected name too, so it can only ever bring the two closer.
+CONFUSABLES = {
+  "\u0410" => "A", "\u0412" => "B", "\u0415" => "E", "\u041a" => "K", "\u041c" => "M",
+  "\u041d" => "H", "\u041e" => "O", "\u0420" => "P", "\u0421" => "C", "\u0422" => "T",
+  "\u0423" => "Y", "\u0425" => "X", "\u0406" => "I", "\u0408" => "J", "\u0405" => "S",
+  "\u0430" => "a", "\u0435" => "e", "\u043e" => "o", "\u0440" => "p", "\u0441" => "c",
+  "\u0443" => "y", "\u0445" => "x", "\u0456" => "i", "\u0458" => "j",
+  "\u0391" => "A", "\u0392" => "B", "\u0395" => "E", "\u0396" => "Z", "\u0397" => "H",
+  "\u0399" => "I", "\u039a" => "K", "\u039c" => "M", "\u039d" => "N", "\u039f" => "O",
+  "\u03a1" => "P", "\u03a4" => "T", "\u03a5" => "Y", "\u03a7" => "X", "\u03bf" => "o",
+  "0" => "o", "1" => "l", "5" => "s", "8" => "b",
+}
+CONFUSABLES_RE = Regexp.union(CONFUSABLES.keys)
+
+# Where the title bar sits on a normal frame, and where the collector line sits
+# on a modern one. Normalized, origin bottom left.
+TITLE_CROP = "0.05,0.86,0.90,0.10"
+COLLECTOR_CROP = "0.02,0.01,0.62,0.085"
+
+class VisionOCR
+  SOURCE = Pathname(__dir__) + "../tmp/ocr_vision.swift"
+  BINARY = Pathname(__dir__) + "../tmp/ocr_vision"
+
+  def initialize(jobs)
+    @jobs = jobs
+    compile
+  end
+
+  # Paths in, `path => recognized text` out. Anything unreadable comes back as
+  # an empty string, as that is just another kind of failure to confirm.
+  def call(paths, crop: nil, scale: nil)
+    return {} if paths.empty?
+
+    args = [BINARY.to_s, "--jobs", @jobs.to_s]
+    args += ["--rect", crop] if crop
+    args += ["--scale", scale.to_s] if scale
+
+    results = {}
+    IO.popen(args, "r+") do |io|
+      io.write(paths.join("\n"))
+      io.close_write
+      io.each_line do |line|
+        path, text = line.chomp.split("\t", 2)
+        results[path] = text.to_s
+      end
+    end
+    raise "OCR failed" unless $?.success?
+    results
+  end
+
+  private
+
+  def compile
+    source = DATA.read
+    return if BINARY.exist? and SOURCE.exist? and SOURCE.read == source
+
+    SOURCE.parent.mkpath
+    SOURCE.write(source)
+    warn "Compiling #{BINARY}"
+    system("swiftc", "-O", SOURCE.to_s, "-o", BINARY.to_s) or
+      raise "swiftc failed - this needs the Xcode command line tools"
+  end
+end
+
+class CardsWithWrongPics
+  # Vision reads a stylized title well enough to recognize, not well enough to
+  # transcribe, so names are compared by edit distance and not equality.
+  DEFAULT_THRESHOLD = 0.70
+  # Big enough that per-batch overhead does not matter, small enough that a
+  # full run reports progress every minute or so.
+  BATCH = 1000
+
+  def initialize(*args)
+    @threshold = DEFAULT_THRESHOLD
+    @jobs = Etc.nprocessors
+
+    parser = OptionParser.new do |opts|
+      opts.banner = "Usage: #{$0} [options] [set_code ...]"
+      opts.on("--threshold F", Float, "Name match cutoff, default #{DEFAULT_THRESHOLD}") { @threshold = _1 }
+      opts.on("--jobs N", Integer, "OCR processes in parallel, default #{@jobs}") { @jobs = _1 }
+    end
+    @sets = parser.parse(args)
+
+    @db = CardDatabase.load
+    @ocr = VisionOCR.new(@jobs)
+  end
+
+  def call
+    printings = candidates
+    warn "#{printings.size} scans to check"
+
+    unconfirmed = printings
+    unconfirmed = pass("title bar", unconfirmed, crop: TITLE_CROP) { |c| c.path_lq }
+    unconfirmed = pass("whole card", unconfirmed) { |c| c.path_lq }
+    unconfirmed = pass("HQ scan", unconfirmed, scale: 2) { |c| c.path_hq }
+
+    japanese, wrong = split_off_japanese(unconfirmed)
+    warn "#{japanese.size} are Japanese promos the data does not record a language for"
+    warn "#{wrong.size} scans could not be confirmed (#{percentage(printings.size - wrong.size, printings.size)} ok)"
+
+    wrong.each do |card|
+      puts [
+        "#{card.set_code}/#{card.number}",
+        expected_name(card),
+        @ocr_text[card].to_s[0, 100],
+      ].join("\t")
+    end
+  end
+
+  private
+
+  # Everything the check structurally cannot do is dropped here rather than read
+  # past in the report. A printing with a language is a foreign printing, and its
+  # scan shows a translated title - psal and ps11 are Spanish and Italian, ren is
+  # French, sta and soa are Japanese. A poster promo draws its title into the art
+  # in whatever typeface the piece calls for, which Vision reads about three
+  # times in four - "REWIND" on sld/1368 comes back as "PENNINR".
+  def candidates
+    printings = @db.printings
+    printings = printings.select { |c| @sets.include?(c.set_code) } unless @sets.empty?
+    printings
+      .reject { |c| MIXED_TITLE_LAYOUTS.include?(c.layout) }
+      .reject { |c| c.language }
+      .reject { |c| c.promo_types&.include?("poster") }
+      .select { |c| c.path_lq.exist? }
+      .sort_by { |c| [c.set_code, c.number_sort_index] }
+  end
+
+  # A card with a printed name shows that, not the name we file it under. All
+  # of om1 is like this, as are the Universes Beyond Secret Lair drops.
+  #
+  # A trailing parenthesis is ours, not the card's. It is how the index keeps
+  # two cards apart that were printed under one name - the Alchemy rebalance of
+  # a paper card, which the card itself marks with a small A in the title bar,
+  # and the two halves of B.F.M.
+  def expected_name(card)
+    (card.flavor_name || card.name).sub(/ \([^()]*\)\z/, "")
+  end
+
+  # OCRs whatever is still unconfirmed and returns what stays unconfirmed. The
+  # text of the last attempt is kept for the report, so what gets printed is
+  # the best look we had at the card.
+  def pass(description, cards, crop: nil, scale: nil)
+    @ocr_text ||= {}
+    # A card with no scan at this quality stays unconfirmed rather than getting
+    # quietly dropped.
+    readable, unreadable = cards.partition { |c| yield(c).exist? }
+    return unreadable if readable.empty?
+
+    warn "Reading the #{description} of #{readable.size} scans"
+    still_bad = unreadable.dup
+    done = 0
+    readable.each_slice(BATCH) do |batch|
+      paths = batch.to_h { |c| [yield(c).to_s, c] }
+      @ocr.call(paths.keys, crop: crop, scale: scale).each do |path, text|
+        card = paths.fetch(path)
+        @ocr_text[card] = text
+        still_bad << card unless confirmed?(card, text)
+      end
+      done += batch.size
+      warn "  #{done}/#{readable.size}, #{still_bad.size} unconfirmed so far"
+    end
+    still_bad
+  end
+
+  def confirmed?(card, text)
+    name = normalize(expected_name(card))
+    return true if name.empty?
+    1.0 - approximate_distance(name, normalize(text)).to_f / name.size >= @threshold
+  end
+
+  # The collector line of a Japanese card reads like "0136 SOA*JP MATTHEW
+  # MEYER". The language code is the only part of it Vision gets right often
+  # enough to trust, and only because it sits next to the set code.
+  #
+  # mtgjson records a language on the sets printed for a foreign market, and
+  # those are already gone by here. What is left for this to catch is the
+  # Japanese promos it does not - p30h, pjsc, ptdm. A promo prints the code of
+  # the set it promoted, or PRM, never our own p-prefixed code for the promo
+  # set, so all three spellings are accepted.
+  def split_off_japanese(cards)
+    return [[], []] if cards.empty?
+
+    warn "Reading the collector line of #{cards.size} scans"
+    paths = cards.to_h { |c| [c.path_lq.to_s, c] }
+    text = @ocr.call(paths.keys, crop: COLLECTOR_CROP, scale: 3)
+    cards.partition do |card|
+      # The whole card pass read the collector line too, and on a full art
+      # frame it sometimes read it better than the crop did.
+      seen = "#{text[card.path_lq.to_s]} #{@ocr_text[card]}".upcase.gsub(/[^A-Z]/, "")
+      printed_set_codes(card).any? { |code| seen.include?("#{code}JP") }
+    end
+  end
+
+  def printed_set_codes(card)
+    code = card.set_code.upcase
+    [code, code.sub(/\AP/, ""), "PRM"]
+  end
+
+  def normalize(string)
+    string
+      .gsub(CONFUSABLES_RE, CONFUSABLES)
+      .unicode_normalize(:nfkd)
+      .gsub(/\p{Mn}/, "")
+      .downcase
+      .gsub(/[^a-z0-9]/, "")
+  end
+
+  # Sellers' algorithm - the fewest edits that turn some substring of `text`
+  # into all of `pattern`. Free ends mean a mana cost read in alongside the
+  # title, a long name Vision truncated, and the rules text picked up on a
+  # whole card pass all still match.
+  def approximate_distance(pattern, text)
+    return pattern.size if text.empty?
+
+    previous = Array.new(text.size + 1, 0)
+    pattern.each_char.with_index do |pattern_char, i|
+      current = [i + 1]
+      text.each_char.with_index do |text_char, j|
+        current << [
+          previous[j] + (pattern_char == text_char ? 0 : 1),
+          previous[j + 1] + 1,
+          current[j] + 1,
+        ].min
+      end
+      previous = current
+    end
+    previous.min
+  end
+
+  def percentage(part, whole)
+    "#{(100.0 * part / whole).round(2)}%"
+  end
+end
+
+STDOUT.sync = true
+CardsWithWrongPics.new(*ARGV).call
+
+__END__
+import AppKit
+import Foundation
+import Vision
+
+// Reads image paths on stdin, writes "path<TAB>recognized text" on stdout as
+// each one finishes, so results come back out of order.
+//
+//   --rect x,y,w,h  only look at this part of the image, normalized, origin
+//                   bottom left
+//   --scale N       enlarge by N first, which is what makes the collector line
+//                   legible
+//   --jobs N        how many to run at once
+
+var rect: CGRect?
+var scale = 1
+var jobs = ProcessInfo.processInfo.activeProcessorCount
+
+let arguments = Array(CommandLine.arguments.dropFirst())
+var i = 0
+while i < arguments.count {
+    switch arguments[i] {
+    case "--rect":
+        let parts = arguments[i + 1].split(separator: ",").compactMap { Double($0) }
+        rect = CGRect(x: parts[0], y: parts[1], width: parts[2], height: parts[3])
+        i += 2
+    case "--scale":
+        scale = Int(arguments[i + 1])!
+        i += 2
+    case "--jobs":
+        jobs = Int(arguments[i + 1])!
+        i += 2
+    default:
+        i += 1
+    }
+}
+
+func upscaled(_ image: CGImage, by factor: Int) -> CGImage {
+    let width = image.width * factor
+    let height = image.height * factor
+    guard let context = CGContext(
+        data: nil, width: width, height: height, bitsPerComponent: 8, bytesPerRow: 0,
+        space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.noneSkipLast.rawValue
+    ) else { return image }
+    context.interpolationQuality = .high
+    context.draw(image, in: CGRect(x: 0, y: 0, width: width, height: height))
+    return context.makeImage() ?? image
+}
+
+// Language correction barely matters either way - it changed the text on 95 of
+// 1200 scans and the pass rate by 0.3% - so it is off, on the grounds that card
+// names are not English words and correcting towards English cannot help.
+func recognizeText(in path: String) -> String {
+    guard let image = NSImage(contentsOfFile: path),
+          var cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil)
+    else { return "" }
+
+    if scale > 1 {
+        cgImage = upscaled(cgImage, by: scale)
+    }
+
+    let request = VNRecognizeTextRequest()
+    request.recognitionLevel = .accurate
+    request.usesLanguageCorrection = false
+    request.recognitionLanguages = ["en-US"]
+    if let rect = rect {
+        request.regionOfInterest = rect
+    }
+
+    do {
+        try VNImageRequestHandler(cgImage: cgImage, options: [:]).perform([request])
+    } catch {
+        return ""
+    }
+    return (request.results ?? [])
+        .compactMap { $0.topCandidates(1).first?.string }
+        .joined(separator: " ")
+}
+
+var paths: [String] = []
+while let line = readLine(strippingNewline: true) {
+    if !line.isEmpty { paths.append(line) }
+}
+
+let output = NSLock()
+let slots = DispatchSemaphore(value: jobs)
+let group = DispatchGroup()
+let queue = DispatchQueue(label: "ocr", attributes: .concurrent)
+
+for path in paths {
+    slots.wait()
+    group.enter()
+    queue.async {
+        let text = recognizeText(in: path)
+        output.lock()
+        print("\(path)\t\(text)")
+        output.unlock()
+        slots.signal()
+        group.leave()
+    }
+}
+group.wait()
