@@ -1,0 +1,72 @@
+#!/usr/bin/env ruby
+
+# Find orphaned card scans that are byte for byte identical to a scan the
+# database does use, which is what a set reorganization leaves behind - the
+# pictures get refiled under new set codes or numbers, and the old copies stay
+# on disk with nothing pointing at them.
+#
+# Usage:
+#   bin/find_moved_orphaned_pictures
+#
+# One line per orphan that turned up elsewhere, cards/ and cards_hq/ handled
+# completely independently:
+#
+#   plist/100.png -> plst/200.png
+#
+# Nothing else is printed, so the output can be fed straight to a script that
+# deletes the left hand side.
+
+require_relative "../search-engine/lib/card_database"
+require_relative "../search-engine/lib/card_picture_paths"
+
+class FindMovedOrphanedPictures
+  attr_reader :db
+
+  def initialize
+    @db = CardDatabase.load
+  end
+
+  def call
+    report(CardPicturePaths::LQ_ROOT, db.printings.map(&:path_lq))
+    report(CardPicturePaths::HQ_ROOT, db.printings.map(&:path_hq))
+  end
+
+  private
+
+  def report(root, referenced)
+    referenced = referenced.to_set
+    files = root.glob("*/*.png")
+    used, orphaned = files.partition { |path| referenced.include?(path) }
+
+    # Hashing every scan means reading a few gigabytes, and identical files
+    # have identical sizes, so only the sizes that occur on both sides can
+    # possibly match and only those files are worth reading.
+    orphaned_by_size = orphaned.group_by(&:size)
+    used_by_size = used.group_by(&:size)
+    sizes = orphaned_by_size.keys & used_by_size.keys
+
+    targets = {}
+    sizes.each do |size|
+      used_by_size[size].each do |path|
+        (targets[path.sha1] ||= []) << path
+      end
+    end
+
+    moved = sizes.flat_map { |size| orphaned_by_size[size] }.filter_map do |path|
+      target = targets[path.sha1]&.min_by { |candidate| sort_key(root, candidate) }
+      [path, target] if target
+    end
+
+    moved.sort_by { |path, _| sort_key(root, path) }.each do |path, target|
+      puts "#{path.relative_path_from(root)} -> #{target.relative_path_from(root)}"
+    end
+  end
+
+  # Set code, then number, so 2 comes before 10 the way it does everywhere else.
+  def sort_key(root, path)
+    relative = path.relative_path_from(root)
+    [relative.dirname.to_s, relative.basename(".png").to_s.to_i, relative.basename(".png").to_s]
+  end
+end
+
+FindMovedOrphanedPictures.new.call
