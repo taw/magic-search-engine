@@ -82,7 +82,6 @@ class Indexer
 
       # Each set needs unique code, by convention all lowercase
       PatchSetCodes,
-      PatchMB1,
       PatchRemoveEmptySets,
       PatchReleaseDates,
 

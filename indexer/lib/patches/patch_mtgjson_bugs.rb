@@ -16,10 +16,9 @@ class PatchMtgjsonBugs < Patch
     "Lasting Fayth"  => ["G"],
   }.freeze
 
-  # OC21/OAFC are technically "display cards" not oversized
+  # OAFC is technically "display cards" not oversized
   # https://github.com/mtgjson/mtgjson/issues/815
-  # O90P and OLEP are just mtgjson bug
-  OVERSIZED_SETS = %W[OC21 OAFC O90P OLEP].freeze
+  OVERSIZED_SETS = %W[OAFC].freeze
 
   # Oversized means "a bigger copy of a card that also exists at normal size".
   # mtgjson instead stamps it on every printing of the layouts that have no
