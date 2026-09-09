@@ -283,7 +283,10 @@ class ReportArenaLegalityDifferences
     # keeps out anyway, so it is not in the pool however many of the format's
     # sets it appears in.
     suppressed = suppressed_names(arena_format)
-    their_pool = their_pool.reject{|name, _| suppressed.include?(name) }
+    unplayable = banned_unplayable_names(format, arena_format)
+    their_pool = their_pool.reject{|name, _|
+      suppressed.include?(name) or unplayable.include?(name)
+    }
     only_ours = ours - their_pool.keys
     only_theirs = their_pool.keys.to_set - ours
     drop_only, drops = arena_extras_from_drops(their_pool, only_theirs)
@@ -325,6 +328,27 @@ class ReportArenaLegalityDifferences
         "Arena has in no set #{arena_format["name"]} lists: #{unlisted_sets.sort.join(", ")}"
       notes << "  only ours: #{unlisted.sort.join(", ")}" if @pool
     end
+  end
+
+  # Cards our pool leaves out because they can't go in a deck, and Arena's ban
+  # list says the same thing about. Arena has no word for conjure-only, so where
+  # it wants such a card kept out of a format it says "banned" - which
+  # compare_ban_lists has already read as agreeing with us. Its pool goes on
+  # covering the card, because a pool is legalSets and the card is in one, so
+  # without this the same card comes back as a pool difference immediately after
+  # the ban lists agreed about it.
+  #
+  # Only Historic's Lightning Bolt reaches this today: a conjure-only card with
+  # nothing but conjure-only printings is in no set either side counts, and the
+  # ban is what makes this one both an ordinary STA card and unplayable. A card
+  # we call unplayable that Arena's ban list says nothing about is a real
+  # disagreement about the card and still reported.
+  def banned_unplayable_names(format, arena_format)
+    arena_statuses(arena_format).select{|name, status|
+      next false unless status == ARENA_BANNED
+      card = @db.cards[name.downcase]
+      card and UNPLAYABLE_STATUSES.include?(format.legality(card))
+    }.keys.to_set
   end
 
   # What we say about a card the pools disagree on. Not having the card at all
