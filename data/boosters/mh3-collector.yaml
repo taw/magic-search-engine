@@ -8,33 +8,49 @@ pack:
   foil_rare_mythic: 1
   showcase_commander_slot:
   - showcase_commander: 1
-    chance: 238
+    chance: 903
   - showcase_commander_foil: 1
-    chance: 23
+    chance: 98
   showcase_rm: 2
   foil_showcase_rm: 1
+queries:
+  # The four Booster Fun treatment blocks, by collector number.
+  bl_frames: "(e:{set} number:320-361,381-383,442-446a)"   # borderless + concept Eldrazi + flip walkers
+  profile: "(e:{set} number:362-380)"                      # borderless profile
+  retro: "(e:{set} number:384-441)"                        # '97 retro frame
+  extended: "(e:{set} number:447-467)"                     # extended art
+  treatments: "e:{set} number:320-467"
+  # How many of the four treatments a card has. Cards are weighted so that every
+  # rare totals 12 and every mythic 6 no matter how many versions exist.
+  in_two: "((alt:{bl_frames} alt:{profile}) or (alt:{bl_frames} alt:{retro}) or (alt:{profile} alt:{retro}) or (alt:{extended} alt:{bl_frames}) or (alt:{extended} alt:{profile}) or (alt:{extended} alt:{retro}))"
+  in_three: "((alt:{bl_frames} alt:{profile} alt:{retro}) or (alt:{bl_frames} alt:{profile} alt:{extended}) or (alt:{bl_frames} alt:{retro} alt:{extended}) or (alt:{profile} alt:{retro} alt:{extended}))"
+  in_exactly_two: "((alt:{bl_frames} alt:{profile} -alt:{retro} -alt:{extended}) or (alt:{bl_frames} -alt:{profile} alt:{retro} -alt:{extended}) or (-alt:{bl_frames} alt:{profile} alt:{retro} -alt:{extended}) or (alt:{bl_frames} -alt:{profile} -alt:{retro} alt:{extended}) or (-alt:{bl_frames} alt:{profile} -alt:{retro} alt:{extended}) or (-alt:{bl_frames} -alt:{profile} alt:{retro} alt:{extended}))"
+  in_exactly_one: "(({bl_frames} -alt:{profile} -alt:{retro} -alt:{extended}) or (-alt:{bl_frames} {profile} -alt:{retro} -alt:{extended}) or (-alt:{bl_frames} -alt:{profile} {retro} -alt:{extended}) or (-alt:{bl_frames} -alt:{profile} -alt:{retro} {extended}))"
 sheets:
   foil_eldrazi_land:
     foil: true
     rawquery: "e:mh3 number:304-308"
     count: 5
   retro_cu:
+    # Article slot 9/10: retro commons 30.7%, retro uncommons 31.6%, new-to-Modern
+    # retro uncommons 10.5%, H2R commons 8.8%, H2R uncommons 15.8%, Wastes 2.6%.
+    # That is a 5:3 common:uncommon ratio per card, not 2:1.
     any:
     - rawquery: "e:mh3 r:u number:384-441"
       count: 16
-      rate: 1
+      rate: 3
     - rawquery: "e:mh3 r:c number:384-441"
       count: 7
-      rate: 2
+      rate: 5
     - rawquery: "e:mh3 number:309"
       count: 1
-      rate: 1
+      rate: 3
     - rawquery: "e:h2r r:u"
       count: 6
-      rate: 1
+      rate: 3
     - rawquery: "e:h2r r:c"
       count: 2
-      rate: 2
+      rate: 5
   foil_retro_cu:
     foil: true
     use: retro_cu
@@ -71,23 +87,23 @@ sheets:
   showcase_rm:
     any:
     - # two versions mythic
-      rawquery: "e:mh3 number:320-467 r:m alt:((alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:447-467) alt:(e:mh3 number:320-361,381-383,442-446a)) or (alt:(e:mh3 number:447-467) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:447-467) alt:(e:mh3 number:384-441))) -is:foilonly"
+      rawquery: "{treatments} r:m alt:{in_two} -is:foilonly"
       count: 14
       rate: 3
     - # one version mythic
-      rawquery: "e:mh3 r:m (((e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) (e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) (e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) (e:mh3 number:447-467))) -is:foilonly"
+      rawquery: "e:mh3 r:m {in_exactly_one} -is:foilonly"
       count: 17
       rate: 6
     - # three versions rare
-      rawquery: "e:mh3 number:320-467 r:r alt:((alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380) alt:(e:mh3 number:447-467)) or (alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:384-441) alt:(e:mh3 number:447-467)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441) alt:(e:mh3 number:447-467))) -is:foilonly"
+      rawquery: "{treatments} r:r alt:{in_three} -is:foilonly"
       count: 15
       rate: 4
     - # two versions rare
-      rawquery: "e:mh3 number:320-467 r:r alt:((alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441) alt:(e:mh3 number:447-467))) -is:foilonly"
+      rawquery: "{treatments} r:r alt:{in_exactly_two} -is:foilonly"
       count: 36
       rate: 6
     - # one version rare
-      rawquery: "e:mh3 r:r (((e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) (e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) (e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) (e:mh3 number:447-467))) -is:foilonly"
+      rawquery: "e:mh3 r:r {in_exactly_one} -is:foilonly"
       count: 43
       rate: 12
     - rawquery: "e:h2r r:m"
@@ -97,53 +113,37 @@ sheets:
       count: 2
       rate: 12
   foil_showcase_rm:
+    # Article slot 15. Sub-chances are the published percentages x10:
+    #   showcase R/M 78.6 - foil-etched rare 9.3 - foil-etched mythic 3.9
+    #   - Special Guests 4.4 - textured SPG Elemental 1.9 - textured DFC walker 1.9
+    # The showcase pool is the one slots 13-14 draw from, in foil, so it is reused
+    # rather than duplicated; it keeps its equiprobable 12-per-rare / 6-per-mythic
+    # weighting.
     foil: true
     any:
-    - chance: 999
+    # Serialized titans are chance 1 against 1999 -> 0.05% of the slot, so each of
+    # the three is 1 in 6000 boosters.
+    - chance: 1999
       any:
-      - # two versions mythic
-        rawquery: "e:mh3 number:320-467 r:m alt:((alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:447-467) alt:(e:mh3 number:320-361,381-383,442-446a)) or (alt:(e:mh3 number:447-467) alt:(e:mh3 number:362-380)) or (alt:(e:mh3 number:447-467) alt:(e:mh3 number:384-441))) -is:foilonly"
-        count: 14
-        rate: 3
-      - # one version mythic
-        rawquery: "e:mh3 r:m (((e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) (e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) (e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) (e:mh3 number:447-467))) -is:foilonly"
-        count: 17
-        rate: 6
-      - # three versions rare
-        rawquery: "e:mh3 number:320-467 r:r alt:((alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441)) or (alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380) alt:(e:mh3 number:447-467)) or (alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:384-441) alt:(e:mh3 number:447-467)) or (alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441) alt:(e:mh3 number:447-467))) -is:foilonly"
-        count: 15
-        rate: 4
-      - # two versions rare
-        rawquery: "e:mh3 number:320-467 r:r alt:((alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) alt:(e:mh3 number:384-441) alt:(e:mh3 number:447-467))) -is:foilonly"
-        count: 36
-        rate: 6
-      - # one version rare
-        rawquery: "e:mh3 r:r (((e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) (e:mh3 number:362-380) -alt:(e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) (e:mh3 number:384-441) -alt:(e:mh3 number:447-467)) or (-alt:(e:mh3 number:320-361,381-383,442-446a) -alt:(e:mh3 number:362-380) -alt:(e:mh3 number:384-441) (e:mh3 number:447-467))) -is:foilonly"
-        count: 43
-        rate: 12
-      - rawquery: "e:h2r r:m"
-        count: 6
-        rate: 6
-      - rawquery: "e:h2r r:r"
-        count: 2
-        rate: 12
+      - use: showcase_rm
+        chance: 786
       - rawquery: "e:mh3 is:etched r:r"
         count: 12
         etched: true
-        rate: 6
+        chance: 93
       - rawquery: "e:mh3 is:etched r:m"
         count: 10
         etched: true
-        rate: 3
+        chance: 39
       - set: spg
         code: "MHTHREE"
-        rate: 3
+        chance: 44
       - set: spg
         code: "MHTHREECOLLECTOR"
-        rate: 3
+        chance: 19
       - rawquery: "e:mh3 number:468-472"
         count: 5
-        rate: 3
+        chance: 19
     - chance: 1
       rawquery: "e:mh3 number:381-383 number:/z/"
       count: 3
