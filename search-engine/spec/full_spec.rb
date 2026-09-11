@@ -26,6 +26,7 @@ describe "Full Database Test" do
       "Crescendo Conductor", "Boltwave (Prepared)",
       "Curious Pair", "Treats to Share",
       "Death", "Life",
+      "Diviner of Victory", "Unwind History",
       "Elite Interceptor", "Rejoinder",
       "Embereth Shieldbreaker", "Battle Display",
       "Emeritus of Conflict", "Lightning Bolt (Prepared)",
