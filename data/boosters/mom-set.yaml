@@ -2,6 +2,12 @@
 # No info on what other cards are in rare_mythic slot. Assuming it's only core set non-showcase cards
 # Etched foil rate reported as 4%, or 1/25 packs
 pack:
+  # Keep the usual 20% Set Booster foil-land convention; exact finish odds are unpublished.
+  land_slot:
+  - basic: 1
+    chance: 4
+  - foil_basic: 1
+    chance: 1
   sfc_common: 2
   sfc_uncommon: 2
   dfc_common_uncommon: 1
@@ -20,6 +26,17 @@ pack:
   - foil_etched: 1
     chance: 1
 sheets:
+  basic:
+    any:
+    - query: "t:basic -is:fullart"
+      count: 5
+      chance: 2
+    - query: "t:basic is:fullart"
+      count: 10
+      chance: 1
+  foil_basic:
+    foil: true
+    use: basic
   sfc_common:
     query: "r:c is:sfc"
     count: 111
@@ -104,9 +121,49 @@ sheets:
       count: 45
       chance: 1
   mom_foil_with_showcase:
-    # the shared base-set foil slot, but with its filter widened to also include
-    # the Jumpstart cards (#323-337): per the collecting article they appear in
-    # Set Boosters in traditional foil, but they are not is:baseset so the
-    # default e:mom is:baseset filter misses them
+    foil: true
+    # Preserve the existing rarity/variant convention. MUL insertion odds within
+    # this slot are unpublished; give its cards the same base-art rarity weights.
     filter: "(e:mom is:baseset) or (e:mom number:323-337)"
-    use: foil_with_showcase
+    any:
+    - any:
+      - use: common_showcase
+        rate: 1
+      - use: common_has_showcase
+        rate: 2
+      - use: common_has_no_showcase
+        rate: 3
+      - use: basic
+        rate: 3
+      chance: 12
+    - any:
+      - use: uncommon_showcase
+        rate: 1
+      - use: uncommon_has_showcase
+        rate: 2
+      - use: uncommon_has_no_showcase
+        rate: 3
+      - rawquery: "e:mul number:1-65 r:u"
+        count: 20
+        rate: 3
+      chance: 5
+    - any:
+      - use: rare_showcase
+        rate: 2
+      - use: rare_has_showcase
+        rate: 4
+      - use: rare_has_no_showcase
+        rate: 6
+      - use: mythic_showcase
+        rate: 1
+      - use: mythic_has_showcase
+        rate: 2
+      - use: mythic_has_no_showcase
+        rate: 3
+      - rawquery: "e:mul number:1-65 r:r"
+        count: 30
+        rate: 6
+      - rawquery: "e:mul number:1-65 r:m"
+        count: 15
+        rate: 3
+      chance: 3
