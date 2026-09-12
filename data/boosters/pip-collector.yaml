@@ -86,8 +86,9 @@ sheets:
     count: 85
     foil: true
   surge_wildcard:
-    rawquery: "e:pip number:529-854,890-975 -t:basic"
-    count: 402
+    # All surge-foil standard and extended-art cards; exclude basics and showcase cards.
+    rawquery: "e:pip number:529-854,890-1056 -t:basic"
+    count: 483
     foil: true
   showcase:
     rawquery: "e:pip number:327-361"
