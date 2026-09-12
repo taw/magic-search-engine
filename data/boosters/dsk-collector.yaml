@@ -21,56 +21,29 @@ queries:
   two_instances: "{any_boosterfun} ((alt:{extended_art} alt:{showcase}) or (alt:{extended_art} alt:{borderless}) or (alt:{extended_art} alt:{double_exposure}) or (alt:{showcase} alt:{borderless}) or (alt:{showcase} alt:{double_exposure}) or (alt:{borderless} alt:{double_exposure}))"
 sheets:
   foil_common:
-    # Showcase treatments 1/4 for relevant cards
+    # All common printings, including dual lands and lurking evil, appear evenly.
     foil: true
-    any:
-    - query: "r:c -alt:{lurking_evil} -(t:land -terramorphic)"
-      count: 79
-      rate: 4
-    - query: "r:c alt:{lurking_evil}"
-      count: 2
-      rate: 3
-    - rawquery: "r:c {lurking_evil}"
-      count: 2
-      rate: 1
+    rawquery: "e:{set} r:c (is:baseset or number:287-301) -t:basic"
+    count: 93
   foil_uncommon:
-    # Showcase treatments 1/4 for relevant cards
+    # Main-set, paranormal-frame, and lurking-evil printings appear evenly.
     foil: true
-    any:
-    - query: "r:u -alt:({lurking_evil} or {showcase})"
-      count: 92
-      rate: 4
-    - query: "r:u alt:({lurking_evil} or {showcase})"
-      count: 8
-      rate: 3
-    - rawquery: "r:u ({lurking_evil} or {showcase})"
-      count: 8
-      rate: 1
+    rawquery: "e:{set} r:u (is:baseset or number:287-327)"
+    count: 108
   foil_basic:
     foil: true
     query: "t:basic is:fullart"
     count: 5
   foil_rare_mythic:
+    # Lurking-evil printings have the same rate as other cards of their rarity.
     foil: true
     any:
-    - rawquery: "r:r {lurking_evil}"
-      count: 7
+    - rawquery: "e:{set} r:r (is:baseset or number:287-301)"
+      count: 67
       rate: 2
-    - query: "r:r alt:{lurking_evil}"
-      count: 7
-      rate: 6
-    - query: "r:r -alt:{lurking_evil}"
-      count: 53
-      rate: 8
-    - rawquery: "r:m {lurking_evil}"
-      count: 2
+    - rawquery: "e:{set} r:m (is:baseset or number:287-301)"
+      count: 22
       rate: 1
-    - query: "r:m alt:{lurking_evil}"
-      count: 2
-      rate: 3
-    - query: "r:m -alt:{lurking_evil}"
-      count: 18
-      rate: 4
   showcase_commander:
     any:
     - rawquery: "e:dsc number<=8"
