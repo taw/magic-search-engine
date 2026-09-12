@@ -1,0 +1,15 @@
+# The Hobbit Prerelease promo: one traditional-foil base-set rare or mythic.
+# The four fixed seasonal lands are mapped separately in sealed-content.
+# Source: https://magic.wizards.com/en/news/feature/collecting-the-hobbit
+pack:
+  promo: 1
+sheets:
+  promo:
+    foil: true
+    any:
+    - rawquery: "e:hob r:r is:baseset"
+      rate: 2
+      count: 53
+    - rawquery: "e:hob r:m is:baseset"
+      rate: 1
+      count: 15
