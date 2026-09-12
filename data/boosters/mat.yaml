@@ -13,8 +13,15 @@ pack:
 sheets:
   booster_fun:
     filter: "e:{set} promo:boosterfun -is:foilonly -frame:extendedart"
-    use: base_1248_by_rarity
     count: 50
+    # R/M is 1 in 6, independently of the 1-in-6 foil upgrade.
+    any:
+    - query: "r:u"
+      count: 15
+      chance: 5
+    - use: rare_mythic
+      count: 35
+      chance: 1
   booster_fun_foil:
     foil: true
     use: booster_fun
