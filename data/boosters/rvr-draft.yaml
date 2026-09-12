@@ -82,9 +82,10 @@ sheets:
       - rawquery: "e:{set} r:m is:borderless -is:foilonly -frame:extendedart is:paper"
         count: 13
         rate: 1
-      - query: "r:r alt:(e:{set} r:m is:borderless -is:foilonly -frame:extendedart)"
+      - query: "r:m alt:(e:{set} r:m is:borderless -is:foilonly -frame:extendedart)"
+        count: 13
         rate: 2
-      - query: "r:r -alt:(e:{set} r:m is:borderless -is:foilonly -frame:extendedart)"
-        count: 71
+      - query: "r:m -alt:(e:{set} r:m is:borderless -is:foilonly -frame:extendedart)"
+        count: 7
         rate: 3
       chance: 3
