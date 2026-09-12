@@ -19,180 +19,300 @@ pack:
   wildcard: 1
   foil_with_showcase: 1
 queries:
+  # -- treatment blocks, by collector number --
   borderless: "e:{set} number:320-361,442-446"
   profile: "e:{set} number:362-383 -number:/z/"
   old_border: "e:{set} number:384-441"
+  showcase_frames: "({borderless} or {profile})"
   any_showcase: "{borderless} or {profile} or {old_border}"
+  showcase_no_retro: "({showcase_frames} -is:foilonly)"
   two_instances: "{any_showcase} ((alt:{borderless} alt:{profile}) or (alt:{borderless} alt:{old_border}) or (alt:{profile} alt:{old_border}))"
+  # -- card pools --
+  main_only: "-is:reprint -is:foilonly"                      # MH3-designed cards
+  rare_pool: "(is:fetchland or -is:reprint) -is:foilonly"    # as main_only, but keeps the fetchlands
+  reprint_pool: "is:reprint -is:foilonly"                    # the new-to-Modern reprints
+  snow_wastes: "e:{set} number:309"
+  basic_lands: "e:{set} number:304-319 -number:309"
 sheets:
   common:
     query: "r:c"
     count: 80
   land:
-    rawquery: "e:mh3 number:304-319 -number:309"
+    rawquery: "{basic_lands}"
     count: 15
   foil_land:
     foil: true
-    rawquery: "e:mh3 number:304-319 -number:309"
-    count: 15
+    use: land
   new_uncommon:
     query: "r:u -is:reprint"
     count: 101
-  new_rare_mythic:
+  dfc_uncommon:
+    # The 20 double-faced uncommons. No new-to-Modern card is a DFC, so this pool is
+    # identical in the wildcard and foil slots, and none of them has a retro version.
+    query: "r:u is:dfc"
+    count: 20
+  commander_mythic:
+    # The 8 M3C face commanders, regular and borderless-profile versions.
     any:
-    - rawquery: "r:r (is:fetchland or -is:reprint) -is:foilonly {two_instances}"
+    - rawquery: "e:m3c number:1-8"
+      count: 8
+      rate: 4
+    - rawquery: "e:m3c number:9-16"
+      count: 8
+      rate: 2
+  new_rare_mythic:
+    # Equiprobable collation: every rare shares total weight 40, every mythic total
+    # weight 20, so a card is equally likely regardless of how many alt-art versions
+    # it has. Alt printings are carved OUT of that total (alt fraction 4/40 = 1/10),
+    # so a card with alts appears correspondingly less in its base frame. This
+    # reproduces the article's slot-3 split: regular rare 79.8%, mythic 13.0%,
+    # Booster Fun 7.2%. Only the base rates encode the fraction; alt-printing rates
+    # are the per-treatment alt weight (2 alts of a card each carry half).
+    any:
+    - rawquery: "r:r {rare_pool} {two_instances}"
       count: 46
       rate: 2
-    - rawquery: "r:r -is:reprint -is:foilonly {any_showcase} -{two_instances}"
+    - rawquery: "r:r {main_only} {any_showcase} -{two_instances}"
       count: 18
       rate: 4
-    - query: "r:r (is:fetchland or -is:reprint) -is:foilonly alt:{any_showcase}"
+    - query: "r:r {rare_pool} alt:{any_showcase}"
       count: 41
-      rate: 8
-    - query: "r:r -is:reprint -is:foilonly -alt:{any_showcase}"
+      rate: 36
+    - query: "r:r {main_only} -alt:{any_showcase}"
       count: 19
-      rate: 12
-    - rawquery: "r:m -is:reprint -is:foilonly {two_instances}"
+      rate: 40
+    - rawquery: "r:m {main_only} {two_instances}"
       count: 12
       rate: 1
-    - rawquery: "r:m -is:reprint -is:foilonly {any_showcase} -{two_instances}"
+    - rawquery: "r:m {main_only} {any_showcase} -{two_instances}"
       count: 13
       rate: 2
-    - query: "r:m -is:reprint -is:foilonly alt:{any_showcase}"
+    - query: "r:m {main_only} alt:{any_showcase}"
       count: 19
-      rate: 4
-    - query: "r:m -is:reprint -is:foilonly -alt:{any_showcase}"
+      rate: 18
+    - query: "r:m {main_only} -alt:{any_showcase}"
       count: 1
-      rate: 6
+      rate: 20
   reprint:
+    # New-to-Modern slot. Equiprobable within each rarity band: every uncommon shares
+    # weight 120, every rare 40, every mythic 20 (mythics half as likely as rares per
+    # card). Alt printings are carved OUT of a card's total at 1/10 rather than added
+    # on top, so a card with a retro/borderless version appears correspondingly less
+    # in its base frame. Article slot-4 split: regular U 75%, R 21.3%, M 2.3%,
+    # Booster Fun ~1.4% (frame break / profile / retro).
+    #
+    # NOTE: the article lists no *uncommon* Booster Fun for this slot, yet 4 of the 20
+    # new-to-Modern uncommons do have retro printings. They are kept here (at the same
+    # 1/10 carve-out) so the slot's card pool is unchanged; the cost is that Booster Fun
+    # lands slightly above the published 1.4%.
     any:
-    - chance: 750
-      any:
-      - rate: 1
-        rawquery: "e:mh3 r:u number:384-441 is:reprint"
-        count: 4
-      - rate: 2
-        query: "r:u alt:(e:mh3 number:384-441) is:reprint"
-        count: 4
-      - rate: 3
-        query: "r:u is:reprint -alt:(e:mh3 number:384-441)"
-        count: 16
-    - chance: 213
-      any:
-      - rawquery: "r:r is:reprint -is:foilonly {any_showcase} -{two_instances}"
-        count: 10
-        rate: 2
-      - query: "r:r is:reprint -is:foilonly alt:{any_showcase} -is:fetchland"
-        count: 10
-        rate: 4
-      - query: "r:r is:reprint -is:foilonly -alt:{any_showcase}"
-        count: 8
-        rate: 6
-    - chance: 23
-      any:
-      - rawquery: "r:m is:reprint -is:foilonly {two_instances}"
-        count: 2
-        rate: 1
-      - rawquery: "r:m is:reprint -is:foilonly {any_showcase} -{two_instances}"
-        count: 3
-        rate: 2
-      - query: "r:m is:reprint -is:foilonly alt:{any_showcase}"
-        count: 4
-        rate: 4
+    # -- uncommons: total 120 each; the 4 with a retro version carve out 1/10 --
+    - query: "r:u is:reprint -alt:{old_border}"
+      count: 16
+      rate: 120
+    - query: "r:u is:reprint alt:{old_border}"
+      count: 4
+      rate: 108
+    - rawquery: "{old_border} r:u is:reprint"
+      count: 4
+      rate: 12
+    # -- rares: total 40 each (base-with-alt 36 + alt 4) --
+    - rawquery: "r:r {reprint_pool} {any_showcase} -{two_instances}"
+      count: 10
+      rate: 4
+    - query: "r:r {reprint_pool} alt:{any_showcase} -is:fetchland"
+      count: 10
+      rate: 36
+    - query: "r:r {reprint_pool} -alt:{any_showcase}"
+      count: 8
+      rate: 40
+    # -- mythics: total 20 each; all 4 have alts (Kaalia carries 2 at rate 1 each) --
+    - rawquery: "r:m {reprint_pool} {two_instances}"
+      count: 2
+      rate: 1
+    - rawquery: "r:m {reprint_pool} {any_showcase} -{two_instances}"
+      count: 3
+      rate: 2
+    - query: "r:m {reprint_pool} alt:{any_showcase}"
+      count: 4
+      rate: 18
   wildcard:
-    # Rarity/treatment mix per the WOTC "Collecting Modern Horizons 3" article's
-    # Wildcard slot. Each treatment is its own top-level chance, so the marginal
-    # probabilities match the published percentages exactly.
+    # Equiprobable within every rarity band: a card's alt-art printings are carved
+    # OUT of its per-card total, so a card that HAS a retro/borderless version shows
+    # up less in its base frame rather than more. Treatment printings are therefore
+    # rarity-weighted (a retro mythic is NOT as easy to pull as a retro common).
+    # Per-card total is 105 in every band; a retro printing takes 30/105 (~2/7) and
+    # a borderless/profile printing 7/105 (~1/16). Band chances then reproduce the
+    # article's published wildcard buckets:
+    #   common 41.7 - uncommon 33.4 - DFC uncommon 8.3 - rare 6.7 - mythic 1.1
+    #   - borderless/profile 0.4 - retro 4.2 - commander 4.2 - wastes <0.1
     # https://magic.wizards.com/en/news/feature/collecting-modern-horizons-3
     any:
-    - # common 41.7%
-      chance: 417
-      query: "r:c"
-      count: 80
-    - # uncommon 33.4%
-      chance: 334
-      query: "r:u -is:reprint -is:dfc"
-      count: 81
-    - # double-faced uncommon 8.3%
-      chance: 83
-      query: "r:u -is:reprint is:dfc"
-      count: 20
-    - # rare 6.7% (fetchlands included; new-to-Modern reprints have their own slot)
-      chance: 67
-      query: "r:r (is:fetchland or -is:reprint) -is:foilonly"
-      count: 60
-    - # mythic 1.1%
-      chance: 11
-      query: "r:m -is:reprint -is:foilonly"
-      count: 20
-    - # borderless / profile showcase rare or mythic 0.4%
-      chance: 4
-      rawquery: "e:mh3 -is:reprint -is:foilonly (r:r or r:m) ({borderless} or {profile})"
-      count: 52
-    - # retro frame, any rarity 4.2%
-      chance: 42
-      rawquery: "e:mh3 number:384-441"
-      count: 58
-    - # Commander mythic 4.2%
-      chance: 42
+    - # commons + their retro printings
+      chance: 4273
       any:
-      - rawquery: "e:m3c number:1-8"
-        count: 8
-        rate: 4
-      - rawquery: "e:m3c number:9-16"
-        count: 8
-        rate: 2
+      - query: "r:c -alt:{old_border}"
+        count: 73
+        rate: 105
+      - query: "r:c alt:{old_border}"
+        count: 7
+        rate: 75
+      - rawquery: "{old_border} r:c"
+        count: 7
+        rate: 30
+    - # non-DFC uncommons + all retro uncommon printings (incl. new-to-Modern)
+      chance: 3534
+      any:
+      - query: "r:u -is:reprint -is:dfc -alt:{old_border}"
+        count: 69
+        rate: 105
+      - query: "r:u -is:reprint -is:dfc alt:{old_border}"
+        count: 12
+        rate: 75
+      - rawquery: "{old_border} r:u"
+        count: 16
+        rate: 30
+    - # double-faced uncommons (no retro versions exist)
+      chance: 830
+      use: dfc_uncommon
+    - # rares + their retro and borderless/profile printings
+      chance: 800
+      any:
+      - query: "r:r {rare_pool} -alt:{old_border} -alt:{showcase_no_retro}"
+        count: 19
+        rate: 105
+      - query: "r:r {rare_pool} alt:{old_border} -alt:{showcase_no_retro}"
+        count: 1
+        rate: 75
+      - query: "r:r {rare_pool} -alt:{old_border} alt:{showcase_no_retro}"
+        count: 17
+        rate: 98
+      - query: "r:r {rare_pool} alt:{old_border} alt:{showcase_no_retro}"
+        count: 23
+        rate: 68
+      - rawquery: "{old_border} r:r"
+        count: 26
+        rate: 30
+      - rawquery: "e:mh3 r:r {main_only} {showcase_no_retro}"
+        count: 35
+        rate: 7
+    - # mythics + their retro and borderless/profile printings
+      chance: 134
+      any:
+      - query: "r:m {main_only} -alt:{old_border} -alt:{showcase_no_retro}"
+        count: 1
+        rate: 105
+      - query: "r:m {main_only} alt:{old_border} -alt:{showcase_no_retro}"
+        count: 2
+        rate: 75
+      - query: "r:m {main_only} -alt:{old_border} alt:{showcase_no_retro}"
+        count: 11
+        rate: 98
+      - query: "r:m {main_only} alt:{old_border} alt:{showcase_no_retro}"
+        count: 6
+        rate: 68
+      - rawquery: "{old_border} r:m"
+        count: 9
+        rate: 30
+      - rawquery: "e:mh3 r:m {main_only} {showcase_no_retro}"
+        count: 17
+        rate: 7
+    - # Commander mythic 4.2%
+      chance: 420
+      use: commander_mythic
     - # full-art Snow-Covered Wastes <0.1%
-      chance: 1
-      rawquery: "e:mh3 number:309"
+      chance: 10
+      rawquery: "{snow_wastes}"
       count: 1
   foil_with_showcase:
-    # Traditional foil slot. The article says it mirrors the Wildcard slot's
-    # contents (plus foil new-to-Modern cards) but publishes no separate per-rarity
-    # numbers, so it reuses the Wildcard slot's treatment weighting. Unlike the
-    # Wildcard slot it keeps the new-to-Modern reprints (they appear here in foil).
+    # Traditional foil slot. Mirrors the Wildcard slot but ALSO keeps the
+    # new-to-Modern reprints (they appear here in foil), so every band except
+    # commons and DFC uncommons draws from a larger pool.
+    #
+    # Same equiprobable collation as the wildcard: alt-art printings are carved OUT
+    # of a card's per-card total (105 in every band) rather than added on top, and
+    # treatment printings are rarity-weighted. The fractions differ from the
+    # wildcard's because the pools are bigger while the retro/borderless pools are
+    # not: a retro printing takes 35/105 (~1/3) and a borderless one 7/105 (~1/16).
+    # WOTC publishes no per-rarity numbers for this slot, so the band chances
+    # preserve the bucket marginals this slot already had.
     foil: true
     any:
-    - # common 41.7%
-      chance: 417
-      query: "r:c"
-      count: 80
-    - # uncommon 33.4%
-      chance: 334
-      query: "r:u -is:dfc"
-      count: 101
-    - # double-faced uncommon 8.3%
-      chance: 83
-      query: "r:u is:dfc"
-      count: 20
-    - # rare 6.7%
-      chance: 67
-      query: "r:r -is:foilonly"
-      count: 78
-    - # mythic 1.1%
-      chance: 11
-      query: "r:m -is:foilonly"
-      count: 24
-    - # borderless / profile showcase rare or mythic 0.4%
-      chance: 4
-      rawquery: "e:mh3 -is:foilonly (r:r or r:m) ({borderless} or {profile})"
-      count: 69
-    - # retro frame, any rarity 4.2%
-      chance: 42
-      rawquery: "e:mh3 number:384-441"
-      count: 58
-    - # Commander mythic 4.2%
-      chance: 42
+    - # commons + their retro printings
+      chance: 4292
       any:
-      - rawquery: "e:m3c number:1-8"
-        count: 8
-        rate: 4
-      - rawquery: "e:m3c number:9-16"
-        count: 8
-        rate: 2
+      - query: "r:c -alt:{old_border}"
+        count: 73
+        rate: 105
+      - query: "r:c alt:{old_border}"
+        count: 7
+        rate: 70
+      - rawquery: "{old_border} r:c"
+        count: 7
+        rate: 35
+    - # non-DFC uncommons (incl. new-to-Modern) + all retro uncommon printings
+      chance: 3525
+      any:
+      - query: "r:u -is:dfc -alt:{old_border}"
+        count: 85
+        rate: 105
+      - query: "r:u -is:dfc alt:{old_border}"
+        count: 16
+        rate: 70
+      - rawquery: "{old_border} r:u"
+        count: 16
+        rate: 35
+    - # double-faced uncommons (no retro versions exist)
+      chance: 830
+      use: dfc_uncommon
+    - # rares (incl. new-to-Modern) + their retro and borderless/profile printings
+      chance: 790
+      any:
+      - query: "r:r -is:foilonly -alt:{old_border} -alt:{showcase_no_retro}"
+        count: 27
+        rate: 105
+      - query: "r:r -is:foilonly alt:{old_border} -alt:{showcase_no_retro}"
+        count: 3
+        rate: 70
+      - query: "r:r -is:foilonly -alt:{old_border} alt:{showcase_no_retro}"
+        count: 25
+        rate: 98
+      - query: "r:r -is:foilonly alt:{old_border} alt:{showcase_no_retro}"
+        count: 23
+        rate: 63
+      - rawquery: "{old_border} r:r"
+        count: 26
+        rate: 35
+      - rawquery: "e:mh3 r:r -is:foilonly {showcase_no_retro}"
+        count: 48
+        rate: 7
+    - # mythics (incl. new-to-Modern) + their retro and borderless/profile printings
+      chance: 134
+      any:
+      - query: "r:m -is:foilonly -alt:{old_border} -alt:{showcase_no_retro}"
+        count: 1
+        rate: 105
+      - query: "r:m -is:foilonly alt:{old_border} -alt:{showcase_no_retro}"
+        count: 3
+        rate: 70
+      - query: "r:m -is:foilonly -alt:{old_border} alt:{showcase_no_retro}"
+        count: 14
+        rate: 98
+      - query: "r:m -is:foilonly alt:{old_border} alt:{showcase_no_retro}"
+        count: 6
+        rate: 63
+      - rawquery: "{old_border} r:m"
+        count: 9
+        rate: 35
+      - rawquery: "e:mh3 r:m -is:foilonly {showcase_no_retro}"
+        count: 21
+        rate: 7
+    - # Commander mythic 4.2%
+      chance: 420
+      use: commander_mythic
     - # full-art Snow-Covered Wastes <0.1%
-      chance: 1
-      rawquery: "e:mh3 number:309"
+      chance: 10
+      rawquery: "{snow_wastes}"
       count: 1
   special_guest:
     set: spg
