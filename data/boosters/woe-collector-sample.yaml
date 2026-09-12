@@ -16,8 +16,8 @@ sheets:
     any:
     - use: rare_showcase
       rate: 12
-    - rawquery: "(e:woe or e:woc) r:r frame:extendedart"
-      count: 46
+    - rawquery: "(e:woe or e:woc) r:r frame:extendedart -promo:buyabox"
+      count: 45
       rate: 12
     - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"
       count: 25
@@ -55,7 +55,7 @@ sheets:
     any:
     - use: rare_showcase
       rate: 12
-    - rawquery: "(e:woe or e:woc) r:r frame:extendedart"
+    - rawquery: "(e:woe or e:woc) r:r frame:extendedart -promo:buyabox"
       count: 66
       rate: 12
     - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"
