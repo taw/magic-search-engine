@@ -1,6 +1,5 @@
 # Data from https://magic.wizards.com/en/news/feature/collecting-dominaria-remastered-and-product-overview
 # "Each Draft Booster contains 1 retro frame card of any rarity and 1 retro frame land"
-# This doesn't handle retro frames for nonland cards
 # For retro basics, there are no other basics anyway, so it works without explicit checks
 #
 # Retro basics at 402-411 are included
@@ -25,11 +24,29 @@ pack:
   retro:
   - common_uncommon_retro: 1
     rare_mythic_with_showcase: 1
-    chance: 1
+    chance: 79
   - common: 1
     rare_mythic_retro: 1
-    chance: 1
+    chance: 21
 sheets:
+  # 21% * (20 mythics / (2*60 rares + 20 mythics)) = 3% retro mythics.
+  foil:
+    foil: true
+    # Draft foils include retro/borderless nonlands, but never foil basics.
+    filter: "e:dmr number:1-401 -t:basic"
+    any:
+    - use: common_with_showcase
+      chance: 12
+    - use: uncommon_with_showcase
+      chance: 5
+    - use: rare_mythic_with_showcase_foil
+      chance: 3
+  rare_mythic_with_showcase_foil:
+    any:
+    - use: rare_with_showcase
+      rate: 2
+    - use: mythic_with_showcase
+      rate: 1
   common_uncommon_borderless:
     filter: "e:{set} is:borderless"
     use: common_uncommon
