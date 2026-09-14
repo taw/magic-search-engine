@@ -17,8 +17,10 @@ queries:
   borderless: "e:{set} number:328-350"
   double_exposure: "e:{set} number:351-367"
   extended_art: "e:{set} frame:extendedart"
-  any_boosterfun: "{extended_art} or {showcase} or {borderless} or {double_exposure}"
-  two_instances: "{any_boosterfun} ((alt:{extended_art} alt:{showcase}) or (alt:{extended_art} alt:{borderless}) or (alt:{extended_art} alt:{double_exposure}) or (alt:{showcase} alt:{borderless}) or (alt:{showcase} alt:{double_exposure}) or (alt:{borderless} alt:{double_exposure}))"
+  # 417 is the buy-a-box. It shares the extended-art frame with the Booster Fun
+  # cards but isn't one of them, so it must not count as a version either.
+  any_boosterfun: "({extended_art} or {showcase} or {borderless} or {double_exposure}) -number:417"
+  two_instances: "{any_boosterfun} prints>=2:{any_boosterfun}"
 sheets:
   foil_common:
     # All common printings, including dual lands and lurking evil, appear evenly.
@@ -64,9 +66,9 @@ sheets:
     - rawquery: "r:m {any_boosterfun} -alt:{two_instances}"
       count: 19
       rate: 2
-    - rawquery: "r:r {two_instances} -number:417" # 417 is the BaB
+    - rawquery: "r:r {two_instances}"
       rate: 2
-    - rawquery: "r:r {any_boosterfun} -alt:{two_instances} -number:417"
+    - rawquery: "r:r {any_boosterfun} -alt:{two_instances}"
       count: 59
       rate: 4
   foil_booster_fun:

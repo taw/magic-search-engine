@@ -14,18 +14,13 @@ pack:
   showcase_rm: 2
   foil_showcase_rm: 1
 queries:
-  # The four Booster Fun treatment blocks, by collector number.
-  bl_frames: "e:{set} number:320-361,381-383,442-446a"   # borderless + concept Eldrazi + flip walkers
-  profile: "e:{set} number:362-380"                      # borderless profile
-  retro: "e:{set} number:384-441"                        # '97 retro frame
-  extended: "e:{set} number:447-467"                     # extended art
-  treatments: "e:{set} number:320-467"
-  # How many of the four treatments a card has. Cards are weighted so that every
-  # rare totals 12 and every mythic 6 no matter how many versions exist.
-  in_two: "(alt:{bl_frames} alt:{profile}) or (alt:{bl_frames} alt:{retro}) or (alt:{profile} alt:{retro}) or (alt:{extended} alt:{bl_frames}) or (alt:{extended} alt:{profile}) or (alt:{extended} alt:{retro})"
-  in_three: "(alt:{bl_frames} alt:{profile} alt:{retro}) or (alt:{bl_frames} alt:{profile} alt:{extended}) or (alt:{bl_frames} alt:{retro} alt:{extended}) or (alt:{profile} alt:{retro} alt:{extended})"
-  in_exactly_two: "(alt:{bl_frames} alt:{profile} -alt:{retro} -alt:{extended}) or (alt:{bl_frames} -alt:{profile} alt:{retro} -alt:{extended}) or (-alt:{bl_frames} alt:{profile} alt:{retro} -alt:{extended}) or (alt:{bl_frames} -alt:{profile} -alt:{retro} alt:{extended}) or (-alt:{bl_frames} alt:{profile} -alt:{retro} alt:{extended}) or (-alt:{bl_frames} -alt:{profile} alt:{retro} alt:{extended})"
-  in_exactly_one: "({bl_frames} -alt:{profile} -alt:{retro} -alt:{extended}) or (-alt:{bl_frames} {profile} -alt:{retro} -alt:{extended}) or (-alt:{bl_frames} -alt:{profile} {retro} -alt:{extended}) or (-alt:{bl_frames} -alt:{profile} -alt:{retro} {extended})"
+  # The Booster Fun treatments, by collector number: 320-361 borderless,
+  # 362-380 borderless profile, 381-383 concept Eldrazi, 384-441 '97 retro frame,
+  # 442-446a flip walkers, 447-467 extended art. Cards are weighted so that every
+  # rare totals 12 and every mythic 6 no matter how many of these a card got, so
+  # the slots below split by how many there are. A foil-only printing can never
+  # come out of these slots, so it isn't one of the versions being counted.
+  versions: "e:{set} number:320-467 -is:foilonly"
 sheets:
   foil_eldrazi_land:
     foil: true
@@ -87,23 +82,23 @@ sheets:
   showcase_rm:
     any:
     - # two versions mythic
-      rawquery: "{treatments} r:m alt:{in_two} -is:foilonly"
+      rawquery: "{versions} r:m prints>=2:{versions}"
       count: 14
       rate: 3
     - # one version mythic
-      rawquery: "e:{set} r:m {in_exactly_one} -is:foilonly"
+      rawquery: "{versions} r:m prints=1:{versions}"
       count: 17
       rate: 6
     - # three versions rare
-      rawquery: "{treatments} r:r alt:{in_three} -is:foilonly"
+      rawquery: "{versions} r:r prints>=3:{versions}"
       count: 15
       rate: 4
     - # two versions rare
-      rawquery: "{treatments} r:r alt:{in_exactly_two} -is:foilonly"
+      rawquery: "{versions} r:r prints=2:{versions}"
       count: 36
       rate: 6
     - # one version rare
-      rawquery: "e:{set} r:r {in_exactly_one} -is:foilonly"
+      rawquery: "{versions} r:r prints=1:{versions}"
       count: 43
       rate: 12
     - rawquery: "e:h2r r:m"

@@ -19,7 +19,7 @@ queries:
   movie_poster: "e:{set} number:481-490"
   old_frame: "e:{set} number:329-480"
   any_boosterfun: "{borderless} or {showcase} or {movie_poster} or {old_frame}"
-  two_instances: "{any_boosterfun} ((alt:({borderless} or {showcase}) alt:{movie_poster}) or (alt:({borderless} or {showcase}) alt:{old_frame}) or (alt:{movie_poster} alt:{old_frame}))"
+  two_instances: "{any_boosterfun} prints>=2:{any_boosterfun}"
 sheets:
   foil_basic:
     foil: true

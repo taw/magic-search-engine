@@ -9,18 +9,14 @@ pack:
   - foil_showcase_rm: 1
     chance: 1
 queries:
-  # the showcase treatments a rare/mythic can appear in. The sample has no
-  # retro-frame (e:{set} number:384-441) rares/mythics, so the retro treatment is
-  # deliberately not among them.
-  borderless: "e:{set} number:320-361,381-383,442-446a"
-  profile:    "e:{set} number:362-380"
-  textured:   "e:{set} number:447-467"
-  # a card shows up once per treatment it was printed in; these buckets pick cards
-  # by how many of the three treatments exist, so each is weighted right.
-  # exactly one non-retro treatment:
-  one_version_nonretro: "({borderless} -alt:{profile} -alt:{textured}) or (-alt:{borderless} {profile} -alt:{textured}) or (-alt:{borderless} -alt:{profile} {textured})"
-  # two or more non-retro treatments (mythics top out at two):
-  two_plus_versions_nonretro: "(alt:{borderless} alt:{profile}) or (alt:{borderless} alt:{textured}) or (alt:{profile} alt:{textured})"
+  # The showcase treatments a rare/mythic can appear in, by collector number:
+  # 320-361 borderless, 362-380 borderless profile, 381-383 concept Eldrazi,
+  # 442-446a flip walkers, 447-467 textured. The sample has no retro-frame
+  # (e:{set} number:384-441) rares/mythics, so the retro treatment is deliberately
+  # not among them. A card shows up once per treatment it was printed in, and the
+  # slots below split by how many of them it got, so each is weighted right; a
+  # foil-only printing can't come out of these slots, so it isn't one of them.
+  versions: "e:{set} number:320-383,442-467 -is:foilonly"
 sheets:
   foil_retro:
     foil: true
@@ -44,17 +40,17 @@ sheets:
     # m3c cards stay (these are nonfoil; only their foils would be ripple foils).
     any:
     - # mythic in two non-retro showcase treatments
-      rawquery: "e:{set} number:320-383,442-467 r:m alt:{two_plus_versions_nonretro} -is:foilonly"
+      rawquery: "{versions} r:m prints>=2:{versions}"
       count: 2
       rate: 3
     - # mythic in one non-retro showcase treatment
-      rawquery: "e:{set} r:m {one_version_nonretro} -is:foilonly"
+      rawquery: "{versions} r:m prints=1:{versions}"
       count: 20
       rate: 6
     - # rare in one non-retro showcase treatment
       # (without the retro version no rare has two versions left, except the
       # fetchlands, which aren't in this product)
-      rawquery: "e:{set} r:r {one_version_nonretro} -is:foilonly"
+      rawquery: "{versions} r:r prints=1:{versions}"
       count: 58
       rate: 12
     - rawquery: "e:m3c number:9-16"
@@ -74,17 +70,17 @@ sheets:
     foil: true
     any:
     - # mythic in two non-retro showcase treatments
-      rawquery: "e:{set} number:320-383,442-467 r:m alt:{two_plus_versions_nonretro} -is:foilonly"
+      rawquery: "{versions} r:m prints>=2:{versions}"
       count: 2
       rate: 3
     - # mythic in one non-retro showcase treatment
-      rawquery: "e:{set} r:m {one_version_nonretro} -is:foilonly"
+      rawquery: "{versions} r:m prints=1:{versions}"
       count: 20
       rate: 6
     - # rare in one non-retro showcase treatment
       # (without the retro version no rare has two versions left, except the
       # fetchlands, which aren't in this product)
-      rawquery: "e:{set} r:r {one_version_nonretro} -is:foilonly"
+      rawquery: "{versions} r:r prints=1:{versions}"
       count: 58
       rate: 12
     - rawquery: "e:m3c number:9-16"

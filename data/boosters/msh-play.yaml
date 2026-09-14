@@ -32,9 +32,6 @@ queries:
   borderless_land: "e:{set} number:380-384"
   source_material: "e:mar number:41-100"
 
-  rare_with_two_boosterfun: "e:{set} number:25,97,213,220,244"
-  mythic_with_two_boosterfun: "e:{set} number:6,9,11,18,23,49,80,89,95,146,156,219,245"
-
 sheets:
   common:
     # By doing the math on the percentages given by Wizards, we come to the 3:1 rate between normal and scene commons.
@@ -67,13 +64,13 @@ sheets:
       - rawquery: "{boosterfun_no_land} r:r" # Rare boosterfun
         rate: 1
         count: 34
-      - query: "r:r alt:({boosterfun_no_land}) -{rare_with_two_boosterfun}" # Rare with one boosterfun version
+      - query: "r:r prints=1:{boosterfun_no_land}" # Rare with one boosterfun version
         rate: 6
         count: 24
-      - query: "{rare_with_two_boosterfun})" # Rare with two boosterfun versions
+      - query: "r:r prints=2:{boosterfun_no_land}" # Rare with two boosterfun versions
         rate: 7
         count: 5
-      - query: "r:r -alt:({boosterfun_no_land})" # Rare without boosterfun version
+      - query: "r:r prints=0:{boosterfun_no_land}" # Rare without boosterfun version
         rate: 8
         count: 60 - 24 - 5
 
@@ -82,13 +79,13 @@ sheets:
       - rawquery: "{boosterfun_no_land} r:m" # Mythic boosterfun
         rate: 1
         count: 34
-      - query: "r:m alt:({boosterfun_no_land}) -{mythic_with_two_boosterfun}" # Mythic with one boosterfun version
+      - query: "r:m prints=1:{boosterfun_no_land}" # Mythic with one boosterfun version
         rate: 12
         count: 8
-      - query: "{mythic_with_two_boosterfun}" # Mythic with two boosterfun version
+      - query: "r:m prints=2:{boosterfun_no_land}" # Mythic with two boosterfun versions
         rate: 13
         count: 13
-      - query: "r:m -alt:({boosterfun_no_land})" # Mythic without boosterfun version
+      - query: "r:m prints=0:{boosterfun_no_land}" # Mythic without boosterfun version
         rate: 14
         count: 25 - 13 - 8
 

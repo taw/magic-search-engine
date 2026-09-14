@@ -26,7 +26,7 @@ queries:
   showcase_frames: "{borderless} or {profile}"
   any_showcase: "{borderless} or {profile} or {old_border}"
   showcase_no_retro: "{showcase_frames} -is:foilonly"
-  two_instances: "{any_showcase} ((alt:{borderless} alt:{profile}) or (alt:{borderless} alt:{old_border}) or (alt:{profile} alt:{old_border}))"
+  two_instances: "{any_showcase} prints>=2:{any_showcase}"
   # -- card pools --
   main_only: "-is:reprint -is:foilonly"                      # MH3-designed cards
   rare_pool: "(is:fetchland or -is:reprint) -is:foilonly"    # as main_only, but keeps the fetchlands
