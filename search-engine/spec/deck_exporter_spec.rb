@@ -740,22 +740,31 @@ describe DeckExporter do
       exported.warnings.should eq([])
     end
 
-    # one/435 is the foil-only Phyrexian language printing, and MTGO has one
-    # object for it, not two
-    it "falls back to the normal object where MTGO has no premium copy, and says so" do
+    # one/435 is the foil-only Phyrexian language printing, which MTGO has no
+    # object of its own for. The name fallback lands on one/289, whose premium
+    # object is the foil MTGO does sell.
+    it "gives a foil only printing the premium object of the printing it falls back to" do
       exported = export("1 Blightbelly Rat (ONE) 435 *F*\n")
       cards(exported).should eq([%Q[<Cards CatID="105968" Quantity="1" Sideboard="false" Name="Blightbelly Rat" />]])
+      exported.warnings.should eq([])
+    end
+
+    # The Magic Online Avatars are the only objects in the catalog with no
+    # premium twin, so they are the only way to reach this
+    it "falls back to the normal object where MTGO has no premium copy, and says so" do
+      exported = export("1 Serra Angel Avatar (PMOA) 1 *F*\n")
+      cards(exported).should eq([%Q[<Cards CatID="9" Quantity="1" Sideboard="false" Name="Serra Angel Avatar" />]])
       exported.warnings.should eq([
-        "Exported as normal cards, as MTGO has no premium copy of them: Blightbelly Rat",
+        "Exported as normal cards, as MTGO has no premium copy of them: Serra Angel Avatar",
       ])
     end
 
     # And then the two finishes are one object, so they are one line again
     it "merges the finishes it could not tell apart" do
-      exported = export("1 Blightbelly Rat (ONE) 435\n1 Blightbelly Rat (ONE) 435 *F*\n")
-      cards(exported).should eq([%Q[<Cards CatID="105968" Quantity="2" Sideboard="false" Name="Blightbelly Rat" />]])
+      exported = export("1 Serra Angel Avatar (PMOA) 1\n1 Serra Angel Avatar (PMOA) 1 *F*\n")
+      cards(exported).should eq([%Q[<Cards CatID="9" Quantity="2" Sideboard="false" Name="Serra Angel Avatar" />]])
       exported.warnings.should eq([
-        "Exported as normal cards, as MTGO has no premium copy of them: Blightbelly Rat",
+        "Exported as normal cards, as MTGO has no premium copy of them: Serra Angel Avatar",
       ])
     end
 
@@ -770,9 +779,9 @@ describe DeckExporter do
     end
 
     it "names every card each warning is about" do
-      exported = export("1 Blightbelly Rat (ONE) 435 *F*\n1 Ambush Commander (EVG) 1 *F*\n1 Abundant Harvest (STA) 48 *F* *E*\n1 Adventurous Impulse (STA) 49 *F* *E*\n")
+      exported = export("1 Serra Angel Avatar (PMOA) 1 *F*\n1 Goblin Warchief Avatar (PMOA) 5 *F*\n1 Abundant Harvest (STA) 48 *F* *E*\n1 Adventurous Impulse (STA) 49 *F* *E*\n")
       exported.warnings.should eq([
-        "Exported as normal cards, as MTGO has no premium copy of them: Ambush Commander, Blightbelly Rat",
+        "Exported as normal cards, as MTGO has no premium copy of them: Goblin Warchief Avatar, Serra Angel Avatar",
         "Exported as foil, as MTGO has no etched finish: Abundant Harvest, Adventurous Impulse",
       ])
     end

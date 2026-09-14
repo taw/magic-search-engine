@@ -141,6 +141,11 @@ class PatchMtgoIds < Patch
     @rows_by_id ||= all_rows.to_h{|row| [row[:id], row] }
   end
 
+  # A premium id is a finish of the row it hangs off, not a row of its own
+  def rows_by_foil_id
+    @rows_by_foil_id ||= all_rows.filter_map{|row| [row[:foil_id], row] if row[:foil_id] }.to_h
+  end
+
   # One row per printing a deck can name, which is what gets matched
   def client_rows
     @client_rows ||= all_rows.select{|row| row[:whole_card] }
@@ -361,20 +366,25 @@ class PatchMtgoIds < Patch
     name.sub(/\Aavatar - (.*?)(?: \(alt\.\))?\z/) { "#{$1} avatar" }
   end
 
-  # mtgjson's id, unless the client's own catalog contradicts it. Two ways it
-  # does. The id can be some other card: mtgjson matches by collector number,
-  # and where the client numbers a set its own way that is a coincidence and
-  # not a match, so all fifteen of dpa's were another card carrying our number
-  # (dpa/3 Cancel took 34047, which the client calls Angelic Blessing at
-  # 3/383). Or the id can be no whole card at all: pip's surge foil James,
-  # Wandering Dad took 132311, which is the SUBC row for the Follow Him half,
-  # and a .dek can no more name that than it can name a token.
+  # mtgjson's id, unless the client's own catalog contradicts it. Three ways
+  # it does. The id can be some other card: mtgjson matches by collector
+  # number, and where the client numbers a set its own way that is a
+  # coincidence and not a match, so all fifteen of dpa's were another card
+  # carrying our number (dpa/3 Cancel took 34047, which the client calls
+  # Angelic Blessing at 3/383). Or the id can be no whole card at all: pip's
+  # surge foil James, Wandering Dad took 132311, which is the SUBC row for the
+  # Follow Him half, and a .dek can no more name that than it can name a
+  # token. Or the id can be a premium object, which belongs to the printing it
+  # is a finish of and not to a printing of its own: mtgjson gives evg/1
+  # Ambush Commander 28859, the premium copy of dd1/1, and one/435 Blightbelly
+  # Rat 105968, the premium copy of one/289. Taking either would put one id in
+  # two rows and export a foil where a normal card was asked for.
   #
-  # What survives is the ids we cannot contradict - premium objects, which
-  # have no row of their own, only a Foil Id - and cards the client files
+  # What survives is the ids we cannot contradict: cards the client files
   # somewhere we did not look.
   def mtgjson_id(card)
     id = card.dig("identifiers", "mtgoId") or return
+    return if rows_by_foil_id[id]
     row = rows_by_id[id] or return id
     return unless row[:whole_card] and name_candidates(card).include?(row[:name])
     id

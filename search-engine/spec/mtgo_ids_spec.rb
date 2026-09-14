@@ -74,6 +74,13 @@ describe MtgoIds do
       rows.reject{|row| row[3] =~ /\A\d*\z/ }.should eq([])
     end
 
+    # A premium id belongs to the printing it is a finish of, so one that is
+    # also some printing's own id would be one MTGO object in two rows
+    it "never gives a printing an id which is another's premium id" do
+      premium = rows.filter_map{|_, _, _, foil_id| foil_id unless foil_id.to_s.empty? }.to_set
+      rows.select{|_, _, id, _| premium.include?(id) }.should eq([])
+    end
+
     it "has one row per printing" do
       keys = rows.map{|set_code, number, _, _| [set_code, number] }
       keys.size.should eq(keys.uniq.size)
