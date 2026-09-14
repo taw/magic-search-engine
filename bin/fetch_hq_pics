@@ -55,7 +55,7 @@ db.sets.each do |set_code, set|
       "#{clean_name} [#{index}].full.jpg"
     ]
     if card.names
-      card_names = card.names.map{|x| x.sub(" (CMB1)", "") }
+      card_names = card.names.map{|x| x.sub(" (Playtest)", "") }
       candidate_names += [
         "#{card_names.join(" - ")}.full.jpg",
         "#{card_names.reverse.join(" - ")}.full.jpg",

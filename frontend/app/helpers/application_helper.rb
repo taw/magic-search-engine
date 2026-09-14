@@ -245,7 +245,7 @@ module ApplicationHelper
   end
 
   def replace_planeswalker_symbol(symbol)
-    # Pick Your Poison (CMB1), there are no icons for that
+    # Pick Your Poison (Playtest), there are no icons for that
     # and paper card literally has "[1]" etc. in it
     return "[#{symbol}]" if symbol =~ /\A[1-9]+\z/
     symbol = symbol.upcase

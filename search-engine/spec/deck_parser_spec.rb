@@ -500,7 +500,7 @@ describe DeckParser do
     let(:text) do
       <<~EOF
       1 Unquenchable Fury (TBTH)
-      2 Bind (CMB1)
+      2 Artist Alley (Plane)
       # Only a name we don't know is read as a printing
       3 Sol Ring (C21)
       EOF
@@ -509,12 +509,12 @@ describe DeckParser do
     it do
       parser.main.should eq([
         {name: "Unquenchable Fury (TBTH)", count: 1},
-        {name: "Bind (CMB1)", count: 2},
+        {name: "Artist Alley (Plane)", count: 2},
         {name: "Sol Ring", count: 3, set_code: "C21"},
       ])
       parser.main_cards.should eq([
         [1, physical_by_best("unquenchable fury (tbth)")],
-        [2, physical_by_best("bind (cmb1)")],
+        [2, physical_by_best("artist alley (plane)")],
         [3, physical_by_query("sol ring e:c21")],
       ])
     end

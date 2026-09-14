@@ -4,12 +4,12 @@ describe "Modal cards" do
   it "is:modal" do
     assert_search_equal "not:modal", "-(is:modal)"
     assert_search_include "is:modal",
-      "Cryptic Command",          # plain bulleted modes
-      "Fatal Lore",               # an opponent chooses the mode
-      "Caught in the Crossfire",  # spree
-      "Cloud's Limit Break",      # tiered
-      "Season of Weaving",        # pawprint modes
-      "Pick Your Poison (CMB1)"   # playtest card counting modes as [1] / [2] / [4]
+      "Cryptic Command",             # plain bulleted modes
+      "Fatal Lore",                  # an opponent chooses the mode
+      "Caught in the Crossfire",     # spree
+      "Cloud's Limit Break",         # tiered
+      "Season of Weaving",           # pawprint modes
+      "Pick Your Poison (Playtest)"  # playtest card counting modes as [1] / [2] / [4]
   end
 
   # CR 702.172a and 702.183a both say the ability is found on modal spells, but the

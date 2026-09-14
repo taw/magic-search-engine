@@ -161,7 +161,7 @@ RSpec.describe ApplicationHelper, type: :helper do
       )
     end
 
-    # Pick Your Poison (CMB1) literally has "[1]" and "[2]" on the paper card
+    # Pick Your Poison (Playtest) literally has "[1]" and "[2]" on the paper card
     it "leaves plain bracketed numbers alone" do
       expect(helper.format_mana_symbols_in_text("Choose [1] or [2].")).to eq "Choose [1] or [2]."
     end

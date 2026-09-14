@@ -22,6 +22,7 @@ describe "Full Database Test" do
       "Bloodline Recollector", "Ancestral Craving",
       "Bofur, Reliable Guardian", "Concerted Care",
       "Callous Sell-Sword", "Burn Together",
+      "Carnivorous Cultivator", "Enroot",
       "Claim", "Fame",
       "Crescendo Conductor", "Boltwave (Prepared)",
       "Curious Pair", "Treats to Share",
@@ -44,12 +45,12 @@ describe "Full Database Test" do
       "Pollen-Shield Hare", "Hare Raising",
       "Rimrock Knight", "Boulder Rush",
       "Shepherd of the Flock", "Usher to Safety",
-      "Smelt (CMB1)", "Herd", "Saw (CMB1)",
+      "Smelt (Playtest)", "Herd", "Saw (Playtest)",
       "Smitten Swordmaster", "Curry Favor",
       "Studious First-Year", "Rampant Growth (Prepared)",
       "Tear", "Wear",
       "Their", "There", "They're",
-      "Vigorbloom Vanguard", "Seed Suture",
+      "Vigorbloom Vanguard", "Seed Suture (Prepared b)",
       "What", "When", "Where", "Who", "Why"
     # Semantics of that changed
     # it used to match a lot of double-faced cards
@@ -321,7 +322,7 @@ describe "Full Database Test" do
       "\"Rumors of My Death . . .\"" => "Rumors-of-My-Death",
       "+2 Mace" => "2-Mace",
       "1996 World Champion" => "1996-World-Champion",
-      "Bind (CMB1)" => "Bind-CMB1",
+      "Bind (Playtest)" => "Bind-Playtest",
       "Jötun Owl Keeper" => "Jotun-Owl-Keeper",
       "Junún Efreet" => "Junun-Efreet",
       "Look at Me, I'm R&D" => "Look-at-Me-Im-RnD",

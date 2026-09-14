@@ -79,7 +79,7 @@ class PatchCardNames < Patch
       Saw
       Smelt
       Start
-    ].map{|n| [n, "#{n} (CMB1)"]}.to_h
+    ].map{|n| [n, "#{n} (Playtest)"]}.to_h
     cmb_names.default_proc = proc{|_, name| name}
 
     each_printing do |card|
@@ -95,8 +95,8 @@ class PatchCardNames < Patch
         # "Fast // Furious" conflicts with the 40K card of the same name
         # (both halves share a collector number until PatchMultipartCardNumbers)
         if card["name"] == "Fast" or card["name"] == "Furious"
-          card["name"] = "#{card["name"]} (UNK)"
-          card["names"] = ["Fast (UNK)", "Furious (UNK)"]
+          card["name"] = "#{card["name"]} (Playtest)"
+          card["names"] = ["Fast (Playtest)", "Furious (Playtest)"]
         end
       when "PUNK"
         case card["number"]
@@ -115,23 +115,49 @@ class PatchCardNames < Patch
     end
   end
 
-  # Prepared spells share names with the standalone cards they were made from.
-  # Only those that also exist as standalone cards need special handling.
+  # Prepared spells share names with the standalone cards they were made from,
+  # and the same spell can be prepared by several different creatures.
+  # A prepared face keeps its plain name unless it needs disambiguating:
+  # * paired with more than one card - "(Prepared a)", "(Prepared b)", ...
+  #   lettered in alphabetical order of the card it is paired with
+  # * also exists as a standalone card - "(Prepared)"
   def disambiguate_prepared_spells
-    prepared_spells = Set[]
+    also_standalone = Set[]
     each_card do |name, printings|
       layouts = printings.map{|c| c["layout"]}.uniq
       if layouts.include?("prepare") and layouts.size > 1
-        prepared_spells << name
+        also_standalone << name
       end
     end
 
+    pairings = Hash.new{|h, k| h[k] = []}
     each_printing do |card|
       next unless card["layout"] == "prepare"
-      if prepared_spells.include?(card["name"])
-        card["name"] = "#{card["name"]} (Prepared)"
-      end
-      card["names"] = card["names"].map{|n| prepared_spells.include?(n) ? "#{n} (Prepared)" : n }
+      front, back = card["names"]
+      pairings[front] |= [back]
+      pairings[back] |= [front]
+    end
+    pairings.each_value(&:sort!)
+
+    each_printing do |card|
+      next unless card["layout"] == "prepare"
+      names = card["names"]
+      renamed = names.each_with_index.map{|name, i|
+        prepared_name(name, names[1 - i], pairings, also_standalone)
+      }
+      card["name"] = renamed[names.index(card["name"])]
+      card["names"] = renamed
+    end
+  end
+
+  def prepared_name(name, pair, pairings, also_standalone)
+    pairs = pairings[name]
+    if pairs.size > 1
+      "#{name} (Prepared #{("a".."z").to_a.fetch(pairs.index(pair))})"
+    elsif also_standalone.include?(name)
+      "#{name} (Prepared)"
+    else
+      name
     end
   end
 end
