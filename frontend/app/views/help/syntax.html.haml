@@ -536,6 +536,12 @@
       = search_help "paperprints=7", "cards with exactly 7 different paper printings"
       = search_help "sets=7", "cards which appeared in exactly 7 different sets"
       = search_help "papersets=7", "cards which appeared in exactly 7 different paper sets"
+    %div If you only want to count some of the printings, follow the number with a colon and a query for the printings to count. This is a more general form of the alt: search below - alt:query is the same as prints>=1:query, and -alt:query is the same as prints=0:query.
+    %ul
+      = search_help "prints>=2:is:foil", "cards with at least 2 foil printings"
+      = search_help "prints=0:is:paper", "cards which never had a paper printing"
+      = search_help "e:mh3 prints>=2:e:mh3", "Modern Horizons 3 cards printed more than once in that set"
+      = search_help "e:mh3 r:m prints=1:(e:mh3 number:320-467)", "Modern Horizons 3 mythics which got exactly one Booster Fun treatment"
 
     %h4#other-part Search by other part
     %div Every card part (of split, flip, or double-faced card) is treated as separate object, so search like mv=2 mv=3 won't return anything, as no part has mana value of 2 and 3 simultaneously. There's special syntax for that.
@@ -562,6 +568,7 @@
     %ul
       = search_help "e:m10 alt:e:m11", "cards from Magic 2010 which were also printed in Magic 2011"
       = search_help %[a:"Rebecca Guay" alt:(not a:"Rebecca Guay")], "cards drawn by Rebecca Guay which were also printed by someone who's not Rebecca Guay"
+    %div To ask how many printings match, instead of whether any of them does, use prints>=2:query from the section on number of printings above.
 
     %h4#foreign-name Search by foreign name
     %ul

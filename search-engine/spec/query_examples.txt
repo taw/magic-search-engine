@@ -1969,6 +1969,12 @@ part:t:planeswalker
 part:well
 part=t=planeswalker
 Ponder
+prints=0:e:m10
+prints=1:(r:c or r:u)
+prints>=2:e:m10
+prints>2:alt:e:m10
+prints<=3:is:foil
+prints<4:t:creature
 pow = 5
 pow = cmc
 pow:5
@@ -2059,6 +2065,7 @@ r:mythic
 r:mythic -e:ovnt,ppre -(Phoenix Heart)
 r:mythic c:c
 r:mythic or r:special
+r:m prints=2:(e:mh3 number:320-467 -is:foilonly)
 r:r
 r:rare
 r:rare t:land

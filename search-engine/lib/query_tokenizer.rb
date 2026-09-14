@@ -182,6 +182,13 @@ class QueryTokenizer
       # pt:* is "has a Portuguese name", which beats "power plus toughness is *" (use powtou:* for that)
       elsif s.scan(/(cs|ct|de|foreign|fr|it|jp|kr|pt|ru|sp|tw|zhs|zht)\s*[:=]\s*(?:\*|"\*")(?=$|[\s&\/()])/i)
         tokens << [:test, ConditionForeign.new(s[1], "*")]
+      # Before the plain prints=N below, which would otherwise match the number and
+      # leave the ":" and the subquery behind. The comparison operator has to be
+      # spelled out - "prints:2:(...)" would be unreadable - and the ":" before the
+      # subquery is what keeps "prints>=2 (r:c)" parsing the way it always did.
+      elsif s.scan(/prints\s*(>=|>|<=|<|=|≥|≤)\s*(\d+)\s*:\s*/i)
+        op = {"≥" => ">=", "≤" => "<="}[s[1]] || s[1]
+        tokens << [:prints_count, op, s[2].to_i]
       # Before the foreign name search, as pt: is both "power plus toughness" and Portuguese.
       # Values here are numbers and such, so pt:goblin is still a Portuguese name search.
       elsif s.scan(/(cmc|decklimit|defen[cs]e|hand|life|loy|loyalty|manavalue|mv|paperprints|papersets|pow|power|powtou|prints|pt|sets|tou|toughness|year)\s*(>=|>|<=|<|=|≥|≤|:)\s*(any\b|cmc\b|decklimit\b|defen[cs]e\b|even\b|hand\b|life\b|loy\b|loyalty\b|manavalue\b|mv\b|odd\b|pow\b|power\b|powtou\b|pt\b|tou\b|toughness\b|year\b|[²\d\.\-\*\+½x∞\?]+|"[²\d\.\-\*\+½x∞\?]+")/i)

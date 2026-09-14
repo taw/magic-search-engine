@@ -18,6 +18,9 @@ describe "QueryParser" do
 
   it "parsing_basics" do
     assert_search_parse "r:common alt:r:uncommon", "r:common alt:(r:uncommon)"
+    assert_search_parse "prints>=2:r:uncommon r:common", "prints>=2:(r:uncommon) r:common"
+    # The ":" before the subquery is what tells the two apart
+    refute_search_parse "prints>=2:(r:common)", "prints>=2 (r:common)"
     assert_search_parse "cmc=1 c:w", "cmc=1 AND c:w"
     refute_search_parse "cmc=1 OR c:w", "cmc=1 AND c:w"
     assert_search_parse "cmc=1 c:w", "CMC=1 C:W"
@@ -96,6 +99,8 @@ describe "QueryParser" do
     assert_search_parse "part:t:planeswalker", "part=t:planeswalker"
     assert_search_parse "related:t:planeswalker", "related=t:planeswalker"
     assert_search_parse "alt:t:planeswalker", "alt=t:planeswalker"
+    assert_search_parse "prints≥2:e:m10", "prints>=2:e:m10"
+    assert_search_parse "prints≤2:e:m10", "prints<=2:e:m10"
     assert_search_parse "cn≥315 cn≤406", "number>=315 number<=406"
     # This doesn't work like scryfall, as "cn=ELD-303" is parsed as number range query
     assert_search_parse "cn:315 or cn=ELD-303 or cn:/a/ or cn:200-300", "number:315 or number=ELD-303 or number:/a/ or number:200-300"

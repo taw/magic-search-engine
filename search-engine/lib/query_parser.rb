@@ -201,6 +201,12 @@ private
         # Parse error like "-)" or final "-"
         nil
       end
+    when :prints_count
+      # Not in the list above - that builds the class name from the token name,
+      # and this token carries the comparison with it
+      _, op, count = @tokens.shift
+      cond = parse_cond
+      cond ? ConditionPrintsCount.new(op, count, cond) : nil
     when :or
       # Parse error like "- or"
       @tokens.shift
