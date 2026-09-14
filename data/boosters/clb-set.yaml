@@ -25,7 +25,7 @@ pack:
     chance: 1
 sheets:
   basic:
-    rawquery: "e:clb t:basic"
+    rawquery: "e:{set} t:basic"
     count: 20
   foil_basic:
     foil: true
@@ -35,7 +35,7 @@ sheets:
     query: "r:c"
     count: 141
   background:
-    filter: 'e:clb t:background is:baseset -name:"Faceless One"'
+    filter: 'e:{set} t:background is:baseset -name:"Faceless One"'
     use: base_1248_by_rarity
     count: 25
   legendary_with_showcase:
@@ -78,7 +78,7 @@ sheets:
         rate: 8
       - use: rare_has_no_showcase
         rate: 12
-      - rawquery: "e:clb number:646-685 r:r"
+      - rawquery: "e:{set} number:646-685 r:r"
         count: 28
         rate: 12
       - rawquery: 'e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper t:"elder dragon"'
@@ -91,7 +91,7 @@ sheets:
         rate: 4
       - use: mythic_has_no_showcase
         rate: 6
-      - rawquery: "e:clb number:646-685 r:m"
+      - rawquery: "e:{set} number:646-685 r:m"
         rate: 6
       chance: 125
   foil_etched_legend:
@@ -101,7 +101,7 @@ sheets:
     # split for 33.3%.
     foil: true
     etched: true
-    filter: "e:clb is:etched number<=552"
+    filter: "e:{set} is:etched number<=552"
     any:
     - query: "r:c or r:u"
       count: 50

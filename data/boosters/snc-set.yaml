@@ -39,7 +39,7 @@ sheets:
     - query: "r:b number<272"
       count: 10
       rate: 2
-    - query:  "r:b number>=272"
+    - query: "r:b number>=272"
       count: 10
       rate: 1
   foil_basic:
@@ -132,7 +132,7 @@ sheets:
     # Article: gilded common/uncommon 3% : gilded rare/mythic 1% (3:1),
     # i.e. 75% C/U, 25% R/M of the 4% gilded slot.
     foil: true
-    filter: "e:snc promo:gilded"
+    filter: "e:{set} promo:gilded"
     any:
     - query: "r:c or r:u"
       count: 20

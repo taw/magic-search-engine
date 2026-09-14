@@ -10,7 +10,7 @@
 # The rare_mythic slot inherits the shared sheet (rare:mythic = 2:1). The guaranteed foil
 # year-stamped promo is a separate booster (tdm-prerelease), added at the Prerelease Pack level.
 name: "Tarkir: Dragonstorm Seeded Prerelease Booster Mardu"
-filter: "e:tdm id<=brw is:baseset (w:mardu or -w:*) -(c:c -w:*)"
+filter: "e:{set} id<=brw is:baseset (w:mardu or -w:*) -(c:c -w:*)"
 pack:
   common: 9
   uncommon: 3
@@ -25,5 +25,5 @@ sheets:
     count: 38
   land:
     # In-wedge common fixing lands (clan duals + Evolving Wilds).
-    rawquery: "e:tdm is:baseset t:land -t:basic r:c id<=brw"
+    rawquery: "e:{set} is:baseset t:land -t:basic r:c id<=brw"
     count: 4

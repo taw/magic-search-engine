@@ -8,13 +8,13 @@ pack:
   foil_showcase_common_uncommon: 1
 sheets:
   showcase_rare_mythic:
-    filter: "e:clb promo:boosterfun -is:foilonly"
+    filter: "e:{set} promo:boosterfun -is:foilonly"
     use: rare_mythic
   foil_showcase_rare_mythic:
     foil: true
-    filter: "e:clb promo:boosterfun -is:foilonly"
+    filter: "e:{set} promo:boosterfun -is:foilonly"
     use: rare_mythic
   foil_showcase_common_uncommon:
     foil: true
-    filter: "e:clb promo:boosterfun -is:foilonly"
+    filter: "e:{set} promo:boosterfun -is:foilonly"
     use: common_uncommon

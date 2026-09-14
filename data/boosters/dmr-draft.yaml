@@ -33,7 +33,7 @@ sheets:
   foil:
     foil: true
     # Draft foils include retro/borderless nonlands, but never foil basics.
-    filter: "e:dmr number:1-401 -t:basic"
+    filter: "e:{set} number:1-401 -t:basic"
     any:
     - use: common_with_showcase
       chance: 12

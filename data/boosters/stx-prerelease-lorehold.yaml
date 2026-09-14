@@ -11,7 +11,7 @@
 languages: cs, ct, de, en, fr, it, jp, kr, pt, ru, sp
 
 name: "{set_name} Seeded Prerelease Booster Lorehold"
-filter: "e:stx id<=rw is:baseset (w:lorehold or -w:*) -(c:c -w:*)"
+filter: "e:{set} id<=rw is:baseset (w:lorehold or -w:*) -(c:c -w:*)"
 pack:
   common: 10
   uncommon: 3

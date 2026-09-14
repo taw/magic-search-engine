@@ -9,7 +9,7 @@
 # The rare_mythic slot inherits the shared sheet (rare:mythic = 2:1). The guaranteed foil
 # year-stamped promo is a separate booster (tla-prerelease), added at the Prerelease Pack level.
 name: "Avatar: The Last Airbender Seeded Prerelease Pack Aang"
-filter: "e:tla id<=w is:baseset"
+filter: "e:{set} id<=w is:baseset"
 pack:
   common: 9
   uncommon: 3
@@ -24,5 +24,5 @@ sheets:
     count: 21
   land:
     # In-color dual lands from the base set (draftsim: "a dual land").
-    rawquery: "e:tla number:271,273,274,280"
+    rawquery: "e:{set} number:271,273,274,280"
     count: 4

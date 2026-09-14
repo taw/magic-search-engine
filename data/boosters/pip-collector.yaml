@@ -17,92 +17,92 @@ pack:
 sheets:
   foil_basic:
     foil: true
-    rawquery: "e:pip t:basic -promo:surgefoil"
+    rawquery: "e:{set} t:basic -promo:surgefoil"
     count: 10
   surge_basic:
     foil: true
-    rawquery: "e:pip t:basic promo:surgefoil"
+    rawquery: "e:{set} t:basic promo:surgefoil"
     count: 10
   foil_rare_mythic:
-    filter: "e:pip number<=316"
+    filter: "e:{set} number<=316"
     use: rare_mythic
     foil: true
   surge_rare_mythic:
-    filter: "e:pip number:529-854"
+    filter: "e:{set} number:529-854"
     use: rare_mythic
     foil: true
   foil_hail_caesar:
-    rawquery: "e:pip deck:\"Hail, Caesar\" number<=316"
+    rawquery: "e:{set} deck:\"Hail, Caesar\" number<=316"
     count: 86
     foil: true
   surge_hail_caesar:
-    rawquery: "e:pip alt:(deck:\"Hail, Caesar\") number:529-854"
+    rawquery: "e:{set} alt:(deck:\"Hail, Caesar\") number:529-854"
     count: 92
     foil: true
   foil_scrappy_survivors:
-    rawquery: "e:pip deck:\"Scrappy Survivors\" number<=316"
+    rawquery: "e:{set} deck:\"Scrappy Survivors\" number<=316"
     count: 88
     foil: true
   surge_scrappy_survivors:
-    rawquery: "e:pip alt:(deck:\"Scrappy Survivors\") number:529-854"
+    rawquery: "e:{set} alt:(deck:\"Scrappy Survivors\") number:529-854"
     count: 94
     foil: true
   foil_science:
-    rawquery: "e:pip deck:\"Science!\" number<=316"
+    rawquery: "e:{set} deck:\"Science!\" number<=316"
     count: 87
     foil: true
   surge_science:
-    rawquery: "e:pip alt:(deck:\"Science!\") number:529-854"
+    rawquery: "e:{set} alt:(deck:\"Science!\") number:529-854"
     count: 93
     foil: true
   foil_mutant_menace:
-    rawquery: "e:pip deck:\"Mutant Menace\" number<=316"
+    rawquery: "e:{set} deck:\"Mutant Menace\" number<=316"
     count: 85
     foil: true
   surge_mutant_menace:
-    rawquery: "e:pip alt:(deck:\"Mutant Menace\") number:529-854"
+    rawquery: "e:{set} alt:(deck:\"Mutant Menace\") number:529-854"
     count: 91
     foil: true
   extended_reprint:
-    rawquery: "e:pip number:447-528"
+    rawquery: "e:{set} number:447-528"
     count: 82
   extended_new:
-    rawquery: "e:pip number:362-446"
+    rawquery: "e:{set} number:362-446"
     count: 85
   foil_extended_reprint:
-    rawquery: "e:pip number:447-528"
+    rawquery: "e:{set} number:447-528"
     count: 82
     foil: true
   foil_extended_new:
-    rawquery: "e:pip number:362-446"
+    rawquery: "e:{set} number:362-446"
     count: 85
     foil: true
   surge_extended_reprint:
-    rawquery: "e:pip number:975-1056"
+    rawquery: "e:{set} number:975-1056"
     count: 82
     foil: true
   surge_extended_new:
-    rawquery: "e:pip number:890-974"
+    rawquery: "e:{set} number:890-974"
     count: 85
     foil: true
   surge_wildcard:
     # All surge-foil standard and extended-art cards; exclude basics and showcase cards.
-    rawquery: "e:pip number:529-854,890-1056 -t:basic"
+    rawquery: "e:{set} number:529-854,890-1056 -t:basic"
     count: 483
     foil: true
   showcase:
-    rawquery: "e:pip number:327-361"
+    rawquery: "e:{set} number:327-361"
     count: 35
   foil_showcase:
-    rawquery: "e:pip number:327-361"
+    rawquery: "e:{set} number:327-361"
     count: 35
     foil: true
   surge_showcase:
-    rawquery: "e:pip number:855-889"
+    rawquery: "e:{set} number:855-889"
     count: 35
     foil: true
   serialized:
-    rawquery: "e:pip number:1057-1063"
+    rawquery: "e:{set} number:1057-1063"
     count: 7
     foil: true
   land:

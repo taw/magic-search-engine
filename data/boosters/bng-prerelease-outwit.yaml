@@ -4,7 +4,7 @@
 # Modeled like the RTR/GTC guild prereleases. The Hero's Path card is separate
 # (oversized) and lives on the mtg-sealed-content product.
 name: "Born of the Gods Prerelease Pack Destined to Outwit"
-filter: "e:bng id<=u is:baseset"
+filter: "e:{set} id<=u is:baseset"
 pack:
   common: 10
   uncommon: 3
@@ -18,7 +18,7 @@ sheets:
     query: "r:u"
     count: 14
   rare_mythic:
-    rawquery: "e:bng (r:r or r:m) id<=u is:baseset"
+    rawquery: "e:{set} (r:r or r:m) id<=u is:baseset"
     count: 8
   promo:
     foil: true

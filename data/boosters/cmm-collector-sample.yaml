@@ -8,9 +8,9 @@ pack:
     chance: 1
 sheets:
   rare_mythic_showcase:
-    filter: "e:cmm promo:boosterfun -is:foilonly"
+    filter: "e:{set} promo:boosterfun -is:foilonly"
     use: rare_mythic
   foil_rare_mythic_showcase:
     foil: true
-    filter: "e:cmm promo:boosterfun -is:foilonly"
+    filter: "e:{set} promo:boosterfun -is:foilonly"
     use: rare_mythic

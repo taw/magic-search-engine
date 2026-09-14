@@ -46,7 +46,7 @@ sheets:
   foil:
     foil: true
     any:
-    - rawquery: "(e:emn r:c) or (e:soi r:b)"
+    - rawquery: "(e:{set} r:c) or (e:soi r:b)"
       count: 89
       chance: 12
     - query: "r:u"

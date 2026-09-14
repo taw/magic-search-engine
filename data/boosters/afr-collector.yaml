@@ -12,14 +12,14 @@ pack:
   foil_rare_mythic_alt_art: 1
 sheets:
   extended_core_rare_mythic:
-    filter: "e:afr frame:extendedart"
+    filter: "e:{set} frame:extendedart"
     use: rare_mythic
   extended_commander_rare_mythic:
     filter: "e:afc frame:extendedart"
     use: rare_mythic
   foil_rare_mythic_alt_art:
     foil: true
-    filter: "e:afr promo:boosterfun"
+    filter: "e:{set} promo:boosterfun"
     use: rare_mythic
   foil_rare_mythic:
     foil: true

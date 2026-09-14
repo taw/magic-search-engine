@@ -4,7 +4,7 @@
 # (2:1 rare:mythic). Seeded via the wedge/guild idiom -- cards in the guild's colors carrying
 # the guild watermark or no watermark, excluding generic colorless. Matches the RTR/GTC model.
 name: "{set_name} Seeded Prerelease Booster Simic"
-filter: "e:rna id<=gu is:baseset (w:simic or -w:*) -(c:c -w:*)"
+filter: "e:{set} id<=gu is:baseset (w:simic or -w:*) -(c:c -w:*)"
 pack:
   common: 11
   uncommon: 3

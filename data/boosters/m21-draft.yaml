@@ -21,13 +21,13 @@ sheets:
   nongainland_common:
     balanced: true
     any:
-    - rawquery: "e:m21 r:c promo:boosterfun"
+    - rawquery: "e:{set} r:c promo:boosterfun"
       count: 5
       rate: 1
-    - query: "r:c -is:gainland alt:(e:m21 promo:boosterfun)"
+    - query: "r:c -is:gainland alt:(e:{set} promo:boosterfun)"
       count: 5
       rate: 2
-    - query: "r:c -is:gainland -alt:(e:m21 promo:boosterfun)"
+    - query: "r:c -is:gainland -alt:(e:{set} promo:boosterfun)"
       count: 96
       rate: 3
   rare_mythic:
@@ -42,13 +42,13 @@ sheets:
         rate: 1
       chance: 17
     - any: # Sheet 2: Showcase cards
-      - rawquery: "r:r e:m21 frame:showcase -is:foilonly"
+      - rawquery: "r:r e:{set} frame:showcase -is:foilonly"
         count: 5
         rate: 2
-      - query: "r:r -alt:(e:m21 frame:showcase -is:foilonly)"
+      - query: "r:r -alt:(e:{set} frame:showcase -is:foilonly)"
         count: 48
         rate: 2
-      - rawquery: "r:m e:m21 frame:showcase -(Teferi, Master of Time)"
+      - rawquery: "r:m e:{set} frame:showcase -(Teferi, Master of Time)"
         count: 5
         rate: 1
       - query: "r:m -t:planeswalker"
@@ -56,16 +56,16 @@ sheets:
         rate: 1
       chance: 3
     - any: # Sheet 3: Showcase c-r, both borderless and showcase planeswalkers
-      - rawquery: "r:r e:m21 frame:showcase -is:foilonly"
+      - rawquery: "r:r e:{set} frame:showcase -is:foilonly"
         count: 5
         rate: 2
-      - query: "r:r -alt:(e:m21 frame:showcase -is:foilonly)"
+      - query: "r:r -alt:(e:{set} frame:showcase -is:foilonly)"
         count: 48
         rate: 2
-      - rawquery: "r:m e:m21 frame:showcase -(Teferi, Master of Time)"
+      - rawquery: "r:m e:{set} frame:showcase -(Teferi, Master of Time)"
         count: 5
         rate: 1
-      - rawquery: "r:m e:m21 is:borderless t:planeswalker -(Teferi, Master of Time)"
+      - rawquery: "r:m e:{set} is:borderless t:planeswalker -(Teferi, Master of Time)"
         count: 5
         rate: 1
       - query: "r:m -t:planeswalker"
@@ -73,13 +73,13 @@ sheets:
         rate: 1
       chance: 3
     - any: # Sheet 4: no planeswalkers except all versions of teferi
-      - rawquery: "r:r e:m21 frame:showcase -is:foilonly"
+      - rawquery: "r:r e:{set} frame:showcase -is:foilonly"
         count: 5
         rate: 2
-      - query: "r:r -alt:(e:m21 frame:showcase -is:foilonly)"
+      - query: "r:r -alt:(e:{set} frame:showcase -is:foilonly)"
         count: 48
         rate: 2
-      - rawquery: "e:m21 Teferi, Master of Time ++"
+      - rawquery: "e:{set} Teferi, Master of Time ++"
         count: 9
         rate: 1
       - query: "r:m -t:planeswalker"
@@ -119,9 +119,9 @@ sheets:
   borderless_reprint:
     # special reprint borderless cards can appear instead of foils
     any:
-    - rawquery: "r:r e:m21 is:borderless -t:planeswalker"
+    - rawquery: "r:r e:{set} is:borderless -t:planeswalker"
       count: 4
       rate: 2
-    - rawquery: "r:m e:m21 is:borderless -t:planeswalker"
+    - rawquery: "r:m e:{set} is:borderless -t:planeswalker"
       count: 2
       rate: 1

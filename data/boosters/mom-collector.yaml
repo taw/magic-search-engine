@@ -54,11 +54,11 @@ sheets:
       rate: 1
       count: 2
   extended_art_commander_jumpstart:
-    filter: "((e:mom and number:376-380) or e:moc) frame:extendedart -promo:buyabox"
+    filter: "((e:{set} and number:376-380) or e:moc) frame:extendedart -promo:buyabox"
     use: rare_mythic
     count: 59
   showcase_wild:
-    filter: "e:mom promo:boosterfun -number:376-380"
+    filter: "e:{set} promo:boosterfun -number:376-380"
     use: rare_mythic
     count: 64
   uncommon_mul_etched:
@@ -76,12 +76,12 @@ sheets:
     count: 20
   foil_showcase:
     foil: true
-    filter: "(e:mom or e:moc) promo:boosterfun -is:foilonly"
+    filter: "(e:{set} or e:moc) promo:boosterfun -is:foilonly"
     use: rare_mythic
     count: 85
   double_foil_praetor_serialized:
     foil: true
-    rawquery: "e:mom is:serialized t:praetor"
+    rawquery: "e:{set} is:serialized t:praetor"
     count: 5
   rare_mythic_mul_traditional:
     foil: true

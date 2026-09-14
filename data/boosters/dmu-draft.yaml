@@ -62,7 +62,7 @@ sheets:
     - query: 'r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) -t:"legendary creature"'
       count: 40
       rate: 24
-    - rawquery: "e:dmu Ajani, Sleeper Agent -is:foilonly -frame:extendedart is:paper promo:boosterfun"
+    - rawquery: "e:{set} Ajani, Sleeper Agent -is:foilonly -frame:extendedart is:paper promo:boosterfun"
       count: 4
       rate: 1
     - rawquery: 'e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -t:"legendary creature" -(Ajani, Sleeper Agent)'
@@ -92,10 +92,10 @@ sheets:
         rate: 16
       - use: rare_has_no_showcase
         rate: 24
-      - rawquery: "e:dmu Ajani, Sleeper Agent -is:foilonly -frame:extendedart is:paper promo:boosterfun"
+      - rawquery: "e:{set} Ajani, Sleeper Agent -is:foilonly -frame:extendedart is:paper promo:boosterfun"
         count: 4
         rate: 1
-      - rawquery: "e:dmu Sheoldred, the Apocalypse -is:foilonly -frame:extendedart is:paper promo:boosterfun number<=427"
+      - rawquery: "e:{set} Sheoldred, the Apocalypse -is:foilonly -frame:extendedart is:paper promo:boosterfun number<=427"
         count: 2
         rate: 2
       - rawquery: 'e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Ajani, Sleeper Agent or Sheoldred, the Apocalypse)'

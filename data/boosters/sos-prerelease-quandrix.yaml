@@ -16,10 +16,10 @@ sheets:
     query: "r:u is:baseset id<=gu"
     count: 36
   rare:
-    rawquery: "e:sos r:r is:baseset id<=gu"
+    rawquery: "e:{set} r:r is:baseset id<=gu"
     count: 21
   mythic:
-    rawquery: "e:sos r:m is:baseset id<=gu"
+    rawquery: "e:{set} r:m is:baseset id<=gu"
     count: 7
   rare_mythic:
     any:
@@ -30,9 +30,9 @@ sheets:
   promo:
     foil: true
     any:
-    - rawquery: "e:sos r:r is:baseset"
+    - rawquery: "e:{set} r:r is:baseset"
       rate: 2
       count: 60
-    - rawquery: "e:sos r:m is:baseset"
+    - rawquery: "e:{set} r:m is:baseset"
       rate: 1
       count: 20

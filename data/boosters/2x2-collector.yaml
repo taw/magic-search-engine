@@ -19,7 +19,7 @@ sheets:
     use: rare_mythic
     count: 160
   etched_rare_mythic:
-    filter: "e:2x2 is:etched"
+    filter: "e:{set} is:etched"
     foil: true
     etched: true
     use: rare_mythic
@@ -30,5 +30,5 @@ sheets:
     count: 50
   textured_rare_mythic_showcase:
     foil: true
-    rawquery: "e:2x2 promo:textured"
+    rawquery: "e:{set} promo:textured"
     count: 5

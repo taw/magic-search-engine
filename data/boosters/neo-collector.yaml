@@ -43,13 +43,13 @@ sheets:
       count: 8
       rate: 7
   samurai_common_uncommon:
-    filter: "e:neo t:samurai promo:boosterfun"
+    filter: "e:{set} t:samurai promo:boosterfun"
     use: common_uncommon
   foil_samurai_common_uncommon:
     foil: true
     use: samurai_common_uncommon
   ninja_common_uncommon:
-    filter: "e:neo t:ninja promo:boosterfun"
+    filter: "e:{set} t:ninja promo:boosterfun"
     use: common_uncommon
   foil_ninja_common_uncommon:
     foil: true
@@ -58,13 +58,13 @@ sheets:
     foil: true
     # also carries the new-to-Magic Commander cards that only appear in Set and
     # Collector Boosters (nec #31-38); without them their foils are productless
-    filter: "(e:neo is:baseset) or (e:nec number:31-38)"
+    filter: "(e:{set} is:baseset) or (e:nec number:31-38)"
     use: rare_mythic
   extended_commander:
     filter: "e:nec frame:extendedart"
     use: rare_mythic
   extended_or_borderless_rare_mythic:
-    filter: "e:neo (frame:extendedart or is:borderless) number<=505"
+    filter: "e:{set} (frame:extendedart or is:borderless) number<=505"
     use: rare_mythic
   rare_mythic_showcase:
     any:
@@ -92,18 +92,18 @@ sheets:
   etched_rare_mythic:
     foil: true
     etched: true
-    filter: "e:neo is:etched"
+    filter: "e:{set} is:etched"
     use: rare_mythic
     count: 12
   neon_ink:
     foil: true
     any:
-    - rawquery: "e:neo number:429"
+    - rawquery: "e:{set} number:429"
       count: 1
       rate: 1
-    - rawquery: "e:neo number:430"
+    - rawquery: "e:{set} number:430"
       count: 1
       rate: 4
-    - rawquery: "e:neo number:431"
+    - rawquery: "e:{set} number:431"
       count: 1
       rate: 8

@@ -9,7 +9,7 @@ pack:
   foil_uncommon_mul: 1
 sheets:
   nonfoil_rare_mythic:
-    filter: "(e:mul number<=50) or (e:mom promo:boosterfun -is:foilonly) or (e:moc promo:boosterfun -promo:prerelease)"
+    filter: "(e:mul number<=50) or (e:{set} promo:boosterfun -is:foilonly) or (e:moc promo:boosterfun -promo:prerelease)"
     use: rare_mythic
   foil_rare_mythic:
     foil: true

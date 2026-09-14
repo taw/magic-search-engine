@@ -15,14 +15,14 @@ pack:
     chance: 1 # "about 1 in every 6 Collector Boosters"
 sheets:
   extended_rare_mythic:
-    rawquery: "(e:znr OR e:znc) frame:extendedart"
+    rawquery: "(e:{set} or e:znc) frame:extendedart"
     count: 68
   foil_rare_mythic:
     foil: true
     use: rare_mythic
   foil_rare_mythic_showcase:
     foil: true
-    rawquery: "(e:znr OR e:znc) promo:boosterfun is:paper (r:m OR r:r)"
+    rawquery: "(e:{set} or e:znc) promo:boosterfun is:paper (r:m or r:r)"
     count: 86
   foil_expedition:
     foil: true

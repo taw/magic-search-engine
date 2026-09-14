@@ -5,9 +5,9 @@ pack:
 sheets:
   promo:
     foil: true
-    filter: "e:PMKM promo:prerelease"
+    filter: "e:pmkm promo:prerelease"
     use: rare_mythic
   bonus:
     foil: true
-    rawquery: "e:mkm number:430-432"
+    rawquery: "e:{set} number:430-432"
     count: 3

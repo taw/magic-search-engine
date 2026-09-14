@@ -9,12 +9,12 @@ pack:
   foil_uncommon_showcase: 1
 sheets:
   nonfoil_rare_mythic:
-    filter: "(e:snc promo:boosterfun -is:foilonly -promo:concept) or (e:ncc promo:boosterfun -is:foilonly)"
+    filter: "(e:{set} promo:boosterfun -is:foilonly -promo:concept) or (e:ncc promo:boosterfun -is:foilonly)"
     use: rare_mythic
   foil_rare_mythic:
     foil: true
     use: nonfoil_rare_mythic
   foil_uncommon_showcase:
-    filter: "e:snc frame:showcase -is:foilonly"
+    filter: "e:{set} frame:showcase -is:foilonly"
     foil: true
     use: common_uncommon

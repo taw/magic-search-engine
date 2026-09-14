@@ -11,7 +11,7 @@
 languages: cs, ct, de, en, fr, it, jp, kr, pt, ru, sp
 
 name: "{set_name} Seeded Prerelease Booster Quandrix"
-filter: "e:stx id<=gu is:baseset (w:quandrix or -w:*) -(c:c -w:*)"
+filter: "e:{set} id<=gu is:baseset (w:quandrix or -w:*) -(c:c -w:*)"
 pack:
   common: 10
   uncommon: 3

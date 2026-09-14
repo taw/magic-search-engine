@@ -19,10 +19,10 @@ sheets:
     - rawquery: "e:otp r:m number<=65"
       count: 15
       rate: 1
-    - rawquery: "e:otj r:r number:287-367"
+    - rawquery: "e:{set} r:r number:287-367"
       count: 60
       rate: 2
-    - rawquery: "e:otj r:m number:287-367"
+    - rawquery: "e:{set} r:m number:287-367"
       count: 21
       rate: 1
   foil_rare_mythic_showcase:
@@ -34,10 +34,10 @@ sheets:
     - rawquery: "e:otp r:m number<=65"
       count: 15
       rate: 1
-    - rawquery: "e:otj r:r number:287-367"
+    - rawquery: "e:{set} r:r number:287-367"
       count: 60
       rate: 2
-    - rawquery: "e:otj r:m number:287-367"
+    - rawquery: "e:{set} r:m number:287-367"
       count: 21
       rate: 1
     # Face commanders are available in foil in decks and sample packs.

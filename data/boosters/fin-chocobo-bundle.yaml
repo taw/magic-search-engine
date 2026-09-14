@@ -49,5 +49,5 @@ sheets:
   # 8 from FIN main set (#564-571) + 12 from FIC commander (#466-477)
   borderless_chocobo:
     foil: true
-    rawquery: "(e:fin number:564-571) or (e:fic number:466-477)"
+    rawquery: "(e:{set} number:564-571) or (e:fic number:466-477)"
     count: 20

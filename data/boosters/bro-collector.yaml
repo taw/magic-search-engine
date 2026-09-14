@@ -34,10 +34,10 @@ sheets:
     foil: true
     use: rare_mythic
   extended_rare_mythic:
-    filter: "e:bro number:301-372"
+    filter: "e:{set} number:301-372"
     use: rare_mythic
   extended_commander_jumpstart:
-    filter: "(e:bro number:373-377) or (e:brc frame:extendedart)"
+    filter: "(e:{set} number:373-377) or (e:brc frame:extendedart)"
     use: rare_mythic
   brr_retro_artifact_uncommon:
     rawquery: "e:brr number<=63 r:u -number:/z/"
@@ -72,7 +72,7 @@ sheets:
   foil_alt_art:
     foil: true
     any:
-    - rawquery: "(e:bro or e:brc) promo:boosterfun r:r"
+    - rawquery: "(e:{set} or e:brc) promo:boosterfun r:r"
       count: 68
       rate: 12
     - rawquery: "e:brr number<=63 r:r -number:/z/"
@@ -81,7 +81,7 @@ sheets:
     - rawquery: "e:brr number>=64 r:r -number:/z/"
       count: 30
       rate: 2
-    - rawquery: "(e:bro or e:brc) promo:boosterfun r:m"
+    - rawquery: "(e:{set} or e:brc) promo:boosterfun r:m"
       count: 27
       rate: 6
     - rawquery: "e:brr number<=63 r:m -number:/z/"

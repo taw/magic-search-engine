@@ -42,7 +42,7 @@ sheets:
     - query: "t:legendary r:m"
       count: 5
       rate: 1
-    - rawquery: "e:cmr is:borderless"
+    - rawquery: "e:{set} is:borderless"
       count: 2
       rate: 1
   dedicated_foil:
@@ -59,11 +59,11 @@ sheets:
   etched_foil:
     foil: true
     etched: true
-    filter: "e:cmr (is:etched or is:borderless)"
+    filter: "e:{set} (is:etched or is:borderless)"
     any:
     - use: base_1248_by_rarity
       chance: 245
-    - rawquery: "e:cmr number:546"
+    - rawquery: "e:{set} number:546"
       count: 1
       chance: 1
     count: 103

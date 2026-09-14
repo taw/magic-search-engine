@@ -16,7 +16,7 @@ sheets:
     any:
     - use: rare_showcase
       rate: 12
-    - rawquery: "(e:woe or e:woc) r:r frame:extendedart -promo:buyabox"
+    - rawquery: "(e:{set} or e:woc) r:r frame:extendedart -promo:buyabox"
       count: 45
       rate: 12
     - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"
@@ -37,7 +37,7 @@ sheets:
     - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Kellan or Birthright)"
       count: 11
       rate: 6
-    - rawquery: "(e:woe or e:woc) r:m frame:extendedart -number:381"
+    - rawquery: "(e:{set} or e:woc) r:m frame:extendedart -number:381"
       count: 14
       rate: 6
     - rawquery: "e:wot r:m -alt:(e:wot number:64-83) number<64"
@@ -55,7 +55,7 @@ sheets:
     any:
     - use: rare_showcase
       rate: 12
-    - rawquery: "(e:woe or e:woc) r:r frame:extendedart -promo:buyabox"
+    - rawquery: "(e:{set} or e:woc) r:r frame:extendedart -promo:buyabox"
       count: 66
       rate: 12
     - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"
@@ -75,7 +75,7 @@ sheets:
     - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Kellan or Birthright)"
       count: 11
       rate: 6
-    - rawquery: "(e:woe or e:woc) r:m frame:extendedart"
+    - rawquery: "(e:{set} or e:woc) r:m frame:extendedart"
       count: 14
       rate: 6
     - rawquery: "e:wot r:m -alt:(e:wot number:64-83) number<64"

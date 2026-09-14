@@ -48,12 +48,12 @@ queries:
   surge_pizza_basic: "e:{set} number:310-314"
   boosterfun_2_1: "{scene} or {sewer} or {silhouette} or {extended_art}"
 
-  source_material: "e:PZA number:1-20"
+  source_material: "e:pza number:1-20"
 
-  tmc_face_commander: "e:TMC number:1-6"
-  tmc_new: "e:TMC number:7-43"
-  tmc_reprint: "e:TMC number:44-82"
-  tmc_pixel: "e:TMC number:83-97"
+  tmc_face_commander: "e:tmc number:1-6"
+  tmc_new: "e:tmc number:7-43"
+  tmc_reprint: "e:tmc number:44-82"
+  tmc_pixel: "e:tmc number:83-97"
   tmc_boosterfun_2_1: "{tmc_face_commander} or {tmc_new} or {tmc_reprint}"
 
 sheets:

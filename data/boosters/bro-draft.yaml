@@ -30,7 +30,7 @@ sheets:
     # This is likely to be inaccurate, but we never get accurate foil rate information anyway
     #
     # Do they get BRR 64+? Do BRO include non-mech basics?
-    filter: "(e:bro is:baseset -number:268-277) or (e:brr -number:/z/)"
+    filter: "(e:{set} is:baseset -number:268-277) or (e:brr -number:/z/)"
     foil: true
     any:
     - query: "r<=c"

@@ -25,14 +25,14 @@ sheets:
     use: rare_mythic
   foil_lesson:
     # ratio is guessed, using 1/2/4/8 ratio for now
-    filter: "e:stx t:lesson is:baseset"
+    filter: "e:{set} t:lesson is:baseset"
     foil: true
     use: base_1248_by_rarity
   extended_commander:
     filter: "e:c21 frame:extendedart"
     use: rare_mythic
   extended_or_borderless_core:
-    filter: "e:stx promo:boosterfun"
+    filter: "e:{set} promo:boosterfun"
     use: rare_mythic
   foil_sta_uncommon:
     foil: true
@@ -40,7 +40,7 @@ sheets:
     count: 36
   foil_alt_art_wild:
     foil: true
-    filter: "(e:stx promo:boosterfun) or (e:sta)"
+    filter: "(e:{set} promo:boosterfun) or (e:sta)"
     use: rare_mythic
   etched_sta_uncommon:
     foil: true

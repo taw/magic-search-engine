@@ -23,9 +23,9 @@ queries:
   borderless: "e:{set} number:320-361,442-446"
   profile: "e:{set} number:362-383 -number:/z/"
   old_border: "e:{set} number:384-441"
-  showcase_frames: "({borderless} or {profile})"
+  showcase_frames: "{borderless} or {profile}"
   any_showcase: "{borderless} or {profile} or {old_border}"
-  showcase_no_retro: "({showcase_frames} -is:foilonly)"
+  showcase_no_retro: "{showcase_frames} -is:foilonly"
   two_instances: "{any_showcase} ((alt:{borderless} alt:{profile}) or (alt:{borderless} alt:{old_border}) or (alt:{profile} alt:{old_border}))"
   # -- card pools --
   main_only: "-is:reprint -is:foilonly"                      # MH3-designed cards
@@ -193,7 +193,7 @@ sheets:
       - rawquery: "{old_border} r:r"
         count: 26
         rate: 30
-      - rawquery: "e:mh3 r:r {main_only} {showcase_no_retro}"
+      - rawquery: "e:{set} r:r {main_only} {showcase_no_retro}"
         count: 35
         rate: 7
     - # mythics + their retro and borderless/profile printings
@@ -214,7 +214,7 @@ sheets:
       - rawquery: "{old_border} r:m"
         count: 9
         rate: 30
-      - rawquery: "e:mh3 r:m {main_only} {showcase_no_retro}"
+      - rawquery: "e:{set} r:m {main_only} {showcase_no_retro}"
         count: 17
         rate: 7
     - # Commander mythic 4.2%
@@ -283,7 +283,7 @@ sheets:
       - rawquery: "{old_border} r:r"
         count: 26
         rate: 35
-      - rawquery: "e:mh3 r:r -is:foilonly {showcase_no_retro}"
+      - rawquery: "e:{set} r:r -is:foilonly {showcase_no_retro}"
         count: 48
         rate: 7
     - # mythics (incl. new-to-Modern) + their retro and borderless/profile printings
@@ -304,7 +304,7 @@ sheets:
       - rawquery: "{old_border} r:m"
         count: 9
         rate: 35
-      - rawquery: "e:mh3 r:m -is:foilonly {showcase_no_retro}"
+      - rawquery: "e:{set} r:m -is:foilonly {showcase_no_retro}"
         count: 21
         rate: 7
     - # Commander mythic 4.2%

@@ -30,7 +30,7 @@ sheets:
     foil: true
     use: rare_mythic
   extended_art:
-    filter: "(e:woe or e:woc) frame:extendedart -number:381"
+    filter: "(e:{set} or e:woc) frame:extendedart -number:381"
     use: rare_mythic
   foil_extended_art:
     foil: true
@@ -66,7 +66,7 @@ sheets:
     - any:
       - use: rare_showcase
         rate: 12
-      - rawquery: "e:woe r:r frame:extendedart -promo:buyabox"
+      - rawquery: "e:{set} r:r frame:extendedart -promo:buyabox"
         count: 39
         rate: 12
       - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"
@@ -84,7 +84,7 @@ sheets:
       - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Kellan or Birthright)"
         count: 11
         rate: 6
-      - rawquery: "e:woe r:m frame:extendedart"
+      - rawquery: "e:{set} r:m frame:extendedart"
         count: 8
         rate: 6
       - rawquery: "e:wot r:m -alt:(e:wot number:64-83) number<64"

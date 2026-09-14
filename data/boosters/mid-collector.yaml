@@ -20,13 +20,13 @@ sheets:
     foil: true 
     use: rare_mythic
   extended_rare_mythic:
-    filter: "e:mid frame:extendedart"
+    filter: "e:{set} frame:extendedart"
     use: rare_mythic
   extended_commander:
     filter: "e:mic frame:extendedart"
     use: rare_mythic
   foil_alt_art_rare_mythic:
     foil: true
-    filter: "e:mid promo:boosterfun"
+    filter: "e:{set} promo:boosterfun"
     use: rare_mythic
   

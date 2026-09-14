@@ -8,7 +8,7 @@
 # no off-color splash, no colorless). Same folded, seed-colored model as the
 # Khans/Fate Reforged/Dragons of Tarkir seeded packs.
 name: "{set_name} Seeded Prerelease Booster Liliana"
-filter: "e:ori c:b id<=b is:baseset"
+filter: "e:{set} c:b id<=b is:baseset"
 pack:
   common: 4
   uncommon: 2

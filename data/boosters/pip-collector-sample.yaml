@@ -8,15 +8,15 @@ pack:
 sheets:
   showcase_any:
     any:
-    - rawquery: "e:pip number:362-528"
+    - rawquery: "e:{set} number:362-528"
       count: 167
       rate: 2
-    - rawquery: "e:pip number:327-361"
+    - rawquery: "e:{set} number:327-361"
       count: 35
       rate: 1
   foil_showcase_any:
     foil: true
     use: showcase_any
   showcase_rm:
-    rawquery: "e:pip number:362-528"
+    rawquery: "e:{set} number:362-528"
     count: 167

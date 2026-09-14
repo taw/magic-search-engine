@@ -36,7 +36,7 @@ sheets:
     # The Buy-a-Box promo (Jadelight Spelunker, lci #403) shares the extended-art
     # frame but is a WPN store promo, not a Collector Booster card - exclude it,
     # as every other set does (cf. dmu/khm/mom/mat collector sheets).
-    filter: "e:lci frame:extendedart -promo:buyabox"
+    filter: "e:{set} frame:extendedart -promo:buyabox"
     use: rare_mythic
   extended_commander_rare_mythic:
     filter: "e:lcc frame:extendedart"
@@ -61,13 +61,13 @@ sheets:
     use: rare_mythic
   showcase_rare_mythic:
     any:
-    - rawquery: "e:lci promo:boosterfun -frame:extendedart -promo:neonink r:r"
+    - rawquery: "e:{set} promo:boosterfun -frame:extendedart -promo:neonink r:r"
       count: 26
       rate: 4
-    - rawquery: 'e:lci promo:boosterfun -frame:extendedart -promo:neonink r:m -name:"Quintorius Kand"'
+    - rawquery: 'e:{set} promo:boosterfun -frame:extendedart -promo:neonink r:m -name:"Quintorius Kand"'
       count: 19
       rate: 2
-    - rawquery: 'e:lci promo:boosterfun -frame:extendedart -promo:neonink r:m name:"Quintorius Kand"'
+    - rawquery: 'e:{set} promo:boosterfun -frame:extendedart -promo:neonink r:m name:"Quintorius Kand"'
       count: 2
       rate: 1
   jurrasic_world:
@@ -94,13 +94,13 @@ sheets:
   foil_showcase_rare_mythic:
     foil: true
     any:
-    - rawquery: "e:lci promo:boosterfun r:r"
+    - rawquery: "e:{set} promo:boosterfun r:r"
       count: 64
       rate: 4
-    - rawquery: 'e:lci promo:boosterfun r:m -promo:neonink -name:"Quintorius Kand"'
+    - rawquery: 'e:{set} promo:boosterfun r:m -promo:neonink -name:"Quintorius Kand"'
       count: 21
       rate: 2
-    - rawquery: 'e:lci promo:boosterfun r:m -promo:neonink name:"Quintorius Kand"'
+    - rawquery: 'e:{set} promo:boosterfun r:m -promo:neonink name:"Quintorius Kand"'
       count: 2
       rate: 1
     - set: spg
@@ -116,19 +116,19 @@ sheets:
       code: "LCINEON"
       chance: 1
     - any:
-      - rawquery: "e:lci number:410a"
+      - rawquery: "e:{set} number:410a"
         count: 1
         rate: 1
-      - rawquery: "e:lci number:410e"
+      - rawquery: "e:{set} number:410e"
         count: 1
         rate: 2
-      - rawquery: "e:lci number:410d"
+      - rawquery: "e:{set} number:410d"
         count: 1
         rate: 4
-      - rawquery: "e:lci number:410c"
+      - rawquery: "e:{set} number:410c"
         count: 1
         rate: 8
-      - rawquery: "e:lci number:410f"
+      - rawquery: "e:{set} number:410f"
         count: 1
         rate: 16
       chance: 1

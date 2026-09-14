@@ -9,7 +9,7 @@ pack:
   foil_uncommon_retro_artifact: 1
 sheets:
   nonfoil_rare_mythic:
-    filter: "(e:bro promo:boosterfun) or (e:brc promo:boosterfun) or (e:brr -number:/z/ number<=63)"
+    filter: "(e:{set} promo:boosterfun) or (e:brc promo:boosterfun) or (e:brr -number:/z/ number<=63)"
     use: rare_mythic
   foil_rare_mythic:
     foil: true

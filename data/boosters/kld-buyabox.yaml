@@ -18,7 +18,7 @@ pack:
   standard_rare_mythic: 2
 sheets:
   standard_rare_mythic:
-    filter: "(e:bfz or e:soi or e:emn or e:kld) is:baseset -is:dfc -is:meld"
+    filter: "(e:bfz or e:soi or e:emn or e:{set}) is:baseset -is:dfc -is:meld"
     any:
     - query: "r:r"
       rate: 2
@@ -27,11 +27,11 @@ sheets:
   buyabox_foil:
     foil: true
     any:
-    - rawquery: "(e:bfz or e:soi or e:emn or e:kld) is:baseset -is:dfc -is:meld (r:r or r:m)"
+    - rawquery: "(e:bfz or e:soi or e:emn or e:{set}) is:baseset -is:dfc -is:meld (r:r or r:m)"
       chance: 24
-    - rawquery: "(e:bfz or e:soi or e:emn or e:kld) is:baseset -is:dfc -is:meld r:u"
+    - rawquery: "(e:bfz or e:soi or e:emn or e:{set}) is:baseset -is:dfc -is:meld r:u"
       chance: 40
-    - rawquery: "(e:bfz or e:soi or e:emn or e:kld) is:baseset -is:dfc -is:meld r<=c"
+    - rawquery: "(e:bfz or e:soi or e:emn or e:{set}) is:baseset -is:dfc -is:meld r<=c"
       chance: 94
     - rawquery: "e:exp or (e:mps number<=30)"
       chance: 5

@@ -18,103 +18,103 @@ pack:
 sheets:
   foil_basic:
     foil: true
-    rawquery: "e:who t:basic -promo:surgefoil"
+    rawquery: "e:{set} t:basic -promo:surgefoil"
     count: 10
   surge_basic:
     foil: true
-    rawquery: "e:who t:basic promo:surgefoil"
+    rawquery: "e:{set} t:basic promo:surgefoil"
     count: 10
   foil_doctor:
     foil: true
-    filter: "e:who t:doctor -promo:surgefoil -frame:showcase -frame:extendedart -promo:thick"
+    filter: "e:{set} t:doctor -promo:surgefoil -frame:showcase -frame:extendedart -promo:thick"
     use: rare_mythic
     count: 15
   surge_doctor:
     foil: true
-    filter: "e:who t:doctor promo:surgefoil -frame:showcase -frame:extendedart"
+    filter: "e:{set} t:doctor promo:surgefoil -frame:showcase -frame:extendedart"
     use: rare_mythic
     count: 15
   foil_blast_past:
     foil: true
-    filter: "e:who deck:\"Blast from the Past\" -t:plane -t:phenomenon -t:basic -promo:thick"
+    filter: "e:{set} deck:\"Blast from the Past\" -t:plane -t:phenomenon -t:basic -promo:thick"
     use: base_1248_by_rarity
     count: 93
   surge_blast_past:
     foil: true
-    filter: "e:who alt:deck:\"Blast from the Past\" promo:surgefoil -t:plane -t:phenomenon -t:basic -frame:extendedart -frame:showcase -number:855-857 -number:790-791"
+    filter: "e:{set} alt:deck:\"Blast from the Past\" promo:surgefoil -t:plane -t:phenomenon -t:basic -frame:extendedart -frame:showcase -number:855-857 -number:790-791"
     use: base_1248_by_rarity
     count: 93
   foil_timey_wimey:
     foil: true
-    filter: "e:who deck:\"Timey-Wimey\" -t:plane -t:phenomenon -t:basic -promo:thick"
+    filter: "e:{set} deck:\"Timey-Wimey\" -t:plane -t:phenomenon -t:basic -promo:thick"
     use: base_1248_by_rarity
     count: 91
   surge_timey_wimey:
     foil: true
-    filter: "e:who alt:deck:\"Timey-Wimey\" promo:surgefoil -t:plane -t:phenomenon -t:basic -frame:extendedart -frame:showcase -number:854 -number:856-857 -number:789 -number:791"
+    filter: "e:{set} alt:deck:\"Timey-Wimey\" promo:surgefoil -t:plane -t:phenomenon -t:basic -frame:extendedart -frame:showcase -number:854 -number:856-857 -number:789 -number:791"
     use: base_1248_by_rarity
     count: 91
   foil_paradox:
     foil: true
-    filter: "e:who deck:\"Paradox Power\" -t:plane -t:phenomenon -t:basic -promo:thick"
+    filter: "e:{set} deck:\"Paradox Power\" -t:plane -t:phenomenon -t:basic -promo:thick"
     use: base_1248_by_rarity
     count: 89
   surge_paradox:
     foil: true
-    filter: "e:who alt:deck:\"Paradox Power\" promo:surgefoil -t:plane -t:phenomenon -t:basic -frame:extendedart -frame:showcase -number:857 -number:854-855 -number:789-790"
+    filter: "e:{set} alt:deck:\"Paradox Power\" promo:surgefoil -t:plane -t:phenomenon -t:basic -frame:extendedart -frame:showcase -number:857 -number:854-855 -number:789-790"
     use: base_1248_by_rarity
     count: 89
   foil_master_evil:
     foil: true
-    filter: "e:who deck:\"Masters of Evil\" -t:plane -t:phenomenon -t:basic -promo:thick"
+    filter: "e:{set} deck:\"Masters of Evil\" -t:plane -t:phenomenon -t:basic -promo:thick"
     use: base_1248_by_rarity
     count: 94
   surge_master_evil:
     foil: true
-    filter: "e:who alt:deck:\"Masters of Evil\" promo:surgefoil -t:plane -t:phenomenon -t:basic -frame:extendedart -frame:showcase -number:854-856"
+    filter: "e:{set} alt:deck:\"Masters of Evil\" promo:surgefoil -t:plane -t:phenomenon -t:basic -frame:extendedart -frame:showcase -number:854-856"
     use: base_1248_by_rarity
     count: 94
   extended_new:
-    filter: "e:who -is:reprint frame:extendedart -promo:surgefoil"
+    filter: "e:{set} -is:reprint frame:extendedart -promo:surgefoil"
     use: base_1248_by_rarity
   foil_extended_new:
     foil: true
-    filter: "e:who -is:reprint frame:extendedart -promo:surgefoil"
+    filter: "e:{set} -is:reprint frame:extendedart -promo:surgefoil"
     use: base_1248_by_rarity
   surge_extended_new:
     foil: true
-    filter: "e:who -is:reprint frame:extendedart promo:surgefoil"
+    filter: "e:{set} -is:reprint frame:extendedart promo:surgefoil"
     use: base_1248_by_rarity
   extended_reprint:
-    filter: "e:who is:reprint frame:extendedart -promo:surgefoil"
+    filter: "e:{set} is:reprint frame:extendedart -promo:surgefoil"
     use: base_1248_by_rarity
   foil_extended_reprint:
     foil: true
-    filter: "e:who is:reprint frame:extendedart -promo:surgefoil"
+    filter: "e:{set} is:reprint frame:extendedart -promo:surgefoil"
     use: base_1248_by_rarity
   surge_extended_reprint:
     foil: true
-    filter: "e:who is:reprint frame:extendedart promo:surgefoil"
+    filter: "e:{set} is:reprint frame:extendedart promo:surgefoil"
     use: base_1248_by_rarity
   surge_wildcard:
     foil: true
-    filter: "e:who promo:surgefoil -frame:showcase -frame:extendedart -r:basic"
+    filter: "e:{set} promo:surgefoil -frame:showcase -frame:extendedart -r:basic"
     use: base_1248_by_rarity
   # All 30 TARDIS cards are equally likely within each finish.
   tardis:
-    rawquery: "e:who frame:showcase -promo:surgefoil -number:/z/"
+    rawquery: "e:{set} frame:showcase -promo:surgefoil -number:/z/"
     count: 30
   foil_tardis:
     foil: true
-    rawquery: "e:who frame:showcase -promo:surgefoil -number:/z/"
+    rawquery: "e:{set} frame:showcase -promo:surgefoil -number:/z/"
     count: 30
   surge_tardis:
     foil: true
-    rawquery: "e:who frame:showcase promo:surgefoil -number:/z/"
+    rawquery: "e:{set} frame:showcase promo:surgefoil -number:/z/"
     count: 30
   serialized:
     foil: true
-    rawquery: "e:who number:/z/"
+    rawquery: "e:{set} number:/z/"
     count: 13
   land:
     foil: true

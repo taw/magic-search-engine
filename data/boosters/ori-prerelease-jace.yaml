@@ -8,7 +8,7 @@
 # no off-color splash, no colorless). Same folded, seed-colored model as the
 # Khans/Fate Reforged/Dragons of Tarkir seeded packs.
 name: "{set_name} Seeded Prerelease Booster Jace"
-filter: "e:ori c:u id<=u is:baseset"
+filter: "e:{set} c:u id<=u is:baseset"
 pack:
   common: 4
   uncommon: 2

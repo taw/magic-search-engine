@@ -20,12 +20,12 @@ pack:
     chance: 4
 sheets:
   extended_commander:
-    filter: "e:cmm frame:extendedart"
+    filter: "e:{set} frame:extendedart"
     count: 35
     use: rare_mythic
   foil_extended_commander:
     foil: true
-    filter: "e:cmm frame:extendedart"
+    filter: "e:{set} frame:extendedart"
     count: 35
     use: rare_mythic
   etched_rare_mythic:
@@ -33,7 +33,7 @@ sheets:
     etched: true
     # is:etched also matches the 4 "thick" deck-box display commanders (779-782);
     # exclude them so only the 170 main-set Etched Foils (452-621) remain.
-    filter: "e:cmm is:etched -is:thick"
+    filter: "e:{set} is:etched -is:thick"
     count: 170
     use: rare_mythic
   foil_rare_mythic:
@@ -46,6 +46,6 @@ sheets:
     use: rare_mythic_showcase
   textured_rare_mythic:
     foil: true
-    filter: "e:cmm promo:textured"
+    filter: "e:{set} promo:textured"
     count: 10
     use: rare_mythic

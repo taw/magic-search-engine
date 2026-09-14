@@ -50,7 +50,7 @@ sheets:
     query: "r:u t:battle"
     count: 20
   rare_mythic_battle:
-    filter: "e:mom t:battle"
+    filter: "e:{set} t:battle"
     use: rare_mythic
     count: 16
   multiverse_legend:

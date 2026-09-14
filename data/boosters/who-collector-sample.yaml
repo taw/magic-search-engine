@@ -14,11 +14,11 @@ sheets:
     foil: true
     use: alternate_frame
   alternate_frame:
-    filter: "e:who promo:boosterfun -is:foilonly"
+    filter: "e:{set} promo:boosterfun -is:foilonly"
     use: base_1248_by_rarity
   # At least one of the two cards must be rare/mythic.
   rare_mythic_frame:
-    filter: "e:who promo:boosterfun -is:foilonly"
+    filter: "e:{set} promo:boosterfun -is:foilonly"
     use: rare_mythic
   rare_mythic_frame_foil:
     foil: true

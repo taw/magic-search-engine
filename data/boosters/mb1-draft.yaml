@@ -47,13 +47,13 @@ sheets:
     set: plst
     code: "GREENB"
   multicolor:
-    rawquery: "set:PLST sheet:MULTICOLOR -number:/^EMA-203$/ -number:/^C15-231$/"
+    rawquery: "e:plst sheet:MULTICOLOR -number:/^EMA-203$/ -number:/^C15-231$/"
     count: 121
   colorless:
     set: plst
     code: "COLORLESS"
   old_frame:
-    rawquery: "set:PLST sheet:OLDFRAME -number:/^JUD-127†$/"
+    rawquery: "e:plst sheet:OLDFRAME -number:/^JUD-127†$/"
     count: 121
   rare:
     set: plst

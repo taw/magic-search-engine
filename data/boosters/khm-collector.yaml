@@ -20,30 +20,30 @@ sheets:
     foil: true
     use: rare_mythic
   saga_theme_commander:
-    filter: "(e:khm t:saga is:baseset) or (e:khm number:374-393) or (e:khc number:1-16)"
+    filter: "(e:{set} t:saga is:baseset) or (e:{set} number:374-393) or (e:khc number:1-16)"
     use: rare_mythic
   extended_art:
-    filter: "e:khm frame:extendedart -promo:buyabox"
+    filter: "e:{set} frame:extendedart -promo:buyabox"
     use: rare_mythic
   foil_alt_frame_rare_mythic:
     foil: true
     any:
-    - rawquery: "e:khm promo:boosterfun r:r"
+    - rawquery: "e:{set} promo:boosterfun r:r"
       count: 54
       rate: 4
-    - rawquery: "e:khm promo:boosterfun r:m -(Vorinclex or Valki)"
+    - rawquery: "e:{set} promo:boosterfun r:m -(Vorinclex or Valki)"
       count: 18
       rate: 2
-    - rawquery: "e:khm promo:boosterfun r:m (Vorinclex or Valki) number<=400"
+    - rawquery: "e:{set} promo:boosterfun r:m (Vorinclex or Valki) number<=400"
       count: 4
       rate: 1
   rare_mythic_showcase:
     any:
     - use: rare_showcase
       rate: 4
-    - rawquery: "e:khm promo:boosterfun (Vorinclex or Valki) number:1-400"
+    - rawquery: "e:{set} promo:boosterfun (Vorinclex or Valki) number:1-400"
       count: 4
       rate: 1
-    - rawquery: "e:khm r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Vorinclex or Valki)"
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -(Vorinclex or Valki)"
       count: 14
       rate: 2

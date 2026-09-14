@@ -39,10 +39,10 @@ pack:
 sheets:
   ancillary:
     # C/U/R/M rates guessed to be at 8x/4x/2x/1x multiples
-    filter: "e:eld -promo:boosterfun number>=304 -frame:inverted"
+    filter: "e:{set} -promo:boosterfun number>=304 -frame:inverted"
     use: base_1248_by_rarity
   rm_extended:
-    filter: "e:eld frame:extendedart"
+    filter: "e:{set} frame:extendedart"
     use: rare_mythic
   foil_rare_mythic:
     foil: true
@@ -50,18 +50,18 @@ sheets:
     - query: "r:r"
       count: 53
       rate: 4
-    - rawquery: "e:eld r:r promo:boosterfun"
+    - rawquery: "e:{set} r:r promo:boosterfun"
       count: 53
       rate: 2
     - query: "r:m"
       count: 15
       rate: 2
-    - rawquery: "e:eld r:m promo:boosterfun"
+    - rawquery: "e:{set} r:m promo:boosterfun"
       count: 15
       rate: 1
-    - rawquery: "e:eld r:r -promo:boosterfun number>=304 -frame:inverted"
+    - rawquery: "e:{set} r:r -promo:boosterfun number>=304 -frame:inverted"
       count: 1
       rate: 4
-    - rawquery: "e:eld r:m -promo:boosterfun number>=304 -frame:inverted"
+    - rawquery: "e:{set} r:m -promo:boosterfun number>=304 -frame:inverted"
       count: 6
       rate: 2

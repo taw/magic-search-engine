@@ -28,27 +28,27 @@ sheets:
     foil: true
     use: rare_mythic
   common_uncommon_showcase:
-    filter: "e:vow promo:boosterfun -promo:draculaseries"
+    filter: "e:{set} promo:boosterfun -promo:draculaseries"
     use: common_uncommon
   extended_rare_mythic:
-    filter: "e:vow frame:extendedart"
+    filter: "e:{set} frame:extendedart"
     use: rare_mythic
   extended_commander:
     filter: "e:voc frame:extendedart"
     use: rare_mythic
   uncommon_dracula:
-    rawquery: "e:vow r:u promo:draculaseries"
+    rawquery: "e:{set} r:u promo:draculaseries"
     count: 5
   foil_uncommon_dracula:
     foil: true
     use: uncommon_dracula
   rare_mythic_showcase:
-    filter: "e:vow promo:boosterfun -promo:draculaseries -frame:extendedart"
+    filter: "e:{set} promo:boosterfun -promo:draculaseries -frame:extendedart"
     use: rare_mythic
   rare_mythic_dracula:
-    filter: "e:vow promo:draculaseries"
+    filter: "e:{set} promo:draculaseries"
     use: rare_mythic
   foil_rare_mythic_showcase:
     foil: true
-    filter: "e:vow promo:boosterfun"
+    filter: "e:{set} promo:boosterfun"
     use: rare_mythic

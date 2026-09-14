@@ -28,16 +28,16 @@ sheets:
     query: "r:c"
     count: 130
   nonlegendary_uncommon:
-    rawquery: "e:cmm r:u -t:legendary is:baseset"
+    rawquery: "e:{set} r:u -t:legendary is:baseset"
     count: 80
   legendary_uncommon:
-    rawquery: "e:cmm r:u t:legendary is:baseset"
+    rawquery: "e:{set} r:u t:legendary is:baseset"
     count: 55
   nonlegendary_rare_mythic:
-    filter: "e:cmm -t:legendary is:baseset"
+    filter: "e:{set} -t:legendary is:baseset"
     use: rare_mythic
   legendary_rare_mythic:
-    filter: "e:cmm t:legendary is:baseset"
+    filter: "e:{set} t:legendary is:baseset"
     use: rare_mythic
   wildcard:
     any:

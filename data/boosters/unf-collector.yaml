@@ -40,19 +40,19 @@ sheets:
   galaxy_basic:
     foil: true
     any:
-    - rawquery: "e:unf r:b number:486-490"
+    - rawquery: "e:{set} r:b number:486-490"
       count: 5
       chance: 3
-    - rawquery: "e:unf r:b number:491-495"
+    - rawquery: "e:{set} r:b number:491-495"
       count: 5
       chance: 1
   foil_shock:
     foil: true
-    rawquery: "e:unf number:277-286"
+    rawquery: "e:{set} number:277-286"
     count: 10
   galaxy_shock:
     foil: true
-    rawquery: "e:unf number:528-537"
+    rawquery: "e:{set} number:528-537"
     count: 10
   foil_common:
     foil: true
@@ -81,25 +81,25 @@ sheets:
     count: 62
   galaxy_common_uncommon:
     foil: true
-    filter: "e:unf number:287-485"
+    filter: "e:{set} number:287-485"
     use: common_uncommon
   galaxy_rare_mythic:
     foil: true
-    filter: "e:unf number:287-485"
+    filter: "e:{set} number:287-485"
     use: rare_mythic
   foil_uncommon_showcase:
     foil: true
-    rawquery: "e:unf number:245-276 r:u"
+    rawquery: "e:{set} number:245-276 r:u"
     count: 10
   foil_rare_mythic_showcase:
     foil: true
-    filter: "e:unf number:245-276"
+    filter: "e:{set} number:245-276"
     use: rare_mythic
   galaxy_uncommon_showcase:
     foil: true
-    rawquery: "e:unf number:496-527 r:u"
+    rawquery: "e:{set} number:496-527 r:u"
     count: 10
   galaxy_rare_mythic_showcase:
     foil: true
-    filter: "e:unf number:496-527"
+    filter: "e:{set} number:496-527"
     use: rare_mythic

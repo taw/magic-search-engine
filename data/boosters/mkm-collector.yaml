@@ -39,7 +39,7 @@ sheets:
   foil_rare_mythic_showcase:
     foil: true
     any: 
-    - rawquery: "e:mkm ((number:317-323 -alt:(e:mkm is:serialized)) or is:serialized)"
+    - rawquery: "e:{set} ((number:317-323 -alt:(e:{set} is:serialized)) or is:serialized)"
       count: 7
       chance: 1
     - chance: 99
@@ -47,9 +47,9 @@ sheets:
       - set: spg
         code: "MKM"
         rate: 1
-      - rawquery: "e:mkm promo:boosterfun r:m -is:serialized"
+      - rawquery: "e:{set} promo:boosterfun r:m -is:serialized"
         count: 37
         rate: 1
-      - rawquery: "e:mkm promo:boosterfun r:r -is:serialized"
+      - rawquery: "e:{set} promo:boosterfun r:r -is:serialized"
         count: 69
         rate: 2

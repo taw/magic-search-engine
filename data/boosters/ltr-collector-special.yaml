@@ -1,6 +1,6 @@
 # Data from https://magic.wizards.com/en/news/feature/collecting-the-lord-of-the-rings-tales-of-middle-earth#ltrupdate
 name: "{set_name} Special Edition Collector Booster"
-filter: "(e:ltr number:452-833) or (e:ltc number:411-558) or (e:ltc number:/z/ -(Sol Ring))"
+filter: "(e:{set} number:452-833) or (e:ltc number:411-558) or (e:ltc number:/z/ -(Sol Ring))"
 pack:
   showcase_common: 2
   silver_showcase_common: 2
@@ -56,10 +56,10 @@ sheets:
     count: 79 + 9
   showcase_rare_mythic:
     any:
-    - rawquery: "((e:ltr number:452-712) or (e:ltc number:411-490)) r:r"
+    - rawquery: "((e:{set} number:452-712) or (e:ltc number:411-490)) r:r"
       rate: 2
       count: 60 + 72
-    - rawquery: "((e:ltr number:452-712) or (e:ltc number:411-490)) r:m"
+    - rawquery: "((e:{set} number:452-712) or (e:ltc number:411-490)) r:m"
       rate: 1
       count: 20 + 8
   silver_showcase_rare_mythic:
@@ -68,7 +68,7 @@ sheets:
     count: 60 + 20 + 72 + 8
   surge_map_land:
     foil: true
-    rawquery: "e:ltr number:713-722"
+    rawquery: "e:{set} number:713-722"
     count: 10
   scene_jumpstart_rare_mythic:
     any:
@@ -78,21 +78,21 @@ sheets:
     - rawquery: "e:ltc number:491-514 r:m"
       rate: 1
       count: 4
-    - rawquery: "e:ltr number:829-833"
+    - rawquery: "e:{set} number:829-833"
       rate: 2
       count: 5
   surge_extended_rare_mythic:
     foil: true
     any:
-    - rawquery: "e:ltr number:757-793 r:r"
+    - rawquery: "e:{set} number:757-793 r:r"
       rate: 2
       count: 28
-    - rawquery: "e:ltr number:757-793 r:m"
+    - rawquery: "e:{set} number:757-793 r:m"
       rate: 1
       count: 9
   surge_booster_fun_u:
     foil: true
-    rawquery: "e:ltr number:794-823 r:u"
+    rawquery: "e:{set} number:794-823 r:u"
     count: 10
   surge_booster_fun_rm:
     foil: true
@@ -100,10 +100,10 @@ sheets:
     - rawquery: "e:ltc number:378-407 -number:/z/"
       rate: 1
       count: 30
-    - rawquery: "e:ltr number:794-823 r:r"
+    - rawquery: "e:{set} number:794-823 r:r"
       rate: 2
       count: 14
-    - rawquery: "e:ltr number:794-823 r:m"
+    - rawquery: "e:{set} number:794-823 r:m"
       rate: 1
       count: 6
     - rawquery: "e:ltc number:535-558 r:r"
@@ -112,10 +112,10 @@ sheets:
     - rawquery: "e:ltc number:535-558 r:m"
       rate: 1
       count: 4
-    - rawquery: "e:ltr number:751-756 r:r" # Rare borderless lands
+    - rawquery: "e:{set} number:751-756 r:r" # Rare borderless lands
       rate: 2
       count: 5
-    - rawquery: "e:ltr number:751-756 r:m" # Mythic borderless lands
+    - rawquery: "e:{set} number:751-756 r:m" # Mythic borderless lands
       rate: 1
       count: 1
   serialized_topper:
@@ -137,7 +137,7 @@ sheets:
     - rawquery: "e:ltc number:515-534 r:m"
       count: 5
       rate: 1
-    - rawquery: "e:ltr number:731-750"
+    - rawquery: "e:{set} number:731-750"
       count: 20
       rate: 1
   foil_hildebrant_poster_rm:
@@ -149,10 +149,10 @@ sheets:
     - rawquery: "e:ltc number:515-534 r:m"
       count: 5
       rate: 1
-    - rawquery: "e:ltr number:731-750 -number:/z/"
+    - rawquery: "e:{set} number:731-750 -number:/z/"
       count: 20
       rate: 1
   serialized_poster:
     foil: true
-    rawquery: "e:ltr alt:(e:ltr number:731-750) number:/z/"
+    rawquery: "e:{set} alt:(e:{set} number:731-750) number:/z/"
     count: 20

@@ -15,34 +15,34 @@ pack:
   foil_showcase_rm: 1
 queries:
   # The four Booster Fun treatment blocks, by collector number.
-  bl_frames: "(e:{set} number:320-361,381-383,442-446a)"   # borderless + concept Eldrazi + flip walkers
-  profile: "(e:{set} number:362-380)"                      # borderless profile
-  retro: "(e:{set} number:384-441)"                        # '97 retro frame
-  extended: "(e:{set} number:447-467)"                     # extended art
+  bl_frames: "e:{set} number:320-361,381-383,442-446a"   # borderless + concept Eldrazi + flip walkers
+  profile: "e:{set} number:362-380"                      # borderless profile
+  retro: "e:{set} number:384-441"                        # '97 retro frame
+  extended: "e:{set} number:447-467"                     # extended art
   treatments: "e:{set} number:320-467"
   # How many of the four treatments a card has. Cards are weighted so that every
   # rare totals 12 and every mythic 6 no matter how many versions exist.
-  in_two: "((alt:{bl_frames} alt:{profile}) or (alt:{bl_frames} alt:{retro}) or (alt:{profile} alt:{retro}) or (alt:{extended} alt:{bl_frames}) or (alt:{extended} alt:{profile}) or (alt:{extended} alt:{retro}))"
-  in_three: "((alt:{bl_frames} alt:{profile} alt:{retro}) or (alt:{bl_frames} alt:{profile} alt:{extended}) or (alt:{bl_frames} alt:{retro} alt:{extended}) or (alt:{profile} alt:{retro} alt:{extended}))"
-  in_exactly_two: "((alt:{bl_frames} alt:{profile} -alt:{retro} -alt:{extended}) or (alt:{bl_frames} -alt:{profile} alt:{retro} -alt:{extended}) or (-alt:{bl_frames} alt:{profile} alt:{retro} -alt:{extended}) or (alt:{bl_frames} -alt:{profile} -alt:{retro} alt:{extended}) or (-alt:{bl_frames} alt:{profile} -alt:{retro} alt:{extended}) or (-alt:{bl_frames} -alt:{profile} alt:{retro} alt:{extended}))"
-  in_exactly_one: "(({bl_frames} -alt:{profile} -alt:{retro} -alt:{extended}) or (-alt:{bl_frames} {profile} -alt:{retro} -alt:{extended}) or (-alt:{bl_frames} -alt:{profile} {retro} -alt:{extended}) or (-alt:{bl_frames} -alt:{profile} -alt:{retro} {extended}))"
+  in_two: "(alt:{bl_frames} alt:{profile}) or (alt:{bl_frames} alt:{retro}) or (alt:{profile} alt:{retro}) or (alt:{extended} alt:{bl_frames}) or (alt:{extended} alt:{profile}) or (alt:{extended} alt:{retro})"
+  in_three: "(alt:{bl_frames} alt:{profile} alt:{retro}) or (alt:{bl_frames} alt:{profile} alt:{extended}) or (alt:{bl_frames} alt:{retro} alt:{extended}) or (alt:{profile} alt:{retro} alt:{extended})"
+  in_exactly_two: "(alt:{bl_frames} alt:{profile} -alt:{retro} -alt:{extended}) or (alt:{bl_frames} -alt:{profile} alt:{retro} -alt:{extended}) or (-alt:{bl_frames} alt:{profile} alt:{retro} -alt:{extended}) or (alt:{bl_frames} -alt:{profile} -alt:{retro} alt:{extended}) or (-alt:{bl_frames} alt:{profile} -alt:{retro} alt:{extended}) or (-alt:{bl_frames} -alt:{profile} alt:{retro} alt:{extended})"
+  in_exactly_one: "({bl_frames} -alt:{profile} -alt:{retro} -alt:{extended}) or (-alt:{bl_frames} {profile} -alt:{retro} -alt:{extended}) or (-alt:{bl_frames} -alt:{profile} {retro} -alt:{extended}) or (-alt:{bl_frames} -alt:{profile} -alt:{retro} {extended})"
 sheets:
   foil_eldrazi_land:
     foil: true
-    rawquery: "e:mh3 number:304-308"
+    rawquery: "e:{set} number:304-308"
     count: 5
   retro_cu:
     # Article slot 9/10: retro commons 30.7%, retro uncommons 31.6%, new-to-Modern
     # retro uncommons 10.5%, H2R commons 8.8%, H2R uncommons 15.8%, Wastes 2.6%.
     # That is a 5:3 common:uncommon ratio per card, not 2:1.
     any:
-    - rawquery: "e:mh3 r:u number:384-441"
+    - rawquery: "e:{set} r:u number:384-441"
       count: 16
       rate: 3
-    - rawquery: "e:mh3 r:c number:384-441"
+    - rawquery: "e:{set} r:c number:384-441"
       count: 7
       rate: 5
-    - rawquery: "e:mh3 number:309"
+    - rawquery: "e:{set} number:309"
       count: 1
       rate: 3
     - rawquery: "e:h2r r:u"
@@ -91,7 +91,7 @@ sheets:
       count: 14
       rate: 3
     - # one version mythic
-      rawquery: "e:mh3 r:m {in_exactly_one} -is:foilonly"
+      rawquery: "e:{set} r:m {in_exactly_one} -is:foilonly"
       count: 17
       rate: 6
     - # three versions rare
@@ -103,7 +103,7 @@ sheets:
       count: 36
       rate: 6
     - # one version rare
-      rawquery: "e:mh3 r:r {in_exactly_one} -is:foilonly"
+      rawquery: "e:{set} r:r {in_exactly_one} -is:foilonly"
       count: 43
       rate: 12
     - rawquery: "e:h2r r:m"
@@ -127,11 +127,11 @@ sheets:
       any:
       - use: showcase_rm
         chance: 786
-      - rawquery: "e:mh3 is:etched r:r"
+      - rawquery: "e:{set} is:etched r:r"
         count: 12
         etched: true
         chance: 93
-      - rawquery: "e:mh3 is:etched r:m"
+      - rawquery: "e:{set} is:etched r:m"
         count: 10
         etched: true
         chance: 39
@@ -141,9 +141,9 @@ sheets:
       - set: spg
         code: "MHTHREECOLLECTOR"
         chance: 19
-      - rawquery: "e:mh3 number:468-472"
+      - rawquery: "e:{set} number:468-472"
         count: 5
         chance: 19
     - chance: 1
-      rawquery: "e:mh3 number:381-383 number:/z/"
+      rawquery: "e:{set} number:381-383 number:/z/"
       count: 3

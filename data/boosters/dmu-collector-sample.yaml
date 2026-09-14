@@ -9,12 +9,12 @@ pack:
   foil_uncommon_showcase: 1
 sheets:
   nonfoil_rare_mythic:
-    filter: "(e:dmu promo:boosterfun -is:foilonly -promo:concept) or (e:dmc promo:boosterfun -is:foilonly)"
+    filter: "(e:{set} promo:boosterfun -is:foilonly -promo:concept) or (e:dmc promo:boosterfun -is:foilonly)"
     use: rare_mythic
   foil_rare_mythic:
     foil: true
     use: nonfoil_rare_mythic
   foil_uncommon_showcase:
-    rawquery: "e:dmu frame:showcase r:u"
+    rawquery: "e:{set} frame:showcase r:u"
     count: 40
     foil: true

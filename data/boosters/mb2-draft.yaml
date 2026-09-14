@@ -41,10 +41,10 @@ sheets:
     code: "MBTWRM"
   future_sight:
     any:
-    - query: "frame:future is:nonfoil (r:c OR r:u)"
+    - query: "frame:future is:nonfoil (r:c or r:u)"
       chance: 4
       count: 51
-    - query: "frame:future is:nonfoil (r:r OR r:m)"
+    - query: "frame:future is:nonfoil (r:r or r:m)"
       chance: 6 # There is a 60% chance for a rare or mythic rare.
       count: 70
   future_sight_foil:
@@ -57,10 +57,10 @@ sheets:
     foil: true
   white_border:
     any:
-    - query: "border:white (r:r OR r:m)"
+    - query: "border:white (r:r or r:m)"
       chance: 4
       count: 51
-    - query: "border:white (r:c OR r:u OR r:l)"
+    - query: "border:white (r:c or r:u or r:l)"
       chance: 6
       count: 70
   playtest:

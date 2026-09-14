@@ -31,12 +31,12 @@ sheets:
     use: rare_mythic
     count: 80
   extended_rare_mythic:
-    filter: "e:one frame:extendedart number:375-403"
+    filter: "e:{set} frame:extendedart number:375-403"
     use: rare_mythic
     count: 29
   extended_commander_jumpstart:
     any:
-    - rawquery: "e:one frame:extendedart number:409-413"
+    - rawquery: "e:{set} frame:extendedart number:409-413"
       rate: 2
       count: 5
     - rawquery: "e:onc frame:extendedart r:r"
@@ -48,23 +48,23 @@ sheets:
   compleat_foil: # chances are approximate
     foil: true
     any:
-    - rawquery: "e:one r:c promo:stepandcompleat"
+    - rawquery: "e:{set} r:c promo:stepandcompleat"
       chance: 38
       count: 5
-    - rawquery: "e:one r:u promo:stepandcompleat"
+    - rawquery: "e:{set} r:u promo:stepandcompleat"
       chance: 29
       count: 8
-    - rawquery: "e:one r:r promo:stepandcompleat"
+    - rawquery: "e:{set} r:r promo:stepandcompleat"
       chance: 22
       count: 26
     - any:
-      - rawquery: "e:one r:m promo:stepandcompleat (Elesh Norn, Mother of Machines) -promo:concept"
+      - rawquery: "e:{set} r:m promo:stepandcompleat (Elesh Norn, Mother of Machines) -promo:concept"
         rate: 2
         count: 3
-      - rawquery: "e:one r:m promo:stepandcompleat t:planeswalker"
+      - rawquery: "e:{set} r:m promo:stepandcompleat t:planeswalker"
         rate: 3
         count: 10
-      - rawquery: "e:one r:m promo:stepandcompleat -t:planeswalker -(Elesh Norn, Mother of Machines)"
+      - rawquery: "e:{set} r:m promo:stepandcompleat -t:planeswalker -(Elesh Norn, Mother of Machines)"
         rate: 6
         count: 10
       - rawquery: "promo:stepandcompleat promo:concept e:one,neo,dmu,snc,khm"
@@ -76,13 +76,13 @@ sheets:
     - use: rare_showcase
       rate: 12
       count: 31
-    - rawquery: "e:one r:m promo:boosterfun -is:foilonly -frame:extendedart (Elesh Norn, Mother of Machines) -promo:concept"
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart (Elesh Norn, Mother of Machines) -promo:concept"
       rate: 2
       count: 3
-    - rawquery: "e:one r:m promo:boosterfun -is:foilonly -frame:extendedart t:planeswalker"
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart t:planeswalker"
       rate: 3
       count: 10
-    - rawquery: "e:one r:m promo:boosterfun -is:foilonly -frame:extendedart -t:planeswalker -(Elesh Norn, Mother of Machines)"
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -t:planeswalker -(Elesh Norn, Mother of Machines)"
       rate: 6
       count: 10
     - rawquery: "promo:concept -promo:stepandcompleat e:one,neo,dmu,snc,khm"
@@ -94,13 +94,13 @@ sheets:
     - use: rare_showcase
       rate: 12
       count: 31
-    - rawquery: "e:one r:m promo:boosterfun -is:foilonly -frame:extendedart (Elesh Norn, Mother of Machines) -promo:concept"
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart (Elesh Norn, Mother of Machines) -promo:concept"
       rate: 2
       count: 3
-    - rawquery: "e:one r:m promo:boosterfun -is:foilonly -frame:extendedart t:planeswalker"
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart t:planeswalker"
       rate: 3
       count: 10
-    - rawquery: "e:one r:m promo:boosterfun -is:foilonly -frame:extendedart -t:planeswalker -(Elesh Norn, Mother of Machines)"
+    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -t:planeswalker -(Elesh Norn, Mother of Machines)"
       rate: 6
       count: 10
     - rawquery: "promo:concept -promo:stepandcompleat e:one,neo,dmu,snc,khm"
@@ -112,6 +112,6 @@ sheets:
     - rawquery: "e:onc frame:extendedart r:m"
       rate: 6
       count: 5
-    - rawquery: "e:one frame:extendedart number:375-403"
+    - rawquery: "e:{set} frame:extendedart number:375-403"
       rate: 12
       count: 29

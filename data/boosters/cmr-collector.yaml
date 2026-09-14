@@ -12,25 +12,25 @@ pack:
 sheets:
   foil_legends:
     foil: true
-    filter: "e:cmr t:legendary is:baseset"
+    filter: "e:{set} t:legendary is:baseset"
     use: base_1248_by_rarity
   foil_rare_mythic_nonlegendary:
     foil: true
     any:
-    - filter: "e:cmr -t:legendary is:baseset"
+    - filter: "e:{set} -t:legendary is:baseset"
       use: rare_mythic
       count: 69
       chance: 7
-    - filter: "e:cmr -t:legendary frame:extendedart"
+    - filter: "e:{set} -t:legendary frame:extendedart"
       use: rare_mythic
       count: 69
       chance: 3
   extended_art_common_uncommon:
-    filter: "e:cmr -t:legendary frame:extendedart"
+    filter: "e:{set} -t:legendary frame:extendedart"
     use: common_uncommon
     count: 33
   extended_art_rare_mythic:
-    filter: "e:cmr -t:legendary frame:extendedart"
+    filter: "e:{set} -t:legendary frame:extendedart"
     use: rare_mythic
     count: 69
   foil_uncommon_extendedart:
@@ -39,24 +39,24 @@ sheets:
     - query: "r:u -t:legendary"
       count: 80
       chance: 8
-    - filter: "e:cmr -t:legendary frame:extendedart"
+    - filter: "e:{set} -t:legendary frame:extendedart"
       use: common_uncommon
       count: 33
       chance: 2
   etched_uncommon:
     foil: true
     etched: true
-    rawquery: "e:cmr is:etched (r:u or r:s) -is:reprint"
+    rawquery: "e:{set} is:etched (r:u or r:s) -is:reprint"
     count: 41
   etched_reprint:
     foil: true
     etched: true
-    filter: "e:cmr is:etched is:reprint"
+    filter: "e:{set} is:etched is:reprint"
     use: rare_mythic
     count: 32
   etched_rare_mythic:
     foil: true
     etched: true
-    filter: "(e:cmr is:etched -is:reprint) OR (e:cmr t:planeswalker is:borderless)"
+    filter: "(e:{set} is:etched -is:reprint) or (e:{set} t:planeswalker is:borderless)"
     use: rare_mythic
     count: 30

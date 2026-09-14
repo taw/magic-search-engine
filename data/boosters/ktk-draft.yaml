@@ -3,7 +3,7 @@
 # "Languages: English, Chinese Simplified, Chinese Traditional, French, German, Italian, Japanese, Korean, Portuguese, Russian, Spanish"
 languages: cs, ct, de, en, fr, it, jp, kr, pt, ru, sp
 
-filter: "e:ktk -number:/y/"
+filter: "e:{set} -number:/y/"
 pack:
 - basic: 1
   common: 10

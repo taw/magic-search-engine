@@ -25,7 +25,7 @@ sheets:
     count: 101
   foil_with_showcase:
     # Copied from base set
-    filter: "(e:bro is:baseset -number:268-277) or (e:brr -number:/z/)"
+    filter: "(e:{set} is:baseset -number:268-277) or (e:brr -number:/z/)"
     foil: true
     any:
     - query: "r<=c"
@@ -69,10 +69,10 @@ sheets:
       chance: 3
   basic:
     any:
-    - rawquery: "e:bro number:268-277"
+    - rawquery: "e:{set} number:268-277"
       count: 10
       rate: 5
-    - rawquery: "e:bro number:278-287"
+    - rawquery: "e:{set} number:278-287"
       count: 10
       rate: 2
   foil_basic:

@@ -85,7 +85,7 @@ sheets:
     # Jumpstart) and the 8 mythic Commander legends (#1-8, also foil from the
     # decks). This sheet feeds both the wildcard (nonfoil) and the foil slot, so
     # it covers both finishes at once.
-    - rawquery: "e:ltr number:282-286"
+    - rawquery: "e:{set} number:282-286"
       count: 5
       chance: 10
     - rawquery: "e:ltc number:1-8"

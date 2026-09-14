@@ -1,4 +1,4 @@
-filter: "(e:fin or e:fic) -variant:misprint"
+filter: "(e:{set} or e:fic) -variant:misprint"
 name: "{set_name} Bundle Promo Card"
 pack:
   promos: 2

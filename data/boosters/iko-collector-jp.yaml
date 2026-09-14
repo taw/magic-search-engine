@@ -24,38 +24,38 @@ sheets:
     filter: "e:c20 number:1-71"
     use: base_1248_by_rarity
   extended_art:
-    filter: "e:iko frame:extendedart"
+    filter: "e:{set} frame:extendedart"
     use: rare_mythic
   rare_mythic_foil:
     foil: true
     any:
-    - rawquery: "e:iko r:r frame:extendedart"
+    - rawquery: "e:{set} r:r frame:extendedart"
       count: 43
       rate: 2
     - query: "r:r"
       count: 53
       rate: 4
-    - rawquery: "e:iko r:m frame:extendedart"
+    - rawquery: "e:{set} r:m frame:extendedart"
       count: 7
       rate: 1
     - query: "r:m"
       count: 15
       rate: 2
   common_uncommon_showcase:
-    filter: "e:iko promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
+    filter: "e:{set} promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
     use: common_uncommon
   rare_mythic_showcase:
-    filter: "e:iko promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
+    filter: "e:{set} promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
     use: rare_mythic
   godzilla:
-    filter: "e:iko promo:godzillaseries -number:/a/"
+    filter: "e:{set} promo:godzillaseries -number:/a/"
     use: base_1248_by_rarity
   godzilla_foil:
     foil: true
-    filter: 'e:iko promo:godzillaseries -name:"Zilortha, Strength Incarnate"'
+    filter: 'e:{set} promo:godzillaseries -name:"Zilortha, Strength Incarnate"'
     use: base_1248_by_rarity
   foil_showcase_any:
     foil: true
-    filter: "e:iko promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
+    filter: "e:{set} promo:boosterfun -promo:godzillaseries -is:foilonly -frame:extendedart"
     use: base_1248_by_rarity
 languages: jp

@@ -36,7 +36,7 @@ sheets:
     foil: true
     use: rare_mythic
   extended_rare_mythic:
-    filter: "e:snc frame:extendedart"
+    filter: "e:{set} frame:extendedart"
     use: rare_mythic
   extended_commander:
     filter: "e:ncc frame:extendedart"
@@ -57,18 +57,18 @@ sheets:
       rate: 2
   gilded_common_uncommon_showcase:
     foil: true
-    filter: "e:snc promo:gilded"
+    filter: "e:{set} promo:gilded"
     use: common_uncommon
     count: 20
   gilded_rare_mythic_showcase:
     foil: true
-    filter: "e:snc promo:gilded"
+    filter: "e:{set} promo:gilded"
     use: rare_mythic
     count: 25
   etched_rare_mythic_showcase:
     foil: true
     etched: true
-    filter: "e:snc is:etched"
+    filter: "e:{set} is:etched"
     use: rare_mythic
     count: 9
   foil_rare_mythic_showcase:

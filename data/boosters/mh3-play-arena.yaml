@@ -33,7 +33,7 @@ sheets:
     count: 80
   land:
     # mh3/304-309 are Booster Fun basics, so Arena draws from the plain ones.
-    rawquery: "e:mh3 number:310-319"
+    rawquery: "e:{set} number:310-319"
     count: 10
   new_uncommon:
     query: "r:u -is:reprint"

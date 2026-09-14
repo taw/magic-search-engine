@@ -40,7 +40,7 @@ pack:
     chance: 1
 sheets:
   basic:
-    rawquery: "e:stx t:basic"
+    rawquery: "e:{set} t:basic"
     count: 10
   foil_basic:
     foil: true
@@ -125,5 +125,5 @@ sheets:
     code: "STX"
   lesson:
     # ratio is guessed, using 1/2/4/8 ratio for now
-    filter: "e:stx t:lesson is:baseset"
+    filter: "e:{set} t:lesson is:baseset"
     use: base_1248_by_rarity

@@ -81,7 +81,7 @@ sheets:
       - use: rare_with_showcase
         count: 78
         chance: 2 * 60
-      - rawquery: "e:mom r:r number:323-337 is:paper"
+      - rawquery: "e:{set} r:r number:323-337 is:paper"
         chance: 2 * 5
         count: 5
       # #72-79 (Planeswalker's Talents cycle etc.) only appear in Set and
@@ -124,7 +124,7 @@ sheets:
     foil: true
     # Preserve the existing rarity/variant convention. MUL insertion odds within
     # this slot are unpublished; give its cards the same base-art rarity weights.
-    filter: "(e:mom is:baseset) or (e:mom number:323-337)"
+    filter: "(e:{set} is:baseset) or (e:{set} number:323-337)"
     any:
     - any:
       - use: common_showcase
