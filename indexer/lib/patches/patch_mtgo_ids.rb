@@ -76,12 +76,7 @@ class PatchMtgoIds < Patch
   def call
     build_face_index
     build_name_index
-    @fallbacks = Hash.new{|hash, set_code| hash[set_code] = [] }
-    @paper_only_ids = Set[]
-    @contested = Hash.new(0)
-    @matched = Set[]
-    @matched_cards = Set[]
-    @matched_printings = 0
+    @fallbacks = []
 
     assign(proposals)
     report
@@ -101,10 +96,7 @@ class PatchMtgoIds < Patch
       id = row ? row[:id] : mtgjson_id(card)
       next unless id
       # MTGO having an object is not MTGO selling the card
-      if !card["mtgo"]
-        @paper_only_ids << row[:id] if row
-        next
-      end
+      next unless card["mtgo"]
       foil_id = row ? row[:foil_id] : mtgjson_foil_id(card)
       result << [where(row, card), rank || FROM_MTGJSON, card, id, foil_id]
     end
@@ -123,20 +115,11 @@ class PatchMtgoIds < Patch
     owners = {}
     proposals.each_with_index.sort_by{|(where, rank, _, _, _), order| [where, rank, order] }.each do |(where, rank, card, id, foil_id), _|
       card_key = [card["set_code"], base_number(card)]
-      if owners.fetch(id, card_key) != card_key
-        @contested[card["set_code"]] += 1
-        next
-      end
+      next if owners.fetch(id, card_key) != card_key
       owners[id] = card_key
       card["mtgo_id"] = id
       card["mtgo_foil_id"] = foil_id if foil_id
-      if rank == FROM_MTGJSON
-        @fallbacks[card["set_code"]] << card
-      else
-        @matched << id
-        @matched_printings += 1
-        @matched_cards << printing_key(card)
-      end
+      @fallbacks << card if rank == FROM_MTGJSON
     end
   end
 
@@ -148,7 +131,6 @@ class PatchMtgoIds < Patch
         mtgo_set: row["Set"],
         printed_set: row["Printed Set"],
         name: normalize_name(row["Name"]),
-        printed_name: row["Name"],
         number: normalize_number(row["Number"]),
         foil_id: presence(row["Foil Id"]),
         whole_card: row["Type"] == CARD_TYPE && row["Sub Card"].to_s.empty?,
@@ -336,26 +318,6 @@ class PatchMtgoIds < Patch
     cards.map{|card| base_number(card) }.uniq.size == 1
   end
 
-  # Could a row have produced an id whichever of our printings it picked? Only
-  # if one of them is still waiting for one. A printing we do not call
-  # game:mtgo was never going to take an id; one that already took a client id
-  # has the object it asked for, and this one is MTGO having more objects for
-  # a card than we have printings of it, which is nothing we can act on. A
-  # printing that only fell back to mtgjson does still count, because a row
-  # that could be it is a row that could have been matched properly.
-  def could_have_mattered?(row)
-    target_set_codes(row).any? do |set_code|
-      @cards_by_name.dig(set_code, row[:name])&.any? do |card|
-        card["mtgo"] and not @matched_cards.include?(printing_key(card))
-      end
-    end
-  end
-
-  # A printing, which is a collector number in a set
-  def printing_key(card)
-    [card["set_code"], card["number"]]
-  end
-
   # {set code => {name => [card, ...]}} - our own printings under every name a
   # client row could be listing them by
   def build_name_index
@@ -426,42 +388,12 @@ class PatchMtgoIds < Patch
     value unless value.to_s.empty?
   end
 
-  # A set needing fallback is a set we get wrong somewhere, so say how badly,
-  # and how many of its client rows are still unaccounted for - the leftovers
-  # are where the printings we missed are. A row that could never have produced
-  # an id is not a leftover: whether it matched a paper only printing or could
-  # not choose between several of them, no id was ever going to come of it.
+  # A fallback is a printing the client's catalog has nothing we could match
+  # onto, so mtgjson's word for its id is all there is. Each one is either a
+  # match we are missing or an object only mtgjson knows about.
   def report
-    unclaimed = client_rows
-      .reject{|row| @matched.include?(row[:id]) or @paper_only_ids.include?(row[:id]) }
-      .select{|row| could_have_mattered?(row) }
-      .group_by{|row| target_set_codes(row).first }
-
-    puts "MTGO ids: #{@matched_printings} printings took a client id, #{@fallbacks.values.sum(&:size)} fell back to mtgjson"
-
-    set_codes = (@fallbacks.keys + @contested.keys + unclaimed.keys).compact.uniq
-    set_codes.sort_by{|set_code| [-@fallbacks[set_code].size, set_code] }.each do |set_code|
-      cards = @fallbacks[set_code]
-      rows = unclaimed[set_code].to_a
-      line = "  #{set_code}: #{cards.size} cards fell back, #{rows.size} client entries unmapped"
-      line << ", #{@contested[set_code]} lost a contested id" if @contested[set_code] > 0
-      puts line
-      cards.sort_by{|card| [card["number"].to_i, card["number"]] }.each do |card|
-        puts "    fallback #{card["mtgo_id"]} #{card["name"]} [#{set_code}:#{card["number"]}]"
-      end
-      rows.sort_by{|row| row[:id].to_i }.each do |row|
-        puts "    unmapped #{row[:id]} #{row[:printed_name]} [#{row[:mtgo_set]}:#{row[:number]}]"
-      end
-    end
-
-    # Not subject to any of the filtering above: a client set we have no set
-    # for is how a set MTGO has just added announces itself
-    unmapped_sets = client_rows
-      .select{|row| target_set_codes(row).empty? }
-      .group_by{|row| row[:mtgo_set] }
-    unless unmapped_sets.empty?
-      puts "  MTGO sets with no set of ours: " +
-        unmapped_sets.sort_by{|code, rows| [-rows.size, code] }.map{|code, rows| "#{code} (#{rows.size})" }.join(", ")
+    @fallbacks.sort_by{|card| [card["set_code"], card["number"].to_i, card["number"]] }.each do |card|
+      puts "Card #{card["name"]} [#{card["set_code"]}:#{card["number"]}] not found in mtgo client data, falling back to #{card["mtgo_id"]} from mtgjson"
     end
   end
 end
