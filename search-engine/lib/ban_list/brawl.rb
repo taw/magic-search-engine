@@ -331,4 +331,12 @@ BanList.for_format("brawl") do
     "Ugin's Labyrinth" => "banned",
     "Wash Away" => "banned",
   )
+
+  # Reversion of rebalanced tabletop cards to their original printings made this
+  # significantly more powerful, prompting a ban.
+  change(
+    "2026-09-22",
+    "https://magic.wizards.com/en/news/mtg-arena/state-of-the-formats-2026",
+    "Nadu, Winged Wisdom" => "banned",
+  )
 end

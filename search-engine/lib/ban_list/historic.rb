@@ -554,4 +554,16 @@ BanList.for_format("historic") do
     "Bridge from Below" => "conjurable",
     "Storm Crow" => "conjurable",
   )
+
+  # Reversion of rebalanced tabletop cards to their original printings made these
+  # significantly more powerful, prompting bans.
+  change(
+    "2026-09-22",
+    "https://magic.wizards.com/en/news/mtg-arena/state-of-the-formats-2026",
+    "Galvanic Discharge" => "banned",
+    "Guide of Souls" => "banned",
+    "Nadu, Winged Wisdom" => "banned",
+    "Sorin, Imperious Bloodlord" => "banned",
+    "The One Ring" => "banned",
+  )
 end
