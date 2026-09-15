@@ -99,7 +99,7 @@ class ColorBalancedCardSheet < CardSheet
     random_number = rand(denominator)
     weights.each_with_index do |w, i|
       random_number -= w
-      return @color_subsheets[i].random_card if random_number <= 0
+      return @color_subsheets[i].random_card if random_number < 0
     end
     nil
   end
