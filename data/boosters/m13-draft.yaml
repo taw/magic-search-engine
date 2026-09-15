@@ -8,10 +8,68 @@ pack:
   common: 10
   uncommon: 3
   rare_mythic: 1
+  token_or_ad: 1
   chance: 31
 - basic: 1
   common: 9
   uncommon: 3
   rare_mythic: 1
   foil: 1
+  token_or_ad: 1
   chance: 9
+sheets:
+  # Experimentally record token/ad slot information, for now we're not doing anything with this
+  # https://www.lethe.xyz/mtg/collation/m13.html
+  token_or_ad:
+    ignore: true
+    any:
+    - token: Liliana of the Dark Realms Emblem
+      chance: 1
+    - token: Cat
+      chance: 2
+    - token: Hellion
+      chance: 2
+    - token: Wurm
+      chance: 2
+    - token: Beast
+      chance: 3
+    - ad: Ajani Tip Card
+      chance: 4
+    - ad: Booster Draft Tip Card
+      chance: 4
+    - ad: Casual Formats Tip Card
+      chance: 4
+    - ad: Commander Tip Card
+      chance: 4
+    - ad: Deck Construction Tip Card
+      chance: 4
+    - ad: Deck Proportions Tip Card
+      chance: 4
+    - ad: Defeating Planeswalkers Tip Card
+      chance: 4
+    - ad: Empty Library Tip Card
+      chance: 4
+    - ad: Expansion Symbol Tip Card
+      chance: 4
+    - token: Goat
+      chance: 4
+    - ad: Limited Tip Card
+      chance: 4
+    - ad: Using Planeswalkers Tip Card
+      chance: 4
+    - ad: Bolas Tip Card
+      chance: 5
+    - ad: Exalted Tip Card
+      chance: 5
+    - token: Zombie
+      chance: 5
+    - token: Drake
+      chance: 6
+    - token: Saproling
+      chance: 6
+    - ad: Duels 2013 Ad Card
+      chance: 12
+    - token: Goblin
+      chance: 12
+    - token: Soldier
+      chance: 12

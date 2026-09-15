@@ -23,8 +23,8 @@ module ValidateKeys
   ].to_set
 
   SHEET_KEYS = %W[
-    query rawquery use any set code deck
-    filter foil etched balanced fixed duplicates
+    query rawquery use any set code deck ad token
+    filter foil etched balanced fixed duplicates ignore
     count chance rate
   ].to_set
 
@@ -143,6 +143,16 @@ class PreprocessBooster
     @sheets = common.merge(@data["sheets"] || {})
   end
 
+  # Some sheets exist only to document what's in the pack (token/ad slots and
+  # such), and we have nothing to do with them yet, so drop them and the pack
+  # slots they fill.
+  def drop_ignored_sheets
+    ignored = @sheets.select{|_, sheet| sheet.is_a?(Hash) and sheet["ignore"]}.keys
+    return if ignored.empty?
+    @sheets = @sheets.except(*ignored)
+    @pack = @pack.map{|pack, chance| [pack.except(*ignored), chance]}
+  end
+
   def initialize_queries
     @substitutions = {
       "{set}" => @set_code,
@@ -189,6 +199,10 @@ class PreprocessBooster
       end
     elsif sheet["deck"]
       sheet
+    elsif sheet["ad"] or sheet["token"]
+      # Recorded for documentation only, and only in sheets marked `ignore: true`,
+      # which are dropped before we get here.
+      raise "In #{@code}, ad/token sheets are only supported inside ignored sheets"
     elsif sheet["rawquery"]
       query = sheet["rawquery"]
       expanded_query = clean_query("(#{@superfilter}) (#{query})")
@@ -277,10 +291,11 @@ class PreprocessBooster
     eval_math(@data)
     initialize_pack
     initialize_queries
-    sheets_in_use = find_sheets_in_use
 
     warn_about_conflicts_with_common_sheets
     initialize_sheets
+    drop_ignored_sheets
+    sheets_in_use = find_sheets_in_use
     process_sheets
     check_small_balanced_sheets
 
