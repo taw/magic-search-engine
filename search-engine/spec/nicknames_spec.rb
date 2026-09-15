@@ -876,4 +876,50 @@ describe "Card nicknames" do
     # remove a few false positives due to "whenever you put ..."
     assert_search_equal "is:stickers", '(t:stickers or o:"put a sticker" or o:"put a name sticker" or o:"put an ability sticker" or o:"put a power and toughness sticker" or o:"put up to two name stickers" or o:"sticker kicker" or o:"put an art sticker" or o:"distribute up to two art stickers" or (Name Sticker Goblin)) -(Unlawful Entry) -(A Good Day to Pie)'
   end
+
+  it "is:pregame" do
+    assert_search_results "is:pregame",
+      # you may reveal this card from your opening hand, then get a delayed pregame effect
+      "Chancellor of the Annex",
+      "Chancellor of the Dross",
+      "Chancellor of the Forge",
+      "Chancellor of the Mulligan",
+      "Chancellor of the Spires",
+      "Chancellor of the Tangle",
+      "Devourer of Destiny",
+      "Providence",
+      "Sphinx of Foresight",
+      # if this card is in your opening hand, you may begin the game with it on the battlefield
+      "Gemstone Caverns",
+      "Leyline Axe",
+      "Leyline of Abundance",
+      "Leyline of Anticipation",
+      "Leyline of Combustion",
+      "Leyline of Hope",
+      "Leyline of Lifeforce",
+      "Leyline of Lightning",
+      "Leyline of Mutation",
+      "Leyline of Punishment",
+      "Leyline of Resonance",
+      "Leyline of Sanctity",
+      "Leyline of Singularity",
+      "Leyline of the Guildpact",
+      "Leyline of the Meek",
+      "Leyline of the Void",
+      "Leyline of Transformation",
+      "Leyline of Vitality",
+      "Quicksilver, Brash Blur",
+      "Welcome to Australia",
+      # if this card is in your opening hand, you may do something else with it
+      "Impatient Iguana",
+      "Time Sidewalk",
+      # any time you could mulligan and this card is in your hand
+      "No-Regrets Egret",
+      "Serum Powder"
+
+    # Emissary's Ploy is never actually in your hand (it's a conspiracy in the command zone)
+    # Rift doesn't depend on already being in your opening hand - it lets you put itself there
+    assert_search_equal "is:pregame",
+      %{(o:"opening hand" or o:"any time you could mulligan") -(Emissary's Ploy) -(Rift)}
+  end
 end
