@@ -9,7 +9,7 @@ class ReportMtgjsonDifferences
 
   def initialize
     @db = CardDatabase.load
-    @mtgjson = JSON.parse(Zlib::GzipReader.open("#{__dir__}/../tmp/AllSets.json.gz", &:read))
+    @mtgjson = JSON.parse(Zlib::GzipReader.open("#{__dir__}/../tmp/AllPrintings.json.gz", &:read))
     # v4 / v5
     @mtgjson = @mtgjson["data"] if @mtgjson["data"]
   end

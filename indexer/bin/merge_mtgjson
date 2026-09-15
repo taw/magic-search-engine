@@ -2,7 +2,7 @@
 
 require "json"
 
-# Debug tool to recreate single AllSets-x.json mtgjson file from multiple .json files
+# Debug tool to recreate single AllPrintings-x.json mtgjson file from multiple .json files
 
 class MergeMtgjson
   SETS_DIR = Pathname(__dir__) + "../../../magic-search-engine-data/data/sets"

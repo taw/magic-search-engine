@@ -13,7 +13,7 @@ class ReportLegalityDifferences
   def initialize(formats=[])
     @formats = formats.map(&:downcase)
     @db = CardDatabase.load
-    @mtgjson = JSON.parse(Zlib::GzipReader.open("#{__dir__}/../tmp/AllSets.json.gz", &:read))
+    @mtgjson = JSON.parse(Zlib::GzipReader.open("#{__dir__}/../tmp/AllPrintings.json.gz", &:read))
     load_mtgjson_legalities_data
   end
 

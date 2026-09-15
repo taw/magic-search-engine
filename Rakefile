@@ -35,14 +35,14 @@ end
 
 desc "Update mtgjson database"
 task "mtgjson:fetch" do
-  unless Pathname("tmp/AllSets.json.gz").exist?
+  unless Pathname("tmp/AllPrintings.json.gz").exist?
     Pathname("tmp").mkpath
-    sh "wget", "https://mtgjson.com/api/v5/AllPrintings.json.gz", "-O", "tmp/AllSets.json.gz" # v5
+    sh "wget", "https://mtgjson.com/api/v5/AllPrintings.json.gz", "-O", "tmp/AllPrintings.json.gz" # v5
   end
   if Pathname("data/sets-incoming").exist?
     sh "trash", "data/sets-incoming"
   end
-  sh "./indexer/bin/split_mtgjson", "tmp/AllSets.json.gz", "tmp/sets-incoming"
+  sh "./indexer/bin/split_mtgjson", "tmp/AllPrintings.json.gz", "tmp/sets-incoming"
   sh "./indexer/bin/update_mtgjson_sets"
 end
 

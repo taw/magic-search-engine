@@ -72,8 +72,8 @@ class SplitMtgjson
 end
 
 unless ARGV.size == 1 or ARGV.size == 2
-  STDERR.puts "Usage: #{$0} /path/to/AllSets.json.gz"
-  STDERR.puts "   or: #{$0} /path/to/AllSets.json.gz /output/directory"
+  STDERR.puts "Usage: #{$0} /path/to/AllPrintings.json.gz"
+  STDERR.puts "   or: #{$0} /path/to/AllPrintings.json.gz /output/directory"
   exit 1
 end
 
