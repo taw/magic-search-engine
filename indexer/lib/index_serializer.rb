@@ -121,7 +121,6 @@ class IndexSerializer
     printing_data = []
     card.each do |printing|
       common_card_data << {
-        "al" => printing["alchemy"],
         "br" => printing["brawler"],
         "c" => printing["colors"],
         "ci" => printing["ci"],
@@ -133,7 +132,6 @@ class IndexSerializer
         "f" => index_foreign_names(printing["foreign_names"]),
         "fu" => printing["funny"],
         "gc" => printing["game_changer"],
-        "ha" => printing["has_alchemy"],
         "hd" => printing["hand"], # vanguard
         "hm" => printing["hide_mana_cost"],
         "ip" => printing["is_partner"],

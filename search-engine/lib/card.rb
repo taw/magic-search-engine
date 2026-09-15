@@ -13,14 +13,12 @@ class Card
   extend BitmapFlag
 
   bitmap_flags(
-    :alchemy,
     :augment,
     :brawler,
     :commander,
     :front,
     :funny,
     :game_changer,
-    :has_alchemy,
     :modal,
     :partner,
     :reserved,
@@ -121,8 +119,6 @@ class Card
     @display_power = data["dp"] ? data["dp"] : @power
     @display_toughness = data["dt"] ? data["dt"] : @toughness
     @display_mana_cost = data["hm"] ? nil : @mana_cost
-    self.alchemy = data["al"]
-    self.has_alchemy = data["ha"]
     @decklimit = data["dl"]
     @hand = data["hd"]
     @life = data["lf"]

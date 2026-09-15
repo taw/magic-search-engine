@@ -239,14 +239,18 @@ describe "is:productless<finish>" do
     end
   end
 
-  # Same agreement with the card page as is:productless has, per finish. vow
-  # is an ordinary set with printings missing in each of the three
+  # Same agreement with the card page as is:productless has, per finish. No one set
+  # has printings missing in all three finishes - vow used to, on the strength of its
+  # Alchemy printings, and nothing but sld and a couple of promo sets does now.
+  SETS_WITH_PRODUCTLESS = {nonfoil: "sld", foil: "vow", etched: "vow"}
+
   it "is exactly what CardDatabase#availability finds no source for" do
     PhysicalCard::FINISHES.each do |finish|
-      expected = db.sets["vow"].printings.select do |printing|
+      set_code = SETS_WITH_PRODUCTLESS.fetch(finish)
+      expected = db.sets[set_code].printings.select do |printing|
         printing.has_finish?(finish) and !db.availability(printing).flat_map(&:finishes).include?(finish)
       end
-      db.search("is:productless#{finish} e:vow").printings.should match_array(expected)
+      db.search("is:productless#{finish} e:#{set_code}").printings.should match_array(expected)
       expected.should_not be_empty
     end
   end

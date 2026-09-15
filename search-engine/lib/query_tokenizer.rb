@@ -17,7 +17,6 @@ class QueryTokenizer
     "karoo" => "bounceland",
     "mlp" => "mylittlepony",
     "p9" => "power9",
-    "rebalanced" => "alchemy",
     "snarl" => "shadowland",
     "story" => "spotlight",
     "tangoland" => "battleland",
@@ -330,15 +329,14 @@ class QueryTokenizer
       elsif s.scan(/(is|not)\s*[:=]\s*(masterpiece|promo)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         tokens << [:test, ConditionSetType.new(s[2].downcase)]
-      elsif s.scan(/(is|not)\s*[:=]\s*(alchemy|ante|attraction|augment|back|baseset|basictype|battlebondland|battleland|bbdland|bear|bicycleland|bikeland|bondland|booster|bounceland|brawler|canland|canopyland|card|checkland|commander|companion|creatureland|crowdland|custom|cycleland|digital|draft|dual|etched|fastland|fetchland|filterland|foil|foilboth|foilonly|foreign|front|full|fullart|funny|gainland|gamechanger|guildgate|hero|historic|holofoil|horizontal|hybrid|karoo|keywordsoup|maindeck|mainfront|manland|meldpart|meldresult|mlp|modal|multipart|mylittlepony|nonfoil|nonfoilonly|outlaw|oversized|p9|painland|partner|party|pathway|permanent|phyrexian|power9|primary|productless|productlessetched|productlessfoil|productlessnonfoil|racist|rebalanced|reprint|reserved|scryland|secondary|shadowland|shockland|slowland|snarl|specialformat|specialized|spell|spellbook|spotlight|stickers|storageland|story|surveilland|tangoland|textless|timeshifted|token|tournament|traditional|tricycleland|trikeland|triland|triome|unique|vanilla|vergeland|vertical)\b/i)
+      elsif s.scan(/(is|not)\s*[:=]\s*(ante|attraction|augment|back|baseset|basictype|battlebondland|battleland|bbdland|bear|bicycleland|bikeland|bondland|booster|bounceland|brawler|canland|canopyland|card|checkland|commander|companion|creatureland|crowdland|custom|cycleland|digital|draft|dual|etched|fastland|fetchland|filterland|foil|foilboth|foilonly|foreign|front|full|fullart|funny|gainland|gamechanger|guildgate|hero|historic|holofoil|horizontal|hybrid|karoo|keywordsoup|maindeck|mainfront|manland|meldpart|meldresult|mlp|modal|multipart|mylittlepony|nonfoil|nonfoilonly|outlaw|oversized|p9|painland|partner|party|pathway|permanent|phyrexian|power9|primary|productless|productlessetched|productlessfoil|productlessnonfoil|racist|reprint|reserved|scryland|secondary|shadowland|shockland|slowland|snarl|specialformat|specialized|spell|spellbook|spotlight|stickers|storageland|story|surveilland|tangoland|textless|timeshifted|token|tournament|traditional|tricycleland|trikeland|triland|triome|unique|vanilla|vergeland|vertical)\b/i)
         tokens << [:not] if s[1].downcase == "not"
         kind = s[2].downcase
         cond = IS_ALIASES.fetch(kind, kind).capitalize
         klass = Kernel.const_get("ConditionIs#{cond}")
         tokens << [:test, klass.new]
-      elsif s.scan(/has:(alchemy|flavor|indicator|partner|rebalanced|showcase|signature|specialized|spellbook|watermark)\b/)
+      elsif s.scan(/has:(flavor|indicator|partner|showcase|signature|specialized|spellbook|watermark)\b/)
         cond = s[1].capitalize
-        cond = "Alchemy" if cond == "Rebalanced"
         klass = Kernel.const_get("ConditionHas#{cond}")
         tokens << [:test, klass.new]
       elsif s.scan(/new\s*[:=]\s*(?:"(.*?)"|([\p{L}\p{Digit}_]+))/i)

@@ -9,10 +9,7 @@ class PatchSpecialFormat < Patch
   #   Conspiracy (Conspiracy Draft)
   #   Hero (the Theros Hero's Path decks)
   #
-  # Alchemy cards are deliberately not here. They're ordinary cards with an unusual
-  # card pool, they are legal on Arena, and `alchemy` already says so.
-  #
-  # Attractions, stickers, contraptions and dungeons are not here either. They're
+  # Attractions, stickers, contraptions and dungeons are not here. They're
   # also not deck cards, but they are legal - Unfinity attractions and stickers are
   # Commander-legal today and were Legacy/Vintage/Pauper-legal until 2024-05-13, so
   # their legality has to come from the ban list, not from a flag.

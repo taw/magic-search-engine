@@ -34,7 +34,6 @@ class FormatHistoric < FormatVintage
   end
 
   def in_format?(card)
-    return false if card.has_alchemy
     card.printings.each do |printing|
       next if @time and printing.release_date > @time
       # There is currently one excluded set - XANA

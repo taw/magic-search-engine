@@ -15,7 +15,7 @@ describe "Variant spec" do
   end
 
   it "variant:arena" do
-    assert_search_equal "variant:arena", "game:arena -game:paper -game:mtgo -is:alchemy (e:ktk,iko,mid,znr,spg)"
+    assert_search_equal "variant:arena", "game:arena -game:paper -game:mtgo (e:ktk,iko,mid,znr,spg)"
   end
 
   it "variant:arena does not overlap other variants" do

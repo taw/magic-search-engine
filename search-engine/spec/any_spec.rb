@@ -162,7 +162,7 @@ describe "Any queries" do
       assert_search_equal "any:canopyland", "is:canopyland"
       assert_search_equal "any:checkland", "is:checkland"
       assert_search_equal "any:creatureland", "is:creatureland"
-      assert_search_equal "any:dual -is:rebalanced", "(is:dual or (dual) or ft:dual or o:dual) -is:rebalanced"
+      assert_search_equal "any:dual", "is:dual or (dual) or ft:dual or o:dual"
       assert_search_equal "any:fastland", "is:fastland"
       assert_search_equal "any:fetchland", "is:fetchland"
       assert_search_equal "any:filterland", "is:filterland"

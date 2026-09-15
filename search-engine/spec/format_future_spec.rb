@@ -61,7 +61,6 @@ describe "Formats - Future Standard" do
     assert_search_equal_cards "f:future",
       %[
         e:fdn,dft,tdm,fin,eoe,spm,tla,ecl,tmt,sos,msh,hob,fra,trk
-        -is:alchemy
         -(Cori-Steel Cutter)
         -(Vivi Ornitier)
         -(Badgermole Cub)

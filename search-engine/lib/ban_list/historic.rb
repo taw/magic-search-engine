@@ -138,10 +138,17 @@ BanList.for_format("historic") do
     "Fires of Invention" => "legal", # rebalanced version
   )
 
-  # HBG conjured/specialized
+  # Alchemy Horizons: Baldur's Gate day - HBG's conjure-only and specialize-only cards,
+  # and Winota's rebalance, which shipped with the same release.
   change(
     "2022-07-07",
-    "These cards are specialized/conjurable only",
+    "Alchemy Horizons: Baldur's Gate release",
+    # Suspended in 2020 and never unsuspended by name, but the rebalanced version
+    # released here was legal, and Arena's Historic banned list has not named Winota
+    # since. Same shape as Omnath, Teferi and Fires of Invention above: the A- printing
+    # is gone from the data, so the entry hangs on the original name.
+    "Winota, Joiner of Forces" => "legal",
+    # The rest are specialized/conjurable only
     "Alora, Cheerful Assassin" => "specialized",
     "Alora, Cheerful Mastermind" => "specialized",
     "Alora, Cheerful Scout" => "specialized",

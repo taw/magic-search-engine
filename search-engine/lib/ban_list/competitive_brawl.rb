@@ -4,9 +4,11 @@ BanList.for_format("competitive brawl") do
   #
   # The ten bans are not Brawl's list plus or minus anything - Competitive Brawl bans
   # commanders only, and starts from "almost every card being legal to include in the
-  # 99", so everything Brawl bans in the 99 is legal here. Nadu is the rebalanced
-  # version, as everything in Brawl is; "Brawl: Our Plans" spells it "A-Nadu, Winged
-  # Wisdom" where the launch article just says "Nadu, Winged Wisdom".
+  # 99", so everything Brawl bans in the 99 is legal here. Nadu was the rebalanced
+  # version at launch, as everything in Brawl was - "Brawl: Our Plans" spells it
+  # "A-Nadu, Winged Wisdom" where the launch article just says "Nadu, Winged Wisdom" -
+  # but Arena reverted every rebalanced card on 2026-09-22 and there is only one Nadu
+  # now, so the ban simply carried over to it.
   #
   # The rest is the conjure-only list, which is not a B&R issue at all - those cards
   # can't go into a deck in any Arena format. Format::RESTRICTED_STATUSES groups them
@@ -19,7 +21,7 @@ BanList.for_format("competitive brawl") do
     "https://magic.wizards.com/en/news/mtg-arena/introducing-ranked-brawl",
     "Ajani, Nacatl Pariah" => "banned",
     "Lutri, the Spellchaser" => "banned",
-    "Nadu, Winged Wisdom (Alchemy)" => "banned",
+    "Nadu, Winged Wisdom" => "banned",
     "Oko, Thief of Crowns" => "banned",
     "Old Stickfingers" => "banned",
     "Ragavan, Nimble Pilferer" => "banned",

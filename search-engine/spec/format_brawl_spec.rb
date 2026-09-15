@@ -6,7 +6,7 @@ describe "Formats - Brawl" do
   # Not the historical count - Historic Brawl launched with 11 bans in 2020 and has
   # gained and lost some since
   it "banned list" do
-    assert_count_cards "banned:brawl", 35
+    assert_count_cards "banned:brawl", 36
     assert_legality "brawl", today, "Force of Will", "banned"
     assert_legality "brawl", today, "Fierce Guardianship", "banned"
     assert_legality "brawl", today, "Iona, Shield of Emeria", "banned"
@@ -17,14 +17,13 @@ describe "Formats - Brawl" do
     assert_legality "brawl", today, "Golos, Tireless Pilgrim", "legal"
   end
 
-  # has_alchemy is not time-aware: the original card drops out of the pool the moment a
-  # rebalanced version exists, retroactively, so Teferi and Winota read as never having
-  # been in Brawl even though they were banned in it at launch. Their ban list entries
-  # are still here and still correct - it's in_format? that can't express it. Historic
-  # has the same blind spot.
-  it "loses history of cards that were later rebalanced" do
-    assert_legality "brawl", Date.parse("2021-01-01"), "Teferi, Time Raveler", nil
-    assert_legality "brawl", Date.parse("2021-01-01"), "Winota, Joiner of Forces", nil
+  # These two used to read as never having been in Brawl - a rebalanced version took
+  # the original card's place in the pool retroactively, and that was not time-aware.
+  # Arena reverted every rebalanced card on 2026-09-22, so their launch bans are
+  # visible again.
+  it "keeps history of cards that were rebalanced in between" do
+    assert_legality "brawl", Date.parse("2021-01-01"), "Teferi, Time Raveler", "banned"
+    assert_legality "brawl", Date.parse("2021-01-01"), "Winota, Joiner of Forces", "banned"
   end
 
   # Brawl's whole point - it doesn't inherit Historic's pre-bans
@@ -34,12 +33,11 @@ describe "Formats - Brawl" do
     assert_legality "brawl", today, "Brainstorm", "legal"
   end
 
-  # Same pool as Historic, rebalanced versions and all - unlike Timeless
+  # Same pool as Historic, and since the rebalanced cards went away, as Timeless too
   it "pool is Historic's" do
     assert_search_equal "f:brawl or banned:brawl", "f:historic or banned:historic"
     assert_search_results "f:brawl -in:arena"
-    assert_legality "brawl", today, "Alrund, God of the Cosmos (Alchemy)", "legal"
-    assert_legality "brawl", today, "Alrund, God of the Cosmos", nil
+    assert_legality "brawl", today, "Alrund, God of the Cosmos", "legal"
     assert_legality "brawl", today, "Chaos Orb", nil
   end
 
@@ -61,7 +59,7 @@ describe "Formats - Competitive Brawl" do
     banned.map(&:name).sort.should eq([
       "Ajani, Nacatl Pariah",
       "Lutri, the Spellchaser",
-      "Nadu, Winged Wisdom (Alchemy)",
+      "Nadu, Winged Wisdom",
       "Oko, Thief of Crowns",
       "Old Stickfingers",
       "Ragavan, Nimble Pilferer",

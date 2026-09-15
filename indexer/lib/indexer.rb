@@ -68,6 +68,9 @@ class Indexer
       # Load data
       PatchTokens,
 
+      # Nothing should ever see the reverted Alchemy cards, not even PatchCardNames
+      PatchDropRebalanced,
+
       # Every card rename happens here, before anything indexes cards by name
       PatchCardNames,
 
@@ -102,7 +105,6 @@ class Indexer
       PatchBaseSize,
 
       # Calculate extra fields
-      PatchAlchemy,
       PatchBlocks,
       PatchSecondary,
       PatchVariantArena, # before VariantMisprint

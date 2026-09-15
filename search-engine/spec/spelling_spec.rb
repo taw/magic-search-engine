@@ -68,7 +68,7 @@ describe "Spelling" do
   # This used to be the case, but there are so many exceptions
   # I don't know if this is still useful
   # it "every card with hyphen can be searched as one or two words" do
-  #   cards_with_hyphens = db.cards.values.select{|c| c.name =~ /-/ and !c.alchemy}.map(&:name)
+  #   cards_with_hyphens = db.cards.values.select{|c| c.name =~ /-/}.map(&:name)
   #   cards_with_hyphens.each_with_index do |name, i|
   #     # Ignore 3+ part names
   #     next if name =~ /-\S+-/
@@ -108,10 +108,9 @@ describe "Spelling" do
   #     next if name == "Cave-In"
   #     next if name == "Deep-Cavern Bat"
 
-  #     # "Thousand-Faced Shadow" will absolutely also return "Thousand-Faced Shadow (Alchemy)"
-  #     "-is:alchemy #{name}".should return_cards(name)
-  #     "-is:alchemy #{name.delete("-")}".should return_cards(name)
-  #     "-is:alchemy #{name.tr("-", " ")}".should include_cards(name)
+  #     name.should return_cards(name)
+  #     name.delete("-").should return_cards(name)
+  #     name.tr("-", " ").should include_cards(name)
   #   end
   # end
 

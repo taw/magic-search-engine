@@ -176,6 +176,18 @@ BanList.for_format("alchemy") do
     "Thieving Magpie" => "conjurable",
   )
 
+  # "ban the card in Best-of-One Standard Constructed matches and ... suspend it in
+  # Alchemy until the release of a rebalanced version". The rebalance arrived on
+  # 2024-11-11 and took the original's place, so the suspension stopped mattering and
+  # was never lifted by name - Arena's Alchemy banned list still lists Leyline of
+  # Resonance. The 2026-09-22 reversion hands that ban back to the original card, the
+  # same way Cori-Steel Cutter's below.
+  change(
+    "2024-10-22",
+    "https://magic.wizards.com/en/news/announcements/mtg-arena-banned-and-restricted-announcement-october-22-2024",
+    "Leyline of Resonance" => "banned",
+  )
+
   change(
     "2024-11-12",
     "https://magic.wizards.com/en/news/mtg-arena/mtg-arena-announcements-november-11-2024",

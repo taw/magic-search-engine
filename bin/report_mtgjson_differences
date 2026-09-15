@@ -45,8 +45,8 @@ class ReportMtgjsonDifferences
       puts "#{code} - name - #{db_set.name.inspect} vs #{mtgjson_set["name"].inspect}"
     end
 
-    mtgjson_cards = mtgjson_set["cards"]
-    mtgjson_names = mtgjson_cards.map{|c| alchemy_name_fix(c["faceName"] || c["name"]) }.to_set
+    mtgjson_cards = mtgjson_set["cards"].reject{|c| rebalanced?(c) }
+    mtgjson_names = mtgjson_cards.map{|c| c["faceName"] || c["name"] }.to_set
     db_name = db_name_map(db_set, mtgjson_names)
 
     db_names = db_set.printings.map{|c| db_name[c.name] }.to_set
@@ -73,12 +73,12 @@ class ReportMtgjsonDifferences
     end
 
     db_numbers = db_set.printings.map{|c| [c.number, db_name[c.name]] }.to_set
-    mtgjson_numbers = mtgjson_cards.map{|c| [c["number"], alchemy_name_fix(c["faceName"] || c["name"])] }.to_set
+    mtgjson_numbers = mtgjson_cards.map{|c| [c["number"], c["faceName"] || c["name"]] }.to_set
 
     # Most common problem is mtgjson having non-unique numbers for multipart cards
     if db_numbers != mtgjson_numbers
       db_numbers_i = db_set.printings.map{|c| [c.number.to_i, db_name[c.name]] }.to_set
-      mtgjson_numbers_i = mtgjson_cards.map{|c| [c["number"].to_i, alchemy_name_fix(c["faceName"] || c["name"])] }.to_set
+      mtgjson_numbers_i = mtgjson_cards.map{|c| [c["number"].to_i, c["faceName"] || c["name"]] }.to_set
 
       if db_numbers_i == mtgjson_numbers_i
         # Suffix issues _generally_ get autocorrected by indexer
@@ -163,16 +163,12 @@ class ReportMtgjsonDifferences
     }
   end
 
-  def alchemy_name_fix(name)
-    return unless name
-    name.split(" // ").map{|s|
-      # A-Town is a joke card actually called that, not an Alchemy rebalance
-      if s =~ /\AA-(.*)/ and s != "A-Town"
-        "#{$1} (Alchemy)"
-      else
-        s
-      end
-    }.join(" // ")
+  # Arena reverted every rebalanced card to its original printing on 2026-09-22
+  # and the indexer drops them, so mtgjson having them until it catches up is
+  # not a difference to report. A-Town is a joke card actually called that, not
+  # an Alchemy rebalance, and mtgjson tagging it isRebalanced is a bug of its own.
+  def rebalanced?(card)
+    card["isRebalanced"] and card["name"] != "A-Town"
   end
 end
 

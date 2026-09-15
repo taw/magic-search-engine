@@ -4,10 +4,6 @@ class FormatPauper < FormatVintage
   end
 
   def in_format?(card)
-    # Format#in_format? excludes these too. Pauper overrides the whole method, so it
-    # needs its own copy - mtgjson files Alchemy cards in the set they rebalance, and
-    # plenty of those are commons.
-    return false if card.alchemy
     card.printings.each do |printing|
       next if printing.nontournament
       next if @time and printing.release_date > @time

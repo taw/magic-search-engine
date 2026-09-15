@@ -14,13 +14,6 @@ describe "is:specialformat" do
     assert_search_results "is:specialformat format:* time=2010-01-01"
   end
 
-  # Alchemy cards used to share this flag. They're ordinary cards with an unusual
-  # card pool, and they are legal on Arena.
-  it "does not include Alchemy" do
-    assert_search_results "is:specialformat is:alchemy"
-    assert_search_equal "is:alchemy legal:historic", "is:alchemy -banned:historic"
-  end
-
   # Formats never ask about special format cards on Arena, and nothing enforces that,
   # so pin it - Historic, Alchemy and Timeless skip the check entirely.
   it "never appears on Arena" do

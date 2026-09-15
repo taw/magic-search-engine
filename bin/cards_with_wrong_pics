@@ -175,9 +175,8 @@ class CardsWithWrongPics
   # of om1 is like this, as are the Universes Beyond Secret Lair drops.
   #
   # A trailing parenthesis is ours, not the card's. It is how the index keeps
-  # two cards apart that were printed under one name - the Alchemy rebalance of
-  # a paper card, which the card itself marks with a small A in the title bar,
-  # and the two halves of B.F.M.
+  # two cards apart that were printed under one name - the two halves of B.F.M.,
+  # playtest cards sharing a name with a real one, and prepared spells.
   def expected_name(card)
     (card.flavor_name || card.name).sub(/ \([^()]*\)\z/, "")
   end

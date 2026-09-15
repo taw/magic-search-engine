@@ -76,11 +76,6 @@ class Format
   end
 
   def in_format?(card)
-    # mtgjson files Alchemy cards in the same set as the paper cards they rebalance
-    # instead of giving them their own set, so without this every format would count
-    # them as printings of its own sets. Alchemy, Historic and Timeless, where they're
-    # real cards rather than noise, override this method.
-    return false if card.alchemy
     card.printings.each do |printing|
       # Only a printing you could bring to a sanctioned event can make a card legal.
       # This is per-printing rather than per-card so that mixed products come out right

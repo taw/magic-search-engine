@@ -56,23 +56,17 @@ class ReportArenaLegalityDifferences
 
   DIR = "#{__dir__}/../tmp/arena_format_data"
 
-  # Our format, the Arena queue to read it from, and whether the format plays
-  # the rebalanced half of a rebalanced pair.
-  #
-  # The Traditional queue where Arena splits one, because that's the list that
-  # states the format rather than the queue. Brawl has no split - every Brawl
-  # game is one game - so there its only queue is the one to read.
-  #
-  # Nothing derives the last column: Arena files a rebalanced card under the
-  # paper set it rebalances as often as under the Alchemy drop it shipped in, so
-  # which half a format plays doesn't follow from the set codes it lists.
+  # Our format and the Arena queue to read it from. The Traditional queue where
+  # Arena splits one, because that's the list that states the format rather than
+  # the queue. Brawl has no split - every Brawl game is one game - so there its
+  # only queue is the one to read.
   FORMATS = [
-    ["standard", "TraditionalStandard", false],
-    ["alchemy", "TraditionalAlchemy", true],
-    ["historic", "TraditionalHistoric", true],
-    ["timeless", "TraditionalTimeless", false],
-    ["brawl", "HistoricBrawl", true],
-    ["competitive brawl", "HistoricBrawlRanked", true],
+    ["standard", "TraditionalStandard"],
+    ["alchemy", "TraditionalAlchemy"],
+    ["historic", "TraditionalHistoric"],
+    ["timeless", "TraditionalTimeless"],
+    ["brawl", "HistoricBrawl"],
+    ["competitive brawl", "HistoricBrawlRanked"],
   ]
 
   # Same fixes as the indexer's, for names holding characters nobody can type
@@ -159,16 +153,15 @@ class ReportArenaLegalityDifferences
   # in, and Arena lists both spellings of the Alchemy year sets in legalSets
   # anyway, so reading it here only ever pulls in Commander cards whose drop was
   # named after a Standard set.
-  def arena_pool(format, rebalanced)
+  def arena_pool(format)
     sets = format["legal_sets"].to_set
     pool = {}
     arena_cards.each do |card|
       next unless sets.include?(card["ExpansionCode"])
       next if UNDISTRIBUTED_PRINTINGS.include?([card["ExpansionCode"], card["CollectorNumber"]])
-      # A card with a live rebalance is played as one version or the other,
-      # never both. Reverted rebalances (DefunctRebalancedCardGrpId) leave both
-      # playable and aren't linked this way, so they never reach here.
-      next if !card["RebalancedCardGrpId"].to_i.zero? and (card["IsRebalanced"] == "1") != rebalanced
+      # Rebalanced printings need no handling of their own: our_name strips the
+      # A- off one, so it lands under the same name as the original it was
+      # reverted into, and the pool is keyed by name.
       (pool[our_name(card["Name"])] ||= []) << card
     end
     # A name Arena allows into the format outright is in it with no printing of
@@ -236,14 +229,14 @@ class ReportArenaLegalityDifferences
 
   # Every difference goes in one list and every thing deliberately not counted
   # as one goes in the other, so the count in the heading is the whole verdict.
-  def verify_format(our_name, arena_name, rebalanced)
+  def verify_format(our_name, arena_name)
     format = Format[our_name].new
     arena_format = arena_format(arena_name)
     differences = []
     notes = []
 
-    compare_ban_lists(format, arena_format, differences, notes)
-    compare_pools(format, arena_format, arena_pool(arena_format, rebalanced), differences, notes)
+    compare_ban_lists(format, arena_format, differences)
+    compare_pools(format, arena_format, arena_pool(arena_format), differences, notes)
     note_unresolved_ids(arena_format, notes)
 
     puts "Format #{our_name} vs Arena #{arena_format["name"]} - " \
@@ -254,23 +247,15 @@ class ReportArenaLegalityDifferences
   end
 
   # Ban status card by card, which is what the report is for.
-  def compare_ban_lists(format, arena_format, differences, notes)
+  def compare_ban_lists(format, arena_format, differences)
     theirs = arena_statuses(arena_format)
     ours = our_statuses(format)
-    rebalance_bans = []
     (ours.keys | theirs.keys).each do |name|
       a = theirs[name]
       b = ours[name]
       next if same?(a, b)
-      if !b and rebalance_pair_ban?(name, format)
-        rebalance_bans << name
-      else
-        differences << [name, a || "not in format", b || "not in format"]
-      end
+      differences << [name, a || "not in format", b || "not in format"]
     end
-    return if rebalance_bans.empty?
-    notes << "ignored, Arena bans the half of a rebalanced pair the format " \
-      "doesn't play: #{rebalance_bans.sort.join(", ")}"
   end
 
   # Card pools, once each side's extras have been sorted into the ones the other
@@ -395,19 +380,6 @@ class ReportArenaLegalityDifferences
     false
   end
 
-  # Arena sometimes bans both halves of a rebalanced pair, and sometimes only
-  # the paper original of a pair whose A- version is the one its formats play -
-  # Alchemy's list still names Cori-Steel Cutter, banned there before it was
-  # rebalanced. Where the half we do play is in the format, our "not in the
-  # format" says the same thing about this half as Arena's ban does.
-  def rebalance_pair_ban?(name, format)
-    card = @db.cards[name.downcase]
-    return false unless card and (card.alchemy or card.has_alchemy)
-    other = card.alchemy ? name.sub(/ \(Alchemy\)\z/, "") : "#{name} (Alchemy)"
-    other = @db.cards[other.downcase]
-    !!(other and format.legality(other))
-  end
-
   # Ids Arena's own lists point at that its string table no longer resolves -
   # printings it has since removed. Nothing can be compared about a card whose
   # name is gone, so they only get counted.
@@ -420,10 +392,11 @@ class ReportArenaLegalityDifferences
 
   # ---- names -----------------------------------------------------------------
 
-  # Arena's spelling of a card into ours. It writes rebalanced cards with an A-
-  # prefix where we suffix "(Alchemy)", separates split halves with three
+  # Arena's spelling of a card into ours. It separates split halves with three
   # slashes, and names a multi-face card by all of its faces where our ban lists
-  # and our index use the first one.
+  # and our index use the first one. A rebalanced card still keeps its A- prefix
+  # in Arena's string table, and since Arena reverted all of them on 2026-09-22
+  # that prefix is all that is left of the rebalance, so it comes straight off.
   #
   # Whatever comes out of that goes through our own index for its capitals, so
   # that a card the two sides only spell differently isn't counted as one card
@@ -434,7 +407,7 @@ class ReportArenaLegalityDifferences
     @our_names ||= {}
     @our_names[arena_name] ||= begin
       name = arena_name.gsub(" /// ", " // ").split(" // ").first
-      name = "#{$1} (Alchemy)" if name =~ /\AA-(.*)/
+      name = $1 if name =~ /\AA-(.*)/ and name != "A-Town"
       name = UNICODE_NAME_FIXES.fetch(name, name)
       card = @db.cards[name.downcase]
       card ? card.name : name
@@ -467,7 +440,7 @@ class ReportArenaLegalityDifferences
       raise "Unknown format#{"s" if unknown.size > 1}: #{unknown.join(", ")} - " \
         "comparable formats: #{FORMATS.map(&:first).join(", ")}"
     end
-    FORMATS.select{|our_name, _, _| @formats.include?(our_name) }
+    FORMATS.select{|our_name, _| @formats.include?(our_name) }
   end
 end
 

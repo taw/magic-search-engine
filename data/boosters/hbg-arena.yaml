@@ -26,9 +26,9 @@
 # data shows: 101 commons, 85 uncommons, 60 rares, 20 mythics.
 #
 # 17lands names five of these cards as rebalanced - A-Sepulcher Ghoul,
-# A-Earthquake Dragon, A-Minsc & Boo, A-Baba Lysaga and A-Monster Manual. We have
-# A- printings for the first three and none at all for the last two, so the
-# sheets use the plain printings throughout. Same cards, same pack odds.
+# A-Earthquake Dragon, A-Minsc & Boo, A-Baba Lysaga and A-Monster Manual. Arena
+# reverted every rebalanced card on 2026-09-22 and those printings went with it,
+# so the sheets use the plain printings throughout. Same cards, same pack odds.
 queries:
   # Conjured colour variants of the specialize legends, plus double-faced backs
   in_packs: "-number:/^[0-9]+[bgruw]$/"

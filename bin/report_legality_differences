@@ -42,8 +42,13 @@ class ReportLegalityDifferences
         # pointless name conflicts, legality of mainfront is enough
         next if card["layout"] == "prepare" and card["faceName"] == card["name"].split(" // ").last
 
+        # Arena reverted every rebalanced card to its original printing on
+        # 2026-09-22 and the indexer drops them, so there is nothing here to
+        # compare until mtgjson catches up. A-Town is a joke card actually
+        # called that, which mtgjson tags isRebalanced anyway.
+        next if card["isRebalanced"] and card["name"] != "A-Town"
+
         name = card["faceName"] || card["name"]
-        name = alchemy_name_fix(name)
         name = unicode_name_fix(name)
         # Cards not out yet won't have legality information on either side
         release_date = card["originalReleaseDate"] || set_data["releaseDate"]
@@ -158,17 +163,6 @@ class ReportLegalityDifferences
 
   def unicode_name_fix(name)
     UNICODE_NAME_FIXES.fetch(name, name)
-  end
-
-  def alchemy_name_fix(name)
-    return unless name
-    name.split(" // ").map{|s|
-      if s =~ /\AA-(.*)/
-        "#{$1} (Alchemy)"
-      else
-        s
-      end
-    }.join(" // ")
   end
 
   memoize def formats_to_check

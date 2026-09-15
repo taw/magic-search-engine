@@ -488,13 +488,6 @@ class PatchLinkRelated < Patch
 
     each_printing do |printing|
       name = printing["name"]
-      next unless name.end_with?(" (Alchemy)")
-      base_name = name.sub(" (Alchemy)", "")
-      add_link name, base_name
-    end
-
-    each_printing do |printing|
-      name = printing["name"]
       spellbook = printing["spellbook"]
 
       if spellbook

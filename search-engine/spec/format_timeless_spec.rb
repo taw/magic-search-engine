@@ -31,13 +31,12 @@ describe "Formats - Timeless" do
     assert_legality "timeless", today, "Lightning Bolt", "legal"
   end
 
-  # Historic plays the rebalanced version of a paper card and not the original,
-  # Timeless plays the original and not the rebalanced version
-  it "uses the original version of rebalanced cards, not the Alchemy one" do
-    assert_search_results "f:timeless is:alchemy"
-    assert_search_results "f:historic has:alchemy"
+  # Timeless always played the original version of a rebalanced paper card where
+  # Historic played the A- one. Arena reverted all of those on 2026-09-22, so the
+  # card pools are now identical and only the ban lists tell the formats apart.
+  it "has the same card pool as Historic" do
+    assert_search_equal "f:timeless or banned:timeless", "f:historic or banned:historic"
     assert_legality "timeless", today, "Alrund, God of the Cosmos", "legal"
-    assert_legality "timeless", today, "Alrund, God of the Cosmos (Alchemy)", nil
   end
 
   # Not a ban list decision - these can only be created during a game

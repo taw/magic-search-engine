@@ -9,7 +9,6 @@
 
 class PatchCardNames < Patch
   def call
-    fix_alchemy_names
     split_multiface_names
     fix_unsearchable_names
     disambiguate_playtest_cards
@@ -18,30 +17,6 @@ class PatchCardNames < Patch
   end
 
   private
-
-  # mtgjson "A-Akki Ronin" turns into "Akki Ronin (Alchemy)"
-  def fix_alchemy_names
-    each_printing do |card|
-      next unless card.delete("isRebalanced")
-      card["name"] = alchemy_name_fix(card["name"])
-      card["faceName"] = alchemy_name_fix(card["faceName"])
-      # A-Town is a joke card, the A- is part of the name
-      card["alchemy"] = true unless card["name"] == "A-Town"
-    end
-  end
-
-  def alchemy_name_fix(name)
-    return unless name
-    name.split(" // ").map{|s|
-      # Not sure about A-Town joke card
-      # When I see it printed, I might decide if it should be A- or (Alchemy)
-      if s =~ /\AA-(.*)/ and s != "A-Town"
-        "#{$1} (Alchemy)"
-      else
-        s
-      end
-    }.join(" // ")
-  end
 
   # mtgjson names a multipart printing after the whole card ("x // y") and puts
   # the face name in a separate field. We index one entry per face instead.

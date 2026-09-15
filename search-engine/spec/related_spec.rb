@@ -22,11 +22,8 @@ describe "Spelling" do
       "Domesticated Mammoth"
   end
 
-  it "Alchemy" do
-    # This test somehow also covers dungeons
+  it "dungeons" do
     assert_search_results "related:Acererak",
-      "Acererak the Archlich",
-      "Acererak the Archlich (Alchemy)",
       "Baldur's Gate Wilderness",
       "Dungeon of the Mad Mage",
       "Lost Mine of Phandelver",

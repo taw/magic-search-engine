@@ -310,8 +310,6 @@ describe "QueryParser" do
     assert_search_parse "view:full", "display:full"
     assert_search_parse "w:abzan", "wm:abzan"
     assert_search_parse "w:abzan", "watermark:abzan"
-    assert_search_parse "is:alchemy", "is:rebalanced"
-    assert_search_parse "has:alchemy", "has:rebalanced"
     assert_search_parse "kw:flying", "keyword:flying"
     assert_search_parse "is:transform", "is:tdfc"
     assert_search_parse "layout:transform", "layout:tdfc"

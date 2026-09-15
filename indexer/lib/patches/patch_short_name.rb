@@ -43,7 +43,7 @@ class PatchShortName < Patch
     return OVERRIDES[card["name"]] if OVERRIDES.key?(card["name"])
     return nil unless (card["supertypes"] || []).include?("Legendary")
     text = card["text"] or return nil
-    name = card["name"].sub(" (Alchemy)", "")
+    name = card["name"]
     return nil if words(name).size < 2
 
     candidates = self_references(name, text)

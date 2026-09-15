@@ -176,7 +176,6 @@ class CardPrinting
     eval("def #{m}; @set.#{m}; end")
   end
   %W[
-    alchemy
     allowed_in_any_number?
     augment
     back?
@@ -208,7 +207,6 @@ class CardPrinting
     funny
     game_changer
     hand
-    has_alchemy
     has_multiple_parts?
     in_spellbook
     keywords
