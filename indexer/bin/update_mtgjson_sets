@@ -184,10 +184,26 @@ class UpdateMtgjsonSets
   end
 
   def incoming_files
-    incoming_dir.glob("*.json")
+    incoming_dir.glob("*.json").sort
+  end
+
+  def incoming_sets
+    incoming_files.map{|path| path.basename(".json").to_s}
+  end
+
+  def current_files
+    current_dir.glob("*.json").sort
+  end
+
+  def current_sets
+    current_files.map{|path| path.basename(".json").to_s}
   end
 
   def call
+    (current_sets - incoming_sets).each do |set_code|
+      puts "#{set_code} - no longer in mtgjson"
+    end
+
     incoming_files.each do |incoming_path|
       current_path = current_dir + incoming_path.basename
       SingleSetUpdater.new(incoming_path, current_path).call
