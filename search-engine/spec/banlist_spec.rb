@@ -871,7 +871,7 @@ describe "Banlist" do
           next unless card
           release_date = yield(card)
           if release_date.nil?
-            "#{ban_list.format} #{event[:date]}: #{card_name} was never printed"
+            "#{ban_list.format} #{event[:date]}: #{card_name} was never part of the format"
           elsif release_date > event[:date]
             "#{ban_list.format} #{event[:date]}: #{card_name} wasn't printed until #{release_date}"
           end
