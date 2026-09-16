@@ -151,8 +151,8 @@ class ReportMtgjsonDifferences
 
   # We add these to disambiguate cards which share a name with another card,
   # mtgjson just keeps the duplicate names
-  DISAMBIGUATION_TAGS = %W[Prepared Plane Playtest TBTH CMB1 UNK a b c d e f]
-  DISAMBIGUATION_TAG_RX = / \((#{DISAMBIGUATION_TAGS.join("|")})\)\z/
+  DISAMBIGUATION_TAGS = %W[Prepared Plane Playtest TBTH a b c d e f]
+  DISAMBIGUATION_TAG_RX = / \((#{DISAMBIGUATION_TAGS.join("|")}|Prepared [a-z])\)\z/
 
   # Some of these tags are part of the real name in some sets
   # (mtgjson has "Imaginary Friends (Plane)" in pssc), so only drop a tag
