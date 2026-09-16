@@ -573,4 +573,12 @@ BanList.for_format("historic") do
     "Sorin, Imperious Bloodlord" => "banned",
     "The One Ring" => "banned",
   )
+
+  # Announced 2026-09-14, cards arrive with Reality Fracture Special Guests on 2026-09-29.
+  change(
+    "2026-09-29",
+    "https://magic.wizards.com/en/news/mtg-arena/announcements-september-14-2026",
+    "Mind Twist" => "prebanned",
+    "Eye of Ugin" => "prebanned",
+  )
 end
