@@ -1,7 +1,9 @@
 # Data from https://magic.wizards.com/en/news/feature/whats-inside-the-brothers-war-boosters
 # Assumptions
 # Official rate for mech lands is 27%, but this fraction is cleaner and comes to 28%
-# Assume you can't get shattered glass BOT cards
+# Shattered Glass is exclusive to Collector Boosters.
+# Model one Transformer in 10% of packs; its foil share is assumed to be 1/3.
+# The exact finish split and multi-Transformer collation are not published.
 pack:
   basic_slot:
   - basic: 1
@@ -10,14 +12,22 @@ pack:
     chance: 1
   common: 3
   uncommon: 3
-  wildcard: 2
+  transformers_slot:
+  - wildcard: 2
+    foil_with_showcase: 1
+    chance: 27
+  - wildcard: 1
+    transformers: 1
+    foil_with_showcase: 1
+    chance: 2
+  - wildcard: 2
+    foil_transformers: 1
+    chance: 1
   rare_mythic: 1
   brr_retro_artifact: 1
   finale:
-  - foil_with_showcase: 1
-    chance: 3
-  - foil_with_showcase: 1
-    the_list: 1
+  - chance: 3
+  - the_list: 1
     chance: 1
 sheets:
   common:
@@ -134,23 +144,33 @@ sheets:
         count: 6
         rate: 6
       chance: 125
-    # A Transformers card appears in ~10% of Set Boosters via the wildcard
-    # slots (non-foil, no shattered glass) -- so it's a top-level wildcard
-    # outcome, not part of the rare/mythic tier. With 2 wildcard slots,
-    # chance 54 (~5.12% per wildcard) gives ~10% per pack.
-    - rawquery: "e:bot number<16"
-      count: 15
-      chance: 54
+  transformers:
+    rawquery: "e:bot number<16"
+    count: 15
+  foil_transformers:
+    foil: true
+    use: transformers
   brr_retro_artifact:
     filter: "e:brr -number:/z/"
     any:
-    # Officially 1/6 schematc rate
-    # U/R/M rates guessed to be at 4x/2x/1x multiples
-    - filter: "e:brr -number:/z/ number<=63"
-      use: base_1248_by_rarity
+    # Rarity and schematic probabilities published in the collecting guide.
+    - any:
+      - query: "r:u"
+        chance: 66
+      - query: "r:r"
+        chance: 27
+      - query: "r:m"
+        chance: 7
+      filter: "e:brr -number:/z/ number<=63"
       chance: 5
-    - filter: "e:brr -number:/z/ number>=64"
-      use: base_1248_by_rarity
+    - any:
+      - query: "r:u"
+        chance: 66
+      - query: "r:r"
+        chance: 27
+      - query: "r:m"
+        chance: 7
+      filter: "e:brr -number:/z/ number>=64"
       chance: 1
   the_list:
     any:
