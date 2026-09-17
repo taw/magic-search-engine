@@ -47,10 +47,11 @@ sheets:
         chance: 60*2
       - use: mythic_with_showcase
         chance: 20
-      # Article: 30% of Set Boosters have >=2 rare/mythic (27% exactly two,
-      # 3% three). With 1 guaranteed R/M + 2 wildcards, that needs each
-      # wildcard R/M ~16.35% (was 12.5% = 125), reproducing both figures.
-      chance: 171
+      # Published total pack incidence: about 30% contain 2+ R/M (before The List).
+      # Include the guaranteed foil slot's existing 15% R/M rate in that total.
+      # With two name-deduplicated wildcards, 89/(700+175+89) gives ~30%.
+      # This is a calibration to rounded pack odds, not published slot collation.
+      chance: 89
   the_list:
     set: plst
     code: "AFR"
