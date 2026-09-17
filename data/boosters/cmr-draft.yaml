@@ -57,13 +57,19 @@ sheets:
       count: 141 + 1
       chance: 13
   etched_foil:
-    foil: true
-    etched: true
-    filter: "e:{set} (is:etched or is:borderless)"
+    # Preserve previous per-card 8/4/2/1 weights, with Piper at 1.
+    # Borderless planeswalkers use traditional foil, not etched foil.
     any:
-    - use: base_1248_by_rarity
+    - etched: true
+      filter: "e:{set} is:etched -r:s"
+      use: base_1248_by_rarity
+      count: 100
       chance: 245
-    - rawquery: "e:{set} number:546"
+    - etched: true
+      rawquery: "e:{set} number:546"
       count: 1
       chance: 1
-    count: 103
+    - foil: true
+      rawquery: "e:{set} t:planeswalker is:borderless"
+      count: 2
+      chance: 2
