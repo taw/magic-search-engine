@@ -138,13 +138,17 @@ sheets:
         count: 15
 
   foil_boosterfun_no_serialized:
+    # Article: extended-art R 59.9% / M 4.3%; borderless R 6.1% / M 4.3%;
+    # field notes R 7.3% / M 3.7%; silver scroll R 7.7% / M 2.3%; Special
+    # Guests 4.5%. Every SOS rare weighs 8 and every mythic 4 regardless of
+    # treatment; silver scroll is a quarter of that, and a Special Guest is 3.
     any:
     - rawquery: "{extended_art} r:r"
       rate: 8
       count: 49
     - rawquery: "{extended_art} r:m"
       rate: 4
-      count: 
+      count: 7
     - rawquery: "{boosterfun} r:r"
       rate: 8
       count: 5 + 6
@@ -159,7 +163,7 @@ sheets:
       count: 15
     - set: spg
       code: "SOS"
-      rate: 1
+      rate: 3 # 10 cards x 3 = 30 / 655 = 4.6%
       count: 10
 
   foil_boosterfun:
