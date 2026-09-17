@@ -1,4 +1,4 @@
-# data from https://wpn.wizards.com/en/news/whats-inside-each-strixhaven-product
+# Contents and Lesson frequency: https://magic.wizards.com/en/news/feature/collecting-strixhaven-school-mages-2021-03-25
 # Languages, per https://wpn.wizards.com/en/news/whats-inside-each-strixhaven-product:
 # "Collector Boosters are available in English, French, German, Italian, Japanese, and Spanish."
 languages: de, en, fr, it, jp, sp
@@ -20,14 +20,29 @@ pack:
     etched_sta_rare_mythic: 1
     chance: 1
 sheets:
+  foil_common:
+    foil: true
+    query: "r:c -t:lesson"
+    count: 96
+  foil_uncommon:
+    foil: true
+    query: "r:u -t:lesson"
+    count: 75
   foil_rare_mythic:
     foil: true
+    filter: "e:{set} is:baseset -t:lesson"
     use: rare_mythic
+    count: 84
   foil_lesson:
-    # ratio is guessed, using 1/2/4/8 ratio for now
+    # Collecting Strixhaven: one R/M Lesson per six Collector Boosters.
+    # Within C/U and R/M, retain the conventional 2:1 per-card rarity weights.
     filter: "e:{set} t:lesson is:baseset"
     foil: true
-    use: base_1248_by_rarity
+    any:
+    - use: common_uncommon
+      chance: 5
+    - use: rare_mythic
+      chance: 1
   extended_commander:
     filter: "e:c21 frame:extendedart"
     use: rare_mythic
