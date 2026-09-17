@@ -8,8 +8,8 @@
 # - Cards are not nicely distributed, so used bonus sheet 8/4/2/1 rates
 # No data for relative rarity of ancillary cards
 # - Cards are not nicely distributed, so used bonus sheet 8/4/2/1 rates
-# Distribution of showcase cards in foil_rare_mythic unknown
-# - Assume standard 2:1 rate
+# WPN specifies a 1-in-4 extended-art upgrade in the foil R/M slot:
+# https://wpn.wizards.com/en/products/theros-beyond-death
 pack:
   foil_basic: 2
   common_or_uncommon:
@@ -66,18 +66,20 @@ sheets:
   rm_extended:
     filter: "e:{set} frame:extendedart"
     use: rare_mythic
+  foil_common_or_basic:
+    foil: true
+    any:
+    - query: "r:c"
+      count: 101
+      rate: 1
+    - rawquery: "e:{set} t:basic -is:fullart"
+      count: 10
+      rate: 1
   foil_rare_mythic:
     foil: true
     any:
-    - rawquery: "e:{set} r:r promo:boosterfun"
-      count: 49
-      rate: 2
-    - query: "r:r"
-      count: 53
-      rate: 4
-    - rawquery: "e:{set} r:m promo:boosterfun"
-      count: 14
-      rate: 1
-    - query: "r:m"
-      count: 15
-      rate: 2
+    - use: rare_mythic
+      chance: 3
+    - filter: "e:{set} frame:extendedart"
+      use: rare_mythic
+      chance: 1
