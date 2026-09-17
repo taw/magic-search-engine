@@ -1,4 +1,7 @@
-name: "Mystery Booster Pack Convention 2021 Edition"
+# 2021 Convention Edition removes 24 cards and doubles 24 replacements.
+# Preserve the original 121 positions per sheet; earlier editions use their own definitions.
+# https://magic.wizards.com/en/news/announcements/mystery-booster-convention-edition-returns-store-events-2021-06-21
+name: Mystery Booster Pack Convention 2021 Edition
 pack:
   white_a: 1
   white_b: 1
@@ -17,47 +20,97 @@ pack:
   playtest2: 1
 sheets:
   white_a:
-    set: plst
-    code: "WHITEA"
+    any:
+    - rawquery: e:plst sheet:WHITEA -number:/^(C15\-60|DDO\-20)$/
+      count: 119
+      rate: 1
+    - rawquery: e:plst sheet:WHITEA number:/^(C15\-60)$/
+      count: 1
+      rate: 2
   white_b:
-    set: plst
-    code: "WHITEB"
+    any:
+    - rawquery: e:plst sheet:WHITEB -number:/^(A25\-26|A25\-29|AKH\-8|C16\-78|EMA\-26|EMA\-34)$/
+      count: 115
+      rate: 1
+    - rawquery: e:plst sheet:WHITEB number:/^(A25\-29|AKH\-8|EMA\-34)$/
+      count: 3
+      rate: 2
   blue_a:
     set: plst
-    code: "BLUEA"
+    code: BLUEA
   blue_b:
     set: plst
-    code: "BLUEB"
+    code: BLUEB
   black_a:
-    set: plst
-    code: "BLACKA"
+    any:
+    - rawquery: e:plst sheet:BLACKA -number:/^(KLD\-72|M20\-109|MM2\-79|ORI\-117)$/
+      count: 117
+      rate: 1
+    - rawquery: e:plst sheet:BLACKA number:/^(KLD\-72|M20\-109)$/
+      count: 2
+      rate: 2
   black_b:
     set: plst
-    code: "BLACKB"
+    code: BLACKB
   red_a:
     set: plst
-    code: "REDA"
+    code: REDA
   red_b:
-    set: plst
-    code: "REDB"
+    any:
+    - rawquery: e:plst sheet:REDB -number:/^(DD1\-44|EMA\-137)$/
+      count: 119
+      rate: 1
+    - rawquery: e:plst sheet:REDB number:/^(DD1\-44)$/
+      count: 1
+      rate: 2
   green_a:
-    set: plst
-    code: "GREENA"
+    any:
+    - rawquery: e:plst sheet:GREENA -number:/^(DDD\-17|DOM\-163|EMA\-184|KLD\-150|ORI\-196|XLN\-198)$/
+      count: 115
+      rate: 1
+    - rawquery: e:plst sheet:GREENA number:/^(DOM\-163|KLD\-150|ORI\-196)$/
+      count: 3
+      rate: 2
   green_b:
-    set: plst
-    code: "GREENB"
+    any:
+    - rawquery: e:plst sheet:GREENB -number:/^(BBD\-200|C14\-210|C18\-138|CMA\-100|CMA\-106|CN2\-181|GS1\-34|ORI\-188|RIX\-148|W17\-28)$/
+      count: 111
+      rate: 1
+    - rawquery: e:plst sheet:GREENB number:/^(C14\-210|C18\-138|GS1\-34|ORI\-188|RIX\-148)$/
+      count: 5
+      rate: 2
   multicolor:
-    rawquery: "e:plst sheet:MULTICOLOR -number:/^GK1-119$/ -number:/^C15-231$/"
-    count: 121
+    any:
+    - rawquery: e:plst sheet:MULTICOLOR -number:/^GK1-119$/ -number:/^C15-231$/ -number:/^(EMA\-195|GK1\-115)$/
+      count: 119
+      rate: 1
+    - rawquery: e:plst sheet:MULTICOLOR -number:/^GK1-119$/ -number:/^C15-231$/ number:/^(EMA\-195)$/
+      count: 1
+      rate: 2
   colorless:
-    set: plst
-    code: "COLORLESS"
+    any:
+    - rawquery: e:plst sheet:COLORLESS -number:/^(C18\-246|C18\-250|IMA\-222|MM2\-201|MM2\-215|ORI\-233)$/
+      count: 115
+      rate: 1
+    - rawquery: e:plst sheet:COLORLESS number:/^(C18\-250|MM2\-201|ORI\-233)$/
+      count: 3
+      rate: 2
   old_frame:
-    rawquery: "e:plst sheet:OLDFRAME -number:/^JUD-127$/"
-    count: 121
+    any:
+    - rawquery: e:plst sheet:OLDFRAME -number:/^JUD-127$/ -number:/^(PCY\-45|SHM\-104|SHM\-98|SOK\-53)$/
+      count: 117
+      rate: 1
+    - rawquery: e:plst sheet:OLDFRAME -number:/^JUD-127$/ number:/^(SHM\-98|SOK\-53)$/
+      count: 2
+      rate: 2
   rare:
-    set: plst
-    code: "RARE"
+    any:
+    - rawquery: e:plst sheet:RARE -number:/^(AKH\-4|CM2\-122|CMA\-16|DDO\-8|DOM\-16|IMA\-116)$/
+      count: 115
+      rate: 1
+    - rawquery: e:plst sheet:RARE number:/^(CM2\-122|CMA\-16|DOM\-16)$/
+      count: 3
+      rate: 2
   playtest2:
-    rawquery: "e:cmb2"
+    rawquery: e:cmb2
     count: 121
