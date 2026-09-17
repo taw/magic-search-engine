@@ -1,6 +1,6 @@
 # Data from https://magic.wizards.com/en/news/feature/streets-of-new-capenna-product-overview-2022-04-07
 # Assumptions:
-# Gilded and etched foils appear at same rate as traditional foils in the slots they can appear in.
+# Retain the existing relative weights of the three final-slot treatments.
 # Languages, per https://wpn.wizards.com/en/news/streets-of-new-capenna-preview-retail-guide:
 # "Collector Boosters ... Languages available: English, Chinese (Simplified), German, French, Japanese"
 languages: cs, de, en, fr, jp
@@ -72,6 +72,7 @@ sheets:
     use: rare_mythic
     count: 9
   foil_rare_mythic_showcase:
+    count: 107
     foil: true
     any:
     - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly is:paper is:triome"
@@ -85,4 +86,10 @@ sheets:
       rate: 1
     - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly is:paper -t:planeswalker -Urabrask"
       count: 16
+      rate: 2
+    - rawquery: "e:ncc frame:extendedart r:r is:foil"
+      count: 6
+      rate: 4
+    - rawquery: "e:ncc frame:extendedart r:m is:foil"
+      count: 12
       rate: 2
