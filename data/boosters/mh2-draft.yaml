@@ -1,3 +1,4 @@
+# https://magic.wizards.com/en/news/feature/collecting-modern-horizons-2-2021-05-21
 pack:
 - common_with_showcase: 10
   new_uncommon: 3
@@ -22,28 +23,33 @@ sheets:
     - query: "r:u -alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) -is:reprint"
       count: 56
       rate: 3
+  # Collecting Modern Horizons 2: 9% of this slot has a Booster Fun treatment.
   new_rare_mythic:
     any:
-    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper (-is:reprint or is:fetchland)"
-      count: 50
-      rate: 4
-    - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) (-is:reprint or is:fetchland)"
-      count: 48
-      rate: 8
-    - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) -is:reprint"
-      count: 12
-      rate: 12
-    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -is:reprint (Chatterfang or Garth One-Eye or Dakkon or Dihada or Grist or Sword of Hearth and Home or Draco or Svyelun or Tourach)"
-      count: 18
-      rate: 1
-    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -is:reprint -(Chatterfang or Garth One-Eye or Dakkon or Dihada or Grist or Sword of Hearth and Home or Draco or Svyelun or Tourach)"
-      count: 11
-      rate: 2
-    - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) -is:reprint"
-      count: 20
-      rate: 4
-    - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) -is:reprint"
-      rate: 6
+    - any:
+      - query: r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) (-is:reprint or is:fetchland)
+        count: 48
+        rate: 8
+      - query: r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) -is:reprint
+        count: 12
+        rate: 12
+      - query: r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) -is:reprint
+        count: 20
+        rate: 4
+      - query: r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) -is:reprint
+        rate: 6
+      chance: 91
+    - any:
+      - rawquery: e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart is:paper (-is:reprint or is:fetchland)
+        count: 50
+        rate: 4
+      - rawquery: e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -is:reprint (Chatterfang or Garth One-Eye or Dakkon or Dihada or Grist or Sword of Hearth and Home or Draco or Svyelun or Tourach)
+        count: 18
+        rate: 1
+      - rawquery: e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart is:paper -is:reprint -(Chatterfang or Garth One-Eye or Dakkon or Dihada or Grist or Sword of Hearth and Home or Draco or Svyelun or Tourach)
+        count: 11
+        rate: 2
+      chance: 9
   reprint_to_modern: 
     any:
     - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart is:paper is:reprint"
