@@ -1,5 +1,5 @@
 # Data from https://magic.wizards.com/en/news/feature/collecting-double-masters-2022-and-product-overview
-# Assume that textured foils appear at same rate as other cards in slot
+# Textured foils appear in 3% of Collector Boosters.
 pack:
   foil_common: 5
   foil_uncommon: 2
@@ -10,9 +10,9 @@ pack:
   etched_rare_mythic: 1
   final_slot:
   - foil_rare_mythic_showcase: 1
-    chance: 80
+    chance: 97
   - textured_rare_mythic_showcase: 1
-    chance: 5
+    chance: 3
 sheets:
   foil_rare_mythic:
     foil: true
