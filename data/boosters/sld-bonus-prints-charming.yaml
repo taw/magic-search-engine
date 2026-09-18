@@ -1,0 +1,16 @@
+# Five foil lands plus Slime Against Humanity 7083. Equal regular weights and 2% rare replacement estimated; uncorroborated Dwarf rumor excluded.
+# Source: https://www.reddit.com/r/secretlair_collectors/comments/1r231et/
+# Source: https://www.reddit.com/r/secretlair_collectors/comments/1qxq1wg/
+name: SLD Prints Charming Bonus (Foil)
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number:"888,889,890,891,892"
+      count: 5
+      chance: 98
+    - rawquery: e:{set} number:"7083"
+      count: 1
+      chance: 2
