@@ -41,7 +41,7 @@ describe "Full Database Test" do
       "Kellan, Daring Traveler", "Journey On",
       "Leech Collector", "Bloodletting",
       "Most Decrepit Old Bird", "Speak Secrets",
-      "Paradox Shaper", "Omit Variables",
+      "Paradox Shaper", "Omit Variables (Prepared a)",
       "Pollen-Shield Hare", "Hare Raising",
       "Rimrock Knight", "Boulder Rush",
       "Shepherd of the Flock", "Usher to Safety",
@@ -51,6 +51,7 @@ describe "Full Database Test" do
       "Tear", "Wear",
       "Their", "There", "They're",
       "Vigorbloom Vanguard", "Seed Suture (Prepared b)",
+      "Void Extrapolator", "Omit Variables (Prepared c)",
       "What", "When", "Where", "Who", "Why"
     # Semantics of that changed
     # it used to match a lot of double-faced cards
