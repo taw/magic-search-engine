@@ -23361,6 +23361,66 @@
     "source": "https://mtg.wiki/wiki/Eighth_Edition/Core_Game"
   },
   {
+    "name": "Green-White Demo Deck",
+    "type": "Demo Deck",
+    "category": "deck",
+    "format": "casual",
+    "set_name": "Eighth Edition",
+    "set_code": "8ed",
+    "release_date": "2003-07-28",
+    "cards": {
+      "Main Deck": [
+        {
+          "name": "Trained Armodon",
+          "count": 2
+        },
+        {
+          "name": "Glory Seeker",
+          "count": 2
+        },
+        {
+          "name": "Grizzly Bears",
+          "count": 1
+        },
+        {
+          "name": "Eager Cadet",
+          "count": 1
+        },
+        {
+          "name": "Forest",
+          "count": 1,
+          "set": "8ED",
+          "number": "347"
+        },
+        {
+          "name": "Plains",
+          "count": 1,
+          "set": "8ED",
+          "number": "331"
+        },
+        {
+          "name": "Forest",
+          "count": 1,
+          "set": "8ED",
+          "number": "350"
+        },
+        {
+          "name": "Forest",
+          "count": 1,
+          "set": "8ED",
+          "number": "348"
+        },
+        {
+          "name": "Plains",
+          "count": 1,
+          "set": "8ED",
+          "number": "332"
+        }
+      ]
+    },
+    "source": "https://www.magiclibrarities.net/540-rarities-eighth-edition-box-set-cards-english-cards-index.html"
+  },
+  {
     "name": "Heavy Hitters",
     "type": "Theme Deck",
     "category": "deck",
@@ -23527,6 +23587,66 @@
       ]
     },
     "source": "http://www.wizards.com/magic/displaythemedeck.asp?set=8e&decknum=3&lang=en"
+  },
+  {
+    "name": "Red-Black Demo Deck",
+    "type": "Demo Deck",
+    "category": "deck",
+    "format": "casual",
+    "set_name": "Eighth Edition",
+    "set_code": "8ed",
+    "release_date": "2003-07-28",
+    "cards": {
+      "Main Deck": [
+        {
+          "name": "Hill Giant",
+          "count": 2
+        },
+        {
+          "name": "Spineless Thug",
+          "count": 2
+        },
+        {
+          "name": "Scathe Zombies",
+          "count": 1
+        },
+        {
+          "name": "Goblin Raider",
+          "count": 1
+        },
+        {
+          "name": "Mountain",
+          "count": 1,
+          "set": "8ED",
+          "number": "343"
+        },
+        {
+          "name": "Swamp",
+          "count": 1,
+          "set": "8ED",
+          "number": "340"
+        },
+        {
+          "name": "Mountain",
+          "count": 1,
+          "set": "8ED",
+          "number": "346"
+        },
+        {
+          "name": "Mountain",
+          "count": 1,
+          "set": "8ED",
+          "number": "345"
+        },
+        {
+          "name": "Swamp",
+          "count": 1,
+          "set": "8ED",
+          "number": "339"
+        }
+      ]
+    },
+    "source": "https://www.magiclibrarities.net/540-rarities-eighth-edition-box-set-cards-english-cards-index.html"
   },
   {
     "name": "Sampler Booster",
@@ -116757,19 +116877,8 @@
           "name": "Wirewood Lodge",
           "count": 1
         }
-      ]
-    },
-    "source": "https://magic.wizards.com/en/content/duel-decks-elves-vs-goblins"
-  },
-  {
-    "name": "Elves vs. Goblins Tokens",
-    "type": "Addon",
-    "category": "addon",
-    "set_name": "Duel Decks: Elves vs. Goblins",
-    "set_code": "dd1",
-    "release_date": "2007-11-16",
-    "cards": {
-      "Main Deck": [
+      ],
+      "Sideboard": [
         {
           "name": "Elemental",
           "count": 1,
@@ -116783,17 +116892,10 @@
           "set": "TDD1",
           "number": "T2",
           "token": true
-        },
-        {
-          "name": "Goblin",
-          "count": 1,
-          "set": "TDD1",
-          "number": "T3",
-          "token": true
         }
       ]
     },
-    "source": "https://www.magiclibrarities.net/265-rarities-duel-decks-tokens-english-cards-elves-vs-goblins-2007.html"
+    "source": "https://magic.wizards.com/en/content/duel-decks-elves-vs-goblins"
   },
   {
     "name": "Goblins",
@@ -116920,6 +117022,15 @@
           "name": "Tarfire",
           "count": 3
         }
+      ],
+      "Sideboard": [
+        {
+          "name": "Goblin",
+          "count": 1,
+          "set": "TDD1",
+          "number": "T3",
+          "token": true
+        }
       ]
     },
     "source": "https://magic.wizards.com/en/content/duel-decks-elves-vs-goblins"
@@ -117040,6 +117151,15 @@
           "count": 24,
           "set": "DD2",
           "number": "*"
+        }
+      ],
+      "Sideboard": [
+        {
+          "name": "Elemental Shaman",
+          "count": 3,
+          "set": "TDD2",
+          "number": "1",
+          "token": true
         }
       ]
     },
@@ -117163,6 +117283,15 @@
           "count": 24,
           "set": "DD2",
           "number": "*"
+        }
+      ],
+      "Sideboard": [
+        {
+          "name": "Elemental Shaman",
+          "count": 3,
+          "set": "TDD2",
+          "number": "1",
+          "token": true
         }
       ]
     },
@@ -117447,116 +117576,6 @@
     "languages": "jp"
   },
   {
-    "name": "Jace vs. Chandra Tokens",
-    "type": "Addon",
-    "category": "addon",
-    "set_name": "Duel Decks: Jace vs. Chandra",
-    "set_code": "dd2",
-    "release_date": "2008-11-07",
-    "cards": {
-      "Main Deck": [
-        {
-          "name": "Elemental Shaman",
-          "count": 3,
-          "set": "TDD2",
-          "number": "1",
-          "token": true
-        }
-      ]
-    },
-    "source": "https://www.magiclibrarities.net/266-rarities-duel-decks-tokens-english-cards-jace-vs-chandra-2008-2010.html"
-  },
-  {
-    "name": "Duel Decks Anthology Tokens",
-    "type": "Addon",
-    "category": "addon",
-    "set_name": "Duel Decks: Anthology",
-    "set_code": "dd3",
-    "release_date": "2014-12-05",
-    "cards": {
-      "Main Deck": [
-        {
-          "name": "Elemental",
-          "count": 1,
-          "set": "TEVG",
-          "number": "1",
-          "token": true
-        },
-        {
-          "name": "Elf Warrior",
-          "count": 8,
-          "set": "TEVG",
-          "number": "2",
-          "token": true
-        },
-        {
-          "name": "Goblin",
-          "count": 6,
-          "set": "TEVG",
-          "number": "3",
-          "token": true
-        },
-        {
-          "name": "Elemental Shaman",
-          "count": 3,
-          "set": "TJVC",
-          "number": "4",
-          "token": true
-        },
-        {
-          "name": "Spirit",
-          "count": 3,
-          "set": "TDVD",
-          "number": "5",
-          "token": true
-        },
-        {
-          "name": "Demon",
-          "count": 1,
-          "set": "TDVD",
-          "number": "6",
-          "token": true
-        },
-        {
-          "name": "Thrull",
-          "count": 3,
-          "set": "TDVD",
-          "number": "7",
-          "token": true
-        },
-        {
-          "name": "Beast",
-          "count": 3,
-          "set": "TGVL",
-          "number": "8",
-          "token": true
-        },
-        {
-          "name": "Beast",
-          "count": 2,
-          "set": "TGVL",
-          "number": "9",
-          "token": true
-        },
-        {
-          "name": "Elephant",
-          "count": 1,
-          "set": "TGVL",
-          "number": "10",
-          "token": true
-        },
-        {
-          "name": "Bat",
-          "count": 4,
-          "set": "TGVL",
-          "number": "11",
-          "token": true
-        }
-      ]
-    },
-    "source": "https://www.magiclibrarities.net/951-rarities-duel-decks-tokens-english-cards-anthology-2014.html"
-  },
-  {
     "name": "Demonic",
     "type": "Duel Deck",
     "category": "deck",
@@ -117689,6 +117708,22 @@
           "set": "DDC",
           "number": "*"
         }
+      ],
+      "Sideboard": [
+        {
+          "name": "Demon",
+          "count": 1,
+          "set": "TDDC",
+          "number": "2",
+          "token": true
+        },
+        {
+          "name": "Thrull",
+          "count": 1,
+          "set": "TDDC",
+          "number": "3",
+          "token": true
+        }
       ]
     },
     "source": "https://magic.wizards.com/en/content/duel-decks-divine-vs-demonic"
@@ -117810,43 +117845,18 @@
           "name": "Secluded Steppe",
           "count": 2
         }
-      ]
-    },
-    "source": "https://magic.wizards.com/en/content/duel-decks-divine-vs-demonic"
-  },
-  {
-    "name": "Divine vs. Demonic Tokens",
-    "type": "Addon",
-    "category": "addon",
-    "set_name": "Duel Decks: Divine vs. Demonic",
-    "set_code": "ddc",
-    "release_date": "2009-04-10",
-    "cards": {
-      "Main Deck": [
+      ],
+      "Sideboard": [
         {
           "name": "Spirit",
           "count": 1,
           "set": "TDDC",
           "number": "1",
           "token": true
-        },
-        {
-          "name": "Demon",
-          "count": 1,
-          "set": "TDDC",
-          "number": "2",
-          "token": true
-        },
-        {
-          "name": "Thrull",
-          "count": 1,
-          "set": "TDDC",
-          "number": "3",
-          "token": true
         }
       ]
     },
-    "source": "https://www.magiclibrarities.net/267-rarities-duel-decks-tokens-english-cards-divine-vs-demonic-2009.html"
+    "source": "https://magic.wizards.com/en/content/duel-decks-divine-vs-demonic"
   },
   {
     "name": "Garruk",
@@ -117973,19 +117983,8 @@
           "name": "Treetop Village",
           "count": 1
         }
-      ]
-    },
-    "source": "https://magic.wizards.com/en/content/duel-decks-garruk-vs-liliana"
-  },
-  {
-    "name": "Garruk vs. Liliana Tokens",
-    "type": "Addon",
-    "category": "addon",
-    "set_name": "Duel Decks: Garruk vs. Liliana",
-    "set_code": "ddd",
-    "release_date": "2009-10-30",
-    "cards": {
-      "Main Deck": [
+      ],
+      "Sideboard": [
         {
           "name": "Beast",
           "count": 1,
@@ -118009,7 +118008,7 @@
         }
       ]
     },
-    "source": "https://www.magiclibrarities.net/268-rarities-duel-decks-tokens-english-cards-garruk-vs-liliana-2009.html"
+    "source": "https://magic.wizards.com/en/content/duel-decks-garruk-vs-liliana"
   },
   {
     "name": "Liliana",
@@ -118285,19 +118284,8 @@
           "set": "DDE",
           "number": "*"
         }
-      ]
-    },
-    "source": "https://magic.wizards.com/en/content/duel-decks-phyrexia-vs-coalition"
-  },
-  {
-    "name": "Phyrexia vs. the Coalition Tokens",
-    "type": "Addon",
-    "category": "addon",
-    "set_name": "Duel Decks: Phyrexia vs. the Coalition",
-    "set_code": "dde",
-    "release_date": "2010-03-19",
-    "cards": {
-      "Main Deck": [
+      ],
+      "Sideboard": [
         {
           "name": "Hornet",
           "count": 1,
@@ -118311,17 +118299,10 @@
           "set": "TDDE",
           "number": "2",
           "token": true
-        },
-        {
-          "name": "Saproling",
-          "count": 1,
-          "set": "TDDE",
-          "number": "3",
-          "token": true
         }
       ]
     },
-    "source": "https://www.magiclibrarities.net/269-rarities-duel-decks-tokens-english-cards-phyrexia-vs-the-coalition-2010.html"
+    "source": "https://magic.wizards.com/en/content/duel-decks-phyrexia-vs-coalition"
   },
   {
     "name": "The Coalition",
@@ -118482,6 +118463,15 @@
           "name": "Terramorphic Expanse",
           "count": 3
         }
+      ],
+      "Sideboard": [
+        {
+          "name": "Saproling",
+          "count": 1,
+          "set": "TDDE",
+          "number": "3",
+          "token": true
+        }
       ]
     },
     "source": "https://magic.wizards.com/en/content/duel-decks-phyrexia-vs-coalition"
@@ -118639,19 +118629,8 @@
           "name": "Rustic Clachan",
           "count": 1
         }
-      ]
-    },
-    "source": "https://magic.wizards.com/en/content/duel-decks-elspeth-vs-tezzeret"
-  },
-  {
-    "name": "Elspeth vs. Tezzeret Tokens",
-    "type": "Addon",
-    "category": "addon",
-    "set_name": "Duel Decks: Elspeth vs. Tezzeret",
-    "set_code": "ddf",
-    "release_date": "2010-09-03",
-    "cards": {
-      "Main Deck": [
+      ],
+      "Sideboard": [
         {
           "name": "Soldier",
           "count": 3,
@@ -118661,7 +118640,7 @@
         }
       ]
     },
-    "source": "https://www.magiclibrarities.net/530-rarities-duel-decks-tokens-english-cards-elspeth-vs-tezzeret-2010.html"
+    "source": "https://magic.wizards.com/en/content/duel-decks-elspeth-vs-tezzeret"
   },
   {
     "name": "Tezzeret",
@@ -118973,6 +118952,15 @@
           "set": "DDG",
           "number": "*"
         }
+      ],
+      "Sideboard": [
+        {
+          "name": "Goblin",
+          "count": 2,
+          "set": "TDDG",
+          "number": "1",
+          "token": true
+        }
       ]
     },
     "source": "https://magic.wizards.com/en/content/duel-decks-knights-vs-dragons"
@@ -119157,26 +119145,6 @@
     "source": "https://magic.wizards.com/en/content/duel-decks-knights-vs-dragons"
   },
   {
-    "name": "Knights vs. Dragons Tokens",
-    "type": "Addon",
-    "category": "addon",
-    "set_name": "Duel Decks: Knights vs. Dragons",
-    "set_code": "ddg",
-    "release_date": "2011-04-01",
-    "cards": {
-      "Main Deck": [
-        {
-          "name": "Goblin",
-          "count": 2,
-          "set": "TDDG",
-          "number": "1",
-          "token": true
-        }
-      ]
-    },
-    "source": "https://www.magiclibrarities.net/863-rarities-duel-decks-tokens-english-cards--knights-vs-dragons-2011.html"
-  },
-  {
     "name": "Ajani Goldmane",
     "type": "Duel Deck",
     "category": "deck",
@@ -119351,19 +119319,8 @@
           "name": "Vitu-Ghazi, the City-Tree",
           "count": 1
         }
-      ]
-    },
-    "source": "https://magic.wizards.com/en/content/duel-decks-ajani-vs-nicol-bolas"
-  },
-  {
-    "name": "Ajani vs. Nicol Bolas Tokens",
-    "type": "Addon",
-    "category": "addon",
-    "set_name": "Duel Decks: Ajani vs. Nicol Bolas",
-    "set_code": "ddh",
-    "release_date": "2011-09-02",
-    "cards": {
-      "Main Deck": [
+      ],
+      "Sideboard": [
         {
           "name": "Griffin",
           "count": 1,
@@ -119380,7 +119337,7 @@
         }
       ]
     },
-    "source": "https://www.magiclibrarities.net/944-rarities-duel-decks-tokens-english-cards-ajani-vs-nicol-bolas-2011.html"
+    "source": "https://magic.wizards.com/en/content/duel-decks-ajani-vs-nicol-bolas"
   },
   {
     "name": "Nicol Bolas",
@@ -119690,6 +119647,15 @@
           "set": "DDI",
           "number": "*"
         }
+      ],
+      "Sideboard": [
+        {
+          "name": "Koth of the Hammer Emblem",
+          "count": 1,
+          "set": "TDDI",
+          "number": "2",
+          "token": true
+        }
       ]
     },
     "source": "https://magic.wizards.com/en/content/duel-decks-venser-vs-koth"
@@ -119865,36 +119831,18 @@
           "name": "Soaring Seacliff",
           "count": 1
         }
-      ]
-    },
-    "source": "https://magic.wizards.com/en/content/duel-decks-venser-vs-koth"
-  },
-  {
-    "name": "Venser vs. Koth Tokens",
-    "type": "Addon",
-    "category": "addon",
-    "set_name": "Duel Decks: Venser vs. Koth",
-    "set_code": "ddi",
-    "release_date": "2012-03-30",
-    "cards": {
-      "Main Deck": [
+      ],
+      "Sideboard": [
         {
           "name": "Venser, the Sojourner Emblem",
           "count": 1,
           "set": "TDDI",
           "number": "1",
           "token": true
-        },
-        {
-          "name": "Koth of the Hammer Emblem",
-          "count": 1,
-          "set": "TDDI",
-          "number": "2",
-          "token": true
         }
       ]
     },
-    "source": "https://www.magiclibrarities.net/945-rarities-duel-decks-tokens-english-cards-venser-vs-koth-2012.html"
+    "source": "https://magic.wizards.com/en/content/duel-decks-venser-vs-koth"
   },
   {
     "name": "Golgari",
@@ -120070,6 +120018,15 @@
         {
           "name": "Tranquil Thicket",
           "count": 1
+        }
+      ],
+      "Sideboard": [
+        {
+          "name": "Saproling",
+          "count": 2,
+          "set": "TDDJ",
+          "number": "1",
+          "token": true
         }
       ]
     },
@@ -120247,26 +120204,6 @@
     "source": "https://magic.wizards.com/en/content/duel-decks-izzet-vs-golgari"
   },
   {
-    "name": "Izzet vs. Golgari Tokens",
-    "type": "Addon",
-    "category": "addon",
-    "set_name": "Duel Decks: Izzet vs. Golgari",
-    "set_code": "ddj",
-    "release_date": "2012-09-07",
-    "cards": {
-      "Main Deck": [
-        {
-          "name": "Saproling",
-          "count": 2,
-          "set": "TDDJ",
-          "number": "1",
-          "token": true
-        }
-      ]
-    },
-    "source": "https://www.magiclibrarities.net/947-rarities-duel-decks-tokens-english-cards-izzet-vs-golgari-2012.html"
-  },
-  {
     "name": "Sorin",
     "type": "Duel Deck",
     "category": "deck",
@@ -120437,19 +120374,8 @@
           "name": "Tainted Field",
           "count": 2
         }
-      ]
-    },
-    "source": "https://magic.wizards.com/en/content/duel-decks-sorin-vs-tibalt"
-  },
-  {
-    "name": "Sorin vs. Tibalt Tokens",
-    "type": "Addon",
-    "category": "addon",
-    "set_name": "Duel Decks: Sorin vs. Tibalt",
-    "set_code": "ddk",
-    "release_date": "2013-03-15",
-    "cards": {
-      "Main Deck": [
+      ],
+      "Sideboard": [
         {
           "name": "Spirit",
           "count": 2,
@@ -120459,7 +120385,7 @@
         }
       ]
     },
-    "source": "https://www.magiclibrarities.net/946-rarities-duel-decks-tokens-english-cards-sorin-vs-tibalt-2013.html"
+    "source": "https://magic.wizards.com/en/content/duel-decks-sorin-vs-tibalt"
   },
   {
     "name": "Tibalt",
@@ -120813,36 +120739,18 @@
           "set": "DDL",
           "number": "*"
         }
-      ]
-    },
-    "source": "https://magic.wizards.com/en/content/duel-decks-heroes-vs-monsters"
-  },
-  {
-    "name": "Heroes vs. Monsters Tokens",
-    "type": "Addon",
-    "category": "addon",
-    "set_name": "Duel Decks: Heroes vs. Monsters",
-    "set_code": "ddl",
-    "release_date": "2013-09-06",
-    "cards": {
-      "Main Deck": [
+      ],
+      "Sideboard": [
         {
           "name": "Griffin",
           "count": 1,
           "set": "TDDL",
           "number": "1",
           "token": true
-        },
-        {
-          "name": "Beast",
-          "count": 1,
-          "set": "TDDL",
-          "number": "2",
-          "token": true
         }
       ]
     },
-    "source": "https://www.magiclibrarities.net/948-rarities-duel-decks-tokens-english-cards--heroes-vs-monsters-2013.html"
+    "source": "https://magic.wizards.com/en/content/duel-decks-heroes-vs-monsters"
   },
   {
     "name": "Monsters",
@@ -121008,6 +120916,15 @@
         {
           "name": "Skarrg, the Rage Pits",
           "count": 1
+        }
+      ],
+      "Sideboard": [
+        {
+          "name": "Beast",
+          "count": 1,
+          "set": "TDDL",
+          "number": "2",
+          "token": true
         }
       ]
     },
@@ -121179,26 +121096,6 @@
     "source": "https://magic.wizards.com/en/content/duel-decks-jace-vs-vraska"
   },
   {
-    "name": "Jace vs. Vraska Tokens",
-    "type": "Addon",
-    "category": "addon",
-    "set_name": "Duel Decks: Jace vs. Vraska",
-    "set_code": "ddm",
-    "release_date": "2014-03-14",
-    "cards": {
-      "Main Deck": [
-        {
-          "name": "Assassin",
-          "count": 3,
-          "set": "TDDM",
-          "number": "1",
-          "token": true
-        }
-      ]
-    },
-    "source": "https://www.magiclibrarities.net/949-rarities-duel-decks-tokens-english-cards-jace-vs-vraska-2014.html"
-  },
-  {
     "name": "Vraska",
     "type": "Duel Deck",
     "category": "deck",
@@ -121368,6 +121265,15 @@
         {
           "name": "Tainted Wood",
           "count": 2
+        }
+      ],
+      "Sideboard": [
+        {
+          "name": "Assassin",
+          "count": 3,
+          "set": "TDDM",
+          "number": "1",
+          "token": true
         }
       ]
     },
@@ -123204,6 +123110,36 @@
           "set": "DDS",
           "number": "*"
         }
+      ],
+      "Sideboard": [
+        {
+          "name": "Beast",
+          "count": 1,
+          "set": "TDDS",
+          "number": "4",
+          "token": true
+        },
+        {
+          "name": "Elephant",
+          "count": 2,
+          "set": "TDDS",
+          "number": "5",
+          "token": true
+        },
+        {
+          "name": "Elf Warrior",
+          "count": 1,
+          "set": "TDDS",
+          "number": "6",
+          "token": true
+        },
+        {
+          "name": "Wurm",
+          "count": 1,
+          "set": "TDDS",
+          "number": "7",
+          "token": true
+        }
       ]
     },
     "source": "https://magic.wizards.com/en/products/duel-decks-mind-might"
@@ -123351,19 +123287,8 @@
           "set": "DDS",
           "number": "33"
         }
-      ]
-    },
-    "source": "https://magic.wizards.com/en/products/duel-decks-mind-might"
-  },
-  {
-    "name": "Mind vs. Might Tokens",
-    "type": "Addon",
-    "category": "addon",
-    "set_name": "Duel Decks: Mind vs. Might",
-    "set_code": "dds",
-    "release_date": "2017-03-31",
-    "cards": {
-      "Main Deck": [
+      ],
+      "Sideboard": [
         {
           "name": "Drake",
           "count": 1,
@@ -123384,38 +123309,10 @@
           "set": "TDDS",
           "number": "3",
           "token": true
-        },
-        {
-          "name": "Beast",
-          "count": 1,
-          "set": "TDDS",
-          "number": "4",
-          "token": true
-        },
-        {
-          "name": "Elephant",
-          "count": 2,
-          "set": "TDDS",
-          "number": "5",
-          "token": true
-        },
-        {
-          "name": "Elf Warrior",
-          "count": 1,
-          "set": "TDDS",
-          "number": "6",
-          "token": true
-        },
-        {
-          "name": "Wurm",
-          "count": 1,
-          "set": "TDDS",
-          "number": "7",
-          "token": true
         }
       ]
     },
-    "source": "https://www.magiclibrarities.net/1004-rarities-duel-decks-tokens-english-cards-mind-vs-might-2017.html"
+    "source": "https://magic.wizards.com/en/products/duel-decks-mind-might"
   },
   {
     "name": "Goblins",
@@ -123564,6 +123461,15 @@
           "name": "Tarfire",
           "count": 2
         }
+      ],
+      "Sideboard": [
+        {
+          "name": "Goblin",
+          "count": 5,
+          "set": "TDDT",
+          "number": "3",
+          "token": true
+        }
       ]
     },
     "source": "https://magic.wizards.com/en/articles/archive/news/duel-decks-merfolk-vs-goblins-2017-10-24"
@@ -123711,19 +123617,8 @@
           "set": "DDT",
           "number": "31"
         }
-      ]
-    },
-    "source": "https://magic.wizards.com/en/articles/archive/news/duel-decks-merfolk-vs-goblins-2017-10-24"
-  },
-  {
-    "name": "Merfolk vs. Goblins Tokens",
-    "type": "Addon",
-    "category": "addon",
-    "set_name": "Duel Decks: Merfolk vs. Goblins",
-    "set_code": "ddt",
-    "release_date": "2017-11-10",
-    "cards": {
-      "Main Deck": [
+      ],
+      "Sideboard": [
         {
           "name": "Elemental",
           "count": 4,
@@ -123737,58 +123632,10 @@
           "set": "TDDT",
           "number": "2",
           "token": true
-        },
-        {
-          "name": "Goblin",
-          "count": 5,
-          "set": "TDDT",
-          "number": "3",
-          "token": true
         }
       ]
     },
-    "source": "https://www.magiclibrarities.net/1099-rarities-duel-decks-tokens-english-cards-merfolk-vs-goblins-2017.html"
-  },
-  {
-    "name": "Elves vs. Inventors Tokens",
-    "type": "Addon",
-    "category": "addon",
-    "set_name": "Duel Decks: Elves vs. Inventors",
-    "set_code": "ddu",
-    "release_date": "2018-04-06",
-    "cards": {
-      "Main Deck": [
-        {
-          "name": "Elf Warrior",
-          "count": 1,
-          "set": "TDDU",
-          "number": "1",
-          "token": true
-        },
-        {
-          "name": "Myr",
-          "count": 4,
-          "set": "TDDU",
-          "number": "2",
-          "token": true
-        },
-        {
-          "name": "Thopter",
-          "count": 3,
-          "set": "TDDU",
-          "number": "3",
-          "token": true
-        },
-        {
-          "name": "Thopter",
-          "count": 2,
-          "set": "TDDU",
-          "number": "4",
-          "token": true
-        }
-      ]
-    },
-    "source": "https://www.magiclibrarities.net/1157-rarities-duel-decks-tokens-english-cards-elves-vs-inventors-2018.html"
+    "source": "https://magic.wizards.com/en/articles/archive/news/duel-decks-merfolk-vs-goblins-2017-10-24"
   },
   {
     "name": "Ingenious Machinists",
@@ -123965,6 +123812,29 @@
           "name": "Artificer's Epiphany",
           "count": 1
         }
+      ],
+      "Sideboard": [
+        {
+          "name": "Myr",
+          "count": 4,
+          "set": "TDDU",
+          "number": "2",
+          "token": true
+        },
+        {
+          "name": "Thopter",
+          "count": 3,
+          "set": "TDDU",
+          "number": "3",
+          "token": true
+        },
+        {
+          "name": "Thopter",
+          "count": 2,
+          "set": "TDDU",
+          "number": "4",
+          "token": true
+        }
       ]
     },
     "source": "https://magic.wizards.com/en/products/duel-decks-elves-vs-inventors"
@@ -124105,6 +123975,15 @@
         {
           "name": "Nissa's Judgment",
           "count": 2
+        }
+      ],
+      "Sideboard": [
+        {
+          "name": "Elf Warrior",
+          "count": 1,
+          "set": "TDDU",
+          "number": "1",
+          "token": true
         }
       ]
     },
@@ -158300,6 +158179,22 @@
           "set": "DVD",
           "number": "*"
         }
+      ],
+      "Sideboard": [
+        {
+          "name": "Demon",
+          "count": 1,
+          "set": "TDVD",
+          "number": "6",
+          "token": true
+        },
+        {
+          "name": "Thrull",
+          "count": 3,
+          "set": "TDVD",
+          "number": "7",
+          "token": true
+        }
       ]
     },
     "source": "https://magic.wizards.com/en/content/duel-decks-duel-decks-anthology"
@@ -158420,6 +158315,15 @@
         {
           "name": "Secluded Steppe",
           "count": 2
+        }
+      ],
+      "Sideboard": [
+        {
+          "name": "Spirit",
+          "count": 3,
+          "set": "TDVD",
+          "number": "5",
+          "token": true
         }
       ]
     },
@@ -176172,6 +176076,22 @@
           "name": "Wirewood Lodge",
           "count": 1
         }
+      ],
+      "Sideboard": [
+        {
+          "name": "Elemental",
+          "count": 1,
+          "set": "TEVG",
+          "number": "1",
+          "token": true
+        },
+        {
+          "name": "Elf Warrior",
+          "count": 8,
+          "set": "TEVG",
+          "number": "2",
+          "token": true
+        }
       ]
     },
     "source": "https://magic.wizards.com/en/content/duel-decks-duel-decks-anthology"
@@ -176300,6 +176220,15 @@
         {
           "name": "Tarfire",
           "count": 3
+        }
+      ],
+      "Sideboard": [
+        {
+          "name": "Goblin",
+          "count": 6,
+          "set": "TEVG",
+          "number": "3",
+          "token": true
         }
       ]
     },
@@ -206277,6 +206206,29 @@
           "name": "Treetop Village",
           "count": 1
         }
+      ],
+      "Sideboard": [
+        {
+          "name": "Beast",
+          "count": 3,
+          "set": "TGVL",
+          "number": "8",
+          "token": true
+        },
+        {
+          "name": "Beast",
+          "count": 2,
+          "set": "TGVL",
+          "number": "9",
+          "token": true
+        },
+        {
+          "name": "Elephant",
+          "count": 1,
+          "set": "TGVL",
+          "number": "10",
+          "token": true
+        }
       ]
     },
     "source": "https://magic.wizards.com/en/content/duel-decks-duel-decks-anthology"
@@ -206409,6 +206361,15 @@
           "count": 23,
           "set": "GVL",
           "number": "*"
+        }
+      ],
+      "Sideboard": [
+        {
+          "name": "Bat",
+          "count": 4,
+          "set": "TGVL",
+          "number": "11",
+          "token": true
         }
       ]
     },
@@ -257545,6 +257506,15 @@
           "count": 24,
           "set": "JVC",
           "number": "*"
+        }
+      ],
+      "Sideboard": [
+        {
+          "name": "Elemental Shaman",
+          "count": 3,
+          "set": "TJVC",
+          "number": "4",
+          "token": true
         }
       ]
     },
@@ -600497,6 +600467,34 @@
         {
           "name": "Uktabi Orangutan",
           "count": 3
+        },
+        {
+          "name": "2000 World Championships Ad",
+          "count": 1,
+          "set": "WC00",
+          "number": "0",
+          "token": true
+        },
+        {
+          "name": "Blank Card",
+          "count": 12,
+          "set": "WC00",
+          "number": "00",
+          "token": true
+        },
+        {
+          "name": "Janosch Kühn Bio (2000)",
+          "count": 1,
+          "set": "WC00",
+          "number": "jk0a",
+          "token": true
+        },
+        {
+          "name": "Janosch Kühn Decklist (2000)",
+          "count": 1,
+          "set": "WC00",
+          "number": "jk0b",
+          "token": true
         }
       ]
     },
@@ -600611,6 +600609,34 @@
         {
           "name": "Rising Waters",
           "count": 2
+        },
+        {
+          "name": "2000 World Championships Ad",
+          "count": 1,
+          "set": "WC00",
+          "number": "0",
+          "token": true
+        },
+        {
+          "name": "Blank Card",
+          "count": 12,
+          "set": "WC00",
+          "number": "00",
+          "token": true
+        },
+        {
+          "name": "Jon Finkel Bio",
+          "count": 1,
+          "set": "WC00",
+          "number": "jf0a",
+          "token": true
+        },
+        {
+          "name": "Jon Finkel Decklist",
+          "count": 1,
+          "set": "WC00",
+          "number": "jf0b",
+          "token": true
         }
       ]
     },
@@ -600779,6 +600805,34 @@
         {
           "name": "Worship",
           "count": 1
+        },
+        {
+          "name": "2000 World Championships Ad",
+          "count": 1,
+          "set": "WC00",
+          "number": "0",
+          "token": true
+        },
+        {
+          "name": "Blank Card",
+          "count": 12,
+          "set": "WC00",
+          "number": "00",
+          "token": true
+        },
+        {
+          "name": "Nicolas Labarre Bio",
+          "count": 1,
+          "set": "WC00",
+          "number": "nl0a",
+          "token": true
+        },
+        {
+          "name": "Nicolas Labarre Decklist",
+          "count": 1,
+          "set": "WC00",
+          "number": "nl0b",
+          "token": true
         }
       ]
     },
@@ -600921,6 +600975,34 @@
           "count": 2,
           "set": "WC00",
           "number": "tvdl54sb"
+        },
+        {
+          "name": "2000 World Championships Ad",
+          "count": 1,
+          "set": "WC00",
+          "number": "0",
+          "token": true
+        },
+        {
+          "name": "Blank Card",
+          "count": 12,
+          "set": "WC00",
+          "number": "00",
+          "token": true
+        },
+        {
+          "name": "Tom van de Logt Bio (2000)",
+          "count": 1,
+          "set": "WC00",
+          "number": "tvdl0a",
+          "token": true
+        },
+        {
+          "name": "Tom van de Logt Decklist (2000)",
+          "count": 1,
+          "set": "WC00",
+          "number": "tvdl0b",
+          "token": true
         }
       ]
     },
@@ -601091,6 +601173,34 @@
         {
           "name": "Wash Out",
           "count": 2
+        },
+        {
+          "name": "2001 World Championships Ad",
+          "count": 1,
+          "set": "WC01",
+          "number": "0",
+          "token": true
+        },
+        {
+          "name": "Blank Card",
+          "count": 12,
+          "set": "WC01",
+          "number": "00",
+          "token": true
+        },
+        {
+          "name": "Alex Borteh Bio",
+          "count": 1,
+          "set": "WC01",
+          "number": "ab0a",
+          "token": true
+        },
+        {
+          "name": "Alex Borteh Decklist",
+          "count": 1,
+          "set": "WC01",
+          "number": "ab0b",
+          "token": true
         }
       ]
     },
@@ -601279,6 +601389,34 @@
         {
           "name": "Tsabo's Assassin",
           "count": 3
+        },
+        {
+          "name": "2001 World Championships Ad",
+          "count": 1,
+          "set": "WC01",
+          "number": "0",
+          "token": true
+        },
+        {
+          "name": "Blank Card",
+          "count": 12,
+          "set": "WC01",
+          "number": "00",
+          "token": true
+        },
+        {
+          "name": "Antoine Ruel Bio",
+          "count": 1,
+          "set": "WC01",
+          "number": "ar0a",
+          "token": true
+        },
+        {
+          "name": "Antoine Ruel Decklist",
+          "count": 1,
+          "set": "WC01",
+          "number": "ar0b",
+          "token": true
         }
       ]
     },
@@ -601463,6 +601601,34 @@
         {
           "name": "Tangle",
           "count": 2
+        },
+        {
+          "name": "2001 World Championships Ad",
+          "count": 1,
+          "set": "WC01",
+          "number": "0",
+          "token": true
+        },
+        {
+          "name": "Blank Card",
+          "count": 12,
+          "set": "WC01",
+          "number": "00",
+          "token": true
+        },
+        {
+          "name": "Jan Tomcani Bio",
+          "count": 1,
+          "set": "WC01",
+          "number": "jt0a",
+          "token": true
+        },
+        {
+          "name": "Jan Tomcani Decklist",
+          "count": 1,
+          "set": "WC01",
+          "number": "jt0b",
+          "token": true
         }
       ]
     },
@@ -601637,6 +601803,34 @@
           "count": 1,
           "set": "WC01",
           "number": "tvdl97sb"
+        },
+        {
+          "name": "2001 World Championships Ad",
+          "count": 1,
+          "set": "WC01",
+          "number": "0",
+          "token": true
+        },
+        {
+          "name": "Blank Card",
+          "count": 12,
+          "set": "WC01",
+          "number": "00",
+          "token": true
+        },
+        {
+          "name": "Tom van de Logt Bio (2001)",
+          "count": 1,
+          "set": "WC01",
+          "number": "tvdl0a",
+          "token": true
+        },
+        {
+          "name": "Tom van de Logt Decklist (2001)",
+          "count": 1,
+          "set": "WC01",
+          "number": "tvdl0b",
+          "token": true
         }
       ]
     },
@@ -601851,6 +602045,34 @@
         {
           "name": "Thunderscape Battlemage",
           "count": 1
+        },
+        {
+          "name": "2002 World Championships Ad",
+          "count": 1,
+          "set": "WC02",
+          "number": "0",
+          "token": true
+        },
+        {
+          "name": "Blank Card",
+          "count": 12,
+          "set": "WC02",
+          "number": "00",
+          "token": true
+        },
+        {
+          "name": "Brian Kibler Bio",
+          "count": 1,
+          "set": "WC02",
+          "number": "bk0a",
+          "token": true
+        },
+        {
+          "name": "Brian Kibler Decklist",
+          "count": 1,
+          "set": "WC02",
+          "number": "bk0b",
+          "token": true
         }
       ]
     },
@@ -602057,6 +602279,34 @@
         {
           "name": "Teferi's Response",
           "count": 1
+        },
+        {
+          "name": "2002 World Championships Ad",
+          "count": 1,
+          "set": "WC02",
+          "number": "0",
+          "token": true
+        },
+        {
+          "name": "Blank Card",
+          "count": 12,
+          "set": "WC02",
+          "number": "00",
+          "token": true
+        },
+        {
+          "name": "Carlos Romão Bio",
+          "count": 1,
+          "set": "WC02",
+          "number": "cr0a",
+          "token": true
+        },
+        {
+          "name": "Carlos Romão Decklist",
+          "count": 1,
+          "set": "WC02",
+          "number": "cr0b",
+          "token": true
         }
       ]
     },
@@ -602265,6 +602515,34 @@
           "count": 1,
           "set": "WC02",
           "number": "rl30sb"
+        },
+        {
+          "name": "2002 World Championships Ad",
+          "count": 1,
+          "set": "WC02",
+          "number": "0",
+          "token": true
+        },
+        {
+          "name": "Blank Card",
+          "count": 12,
+          "set": "WC02",
+          "number": "00",
+          "token": true
+        },
+        {
+          "name": "Raphael Levy Bio",
+          "count": 1,
+          "set": "WC02",
+          "number": "rl0a",
+          "token": true
+        },
+        {
+          "name": "Raphael Levy Decklist",
+          "count": 1,
+          "set": "WC02",
+          "number": "rl0b",
+          "token": true
         }
       ]
     },
@@ -602469,6 +602747,34 @@
           "count": 2,
           "set": "WC02",
           "number": "shh272sb"
+        },
+        {
+          "name": "2002 World Championships Ad",
+          "count": 1,
+          "set": "WC02",
+          "number": "0",
+          "token": true
+        },
+        {
+          "name": "Blank Card",
+          "count": 12,
+          "set": "WC02",
+          "number": "00",
+          "token": true
+        },
+        {
+          "name": "Sim Han How Bio",
+          "count": 1,
+          "set": "WC02",
+          "number": "shh0a",
+          "token": true
+        },
+        {
+          "name": "Sim Han How Decklist",
+          "count": 1,
+          "set": "WC02",
+          "number": "shh0b",
+          "token": true
         }
       ]
     },
@@ -602663,6 +602969,34 @@
         {
           "name": "Wing Shards",
           "count": 1
+        },
+        {
+          "name": "2003 World Championships Ad",
+          "count": 1,
+          "set": "WC03",
+          "number": "0",
+          "token": true
+        },
+        {
+          "name": "Blank Card",
+          "count": 12,
+          "set": "WC03",
+          "number": "00",
+          "token": true
+        },
+        {
+          "name": "Daniel Zink Bio",
+          "count": 1,
+          "set": "WC03",
+          "number": "dz0a",
+          "token": true
+        },
+        {
+          "name": "Daniel Zink Decklist",
+          "count": 1,
+          "set": "WC03",
+          "number": "dz0b",
+          "token": true
         }
       ]
     },
@@ -602841,6 +603175,34 @@
           "count": 1,
           "set": "WC03",
           "number": "dh54sb"
+        },
+        {
+          "name": "2003 World Championships Ad",
+          "count": 1,
+          "set": "WC03",
+          "number": "0",
+          "token": true
+        },
+        {
+          "name": "Blank Card",
+          "count": 12,
+          "set": "WC03",
+          "number": "00",
+          "token": true
+        },
+        {
+          "name": "Dave Humpherys Bio",
+          "count": 1,
+          "set": "WC03",
+          "number": "dh0a",
+          "token": true
+        },
+        {
+          "name": "Dave Humpherys Decklist",
+          "count": 1,
+          "set": "WC03",
+          "number": "dh0b",
+          "token": true
         }
       ]
     },
@@ -603049,6 +603411,34 @@
           "count": 1,
           "set": "WC03",
           "number": "pk72sb"
+        },
+        {
+          "name": "2003 World Championships Ad",
+          "count": 1,
+          "set": "WC03",
+          "number": "0",
+          "token": true
+        },
+        {
+          "name": "Blank Card",
+          "count": 12,
+          "set": "WC03",
+          "number": "00",
+          "token": true
+        },
+        {
+          "name": "Peer Kröger Bio",
+          "count": 1,
+          "set": "WC03",
+          "number": "pk0a",
+          "token": true
+        },
+        {
+          "name": "Peer Kröger Decklist",
+          "count": 1,
+          "set": "WC03",
+          "number": "pk0b",
+          "token": true
         }
       ]
     },
@@ -603199,6 +603589,34 @@
         {
           "name": "Sulfuric Vortex",
           "count": 4
+        },
+        {
+          "name": "2003 World Championships Ad",
+          "count": 1,
+          "set": "WC03",
+          "number": "0",
+          "token": true
+        },
+        {
+          "name": "Blank Card",
+          "count": 12,
+          "set": "WC03",
+          "number": "00",
+          "token": true
+        },
+        {
+          "name": "Wolfgang Eder Bio",
+          "count": 1,
+          "set": "WC03",
+          "number": "we0a",
+          "token": true
+        },
+        {
+          "name": "Wolfgang Eder Decklist",
+          "count": 1,
+          "set": "WC03",
+          "number": "we0b",
+          "token": true
         }
       ]
     },
@@ -603313,6 +603731,34 @@
           "count": 4,
           "set": "WC04",
           "number": "ap29sb"
+        },
+        {
+          "name": "2004 World Championships Ad",
+          "count": 1,
+          "set": "WC04",
+          "number": "0",
+          "token": true
+        },
+        {
+          "name": "Blank Card",
+          "count": 12,
+          "set": "WC04",
+          "number": "00",
+          "token": true
+        },
+        {
+          "name": "Aeo Paquette Bio",
+          "count": 1,
+          "set": "WC04",
+          "number": "ap0a",
+          "token": true
+        },
+        {
+          "name": "Aeo Paquette Decklist",
+          "count": 1,
+          "set": "WC04",
+          "number": "ap0b",
+          "token": true
         }
       ]
     },
@@ -603459,6 +603905,34 @@
         {
           "name": "Stifle",
           "count": 3
+        },
+        {
+          "name": "2004 World Championships Ad",
+          "count": 1,
+          "set": "WC04",
+          "number": "0",
+          "token": true
+        },
+        {
+          "name": "Blank Card",
+          "count": 12,
+          "set": "WC04",
+          "number": "00",
+          "token": true
+        },
+        {
+          "name": "Gabriel Nassif Bio",
+          "count": 1,
+          "set": "WC04",
+          "number": "gn0a",
+          "token": true
+        },
+        {
+          "name": "Gabriel Nassif Decklist",
+          "count": 1,
+          "set": "WC04",
+          "number": "gn0b",
+          "token": true
         }
       ]
     },
@@ -603601,6 +604075,34 @@
           "count": 3,
           "set": "WC04",
           "number": "jn272sb"
+        },
+        {
+          "name": "2004 World Championships Ad",
+          "count": 1,
+          "set": "WC04",
+          "number": "0",
+          "token": true
+        },
+        {
+          "name": "Blank Card",
+          "count": 12,
+          "set": "WC04",
+          "number": "00",
+          "token": true
+        },
+        {
+          "name": "Julien Nuijten Bio",
+          "count": 1,
+          "set": "WC04",
+          "number": "jn0a",
+          "token": true
+        },
+        {
+          "name": "Julien Nuijten Decklist",
+          "count": 1,
+          "set": "WC04",
+          "number": "jn0b",
+          "token": true
         }
       ]
     },
@@ -603731,6 +604233,34 @@
         {
           "name": "Pyroclasm",
           "count": 3
+        },
+        {
+          "name": "2004 World Championships Ad",
+          "count": 1,
+          "set": "WC04",
+          "number": "0",
+          "token": true
+        },
+        {
+          "name": "Blank Card",
+          "count": 12,
+          "set": "WC04",
+          "number": "00",
+          "token": true
+        },
+        {
+          "name": "Manuel Bevand Bio",
+          "count": 1,
+          "set": "WC04",
+          "number": "mb0a",
+          "token": true
+        },
+        {
+          "name": "Manuel Bevand Decklist",
+          "count": 1,
+          "set": "WC04",
+          "number": "mb0b",
+          "token": true
         }
       ]
     },
