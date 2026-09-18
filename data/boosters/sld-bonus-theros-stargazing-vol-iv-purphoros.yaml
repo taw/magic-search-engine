@@ -1,0 +1,14 @@
+# Equal weights are estimates, not published odds.
+# Preserve the established red-planeswalker pool; Ashiok 528 is blue/black.
+# Override the apparent Ashiok column error in the Librarities/Wiki tables.
+# Contemporary reports place Ashiok in Erebos:
+# https://www.reddit.com/r/mtgfinance/comments/f7d7qe/psa_liliana_confirmed_in_the_erebos_secret_lair/
+# https://www.reddit.com/r/mtgfinance/comments/f67grh/
+name: SLD Theros Stargazing Vol IV Purphoros Bonus
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    rawquery: e:{set} number:512,513,514,515,521,522,523,527,533,534,535
+    count: 11
+    foil: true
