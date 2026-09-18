@@ -1,0 +1,22 @@
+# Preserve existing explicit membership, finishes and relative weights; all weights are inherited estimates, not measured pull rates. Move the complete slot into one drop-specific booster.
+# Source: https://www.reddit.com/r/magicTCG/comments/1jlf8ee/
+# Source: https://www.reddit.com/r/mtg/comments/1jo791x/
+name: SLD Spongebob Squarepants Lands Under the Sea Bonus (Foil)
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number:"7012"
+      count: 1
+      chance: 171
+    - rawquery: e:{set} number:"7009"
+      count: 1
+      chance: 1
+    - rawquery: e:{set} number:"7010"
+      count: 1
+      chance: 8
+    - rawquery: e:{set} number:"7011"
+      count: 1
+      chance: 20

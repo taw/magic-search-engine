@@ -1,0 +1,15 @@
+# Preserve existing explicit membership, finishes and relative weights; all weights are inherited estimates, not measured pull rates. Move the complete slot into one drop-specific booster.
+# Source: https://www.reddit.com/r/secretlair_collectors/comments/1md0tya/
+name: SLD Featuring Deathburger Bonus (Foil)
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number:"818"
+      count: 1
+      chance: 1
+    - rawquery: e:{set} number:"888,889,890,891,892"
+      count: 5
+      chance: 99

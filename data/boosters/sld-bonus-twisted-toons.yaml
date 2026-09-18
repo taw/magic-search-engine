@@ -1,0 +1,25 @@
+# Preserve existing explicit membership, finishes and relative weights; all weights are inherited estimates, not measured pull rates. Move the complete slot into one drop-specific booster.
+# Source: https://www.tcdb.com/ViewSet.cfm/sid/569192/2025-Magic%3A-The-Gathering-Secret-Lair%3A-Twisted-Toons
+# Source: https://www.reddit.com/r/magicTCG/comments/1lerj02/
+name: SLD Twisted Toons Bonus (Foil)
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number:"881"
+      count: 1
+      chance: 2
+    - rawquery: e:{set} number:"882"
+      count: 1
+      chance: 2
+    - rawquery: e:{set} number:"883"
+      count: 1
+      chance: 1
+    - rawquery: e:{set} number:"884"
+      count: 1
+      chance: 5
+    - rawquery: e:{set} number:"885"
+      count: 1
+      chance: 5

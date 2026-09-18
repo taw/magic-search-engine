@@ -1,0 +1,22 @@
+# Preserve existing explicit membership, finishes and relative weights; all weights are inherited estimates, not measured pull rates. Move the complete slot into one drop-specific booster.
+# Source: https://www.reddit.com/r/secretlair_collectors/comments/1tf4ge2/
+# Source: https://www.lairtracker.com/secret-lair/187468
+name: SLD Brain Dead New Earth Mentality Bonus (Foil)
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number:"7107"
+      count: 1
+      chance: 49
+    - rawquery: e:{set} number:"7105"
+      count: 1
+      chance: 25
+    - rawquery: e:{set} number:"7106"
+      count: 1
+      chance: 25
+    - rawquery: e:{set} number:"7108"
+      count: 1
+      chance: 1

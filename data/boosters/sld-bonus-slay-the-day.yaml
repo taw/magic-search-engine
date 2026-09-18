@@ -1,0 +1,17 @@
+# Correct the wrong Human/May Zombie assignment to five reported Zombies plus Seven Dwarves 817. Equal regular weights and 2% rare replacement are estimates.
+# Source: https://www.reddit.com/r/SecretLairMTG/comments/1thpe73/
+# Source: https://www.reddit.com/r/SecretLairMTG/comments/1u15eqa/
+# Source: https://www.reddit.com/r/magicTCG/comments/1ljefqr/
+name: SLD Slay the Day Bonus (Foil)
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number:"834,847,851,853,857"
+      count: 5
+      chance: 98
+    - rawquery: e:{set} number:"817"
+      count: 1
+      chance: 2
