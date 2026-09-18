@@ -1,3 +1,6 @@
+# The eight starter-only cards are unavailable in ordinary boosters.
+# https://www.magiclibrarities.net/411-rarities-starter-1999-2-player-starter-set-cards-english-cards-index.html
+filter: "e:{set} -number:/^(15|24|42|50|87|103|112|152)$/"
 pack:
   basic: 2
   common: 9
