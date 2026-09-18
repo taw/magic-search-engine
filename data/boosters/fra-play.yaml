@@ -3,44 +3,9 @@
 # Sources:
 # - https://magic.wizards.com/en/news/feature/collecting-reality-fracture
 # - https://scryfall.com/sets/fra
-# - https://scryfall.com/sets/spg  (Special Guests, FRA batch = #159-168)
-# Collector number map and the echoed pairs table were built from Scryfall (pairs matched by shared
-# artist; usually one half carries the Echoverse watermark). Slot rates quoted below are the article's.
+# - https://scryfall.com/sets/spg
 #
-# 14 cards + token: 6 common (1 in 55: 5 common + Special Guest), 1 uncommon, 1 common/uncommon,
-# 3 echoed pairs, 1 rare/mythic, 1 traditional foil, 1 land.
-#
-# Booster Fun that can appear in Play Boosters, all alt-art printings of main-set cards:
-#   borderless echoed pairs 291-320 (10U 14R 6M), shattered mirror 321-333 (5R 8M, non-foil only),
-#   sculptor's stronghold 334-358 (18R 7M), braintwister 359-381 (5U 15R 3M), portal view lands 397-401 (5R).
-# Every treated card has exactly one treatment: 5 of 43 uncommons, 43 of 50 rares, 18 of 20 mythics
-# (the 7 + 2 without one are exactly the extended-art cards, which are Collector-only). So the fold is
-# simple: each card of a rarity gets the same total weight T, a treatment printing weighs w and the
-# regular printing of a treated card T - w. The article's numbers give w = T/8 for rares and mythics
-# and w = T/3 for the uncommon braintwisters (3.8% in the uncommon slot = 5 cards * 1/43 * 1/3).
-# Rare/mythic slot check: regular R = (7*16 + 43*14)/960 = 74.4%, regular M = (2*8 + 18*7)/960 = 14.8%,
-# stronghold R = 36/960 = 3.8%, braintwister R = 30/960 = 3.1%, shattered mirror R = portal view = 1.0%.
-#
-# Echoed pairs slot: one pack variant per pair, drawing the pair as a fixed 2-card sheet plus a third
-# echoed card from the pool minus that pair (the engine only dedups within a sheet). Assumption: the two
-# halves always share a treatment -- a pair is either both regular or both borderless (the borderless
-# art spans the two cards; the Collector Booster line reads as 33 regular + 5 borderless uncommon pairs
-# drawn as pairs). Pair variants are weighted uncommon 5 : rare 2 : mythic 1, times regular 7 : borderless 1
-# (x8 for pairs without a borderless version), and the third card uses the same 5:2:1 per-card weights
-# with a per-card 7:1 borderless fold, so all three cards share one distribution:
-#   per card  U = 66*5/364 = 90.7%  R = 7.7%  M = 1.6%
-#   regular   U = 90.7% * (56 + 10*7/8)/66 = 88.9%   R = 7.7% * 7/8 = 6.7%   M = 1.4%     (article: 88.9 / 6.7 / 1.4)
-#   borderless U = 1.7%  R = 1.0%  M = 0.2%                                              (article: 1.7 / <1 / <1)
-# If mixed pairs turn out to exist, swap each pair's two fixed sheets for two single-card sheets with a
-# per-card 7:1 fold (see the git history of this file for that version).
-#
-# Foil slot: per-card weights C 40 : U 22 : R 6 : M 3, i.e. the article's regular shares (49.5 / 40.5 / 6 / 1.2)
-# grossed up by each sheet's regular fraction (U 0.964, R 0.898, M 0.923), echoed cards counted with their
-# rarity as the article does (109U / 64R / 26M). Booster Fun rides along at < 1% each. Shattered mirror
-# cards are non-foil only in Play Boosters, so the foil slot uses foil_rare / foil_mythic, where those 13
-# cards count as untreated.
-#
-# Data caveat (2026-09-18): mtgjson still lacks 12 echoed cards (6 pairs), and a fixed pair sheet that finds
+# TODO: Data caveat (2026-09-18): mtgjson still lacks 12 echoed cards (6 pairs), and a fixed pair sheet that finds
 # nothing would crash the pack, so those pairs are commented out until the data arrives:
 # Rescue Girl, Saheeli, Tomik, Jace/Tam, Samut, Marwyn. count: warnings on other sheets are the usual
 # spoiler-season gaps. is:baseset is not relied on anywhere (mtgjson's preview baseSetSize is wrong;
@@ -256,8 +221,7 @@ queries:
   tower_land: "e:{set} number:382-396"
   echoed_regular: "e:{set} number:195-280"
   echoed_borderless: "e:{set} number:291-320"
-  # Shattered mirror, sculptor's stronghold, braintwister, portal view lands (the only uncommons in
-  # this range are the 5 braintwisters)
+  # Shattered mirror, sculptor's stronghold, braintwister, portal view lands
   boosterfun: "e:{set} number:321-381,397-401"
   # The same minus shattered mirror, which has no traditional foil printing
   foil_boosterfun: "e:{set} number:334-381,397-401"
@@ -267,7 +231,6 @@ sheets:
     query: "{regular} r:c -{dual_land}"
     count: 71
 
-  # T = 3, braintwister w = 1
   uncommon:
     any:
     - query: "{boosterfun} r:u"
@@ -280,7 +243,6 @@ sheets:
       rate: 3
       count: 38
 
-  # T = 8, treatment w = 1
   rare:
     any:
     - query: "{boosterfun} r:r"
@@ -331,9 +293,8 @@ sheets:
       rate: 8
       count: 10
 
-  # Echoed cards by rarity, with the per-card 7:1 borderless fold (T = 8). Used by the foil slot and,
-  # through echoed_third, by the third card of the echoed pairs slot. Counts are asserted by the users
-  # (each per-pair sheet is 2 or 4 printings short), not here.
+  # Echoed cards by rarity, with the per-card 7:1 borderless fold. Used by the foil slot and,
+  # through echoed_third, by the third card of the echoed pairs slot.
   echoed_uncommon:
     any:
     - query: "{echoed_borderless} r:u" # 10 cards
@@ -404,7 +365,6 @@ sheets:
       chance: 6 * 3
       count: 12
 
-  # 10 basics : 15 tower basics : 10 common duals at triple weight = 18.2% / 27.3% / 54.5%
   non_foil_land:
     any:
     - query: "{basic_land}"
