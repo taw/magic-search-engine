@@ -3,6 +3,7 @@
 class PatchBaseSize < Patch
   def call
     sizes = {
+      "fra" => 290, # up to and including the default-frame basic lands (281-290)
     }
 
     sizes.each do |code, size|
