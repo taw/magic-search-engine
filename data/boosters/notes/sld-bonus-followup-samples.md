@@ -19,3 +19,7 @@ These are individual observations and candidate-pool leads, not an exhaustive co
 | Their Magic is Limitless | [Firsthand convention openings](https://www.reddit.com/r/SecretLairMTG/comments/1v10lod/their_magic_is_limitless_drop_starts_tomorrow/) identify one foil token plus foil Llanowar Elves, including nonfoil boxes. [Later quantity discussion](https://www.reddit.com/r/secretlair_collectors/comments/1vgpwke/3_or_1/) describes three tokens as an apparent packing error. | A named opening showing token **7170**, illustrated by Ejiwa “Edge” Ebenebe. Its existence is supported by a [catalog record](https://tcgadvance.com/cards/page/ecbfc4bf-56be-4275-b36b-c2c57f93ad15/) and retail listings, but those alone do not prove insertion into this particular drop. |
 
 The most useful corroboration format is: **drop name · foil/nonfoil box · bonus collector number · bonus finish · photo or timestamp**. A purchase/order containing several drops does not assign each bonus to a particular envelope. Do not infer equal eligibility across the superdrop from that alone.
+
+## Focused follow-up outcome
+
+[Little Witch and cat-drop follow-up](sld-witch-cats-followup.md) supersedes the three corresponding rows above: Wilhelt is now traced to a Little Witch buyer, and Serra Ascendant is reported from each cat drop. Three per-drop boosters now model the supported current pools with explicit estimated weights. Secondary-only attributions and unmeasured rates remain documented research limitations.
