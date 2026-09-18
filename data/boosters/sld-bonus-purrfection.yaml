@@ -1,0 +1,21 @@
+# Drop-specific observed bonus pool; all outcomes contain one foil card.
+# Estimated weights: equal within categories; 5% Blueprints, 2% special replacements
+# where listed. These are modeling conventions, not measured per-drop odds.
+# See data/boosters/notes/sld-bonus-2021-2022.md for evidence and remaining limits.
+# https://www.reddit.com/r/mtgfinance/comments/s1l71y/
+name: SLD Purrfection Bonus
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number:576
+      count: 1
+      chance: 93
+    - rawquery: e:{set} number:605
+      count: 1
+      chance: 5
+    - rawquery: e:{set} number:598
+      count: 1
+      chance: 2

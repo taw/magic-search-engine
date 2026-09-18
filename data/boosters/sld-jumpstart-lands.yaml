@@ -1,89 +1,15 @@
-# Secret Lair "Foil Jumpstart Lands" bonus pool -- the 2021-2022 era.
-# The 2021 and early-2022 Secret Lair drops came with a random foil thematic
-# basic land from Jumpstart (Scryfall's "Foil Jumpstart Lands" grouping). This is
-# the general pool; lands whose bonus assignment is tied to a specific drop keep
-# their per-product entries in mtg-sealed-content.
-# Drop rates estimated from foil price differences within the pool
-# (inverse-price, top card normalized to 1).
-name: "SLD Foil Jumpstart Lands (2021-2022)"
+# Legacy fallback for products whose drop-specific pool is unresolved.
+# This is a catalog union, NOT evidence that every consumer can contain every card.
+# Prefer sld-bonus-<drop> definitions where available. Do not infer eligibility
+# from shipping dates or exclude cards merely because another drop also uses them.
+# Uniform weights are an explicit estimate; the old inverse-price weights were
+# not observed collation. No price-derived rarity is retained.
+# https://www.reddit.com/r/magicTCG/comments/swenls/secret_lair_october_super_drop_bonus_card/
+name: SLD Jumpstart Land Catalog Fallback
 pack:
-  lands: 1
+  bonus: 1
 sheets:
-  lands:
+  bonus:
+    rawquery: e:{set} number:540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,576,577,578,579
+    count: 40
     foil: true
-    any:
-    - rawquery: "e:{set} number:569" # Mountain
-      count: 1
-      chance: 17
-    - rawquery: "e:{set} number:568" # Mountain
-      count: 1
-      chance: 13
-    - rawquery: "e:{set} number:549" # Island
-      count: 1
-      chance: 13
-    - rawquery: "e:{set} number:548" # Island
-      count: 1
-      chance: 11
-    - rawquery: "e:{set} number:577" # Forest
-      count: 1
-      chance: 8
-    - rawquery: "e:{set} number:574" # Forest
-      count: 1
-      chance: 8
-    - rawquery: "e:{set} number:559" # Swamp
-      count: 1
-      chance: 7
-    - rawquery: "e:{set} number:546" # Plains
-      count: 1
-      chance: 7
-    - rawquery: "e:{set} number:576" # Forest
-      count: 1
-      chance: 6
-    - rawquery: "e:{set} number:579" # Forest
-      count: 1
-      chance: 6
-    - rawquery: "e:{set} number:541" # Plains
-      count: 1
-      chance: 5
-    - rawquery: "e:{set} number:554" # Island
-      count: 1
-      chance: 5
-    - rawquery: "e:{set} number:550" # Island
-      count: 1
-      chance: 5
-    - rawquery: "e:{set} number:544" # Plains
-      count: 1
-      chance: 5
-    - rawquery: "e:{set} number:542" # Plains
-      count: 1
-      chance: 5
-    - rawquery: "e:{set} number:578" # Forest
-      count: 1
-      chance: 4
-    - rawquery: "e:{set} number:564" # Mountain
-      count: 1
-      chance: 4
-    - rawquery: "e:{set} number:567" # Mountain
-      count: 1
-      chance: 3
-    - rawquery: "e:{set} number:545" # Plains
-      count: 1
-      chance: 3
-    - rawquery: "e:{set} number:575" # Forest
-      count: 1
-      chance: 3
-    - rawquery: "e:{set} number:540" # Plains
-      count: 1
-      chance: 3
-    - rawquery: "e:{set} number:565" # Mountain
-      count: 1
-      chance: 3
-    - rawquery: "e:{set} number:543" # Plains
-      count: 1
-      chance: 2
-    - rawquery: "e:{set} number:570" # Mountain
-      count: 1
-      chance: 1
-    - rawquery: "e:{set} number:547" # Plains
-      count: 1
-      chance: 1

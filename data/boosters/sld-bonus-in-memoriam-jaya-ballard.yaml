@@ -1,0 +1,20 @@
+# Drop-specific observed bonus pool; all outcomes contain one foil card.
+# Estimated weights: equal within categories; 5% Blueprints, 2% special replacements
+# where listed. These are modeling conventions, not measured per-drop odds.
+# See data/boosters/notes/sld-bonus-2021-2022.md for evidence and remaining limits.
+# https://www.reddit.com/r/magicTCG/comments/ylktj8/august_2022_superdrop_secret_lair_bonus_card/
+# https://www.reddit.com/r/magicTCG/comments/z0yuv5/
+# Nonfoil EU opening reports Hedron Archive in addition to Tangle Wire.
+name: SLD In Memoriam Jaya Ballard Bonus
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number:636,641,643,644,645
+      count: 5
+      chance: 95
+    - rawquery: e:{set} number:691,694
+      count: 2
+      chance: 5

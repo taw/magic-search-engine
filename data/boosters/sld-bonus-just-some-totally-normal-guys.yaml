@@ -1,0 +1,18 @@
+# Drop-specific observed bonus pool; all outcomes contain one foil card.
+# Estimated weights: equal within categories; 5% Blueprints, 2% special replacements
+# where listed. These are modeling conventions, not measured per-drop odds.
+# See data/boosters/notes/sld-bonus-2021-2022.md for evidence and remaining limits.
+# https://www.reddit.com/r/magicTCG/comments/wn4l06/secret_lair_april_2022_bonus_card_compilation/
+name: SLD Just Some Totally Normal Guys Bonus
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number:618,643,650,652,667
+      count: 5
+      chance: 95
+    - rawquery: e:{set} number:692,694,695
+      count: 3
+      chance: 5

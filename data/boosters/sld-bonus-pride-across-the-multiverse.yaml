@@ -1,0 +1,19 @@
+# Drop-specific observed bonus pool; all outcomes contain one foil card.
+# Estimated weights: equal within categories; 5% Blueprints, 2% special replacements
+# where listed. These are modeling conventions, not measured per-drop odds.
+# See data/boosters/notes/sld-bonus-2021-2022.md for evidence and remaining limits.
+# https://www.reddit.com/r/magicTCG/comments/xo66wh/june_2022_superdrop_secret_lair_bonus_card/
+# Commenter reports Rogue's Passage replacing a walker; 5% replacement weight is estimated.
+name: SLD Pride Across The Multiverse Bonus
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number:530,534
+      count: 2
+      chance: 95
+    - rawquery: e:{set} number:607
+      count: 1
+      chance: 5
