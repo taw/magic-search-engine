@@ -1,0 +1,15 @@
+# Drop-specific evidence and exclusions: notes/sld-bonus-2025-2026.md
+# Weights are estimates, not measured odds. Both editions share this working pool.
+name: SLD Pick Em and Stick Em Bonus (Foil)
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number:838,841,849,851
+      count: 4
+      chance: 98
+    - rawquery: e:{set} number:813
+      count: 1
+      chance: 2
