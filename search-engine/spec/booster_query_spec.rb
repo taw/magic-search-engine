@@ -18,7 +18,7 @@ describe "booster:" do
   end
 
   it "supports star anywhere in the code" do
-    assert_search_equal "booster:*-compleat", "booster:one-compleat"
+    assert_search_equal "booster:*-compleat", "booster:one-compleat or booster:sld-bonus-showcase-all-will-be-one-step-and-compleat"
     assert_search_equal "booster:*-arena e:war", "booster:war-arena"
     assert_search_equal "booster:*-arena e:blb", "booster:blb-play-arena e:blb"
     assert_search_equal "booster:*arena* e:sir", "booster:sir-* e:sir"
