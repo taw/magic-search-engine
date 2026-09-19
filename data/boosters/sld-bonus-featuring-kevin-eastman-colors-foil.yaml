@@ -1,0 +1,18 @@
+# Per-edition checklists: notes/sld-bonus-2025-2026.md
+# Regular bonus matches the edition; both Slime replacements are always foil.
+# Estimated 2% total replacement probability, split equally; not measured rates.
+name: SLD Featuring Kevin Eastman Colors Bonus (Foil)
+pack:
+- regular: 1
+  chance: 98
+- slime: 1
+  chance: 2
+sheets:
+  regular:
+    rawquery: e:{set} number:7072
+    foil: true
+    count: 1
+  slime:
+    rawquery: e:{set} number:7077,7078
+    foil: true
+    count: 2
