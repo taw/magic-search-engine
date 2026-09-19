@@ -11,6 +11,10 @@
 # spoiler-season gaps. is:baseset is not relied on anywhere (mtgjson's preview baseSetSize is wrong;
 # patch_base_size.rb pins it to 290 meanwhile).
 
+# Based on this video we assume that if one of the echoes cards is borderless, the pair is too.
+# https://www.youtube.com/watch?v=yxTLbyAiwu8&t=400
+
+
 filter: "e:{set}"
 
 pack:
