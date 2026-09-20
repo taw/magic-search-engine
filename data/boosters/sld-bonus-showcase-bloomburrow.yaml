@@ -1,10 +1,15 @@
 # Observed per-drop membership: notes/sld-bonus-2023-2024.md#showcase-bloomburrow
-# Equal ordinary weights are estimates.
+# Equal ordinary weights and 2% chase probability are estimates.
 name: SLD Showcase Bloomburrow Bonus
 pack:
   bonus: 1
 sheets:
   bonus:
     foil: true
-    rawquery: e:{set} number:776,786
-    count: 2
+    any:
+    - rawquery: e:{set} number:776,786
+      count: 2
+      chance: 98
+    - rawquery: e:{set} number:752
+      count: 1
+      chance: 2
