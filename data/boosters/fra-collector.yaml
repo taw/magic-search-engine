@@ -23,14 +23,12 @@ pack:
   - pair_koth: 2
     third_not_koth: 1
     chance: 1
-  # Rescue Girl, First Responder / Massacre Girl, Most Wanted: not in card data yet
-  # - pair_rescue_girl: 2
-  #   third_not_rescue_girl: 1
-  #   chance: 1
-  # Saheeli, Consul of Oversight / Saheeli, Jewel of Avishkar: not in card data yet
-  # - pair_saheeli: 2
-  #   third_not_saheeli: 1
-  #   chance: 1
+  - pair_rescue_girl: 2
+    third_not_rescue_girl: 1
+    chance: 1
+  - pair_saheeli: 2
+    third_not_saheeli: 1
+    chance: 1
   - pair_teyo: 2
     third_not_teyo: 1
     chance: 1
@@ -43,10 +41,9 @@ pack:
   - pair_thalia_borderless: 2
     third_not_thalia: 1
     chance: 1
-  # Tomik, Orzhov Lawmage / Tomik, Izzet Sparkmage: not in card data yet
-  # - pair_tomik: 2
-  #   third_not_tomik: 1
-  #   chance: 1
+  - pair_tomik: 2
+    third_not_tomik: 1
+    chance: 1
   - pair_way_healer: 2
     third_not_way_healer: 1
     chance: 1
@@ -119,13 +116,12 @@ pack:
   - pair_kiora: 2
     third_not_kiora: 1
     chance: 1
-  # Marwyn, the Clearcutter / Marwyn, the Preserver: not in card data yet
-  # - pair_marwyn: 2
-  #   third_not_marwyn: 1
-  #   chance: 1
-  # - pair_marwyn_borderless: 2
-  #   third_not_marwyn: 1
-  #   chance: 1
+  - pair_marwyn: 2
+    third_not_marwyn: 1
+    chance: 1
+  - pair_marwyn_borderless: 2
+    third_not_marwyn: 1
+    chance: 1
   - pair_pia: 2
     third_not_pia: 1
     chance: 1
@@ -303,25 +299,25 @@ sheets:
     filter: "e:{set} -name:\"Koth of the Homestead\" -name:\"Koth, the Geomancer\""
     count: 74
 
-  # pair_rescue_girl:
-  #   foil: true
-  #   fixed: true
-  #   query: "number:202,234"
-  #   count: 2
-  # third_not_rescue_girl:
-  #   use: foil_echoed_uncommon
-  #   filter: "e:{set} -name:\"Rescue Girl, First Responder\" -name:\"Massacre Girl, Most Wanted\""
-  #   count: 74
+  pair_rescue_girl:
+    foil: true
+    fixed: true
+    query: "number:202,234"
+    count: 2
+  third_not_rescue_girl:
+    use: foil_echoed_uncommon
+    filter: "e:{set} -name:\"Rescue Girl, First Responder\" -name:\"Massacre Girl, Most Wanted\""
+    count: 74
 
-  # pair_saheeli:
-  #   foil: true
-  #   fixed: true
-  #   query: "number:203,275"
-  #   count: 2
-  # third_not_saheeli:
-  #   use: foil_echoed_uncommon
-  #   filter: "e:{set} -name:\"Saheeli, Consul of Oversight\" -name:\"Saheeli, Jewel of Avishkar\""
-  #   count: 74
+  pair_saheeli:
+    foil: true
+    fixed: true
+    query: "number:203,275"
+    count: 2
+  third_not_saheeli:
+    use: foil_echoed_uncommon
+    filter: "e:{set} -name:\"Saheeli, Consul of Oversight\" -name:\"Saheeli, Jewel of Avishkar\""
+    count: 74
 
   pair_teyo:
     foil: true
@@ -353,15 +349,15 @@ sheets:
     filter: "e:{set} -name:\"Thalia, the Survivor\" -name:\"Geist of Saint Thalia\""
     count: 72
 
-  # pair_tomik:
-  #   foil: true
-  #   fixed: true
-  #   query: "number:206,253"
-  #   count: 2
-  # third_not_tomik:
-  #   use: foil_echoed_uncommon
-  #   filter: "e:{set} -name:\"Tomik, Orzhov Lawmage\" -name:\"Tomik, Izzet Sparkmage\""
-  #   count: 74
+  pair_tomik:
+    foil: true
+    fixed: true
+    query: "number:206,253"
+    count: 2
+  third_not_tomik:
+    use: foil_echoed_uncommon
+    filter: "e:{set} -name:\"Tomik, Orzhov Lawmage\" -name:\"Tomik, Izzet Sparkmage\""
+    count: 74
 
   pair_way_healer:
     foil: true
@@ -593,20 +589,20 @@ sheets:
     filter: "e:{set} -name:\"Kiora of Fire and Ashes\" -name:\"Kiora of Salt and Sand\""
     count: 74
 
-  # pair_marwyn:
-  #   foil: true
-  #   fixed: true
-  #   query: "number:249,263"
-  #   count: 2
-  # pair_marwyn_borderless:
-  #   foil: true
-  #   fixed: true
-  #   query: "number:310,315"
-  #   count: 2
-  # third_not_marwyn:
-  #   use: foil_echoed_uncommon
-  #   filter: "e:{set} -name:\"Marwyn, the Clearcutter\" -name:\"Marwyn, the Preserver\""
-  #   count: 72
+  pair_marwyn:
+    foil: true
+    fixed: true
+    query: "number:249,263"
+    count: 2
+  pair_marwyn_borderless:
+    foil: true
+    fixed: true
+    query: "number:310,315"
+    count: 2
+  third_not_marwyn:
+    use: foil_echoed_uncommon
+    filter: "e:{set} -name:\"Marwyn, the Clearcutter\" -name:\"Marwyn, the Preserver\""
+    count: 72
 
   pair_pia:
     foil: true

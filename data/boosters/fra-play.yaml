@@ -5,15 +5,9 @@
 # - https://scryfall.com/sets/fra
 # - https://scryfall.com/sets/spg
 #
-# TODO: Data caveat (2026-09-18): mtgjson still lacks 12 echoed cards (6 pairs), and a fixed pair sheet that finds
-# nothing would crash the pack, so those pairs are commented out until the data arrives:
-# Rescue Girl, Saheeli, Tomik, Jace/Tam, Samut, Marwyn. count: warnings on other sheets are the usual
-# spoiler-season gaps. is:baseset is not relied on anywhere (mtgjson's preview baseSetSize is wrong;
-# patch_base_size.rb pins it to 290 meanwhile).
 
 # Based on this video we assume that if one of the echoes cards is borderless, the pair is too.
 # https://www.youtube.com/watch?v=yxTLbyAiwu8&t=400
-
 
 filter: "e:{set}"
 
@@ -65,20 +59,18 @@ pack:
   - pair_lyra_borderless: 2
     third_not_lyra: 1
     chance: 2 * 1
-  # Jace, Reality Sculptor / Tam, the Possibility: not in card data yet
-  # - pair_jace_tam: 2
-  #   third_not_jace_tam: 1
-  #   chance: 2 * 7
-  # - pair_jace_tam_borderless: 2
-  #   third_not_jace_tam: 1
-  #   chance: 2 * 1
-  # Samut, Tyrant of Naktamun / Samut, Hazoret's Champion: not in card data yet
-  # - pair_samut: 2
-  #   third_not_samut: 1
-  #   chance: 2 * 7
-  # - pair_samut_borderless: 2
-  #   third_not_samut: 1
-  #   chance: 2 * 1
+  - pair_jace_tam: 2
+    third_not_jace_tam: 1
+    chance: 2 * 7
+  - pair_jace_tam_borderless: 2
+    third_not_jace_tam: 1
+    chance: 2 * 1
+  - pair_samut: 2
+    third_not_samut: 1
+    chance: 2 * 7
+  - pair_samut_borderless: 2
+    third_not_samut: 1
+    chance: 2 * 1
   - pair_karn: 2
     third_not_karn: 1
     chance: 2 * 7
@@ -101,14 +93,12 @@ pack:
   - pair_koth: 2
     third_not_koth: 1
     chance: 5 * 8
-  # Rescue Girl, First Responder / Massacre Girl, Most Wanted: not in card data yet
-  # - pair_rescue_girl: 2
-  #   third_not_rescue_girl: 1
-  #   chance: 5 * 8
-  # Saheeli, Consul of Oversight / Saheeli, Jewel of Avishkar: not in card data yet
-  # - pair_saheeli: 2
-  #   third_not_saheeli: 1
-  #   chance: 5 * 8
+  - pair_rescue_girl: 2
+    third_not_rescue_girl: 1
+    chance: 5 * 8
+  - pair_saheeli: 2
+    third_not_saheeli: 1
+    chance: 5 * 8
   - pair_teyo: 2
     third_not_teyo: 1
     chance: 5 * 7
@@ -121,10 +111,9 @@ pack:
   - pair_thalia_borderless: 2
     third_not_thalia: 1
     chance: 5 * 1
-  # Tomik, Orzhov Lawmage / Tomik, Izzet Sparkmage: not in card data yet
-  # - pair_tomik: 2
-  #   third_not_tomik: 1
-  #   chance: 5 * 8
+  - pair_tomik: 2
+    third_not_tomik: 1
+    chance: 5 * 8
   - pair_way_healer: 2
     third_not_way_healer: 1
     chance: 5 * 8
@@ -197,13 +186,12 @@ pack:
   - pair_kiora: 2
     third_not_kiora: 1
     chance: 5 * 8
-  # Marwyn, the Clearcutter / Marwyn, the Preserver: not in card data yet
-  # - pair_marwyn: 2
-  #   third_not_marwyn: 1
-  #   chance: 5 * 7
-  # - pair_marwyn_borderless: 2
-  #   third_not_marwyn: 1
-  #   chance: 5 * 1
+  - pair_marwyn: 2
+    third_not_marwyn: 1
+    chance: 5 * 7
+  - pair_marwyn_borderless: 2
+    third_not_marwyn: 1
+    chance: 5 * 1
   - pair_pia: 2
     third_not_pia: 1
     chance: 5 * 8
@@ -470,31 +458,31 @@ sheets:
     filter: "e:{set} -name:\"Lyra, Archangel of Dawn\" -name:\"Lyra, Tolarian Archangel\""
     count: 112
 
-  # pair_jace_tam:
-  #   fixed: true
-  #   query: "number:216,276"
-  #   count: 2
-  # pair_jace_tam_borderless:
-  #   fixed: true
-  #   query: "number:300,317"
-  #   count: 2
-  # third_not_jace_tam:
-  #   use: echoed_third
-  #   filter: "e:{set} -name:\"Jace, Reality Sculptor\" -name:\"Tam, the Possibility\""
-  #   count: 112
+  pair_jace_tam:
+    fixed: true
+    query: "number:216,276"
+    count: 2
+  pair_jace_tam_borderless:
+    fixed: true
+    query: "number:300,317"
+    count: 2
+  third_not_jace_tam:
+    use: echoed_third
+    filter: "e:{set} -name:\"Jace, Reality Sculptor\" -name:\"Tam, the Possibility\""
+    count: 112
 
-  # pair_samut:
-  #   fixed: true
-  #   query: "number:220,251"
-  #   count: 2
-  # pair_samut_borderless:
-  #   fixed: true
-  #   query: "number:302,311"
-  #   count: 2
-  # third_not_samut:
-  #   use: echoed_third
-  #   filter: "e:{set} -name:\"Samut, Tyrant of Naktamun\" -name:\"Samut, Hazoret's Champion\""
-  #   count: 112
+  pair_samut:
+    fixed: true
+    query: "number:220,251"
+    count: 2
+  pair_samut_borderless:
+    fixed: true
+    query: "number:302,311"
+    count: 2
+  third_not_samut:
+    use: echoed_third
+    filter: "e:{set} -name:\"Samut, Tyrant of Naktamun\" -name:\"Samut, Hazoret's Champion\""
+    count: 112
 
   pair_karn:
     fixed: true
@@ -550,23 +538,23 @@ sheets:
     filter: "e:{set} -name:\"Koth of the Homestead\" -name:\"Koth, the Geomancer\""
     count: 114
 
-  # pair_rescue_girl:
-  #   fixed: true
-  #   query: "number:202,234"
-  #   count: 2
-  # third_not_rescue_girl:
-  #   use: echoed_third
-  #   filter: "e:{set} -name:\"Rescue Girl, First Responder\" -name:\"Massacre Girl, Most Wanted\""
-  #   count: 114
+  pair_rescue_girl:
+    fixed: true
+    query: "number:202,234"
+    count: 2
+  third_not_rescue_girl:
+    use: echoed_third
+    filter: "e:{set} -name:\"Rescue Girl, First Responder\" -name:\"Massacre Girl, Most Wanted\""
+    count: 114
 
-  # pair_saheeli:
-  #   fixed: true
-  #   query: "number:203,275"
-  #   count: 2
-  # third_not_saheeli:
-  #   use: echoed_third
-  #   filter: "e:{set} -name:\"Saheeli, Consul of Oversight\" -name:\"Saheeli, Jewel of Avishkar\""
-  #   count: 114
+  pair_saheeli:
+    fixed: true
+    query: "number:203,275"
+    count: 2
+  third_not_saheeli:
+    use: echoed_third
+    filter: "e:{set} -name:\"Saheeli, Consul of Oversight\" -name:\"Saheeli, Jewel of Avishkar\""
+    count: 114
 
   pair_teyo:
     fixed: true
@@ -594,14 +582,14 @@ sheets:
     filter: "e:{set} -name:\"Thalia, the Survivor\" -name:\"Geist of Saint Thalia\""
     count: 112
 
-  # pair_tomik:
-  #   fixed: true
-  #   query: "number:206,253"
-  #   count: 2
-  # third_not_tomik:
-  #   use: echoed_third
-  #   filter: "e:{set} -name:\"Tomik, Orzhov Lawmage\" -name:\"Tomik, Izzet Sparkmage\""
-  #   count: 114
+  pair_tomik:
+    fixed: true
+    query: "number:206,253"
+    count: 2
+  third_not_tomik:
+    use: echoed_third
+    filter: "e:{set} -name:\"Tomik, Orzhov Lawmage\" -name:\"Tomik, Izzet Sparkmage\""
+    count: 114
 
   pair_way_healer:
     fixed: true
@@ -809,18 +797,18 @@ sheets:
     filter: "e:{set} -name:\"Kiora of Fire and Ashes\" -name:\"Kiora of Salt and Sand\""
     count: 114
 
-  # pair_marwyn:
-  #   fixed: true
-  #   query: "number:249,263"
-  #   count: 2
-  # pair_marwyn_borderless:
-  #   fixed: true
-  #   query: "number:310,315"
-  #   count: 2
-  # third_not_marwyn:
-  #   use: echoed_third
-  #   filter: "e:{set} -name:\"Marwyn, the Clearcutter\" -name:\"Marwyn, the Preserver\""
-  #   count: 112
+  pair_marwyn:
+    fixed: true
+    query: "number:249,263"
+    count: 2
+  pair_marwyn_borderless:
+    fixed: true
+    query: "number:310,315"
+    count: 2
+  third_not_marwyn:
+    use: echoed_third
+    filter: "e:{set} -name:\"Marwyn, the Clearcutter\" -name:\"Marwyn, the Preserver\""
+    count: 112
 
   pair_pia:
     fixed: true
