@@ -40,15 +40,19 @@ sheets:
     set: plst
     code: "MBTWRM"
   future_sight:
+    # 15 Future Sight frame cards (243-257) only exist in nonfoil as Mystery Booster Commander Edition reprints,
+    # they were foil-only in Mystery Booster 2 boosters
     any:
-    - query: "frame:future is:nonfoil (r:c or r:u)"
+    - query: "frame:future is:nonfoil (r:c or r:u) -number:243-257"
       chance: 4
       count: 51
-    - query: "frame:future is:nonfoil (r:r or r:m)"
+    - query: "frame:future is:nonfoil (r:r or r:m) -number:243-257"
       chance: 6 # There is a 60% chance for a rare or mythic rare.
       count: 70
   future_sight_foil:
-    query: "frame:future is:foil"
+    # 17 Future Sight frame cards only exist in foil as Mystery Booster Commander Edition reprints,
+    # they were nonfoil-only in Mystery Booster 2 boosters
+    query: "frame:future is:foil -number:122,123,126,127,128,130,131,134,135,136,137,138,139,140,141,142,143"
     count: 114
     foil: true
   alchemy_acorn:
