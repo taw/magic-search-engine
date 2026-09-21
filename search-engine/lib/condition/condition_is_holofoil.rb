@@ -30,4 +30,8 @@ class ConditionIsHolofoil < ConditionSimple
   def to_s
     "is:holofoil"
   end
+
+  def explain
+    "the card's printing has the embossed holofoil sticker"
+  end
 end

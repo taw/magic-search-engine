@@ -6,4 +6,8 @@ class ConditionIsXmage < ConditionSimple
   def to_s
     "game:xmage"
   end
+
+  def explain
+    "the card is available on Xmage"
+  end
 end

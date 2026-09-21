@@ -44,6 +44,11 @@ class ConditionForeign < ConditionSimple
     "#{@lang}:#{maybe_quote(@query)}"
   end
 
+  def explain
+    field = @lang_match_all ? "the foreign name" : "the #{@lang} name"
+    @query_any ? "#{field} exists" : %[#{field} includes "#{@query}"]
+  end
+
   private
 
   def hard_normalize(s)

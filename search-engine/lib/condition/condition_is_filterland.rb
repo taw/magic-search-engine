@@ -29,4 +29,8 @@ class ConditionIsFilterland < ConditionNickname
   def to_s
     "is:filterland"
   end
+
+  def explain
+    "the card is a filterland"
+  end
 end

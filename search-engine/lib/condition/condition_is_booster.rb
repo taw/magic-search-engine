@@ -6,4 +6,8 @@ class ConditionIsBooster < ConditionSimple
   def to_s
     "is:booster"
   end
+
+  def explain
+    "the card appears in randomized boosters"
+  end
 end

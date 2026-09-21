@@ -15,4 +15,8 @@ class ConditionPromoType < ConditionSimple
   def to_s
     "promo:#{@promo_type}"
   end
+
+  def explain
+    @any ? "the card has a promo type" : "the card is a #{@promo_type} promo"
+  end
 end

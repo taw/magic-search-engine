@@ -6,4 +6,8 @@ class ConditionIsReprint < ConditionSimple
   def to_s
     "is:reprint"
   end
+
+  def explain
+    "the card is a reprint"
+  end
 end

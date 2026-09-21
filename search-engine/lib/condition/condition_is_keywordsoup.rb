@@ -34,4 +34,8 @@ class ConditionIsKeywordsoup < ConditionNickname
   def to_s
     "is:keywordsoup"
   end
+
+  def explain
+    "the card lists an unusually large number of keywords"
+  end
 end

@@ -6,4 +6,8 @@ class ConditionIsSpecialized < ConditionSimple
   def to_s
     "is:specialized"
   end
+
+  def explain
+    "the card is a specialized version of another card (Arena digital-only)"
+  end
 end

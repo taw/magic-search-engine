@@ -10,4 +10,8 @@ class ConditionIsDraft < ConditionSimple
   def to_s
     "is:draft"
   end
+
+  def explain
+    "the card cares about the draft process, including conspiracies"
+  end
 end

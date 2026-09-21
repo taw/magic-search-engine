@@ -6,4 +6,8 @@ class ConditionIsPaper < ConditionSimple
   def to_s
     "game:paper"
   end
+
+  def explain
+    "the card is available as a paper card"
+  end
 end

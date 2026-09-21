@@ -6,4 +6,8 @@ class ConditionInPaper < ConditionIn
   def to_s
     "in:paper"
   end
+
+  def explain
+    "the card has a printing available as a tournament-legal paper card"
+  end
 end

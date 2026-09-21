@@ -7,4 +7,8 @@ class ConditionIsDfc < ConditionSimple
   def to_s
     "is:dfc"
   end
+
+  def explain
+    "the card is double-faced (transform, meld, or modal)"
+  end
 end

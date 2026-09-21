@@ -16,4 +16,8 @@ class ConditionIsAnte < ConditionNickname
   def to_s
     "is:ante"
   end
+
+  def explain
+    "the card involves ante"
+  end
 end

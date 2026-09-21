@@ -17,4 +17,8 @@ class ConditionIsFetchland < ConditionNickname
   def to_s
     "is:fetchland"
   end
+
+  def explain
+    "the card is a fetchland"
+  end
 end

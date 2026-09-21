@@ -6,4 +6,8 @@ class ConditionIsFullart < ConditionSimple
   def to_s
     "is:fullart"
   end
+
+  def explain
+    "the card is a full art card"
+  end
 end

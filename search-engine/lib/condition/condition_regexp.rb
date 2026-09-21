@@ -10,8 +10,9 @@ class ConditionRegexp < ConditionSimple
 
   # No general paraphrase for a regex, so just name the field and quote the pattern -
   # same fallback Scryfall itself uses ("... where the text matches the regex /dragon/").
+  # Backtick-wrapped so the frontend renders it monospace, like inline code.
   def explain
-    "#{field_description} matches the regex /#{@regexp.source}/"
+    "#{field_description} matches the regex `/#{@regexp.source}/`"
   end
 
   private

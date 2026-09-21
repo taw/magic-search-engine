@@ -5,4 +5,8 @@ class ConditionIsProductlessetched < ConditionIsProductless
   def finish
     :etched
   end
+
+  def explain
+    "the card has no known product source (booster, precon, or promo) in etched finish"
+  end
 end

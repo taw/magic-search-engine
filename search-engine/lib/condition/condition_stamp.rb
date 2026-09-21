@@ -15,4 +15,8 @@ class ConditionStamp < ConditionSimple
   def to_s
     "stamp:#{maybe_quote(@stamp)}"
   end
+
+  def explain
+    @any ? "the card has a security stamp" : "the card has the #{@stamp} security stamp"
+  end
 end

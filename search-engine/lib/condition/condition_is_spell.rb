@@ -6,4 +6,8 @@ class ConditionIsSpell < ConditionSimple
   def to_s
     "is:spell"
   end
+
+  def explain
+    "the card is a spell, not a land"
+  end
 end

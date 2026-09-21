@@ -7,4 +7,8 @@ class ConditionIsHorizontal < ConditionSimple
   def to_s
     "is:horizontal"
   end
+
+  def explain
+    "the card is horizontal, a Plane, Phenomenon, or Battle"
+  end
 end

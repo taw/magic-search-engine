@@ -15,4 +15,8 @@ class ConditionInForeign < ConditionSimple
   def to_s
     "in:#{maybe_quote(@lang)}"
   end
+
+  def explain
+    "the card has a #{@lang} name"
+  end
 end

@@ -6,4 +6,8 @@ class ConditionIsSpotlight < ConditionSimple
   def to_s
     "is:spotlight"
   end
+
+  def explain
+    "the card is a Story Spotlight"
+  end
 end

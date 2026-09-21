@@ -7,4 +7,8 @@ class ConditionIsBear < ConditionSimple
   def to_s
     "is:bear"
   end
+
+  def explain
+    "the card is a 2/2 for two mana (a \"bear\")"
+  end
 end

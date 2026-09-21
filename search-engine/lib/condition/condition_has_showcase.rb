@@ -13,4 +13,8 @@ class ConditionHasShowcase < Condition
   def to_s
     "has:showcase"
   end
+
+  def explain
+    "the card has a showcase version in its set"
+  end
 end

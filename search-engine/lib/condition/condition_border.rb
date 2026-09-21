@@ -10,4 +10,8 @@ class ConditionBorder < ConditionSimple
   def to_s
     "border:#{@border}"
   end
+
+  def explain
+    "the border is #{@border}"
+  end
 end

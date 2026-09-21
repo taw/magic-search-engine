@@ -14,4 +14,8 @@ class ConditionWatermark < ConditionSimple
   def to_s
     "w:#{maybe_quote(@watermark)}"
   end
+
+  def explain
+    @any ? "the card has a watermark" : %[the watermark includes "#{@watermark}"]
+  end
 end

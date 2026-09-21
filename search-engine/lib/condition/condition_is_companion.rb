@@ -22,4 +22,8 @@ class ConditionIsCompanion < ConditionNickname
   def to_s
     "is:companion"
   end
+
+  def explain
+    "the card has the companion ability"
+  end
 end

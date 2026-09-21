@@ -6,4 +6,8 @@ class ConditionInShandalar < ConditionIn
   def to_s
     "in:shandalar"
   end
+
+  def explain
+    "the card has a printing available on Shandalar"
+  end
 end

@@ -6,4 +6,8 @@ class ConditionInArena < ConditionIn
   def to_s
     "in:arena"
   end
+
+  def explain
+    "the card has a printing available on Arena"
+  end
 end

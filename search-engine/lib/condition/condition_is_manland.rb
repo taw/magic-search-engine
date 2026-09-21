@@ -60,4 +60,8 @@ class ConditionIsManland < ConditionNickname
   def to_s
     "is:manland"
   end
+
+  def explain
+    "the card is a manland"
+  end
 end

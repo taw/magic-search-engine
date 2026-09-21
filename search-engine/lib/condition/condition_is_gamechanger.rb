@@ -6,4 +6,8 @@ class ConditionIsGamechanger < ConditionSimple
   def to_s
     "is:gamechanger"
   end
+
+  def explain
+    "the card is on the Commander Game Changer list"
+  end
 end

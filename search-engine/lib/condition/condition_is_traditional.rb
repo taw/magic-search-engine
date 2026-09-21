@@ -11,4 +11,8 @@ class ConditionIsTraditional < ConditionSimple
   def to_s
     "is:traditional"
   end
+
+  def explain
+    "the card is a traditional Magic card (normal size, thickness, back, and border)"
+  end
 end

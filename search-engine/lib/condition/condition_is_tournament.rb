@@ -14,4 +14,8 @@ class ConditionIsTournament < ConditionSimple
   def to_s
     "is:tournament"
   end
+
+  def explain
+    "the card is legal to bring to a sanctioned tournament"
+  end
 end

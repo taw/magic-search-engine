@@ -6,4 +6,8 @@ class ConditionIsCommander < ConditionSimple
   def to_s
     "is:commander"
   end
+
+  def explain
+    "the card is playable as a Commander"
+  end
 end

@@ -6,4 +6,8 @@ class ConditionIsNonfoil < ConditionSimple
   def to_s
     "is:nonfoil"
   end
+
+  def explain
+    "the card has a nonfoil version"
+  end
 end

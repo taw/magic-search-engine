@@ -17,4 +17,8 @@ class ConditionIsDual < ConditionNickname
   def to_s
     "is:dual"
   end
+
+  def explain
+    "the card is one of the original dual lands"
+  end
 end

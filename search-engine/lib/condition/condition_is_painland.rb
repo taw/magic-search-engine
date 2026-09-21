@@ -17,4 +17,8 @@ class ConditionIsPainland < ConditionNickname
   def to_s
     "is:painland"
   end
+
+  def explain
+    "the card is a painland"
+  end
 end

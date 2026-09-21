@@ -11,4 +11,8 @@ class ConditionInRarity < ConditionIn
   def to_s
     "in:#{@rarity}"
   end
+
+  def explain
+    "the card has a printing at #{@rarity} rarity"
+  end
 end

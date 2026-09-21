@@ -10,4 +10,8 @@ class ConditionIsSpecialformat < ConditionSimple
   def to_s
     "is:specialformat"
   end
+
+  def explain
+    "the card is playable only in a special format (Planechase, Archenemy, vanguard, conspiracy, or a Theros Hero's Path/challenge deck)"
+  end
 end

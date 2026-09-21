@@ -6,4 +6,8 @@ class ConditionIsFoilboth < ConditionSimple
   def to_s
     "is:foilboth"
   end
+
+  def explain
+    "the card has both foil and nonfoil versions"
+  end
 end

@@ -6,4 +6,8 @@ class ConditionIsEtched < ConditionSimple
   def to_s
     "is:etched"
   end
+
+  def explain
+    "the card has an etched foil version"
+  end
 end

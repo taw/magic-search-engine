@@ -10,4 +10,8 @@ class ConditionFrameEffect < ConditionSimple
   def to_s
     "frame:#{@frame_effect}"
   end
+
+  def explain
+    "the card has the #{@frame_effect} frame effect"
+  end
 end

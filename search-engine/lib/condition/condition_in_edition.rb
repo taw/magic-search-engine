@@ -13,4 +13,8 @@ class ConditionInEdition < Condition
   def to_s
     "in:#{@editions.map{|e| maybe_quote(e)}.join(",")}"
   end
+
+  def explain
+    "the card has a printing in #{@editions.map{|e| %["#{e}"]}.join(" or ")}"
+  end
 end

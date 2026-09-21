@@ -18,4 +18,8 @@ class ConditionIsMylittlepony < ConditionNickname
   def to_s
     "is:mylittlepony"
   end
+
+  def explain
+    "the card is one of the My Little Pony crossover cards"
+  end
 end

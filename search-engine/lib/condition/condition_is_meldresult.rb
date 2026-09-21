@@ -7,4 +7,8 @@ class ConditionIsMeldresult < ConditionSimple
   def to_s
     "is:meldresult"
   end
+
+  def explain
+    "the card is the result of melding two other cards"
+  end
 end

@@ -6,4 +6,8 @@ class ConditionIsCard < ConditionSimple
   def to_s
     "is:card"
   end
+
+  def explain
+    "the card is not a token"
+  end
 end

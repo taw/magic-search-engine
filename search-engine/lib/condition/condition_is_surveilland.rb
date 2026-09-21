@@ -17,4 +17,8 @@ class ConditionIsSurveilland < ConditionNickname
   def to_s
     "is:surveilland"
   end
+
+  def explain
+    "the card is a surveil land"
+  end
 end

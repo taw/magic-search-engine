@@ -9,4 +9,8 @@ class ConditionIsHistoric < ConditionSimple
   def to_s
     "is:historic"
   end
+
+  def explain
+    "the card is historic (legendary, artifact, or Saga)"
+  end
 end

@@ -15,4 +15,8 @@ class ConditionFlavorName < ConditionSimple
   def to_s
     "fn:#{maybe_quote(@flavor_name)}"
   end
+
+  def explain
+    @any ? "the card has a flavor name" : %[the flavor name includes "#{@flavor_name}"]
+  end
 end

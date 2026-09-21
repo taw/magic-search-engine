@@ -5,4 +5,8 @@ class ConditionIsProductlessfoil < ConditionIsProductless
   def finish
     :foil
   end
+
+  def explain
+    "the card has no known product source (booster, precon, or promo) in foil finish"
+  end
 end

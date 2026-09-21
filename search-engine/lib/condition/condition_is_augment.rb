@@ -6,4 +6,8 @@ class ConditionIsAugment < ConditionSimple
   def to_s
     "is:augment"
   end
+
+  def explain
+    "the card is one of the augment cards from Unstable"
+  end
 end

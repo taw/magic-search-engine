@@ -19,4 +19,8 @@ class ConditionIsStorageland < ConditionNickname
   def to_s
     "is:storageland"
   end
+
+  def explain
+    "the card is a storageland"
+  end
 end

@@ -6,4 +6,8 @@ class ConditionIsBack < ConditionSimple
   def to_s
     "is:back"
   end
+
+  def explain
+    "the card is the back face of a double-faced or meld card"
+  end
 end

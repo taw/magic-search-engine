@@ -27,4 +27,8 @@ class ConditionIsPathway < ConditionNickname
   def to_s
     "is:pathway"
   end
+
+  def explain
+    "the card is a pathway"
+  end
 end

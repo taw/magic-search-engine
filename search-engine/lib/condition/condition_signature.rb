@@ -14,4 +14,8 @@ class ConditionSignature < ConditionSimple
   def to_s
     "sig:#{maybe_quote(@signature)}"
   end
+
+  def explain
+    @any ? "the card has a signature" : %[the signature includes "#{@signature}"]
+  end
 end

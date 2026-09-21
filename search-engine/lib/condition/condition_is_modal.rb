@@ -6,4 +6,8 @@ class ConditionIsModal < ConditionSimple
   def to_s
     "is:modal"
   end
+
+  def explain
+    "the card has modes to choose from"
+  end
 end

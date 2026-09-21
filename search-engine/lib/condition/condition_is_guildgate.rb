@@ -17,4 +17,8 @@ class ConditionIsGuildgate < ConditionNickname
   def to_s
     "is:guildgate"
   end
+
+  def explain
+    "the card is a guildgate"
+  end
 end

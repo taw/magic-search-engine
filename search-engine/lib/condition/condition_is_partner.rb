@@ -6,4 +6,8 @@ class ConditionIsPartner < ConditionSimple
   def to_s
     "is:partner"
   end
+
+  def explain
+    "the card has partner"
+  end
 end

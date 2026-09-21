@@ -8,4 +8,8 @@ class ConditionIsVanilla < ConditionSimple
   def to_s
     "is:vanilla"
   end
+
+  def explain
+    "the card has no rules text and is not a basic land"
+  end
 end

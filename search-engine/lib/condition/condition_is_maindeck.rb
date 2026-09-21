@@ -10,4 +10,8 @@ class ConditionIsMaindeck < ConditionSimple
   def to_s
     "is:maindeck"
   end
+
+  def explain
+    "the card is a type that could go into a main deck (not Attraction, Conspiracy, Contraption, Dungeon, Hero's Path, Phenomenon, Plane, Scheme, Stickers, or Vanguard)"
+  end
 end

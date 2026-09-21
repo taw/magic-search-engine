@@ -6,4 +6,8 @@ class ConditionIsTimeshifted < ConditionSimple
   def to_s
     "is:timeshifted"
   end
+
+  def explain
+    "the card is timeshifted"
+  end
 end

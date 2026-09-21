@@ -23,4 +23,8 @@ class ConditionLore < ConditionSimple
   def to_s
     "lore:#{maybe_quote(@query)}"
   end
+
+  def explain
+    %[the name, type, or flavor text mentions "#{@query}"]
+  end
 end

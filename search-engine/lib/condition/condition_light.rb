@@ -20,4 +20,8 @@ class ConditionLight < ConditionSimple
   def to_s
     "light:#{@light}"
   end
+
+  def explain
+    @any ? "the card has an attraction light" : "the card has attraction light #{@light}"
+  end
 end

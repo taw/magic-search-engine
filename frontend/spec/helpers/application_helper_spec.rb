@@ -167,6 +167,50 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
+  describe "#format_explanation" do
+    it "renders mana symbols outside code spans" do
+      expect(helper.format_explanation("the mana cost includes {W}{U}")).to eq(
+        %[the mana cost includes ] +
+        %[<span class="manacost">] +
+        %[<span class="mana mana-cost mana-w"><span class="sr-only">{W}</span></span>] +
+        %[<span class="mana mana-cost mana-u"><span class="sr-only">{U}</span></span>] +
+        %[</span>]
+      )
+    end
+
+    it "renders backtick-delimited fragments as monospace code" do
+      expect(helper.format_explanation("the Oracle text matches the regex `/dragon/`")).to eq(
+        %[the Oracle text matches the regex <code>/dragon/</code>]
+      )
+    end
+
+    # A regex quantifier like {3,} looks like a mana symbol token, but it's inside
+    # a code span, so it must stay literal text, not get run through the mana formatter
+    it "leaves curly braces inside a code span alone, even if they look like mana symbols" do
+      expect(helper.format_explanation("the Oracle text matches the regex `/\\d{3,}/`")).to eq(
+        %[the Oracle text matches the regex <code>/\\d{3,}/</code>]
+      )
+    end
+
+    it "escapes html outside code spans" do
+      expect(helper.format_explanation(%[the name matches "<b>x</b>"])).to eq(
+        %[the name matches &quot;&lt;b&gt;x&lt;/b&gt;&quot;]
+      )
+    end
+
+    it "escapes html inside code spans too" do
+      expect(helper.format_explanation("the type line matches the regex `/<b>/`")).to eq(
+        %[the type line matches the regex <code>&lt;b&gt;</code>]
+      )
+    end
+
+    it "handles several code spans in one string" do
+      expect(helper.format_explanation("not (`is:foo` or `is:bar`)")).to eq(
+        %[not (<code>is:foo</code> or <code>is:bar</code>)]
+      )
+    end
+  end
+
   describe "#printings_view" do
     let(:view) { helper.printings_view(karn, [karn, printing("uma", "5")]) }
     let(:flagged) { view.flat_map{|set_name, printings| printings} }

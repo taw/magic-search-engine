@@ -10,4 +10,8 @@ class ConditionLayout < ConditionSimple
   def to_s
     "layout:#{@layout}"
   end
+
+  def explain
+    "the card's layout is #{@layout}"
+  end
 end

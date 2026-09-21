@@ -10,4 +10,8 @@ class ConditionKeyword < ConditionSimple
   def to_s
     "keyword:#{maybe_quote(@keyword)}"
   end
+
+  def explain
+    "the card has the #{@keyword} keyword"
+  end
 end

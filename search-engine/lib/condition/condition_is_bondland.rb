@@ -18,4 +18,8 @@ class ConditionIsBondland < ConditionNickname
   def to_s
     "is:bondland"
   end
+
+  def explain
+    "the card is a bondland"
+  end
 end

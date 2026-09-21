@@ -19,4 +19,15 @@ class ConditionFrame < ConditionSimple
   def to_s
     "is:#{@frame}"
   end
+
+  def explain
+    case @frame
+    when "old"
+      "the card has an old-style frame (1993 or 1997)"
+    when "new"
+      "the card has a new-style frame"
+    else
+      "the card has the #{@frame} frame"
+    end
+  end
 end

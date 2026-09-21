@@ -6,4 +6,8 @@ class ConditionInFoil < ConditionIn
   def to_s
     "in:foil"
   end
+
+  def explain
+    "the card has a foil version"
+  end
 end

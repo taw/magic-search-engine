@@ -29,6 +29,10 @@ class ConditionSetType < Condition
     "st:#{maybe_quote(@set_type)}"
   end
 
+  def explain
+    "the set's type is #{@set_type}"
+  end
+
   private
 
   def matching_sets(db)

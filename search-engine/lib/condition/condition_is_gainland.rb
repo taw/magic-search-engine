@@ -37,4 +37,8 @@ class ConditionIsGainland < ConditionNickname
   def to_s
     "is:gainland"
   end
+
+  def explain
+    "the card is a gainland"
+  end
 end

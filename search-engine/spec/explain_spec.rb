@@ -77,40 +77,115 @@ describe "Query#explain" do
   end
 
   it "o:/regex/ (Oracle text regex)" do
-    assert_explains "o:/dragon/", "the Oracle text matches the regex /dragon/"
+    assert_explains "o:/dragon/", "the Oracle text matches the regex `/dragon/`"
   end
 
   it "fo:/regex/ (full Oracle text regex)" do
-    assert_explains "fo:/dragon/", "the Oracle text, including reminder text, matches the regex /dragon/"
+    assert_explains "fo:/dragon/", "the Oracle text, including reminder text, matches the regex `/dragon/`"
   end
 
   it "n:/regex/ (name regex)" do
-    assert_explains "n:/^Ae/", "the name matches the regex /^Ae/"
+    assert_explains "n:/^Ae/", "the name matches the regex `/^Ae/`"
   end
 
   it "t:/regex/ (type line regex)" do
-    assert_explains "t:/^Legendary/", "the type line matches the regex /^Legendary/"
+    assert_explains "t:/^Legendary/", "the type line matches the regex `/^Legendary/`"
   end
 
   it "ft:/regex/ (flavor text regex)" do
-    assert_explains "ft:/ice/", "the flavor text matches the regex /ice/"
+    assert_explains "ft:/ice/", "the flavor text matches the regex `/ice/`"
   end
 
   it "a:/regex/ (artist regex)" do
-    assert_explains "a:/guay/", "the artist credit matches the regex /guay/"
+    assert_explains "a:/guay/", "the artist credit matches the regex `/guay/`"
   end
 
   it "<lang>:/regex/ (foreign name regex)" do
-    assert_explains "de:/dragon/", "the de name matches the regex /dragon/"
-    assert_explains "foreign:/dragon/", "the foreign name matches the regex /dragon/"
+    assert_explains "de:/dragon/", "the de name matches the regex `/dragon/`"
+    assert_explains "foreign:/dragon/", "the foreign name matches the regex `/dragon/`"
   end
 
   it "number:/regex/ (collector number regex)" do
-    assert_explains "number:/★/", "the collector number matches the regex /★/"
+    assert_explains "number:/★/", "the collector number matches the regex `/★/`"
   end
 
   it "rulings:/regex/ (rulings regex)" do
-    assert_explains "rulings:/twitter/", "the rulings matches the regex /twitter/"
+    assert_explains "rulings:/twitter/", "the rulings matches the regex `/twitter/`"
+  end
+
+  it "border:/frame:/stamp:/layout:/promo:/st: (simple field conditions)" do
+    assert_explains "border:black", "the border is black"
+    assert_explains "frame:legendary", "the card has the legendary frame effect"
+    assert_explains "stamp:acorn", "the card has the acorn security stamp"
+    assert_explains "layout:saga", "the card's layout is saga"
+    assert_explains "promo:fnm", "the card is a fnm promo"
+    assert_explains "st:core", "the set's type is core"
+  end
+
+  it "w:/sig:/keyword:/a:/ft:/fn: (plain substring fields)" do
+    assert_explains "w:izzet", %[the watermark includes "izzet"]
+    assert_explains "keyword:flying", "the card has the flying keyword"
+    assert_explains "a:argyle", %[the artist credit includes "argyle"]
+    assert_explains "ft:chandra", %[the flavor text includes "chandra"]
+    assert_explains "fn:mothra", %[the flavor name includes "mothra"]
+  end
+
+  it "rulings: and lore:" do
+    assert_explains %[rulings:"Blood Moon"], %[the rulings include "blood moon"]
+    assert_explains "lore:gideon", %[the name, type, or flavor text mentions "gideon"]
+  end
+
+  it "number: (collector number)" do
+    assert_explains "number:117", "the collector number is 117"
+    assert_explains "number<=set", "the collector number is at most the set's base size"
+  end
+
+  it "has:/in: (printing-level existence checks)" do
+    assert_explains "has:watermark", "the card has a watermark"
+    assert_explains "has:signature", "the card has a signature"
+    assert_explains "in:foil", "the card has a foil version"
+    assert_explains "in:arena", "the card has a printing available on Arena"
+  end
+
+  it "variant: (Arena/foreign/misprint variants)" do
+    assert_explains "variant:misprint", "the card is a misprinted variant of another card in the same set"
+    assert_explains "variant:arena", "the card is an Arena-only variant of another card in the same set"
+  end
+
+  context "is: flags" do
+    # Structural completeness check: every ConditionIs* class should now have a
+    # real explanation, not the generic `` matches `#{self}` `` fallback.
+    it "every is: flag has a real explanation, not the generic fallback" do
+      is_classes = ObjectSpace.each_object(Class).select{|c| c.name.to_s.start_with?("ConditionIs") }
+      still_falling_back = is_classes.select{|c| c.new.explain.start_with?("matches `") }
+      still_falling_back.should eq([])
+    end
+
+    it "a representative sample reads as English" do
+      assert_explains "is:vertical", "the card is vertical, not a Plane, Phenomenon, or Battle"
+      assert_explains "is:commander", "the card is playable as a Commander"
+      assert_explains "is:foil", "the card has a foil version"
+      assert_explains "is:permanent", "the card is a permanent (artifact, battle, creature, enchantment, land, or planeswalker)"
+      assert_explains "is:reprint", "the card is a reprint"
+      assert_explains "is:unique", "the card has never been reprinted"
+    end
+
+    it "land cycle nicknames" do
+      assert_explains "is:shockland", "the card is a shockland"
+      assert_explains "is:fetchland", "the card is a fetchland"
+      assert_explains "is:dual", "the card is one of the original dual lands"
+    end
+
+    it "the handful with sensitive or unusual content" do
+      assert_explains "is:power9", "the card is one of the Power Nine"
+      assert_explains "is:racist", "the card is on Wizards' list of cards with racist names or imagery"
+      assert_explains "is:attraction", "the card is an attraction, or creates attractions"
+    end
+
+    it "not: negates cleanly, with no doubled-up connector" do
+      assert_explains "not:reprint", "not (the card is a reprint)"
+      assert_explains "not:black-bordered", "not (the border is black)"
+    end
   end
 
   context "combining conditions" do

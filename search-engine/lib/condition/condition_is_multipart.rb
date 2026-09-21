@@ -6,4 +6,8 @@ class ConditionIsMultipart < ConditionSimple
   def to_s
     "is:multipart"
   end
+
+  def explain
+    "the card has multiple parts (split, flip, or double-faced)"
+  end
 end

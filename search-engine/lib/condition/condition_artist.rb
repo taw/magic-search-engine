@@ -12,4 +12,8 @@ class ConditionArtist < ConditionSimple
   def to_s
     "a:#{maybe_quote(@artist)}"
   end
+
+  def explain
+    %[the artist credit includes "#{@artist}"]
+  end
 end

@@ -12,4 +12,8 @@ class ConditionFlavor < ConditionSimple
   def to_s
     "ft:#{maybe_quote(@flavor)}"
   end
+
+  def explain
+    %[the flavor text includes "#{@flavor}"]
+  end
 end

@@ -23,4 +23,8 @@ class ConditionIsBounceland < ConditionNickname
   def to_s
     "is:bounceland"
   end
+
+  def explain
+    "the card is a bounceland"
+  end
 end

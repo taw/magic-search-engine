@@ -6,4 +6,8 @@ class ConditionIsCustom < ConditionSimple
   def to_s
     "is:custom"
   end
+
+  def explain
+    "the card is a custom, fan-made card with no official printing"
+  end
 end

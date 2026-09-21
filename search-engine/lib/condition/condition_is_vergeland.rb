@@ -17,4 +17,8 @@ class ConditionIsVergeland < ConditionNickname
   def to_s
     "is:vergeland"
   end
+
+  def explain
+    "the card is a verge land"
+  end
 end

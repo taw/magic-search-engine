@@ -6,4 +6,8 @@ class ConditionIsTextless < ConditionSimple
   def to_s
     "is:textless"
   end
+
+  def explain
+    "the card is textless"
+  end
 end

@@ -15,4 +15,8 @@ class ConditionRulings < ConditionSimple
   def to_s
     "rulings:#{maybe_quote(@ruling)}"
   end
+
+  def explain
+    @any ? "the card has rulings" : %[the rulings include "#{@ruling}"]
+  end
 end

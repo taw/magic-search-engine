@@ -6,4 +6,8 @@ class ConditionIsUnique < ConditionSimple
   def to_s
     "is:unique"
   end
+
+  def explain
+    "the card has never been reprinted"
+  end
 end
