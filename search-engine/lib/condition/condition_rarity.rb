@@ -34,4 +34,10 @@ class ConditionRarity < ConditionSimple
   def to_s
     "r#{@op}#{@rarity}"
   end
+
+  OP_WORDS = {"=" => "is", ">=" => "is at least", "<=" => "is at most", ">" => "is rarer than", "<" => "is more common than"}
+
+  def explain
+    "the rarity #{OP_WORDS.fetch(@op, @op)} #{@rarity}"
+  end
 end

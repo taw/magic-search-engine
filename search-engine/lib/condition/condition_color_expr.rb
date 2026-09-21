@@ -27,4 +27,20 @@ class ConditionColorExpr < ConditionSimple
     b = "c" if b == ""
     "#{@a}#{@op}#{maybe_quote(b)}"
   end
+
+  FIELD_NAMES = {"c" => "the colors", "ci" => "the color identity", "ind" => "the color indicator"}
+  OP_WORDS = {"=" => "is", "!=" => "isn't", ">=" => "includes at least", "<=" => "is at most", ">" => "is more than", "<" => "is less than", ":" => "includes"}
+
+  def explain
+    "#{FIELD_NAMES.fetch(@a, "the #{@a}")} #{OP_WORDS.fetch(@op, @op)} #{explain_value}"
+  end
+
+  private
+
+  def explain_value
+    return "colorless" if @b == "" || @b == "c"
+    return "#{@b} colors" if @b =~ /\A\d+\z/
+    return @b.chars.sort_by{|c| "wubrg".index(c)}.join.upcase if @b =~ /\A[wubrg]+\z/
+    @b
+  end
 end

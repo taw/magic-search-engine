@@ -54,6 +54,14 @@ class ConditionAnd < Condition
     "(#{@conds.join(' ')})"
   end
 
+  # An OR child needs parens to keep its precedence clear; anything else (a leaf,
+  # or a NOT which already parenthesizes itself) reads fine bare.
+  def explain
+    @conds.map{|cond|
+      cond.is_a?(ConditionOr) ? "(#{cond.explain})" : cond.explain
+    }.join(" and ")
+  end
+
   def ==(other)
     self.class == other.class and
       conds.sort_by(&:to_s) == other.conds.sort_by(&:to_s)

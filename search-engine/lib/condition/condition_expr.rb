@@ -65,7 +65,31 @@ class ConditionExpr < ConditionSimple
     "#{unambiguous(@a)}#{@op}#{unambiguous(@b)}"
   end
 
+  VARIABLE_NAMES = {
+    "decklimit" => "the deck limit", "defence" => "the defense", "defense" => "the defense",
+    "hand" => "the hand size bonus", "life" => "the life bonus", "loy" => "the starting loyalty",
+    "mv" => "the mana value", "paperprints" => "the number of paper printings",
+    "papersets" => "the number of paper sets", "pow" => "the power",
+    "pt" => "the power and toughness total", "prints" => "the number of printings",
+    "sets" => "the number of sets", "tou" => "the toughness", "year" => "the print year",
+  }
+  OP_WORDS = {"=" => "is", ">=" => "is at least", "<=" => "is at most", ">" => "is more than", "<" => "is less than"}
+
+  def explain
+    if @parity
+      "#{explain_side(@a)} is #{@parity}"
+    else
+      "#{explain_side(@a)} #{OP_WORDS.fetch(@op, @op)} #{explain_side(@b)}"
+    end
+  end
+
   private
+
+  # Card variables get a human name; everything else is a literal (a number, or a
+  # formula like "1+*" or "x") with no better English than the value itself.
+  def explain_side(expr)
+    VARIABLE_NAMES.fetch(expr, expr)
+  end
 
   def unambiguous(expr)
     expr == "pt" ? "powtou" : expr

@@ -11,4 +11,8 @@ class ConditionEdition < Condition
   def to_s
     "e:#{@editions.map{|e| maybe_quote(e)}.join(",")}"
   end
+
+  def explain
+    "the set is #{@editions.map{|e| %["#{e}"]}.join(" or ")}"
+  end
 end

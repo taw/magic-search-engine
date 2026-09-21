@@ -38,6 +38,10 @@ class ConditionOracle < ConditionSimple
     "o:#{maybe_quote(@text)}"
   end
 
+  def explain
+    %[the Oracle text includes "#{@text}"]
+  end
+
   private
 
   # Which text gets searched is the only thing fo: does differently

@@ -3,6 +3,10 @@ class ConditionFullOracle < ConditionOracle
     "fo:#{maybe_quote(@text)}"
   end
 
+  def explain
+    %[the Oracle text, including reminder text, includes "#{@text}"]
+  end
+
   private
 
   # Reminder text refers to the card the same ways rules text does - by full name, by

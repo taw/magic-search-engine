@@ -269,6 +269,10 @@ shared_context "db" do |*sets|
     query.should have_count_printings(count)
   end
 
+  def assert_explains(query_string, expected_explanation)
+    Query.new(query_string).explain.should eq(expected_explanation)
+  end
+
   def assert_full_banlist(format, time, banned_cards, restricted_cards=[])
     time = Date.parse(time)
     expected_banlist = Hash[

@@ -37,4 +37,11 @@ class ConditionTypeExpr < ConditionSimple
   def to_s
     "t#{@op}#{maybe_quote(@types.to_a.join(' '))}"
   end
+
+  OP_WORDS = {"=" => "are exactly", ">=" => "include", ">" => "include", "<=" => "are a subset of", "<" => "are a strict subset of"}
+
+  def explain
+    suffix = @op == ">" ? ", plus at least one more" : ""
+    "the card types #{OP_WORDS.fetch(@op, @op)} #{@types.to_a.join(' and ')}#{suffix}"
+  end
 end

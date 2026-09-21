@@ -3,6 +3,14 @@ class Condition
     to_s
   end
 
+  # Plain-English description of what this condition asks for, for a Scryfall-style
+  # "N cards found where ..." explanation. Subclasses which can do better than parroting
+  # their own query syntax back should override this; everything else still gets a
+  # correct (if unlovely) explanation for free.
+  def explain
+    "matches `#{self}`"
+  end
+
   # Search restricted to a list of printings. The contract is:
   # cond.search(db, candidates) == cond.search(db) & candidates
   #

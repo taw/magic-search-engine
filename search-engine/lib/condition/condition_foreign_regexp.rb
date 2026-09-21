@@ -26,6 +26,10 @@ class ConditionForeignRegexp < ConditionRegexp
 
   private
 
+  def field_description
+    @lang_match_all ? "the foreign name" : "the #{@lang} name"
+  end
+
   def hard_normalize(s)
     s.unicode_normalize(:nfd).gsub(/\p{Mn}/, "").downcase
   end

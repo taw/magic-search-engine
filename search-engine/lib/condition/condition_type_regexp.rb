@@ -9,4 +9,10 @@ class ConditionTypeRegexp < ConditionRegexp
   def to_s
     "t:#{@regexp.inspect.sub(/[im]+\z/, "")}"
   end
+
+  private
+
+  def field_description
+    "the type line"
+  end
 end
