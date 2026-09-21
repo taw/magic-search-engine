@@ -50,7 +50,7 @@ describe "Full Database Test" do
       "Studious First-Year", "Rampant Growth (Prepared)",
       "Tear", "Wear",
       "Their", "There", "They're",
-      "Vigorbloom Vanguard", "Seed Suture (Prepared b)",
+      "Vigorbloom Vanguard", "Seed Suture (Prepared c)",
       "Void Extrapolator", "Omit Variables (Prepared c)",
       "What", "When", "Where", "Who", "Why"
     # Semantics of that changed

@@ -16,6 +16,7 @@ class ConditionIsManland < ConditionNickname
       "frostwalk bastion",
       "ghitu encampment",
       "great hall of the biblioplex",
+      "hall of echoes",
       "hall of storm giants",
       "hissing quagmire",
       "hive of the eye tyrant",

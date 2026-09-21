@@ -60,6 +60,7 @@ describe "Deck legality" do
       "Snow-Covered Plains",
       "Snow-Covered Swamp",
       "Snow-Covered Wastes",
+      "Sphinx's Approach",
       "Swamp",
       "Tempest Hawk",
       "Templar Knight",
