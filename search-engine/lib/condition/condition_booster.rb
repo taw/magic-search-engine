@@ -39,4 +39,13 @@ class ConditionBooster < Condition
   def to_s
     "#{@foiling}:#{maybe_quote(@codes.join(","))}"
   end
+
+  FOILING_NAMES = {"booster" => "booster", "booster-foil" => "foil booster", "booster-nonfoil" => "nonfoil booster"}
+
+  def explain(negated: false)
+    verb = negated ? "isn't" : "is"
+    what = FOILING_NAMES.fetch(@foiling, @foiling)
+    codes = @codes.map{|c| %["#{c}"]}.join(" or ")
+    "the card #{verb} available in #{what} #{codes}"
+  end
 end

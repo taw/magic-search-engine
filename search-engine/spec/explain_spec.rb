@@ -176,6 +176,48 @@ describe "Query#explain" do
     assert_explains "variant:arena", "the card is an Arena-only variant of another card in the same set"
   end
 
+  it "legal:/restricted:/banned:/f: (format lookups)" do
+    assert_explains "legal:standard", "the card is legal in Standard"
+    assert_explains "restricted:vintage", "the card is restricted in Vintage"
+    assert_explains "banned:pauper", "the card is banned in Pauper"
+    assert_explains "f:commander", "the card is legal or restricted in Commander"
+    assert_explains "f:edh", "the card is legal or restricted in Commander"
+    assert_explains "banned:*", "the card is banned in any format"
+    assert_explains "banned:nonsense", %[the card is banned in "nonsense"]
+  end
+
+  it "b: (block)" do
+    assert_explains "b:zendikar", %[the block is "zendikar"]
+    assert_explains "b:isd,soi", %[the block is "isd" or "soi"]
+  end
+
+  it "deck: (preconstructed deck)" do
+    assert_explains %[deck:"Feline Ferocity"], %[the card is available in deck "Feline Ferocity"]
+  end
+
+  it "booster:/booster-foil:/booster-nonfoil:" do
+    assert_explains "booster:nph", %[the card is available in booster "nph"]
+    assert_explains "booster-foil:akh-draft", %[the card is available in foil booster "akh-draft"]
+    assert_explains "booster:*", %[the card is available in booster "*"]
+  end
+
+  it "cast: (castable with only these mana sources)" do
+    assert_explains "cast:r", "the card is castable using only {r} mana"
+    assert_explains "cast:cu", "the card is castable using only {c}{u} mana"
+  end
+
+  it "subset: (Secret Lair Drop subset)" do
+    assert_explains %[subset:"Happy Little Gathering"], %[the subset is "happy little gathering"]
+  end
+
+  it "new: (first printing with a given property)" do
+    assert_explains "new:artist", "the card was printed with a new artist"
+    assert_explains "new:rarity", "the card was printed at a new rarity"
+    assert_explains "new:foil", "the card was first printed in foil"
+    assert_explains "new:game", "the card was first added to a new game"
+    assert_explains "new:illustrator", "the card was printed with a new artist"
+  end
+
   context "is: flags" do
     # Structural completeness check: every ConditionIs* class should now have a
     # real explanation, not the generic `` matches `#{self}` `` fallback.
@@ -274,6 +316,12 @@ describe "Query#explain" do
       assert_explains "-number:117", "the collector number isn't 117"
       assert_explains "-is:vertical", "the card is a Plane, Phenomenon, or Battle"
       assert_explains "not:arena", "the card is not available on Arena"
+      assert_explains "-legal:standard", "the card is not legal in Standard"
+      assert_explains "-b:isd", %[the block is not "isd"]
+      assert_explains %[-deck:"Feline Ferocity"], %[the card isn't available in deck "Feline Ferocity"]
+      assert_explains "-booster:nph", %[the card isn't available in booster "nph"]
+      assert_explains "-cast:r", "the card isn't castable using only {r} mana"
+      assert_explains "-new:artist", "the card was not printed with a new artist"
     end
 
     it "flips comparison operators to their natural complement for totally-ordered fields" do

@@ -30,6 +30,11 @@ class ConditionCast < ConditionSimple
     "cast:#{query_mana_to_s}"
   end
 
+  def explain(negated: false)
+    verb = negated ? "isn't" : "is"
+    "the card #{verb} castable using only #{explain_mana_symbols(@query_mana)} mana"
+  end
+
   private
 
   # Some of them make no sense

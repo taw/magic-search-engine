@@ -14,6 +14,12 @@ class ConditionBlock < Condition
     "b:#{@blocks.map{|b| maybe_quote(b)}.join(",")}"
   end
 
+  def explain(negated: false)
+    names = @blocks.map{|b| %["#{b}"]}
+    return "the block is #{negated ? "not " : ""}#{names[0]}" if names.size == 1
+    negated ? "the block is not any of #{names.join(", ")}" : "the block is #{names.join(" or ")}"
+  end
+
   private
 
   def matching_sets(db)

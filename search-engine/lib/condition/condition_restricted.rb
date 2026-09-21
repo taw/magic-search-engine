@@ -8,4 +8,12 @@ class ConditionRestricted < ConditionFormat
   def card_ok?(card)
     @format.restricted?(card)
   end
+
+  def verb
+    "is restricted in"
+  end
+
+  def verb_negated
+    "is not restricted in"
+  end
 end

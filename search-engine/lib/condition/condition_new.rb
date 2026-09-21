@@ -65,4 +65,37 @@ class ConditionNew < ConditionSimple
   def to_s
     "new:#{@property}"
   end
+
+  # There's no one specific value to name (explain doesn't know which artist, which
+  # watermark, ...) - just that this printing is the first of its card to have one,
+  # so "printed with a new X" reads better than an empty "the first printing with
+  # this X".
+  PHRASES = {
+    "artist" => "the card was printed with a new artist",
+    "border" => "the card was printed with a new border",
+    "flavor" => "the card was printed with new flavor text",
+    "foil" => "the card was first printed in foil",
+    "frame" => "the card was printed with a new frame",
+    "nonfoil" => "the card was first printed in nonfoil",
+    "rarity" => "the card was printed at a new rarity",
+    "watermark" => "the card was printed with a new watermark",
+    "frameeffect" => "the card was printed with a new frame effect",
+    "game" => "the card was first added to a new game",
+  }.freeze
+  NEGATED_PHRASES = {
+    "artist" => "the card was not printed with a new artist",
+    "border" => "the card was not printed with a new border",
+    "flavor" => "the card was not printed with new flavor text",
+    "foil" => "the card was not first printed in foil",
+    "frame" => "the card was not printed with a new frame",
+    "nonfoil" => "the card was not first printed in nonfoil",
+    "rarity" => "the card was not printed at a new rarity",
+    "watermark" => "the card was not printed with a new watermark",
+    "frameeffect" => "the card was not printed with a new frame effect",
+    "game" => "the card was not first added to a new game",
+  }.freeze
+
+  def explain(negated: false)
+    (negated ? NEGATED_PHRASES : PHRASES).fetch(@property)
+  end
 end

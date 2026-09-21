@@ -28,9 +28,32 @@ class ConditionFormat < Condition
     timify_to_s "f:#{maybe_quote(@format_name)}"
   end
 
+  def explain(negated: false)
+    "the card #{negated ? verb_negated : verb} #{format_display_name}"
+  end
+
   private
 
   def card_ok?(card)
     @format.legal_or_restricted?(card)
+  end
+
+  def verb
+    "is legal or restricted in"
+  end
+
+  def verb_negated
+    "is neither legal nor restricted in"
+  end
+
+  # A fresh Format instance just for its display name - cheap, no db needed
+  # (same as the one #search_all builds, just without a time to travel to, which
+  # #explain never has anyway: #metadata! is what learns @time, and Query#explain
+  # never calls it).
+  def format_display_name
+    return "any format" if @format_name == "*"
+    format_class = Format[@format_name]
+    return %["#{@format_name}"] if format_class == FormatUnknown
+    format_class.new.format_pretty_name
   end
 end

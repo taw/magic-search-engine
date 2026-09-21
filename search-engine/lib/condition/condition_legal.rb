@@ -8,4 +8,12 @@ class ConditionLegal < ConditionFormat
   def card_ok?(card)
     @format.legal?(card)
   end
+
+  def verb
+    "is legal in"
+  end
+
+  def verb_negated
+    "is not legal in"
+  end
 end

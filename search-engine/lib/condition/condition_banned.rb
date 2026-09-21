@@ -8,4 +8,12 @@ class ConditionBanned < ConditionFormat
   def card_ok?(card)
     @format.banned?(card)
   end
+
+  def verb
+    "is banned in"
+  end
+
+  def verb_negated
+    "is not banned in"
+  end
 end
