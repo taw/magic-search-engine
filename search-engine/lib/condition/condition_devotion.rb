@@ -45,6 +45,24 @@ class ConditionDevotion < ConditionSimple
     "devotion#{@op}#{@mana}"
   end
 
+  # Devotion to one color is a plain integer count, totally ordered, so (unlike
+  # mana cost, which compares a whole multiset) flipping the operator for negation
+  # is correct here - "not (devotion >= 3)" really is "devotion < 3".
+  OP_WORDS = {"=" => "is", "!=" => "isn't", ">=" => "is at least", "<=" => "is at most", ">" => "is more than", "<" => "is less than"}
+  NEGATED_OP_WORDS = {"=" => "isn't", "!=" => "is", ">=" => "is less than", "<=" => "is more than", ">" => "is at most", "<" => "is at least"}
+
+  # Almost always a single symbol ("devotion=bbb" is one clause: devotion to {b} is
+  # 3); a query naming several symbols at once is a conjunction of independent
+  # per-symbol comparisons under the hood, so negating that case doesn't get the
+  # De Morgan treatment - same scope limit as everywhere else compound negation
+  # would apply.
+  def explain(negated: false)
+    words = negated ? NEGATED_OP_WORDS : OP_WORDS
+    @query_mana.map{|symbol, amount|
+      "the devotion to {#{symbol}} #{words.fetch(@op, @op)} #{amount.to_i}"
+    }.join(" and ")
+  end
+
   private
 
   def devotion_to(card, query_symbol)

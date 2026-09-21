@@ -113,6 +113,30 @@ describe "Query#explain" do
     assert_explains "rulings:/twitter/", "the rulings matches the regex `/twitter/`"
   end
 
+  it "mana= (mana cost, symbols always bracketed for the frontend's mana-icon renderer)" do
+    assert_explains "mana=0", "the mana cost is {0}"
+    assert_explains "mana={}", "the card has no mana cost"
+    assert_explains "mana!={}", "the card has a mana cost"
+    assert_explains "mana<=4", "the mana cost is at most {4}"
+    assert_explains "mana=3uu", "the mana cost is {3}{u}{u}"
+    assert_explains "mana>={b/g}", "the mana cost is at least {bg}"
+    assert_explains "mana!=2gr", "the mana cost isn't {2}{g}{r}"
+  end
+
+  it "mana= with variable symbols (m/n/o/h) - wrapped unformatted, no icon for those" do
+    assert_explains "mana=m", "the mana cost is {m}"
+    assert_explains "mana>mm", "the mana cost is more than {m}{m}"
+    assert_explains "mana={m}{n}", "the mana cost is {m}{n}"
+    assert_explains "mana=hh", "the mana cost is {h}{h}"
+  end
+
+  it "devotion= (devotion to a color/hybrid symbol, a plain count)" do
+    assert_explains "devotion=bbb", "the devotion to {b} is 3"
+    assert_explains "devotion>=ww", "the devotion to {w} is at least 2"
+    assert_explains "devotion<uuu", "the devotion to {u} is less than 3"
+    assert_explains "devotion={u/b}{u/b}", "the devotion to {bu} is 2"
+  end
+
   it "border:/frame:/stamp:/layout:/promo:/st: (simple field conditions)" do
     assert_explains "border:black", "the border is black"
     assert_explains "frame:legendary", "the card has the legendary frame effect"
@@ -258,10 +282,15 @@ describe "Query#explain" do
       assert_explains "-r>=rare", "the rarity is more common than rare"
     end
 
-    it "doesn't flip comparison operators for colors/types, since those are sets, not a total order" do
+    it "doesn't flip comparison operators for colors/types/mana cost, since those are sets, not a total order" do
       # not (colors >= RG) isn't "colors < RG" - a disjoint color like B is neither
       assert_explains "-c>=gr", "the colors doesn't include RG"
       assert_explains %[-t>="land forest"], "the card types don't include land and forest"
+      assert_explains "-mana>=2r", "the mana cost isn't at least {2}{r}"
+    end
+
+    it "does flip the operator for devotion, since devotion to one color is a plain integer count" do
+      assert_explains "-devotion>=ww", "the devotion to {w} is less than 2"
     end
 
     it "a compound (AND/OR) child still gets wrapped in \"not (...)\", since De Morgan's law isn't attempted" do
