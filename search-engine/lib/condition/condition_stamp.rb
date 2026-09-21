@@ -16,7 +16,11 @@ class ConditionStamp < ConditionSimple
     "stamp:#{maybe_quote(@stamp)}"
   end
 
-  def explain
-    @any ? "the card has a security stamp" : "the card has the #{@stamp} security stamp"
+  def explain(negated: false)
+    if @any
+      negated ? "the card has no security stamp" : "the card has a security stamp"
+    else
+      "the card #{negated ? "doesn't have" : "has"} the #{@stamp} security stamp"
+    end
   end
 end

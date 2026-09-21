@@ -7,7 +7,7 @@ class ConditionIsTimeshifted < ConditionSimple
     "is:timeshifted"
   end
 
-  def explain
-    "the card is timeshifted"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}timeshifted"
   end
 end

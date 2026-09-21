@@ -7,7 +7,7 @@ class ConditionHasFlavor < ConditionSimple
     "has:flavor"
   end
 
-  def explain
-    "the card has flavor text"
+  def explain(negated: false)
+    negated ? "the card has no flavor text" : "the card has flavor text"
   end
 end

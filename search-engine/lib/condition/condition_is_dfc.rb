@@ -8,7 +8,7 @@ class ConditionIsDfc < ConditionSimple
     "is:dfc"
   end
 
-  def explain
-    "the card is double-faced (transform, meld, or modal)"
+  def explain(negated: false)
+    negated ? "the card is not double-faced" : "the card is double-faced (transform, meld, or modal)"
   end
 end

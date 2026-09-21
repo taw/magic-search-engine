@@ -7,8 +7,23 @@ class Condition
   # "N cards found where ..." explanation. Subclasses which can do better than parroting
   # their own query syntax back should override this; everything else still gets a
   # correct (if unlovely) explanation for free.
-  def explain
-    "matches `#{self}`"
+  #
+  # negated: true asks for the polarity-flipped phrasing ("the card is not a spell"
+  # instead of "not (the card is a spell)") - see ConditionNot#explain. Only a single
+  # (non-compound) condition needs to implement this; ConditionNot only asks for it
+  # when #compound? is false, and falls back to wrapping "not (...)" around the plain
+  # #explain otherwise, so this default is enough for every condition that doesn't
+  # bother overriding it.
+  def explain(negated: false)
+    negated ? "does not match `#{self}`" : "matches `#{self}`"
+  end
+
+  # True for AND/OR/NOT, the only conditions whose #explain doesn't have a
+  # negated: parameter - negating them well needs De Morgan's law, not a single
+  # flipped phrase, so ConditionNot leaves them wrapped in "not (...)" instead of
+  # asking for their negated form.
+  def compound?
+    false
   end
 
   # Search restricted to a list of printings. The contract is:

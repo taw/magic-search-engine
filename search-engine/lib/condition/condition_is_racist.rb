@@ -15,7 +15,7 @@ class ConditionIsRacist < ConditionNickname
     "is:racist"
   end
 
-  def explain
-    "the card is on Wizards' list of cards with racist names or imagery"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}on Wizards' list of cards with racist names or imagery"
   end
 end

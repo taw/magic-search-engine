@@ -24,7 +24,9 @@ class ConditionLore < ConditionSimple
     "lore:#{maybe_quote(@query)}"
   end
 
-  def explain
-    %[the name, type, or flavor text mentions "#{@query}"]
+  def explain(negated: false)
+    conjunction = negated ? "and" : "or"
+    verb = negated ? "doesn't mention" : "mentions"
+    %[the name, type, #{conjunction} flavor text #{verb} "#{@query}"]
   end
 end

@@ -7,7 +7,7 @@ class ConditionInPaper < ConditionIn
     "in:paper"
   end
 
-  def explain
-    "the card has a printing available as a tournament-legal paper card"
+  def explain(negated: false)
+    negated ? "the card has no printing available as a tournament-legal paper card" : "the card has a printing available as a tournament-legal paper card"
   end
 end

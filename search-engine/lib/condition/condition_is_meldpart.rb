@@ -8,7 +8,7 @@ class ConditionIsMeldpart < ConditionSimple
     "is:meldpart"
   end
 
-  def explain
-    "the card melds into another card"
+  def explain(negated: false)
+    negated ? "the card does not meld into another card" : "the card melds into another card"
   end
 end

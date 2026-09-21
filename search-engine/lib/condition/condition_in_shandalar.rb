@@ -7,7 +7,7 @@ class ConditionInShandalar < ConditionIn
     "in:shandalar"
   end
 
-  def explain
-    "the card has a printing available on Shandalar"
+  def explain(negated: false)
+    negated ? "the card has no printing available on Shandalar" : "the card has a printing available on Shandalar"
   end
 end

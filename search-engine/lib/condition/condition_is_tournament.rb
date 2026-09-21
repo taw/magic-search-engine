@@ -15,7 +15,7 @@ class ConditionIsTournament < ConditionSimple
     "is:tournament"
   end
 
-  def explain
-    "the card is legal to bring to a sanctioned tournament"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}legal to bring to a sanctioned tournament"
   end
 end

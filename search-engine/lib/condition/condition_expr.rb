@@ -74,12 +74,17 @@ class ConditionExpr < ConditionSimple
     "sets" => "the number of sets", "tou" => "the toughness", "year" => "the print year",
   }
   OP_WORDS = {"=" => "is", ">=" => "is at least", "<=" => "is at most", ">" => "is more than", "<" => "is less than"}
+  # These are numeric (or numeric-like) comparisons on a total order, so unlike
+  # colors/types, the natural complement of an operator really is its opposite.
+  NEGATED_OP_WORDS = {"=" => "isn't", ">=" => "is less than", "<=" => "is more than", ">" => "is at most", "<" => "is at least"}
+  NEGATED_PARITY = {even: "odd", odd: "even"}
 
-  def explain
+  def explain(negated: false)
     if @parity
-      "#{explain_side(@a)} is #{@parity}"
+      "#{explain_side(@a)} is #{negated ? NEGATED_PARITY[@parity] : @parity}"
     else
-      "#{explain_side(@a)} #{OP_WORDS.fetch(@op, @op)} #{explain_side(@b)}"
+      words = negated ? NEGATED_OP_WORDS : OP_WORDS
+      "#{explain_side(@a)} #{words.fetch(@op, @op)} #{explain_side(@b)}"
     end
   end
 

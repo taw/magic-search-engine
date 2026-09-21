@@ -7,7 +7,7 @@ class ConditionIsFoil < ConditionSimple
     "is:foil"
   end
 
-  def explain
-    "the card has a foil version"
+  def explain(negated: false)
+    "the card #{negated ? "has no" : "has a"} foil version"
   end
 end

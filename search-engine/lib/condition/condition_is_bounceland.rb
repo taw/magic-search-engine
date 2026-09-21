@@ -24,7 +24,7 @@ class ConditionIsBounceland < ConditionNickname
     "is:bounceland"
   end
 
-  def explain
-    "the card is a bounceland"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}a bounceland"
   end
 end

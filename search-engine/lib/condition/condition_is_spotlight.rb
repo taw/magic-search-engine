@@ -7,7 +7,7 @@ class ConditionIsSpotlight < ConditionSimple
     "is:spotlight"
   end
 
-  def explain
-    "the card is a Story Spotlight"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}a Story Spotlight"
   end
 end

@@ -7,7 +7,7 @@ class ConditionVariantArena < ConditionSimple
     "variant:arena"
   end
 
-  def explain
-    "the card is an Arena-only variant of another card in the same set"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}an Arena-only variant of another card in the same set"
   end
 end

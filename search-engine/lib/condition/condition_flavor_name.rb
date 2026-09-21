@@ -16,7 +16,12 @@ class ConditionFlavorName < ConditionSimple
     "fn:#{maybe_quote(@flavor_name)}"
   end
 
-  def explain
-    @any ? "the card has a flavor name" : %[the flavor name includes "#{@flavor_name}"]
+  def explain(negated: false)
+    if @any
+      negated ? "the card has no flavor name" : "the card has a flavor name"
+    else
+      verb = negated ? "doesn't include" : "includes"
+      %[the flavor name #{verb} "#{@flavor_name}"]
+    end
   end
 end

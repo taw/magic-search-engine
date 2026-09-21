@@ -7,7 +7,7 @@ class ConditionIsReserved < ConditionSimple
     "is:reserved"
   end
 
-  def explain
-    "the card is on the Reserved List"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}on the Reserved List"
   end
 end

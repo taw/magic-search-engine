@@ -7,7 +7,7 @@ class ConditionHasSpellbook < ConditionSimple
     "has:spellbook"
   end
 
-  def explain
-    "the card has an associated spellbook"
+  def explain(negated: false)
+    negated ? "the card has no associated spellbook" : "the card has an associated spellbook"
   end
 end

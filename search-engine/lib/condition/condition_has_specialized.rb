@@ -7,7 +7,7 @@ class ConditionHasSpecialized < ConditionSimple
     "has:specialized"
   end
 
-  def explain
-    "the card can be specialized into another card"
+  def explain(negated: false)
+    negated ? "the card can't be specialized into another card" : "the card can be specialized into another card"
   end
 end

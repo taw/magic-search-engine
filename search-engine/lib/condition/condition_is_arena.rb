@@ -7,7 +7,7 @@ class ConditionIsArena < ConditionSimple
     "game:arena"
   end
 
-  def explain
-    "the card is available on Arena"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}available on Arena"
   end
 end

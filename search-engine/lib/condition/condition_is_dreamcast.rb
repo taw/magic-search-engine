@@ -7,7 +7,7 @@ class ConditionIsDreamcast < ConditionSimple
     "game:dreamcast"
   end
 
-  def explain
-    "the card is available in the Sega Dreamcast game"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}available in the Sega Dreamcast game"
   end
 end

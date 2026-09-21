@@ -7,7 +7,7 @@ class ConditionIsCustom < ConditionSimple
     "is:custom"
   end
 
-  def explain
-    "the card is a custom, fan-made card with no official printing"
+  def explain(negated: false)
+    negated ? "the card is not custom-made (it has an official printing)" : "the card is a custom, fan-made card with no official printing"
   end
 end

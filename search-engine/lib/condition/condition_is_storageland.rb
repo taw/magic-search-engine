@@ -20,7 +20,7 @@ class ConditionIsStorageland < ConditionNickname
     "is:storageland"
   end
 
-  def explain
-    "the card is a storageland"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}a storageland"
   end
 end

@@ -16,7 +16,11 @@ class ConditionPromoType < ConditionSimple
     "promo:#{@promo_type}"
   end
 
-  def explain
-    @any ? "the card has a promo type" : "the card is a #{@promo_type} promo"
+  def explain(negated: false)
+    if @any
+      negated ? "the card has no promo type" : "the card has a promo type"
+    else
+      "the card is #{negated ? "not " : ""}a #{@promo_type} promo"
+    end
   end
 end

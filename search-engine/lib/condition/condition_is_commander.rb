@@ -7,7 +7,7 @@ class ConditionIsCommander < ConditionSimple
     "is:commander"
   end
 
-  def explain
-    "the card is playable as a Commander"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}playable as a Commander"
   end
 end

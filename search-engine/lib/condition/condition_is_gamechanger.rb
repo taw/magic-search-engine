@@ -7,7 +7,7 @@ class ConditionIsGamechanger < ConditionSimple
     "is:gamechanger"
   end
 
-  def explain
-    "the card is on the Commander Game Changer list"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}on the Commander Game Changer list"
   end
 end

@@ -11,7 +11,7 @@ class ConditionIsDraft < ConditionSimple
     "is:draft"
   end
 
-  def explain
-    "the card cares about the draft process, including conspiracies"
+  def explain(negated: false)
+    negated ? "the card does not care about the draft process" : "the card cares about the draft process, including conspiracies"
   end
 end

@@ -8,7 +8,7 @@ class ConditionIsMeldresult < ConditionSimple
     "is:meldresult"
   end
 
-  def explain
-    "the card is the result of melding two other cards"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}the result of melding two other cards"
   end
 end

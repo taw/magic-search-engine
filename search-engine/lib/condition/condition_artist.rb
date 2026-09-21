@@ -13,7 +13,8 @@ class ConditionArtist < ConditionSimple
     "a:#{maybe_quote(@artist)}"
   end
 
-  def explain
-    %[the artist credit includes "#{@artist}"]
+  def explain(negated: false)
+    verb = negated ? "doesn't include" : "includes"
+    %[the artist credit #{verb} "#{@artist}"]
   end
 end

@@ -122,7 +122,7 @@ class ConditionIsStickers < ConditionNickname
     "is:stickers"
   end
 
-  def explain
-    "the card is a sticker, or creates stickers"
+  def explain(negated: false)
+    negated ? "the card isn't a sticker, and doesn't create stickers" : "the card is a sticker, or creates stickers"
   end
 end

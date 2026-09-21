@@ -8,7 +8,7 @@ class ConditionIsBear < ConditionSimple
     "is:bear"
   end
 
-  def explain
-    "the card is a 2/2 for two mana (a \"bear\")"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}a 2/2 for two mana (a \"bear\")"
   end
 end

@@ -18,7 +18,7 @@ class ConditionIsTriome < ConditionNickname
     "is:triome"
   end
 
-  def explain
-    "the card is a triome"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}a triome"
   end
 end

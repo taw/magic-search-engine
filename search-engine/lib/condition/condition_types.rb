@@ -36,8 +36,10 @@ class ConditionTypes < ConditionSimple
     "t:#{maybe_quote(@types.join(' '))}"
   end
 
-  def explain
-    return "the card types include any type" if @match_all
-    "the card types include #{@types.join(' and ')}"
+  def explain(negated: false)
+    if @match_all
+      return negated ? "the card has no types" : "the card types include any type"
+    end
+    "the card types #{negated ? "don't include" : "include"} #{@types.join(' and ')}"
   end
 end

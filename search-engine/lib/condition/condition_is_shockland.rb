@@ -18,7 +18,7 @@ class ConditionIsShockland < ConditionNickname
     "is:shockland"
   end
 
-  def explain
-    "the card is a shockland"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}a shockland"
   end
 end

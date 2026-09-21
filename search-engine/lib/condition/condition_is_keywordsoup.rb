@@ -35,7 +35,7 @@ class ConditionIsKeywordsoup < ConditionNickname
     "is:keywordsoup"
   end
 
-  def explain
-    "the card lists an unusually large number of keywords"
+  def explain(negated: false)
+    "the card #{negated ? "doesn't list" : "lists"} an unusually large number of keywords"
   end
 end

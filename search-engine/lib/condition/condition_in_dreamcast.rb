@@ -7,7 +7,7 @@ class ConditionInDreamcast < ConditionIn
     "in:dreamcast"
   end
 
-  def explain
-    "the card has a printing available on the Sega Dreamcast"
+  def explain(negated: false)
+    negated ? "the card has no printing available on the Sega Dreamcast" : "the card has a printing available on the Sega Dreamcast"
   end
 end

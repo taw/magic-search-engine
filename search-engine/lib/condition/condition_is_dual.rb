@@ -18,7 +18,7 @@ class ConditionIsDual < ConditionNickname
     "is:dual"
   end
 
-  def explain
-    "the card is one of the original dual lands"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}one of the original dual lands"
   end
 end

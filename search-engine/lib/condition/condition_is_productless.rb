@@ -25,7 +25,7 @@ class ConditionIsProductless < Condition
     "is:productless#{finish}"
   end
 
-  def explain
-    "the card has no known product source (booster, precon, or promo)"
+  def explain(negated: false)
+    negated ? "the card has a known product source (booster, precon, or promo)" : "the card has no known product source (booster, precon, or promo)"
   end
 end

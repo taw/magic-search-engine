@@ -7,7 +7,7 @@ class ConditionInMtgo < ConditionIn
     "in:mtgo"
   end
 
-  def explain
-    "the card has a printing available on Magic Online"
+  def explain(negated: false)
+    negated ? "the card has no printing available on Magic Online" : "the card has a printing available on Magic Online"
   end
 end

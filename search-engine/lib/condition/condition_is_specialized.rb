@@ -7,7 +7,7 @@ class ConditionIsSpecialized < ConditionSimple
     "is:specialized"
   end
 
-  def explain
-    "the card is a specialized version of another card (Arena digital-only)"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}a specialized version of another card (Arena digital-only)"
   end
 end

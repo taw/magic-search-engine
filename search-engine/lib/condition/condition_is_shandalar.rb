@@ -7,7 +7,7 @@ class ConditionIsShandalar < ConditionSimple
     "game:shandalar"
   end
 
-  def explain
-    "the card is available on Shandalar"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}available on Shandalar"
   end
 end

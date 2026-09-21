@@ -7,7 +7,7 @@ class ConditionHasSignature < ConditionSimple
     "has:signature"
   end
 
-  def explain
-    "the card has a signature"
+  def explain(negated: false)
+    negated ? "the card has no signature" : "the card has a signature"
   end
 end

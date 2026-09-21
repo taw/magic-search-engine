@@ -8,7 +8,7 @@ class ConditionIsVertical < ConditionSimple
     "is:vertical"
   end
 
-  def explain
-    "the card is vertical, not a Plane, Phenomenon, or Battle"
+  def explain(negated: false)
+    negated ? "the card is a Plane, Phenomenon, or Battle" : "the card is vertical, not a Plane, Phenomenon, or Battle"
   end
 end

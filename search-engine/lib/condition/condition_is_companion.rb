@@ -23,7 +23,7 @@ class ConditionIsCompanion < ConditionNickname
     "is:companion"
   end
 
-  def explain
-    "the card has the companion ability"
+  def explain(negated: false)
+    "the card #{negated ? "doesn't have" : "has"} the companion ability"
   end
 end

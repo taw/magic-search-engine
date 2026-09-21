@@ -11,7 +11,7 @@ class ConditionIsMaindeck < ConditionSimple
     "is:maindeck"
   end
 
-  def explain
-    "the card is a type that could go into a main deck (not Attraction, Conspiracy, Contraption, Dungeon, Hero's Path, Phenomenon, Plane, Scheme, Stickers, or Vanguard)"
+  def explain(negated: false)
+    negated ? "the card is not a type that could go into a main deck (Attraction, Conspiracy, Contraption, Dungeon, Hero's Path, Phenomenon, Plane, Scheme, Stickers, or Vanguard)" : "the card is a type that could go into a main deck (not Attraction, Conspiracy, Contraption, Dungeon, Hero's Path, Phenomenon, Plane, Scheme, Stickers, or Vanguard)"
   end
 end

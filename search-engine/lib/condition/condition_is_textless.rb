@@ -7,7 +7,7 @@ class ConditionIsTextless < ConditionSimple
     "is:textless"
   end
 
-  def explain
-    "the card is textless"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}textless"
   end
 end

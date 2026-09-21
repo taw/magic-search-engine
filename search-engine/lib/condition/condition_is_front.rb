@@ -7,7 +7,7 @@ class ConditionIsFront < ConditionSimple
     "is:front"
   end
 
-  def explain
-    "the card is on the front face, not the back of a double-faced or meld card"
+  def explain(negated: false)
+    negated ? "the card is on the back face of a double-faced or meld card" : "the card is on the front face, not the back of a double-faced or meld card"
   end
 end

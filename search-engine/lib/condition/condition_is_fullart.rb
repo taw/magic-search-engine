@@ -7,7 +7,7 @@ class ConditionIsFullart < ConditionSimple
     "is:fullart"
   end
 
-  def explain
-    "the card is a full art card"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}a full art card"
   end
 end

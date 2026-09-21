@@ -12,7 +12,7 @@ class ConditionInRarity < ConditionIn
     "in:#{@rarity}"
   end
 
-  def explain
-    "the card has a printing at #{@rarity} rarity"
+  def explain(negated: false)
+    negated ? "the card has no printing at #{@rarity} rarity" : "the card has a printing at #{@rarity} rarity"
   end
 end

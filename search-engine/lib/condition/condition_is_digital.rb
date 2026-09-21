@@ -7,7 +7,7 @@ class ConditionIsDigital < ConditionSimple
     "is:digital"
   end
 
-  def explain
-    "the card is digital-only (MTGO or Arena)"
+  def explain(negated: false)
+    negated ? "the card is not digital-only" : "the card is digital-only (MTGO or Arena)"
   end
 end

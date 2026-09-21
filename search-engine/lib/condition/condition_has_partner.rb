@@ -7,7 +7,7 @@ class ConditionHasPartner < ConditionSimple
     "has:partner"
   end
 
-  def explain
-    "the card has a partner"
+  def explain(negated: false)
+    negated ? "the card has no partner" : "the card has a partner"
   end
 end

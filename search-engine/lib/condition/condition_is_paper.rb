@@ -7,7 +7,7 @@ class ConditionIsPaper < ConditionSimple
     "game:paper"
   end
 
-  def explain
-    "the card is available as a paper card"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}available as a paper card"
   end
 end

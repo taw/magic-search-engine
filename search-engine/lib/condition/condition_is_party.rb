@@ -12,7 +12,7 @@ class ConditionIsParty < ConditionSimple
     "is:party"
   end
 
-  def explain
-    "the card is a party member (Cleric, Rogue, Warrior, Wizard, or a changeling creature)"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}a party member (Cleric, Rogue, Warrior, Wizard, or a changeling creature)"
   end
 end

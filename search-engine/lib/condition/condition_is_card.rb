@@ -7,7 +7,7 @@ class ConditionIsCard < ConditionSimple
     "is:card"
   end
 
-  def explain
-    "the card is not a token"
+  def explain(negated: false)
+    negated ? "the card is a token" : "the card is not a token"
   end
 end

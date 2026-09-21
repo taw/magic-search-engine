@@ -11,7 +11,7 @@ class ConditionFrameEffect < ConditionSimple
     "frame:#{@frame_effect}"
   end
 
-  def explain
-    "the card has the #{@frame_effect} frame effect"
+  def explain(negated: false)
+    "the card #{negated ? "doesn't have" : "has"} the #{@frame_effect} frame effect"
   end
 end

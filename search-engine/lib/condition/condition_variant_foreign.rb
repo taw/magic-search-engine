@@ -7,7 +7,7 @@ class ConditionVariantForeign < ConditionSimple
     "variant:foreign"
   end
 
-  def explain
-    "the card is a foreign-language variant with different art"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}a foreign-language variant with different art"
   end
 end

@@ -7,7 +7,7 @@ class ConditionIsEtched < ConditionSimple
     "is:etched"
   end
 
-  def explain
-    "the card has an etched foil version"
+  def explain(negated: false)
+    "the card has #{negated ? "no" : "an"} etched foil version"
   end
 end

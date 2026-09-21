@@ -12,7 +12,7 @@ class ConditionIsOutlaw < ConditionSimple
     "is:outlaw"
   end
 
-  def explain
-    "the card is an outlaw (Assassin, Mercenary, Pirate, Rogue, Warlock, or a changeling)"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}an outlaw (Assassin, Mercenary, Pirate, Rogue, Warlock, or a changeling)"
   end
 end

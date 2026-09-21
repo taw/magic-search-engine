@@ -84,7 +84,7 @@ class ConditionIsAttraction < ConditionNickname
     "is:attraction"
   end
 
-  def explain
-    "the card is an attraction, or creates attractions"
+  def explain(negated: false)
+    negated ? "the card isn't an attraction, and doesn't create attractions" : "the card is an attraction, or creates attractions"
   end
 end

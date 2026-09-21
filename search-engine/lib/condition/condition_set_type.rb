@@ -29,8 +29,8 @@ class ConditionSetType < Condition
     "st:#{maybe_quote(@set_type)}"
   end
 
-  def explain
-    "the set's type is #{@set_type}"
+  def explain(negated: false)
+    "the set's type #{negated ? "isn't" : "is"} #{@set_type}"
   end
 
   private

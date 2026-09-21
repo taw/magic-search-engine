@@ -7,7 +7,7 @@ class ConditionIsSpell < ConditionSimple
     "is:spell"
   end
 
-  def explain
-    "the card is a spell, not a land"
+  def explain(negated: false)
+    negated ? "the card is a land" : "the card is a spell, not a land"
   end
 end

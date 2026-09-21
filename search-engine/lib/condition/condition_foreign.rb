@@ -44,9 +44,14 @@ class ConditionForeign < ConditionSimple
     "#{@lang}:#{maybe_quote(@query)}"
   end
 
-  def explain
+  def explain(negated: false)
     field = @lang_match_all ? "the foreign name" : "the #{@lang} name"
-    @query_any ? "#{field} exists" : %[#{field} includes "#{@query}"]
+    if @query_any
+      negated ? "#{field} doesn't exist" : "#{field} exists"
+    else
+      verb = negated ? "doesn't include" : "includes"
+      %[#{field} #{verb} "#{@query}"]
+    end
   end
 
   private

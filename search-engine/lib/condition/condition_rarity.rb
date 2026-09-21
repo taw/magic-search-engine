@@ -36,8 +36,10 @@ class ConditionRarity < ConditionSimple
   end
 
   OP_WORDS = {"=" => "is", ">=" => "is at least", "<=" => "is at most", ">" => "is rarer than", "<" => "is more common than"}
+  NEGATED_OP_WORDS = {"=" => "isn't", ">=" => "is more common than", "<=" => "is rarer than", ">" => "is at most", "<" => "is at least"}
 
-  def explain
-    "the rarity #{OP_WORDS.fetch(@op, @op)} #{@rarity}"
+  def explain(negated: false)
+    words = negated ? NEGATED_OP_WORDS : OP_WORDS
+    "the rarity #{words.fetch(@op, @op)} #{@rarity}"
   end
 end

@@ -18,7 +18,7 @@ class ConditionIsSurveilland < ConditionNickname
     "is:surveilland"
   end
 
-  def explain
-    "the card is a surveil land"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}a surveil land"
   end
 end

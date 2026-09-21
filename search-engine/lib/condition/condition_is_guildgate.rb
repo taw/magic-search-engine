@@ -18,7 +18,7 @@ class ConditionIsGuildgate < ConditionNickname
     "is:guildgate"
   end
 
-  def explain
-    "the card is a guildgate"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}a guildgate"
   end
 end

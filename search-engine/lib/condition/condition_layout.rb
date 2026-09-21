@@ -11,7 +11,7 @@ class ConditionLayout < ConditionSimple
     "layout:#{@layout}"
   end
 
-  def explain
-    "the card's layout is #{@layout}"
+  def explain(negated: false)
+    "the card's layout #{negated ? "isn't" : "is"} #{@layout}"
   end
 end

@@ -3,8 +3,9 @@ class ConditionFullOracle < ConditionOracle
     "fo:#{maybe_quote(@text)}"
   end
 
-  def explain
-    %[the Oracle text, including reminder text, includes "#{@text}"]
+  def explain(negated: false)
+    verb = negated ? "doesn't include" : "includes"
+    %[the Oracle text, including reminder text, #{verb} "#{@text}"]
   end
 
   private

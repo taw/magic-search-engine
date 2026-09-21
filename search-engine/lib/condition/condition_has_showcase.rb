@@ -14,7 +14,7 @@ class ConditionHasShowcase < Condition
     "has:showcase"
   end
 
-  def explain
-    "the card has a showcase version in its set"
+  def explain(negated: false)
+    negated ? "the card has no showcase version in its set" : "the card has a showcase version in its set"
   end
 end

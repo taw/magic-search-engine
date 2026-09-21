@@ -7,7 +7,7 @@ class ConditionIsSpellbook < ConditionSimple
     "is:spellbook"
   end
 
-  def explain
-    "the card is in a spellbook (Arena digital-only)"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}in a spellbook (Arena digital-only)"
   end
 end

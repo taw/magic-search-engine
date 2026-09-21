@@ -7,7 +7,7 @@ class ConditionIsBack < ConditionSimple
     "is:back"
   end
 
-  def explain
-    "the card is the back face of a double-faced or meld card"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}the back face of a double-faced or meld card"
   end
 end

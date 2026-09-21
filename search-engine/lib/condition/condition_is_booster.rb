@@ -7,7 +7,7 @@ class ConditionIsBooster < ConditionSimple
     "is:booster"
   end
 
-  def explain
-    "the card appears in randomized boosters"
+  def explain(negated: false)
+    negated ? "the card does not appear in randomized boosters" : "the card appears in randomized boosters"
   end
 end

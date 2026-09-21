@@ -31,7 +31,7 @@ class ConditionIsHolofoil < ConditionSimple
     "is:holofoil"
   end
 
-  def explain
-    "the card's printing has the embossed holofoil sticker"
+  def explain(negated: false)
+    "the card's printing #{negated ? "has no" : "has the"} embossed holofoil sticker"
   end
 end

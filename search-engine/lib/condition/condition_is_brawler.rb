@@ -7,7 +7,7 @@ class ConditionIsBrawler < ConditionSimple
     "is:brawler"
   end
 
-  def explain
-    "the card is playable as a Brawl commander (a legendary creature or planeswalker)"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}playable as a Brawl commander (a legendary creature or planeswalker)"
   end
 end

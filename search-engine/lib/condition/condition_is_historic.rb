@@ -10,7 +10,7 @@ class ConditionIsHistoric < ConditionSimple
     "is:historic"
   end
 
-  def explain
-    "the card is historic (legendary, artifact, or Saga)"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}historic (legendary, artifact, or Saga)"
   end
 end

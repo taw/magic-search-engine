@@ -13,7 +13,8 @@ class ConditionFlavor < ConditionSimple
     "ft:#{maybe_quote(@flavor)}"
   end
 
-  def explain
-    %[the flavor text includes "#{@flavor}"]
+  def explain(negated: false)
+    verb = negated ? "doesn't include" : "includes"
+    %[the flavor text #{verb} "#{@flavor}"]
   end
 end

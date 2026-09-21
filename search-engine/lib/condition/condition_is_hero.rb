@@ -7,7 +7,7 @@ class ConditionIsHero < ConditionSimple
     "is:hero"
   end
 
-  def explain
-    "the card is a Hero's Path card"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}a Hero's Path card"
   end
 end

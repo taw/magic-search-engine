@@ -7,7 +7,7 @@ class ConditionIsXmage < ConditionSimple
     "game:xmage"
   end
 
-  def explain
-    "the card is available on Xmage"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}available on Xmage"
   end
 end

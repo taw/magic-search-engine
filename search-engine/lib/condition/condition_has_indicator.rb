@@ -7,7 +7,7 @@ class ConditionHasIndicator < ConditionSimple
     "has:indicator"
   end
 
-  def explain
-    "the card has a color indicator"
+  def explain(negated: false)
+    negated ? "the card has no color indicator" : "the card has a color indicator"
   end
 end

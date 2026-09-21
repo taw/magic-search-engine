@@ -19,7 +19,7 @@ class ConditionIsMylittlepony < ConditionNickname
     "is:mylittlepony"
   end
 
-  def explain
-    "the card is one of the My Little Pony crossover cards"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}one of the My Little Pony crossover cards"
   end
 end

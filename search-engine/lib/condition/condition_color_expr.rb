@@ -30,9 +30,14 @@ class ConditionColorExpr < ConditionSimple
 
   FIELD_NAMES = {"c" => "the colors", "ci" => "the color identity", "ind" => "the color indicator"}
   OP_WORDS = {"=" => "is", "!=" => "isn't", ">=" => "includes at least", "<=" => "is at most", ">" => "is more than", "<" => "is less than", ":" => "includes"}
+  # Colors are a set, not a total order, so "not (colors >= X)" is NOT "colors < X"
+  # (that's just one of several ways to fail to be a superset) - it has to stay a
+  # plain negation of set inclusion, not flip to a different comparison operator.
+  NEGATED_OP_WORDS = {"=" => "isn't", "!=" => "is", ">=" => "doesn't include", "<=" => "isn't limited to", ">" => "doesn't strictly include", "<" => "isn't strictly within", ":" => "doesn't include"}
 
-  def explain
-    "#{FIELD_NAMES.fetch(@a, "the #{@a}")} #{OP_WORDS.fetch(@op, @op)} #{explain_value}"
+  def explain(negated: false)
+    words = negated ? NEGATED_OP_WORDS : OP_WORDS
+    "#{FIELD_NAMES.fetch(@a, "the #{@a}")} #{words.fetch(@op, @op)} #{explain_value}"
   end
 
   private

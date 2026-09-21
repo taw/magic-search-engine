@@ -15,7 +15,12 @@ class ConditionSignature < ConditionSimple
     "sig:#{maybe_quote(@signature)}"
   end
 
-  def explain
-    @any ? "the card has a signature" : %[the signature includes "#{@signature}"]
+  def explain(negated: false)
+    if @any
+      negated ? "the card has no signature" : "the card has a signature"
+    else
+      verb = negated ? "doesn't include" : "includes"
+      %[the signature #{verb} "#{@signature}"]
+    end
   end
 end

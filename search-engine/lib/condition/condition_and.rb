@@ -54,6 +54,10 @@ class ConditionAnd < Condition
     "(#{@conds.join(' ')})"
   end
 
+  def compound?
+    true
+  end
+
   # An OR child needs parens to keep its precedence clear; anything else (a leaf,
   # or a NOT which already parenthesizes itself) reads fine bare.
   def explain

@@ -182,9 +182,9 @@ describe "Query#explain" do
       assert_explains "is:attraction", "the card is an attraction, or creates attractions"
     end
 
-    it "not: negates cleanly, with no doubled-up connector" do
-      assert_explains "not:reprint", "not (the card is a reprint)"
-      assert_explains "not:black-bordered", "not (the border is black)"
+    it "not: negates in place, with natural phrasing" do
+      assert_explains "not:reprint", "the card is not a reprint"
+      assert_explains "not:black-bordered", "the border isn't black"
     end
   end
 
@@ -198,12 +198,12 @@ describe "Query#explain" do
       assert_explains "t:goblin OR mv=2", "the card types include goblin or the mana value is 2"
     end
 
-    it "NOT of a single condition" do
-      assert_explains "-t:goblin", "not (the card types include goblin)"
+    it "NOT of a single condition negates in place, not wrapped in \"not (...)\"" do
+      assert_explains "-t:goblin", "the card types don't include goblin"
     end
 
     it "NOT combined with another condition doesn't double up the connector" do
-      assert_explains "-t:goblin -t:elf", "not (the card types include goblin) and not (the card types include elf)"
+      assert_explains "-t:goblin -t:elf", "the card types don't include goblin and the card types don't include elf"
     end
 
     it "NOT of a parenthesized OR group" do
@@ -230,6 +230,44 @@ describe "Query#explain" do
     it "nested same-operator groups flatten, since ConditionAnd/ConditionOr flatten and dedup at parse time" do
       assert_explains "(t:goblin OR t:elf) OR (t:dwarf OR t:human)",
         "the card types include goblin or the card types include elf or the card types include dwarf or the card types include human"
+    end
+  end
+
+  # A single (non-compound) condition negates in place with natural phrasing,
+  # instead of being wrapped in "not (...)" - so "-c=w" reads "the colors isn't W",
+  # not "not (the colors is W)". Only AND/OR/NOT groups still get the "not (...)" wrap.
+  context "negation of a single condition" do
+    it "reads as a natural negated clause, not \"not (...)\"" do
+      assert_explains "-c=w", "the colors isn't W"
+      assert_explains "-c>=gr", "the colors doesn't include RG"
+      assert_explains "-t=creature", "the card types aren't exactly creature"
+      assert_explains "-t:goblin", "the card types don't include goblin"
+      assert_explains "-mv=3", "the mana value isn't 3"
+      assert_explains "-r:common", "the rarity isn't common"
+      assert_explains "-o:delve", %[the Oracle text doesn't include "delve"]
+      assert_explains "-o:/dragon/", "the Oracle text doesn't match the regex `/dragon/`"
+      assert_explains "-e:fra", %[the set is not "fra"]
+      assert_explains "-number:117", "the collector number isn't 117"
+      assert_explains "-is:vertical", "the card is a Plane, Phenomenon, or Battle"
+      assert_explains "not:arena", "the card is not available on Arena"
+    end
+
+    it "flips comparison operators to their natural complement for totally-ordered fields" do
+      assert_explains "-mv>=3", "the mana value is less than 3"
+      assert_explains "-mv:even", "the mana value is odd"
+      assert_explains "-r>=rare", "the rarity is more common than rare"
+    end
+
+    it "doesn't flip comparison operators for colors/types, since those are sets, not a total order" do
+      # not (colors >= RG) isn't "colors < RG" - a disjoint color like B is neither
+      assert_explains "-c>=gr", "the colors doesn't include RG"
+      assert_explains %[-t>="land forest"], "the card types don't include land and forest"
+    end
+
+    it "a compound (AND/OR) child still gets wrapped in \"not (...)\", since De Morgan's law isn't attempted" do
+      assert_explains "-(t:goblin OR t:elf)", "not (the card types include goblin or the card types include elf)"
+      assert_explains "t:creature -(t:goblin OR t:elf)",
+        "the card types include creature and not (the card types include goblin or the card types include elf)"
     end
   end
 end

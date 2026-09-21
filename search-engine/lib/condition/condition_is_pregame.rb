@@ -45,7 +45,7 @@ class ConditionIsPregame < ConditionNickname
     "is:pregame"
   end
 
-  def explain
-    "the card does something special just from being in your opening hand"
+  def explain(negated: false)
+    "the card #{negated ? "doesn't do" : "does"} something special just from being in your opening hand"
   end
 end

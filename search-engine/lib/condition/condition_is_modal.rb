@@ -7,7 +7,7 @@ class ConditionIsModal < ConditionSimple
     "is:modal"
   end
 
-  def explain
-    "the card has modes to choose from"
+  def explain(negated: false)
+    negated ? "the card has no modes to choose from" : "the card has modes to choose from"
   end
 end

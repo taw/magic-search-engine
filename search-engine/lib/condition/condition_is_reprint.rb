@@ -7,7 +7,7 @@ class ConditionIsReprint < ConditionSimple
     "is:reprint"
   end
 
-  def explain
-    "the card is a reprint"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}a reprint"
   end
 end

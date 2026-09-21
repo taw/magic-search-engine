@@ -7,7 +7,7 @@ class ConditionIsOversized < ConditionSimple
     "is:oversized"
   end
 
-  def explain
-    "the card is oversized"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}oversized"
   end
 end

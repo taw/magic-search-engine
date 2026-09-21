@@ -11,7 +11,7 @@ class ConditionBorder < ConditionSimple
     "border:#{@border}"
   end
 
-  def explain
-    "the border is #{@border}"
+  def explain(negated: false)
+    "the border #{negated ? "isn't" : "is"} #{@border}"
   end
 end

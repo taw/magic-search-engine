@@ -7,7 +7,7 @@ class ConditionInBooster < ConditionIn
     "in:booster"
   end
 
-  def explain
-    "the card has a version in boosters"
+  def explain(negated: false)
+    negated ? "the card has no version in boosters" : "the card has a version in boosters"
   end
 end

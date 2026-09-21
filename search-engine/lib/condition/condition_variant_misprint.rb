@@ -7,7 +7,7 @@ class ConditionVariantMisprint < ConditionSimple
     "variant:misprint"
   end
 
-  def explain
-    "the card is a misprinted variant of another card in the same set"
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}a misprinted variant of another card in the same set"
   end
 end
