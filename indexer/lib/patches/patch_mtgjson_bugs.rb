@@ -29,6 +29,10 @@ class PatchMtgjsonBugs < Patch
   # pssc/sAnS mERcY ("pLAnE") and punk/That's Enough Slices ("Phenome-nom").
   INHERENTLY_BIG_LAYOUTS = %W[planar scheme vanguard].to_set.freeze
 
+  # Confirmed for Arena, but mtgjson only lists them as paper.
+  # https://cardgamebase.com/reality-fracture-special-guests/
+  REALITY_FRACTURE_SPG_NUMBERS = %W[159 160 161 162 163 164 165 166 167 168].to_set.freeze
+
   INITIATIVE_TEXT = "Whenever one or more creatures a player controls deal " \
     "combat damage to you, that player takes the initiative.\n" \
     "Whenever you take the initiative and at the beginning of your upkeep, " \
@@ -61,6 +65,13 @@ class PatchMtgjsonBugs < Patch
       # Reported to mtgjson, no sign of a fix.
       if set_code == "OM1" and card["number"] == "117"
         card["availability"] = []
+      end
+
+      if set_code == "SPG" and REALITY_FRACTURE_SPG_NUMBERS.include?(card["number"])
+        card["availability"] = card["availability"].to_a | ["arena"]
+        # mtgjson's originalReleaseDate is the paper street date, but these
+        # release on Arena a few days earlier, per the historic banlist.
+        card["originalReleaseDate"] = "2026-09-29"
       end
 
       # MBC is a paper set, but a few cards are marked as arena-only

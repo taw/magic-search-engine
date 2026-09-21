@@ -6,7 +6,7 @@ describe "Formats - Brawl" do
   # Not the historical count - Historic Brawl launched with 11 bans in 2020 and has
   # gained and lost some since
   it "banned list" do
-    assert_count_cards "banned:brawl", 36
+    assert_count_cards "banned:brawl", 37
     assert_legality "brawl", today, "Force of Will", "banned"
     assert_legality "brawl", today, "Fierce Guardianship", "banned"
     assert_legality "brawl", today, "Iona, Shield of Emeria", "banned"
