@@ -130,11 +130,25 @@ describe "Query#explain" do
     assert_explains "mana=hh", "the mana cost is {h}{h}"
   end
 
+  # @query_mana keys are sorted alphabetically internally (order doesn't matter for
+  # matching), but the frontend's mana-icon whitelist recognizes a fixed, real-card
+  # order per pair - {W/B} not {B/W}, {R/W} not {W/R}, {G/U} not {U/G} - so display
+  # has to map back to that, or the "icon" is just literal unrendered text.
+  it "canonicalizes hybrid/Phyrexian symbol order to match the frontend's whitelist, not alphabetical order" do
+    assert_explains "mana>={w/b}", "the mana cost is at least {wb}"
+    assert_explains "mana>={r/w}", "the mana cost is at least {rw}"
+    assert_explains "mana>={g/u}", "the mana cost is at least {gu}"
+    assert_explains "mana>={c/b}", "the mana cost is at least {cb}"
+    assert_explains "mana>={r/p}", "the mana cost is at least {rp}"
+    assert_explains "mana>={w/u/p}", "the mana cost is at least {wup}"
+    assert_explains "devotion>={w/b}{w/b}{w/b}", "the devotion to {wb} is at least 3"
+  end
+
   it "devotion= (devotion to a color/hybrid symbol, a plain count)" do
     assert_explains "devotion=bbb", "the devotion to {b} is 3"
     assert_explains "devotion>=ww", "the devotion to {w} is at least 2"
     assert_explains "devotion<uuu", "the devotion to {u} is less than 3"
-    assert_explains "devotion={u/b}{u/b}", "the devotion to {bu} is 2"
+    assert_explains "devotion={u/b}{u/b}", "the devotion to {ub} is 2"
   end
 
   it "border:/frame:/stamp:/layout:/promo:/st: (simple field conditions)" do

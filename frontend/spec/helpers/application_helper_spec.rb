@@ -200,7 +200,7 @@ RSpec.describe ApplicationHelper, type: :helper do
 
     it "escapes html inside code spans too" do
       expect(helper.format_explanation("the type line matches the regex `/<b>/`")).to eq(
-        %[the type line matches the regex <code>&lt;b&gt;</code>]
+        %[the type line matches the regex <code>/&lt;b&gt;/</code>]
       )
     end
 

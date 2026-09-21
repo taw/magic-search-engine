@@ -42,17 +42,39 @@ module QueryManaToS
       when "?"
         res << "{#{c.to_i}}"
       else
+        symbol = canonical_mana_symbol(m)
         if c.is_a?(Integer)
-          c.times{ res << "{#{m}}" }
+          c.times{ res << "{#{symbol}}" }
         elsif c % 1 == 0.5
-          c.floor.times{ res << "{#{m}}" }
-          res << "{h#{m}}"
+          c.floor.times{ res << "{#{symbol}}" }
+          res << "{h#{symbol}}"
         else
           # TOTALLY BOGUS, same as #query_mana_to_s
-          res << "{#{m}=#{c}}"
+          res << "{#{symbol}=#{c}}"
         end
       end
     end
     res.sort.join
+  end
+
+  # @query_mana keys are built by sorting a symbol's letters alphabetically (order
+  # doesn't matter for matching - "wb" and "bw" mean the same hybrid symbol), but
+  # the frontend's mana-icon whitelist (and real cards) use a fixed, non-alphabetical
+  # order per pair - {W/B}, {R/W}, {G/U}, not {B/W}/{W/R}/{U/G}. Unrecognized order
+  # isn't just ugly, it's invisible to the icon renderer, which falls back to
+  # printing the raw text. This maps the alphabetical form back to the printed one.
+  CANONICAL_MANA_PAIRS = {
+    "uw" => "wu", "bw" => "wb", "bu" => "ub", "ru" => "ur", "gr" => "rg",
+    "pw" => "wp", "pu" => "up", "pr" => "rp",
+    "bc" => "cb",
+  }.freeze
+
+  def canonical_mana_symbol(m)
+    return CANONICAL_MANA_PAIRS.fetch(m, m) if m.size == 2
+    if m.size == 3 && m.include?("p")
+      pair = m.delete("p")
+      return "#{CANONICAL_MANA_PAIRS.fetch(pair, pair)}p"
+    end
+    m
   end
 end

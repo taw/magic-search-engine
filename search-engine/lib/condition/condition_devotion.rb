@@ -1,4 +1,6 @@
 class ConditionDevotion < ConditionSimple
+  include QueryManaToS
+
   def initialize(op, mana)
     @op = op
     @mana = mana
@@ -59,7 +61,7 @@ class ConditionDevotion < ConditionSimple
   def explain(negated: false)
     words = negated ? NEGATED_OP_WORDS : OP_WORDS
     @query_mana.map{|symbol, amount|
-      "the devotion to {#{symbol}} #{words.fetch(@op, @op)} #{amount.to_i}"
+      "the devotion to {#{canonical_mana_symbol(symbol)}} #{words.fetch(@op, @op)} #{amount.to_i}"
     }.join(" and ")
   end
 
