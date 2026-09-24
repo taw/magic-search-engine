@@ -43,4 +43,12 @@ class ConditionSheet < ConditionSimple
       "sheet:#{maybe_quote("#{@set && "#{@set}/"}#{@sheet}#{@mult}")}"
     end
   end
+
+  def explain(negated: false)
+    verb = negated ? "doesn't appear" : "appears"
+    return "the card #{verb} on any print sheet" if @any
+    sheet = "#{@set && "#{@set}/"}#{@sheet.upcase}"
+    times = @mult && " #{@mult == "1" ? "once" : "#{@mult} times"}"
+    "the card #{verb} on print sheet \"#{sheet}\"#{times}"
+  end
 end

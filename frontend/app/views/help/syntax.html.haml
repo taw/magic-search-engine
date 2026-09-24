@@ -124,7 +124,7 @@
     %ul
       = search_help "ind=rg", "cards with color indicator exactly red/green"
       = search_help "ind=r", "cards with color indicator exactly red"
-      = search_help "ind=wubrg", "cards with color indicator exactly wubrg"
+      = search_help "ind=wrg", "cards with color indicator exactly white, red, and green"
       = search_help "ind>=r", "cards with color indicator including red"
       = search_help "ind:*", "cards with any color indicator"
       = search_help "has:indicator", "cards with any color indicator"
@@ -519,7 +519,7 @@
       = search_help "year=2003", "cards printed in year 2003"
       = search_help "year<=1995", "cards printed in year 1995 or before"
       = search_help "print>ktk", "cards printed after release of Khans of Tarkir"
-      = search_help %[print="29 September 2012"], "cards printed on 29 September 2012 (Return to Ravnica prerelease)"
+      = search_help %[print="5 October 2012"], "cards printed on 5 October 2012 (Return to Ravnica release)"
       = search_help "firstprint=m10", "cards first printed in Magic 2010 set"
       = search_help "lastprint=m10", "cards last printed in Magic 2010 set"
       = search_help "lastprint<lw", "cards last printed in Lorwyn set or earlier"
@@ -566,7 +566,7 @@
     %div Every card printing is treated as separate object, so you can't search for cards which were printed in both Magic 2010 and Magic 2011 with e:m10 e:m11. There's special syntax for that.
     %ul
       = search_help "e:m10 alt:e:m11", "cards from Magic 2010 which were also printed in Magic 2011"
-      = search_help %[a:"Rebecca Guay" alt:(not a:"Rebecca Guay")], "cards drawn by Rebecca Guay which were also printed by someone who's not Rebecca Guay"
+      = search_help %[a:"Rebecca Guay" alt:(-a:"Rebecca Guay")], "cards drawn by Rebecca Guay which were also printed by someone who's not Rebecca Guay"
     %div To ask how many printings match, instead of whether any of them does, use prints>=2:query from the section on number of printings above.
 
     %h4#foreign-name Search by foreign name
@@ -583,7 +583,7 @@
       = search_help %[sp:"Llave maestra"], %[cards with "Llave maestra" in Spanish name]
       = search_help %[foreign:"龍"], %[cards with "龍" in any foreign name]
       = search_help %[t:planeswalker kr:*], %[planeswalker cards with Korean version]
-      = search_help "de:/\w{20,}/", %[cards with 20+ letter word in German name]
+      = search_help 'de:/\w{20,}/', %[cards with 20+ letter word in German name]
 
     %h4#regex Search by regular expression
     %div Regular expressions follow ruby syntax and are case insensitive by default.
@@ -596,7 +596,7 @@
       = search_help 'artist:/.{40}/', "cards with artist credit of 40 or more characters"
       = search_help 'n:/.{30}/', "cards with names of 30 or more characters"
       = search_help 'name:/.{30}/', "cards with names of 30 or more characters"
-      = search_help 'rulings:/twitter/', "cards with twitter mentioned in rulings"
+      = search_help 'rulings:/wizards\.com/', "cards with rulings linking to the Wizards of the Coast website"
       = search_help 't:/^(Legendary )?Creature - Dragon$/', "creatures with type line Creature - Dragon or Legendary Creature - Dragon"
       = search_help 't:/^Creature - \\S+ \\S+ \\S+$/', "creatures with exactly three subtypes"
       = search_help "e:war number:/★/", "WAR cards with numbers containing ★ character (in this case, Japanese alt versions)"

@@ -11,4 +11,9 @@ class ConditionExactMultipart < ConditionSimple
   def to_s
     "!#{@name}"
   end
+
+  def explain(negated: false)
+    parts = @name.split(%r[(?:&|/)+]).map{|n| "\"#{n.strip}\""}.join(" and ")
+    "the card #{negated ? "doesn't have" : "has"} parts named exactly #{parts}"
+  end
 end

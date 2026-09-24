@@ -224,6 +224,96 @@ describe "Query#explain" do
     assert_explains %[subset:"Happy Little Gathering"], %[the subset is "happy little gathering"]
   end
 
+  it "bare word / quoted phrase (name search)" do
+    assert_explains "channel", %[the name includes "channel"]
+    assert_explains %["sword of"], %[the name includes "sword of"]
+    assert_explains %[-"sword of"], %[the name doesn't include "sword of"]
+  end
+
+  it "!name (exact name)" do
+    assert_explains "!channel", %[the name is exactly "channel"]
+    assert_explains "!Alive // Well", %[the card has parts named exactly "Alive" and "Well"]
+  end
+
+  it "name=/name>/name< (name comparison)" do
+    assert_explains %[name="channel"], %[the name is exactly "channel"]
+    assert_explains %[name>"Boros Guildgate" name<"Dimir Guildgate"],
+      %[the name is alphabetically after "boros guildgate" and the name is alphabetically before "dimir guildgate"]
+    assert_explains %[-name>=bob], %[the name is alphabetically before "bob"]
+  end
+
+  it "sheet:" do
+    assert_explains "sheet:hml/U", %[the card appears on print sheet "hml/U"]
+    assert_explains "sheet:hml/U3", %[the card appears on print sheet "hml/U" 3 times]
+    assert_explains "sheet:C1", %[the card appears on print sheet "C" once]
+    assert_explains "-sheet:*", %[the card doesn't appear on any print sheet]
+  end
+
+  it "// (multipart) and part:/other:" do
+    assert_explains "mv=2 // mv=3",
+      "the card has a part where the mana value is 2, and another part where the mana value is 3"
+    assert_explains "t:creature //",
+      "the card has a part where the card types include creature, and another part"
+    assert_explains "t:land mv=0 // c:r or c:g",
+      "the card has a part where (the card types include land and the mana value is 0), and another part where (the colors includes at least R or the colors includes at least G)"
+    assert_explains "a // b // c",
+      %[the card has a part where the name includes "a", and another part where the name includes "b", and another part where the name includes "c"]
+    assert_explains "-(mv=2 // mv=3)",
+      "not (the card has a part where the mana value is 2, and another part where the mana value is 3)"
+    assert_explains "mv=2 other:c:w",
+      "the mana value is 2 and the card has another part where the colors includes at least W"
+    assert_explains "mv=2 -other:c:w",
+      "the mana value is 2 and the card doesn't have another part where the colors includes at least W"
+  end
+
+  it "related:" do
+    assert_explains "related:Arrest", %[the card is related to a card matching (the name includes "arrest")]
+    assert_explains "-related:t:artifact", "the card isn't related to a card matching (the card types include artifact)"
+  end
+
+  it "prints>=N: (count of matching printings)" do
+    assert_explains "prints>=2:is:foil", "the number of printings matching (the card has a foil version) is at least 2"
+    assert_explains "prints>=2:(e:mh3 -r:c)",
+      %[the number of printings matching (the set is "mh3" and the rarity isn't common) is at least 2]
+    assert_explains "-prints>=2:e:mh3", %[the number of printings matching (the set is "mh3") is less than 2]
+  end
+
+  it "alt:" do
+    assert_explains "alt:e:m11", %[the card has a printing matching (the set is "m11")]
+    assert_explains "-alt:e:m11", %[the card doesn't have a printing matching (the set is "m11")]
+  end
+
+  it "print=/firstprint=/lastprint= (dates)" do
+    assert_explains "print>ktk", %[the date of printing is after "ktk"]
+    assert_explains %[print="29 September 2012"], %[the date of printing is "29 September 2012"]
+    assert_explains "firstprint=m10", %[the date of first printing is "m10"]
+    assert_explains "lastprint<=lw", %[the date of last printing is on or before "lw"]
+    assert_explains "print>now", "the date of printing is after today"
+    assert_explains "-firstprint<ktk", %[the date of first printing is on or after "ktk"]
+  end
+
+  it "time:" do
+    assert_explains "time:rtr f:standard",
+      %[the card is legal or restricted in Standard as of "rtr" and the date of printing is on or before "rtr"]
+    assert_explains %[time:"1 march 2009" banned:commander],
+      %[the card is banned in Commander as of "2009.3.1" and the date of printing is on or before "2009.3.1"]
+    assert_explains "time:m10 firstprint>=m10",
+      %[the date of first printing is on or after "m10" as of "m10" and the date of printing is on or before "m10"]
+  end
+
+  it "produces=" do
+    assert_explains "produces=uw", "the mana produced is {w}{u}"
+    assert_explains "produces>=cw", "the mana produced includes at least {w}{c}"
+    assert_explains "-produces>=b", "the mana produced doesn't include {b}"
+    assert_explains "produces=", "the card doesn't produce mana"
+  end
+
+  it "number: ranges" do
+    assert_explains "number:10-20,100-200", "the collector number is between 10 and 20 or between 100 and 200"
+    assert_explains "number:1-set", "the collector number is between 1 and the set's base size"
+    assert_explains "-number:5,7a-9", "the collector number isn't 5 or between 7a and 9"
+  end
+
   it "new: (first printing with a given property)" do
     assert_explains "new:artist", "the card was printed with a new artist"
     assert_explains "new:rarity", "the card was printed at a new rarity"

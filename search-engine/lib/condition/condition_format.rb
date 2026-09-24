@@ -29,7 +29,7 @@ class ConditionFormat < Condition
   end
 
   def explain(negated: false)
-    "the card #{negated ? verb_negated : verb} #{format_display_name}"
+    timify_explain "the card #{negated ? verb_negated : verb} #{format_display_name}"
   end
 
   private

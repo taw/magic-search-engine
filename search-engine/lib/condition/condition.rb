@@ -117,6 +117,15 @@ class Condition
     @logger << warn
   end
 
+  def timify_explain(str)
+    if @time
+      date = @time.is_a?(Date) ? "%d.%d.%d" % [@time.year, @time.month, @time.day] : @time
+      "#{str} as of \"#{date}\""
+    else
+      str
+    end
+  end
+
   def timify_to_s(str)
     if @time
       "(time:#{maybe_quote(@time)} #{str})"

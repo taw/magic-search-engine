@@ -29,12 +29,26 @@ class ConditionPrint < Condition
     timify_to_s "print#{@op}#{maybe_quote(@date)}"
   end
 
+  OP_WORDS = {"=" => "is", ">" => "is after", ">=" => "is on or after", "<" => "is before", "<=" => "is on or before"}
+  NEGATED_OP_WORDS = {"=" => "isn't", ">" => "is on or before", ">=" => "is before", "<" => "is on or after", "<=" => "is after"}
+
+  # @date is resolved against the db only at search time, so a set code can't
+  # be turned into its release date here, and gets shown as typed
+  def explain(negated: false)
+    date = %w[now today].include?(@date.downcase) ? "today" : "\"#{@date}\""
+    "the date of #{date_description} #{(negated ? NEGATED_OP_WORDS : OP_WORDS).fetch(@op)} #{date}"
+  end
+
   def metadata!(key, value)
     super
     @time = value if key == :time
   end
 
   private
+
+  def date_description
+    "printing"
+  end
 
   # As it operates on printing level not card level we don't need to do any filtering here
   # Query will filter it out anyway. This might need to change if semantics of this filter changes

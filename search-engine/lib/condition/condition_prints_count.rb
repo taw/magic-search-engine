@@ -32,6 +32,12 @@ class ConditionPrintsCount < Condition
     "prints#{@op}#{@count}:#{@cond}"
   end
 
+  # Same wording as plain prints>=N, which is a ConditionExpr
+  def explain(negated: false)
+    words = negated ? ConditionExpr::NEGATED_OP_WORDS : ConditionExpr::OP_WORDS
+    "the number of printings matching (#{@cond.explain}) #{words.fetch(@op)} #{@count}"
+  end
+
   private
 
   # The subquery has to see the whole db - counting only the candidates would
