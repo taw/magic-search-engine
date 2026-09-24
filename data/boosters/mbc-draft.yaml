@@ -37,9 +37,11 @@ queries:
   # 134 Future Sight frame cards: 124 carried over from MB2 (all of MB2's 136 except
   # Contamination, Crackdown, Erhnam Djinn, Erratic Portal, Goblin Lackey, Hullbreacher,
   # Lifetap, Relentless Assault, Sengir Vampire, Smokestack, Static Orb, Tinker) plus
-  # 10 new ones, MBC 71-80. Only the 10 new ones are in MBC's data so far; the MB2 ones
-  # are used as they are, which loses the 17 nonfoil-only from the foil sheet and the 15
-  # foil-only from the nonfoil sheet until they get MBC printings of their own.
+  # 10 new ones, MBC 71-80. Only the 10 new ones have MBC printings so far; the MB2 ones
+  # are used as they are. mtgjson has since added the foil MBC finish to the 17 that were
+  # nonfoil-only in MB2 (122-143), so the foil sheets are complete at 57+77; the 15 that
+  # were foil-only (243-257) are still waiting for their nonfoil finish, which is why the
+  # nonfoil sheets are 4 and 11 cards short.
   future_sight: "(e:mb2 frame:future -number:/^(124|125|129|132|133|146|176|178|192|220|232|234)$/) or (e:{set} frame:future)"
 sheets:
   white:
@@ -84,19 +86,19 @@ sheets:
     any:
     - rawquery: "{future_sight} r<=u"
       chance: 433
-      count: 53 # TODO: 57 once all 134 have MBC printings
+      count: 53 # TODO: 57 once 243-257 gain nonfoil
     - rawquery: "{future_sight} r>=r"
       chance: 520
-      count: 66 # TODO: 77 once all 134 have MBC printings
+      count: 66 # TODO: 77 once 243-257 gain nonfoil
   future_sight_foil:
     foil: true
     any:
     - rawquery: "{future_sight} r<=u"
       chance: 20
-      count: 50 # TODO: 57 once all 134 have MBC printings
+      count: 57
     - rawquery: "{future_sight} r>=r"
       chance: 24
-      count: 67 # TODO: 77 once all 134 have MBC printings
+      count: 77
   alchemy_acorn:
     query: "is:acorn"
     count: 10
