@@ -1,8 +1,10 @@
 # Drop-specific observed bonus pool; all outcomes contain one foil card.
-# Estimated weights: equal within categories; 5% Blueprints, 2% special replacements
-# where listed. These are modeling conventions, not measured per-drop odds.
+# Blueprint category: 7% (user-provided collation rate). Equal within-category
+# weights and 2% chase odds where listed remain modeling estimates.
 # See data/boosters/notes/sld-bonus-2021-2022.md for evidence and remaining limits.
 # https://www.reddit.com/r/magicTCG/comments/zt4llb/october_2022_superdrop_secret_lair_bonus_card/
+# https://www.reddit.com/r/magicTCG/comments/zn03t1/comment/j1uw0qv/
+# Tangle Wire reported in the product-specific opening thread.
 name: SLD Special Guest Yoji Shinkawa Bonus
 pack:
   bonus: 1
@@ -12,10 +14,10 @@ sheets:
     any:
     - rawquery: e:{set} number:613,624,626,627,628,664,667
       count: 7
-      chance: 93
-    - rawquery: e:{set} number:691,692,693,695
-      count: 4
-      chance: 5
+      chance: 91
+    - rawquery: e:{set} number:691,692,693,694,695
+      count: 5
+      chance: 7
     - rawquery: e:{set} number:682
       count: 1
       chance: 2
