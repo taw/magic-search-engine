@@ -1,9 +1,12 @@
 # Drop-specific observed bonus pool; all outcomes contain one foil card.
-# Estimated weights: equal within categories; 5% Blueprints, 2% special replacements
-# where listed. These are modeling conventions, not measured per-drop odds.
+# Blueprint category: 7% (user-provided collation rate). Equal within-category
+# weights and 2% chase odds where listed remain modeling estimates.
 # See data/boosters/notes/sld-bonus-2021-2022.md for evidence and remaining limits.
 # https://www.reddit.com/r/magicTCG/comments/zt4llb/october_2022_superdrop_secret_lair_bonus_card/
-#  Existing MK2 rare blueprint pool retained pending drop-specific evidence; only the regular pool and documented Apostle are corrected.
+# Pilgrims Eye 692 confirms MK2 eligibility; Blur Sliver 637 is filmed separately.
+# https://www.youtube.com/watch?v=FPdKiesb5is&t=157s
+# https://www.youtube.com/watch?v=DFOkyF2odNw&t=253s
+# https://www.reddit.com/r/magicTCG/comments/zt4llb/comment/j43dcu0/
 name: SLD If Looks Could Kill Bonus
 pack:
   bonus: 1
@@ -11,12 +14,12 @@ sheets:
   bonus:
     foil: true
     any:
-    - rawquery: e:{set} number:628,629,636,641,653,667
-      count: 6
-      chance: 93
+    - rawquery: e:{set} number:628,629,636,637,641,653,666,667
+      count: 8
+      chance: 91
     - rawquery: e:{set} number:691,692,693,694,695
       count: 5
-      chance: 5
+      chance: 7
     - rawquery: e:{set} number:682
       count: 1
       chance: 2

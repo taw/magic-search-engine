@@ -1,8 +1,10 @@
 # Drop-specific observed bonus pool; all outcomes contain one foil card.
-# Estimated weights: equal within categories; 5% Blueprints, 2% special replacements
-# where listed. These are modeling conventions, not measured per-drop odds.
+# Blueprint category: 7% (user-provided collation rate). Equal within-category
+# weights and 2% chase odds where listed remain modeling estimates.
 # See data/boosters/notes/sld-bonus-2021-2022.md for evidence and remaining limits.
 # https://www.reddit.com/r/magicTCG/comments/xo66wh/june_2022_superdrop_secret_lair_bonus_card/
+# https://www.reddit.com/r/magicTCG/comments/xo66wh/comment/ircgofk/
+# A confirmed Blueprint identifies its full five-card release pool.
 name: SLD Rule The Room Bonus
 pack:
   bonus: 1
@@ -10,9 +12,9 @@ sheets:
   bonus:
     foil: true
     any:
-    - rawquery: e:{set} number:618,650,660,667
-      count: 4
-      chance: 95
-    - rawquery: e:{set} number:692
-      count: 1
-      chance: 5
+    - rawquery: e:{set} number:618,650,654,660,667
+      count: 5
+      chance: 93
+    - rawquery: e:{set} number:691,692,693,694,695
+      count: 5
+      chance: 7

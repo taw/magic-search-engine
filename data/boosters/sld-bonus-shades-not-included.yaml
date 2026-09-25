@@ -1,9 +1,10 @@
 # Drop-specific observed bonus pool; all outcomes contain one foil card.
-# Estimated weights: equal within categories; 5% Blueprints, 2% special replacements
-# where listed. These are modeling conventions, not measured per-drop odds.
+# Blueprint category: 7% (user-provided collation rate). Equal within-category
+# weights and 2% chase odds where listed remain modeling estimates.
 # See data/boosters/notes/sld-bonus-2021-2022.md for evidence and remaining limits.
 # https://www.reddit.com/r/magicTCG/comments/wakjvt/secret_lair_february_2022_bonus_card_compilation/
 # Brood 647 and Tempered 657 explicitly unconfirmed in source; need follow-up.
+# A confirmed Blueprint identifies its full five-card release pool.
 name: SLD Shades Not Included Bonus
 pack:
   bonus: 1
@@ -13,10 +14,10 @@ sheets:
     any:
     - rawquery: e:{set} number:617,628,646,649
       count: 4
-      chance: 93
-    - rawquery: e:{set} number:605,606,607
-      count: 3
-      chance: 5
+      chance: 91
+    - rawquery: e:{set} number:603,604,605,606,607
+      count: 5
+      chance: 7
     - rawquery: e:{set} number:599
       count: 1
       chance: 2

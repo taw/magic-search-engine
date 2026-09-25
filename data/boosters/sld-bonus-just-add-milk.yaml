@@ -1,11 +1,11 @@
 # Drop-specific observed bonus pool; all outcomes contain one foil card.
-# Estimated weights: equal within categories; 5% Blueprints, 2% special replacements
-# where listed. These are modeling conventions, not measured per-drop odds.
+# Equal regular weights and 2% Apostle chase odds are modeling estimates.
 # See data/boosters/notes/sld-bonus-2021-2022.md for evidence and remaining limits.
 # https://www.reddit.com/r/magicTCG/comments/ztr06i/
 # https://www.reddit.com/r/magicTCG/comments/zzx3g6/
 # https://www.reddit.com/r/magicTCG/comments/zum83z/
-# Four white Slivers reported in openings. Blueprint eligibility retained as an estimate from December superdrop reference; Apostle 687 confirmed by opening.
+# Four white Slivers and Apostle 687 are supported by openings. Blueprint
+# eligibility was only a collective December claim; excluded after source review.
 name: SLD Just Add Milk Bonus
 pack:
   bonus: 1
@@ -15,10 +15,7 @@ sheets:
     any:
     - rawquery: e:{set} number:612,613,615,617
       count: 4
-      chance: 93
-    - rawquery: e:{set} number:691,692,693,694,695
-      count: 5
-      chance: 5
+      chance: 98
     - rawquery: e:{set} number:687
       count: 1
       chance: 2
