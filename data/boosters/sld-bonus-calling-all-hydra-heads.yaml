@@ -1,11 +1,15 @@
-# Preserve existing explicit trio; equal weights remain estimates. No evidence justifies broadening or deleting existing outcomes.
-# Source: https://mtg.fandom.com/wiki/Secret_Lair:_Calling_All_Hydra_Heads
-# Source: https://www.lairtracker.com/secret-lair/158984
+# Membership evidence and estimated weights: notes/sld-bonus-2023-2024.md
+# The 2% chase rate and equal ordinary weights are estimates, not measured odds.
 name: SLD Calling All Hydra Heads Bonus
 pack:
   bonus: 1
 sheets:
   bonus:
     foil: true
-    rawquery: e:{set} number:"653,624,622"
-    count: 3
+    any:
+    - rawquery: e:{set} number:653,624,622
+      count: 3
+      chance: 98
+    - rawquery: e:{set} number:600
+      count: 1
+      chance: 2
