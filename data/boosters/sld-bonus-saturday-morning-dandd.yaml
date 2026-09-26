@@ -1,0 +1,17 @@
+# Shared membership across box editions is an audit modeling assumption.
+# https://www.reddit.com/r/magicTCG/comments/uq66k3/comment/i8usps7/
+# Estimated 93% Crash Through, 7% total traditional-foil MK1 Blueprints.
+name: SLD Saturday Morning DandD Nonfoil Drop Bonus
+pack:
+- regular: 1
+  chance: 93
+- blueprint: 1
+  chance: 7
+sheets:
+  regular:
+    rawquery: e:{set} number:591
+    count: 1
+  blueprint:
+    foil: true
+    rawquery: e:{set} number:603,604,605,606,607
+    count: 5

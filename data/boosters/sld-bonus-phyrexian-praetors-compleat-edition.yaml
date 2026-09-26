@@ -1,0 +1,19 @@
+# Existing membership, foil finish and estimated weights preserved.
+# 92.8% Swamp, 7% total Blueprints, 0.2% serialized Seer; estimates, not measured odds.
+# https://www.reddit.com/r/mtgfinance/comments/qsjm4m/
+name: SLD Phyrexian Praetors Compleat Edition Bonus
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number:560
+      count: 1
+      chance: 464
+    - rawquery: e:{set} number:603,604,605,606,607
+      count: 5
+      chance: 35
+    - rawquery: e:{set} number:vs
+      count: 1
+      chance: 1

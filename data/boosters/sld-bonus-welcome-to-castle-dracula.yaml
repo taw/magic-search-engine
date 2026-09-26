@@ -1,8 +1,9 @@
 # Drop-specific observed bonus pool; all outcomes contain one foil card.
-# Estimated weights: equal within categories; 5% Blueprints, 2% special replacements
+# Estimated weights: equal within categories; 7% Blueprints, 2% special replacements
 # where listed. These are modeling conventions, not measured per-drop odds.
 # See data/boosters/notes/sld-bonus-2021-2022.md for evidence and remaining limits.
 # https://www.reddit.com/r/magicTCG/comments/uq66k3/secret_lair_secretversary_2021_bonus_card/
+# https://www.reddit.com/r/magicTCG/comments/umw7xb/welcome_to_castle_dracula_bonus_card/
 name: SLD Welcome To Castle Dracula Bonus
 pack:
   bonus: 1
@@ -10,12 +11,12 @@ sheets:
   bonus:
     foil: true
     any:
-    - rawquery: e:{set} number:562
-      count: 1
-      chance: 93
-    - rawquery: e:{set} number:604,605,606
+    - rawquery: e:{set} number:550,560,562
       count: 3
-      chance: 5
+      chance: 91
+    - rawquery: e:{set} number:603,604,605,606,607
+      count: 5
+      chance: 7
     - rawquery: e:{set} number:598
       count: 1
       chance: 2
