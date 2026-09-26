@@ -258,6 +258,12 @@ describe "Query#explain" do
       "the card has a part where (the card types include land and the mana value is 0), and another part where (the colors includes at least R or the colors includes at least G)"
     assert_explains "a // b // c",
       %[the card has a part where the name includes "a", and another part where the name includes "b", and another part where the name includes "c"]
+    assert_explains "t:creature // t:land or t:artifact // mv=3",
+      "the card has a part where the card types include creature, and another part where (the card types include land or the card types include artifact), and another part where the mana value is 3"
+    assert_explains "// t:creature //",
+      "the card has a part where the card types include creature, and another part, and another part"
+    assert_explains "// //",
+      "the card has at least 3 parts"
     assert_explains "-(mv=2 // mv=3)",
       "not (the card has a part where the mana value is 2, and another part where the mana value is 3)"
     assert_explains "mv=2 other:c:w",

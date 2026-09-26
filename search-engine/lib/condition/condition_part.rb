@@ -23,15 +23,15 @@ class ConditionPart < Condition
     "part:#{@cond}"
   end
 
-  # "a // b" parses as part:(a other:b), so the other: children become the
-  # "another part" clauses, and the rest describes the part that matched.
+  # In part:(a other:b) the other: children become the "another part"
+  # clauses, and the rest describes the part that matched.
   def explain(negated: false)
     explanation = "the card has #{explain_parts("a part")}"
     negated ? "not (#{explanation})" : explanation
   end
 
-  # Also used by ConditionOther, so "a // b // c" (which nests another part:
-  # inside other:) reads as a flat list of parts.
+  # Also used by ConditionOther, so part:(a other:part:(b other:c)) reads as
+  # a flat list of parts.
   def explain_parts(first)
     conds = @cond.is_a?(ConditionAnd) ? @cond.conds : [@cond]
     others, own = conds.partition{|c| c.is_a?(ConditionOther)}

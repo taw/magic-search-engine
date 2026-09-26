@@ -164,10 +164,12 @@ describe "Unsets" do
     assert_search_results "When // Where // Whatever"
     assert_search_results "c:u // c:w // c:r", "Who", "What", "When", "Where", "Why"
     assert_search_results "c:u // c:u", "Present Arms", "Decorated Knight"
-
-    # This is limitation of the syntax, I might change my mind about it,
-    # but it only affects this one uncard
-    assert_search_results "c:u // c:r // c:u", "Who", "What", "When", "Where", "Why"
+    # Each side needs its own face, and this card only has one blue face
+    assert_search_results "c:u // c:r // c:u"
+    assert_search_results "c:u // c:r // c:b // c:g // c:w", "Who", "What", "When", "Where", "Why"
+    assert_search_results "c:u // c:r // c:b // c:g // c:w // c:w"
+    assert_search_results "// // // //", "Who", "What", "When", "Where", "Why"
+    assert_search_results "c:w // c:w"
   end
 
   it "deep other: nesting doesn't crash the engine" do
