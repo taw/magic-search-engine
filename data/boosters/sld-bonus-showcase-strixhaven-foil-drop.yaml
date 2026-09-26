@@ -1,9 +1,9 @@
 # Drop-specific observed bonus pool; all outcomes contain one foil card.
-# Estimated weights: equal within categories; 5% Blueprints, 2% special replacements
+# Estimated weights: equal within categories; 7% Blueprints, 2% special replacements
 # where listed. These are modeling conventions, not measured per-drop odds.
 # See data/boosters/notes/sld-bonus-2021-2022.md for evidence and remaining limits.
 # https://mtg.fandom.com/wiki/Secret_Lair_Drop_Series%3A_Dr._Lair%27s_Secretorium_Superdrop
-# Finish-specific lands corroborated by the collector checklist; blueprint alternatives documented for both finishes. Spirits Island is 553 (source typo 557).
+# Shared box-edition membership is an audit assumption; observed land union retained.
 name: SLD Showcase Strixhaven Foil Drop Bonus
 pack:
   bonus: 1
@@ -11,9 +11,9 @@ sheets:
   bonus:
     foil: true
     any:
-    - rawquery: e:{set} number:549,555,568
-      count: 3
-      chance: 95
+    - rawquery: e:{set} number:547,549,553,555,566,568
+      count: 6
+      chance: 93
     - rawquery: e:{set} number:603,604,605,606,607
       count: 5
-      chance: 5
+      chance: 7

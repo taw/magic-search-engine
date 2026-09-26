@@ -1,0 +1,19 @@
+# Bonus pool for the foil box; all bonus cards are traditional foil.
+# Estimated odds: 91% Sphere, 7% total Blueprints, 2% Petitioner.
+# https://www.reddit.com/r/mtgfinance/comments/rqljwe/
+name: SLD Artist Series Johannes Voss Foil Drop Bonus
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number:588
+      count: 1
+      chance: 91
+    - rawquery: e:{set} number:603,604,605,606,607
+      count: 5
+      chance: 7
+    - rawquery: e:{set} number:597
+      count: 1
+      chance: 2
