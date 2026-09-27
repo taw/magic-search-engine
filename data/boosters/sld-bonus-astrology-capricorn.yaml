@@ -1,0 +1,18 @@
+# Shared membership is an accepted inference, not exhaustive per-sign observation.
+# See notes/sld-astrology.md for sources, exclusions and estimated weights.
+name: SLD The Astrology Lands Capricorn Bonus
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number>=540 number<=579
+      count: 40
+      chance: 91
+    - rawquery: e:{set} number:603,604,605,606,607
+      count: 5
+      chance: 7
+    - rawquery: e:{set} number:593,668
+      count: 2
+      chance: 2
