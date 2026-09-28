@@ -6,4 +6,8 @@ class ConditionIsMtgo < ConditionSimple
   def to_s
     "game:mtgo"
   end
+
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}available on Magic Online"
+  end
 end

@@ -11,7 +11,7 @@ blocks:
         - name: bundle install
           commands:
             - checkout
-            - sem-version ruby 3.3.9
+            - sem-version ruby 4.0.7
             - (cd search-engine; bundle install)
             - (cd frontend; bundle install)
             - (cd search-engine; bundle exec rspec)

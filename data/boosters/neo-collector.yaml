@@ -64,7 +64,8 @@ sheets:
     filter: "e:nec frame:extendedart"
     use: rare_mythic
   extended_or_borderless_rare_mythic:
-    filter: "e:{set} (frame:extendedart or is:borderless) number<=505"
+    count: 77
+    filter: "e:{set} (frame:extendedart or (is:borderless t:planeswalker)) number<=505"
     use: rare_mythic
   rare_mythic_showcase:
     any:

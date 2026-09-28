@@ -8,4 +8,8 @@ class ConditionInSetType < ConditionSetType
   def to_s
     "in:#{maybe_quote(@set_type)}"
   end
+
+  def explain(negated: false)
+    negated ? "the card has no printing whose set type is #{@set_type}" : "the card has a printing whose set type is #{@set_type}"
+  end
 end

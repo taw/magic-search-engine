@@ -7,4 +7,8 @@ class ConditionIsPhyrexian < ConditionSimple
   def to_s
     "is:phyrexian"
   end
+
+  def explain(negated: false)
+    negated ? "the card has no Phyrexian mana in its cost" : "the card has Phyrexian mana in its cost"
+  end
 end

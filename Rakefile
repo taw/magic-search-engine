@@ -186,12 +186,15 @@ end
 desc "Full update"
 task "update" do
   Pathname("tmp").mkpath
+  # gather data for indexer
   Rake::Task["rules:update"].invoke
   Rake::Task["pennydreadful:update"].invoke
+  Rake::Task["xmage:update"].invoke
   Rake::Task["mtgjson:fetch"].invoke
   Rake::Task["import:decks"].invoke
+  # index
   Rake::Task["index"].invoke
-  Rake::Task["xmage:update"].invoke
+  # export data
   Rake::Task["update:decks:metadata"].invoke
   Rake::Task["update:sealed"].invoke
   Rake::Task["export:decks"].invoke

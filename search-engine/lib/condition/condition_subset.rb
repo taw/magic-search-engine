@@ -14,4 +14,8 @@ class ConditionSubset < ConditionSimple
   def to_s
     "subset:#{maybe_quote(@subset)}"
   end
+
+  def explain(negated: false)
+    "the subset #{negated ? "isn't" : "is"} \"#{@subset}\""
+  end
 end

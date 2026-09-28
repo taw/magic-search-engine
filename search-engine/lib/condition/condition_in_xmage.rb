@@ -6,4 +6,8 @@ class ConditionInXmage < ConditionIn
   def to_s
     "in:xmage"
   end
+
+  def explain(negated: false)
+    negated ? "the card has no printing available on Xmage" : "the card has a printing available on Xmage"
+  end
 end

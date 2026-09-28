@@ -3,6 +3,11 @@ class ConditionFullOracle < ConditionOracle
     "fo:#{maybe_quote(@text)}"
   end
 
+  def explain(negated: false)
+    verb = negated ? "doesn't include" : "includes"
+    %[the Oracle text, including reminder text, #{verb} "#{@text}"]
+  end
+
   private
 
   # Reminder text refers to the card the same ways rules text does - by full name, by

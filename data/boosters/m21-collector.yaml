@@ -2,7 +2,7 @@
 # Data from https://magic.wizards.com/en/news/card-preview/collecting-core-set-2021-2020-06-05
 # No idea how Teferi is collated with these showcase cards
 # Assume foil extended art cards appear at 1/2 rate of standard rare/mythic foils
-# For now CULTIVATE showcase behaves like a rare, but this might be wrong
+# Borderless Cultivate is collated as an uncommon despite its rare symbol.
 # Assume showcase cards follow 8/4/2/1 rarity
 pack:
   foil_all_showcase: 1
@@ -40,3 +40,9 @@ sheets:
     foil: true
     rawquery: "e:{set} frame:showcase t:basic"
     count: 5
+  uncommon_showcase:
+    rawquery: 'e:{set} promo:boosterfun (r:u or name:"Cultivate")'
+    count: 6
+  rare_showcase:
+    rawquery: 'e:{set} promo:boosterfun -frame:extendedart r:r -name:"Cultivate"'
+    count: 8

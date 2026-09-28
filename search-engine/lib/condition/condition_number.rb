@@ -30,4 +30,13 @@ class ConditionNumber < ConditionSimple
   def to_s
     "number#{@op}#{maybe_quote(@number_s)}"
   end
+
+  OP_WORDS = {">" => "is greater than", ">=" => "is at least", "<=" => "is at most", "<" => "is less than"}
+  NEGATED_OP_WORDS = {">" => "is at most", ">=" => "is less than", "<=" => "is greater than", "<" => "is at least"}
+
+  def explain(negated: false)
+    value = @number_s == "set" ? "the set's base size" : @number_s
+    words = negated ? NEGATED_OP_WORDS : OP_WORDS
+    "the collector number #{words.fetch(@op, negated ? "isn't" : "is")} #{value}"
+  end
 end

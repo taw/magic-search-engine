@@ -20,4 +20,12 @@ class ConditionLight < ConditionSimple
   def to_s
     "light:#{@light}"
   end
+
+  def explain(negated: false)
+    if @any
+      negated ? "the card has no attraction light" : "the card has an attraction light"
+    else
+      "the card #{negated ? "doesn't have" : "has"} attraction light #{@light}"
+    end
+  end
 end

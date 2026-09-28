@@ -16,7 +16,11 @@ pack:
   - rare_mythic_showcase: 1
     chance: 1
 sheets:
+  # Nonfoil common showcase cards are exclusive to Collector Boosters.
   common:
+    query: "r:c"
+    count: 101
+  common_foil_variants:
     use: common_with_showcase
     count: 14 + 14 + 87
   uncommon:
@@ -26,7 +30,7 @@ sheets:
     foil: true
     any:
     - any:
-      - use: common
+      - use: common_foil_variants
         chance: 101
       - use: basic
         chance: 20

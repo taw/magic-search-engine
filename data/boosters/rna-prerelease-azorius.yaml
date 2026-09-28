@@ -13,7 +13,17 @@ sheets:
   common:
     query: "r:c"
     count: 33
+  # https://magic.wizards.com/en/news/feature/ravnica-allegiance-prerelease-primer
+  # Exact eight-card guild pools remain unverified; this preserves existing candidates.
   promo:
     foil: true
-    rawquery: "e:prna r:r (w:azorius or (id<=wu and -w:*)) promo:prerelease"
-    count: 8
+    # Emergency Powers is a story spotlight with a planeswalker watermark.
+    # Preserve the existing rare pool pending evidence for exact guild assignments.
+    # The 2:1 per-card weighting follows the other RNA guild definitions; unverified.
+    any:
+    - rawquery: "e:prna r:m id:wu promo:prerelease"
+      count: 1
+      rate: 1
+    - rawquery: "e:prna r:r (w:azorius or (id<=wu and -w:*)) promo:prerelease"
+      count: 8
+      rate: 2

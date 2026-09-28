@@ -17,13 +17,24 @@ sheets:
   brr_retro_artifact:
     filter: "e:brr -number:/z/"
     any:
-    # Officially 1/6 schematc rate
-    # U/R/M rates guessed to be at 4x/2x/1x multiples
-    - filter: "e:brr -number:/z/ number<=63"
-      use: base_1248_by_rarity
+    # Rarity and schematic probabilities published in the collecting guide.
+    - any:
+      - query: "r:u"
+        chance: 66
+      - query: "r:r"
+        chance: 27
+      - query: "r:m"
+        chance: 7
+      filter: "e:brr -number:/z/ number<=63"
       chance: 5
-    - filter: "e:brr -number:/z/ number>=64"
-      use: base_1248_by_rarity
+    - any:
+      - query: "r:u"
+        chance: 66
+      - query: "r:r"
+        chance: 27
+      - query: "r:m"
+        chance: 7
+      filter: "e:brr -number:/z/ number>=64"
       chance: 1
   foil:
     # Just treat BRO+BRR as one set for foiling purposes

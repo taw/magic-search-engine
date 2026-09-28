@@ -1,5 +1,6 @@
 # Data from https://magic.wizards.com/en/news/feature/whats-inside-the-brothers-war-boosters
-# Serialized card rate assumed to be 0.5%
+# Serialized and foil Shattered Glass rates each assumed to be 0.5% (<1% published).
+# Transformer totals: 21% foil and 12% Shattered Glass, including their overlap.
 pack:
   foil_fullart_basic: 1
   foil_common: 4
@@ -17,9 +18,13 @@ pack:
   foil_brr_retro_artifact_schematic_uncommon: 1
   transformers_slot:
   - transformers: 1
-    chance: 11
+    chance: 675
+  - shattered_glass: 1
+    chance: 115
   - foil_transformers: 1
-    chance: 3
+    chance: 205
+  - foil_shattered_glass: 1
+    chance: 5
   finale_slot:
   - foil_alt_art: 1
     chance: 995
@@ -34,7 +39,8 @@ sheets:
     foil: true
     use: rare_mythic
   extended_rare_mythic:
-    filter: "e:{set} number:301-372"
+    count: 80
+    filter: "e:{set} (number:301-372 or is:borderless)"
     use: rare_mythic
   extended_commander_jumpstart:
     filter: "(e:{set} number:373-377) or (e:brc frame:extendedart)"
@@ -59,21 +65,22 @@ sheets:
     - use: brr_schematic_uncommon
       chance: 1
   transformers:
-    any:
-    - rawquery: "e:bot number<16"
-      rate: 7
-      count: 15
-    - rawquery: "e:bot number>=16"
-      rate: 1
-      count: 14
+    rawquery: "e:bot number<16"
+    count: 15
+  shattered_glass:
+    rawquery: "e:bot number>=16"
+    count: 14
+  foil_shattered_glass:
+    foil: true
+    use: shattered_glass
   foil_transformers:
     foil: true
     use: transformers
   foil_alt_art:
     foil: true
     any:
-    - rawquery: "(e:{set} or e:brc) promo:boosterfun r:r"
-      count: 68
+    - rawquery: "((e:{set} -number:373-377) or e:brc) promo:boosterfun r:r"
+      count: 64
       rate: 12
     - rawquery: "e:brr number<=63 r:r -number:/z/"
       count: 30

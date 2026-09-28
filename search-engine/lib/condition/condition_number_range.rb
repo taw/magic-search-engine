@@ -60,4 +60,17 @@ class ConditionNumberRange < ConditionSimple
       }.join(",")}"
     end
   end
+
+  def explain(negated: false)
+    ranges = if @range
+      [[@range.begin.to_s, @range.end.to_s]]
+    else
+      @ranges.map{|ai, as, bi, bs, aset, bset, bo| [as, bo]}
+    end
+    ranges = ranges.map{|a, b|
+      a, b = [a, b].map{|n| n == "set" ? "the set's base size" : n}
+      a == b ? a : "between #{a} and #{b}"
+    }.join(" or ")
+    "the collector number #{negated ? "isn't" : "is"} #{ranges}"
+  end
 end

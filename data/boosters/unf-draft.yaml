@@ -1,3 +1,5 @@
+# Data from https://magic.wizards.com/en/news/feature/almost-everything-know-about-unfinity-boosters-2022-09-20
+# Nonfoil showcase treatments replace eligible cards one quarter of the time.
 # shocklands can appear in draft boosters
 filter: "e:{set} number:1-set,277-286 -number:/m/"
 pack:
@@ -38,10 +40,10 @@ sheets:
       rate: 1
     - query: "r:u alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) -t:attraction"
       count: 10
-      rate: 2
+      rate: 3
     - query: "r:u -alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) -t:attraction"
       count: 50
-      rate: 3
+      rate: 4
   rare_mythic_with_showcase:
     any:
     - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart -t:attraction -t:background is:paper -is:shockland"
@@ -49,19 +51,19 @@ sheets:
       rate: 2
     - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) -t:attraction -t:background -is:shockland"
       count: 14
-      rate: 4
+      rate: 6
     - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) -t:attraction -t:background -is:shockland"
       count: 27
-      rate: 6
+      rate: 8
     - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart -t:attraction -t:background is:paper"
       count: 8
       rate: 1
     - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) -t:attraction -t:background"
       count: 8
-      rate: 2
+      rate: 3
     - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) -t:attraction -t:background"
       count: 10
-      rate: 3
+      rate: 4
   attraction:
     query: "t:attraction"
     count: 135

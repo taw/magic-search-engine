@@ -1,12 +1,12 @@
 class ConditionForeignRegexp < ConditionRegexp
-  def initialize(lang, regexp)
+  def initialize(lang, regexp, raw_source = nil)
     @lang = lang.downcase
     # Support both Gatherer and MCI naming conventions
     @lang = "ct" if @lang == "tw" or @lang == "zht"
     @lang = "cs" if @lang == "zhs"
     @lang = @lang.to_sym
     @lang_match_all = (@lang == :foreign)
-    super(regexp)
+    super(regexp, raw_source)
   end
 
   def match?(card)
@@ -25,6 +25,10 @@ class ConditionForeignRegexp < ConditionRegexp
   end
 
   private
+
+  def field_description
+    @lang_match_all ? "the foreign name" : "the #{@lang} name"
+  end
 
   def hard_normalize(s)
     s.unicode_normalize(:nfd).gsub(/\p{Mn}/, "").downcase

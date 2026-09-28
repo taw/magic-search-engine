@@ -16,4 +16,8 @@ class ConditionIsHybrid < ConditionSimple
   def to_s
     "is:hybrid"
   end
+
+  def explain(negated: false)
+    negated ? "the card's mana cost has no hybrid symbol" : "the card's mana cost includes a hybrid symbol"
+  end
 end

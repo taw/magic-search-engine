@@ -13,12 +13,16 @@ sheets:
   common:
     query: "r:c"
     count: 32
+  # https://magic.wizards.com/en/news/feature/ravnica-allegiance-prerelease-primer
+  # Exact eight-card guild pools remain unverified; this preserves existing candidates.
   promo:
     foil: true
     any:
     - rawquery: "e:prna r:m (w:orzhov or (id<=wb and -w:*)) promo:prerelease"
       count: 1
       rate: 1
-    - rawquery: "e:prna r:r (w:orzhov or (id<=wb and -w:*)) promo:prerelease"
-      count: 8
+    # Ethereal Absolution and Kaya's Wrath have planeswalker story watermarks.
+    # Preserve existing candidates and weights pending exact guild assignments.
+    - rawquery: "e:prna r:r (w:orzhov or (id<=wb and (-w:* or w:planeswalker))) promo:prerelease"
+      count: 10
       rate: 2

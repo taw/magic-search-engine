@@ -17,4 +17,8 @@ class ConditionIsVergeland < ConditionNickname
   def to_s
     "is:vergeland"
   end
+
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}a verge land"
+  end
 end

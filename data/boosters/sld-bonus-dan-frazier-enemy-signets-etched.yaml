@@ -1,0 +1,19 @@
+# Confirmed replacements in the etched box edition; nonfoil-box eligibility unresolved.
+# https://www.reddit.com/r/magicTCG/comments/riytze/dan_frazier_signet_secret_lair_panharmonicon_and/
+# Estimated Blueprint category rate: 7% total, equally divided over MK1.
+name: SLD Dan Frazier Enemy Signets Etched Edition Bonus
+pack:
+- etched_signet: 1
+  chance: 93
+- foil_blueprint: 1
+  chance: 7
+sheets:
+  etched_signet:
+    foil: true
+    etched: true
+    rawquery: e:{set} number:589
+    count: 1
+  foil_blueprint:
+    foil: true
+    rawquery: e:{set} number:603,604,605,606,607
+    count: 5

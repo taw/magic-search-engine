@@ -16,4 +16,8 @@ class ConditionIsPower9 < ConditionNickname
   def to_s
     "is:power9"
   end
+
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}one of the Power Nine"
+  end
 end

@@ -6,4 +6,8 @@ class ConditionHasWatermark < ConditionSimple
   def to_s
     "has:watermark"
   end
+
+  def explain(negated: false)
+    negated ? "the card has no watermark" : "the card has a watermark"
+  end
 end

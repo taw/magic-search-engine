@@ -27,4 +27,8 @@ class ConditionIsPathway < ConditionNickname
   def to_s
     "is:pathway"
   end
+
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}a pathway"
+  end
 end

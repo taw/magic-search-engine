@@ -1,0 +1,20 @@
+# https://www.reddit.com/r/magicTCG/comments/ylktj8/comment/j11e1bt/
+# Drop-specific observed bonus pool; all outcomes contain one foil card.
+# Blueprint category: 7% (user-provided collation rate). Equal within-category
+# weights and 2% chase odds where listed remain modeling estimates.
+# See data/boosters/notes/sld-bonus-2021-2022.md for evidence and remaining limits.
+# https://www.reddit.com/r/magicTCG/comments/zt4llb/october_2022_superdrop_secret_lair_bonus_card/
+# Pilgrims Eye report establishes full MK2 eligibility; see the master ledger.
+name: SLD The Space Beyond The Stars Bonus
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number:615,629,635,638,640,651,659
+      count: 7
+      chance: 93
+    - rawquery: e:{set} number:691,692,693,694,695
+      count: 5
+      chance: 7

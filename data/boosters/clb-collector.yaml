@@ -27,9 +27,9 @@ sheets:
     use: common_uncommon
     count: 50
   extended_commander:
-    filter: "e:{set} number:607-645 -alt:(e:{set} number:646-657)"
+    filter: "e:{set} number:607-645"
     use: rare_mythic
-    count: 27
+    count: 39
   extended_rare_mythic:
     filter: "e:{set} number:553-606"
     use: rare_mythic
@@ -43,9 +43,9 @@ sheets:
   etched_rare_mythic:
     foil: true
     etched: true
-    filter: "e:{set} is:etched"
+    filter: "e:{set} is:etched number<=552"
     use: rare_mythic
-    count: 36
+    count: 32
   foil_showcase_rare_mythic:
     foil: true
     filter: "e:{set} promo:boosterfun -is:foilonly"

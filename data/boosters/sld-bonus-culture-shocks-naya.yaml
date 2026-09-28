@@ -1,0 +1,16 @@
+# Opening report includes 11 Nahiri among 56 Naya boxes.
+# Estimated odds: equal regular outcomes; 7% total Blueprints.
+# https://www.reddit.com/r/mtgfinance/comments/phhgcr/secret_lair_secretorium_superdrop_bonus_card/
+name: SLD Culture Shocks Naya Bonus
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number:520,521,530,533,535
+      count: 5
+      chance: 93
+    - rawquery: e:{set} number:603,604,605,606,607
+      count: 5
+      chance: 7

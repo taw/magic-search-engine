@@ -24,4 +24,8 @@ class ConditionRelated < Condition
   def to_s
     "related:#{@cond}"
   end
+
+  def explain(negated: false)
+    "the card #{negated ? "isn't" : "is"} related to a card matching (#{@cond.explain})"
+  end
 end

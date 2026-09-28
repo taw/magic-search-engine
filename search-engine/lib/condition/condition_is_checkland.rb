@@ -17,4 +17,8 @@ class ConditionIsCheckland < ConditionNickname
   def to_s
     "is:checkland"
   end
+
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}a checkland"
+  end
 end

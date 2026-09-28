@@ -154,6 +154,12 @@ class Card
     calculate_mana_hash
     calculate_color_indicator
     calculate_reminder_text
+    # On funny/special format/dungeon cards the oracle text keeps its own parenthetical
+    # remainder text (see keep_remainder_text?), so it may already say everything the
+    # generated reminder line would - word for word for a playtest dual land, or folded
+    # into a longer clause for a creature-land. Either way, generating another one on
+    # top would just repeat it, so skip that step whenever the card already has its own.
+    @reminder_text = nil if @reminder_text and keep_remainder_text? and @text.include?("(")
     self.front = (!secondary? or @layout == "aftermath" or @layout == "flip" or @layout == "adventure" or @layout == "prepare")
     @name_slug = name
       .normalize_accents

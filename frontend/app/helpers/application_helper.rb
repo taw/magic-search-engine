@@ -195,6 +195,24 @@ module ApplicationHelper
     link_to(subset_url(set_code, subset), &blk)
   end
 
+  # Renders Query#explain output as HTML: backtick-delimited fragments (raw query
+  # syntax, regexes) become monospace <code>, everything else gets the usual {X}
+  # mana symbol treatment. Code spans are escaped but never run through the mana
+  # formatter, since a regex like /\d{3,}/ has curly braces that aren't mana symbols.
+  def format_explanation(text)
+    text
+      .split(/(`[^`]*`)/)
+      .map{|part|
+        if part.start_with?("`") && part.end_with?("`")
+          %[<code>#{h(part[1..-2])}</code>]
+        else
+          format_mana_symbols_in_text(h(part))
+        end
+      }
+      .join
+      .html_safe
+  end
+
   def format_mana_symbols_in_text(text)
     text
       .gsub(/(?:\{.*?\})+/) do

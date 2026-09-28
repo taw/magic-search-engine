@@ -8,4 +8,8 @@ class ConditionIsVanilla < ConditionSimple
   def to_s
     "is:vanilla"
   end
+
+  def explain(negated: false)
+    negated ? "the card has rules text or is a basic land" : "the card has no rules text and is not a basic land"
+  end
 end

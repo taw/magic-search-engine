@@ -42,14 +42,14 @@ sheets:
     - use: uncommon
       chance: 175
     - any:
-      - use: rare_with_showcase
+      - use: rare_showcase
         chance: 64*2
-      - use: mythic_with_showcase
+      - use: mythic_showcase
         chance: 20
-      - rawquery: "e:mic number<=38 r:r"
-        count: 32
-        chance: 32*2
-      - rawquery: "e:mic number<=38 r:m"
+      - rawquery: "e:mic number:31-38 r:r"
+        count: 6
+        chance: 6*2
+      - rawquery: "e:mic (number:1-4 or number:31-38) r:m"
         count: 6
         chance: 6
       chance: 125
@@ -60,3 +60,31 @@ sheets:
       rate: 1
     - query: 'e:cmb1 (name:"Kaya, Ghost Haunter" or name:"Puresteel Angel")'
       rate: 1
+  # Basics are available only in the dedicated land slot.
+  foil_with_showcase:
+    foil: true
+    any:
+    - any:
+      - use: common_showcase
+        rate: 1
+      - use: common_has_showcase
+        rate: 2
+      - use: common_has_no_showcase
+        rate: 3
+      chance: 12
+    - use: uncommon_with_showcase
+      chance: 5
+    - any:
+      - use: rare_showcase
+        rate: 2
+      - use: rare_has_showcase
+        rate: 4
+      - use: rare_has_no_showcase
+        rate: 6
+      - use: mythic_showcase
+        rate: 1
+      - use: mythic_has_showcase
+        rate: 2
+      - use: mythic_has_no_showcase
+        rate: 3
+      chance: 3

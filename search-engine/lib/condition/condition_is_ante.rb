@@ -16,4 +16,8 @@ class ConditionIsAnte < ConditionNickname
   def to_s
     "is:ante"
   end
+
+  def explain(negated: false)
+    "the card #{negated ? "doesn't involve" : "involves"} ante"
+  end
 end

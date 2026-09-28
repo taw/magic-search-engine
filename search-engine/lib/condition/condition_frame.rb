@@ -19,4 +19,16 @@ class ConditionFrame < ConditionSimple
   def to_s
     "is:#{@frame}"
   end
+
+  def explain(negated: false)
+    verb = negated ? "doesn't have" : "has"
+    case @frame
+    when "old"
+      "the card #{verb} an old-style frame (1993 or 1997)"
+    when "new"
+      "the card #{verb} a new-style frame"
+    else
+      "the card #{verb} the #{@frame} frame"
+    end
+  end
 end

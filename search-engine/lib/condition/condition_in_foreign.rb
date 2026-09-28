@@ -15,4 +15,8 @@ class ConditionInForeign < ConditionSimple
   def to_s
     "in:#{maybe_quote(@lang)}"
   end
+
+  def explain(negated: false)
+    negated ? "the card has no #{@lang} name" : "the card has a #{@lang} name"
+  end
 end

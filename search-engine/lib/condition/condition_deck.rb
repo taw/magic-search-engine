@@ -37,4 +37,9 @@ class ConditionDeck < Condition
   def to_s
     "deck:#{maybe_quote(@deck_name)}"
   end
+
+  def explain(negated: false)
+    verb = negated ? "isn't" : "is"
+    "the card #{verb} available in deck \"#{@deck_name}\""
+  end
 end

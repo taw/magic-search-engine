@@ -123,7 +123,7 @@ private
     @time = old_time
   end
 
-  def parse_cond_list
+  def parse_cond_list(in_face: false)
     conds = []
     until @tokens.empty?
       case @tokens[0][0]
@@ -138,7 +138,7 @@ private
         if conds.empty?
           # Ignore
         else
-          right_query = parse_cond_list
+          right_query = parse_cond_list(in_face: in_face)
           if right_query
             return ConditionOr.new(conds_to_query(conds), right_query)
           else
@@ -153,19 +153,19 @@ private
         @warnings << "Multiple time: clauses in same subquery" if @time
         @time = @tokens.shift[1]
       when :slash_slash
-        @tokens.shift
-        # This is semantically meaningful
-        left_query = conds_to_query(conds)
-        right_query = parse_cond_list
-        if left_query and right_query
-          return ConditionPart.new(ConditionAnd.new(left_query, ConditionOther.new(right_query)))
+        # A face ends here, the chain that holds it takes the "//"
+        break if in_face
+        # The whole chain becomes one condition, so "a // b // c" needs three
+        # different faces, not just a face matching c somewhere else on the card
+        faces = [conds_to_query(conds)]
+        while @tokens[0] == [:slash_slash]
+          @tokens.shift
+          faces << parse_cond_list(in_face: true)
+        end
+        if faces == [nil, nil]
+          return ConditionIsMultipart.new
         else
-          query = left_query || right_query
-          if query
-            return ConditionPart.new(query)
-          else
-            return ConditionIsMultipart.new
-          end
+          return ConditionFaces.new(*faces)
         end
       # includes open / not
       else

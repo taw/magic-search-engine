@@ -64,6 +64,7 @@ class CardController < ApplicationController
 
     @title = @search
     query = Query.new(@search, params[:random_seed])
+    @query = query
     @seed = query.seed
 
     metric :page, page

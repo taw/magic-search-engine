@@ -17,4 +17,8 @@ class ConditionIsTriland < ConditionNickname
   def to_s
     "is:triland"
   end
+
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}a tri-colored land that enters the battlefield tapped"
+  end
 end

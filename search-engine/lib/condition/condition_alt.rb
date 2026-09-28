@@ -35,6 +35,10 @@ class ConditionAlt < Condition
     "alt:#{@cond}"
   end
 
+  def explain(negated: false)
+    "the card #{negated ? "doesn't have" : "has"} a printing matching (#{@cond.explain})"
+  end
+
   private
 
   def search_simple(candidates)

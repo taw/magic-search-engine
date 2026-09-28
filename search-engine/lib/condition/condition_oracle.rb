@@ -38,6 +38,11 @@ class ConditionOracle < ConditionSimple
     "o:#{maybe_quote(@text)}"
   end
 
+  def explain(negated: false)
+    verb = negated ? "doesn't include" : "includes"
+    %[the Oracle text #{verb} "#{@text}"]
+  end
+
   private
 
   # Which text gets searched is the only thing fo: does differently

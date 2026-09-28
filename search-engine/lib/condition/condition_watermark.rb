@@ -14,4 +14,13 @@ class ConditionWatermark < ConditionSimple
   def to_s
     "w:#{maybe_quote(@watermark)}"
   end
+
+  def explain(negated: false)
+    if @any
+      negated ? "the card has no watermark" : "the card has a watermark"
+    else
+      verb = negated ? "doesn't include" : "includes"
+      %[the watermark #{verb} "#{@watermark}"]
+    end
+  end
 end

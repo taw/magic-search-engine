@@ -37,9 +37,20 @@ pack:
   rm_extended: 1
   foil_rare_mythic: 1
 sheets:
+  # Showcase foil availability is confirmed; 1/3 substitution uses the existing
+  # showcase-sheet convention, not a published Collector-specific rate.
+  foil_common:
+    foil: true
+    balanced: false
+    use: common_with_showcase
+    count: 14 + 14 + 87
+  foil_uncommon:
+    foil: true
+    use: uncommon_with_showcase
+    count: 71 + 9 + 9
   ancillary:
     # C/U/R/M rates guessed to be at 8x/4x/2x/1x multiples
-    filter: "e:{set} -promo:boosterfun number>=304 -frame:inverted"
+    filter: "e:{set} -promo:boosterfun number>=303 -frame:inverted"
     use: base_1248_by_rarity
   rm_extended:
     filter: "e:{set} frame:extendedart"

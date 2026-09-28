@@ -112,7 +112,7 @@ class QueryTokenizer
           rx = rx.gsub('\ss', '(?:\{[^\}]+\})')
 
           rx = Regexp.new(rx, Regexp::IGNORECASE | Regexp::MULTILINE)
-          tokens << [:test, cond.new(rx)]
+          tokens << [:test, cond.new(rx, s[2])]
         rescue RegexpError => e
           cond = {
             "a" => ConditionArtist,
@@ -152,7 +152,7 @@ class QueryTokenizer
           # other uppercase escape into a different one.
           rxstr = s[2].unicode_normalize(:nfd).gsub(/\p{Mn}/, "")
           rx = Regexp.new(rxstr, Regexp::IGNORECASE)
-          tokens << [:test, ConditionForeignRegexp.new(s[1], rx)]
+          tokens << [:test, ConditionForeignRegexp.new(s[1], rx, s[2])]
         rescue RegexpError => e
           @warnings << "bad regular expression in #{s[0]} - #{e.message}"
           tokens << [:test, ConditionForeign.new(s[1], s[2])]

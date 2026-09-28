@@ -10,4 +10,8 @@ class ConditionKeyword < ConditionSimple
   def to_s
     "keyword:#{maybe_quote(@keyword)}"
   end
+
+  def explain(negated: false)
+    "the card #{negated ? "doesn't have" : "has"} the #{@keyword} keyword"
+  end
 end

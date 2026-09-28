@@ -1,0 +1,19 @@
+# Drop-specific observed bonus pool; all outcomes contain one foil card.
+# Blueprint category: 7% (user-provided collation rate). Equal within-category
+# weights and 2% chase odds where listed remain modeling estimates.
+# See data/boosters/notes/sld-bonus-2021-2022.md for evidence and remaining limits.
+# https://www.reddit.com/r/magicTCG/comments/wn4l06/secret_lair_april_2022_bonus_card_compilation/
+# A confirmed Blueprint identifies its full five-card release pool.
+name: SLD Just Some Totally Normal Guys Bonus
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number:618,643,650,652,667
+      count: 5
+      chance: 93
+    - rawquery: e:{set} number:691,692,693,694,695
+      count: 5
+      chance: 7

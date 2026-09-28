@@ -5,4 +5,8 @@ class ConditionIsProductlessnonfoil < ConditionIsProductless
   def finish
     :nonfoil
   end
+
+  def explain(negated: false)
+    negated ? "the card has a known product source (booster, precon, or promo) in nonfoil finish" : "the card has no known product source (booster, precon, or promo) in nonfoil finish"
+  end
 end

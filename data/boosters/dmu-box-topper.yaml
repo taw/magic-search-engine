@@ -6,4 +6,13 @@ sheets:
   foil_legends_retold:
     filter: "e:dmc number:29-48"
     foil: true
-    use: base_1248_by_rarity
+    any:
+    - query: "r:u"
+      count: 5
+      chance: 3
+    - query: "r:r"
+      count: 10
+      chance: 4
+    - query: "r:m"
+      count: 5
+      chance: 1

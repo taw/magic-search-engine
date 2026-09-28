@@ -12,8 +12,9 @@ sheets:
     filter: "(e:{set} promo:boosterfun) or (e:brc promo:boosterfun) or (e:brr -number:/z/ number<=63)"
     use: rare_mythic
   foil_rare_mythic:
+    filter: "((e:{set} -number:373-377) or e:brc) promo:boosterfun or (e:brr -number:/z/ number<=63)"
     foil: true
-    use: nonfoil_rare_mythic
+    use: rare_mythic
   foil_uncommon_retro_artifact:
     foil: true
     any:

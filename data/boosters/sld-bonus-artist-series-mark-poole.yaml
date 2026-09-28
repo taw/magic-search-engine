@@ -1,0 +1,16 @@
+# Existing membership and finishes preserved; equal weights are estimates.
+# Blueprint category is 7% total, not per card.
+# https://www.reddit.com/r/mtgfinance/comments/qozsgl/
+name: SLD Artist Series Mark Poole Bonus
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number:582
+      count: 1
+      chance: 93
+    - rawquery: e:{set} number:603,604,605,606,607
+      count: 5
+      chance: 7

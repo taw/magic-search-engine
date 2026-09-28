@@ -349,6 +349,14 @@ describe "QueryParser" do
     assert_search_parse "deck:*", 'deck:"*"'
   end
 
+  it "//" do
+    assert_search_parse "a // b or c // d", "a // (b or c) // d"
+    assert_search_parse "a or b // c", "a or (b // c)"
+    refute_search_parse "a // b // c", "a // (b // c)"
+    Query.new("a // b or c // d").to_s.should eq("(a // (b or c) // d)")
+    Query.new("// a //").to_s.should eq("(// a //)")
+  end
+
   it "++" do
     assert_search_parse "++ pow=3 tou=2 c:g", "pow=3 tou=2 c:g ++"
     assert_search_parse "++ pow=3 tou=2 c:g", "pow=3 ++ tou=2 c:g"

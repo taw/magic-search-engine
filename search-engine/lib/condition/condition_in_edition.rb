@@ -13,4 +13,10 @@ class ConditionInEdition < Condition
   def to_s
     "in:#{@editions.map{|e| maybe_quote(e)}.join(",")}"
   end
+
+  def explain(negated: false)
+    names = @editions.map{|e| %["#{e}"]}
+    return "the card has a printing in #{names.join(" or ")}" unless negated
+    names.size == 1 ? "the card has no printing in #{names[0]}" : "the card has no printing in any of #{names.join(", ")}"
+  end
 end

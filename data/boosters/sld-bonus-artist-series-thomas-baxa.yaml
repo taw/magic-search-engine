@@ -1,0 +1,19 @@
+# Shared bonus membership and traditional-foil finish across box editions.
+# Estimated weights: 91% Spellskite, 7% total MK1, 2% Petitioner.
+# See the master evidence ledger for drop-specific replacement reports.
+name: SLD Artist Series Thomas Baxa Nonfoil Drop Bonus
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number:587
+      count: 1
+      chance: 91
+    - rawquery: e:{set} number:603,604,605,606,607
+      count: 5
+      chance: 7
+    - rawquery: e:{set} number:597
+      count: 1
+      chance: 2

@@ -1,0 +1,15 @@
+# Shared membership is an accepted inference, not exhaustive per-sign observation.
+# See notes/sld-astrology.md for sources, exclusions and estimated weights.
+name: SLD The Astrology Lands Scorpio Bonus
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number>=540 number<=579
+      count: 40
+      chance: 93
+    - rawquery: e:{set} number:603,604,605,606,607
+      count: 5
+      chance: 7

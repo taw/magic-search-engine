@@ -78,6 +78,7 @@ describe Deck do
       ["shandalar", "Shandalar Enemy Deck"], # assigned to PAST, as there's no Shandalar set
       ["core", "Jumpstart"], # FDN
       ["starter", "Demo Deck"],
+      ["core", "Demo Deck"],
       ["expansion", "Enemy Deck"],
       ["sld", "Dandan Deck"],
       ["memorabilia", "Challenge Deck"],
@@ -106,7 +107,7 @@ describe Deck do
       set.decks.each do |deck|
         allowed_set_types = allowed_combinations.select{|_,dt| dt == deck.type}.map(&:first)
         (allowed_set_types & set.types).should_not be_empty,
-          "Deck #{deck.name} has type:\n  #{deck.type}\nIt is allowed for set types:\n  #{allowed_set_types.join(", ")}\nbut set #{set.code} #{set.name} has types:\n  #{set.types.join(", ")}"
+          "#{set.name} deck #{deck.name} has type:\n  #{deck.type}\nIt is allowed for set types:\n  #{allowed_set_types.join(", ")}\nbut set #{set.code} #{set.name} has types:\n  #{set.types.join(", ")}"
       end
     end
   end
@@ -462,6 +463,17 @@ describe Deck do
     it "supports partner commanders" do
       DeckParser.new(db, "COMMANDER: 1x Akiri, Line-Slinger\nCOMMANDER: 1x Ikra Shidiqi, the Usurper").deck.color_identity.should eq("bgrw")
       DeckParser.new(db, "COMMANDER: 1x Kydele, Chosen of Kruphix\nCOMMANDER: 1x Ikra Shidiqi, the Usurper").deck.color_identity.should eq("bgu")
+    end
+  end
+
+  # Deck indexer can automacially insert missing [foil] in some cases, but it doesn't do comprehensive fixes
+  describe "card finishes" do
+    it "no cards with nonexistent finish" do
+      db.decks.each do |deck|
+        deck.cards_in_all_zones.map(&:last).each do |card|
+          card.main_front.has_finish?(card.finish).should(be_truthy, "Card #{card.name} in #{deck.name} has invalid finish #{card.finish}")
+        end
+      end
     end
   end
 end

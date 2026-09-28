@@ -1,0 +1,111 @@
+# Mystery Booster Commander Edition
+# Booster
+# Sources:
+# - https://magic.wizards.com/en/news/feature/whats-inside-mystery-booster-commander-edition
+# - https://scryfall.com/sets/mbc  (60 new commanders #1-60, 10 acorn #61-70, 10 new Future Sight #71-80)
+# - https://scryfall.com/sets/plst (the Planeswalker-stamp reprints)
+# - https://scryfall.com/sets/mb2  (the carried-over Future Sight frame and playtest cards)
+#
+# The Planeswalker-stamp reprints are The List (plst) printings, like MB2's MBTW* sheets.
+# Scryfall reuses one plst card per original printing, so most of MBC's reprints are the
+# same plst cards as MB1/MB2/The List, and only the ~500 new-to-List ones carry the
+# 2026-11-09 date. The MBC* sheet codes in data/print_sheets_new/plst.txt come from the
+# article's card lists.
+
+pack:
+  white: 3
+  blue: 3
+  black: 3
+  red: 3
+  green: 3
+  wildcard: 1
+  commander: 1
+  new_commander:
+  - new_commander: 1
+    chance: 9525
+  - new_commander_foil: 1
+    chance: 475 # 1 Non-foil (95.25%) or traditional foil (4.75%) new-to-Magic commander
+  future_sight_or_acorn:
+  - future_sight: 1
+    chance: 953 # Non-foil common/uncommon (43.3%) + non-foil rare/mythic (52%)
+  - future_sight_foil: 1
+    chance: 44 # Traditional foil common/uncommon (2%) + rare/mythic (2.4%)
+  - alchemy_acorn: 1
+    chance: 3 # Traditional foil acorn stamp card (less than 1%) - the rounding remainder
+  playtest: 1
+queries:
+  # 134 Future Sight frame cards: 124 carried over from MB2 (all of MB2's 136 except
+  # Contamination, Crackdown, Erhnam Djinn, Erratic Portal, Goblin Lackey, Hullbreacher,
+  # Lifetap, Relentless Assault, Sengir Vampire, Smokestack, Static Orb, Tinker) plus
+  # 10 new ones, MBC 71-80. Only the 10 new ones have MBC printings so far; the MB2 ones
+  # are used as they are. mtgjson has since added the foil MBC finish to the 17 that were
+  # nonfoil-only in MB2 (122-143), so the foil sheets are complete at 57+77; the 15 that
+  # were foil-only (243-257) are still waiting for their nonfoil finish, which is why the
+  # nonfoil sheets are 4 and 11 cards short.
+  future_sight: "(e:mb2 frame:future -number:/^(124|125|129|132|133|146|176|178|192|220|232|234)$/) or (e:{set} frame:future)"
+sheets:
+  white:
+    set: plst
+    code: "MBCWHITE"
+    count: 358
+  blue:
+    set: plst
+    code: "MBCBLUE"
+    count: 358
+  black:
+    set: plst
+    code: "MBCBLACK"
+    count: 358
+  red:
+    set: plst
+    code: "MBCRED"
+    count: 358
+  green:
+    set: plst
+    code: "MBCGREEN"
+    count: 358
+  wildcard:
+    #  No rarity weighting is published, so it is flat.
+    set: plst
+    code: "MBCWILD"
+    count: 111
+  commander:
+    # No rare/mythic split is published,
+    # so it is flat like the other reprint sheets.
+    set: plst
+    code: "MBCCMD"
+    count: 121
+  new_commander:
+    query: "number:1-60"
+    count: 60
+  new_commander_foil:
+    query: "number:1-60"
+    count: 60
+    foil: true
+  future_sight:
+    any:
+    - rawquery: "{future_sight} r<=u"
+      chance: 433
+      count: 53 # TODO: 57 once 243-257 gain nonfoil
+    - rawquery: "{future_sight} r>=r"
+      chance: 520
+      count: 66 # TODO: 77 once 243-257 gain nonfoil
+  future_sight_foil:
+    foil: true
+    any:
+    - rawquery: "{future_sight} r<=u"
+      chance: 20
+      count: 57
+    - rawquery: "{future_sight} r>=r"
+      chance: 24
+      count: 77
+  alchemy_acorn:
+    query: "is:acorn"
+    count: 10
+    foil: true
+  # "We've reprinted the same selection of playtest cards that appeared in Mystery
+  # Booster 2". The article counts 121, the extra one being the Essence of Ajani emblem
+  # (MB2 513), which the index files under tokens.
+  playtest:
+    rawquery: "e:mb2 is:playtest"
+    count: 120

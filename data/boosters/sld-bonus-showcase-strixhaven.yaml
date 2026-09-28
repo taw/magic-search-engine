@@ -1,0 +1,19 @@
+# Drop-specific observed bonus pool; all outcomes contain one foil card.
+# Estimated weights: equal within categories; 7% Blueprints, 2% special replacements
+# where listed. These are modeling conventions, not measured per-drop odds.
+# See data/boosters/notes/sld-bonus-2021-2022.md for evidence and remaining limits.
+# https://www.reddit.com/r/mtgfinance/comments/pdknlu/comment/hazqrkw/
+# Shared box-edition membership is an audit assumption; observed land union retained.
+name: SLD Showcase Strixhaven Bonus
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number:547,549,553,555,566,568
+      count: 6
+      chance: 93
+    - rawquery: e:{set} number:603,604,605,606,607
+      count: 5
+      chance: 7

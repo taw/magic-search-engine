@@ -1,10 +1,8 @@
 # Data from https://magic.wizards.com/en/news/feature/dominaria-united-product-overview-2022-08-18
 # Lost Legends rate set at 3%, exact rate is unknown
-# Assume that etched cards appear at same rate as nonfoil cards:
-# uncommon foil etched count: 5
-# retold uncommon count: 5
-# rare mythic foil etched count: 2*10 + 7 = 47
-# showcase rare mythic count: (2*10 + 5) + 2*20 + 16 = 81
+# The Retold uncommon is evenly split between nonfoil and etched, with at most
+# two etched cards per pack. Preserve the previous conditional distribution of
+# the other two slots; their exact joint collation is not published.
 pack:
   foil_fullart_land: 1
   lost_legends_slot:
@@ -21,21 +19,21 @@ pack:
   etched_cards:
   - retold_uncommon: 1
     showcase_rare_mythic: 2
-    chance: 5 + 2*81
+    chance: (5 + 2*81) * 300
   - etched_retold_uncommon: 1
     showcase_rare_mythic: 2
-    chance: 5 + 2*81
+    chance: (5 + 2*81) * 399
   - retold_uncommon: 1
     etched_retold_rare_mythic: 1
     showcase_rare_mythic: 1
-    chance: 5 + 81 + 47
+    chance: (5 + 81 + 47) * 300
   - etched_retold_uncommon: 1
     etched_retold_rare_mythic: 1
     showcase_rare_mythic: 1
-    chance: 5 + 81 + 47
+    chance: (5 + 81 + 47) * 399
   - retold_uncommon: 1
     etched_retold_rare_mythic: 2
-    chance: 5 + 2*47
+    chance: (5 + 2*47) * 300
   textured_foil: 1
 sheets:
   foil_fullart_land:
@@ -83,5 +81,13 @@ sheets:
   textured_foil:
     foil: true
     filter: "e:{set} promo:textured"
-    use: base_1248_by_rarity
-    count: 41
+    any:
+    - query: "r:u"
+      count: 20
+      chance: 631
+    - query: "r:r"
+      count: 14
+      chance: 295
+    - query: "r:m"
+      count: 7
+      chance: 74

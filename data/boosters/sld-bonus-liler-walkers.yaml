@@ -1,0 +1,19 @@
+# Drop-specific observed bonus pool; all outcomes contain one foil card.
+# Estimated weights: equal within categories; 5% Blueprints, 2% special replacements
+# where listed. These are modeling conventions, not measured per-drop odds.
+# See data/boosters/notes/sld-bonus-2021-2022.md for evidence and remaining limits.
+# https://www.magiclibrarities.net/1299-rarities-secret-lair-drop-series-promos-english-cards-index.html
+# Collector checklist names these regular Slivers and Apostle; pool completeness remains unverified.
+name: SLD Liler Walkers Bonus
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number:623,657
+      count: 2
+      chance: 98
+    - rawquery: e:{set} number:687
+      count: 1
+      chance: 2

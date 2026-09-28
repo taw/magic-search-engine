@@ -3,8 +3,12 @@
 # 10 non-foil (one of each design, #373-382) plus 2 random traditional foil.
 name: "{set_name} VIP Edition"
 pack:
-  foil_rare_mythic_borderless: 2
-  foil_rare_mythic: 2
+  # Each pair is RR or RM, never MM. Preserve 2:1 per-card R/M
+  # marginals by making the second slot carry the pair's mythic chance.
+  foil_borderless_rare: 1
+  foil_borderless_second: 1
+  foil_rare: 1
+  foil_second: 1
   foil_uncommon: 8
   foil_common: 9
   plains_1: 1
@@ -19,13 +23,25 @@ pack:
   forest_2: 1
   foil_basic: 2
 sheets:
-  foil_rare_mythic_borderless:
+  foil_borderless_rare:
     foil: true
-    filter: "e:{set} is:borderless"
-    use: rare_mythic
-  foil_rare_mythic:
+    rawquery: "e:{set} is:borderless r:r"
+    count: 20
+  foil_borderless_second:
     foil: true
-    use: rare_mythic
+    any:
+    - use: foil_borderless_rare
+      chance: 1
+    - rawquery: "e:{set} is:borderless r:m"
+      count: 20
+      chance: 2
+  foil_second:
+    foil: true
+    any:
+    - use: rare
+      chance: 101
+    - use: mythic
+      chance: 40
   plains_1:
     rawquery: "e:{set} number:373"
     count: 1

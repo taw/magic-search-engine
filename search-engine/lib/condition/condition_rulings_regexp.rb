@@ -6,4 +6,10 @@ class ConditionRulingsRegexp < ConditionRegexp
   def to_s
     "rulings:#{@regexp.inspect.sub(/[im]+\z/, "")}"
   end
+
+  private
+
+  def field_description
+    "the rulings"
+  end
 end

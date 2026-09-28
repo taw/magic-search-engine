@@ -15,6 +15,6 @@ sheets:
     foil: true
     use: nonfoil_rare_mythic
   foil_uncommon_showcase:
-    rawquery: "e:{set} frame:showcase r:u"
-    count: 40
+    rawquery: "e:{set} frame:showcase r:u -promo:textured"
+    count: 20
     foil: true

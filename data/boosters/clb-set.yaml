@@ -36,35 +36,49 @@ sheets:
     count: 141
   background:
     filter: 'e:{set} t:background is:baseset -name:"Faceless One"'
-    use: base_1248_by_rarity
-    count: 25
-  legendary_with_showcase:
     any:
-    # no idea about ratios
-    - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart t:legendary -t:background is:paper"
-      count: 30
-      rate: 4
-    - query: "r:u alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
-      count: 30
-      rate: 8
-    - query: "r:u -alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
-      rate: 12
-    - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart t:legendary -t:background is:paper"
-      count: 25
-      rate: 2
-    - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
-      count: 25
-      rate: 4
-    - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background -t:land"
-      rate: 6
-    - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart t:legendary -t:background is:paper"
+    - any:
+      - query: "r:c"
+        count: 5
+        rate: 2
+      - query: "r:u"
+        count: 15
+        rate: 1
+      chance: 11
+    - query: "r:r"
       count: 5
-      rate: 1
-    - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
-      count: 5
-      rate: 2
-    - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
-      rate: 3
+      chance: 1
+  legendary_with_showcase:
+    # The regular legendary slot is rare/mythic in half of Set Boosters.
+    any:
+    - any:
+      - rawquery: "e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart t:legendary -t:background is:paper"
+        count: 30
+        rate: 4
+      - query: "r:u alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
+        count: 30
+        rate: 8
+      - query: "r:u -alt:(e:{set} r:u promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
+        rate: 12
+      chance: 1
+    - any:
+      - rawquery: "e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart t:legendary -t:background is:paper"
+        count: 25
+        rate: 2
+      - query: "r:r alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
+        count: 25
+        rate: 4
+      - query: "r:r -alt:(e:{set} r:r promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background -t:land"
+        rate: 6
+      - rawquery: "e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart t:legendary -t:background is:paper"
+        count: 5
+        rate: 1
+      - query: "r:m alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
+        count: 5
+        rate: 2
+      - query: "r:m -alt:(e:{set} r:m promo:boosterfun -is:foilonly -frame:extendedart) t:legendary -t:background"
+        rate: 3
+      chance: 1
   wildcard:
     any:
     - use: common

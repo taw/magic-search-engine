@@ -12,4 +12,8 @@ class ConditionExact < Condition
   def to_s
     "!#{@name}"
   end
+
+  def explain(negated: false)
+    "the name #{negated ? "isn't" : "is"} exactly \"#{@name}\""
+  end
 end

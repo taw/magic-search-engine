@@ -58,8 +58,8 @@ sheets:
         rate: 12
       - use: rare_has_no_showcase
         rate: 16
-      - rawquery: "e:nec number<=38 r:r"
-        count: 32
+      - rawquery: "e:nec number:1-4,31-38 r:r"
+        count: 6
         rate: 16
       - rawquery: "e:{set} promo:boosterfun (Jin-Gitaxias or Kaito Shizuki or Tamiyo, Compleated or Tezzeret, Betrayer or The Wandering Emperor) number<=416"
         count: 10
@@ -71,7 +71,7 @@ sheets:
         rate: 6
       - use: mythic_has_no_showcase
         rate: 8
-      - rawquery: "e:nec number<=38 r:m"
+      - rawquery: "e:nec number:1-4,31-38 r:m"
         count: 6
         rate: 8
       chance: 125

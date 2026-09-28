@@ -1,0 +1,16 @@
+# Shared membership across box editions is an audit modeling assumption.
+# Estimated 93% nonfoil Arcane Signet, 7% total traditional-foil MK1.
+name: SLD Dan Frazier Enemy Signets Nonfoil Edition Bonus
+pack:
+- nonfoil_signet: 1
+  chance: 93
+- foil_blueprint: 1
+  chance: 7
+sheets:
+  nonfoil_signet:
+    rawquery: e:{set} number:589
+    count: 1
+  foil_blueprint:
+    foil: true
+    rawquery: e:{set} number:603,604,605,606,607
+    count: 5

@@ -1,0 +1,21 @@
+# Shared nine nonfoil Marvel bonuses, including foil boxes. Category weights 100:10:1 are an explicit estimate, using the prior Spider-Man model, not official pull rates.
+# Source: https://www.reddit.com/r/secretlair_collectors/comments/1wi3wjs/
+# Source: https://www.reddit.com/r/secretlair_collectors/comments/1vfsy5d/
+# Source: https://www.reddit.com/r/secretlair_collectors/comments/1w92agt/
+# Source: https://www.reddit.com/r/secretlair_collectors/comments/1wfomf1/
+name: SLD Marvel Spinner Rack Specials Bonus (Nonfoil)
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: false
+    any:
+    - rawquery: e:{set} number:"7123,7124,7125"
+      count: 3
+      chance: 100
+    - rawquery: e:{set} number:"7120,7121,7122"
+      count: 3
+      chance: 10
+    - rawquery: e:{set} number:"7117,7118,7119"
+      count: 3
+      chance: 1

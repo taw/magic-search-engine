@@ -27,6 +27,27 @@ class ConditionMana < ConditionSimple
     "mana#{@op}#{query_mana_to_s}"
   end
 
+  OP_WORDS = {"=" => "is", "!=" => "isn't", ">=" => "is at least", "<=" => "is at most", ">" => "is more than", "<" => "is less than"}
+  # Mana cost is compared symbol by symbol, not as a single total - it's a set
+  # comparison like colors/types, not a total order - so "not (cost >= X)" stays a
+  # plain negation ("isn't at least X"), it doesn't flip to a different operator.
+  NEGATED_OP_WORDS = {"=" => "isn't", "!=" => "is", ">=" => "isn't at least", "<=" => "isn't at most", ">" => "isn't more than", "<" => "isn't less than"}
+
+  def explain(negated: false)
+    if @query_mana.empty?
+      case @op
+      when "="
+        return negated ? "the card has a mana cost" : "the card has no mana cost"
+      when "!="
+        return negated ? "the card has no mana cost" : "the card has a mana cost"
+      else
+        return "the mana cost can never be compared to nothing with #{@op}"
+      end
+    end
+    words = negated ? NEGATED_OP_WORDS : OP_WORDS
+    "the mana cost #{words.fetch(@op, @op)} #{explain_mana_symbols(@query_mana)}"
+  end
+
   private
 
   def match_mana?(card_mana)

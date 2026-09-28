@@ -32,6 +32,7 @@ describe "DissentionTest" do
       "Relentless Rats",
       "Shadowborn Apostle",
       "Slime Against Humanity",
+      "Sphinx's Approach",
       "Tempest Hawk",
       "Templar Knight"
   end

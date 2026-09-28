@@ -29,4 +29,8 @@ class ConditionIsFilterland < ConditionNickname
   def to_s
     "is:filterland"
   end
+
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}a filterland"
+  end
 end

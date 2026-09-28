@@ -26,6 +26,19 @@ describe "Eldrich Moon" do
     }
   end
 
+  it "// with meld" do
+    # Each front only links to the meld result, but the result links to both
+    assert_search_results "bruna // gisela",
+      "Brisela, Voice of Nightmares", "Bruna, the Fading Light", "Gisela, the Broken Blade"
+    assert_search_results "t:creature // t:creature // t:creature",
+      "Brisela, Voice of Nightmares", "Bruna, the Fading Light", "Gisela, the Broken Blade",
+      "Chittering Host", "Graf Rats", "Midnight Scavengers"
+    assert_search_results "t:creature // t:creature // t:land",
+      "Hanweir Battlements", "Hanweir Garrison", "Hanweir, the Writhing Township"
+    assert_search_results "t:land // t:land // t:creature"
+    assert_search_equal "// //", "is:meld"
+  end
+
   it "is:meld" do
     assert_search_results "is:meld",
       "Brisela, Voice of Nightmares",

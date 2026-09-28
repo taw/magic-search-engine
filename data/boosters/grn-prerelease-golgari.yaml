@@ -1,8 +1,7 @@
-# Guilds of Ravnica -- seeded prerelease Guild Booster (Golgari).
-# Guilds of Ravnica prerelease kits were seeded by guild: a ~15-card guild-colored pile
-# (11 common + 3 uncommon) plus the folded, guild-colored foil year-stamped promo
-# (2:1 rare:mythic). Seeded via the wedge/guild idiom -- cards in the guild's colors carrying
-# the guild watermark or no watermark, excluding generic colorless. Matches the RTR/GTC model.
+# Eight guild-specific promos (seven rares and one mythic):
+# https://www.mtgsalvation.com/forums/magic-fundamentals/the-rumor-mill/228617-compiled-upcoming-promo-information
+# Keep the existing 2:1 per-card rare/mythic weighting; historical odds are unverified.
+# Common/uncommon pools and seeded collation remain approximate and unchanged.
 name: "{set_name} Seeded Prerelease Booster Golgari"
 filter: "e:{set} id<=bg is:baseset (w:golgari or -w:*) -(c:c -w:*)"
 pack:
@@ -16,9 +15,9 @@ sheets:
   promo:
     foil: true
     any:
-    - rawquery: "e:pgrn r:m (w:golgari or (id<=bg and -w:*)) promo:prerelease"
+    - rawquery: "e:pgrn number:211s promo:prerelease"
       count: 1
       rate: 1
-    - rawquery: "e:pgrn r:r (w:golgari or (id<=bg and -w:*)) promo:prerelease"
-      count: 9
+    - rawquery: "e:pgrn (number:225sa or number:148s or number:71s or number:75s or number:152s or number:132s or number:180s) promo:prerelease"
+      count: 7
       rate: 2

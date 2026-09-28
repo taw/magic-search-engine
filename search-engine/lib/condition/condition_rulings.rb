@@ -15,4 +15,13 @@ class ConditionRulings < ConditionSimple
   def to_s
     "rulings:#{maybe_quote(@ruling)}"
   end
+
+  def explain(negated: false)
+    if @any
+      negated ? "the card has no rulings" : "the card has rulings"
+    else
+      verb = negated ? "don't include" : "include"
+      %[the rulings #{verb} "#{@ruling}"]
+    end
+  end
 end

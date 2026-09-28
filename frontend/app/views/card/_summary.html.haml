@@ -1,6 +1,8 @@
 .row.results_summary
   .col-12
     - if @cards.present?
-      #{pluralize(@cards.total_entries, "card")} found
+      = "#{pluralize(@cards.total_entries, "card")} found"
+      - if @query&.filtered?
+        = format_explanation(" where #{@query.explain}")
     - else
       No cards found

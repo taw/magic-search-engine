@@ -1,0 +1,22 @@
+# https://www.reddit.com/r/magicTCG/comments/ylktj8/comment/j11e1bt/
+# Drop-specific observed bonus pool; all outcomes contain one foil card.
+# Blueprint category: 7% (user-provided collation rate). Equal within-category
+# weights and 2% chase odds where listed remain modeling estimates.
+# See data/boosters/notes/sld-bonus-2021-2022.md for evidence and remaining limits.
+# https://www.reddit.com/r/magicTCG/comments/zt4llb/october_2022_superdrop_secret_lair_bonus_card/
+# Source calls Sidewinder 614; actual printing is 615. Librarities misnumbers Might as 651; use 652. Foil Reliquary Tower 695 confirms the full MK2 pool.
+# https://www.youtube.com/watch?v=Y-lPU3kUfYo&t=144s
+# https://www.reddit.com/r/magicTCG/comments/zt4llb/comment/j43dcu0/
+name: SLD The Weirdest Pets In The Multiverse Bonus
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number:611,615,627,635,652,655,664,666
+      count: 8
+      chance: 93
+    - rawquery: e:{set} number:691,692,693,694,695
+      count: 5
+      chance: 7

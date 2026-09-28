@@ -28,10 +28,10 @@ pack:
     uncommon: 5
     chance: 35
   - uncommon: 6
-    chance: 2
-  common_uncommon_showcase: 1
+    chance: 20
+  showcase_or_dfc: 1
   wildcard: 2
-  rare_mythic: 1
+  rare_mythic_with_showcase: 1
   extra:
   - foil_with_showcase: 1
     chance: 3
@@ -57,4 +57,18 @@ sheets:
   the_list:
     set: plst
     code: "ZNR"
-  
+    # WPN includes showcase or modal double-faced C/U in this slot.
+  # Keep the existing 2:1 per-card C/U convention; exact collation unpublished.
+  # https://wpn.wizards.com/en/products/zendikar-rising
+  showcase_or_dfc:
+    any:
+    - use: common_showcase
+      rate: 2
+    - rawquery: "e:{set} r:u (promo:boosterfun or is:dfc)"
+      rate: 1
+  rare_mythic_with_showcase:
+    any:
+    - use: rare_with_showcase
+      chance: 128
+    - use: mythic_with_showcase
+      chance: 20

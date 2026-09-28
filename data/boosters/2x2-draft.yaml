@@ -1,3 +1,4 @@
+# Data from https://magic.wizards.com/en/news/feature/collecting-double-masters-2022-and-product-overview
 pack:
   cryptic_spires: 1
   common_with_showcase: 8
@@ -9,11 +10,12 @@ sheets:
     rawquery: "e:{set} number:332"
     count: 1
   rare_mythic_with_showcase:
+    # Independent 5.66% borderless draws give approximately 11% per two-slot pack.
     any:
-    - use: rare_with_showcase
-      chance: 120 * 2
-    - use: mythic_with_showcase
-      chance: 40
+    - use: rare_mythic
+      chance: 9434
+    - use: rare_mythic_showcase
+      chance: 566
   dedicated_foil_double_masters:
     foil: true
     any:
@@ -21,5 +23,10 @@ sheets:
       chance: 8
     - use: uncommon_with_showcase
       chance: 3
-    - use: rare_mythic_with_showcase
+    # This rarity tier occupies 2/13 of the foil slot; 13/160 within it is 1.25% overall.
+    - any:
+      - use: rare_mythic
+        chance: 147
+      - use: rare_mythic_showcase
+        chance: 13
       chance: 2

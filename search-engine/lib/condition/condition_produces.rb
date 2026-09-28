@@ -28,4 +28,12 @@ class ConditionProduces < ConditionSimple
   def to_s
     "produces#{@op}#{@mana.join}"
   end
+
+  # Produced mana is a set of colors, so it's worded the same as c>=
+  def explain(negated: false)
+    return "the card #{(@op == "=") ^ negated ? "doesn't produce" : "produces"} mana" if @mana.empty? and %w[= !=].include?(@op)
+    words = negated ? ConditionColorExpr::NEGATED_OP_WORDS : ConditionColorExpr::OP_WORDS
+    symbols = "wubrgc".chars.select{|c| @mana.include?(c)}.map{|c| "{#{c}}"}.join
+    "the mana produced #{words.fetch(@op)} #{symbols}"
+  end
 end

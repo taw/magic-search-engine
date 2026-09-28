@@ -29,4 +29,8 @@ class ConditionIsPermanent < ConditionSimple
   def to_s
     "is:permanent"
   end
+
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}a permanent (artifact, battle, creature, enchantment, land, or planeswalker)"
+  end
 end

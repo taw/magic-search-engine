@@ -11,4 +11,10 @@ class ConditionEdition < Condition
   def to_s
     "e:#{@editions.map{|e| maybe_quote(e)}.join(",")}"
   end
+
+  def explain(negated: false)
+    names = @editions.map{|e| %["#{e}"]}
+    return "the set is #{names.join(" or ")}" unless negated
+    names.size == 1 ? "the set is not #{names[0]}" : "the set is not any of #{names.join(", ")}"
+  end
 end

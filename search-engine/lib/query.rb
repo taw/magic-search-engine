@@ -64,6 +64,19 @@ class Query
     (@metadata[:ungrouped] ? "++#{str}" : str)
   end
 
+  # Plain-English description, e.g. for a Scryfall-style "N cards found where ...".
+  # Sort/view/grouping metadata is display, not a filter, so unlike #to_s it's left out.
+  def explain
+    @cond ? @cond.explain : "matches anything"
+  end
+
+  # False for a query with nothing to filter by (bare sort:/view:, or empty) - the
+  # frontend uses this to skip the "where ..." clause instead of appending the
+  # useless-sounding "N cards found where matches anything".
+  def filtered?
+    !!@cond
+  end
+
   def ==(other)
     # structural equality, subclass if you need something fancier
     # We ignore @query_string and @seed, so queries that == won't necessarily have same random order

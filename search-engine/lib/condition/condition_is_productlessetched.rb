@@ -5,4 +5,8 @@ class ConditionIsProductlessetched < ConditionIsProductless
   def finish
     :etched
   end
+
+  def explain(negated: false)
+    negated ? "the card has a known product source (booster, precon, or promo) in etched finish" : "the card has no known product source (booster, precon, or promo) in etched finish"
+  end
 end

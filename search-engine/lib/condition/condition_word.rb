@@ -24,6 +24,10 @@ class ConditionWord < ConditionSimple
     "#{maybe_quote(@word)}"
   end
 
+  def explain(negated: false)
+    "the name #{negated ? "doesn't include" : "includes"} \"#{@word}\""
+  end
+
   def metadata!(key, value)
     super
     if key == :fuzzy

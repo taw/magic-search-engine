@@ -5,10 +5,12 @@ languages: de, en, fr, jp
 
 pack:
   land_slot:
-  - basic: 1
+  - snow_land: 1
     chance: 17
-  - foil_basic: 1
+  - foil_snow_land: 1
     chance: 3
+  # Seven C/U are guaranteed; keep the existing mix and add one common.
+  common: 1
   commons_and_uncommons:
   - common: 5
     uncommon: 1
@@ -29,7 +31,7 @@ pack:
     chance: 2
   snow_showcase_theme: 1
   wildcard: 1
-  rare_mythic: 1
+  rare_mythic_with_showcase: 1
   foil_slot:
   - foil_with_showcase: 1
     chance: 3
@@ -37,6 +39,19 @@ pack:
     the_list: 1
     chance: 1
 sheets:
+  snow_land:
+    # Both snow basics and duals are documented. Use the Draft sheet's 7:5
+    # per-card weights as a convention; Set-specific land odds are unpublished.
+    any:
+    - query: "r:c is:basictype"
+      count: 10
+      rate: 5
+    - query: "r:b"
+      count: 10
+      rate: 7
+  foil_snow_land:
+    foil: true
+    use: snow_land
   common:
     query: "r:c"
     count: 111

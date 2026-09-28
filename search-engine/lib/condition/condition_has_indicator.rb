@@ -6,4 +6,8 @@ class ConditionHasIndicator < ConditionSimple
   def to_s
     "has:indicator"
   end
+
+  def explain(negated: false)
+    negated ? "the card has no color indicator" : "the card has a color indicator"
+  end
 end

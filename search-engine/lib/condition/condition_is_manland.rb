@@ -16,6 +16,7 @@ class ConditionIsManland < ConditionNickname
       "frostwalk bastion",
       "ghitu encampment",
       "great hall of the biblioplex",
+      "hall of echoes",
       "hall of storm giants",
       "hissing quagmire",
       "hive of the eye tyrant",
@@ -58,5 +59,9 @@ class ConditionIsManland < ConditionNickname
 
   def to_s
     "is:manland"
+  end
+
+  def explain(negated: false)
+    "the card is #{negated ? "not " : ""}a manland"
   end
 end
