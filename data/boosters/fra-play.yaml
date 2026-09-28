@@ -1,0 +1,829 @@
+# Reality Fracture
+# Play Booster (English)
+# Sources:
+# - https://magic.wizards.com/en/news/feature/collecting-reality-fracture
+# - https://scryfall.com/sets/fra
+# - https://scryfall.com/sets/spg
+#
+
+# Based on this video we assume that if one of the echoes cards is borderless, the pair is too.
+# https://www.youtube.com/watch?v=yxTLbyAiwu8&t=400
+
+filter: "e:{set}"
+
+pack:
+  common_special_guest:
+  - common: 6
+    chance: 54
+  - common: 5
+    special_guest: 1
+    chance: 1
+  uncommon: 1
+  common_uncommon: 1
+  echoed_pairs:
+  # -- Mythic pairs --
+  - pair_ajani: 2
+    third_not_ajani: 1
+    chance: 1 * 7
+  - pair_ajani_borderless: 2
+    third_not_ajani: 1
+    chance: 1 * 1
+  - pair_chandra: 2
+    third_not_chandra: 1
+    chance: 1 * 7
+  - pair_chandra_borderless: 2
+    third_not_chandra: 1
+    chance: 1 * 1
+  - pair_garruk: 2
+    third_not_garruk: 1
+    chance: 1 * 7
+  - pair_garruk_borderless: 2
+    third_not_garruk: 1
+    chance: 1 * 1
+  # -- Rare pairs --
+  - pair_gideon: 2
+    third_not_gideon: 1
+    chance: 2 * 7
+  - pair_gideon_borderless: 2
+    third_not_gideon: 1
+    chance: 2 * 1
+  - pair_liliana: 2
+    third_not_liliana: 1
+    chance: 2 * 7
+  - pair_liliana_borderless: 2
+    third_not_liliana: 1
+    chance: 2 * 1
+  - pair_lyra: 2
+    third_not_lyra: 1
+    chance: 2 * 7
+  - pair_lyra_borderless: 2
+    third_not_lyra: 1
+    chance: 2 * 1
+  - pair_jace_tam: 2
+    third_not_jace_tam: 1
+    chance: 2 * 7
+  - pair_jace_tam_borderless: 2
+    third_not_jace_tam: 1
+    chance: 2 * 1
+  - pair_samut: 2
+    third_not_samut: 1
+    chance: 2 * 7
+  - pair_samut_borderless: 2
+    third_not_samut: 1
+    chance: 2 * 1
+  - pair_karn: 2
+    third_not_karn: 1
+    chance: 2 * 7
+  - pair_karn_borderless: 2
+    third_not_karn: 1
+    chance: 2 * 1
+  - pair_vraska: 2
+    third_not_vraska: 1
+    chance: 2 * 7
+  - pair_vraska_borderless: 2
+    third_not_vraska: 1
+    chance: 2 * 1
+  # -- Uncommon pairs --
+  - pair_danitha: 2
+    third_not_danitha: 1
+    chance: 5 * 8
+  - pair_ghalta: 2
+    third_not_ghalta: 1
+    chance: 5 * 8
+  - pair_koth: 2
+    third_not_koth: 1
+    chance: 5 * 8
+  - pair_rescue_girl: 2
+    third_not_rescue_girl: 1
+    chance: 5 * 8
+  - pair_saheeli: 2
+    third_not_saheeli: 1
+    chance: 5 * 8
+  - pair_teyo: 2
+    third_not_teyo: 1
+    chance: 5 * 7
+  - pair_teyo_borderless: 2
+    third_not_teyo: 1
+    chance: 5 * 1
+  - pair_thalia: 2
+    third_not_thalia: 1
+    chance: 5 * 7
+  - pair_thalia_borderless: 2
+    third_not_thalia: 1
+    chance: 5 * 1
+  - pair_tomik: 2
+    third_not_tomik: 1
+    chance: 5 * 8
+  - pair_way_healer: 2
+    third_not_way_healer: 1
+    chance: 5 * 8
+  - pair_way_mentor: 2
+    third_not_way_mentor: 1
+    chance: 5 * 8
+  - pair_yoshimaru: 2
+    third_not_yoshimaru: 1
+    chance: 5 * 8
+  - pair_yuriko: 2
+    third_not_yuriko: 1
+    chance: 5 * 8
+  - pair_arni: 2
+    third_not_arni: 1
+    chance: 5 * 8
+  - pair_fblthp: 2
+    third_not_fblthp: 1
+    chance: 5 * 7
+  - pair_fblthp_borderless: 2
+    third_not_fblthp: 1
+    chance: 5 * 1
+  - pair_hapatra: 2
+    third_not_hapatra: 1
+    chance: 5 * 8
+  - pair_proft: 2
+    third_not_proft: 1
+    chance: 5 * 8
+  - pair_ruric_thar: 2
+    third_not_ruric_thar: 1
+    chance: 5 * 8
+  - pair_tetsuko: 2
+    third_not_tetsuko: 1
+    chance: 5 * 8
+  - pair_traxos: 2
+    third_not_traxos: 1
+    chance: 5 * 8
+  - pair_way_cryomancer: 2
+    third_not_way_cryomancer: 1
+    chance: 5 * 8
+  - pair_way_mind_sculptor: 2
+    third_not_way_mind_sculptor: 1
+    chance: 5 * 8
+  - pair_yargle: 2
+    third_not_yargle: 1
+    chance: 5 * 8
+  - pair_gallia: 2
+    third_not_gallia: 1
+    chance: 5 * 8
+  - pair_loot: 2
+    third_not_loot: 1
+    chance: 5 * 8
+  - pair_mabel: 2
+    third_not_mabel: 1
+    chance: 5 * 8
+  - pair_tinybones: 2
+    third_not_tinybones: 1
+    chance: 5 * 8
+  - pair_way_deathbringer: 2
+    third_not_way_deathbringer: 1
+    chance: 5 * 8
+  - pair_winter: 2
+    third_not_winter: 1
+    chance: 5 * 7
+  - pair_winter_borderless: 2
+    third_not_winter: 1
+    chance: 5 * 1
+  - pair_jiang_yanggu: 2
+    third_not_jiang_yanggu: 1
+    chance: 5 * 8
+  - pair_kiora: 2
+    third_not_kiora: 1
+    chance: 5 * 8
+  - pair_marwyn: 2
+    third_not_marwyn: 1
+    chance: 5 * 7
+  - pair_marwyn_borderless: 2
+    third_not_marwyn: 1
+    chance: 5 * 1
+  - pair_pia: 2
+    third_not_pia: 1
+    chance: 5 * 8
+  - pair_edgar: 2
+    third_not_edgar: 1
+    chance: 5 * 8
+  rare_mythic: 1
+  foil: 1
+  land:
+  - non_foil_land: 1
+    chance: 80
+  - foil_land: 1
+    chance: 20
+
+queries:
+  regular: "e:{set} number:1-194"
+  dual_land: "e:{set} number:175,177,178,182,183,184,190,192,193,194"
+  basic_land: "e:{set} number:281-290"
+  tower_land: "e:{set} number:382-396"
+  echoed_regular: "e:{set} number:195-280"
+  echoed_borderless: "e:{set} number:291-320"
+  # Shattered mirror, sculptor's stronghold, braintwister, portal view lands
+  boosterfun: "e:{set} number:321-381,397-401"
+  # The same minus shattered mirror, which has no traditional foil printing
+  foil_boosterfun: "e:{set} number:334-381,397-401"
+
+sheets:
+  common:
+    query: "{regular} r:c -{dual_land}"
+    count: 71
+
+  uncommon:
+    any:
+    - query: "{boosterfun} r:u"
+      rate: 1
+      count: 5
+    - query: "{regular} r:u alt:({boosterfun})"
+      rate: 2
+      count: 5
+    - query: "{regular} r:u -alt:({boosterfun})"
+      rate: 3
+      count: 38
+
+  rare:
+    any:
+    - query: "{boosterfun} r:r"
+      rate: 1
+      count: 43
+    - query: "{regular} r:r alt:({boosterfun})"
+      rate: 7
+      count: 43
+    - query: "{regular} r:r -alt:({boosterfun})"
+      rate: 8
+      count: 7
+
+  mythic:
+    any:
+    - query: "{boosterfun} r:m"
+      rate: 1
+      count: 18
+    - query: "{regular} r:m alt:({boosterfun})"
+      rate: 7
+      count: 18
+    - query: "{regular} r:m -alt:({boosterfun})"
+      rate: 8
+      count: 2
+
+  # Same fold for the foil slot, but the 5 + 8 shattered mirror cards have a single foil printing and keep
+  # the full weight 8 on it.
+  foil_rare:
+    any:
+    - query: "{foil_boosterfun} r:r"
+      rate: 1
+      count: 38
+    - query: "{regular} r:r alt:({foil_boosterfun})"
+      rate: 7
+      count: 38
+    - query: "{regular} r:r -alt:({foil_boosterfun})"
+      rate: 8
+      count: 12
+
+  foil_mythic:
+    any:
+    - query: "{foil_boosterfun} r:m"
+      rate: 1
+      count: 10
+    - query: "{regular} r:m alt:({foil_boosterfun})"
+      rate: 7
+      count: 10
+    - query: "{regular} r:m -alt:({foil_boosterfun})"
+      rate: 8
+      count: 10
+
+  # Echoed cards by rarity, with the per-card 7:1 borderless fold. Used by the foil slot and,
+  # through echoed_third, by the third card of the echoed pairs slot.
+  echoed_uncommon:
+    any:
+    - query: "{echoed_borderless} r:u" # 10 cards
+      rate: 1
+    - query: "{echoed_regular} r:u alt:({echoed_borderless})" # 10 cards
+      rate: 7
+    - query: "{echoed_regular} r:u -alt:({echoed_borderless})" # 56 cards
+      rate: 8
+
+  echoed_rare:
+    any:
+    - query: "{echoed_borderless} r:r" # 14 cards
+      rate: 1
+    - query: "{echoed_regular} r:r" # 14 cards
+      rate: 7
+
+  echoed_mythic:
+    any:
+    - query: "{echoed_borderless} r:m" # 6 cards
+      rate: 1
+    - query: "{echoed_regular} r:m" # 6 cards
+      rate: 7
+
+  # Template for the third echoed card: 5:2:1 per card by rarity. Each pair's own sheet narrows this with
+  # a filter that removes both halves by exact name (which also removes their borderless printings).
+  echoed_third:
+    count: 116 # 76 + 28 + 12 printings; each per-pair sheet below is short by its own pair's printings
+    any:
+    - use: echoed_uncommon
+      chance: 66 * 5
+    - use: echoed_rare
+      chance: 14 * 2
+    - use: echoed_mythic
+      chance: 6 * 1
+
+  common_uncommon:
+    any:
+    - use: common
+      chance: 23
+    - use: uncommon
+      chance: 77
+
+  rare_mythic:
+    any:
+    - use: rare
+      chance: 50 * 2
+    - use: mythic
+      chance: 20 * 1
+
+  foil:
+    foil: true
+    any:
+    - use: common
+      chance: 71 * 40
+    - use: uncommon
+      chance: 43 * 22
+    - use: echoed_uncommon
+      chance: 66 * 22
+      count: 76
+    - use: foil_rare
+      chance: 50 * 6
+    - use: echoed_rare
+      chance: 14 * 6
+      count: 28
+    - use: foil_mythic
+      chance: 20 * 3
+    - use: echoed_mythic
+      chance: 6 * 3
+      count: 12
+
+  non_foil_land:
+    any:
+    - query: "{basic_land}"
+      rate: 1
+      count: 10
+    - query: "{tower_land}"
+      rate: 1
+      count: 15
+    - query: "{dual_land}"
+      rate: 3
+      count: 10
+
+  foil_land:
+    foil: true
+    use: non_foil_land
+
+  special_guest:
+    set: spg
+    code: "FRA"
+    count: 10
+
+  # -- Mythic pairs --
+  pair_ajani:
+    fixed: true
+    query: "number:195,242"
+    count: 2
+  pair_ajani_borderless:
+    fixed: true
+    query: "number:291,308"
+    count: 2
+  third_not_ajani:
+    use: echoed_third
+    filter: "e:{set} -name:\"Ajani Resolute\" -name:\"Ajani Unrelenting\""
+    count: 112
+
+  pair_chandra:
+    fixed: true
+    query: "number:212,244"
+    count: 2
+  pair_chandra_borderless:
+    fixed: true
+    query: "number:297,309"
+    count: 2
+  third_not_chandra:
+    use: echoed_third
+    filter: "e:{set} -name:\"Chandra, Chill of Compliance\" -name:\"Chandra, Torch of Defiance\""
+    count: 112
+
+  pair_garruk:
+    fixed: true
+    query: "number:229,259"
+    count: 2
+  pair_garruk_borderless:
+    fixed: true
+    query: "number:303,314"
+    count: 2
+  third_not_garruk:
+    use: echoed_third
+    filter: "e:{set} -name:\"Garruk, Veiled Butcher\" -name:\"Garruk, Curse Breaker\""
+    count: 112
+
+  # -- Rare pairs --
+  pair_gideon:
+    fixed: true
+    query: "number:198,230"
+    count: 2
+  pair_gideon_borderless:
+    fixed: true
+    query: "number:292,304"
+    count: 2
+  third_not_gideon:
+    use: echoed_third
+    filter: "e:{set} -name:\"Gideon's Memorial\" -name:\"Gideon the Oathless\""
+    count: 112
+
+  pair_liliana:
+    fixed: true
+    query: "number:200,231"
+    count: 2
+  pair_liliana_borderless:
+    fixed: true
+    query: "number:293,305"
+    count: 2
+  third_not_liliana:
+    use: echoed_third
+    filter: "e:{set} -name:\"Liliana the Faultless\" -name:\"Liliana the Repentant\""
+    count: 112
+
+  pair_lyra:
+    fixed: true
+    query: "number:201,217"
+    count: 2
+  pair_lyra_borderless:
+    fixed: true
+    query: "number:294,301"
+    count: 2
+  third_not_lyra:
+    use: echoed_third
+    filter: "e:{set} -name:\"Lyra, Archangel of Dawn\" -name:\"Lyra, Tolarian Archangel\""
+    count: 112
+
+  pair_jace_tam:
+    fixed: true
+    query: "number:216,276"
+    count: 2
+  pair_jace_tam_borderless:
+    fixed: true
+    query: "number:300,317"
+    count: 2
+  third_not_jace_tam:
+    use: echoed_third
+    filter: "e:{set} -name:\"Jace, Reality Sculptor\" -name:\"Tam, the Possibility\""
+    count: 112
+
+  pair_samut:
+    fixed: true
+    query: "number:220,251"
+    count: 2
+  pair_samut_borderless:
+    fixed: true
+    query: "number:302,311"
+    count: 2
+  third_not_samut:
+    use: echoed_third
+    filter: "e:{set} -name:\"Samut, Tyrant of Naktamun\" -name:\"Samut, Hazoret's Champion\""
+    count: 112
+
+  pair_karn:
+    fixed: true
+    query: "number:272,279"
+    count: 2
+  pair_karn_borderless:
+    fixed: true
+    query: "number:316,320"
+    count: 2
+  third_not_karn:
+    use: echoed_third
+    filter: "e:{set} -name:\"Karn, Gilded Guardian\" -name:\"Karn, Argent Defender\""
+    count: 112
+
+  pair_vraska:
+    fixed: true
+    query: "number:277,278"
+    count: 2
+  pair_vraska_borderless:
+    fixed: true
+    query: "number:318,319"
+    count: 2
+  third_not_vraska:
+    use: echoed_third
+    filter: "e:{set} -name:\"Vraska, Soul of Stone\" -name:\"Vraska, the Cutting Glare\""
+    count: 112
+
+  # -- Uncommon pairs --
+  pair_danitha:
+    fixed: true
+    query: "number:196,227"
+    count: 2
+  third_not_danitha:
+    use: echoed_third
+    filter: "e:{set} -name:\"Danitha, Sword of Hope\" -name:\"Danitha, Spear of Agony\""
+    count: 114
+
+  pair_ghalta:
+    fixed: true
+    query: "number:197,260"
+    count: 2
+  third_not_ghalta:
+    use: echoed_third
+    filter: "e:{set} -name:\"Ghalta the Immovable\" -name:\"Ghalta the Unstoppable\""
+    count: 114
+
+  pair_koth:
+    fixed: true
+    query: "number:199,248"
+    count: 2
+  third_not_koth:
+    use: echoed_third
+    filter: "e:{set} -name:\"Koth of the Homestead\" -name:\"Koth, the Geomancer\""
+    count: 114
+
+  pair_rescue_girl:
+    fixed: true
+    query: "number:202,234"
+    count: 2
+  third_not_rescue_girl:
+    use: echoed_third
+    filter: "e:{set} -name:\"Rescue Girl, First Responder\" -name:\"Massacre Girl, Most Wanted\""
+    count: 114
+
+  pair_saheeli:
+    fixed: true
+    query: "number:203,275"
+    count: 2
+  third_not_saheeli:
+    use: echoed_third
+    filter: "e:{set} -name:\"Saheeli, Consul of Oversight\" -name:\"Saheeli, Jewel of Avishkar\""
+    count: 114
+
+  pair_teyo:
+    fixed: true
+    query: "number:204,236"
+    count: 2
+  pair_teyo_borderless:
+    fixed: true
+    query: "number:295,306"
+    count: 2
+  third_not_teyo:
+    use: echoed_third
+    filter: "e:{set} -name:\"Teyo, Lightshield Expert\" -name:\"Teyo, Diamondblade Mage\""
+    count: 112
+
+  pair_thalia:
+    fixed: true
+    query: "number:205,214"
+    count: 2
+  pair_thalia_borderless:
+    fixed: true
+    query: "number:296,299"
+    count: 2
+  third_not_thalia:
+    use: echoed_third
+    filter: "e:{set} -name:\"Thalia, the Survivor\" -name:\"Geist of Saint Thalia\""
+    count: 112
+
+  pair_tomik:
+    fixed: true
+    query: "number:206,253"
+    count: 2
+  third_not_tomik:
+    use: echoed_third
+    filter: "e:{set} -name:\"Tomik, Orzhov Lawmage\" -name:\"Tomik, Izzet Sparkmage\""
+    count: 114
+
+  pair_way_healer:
+    fixed: true
+    query: "number:207,239"
+    count: 2
+  third_not_way_healer:
+    use: echoed_third
+    filter: "e:{set} -name:\"Way of the Healer\" -name:\"Way of the Necromancer\""
+    count: 114
+
+  pair_way_mentor:
+    fixed: true
+    query: "number:208,255"
+    count: 2
+  third_not_way_mentor:
+    use: echoed_third
+    filter: "e:{set} -name:\"Way of the Mentor\" -name:\"Way of the Warlord\""
+    count: 114
+
+  pair_yoshimaru:
+    fixed: true
+    query: "number:209,269"
+    count: 2
+  third_not_yoshimaru:
+    use: echoed_third
+    filter: "e:{set} -name:\"Yoshimaru, Beloved Companion\" -name:\"Yoshimaru, Scrappy Stray\""
+    count: 114
+
+  pair_yuriko:
+    fixed: true
+    query: "number:210,226"
+    count: 2
+  third_not_yuriko:
+    use: echoed_third
+    filter: "e:{set} -name:\"Yuriko, Blade of the Mighty\" -name:\"Yuriko, Hope from the Shadows\""
+    count: 114
+
+  pair_arni:
+    fixed: true
+    query: "number:211,243"
+    count: 2
+  third_not_arni:
+    use: echoed_third
+    filter: "e:{set} -name:\"Arni, Humble Scribe\" -name:\"Arni, Renowned Champion\""
+    count: 114
+
+  pair_fblthp:
+    fixed: true
+    query: "number:213,258"
+    count: 2
+  pair_fblthp_borderless:
+    fixed: true
+    query: "number:298,313"
+    count: 2
+  third_not_fblthp:
+    use: echoed_third
+    filter: "e:{set} -name:\"Fblthp, Impossibly Lost\" -name:\"Fblthp, Knows the Way\""
+    count: 112
+
+  pair_hapatra:
+    fixed: true
+    query: "number:215,271"
+    count: 2
+  third_not_hapatra:
+    use: echoed_third
+    filter: "e:{set} -name:\"Hapatra, the Desert Frost\" -name:\"Hapatra, the Desert Fang\""
+    count: 114
+
+  pair_proft:
+    fixed: true
+    query: "number:218,235"
+    count: 2
+  third_not_proft:
+    use: echoed_third
+    filter: "e:{set} -name:\"Proft, Consulting Detective\" -name:\"Proft, Sinister Mastermind\""
+    count: 114
+
+  pair_ruric_thar:
+    fixed: true
+    query: "number:219,265"
+    count: 2
+  third_not_ruric_thar:
+    use: echoed_third
+    filter: "e:{set} -name:\"Ruric Thar, Biomagus\" -name:\"Ruric Thar, Magecrusher\""
+    count: 114
+
+  pair_tetsuko:
+    fixed: true
+    query: "number:221,252"
+    count: 2
+  third_not_tetsuko:
+    use: echoed_third
+    filter: "e:{set} -name:\"Tetsuko Umezawa, Fugitive\" -name:\"Tetsuko Umezawa, Pursuer\""
+    count: 114
+
+  pair_traxos:
+    fixed: true
+    query: "number:222,280"
+    count: 2
+  third_not_traxos:
+    use: echoed_third
+    filter: "e:{set} -name:\"Traxos, Academy Guardian\" -name:\"Traxos, Scourge Eternal\""
+    count: 114
+
+  pair_way_cryomancer:
+    fixed: true
+    query: "number:223,254"
+    count: 2
+  third_not_way_cryomancer:
+    use: echoed_third
+    filter: "e:{set} -name:\"Way of the Cryomancer\" -name:\"Way of the Pyromancer\""
+    count: 114
+
+  pair_way_mind_sculptor:
+    fixed: true
+    query: "number:224,267"
+    count: 2
+  third_not_way_mind_sculptor:
+    use: echoed_third
+    filter: "e:{set} -name:\"Way of the Mind Sculptor\" -name:\"Way of the Paradox\""
+    count: 114
+
+  pair_yargle:
+    fixed: true
+    query: "number:225,241"
+    count: 2
+  third_not_yargle:
+    use: echoed_third
+    filter: "e:{set} -name:\"Yargle, Goliath of Otaria\" -name:\"Yargle, Glutton of Urborg\""
+    count: 114
+
+  pair_gallia:
+    fixed: true
+    query: "number:228,245"
+    count: 2
+  third_not_gallia:
+    use: echoed_third
+    filter: "e:{set} -name:\"Gallia, Tragic Host\" -name:\"Gallia, the Merrymaker\""
+    count: 114
+
+  pair_loot:
+    fixed: true
+    query: "number:232,262"
+    count: 2
+  third_not_loot:
+    use: echoed_third
+    filter: "e:{set} -name:\"Loot, the Anomaly\" -name:\"Loot, the Nexus\""
+    count: 114
+
+  pair_mabel:
+    fixed: true
+    query: "number:233,274"
+    count: 2
+  third_not_mabel:
+    use: echoed_third
+    filter: "e:{set} -name:\"Mabel, Bitter Recluse\" -name:\"Mabel, Valley Hero\""
+    count: 114
+
+  pair_tinybones:
+    fixed: true
+    query: "number:237,266"
+    count: 2
+  third_not_tinybones:
+    use: echoed_third
+    filter: "e:{set} -name:\"Tinybones, Pocket Nuisance\" -name:\"Titanbones, Towering Heart\""
+    count: 114
+
+  pair_way_deathbringer:
+    fixed: true
+    query: "number:238,268"
+    count: 2
+  third_not_way_deathbringer:
+    use: echoed_third
+    filter: "e:{set} -name:\"Way of the Deathbringer\" -name:\"Way of the Wildspeaker\""
+    count: 114
+
+  pair_winter:
+    fixed: true
+    query: "number:240,256"
+    count: 2
+  pair_winter_borderless:
+    fixed: true
+    query: "number:307,312"
+    count: 2
+  third_not_winter:
+    use: echoed_third
+    filter: "e:{set} -name:\"Winter, Tormented Loner\" -name:\"Winter, Team Player\""
+    count: 112
+
+  pair_jiang_yanggu:
+    fixed: true
+    query: "number:246,261"
+    count: 2
+  third_not_jiang_yanggu:
+    use: echoed_third
+    filter: "e:{set} -name:\"Jiang Yanggu, Alone\" -name:\"Jiang Yanggu, Never Alone\""
+    count: 114
+
+  pair_kiora:
+    fixed: true
+    query: "number:247,273"
+    count: 2
+  third_not_kiora:
+    use: echoed_third
+    filter: "e:{set} -name:\"Kiora of Fire and Ashes\" -name:\"Kiora of Salt and Sand\""
+    count: 114
+
+  pair_marwyn:
+    fixed: true
+    query: "number:249,263"
+    count: 2
+  pair_marwyn_borderless:
+    fixed: true
+    query: "number:310,315"
+    count: 2
+  third_not_marwyn:
+    use: echoed_third
+    filter: "e:{set} -name:\"Marwyn, the Clearcutter\" -name:\"Marwyn, the Preserver\""
+    count: 112
+
+  pair_pia:
+    fixed: true
+    query: "number:250,264"
+    count: 2
+  third_not_pia:
+    use: echoed_third
+    filter: "e:{set} -name:\"Pia, Determined Rebuilder\" -name:\"Pia, Aether Ascetic\""
+    count: 114
+
+  pair_edgar:
+    fixed: true
+    query: "number:257,270"
+    count: 2
+  third_not_edgar:
+    use: echoed_third
+    filter: "e:{set} -name:\"Edgar, Moonlit Sovereign\" -name:\"Edgar, Ancient Bloodlord\""
+    count: 114
