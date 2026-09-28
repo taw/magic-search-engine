@@ -3,7 +3,7 @@ name: Ruby
 agent:
   machine:
     type: f1-standard-2
-    os_image: ubuntu2204
+    os_image: ubuntu2404
 blocks:
   - name: bundle exec rspec
     task:
