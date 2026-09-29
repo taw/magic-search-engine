@@ -66,14 +66,7 @@ class PatchDecks < Patch
   end
 
   def format_token(token)
-    # For double sided tokens, only keep set and number of the first side, but both names
-    [
-      token["count"],
-      token["name"],
-      token["set"]&.split(" // ")&.first,
-      token["number"]&.split(" // ")&.first,
-      !!token["foil"]
-    ]
+    [token["count"], token["name"], token["set"], token["number"], !!token["foil"]]
   end
 
   def annotate_languages

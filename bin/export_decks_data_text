@@ -19,8 +19,14 @@ class ExportDecksData
 
   def serialize_token(count, name, set_code, number, foil)
     output = ["#{count}"]
-    output << name
-    output << "[#{set_code}:#{number}]"
+    if set_code&.include?(" // ")
+      output << Deck.token_sides(name, set_code, number).map{|side_name, side_set_code, side_number|
+        side_number ? "#{side_name} [#{side_set_code}:#{side_number}]" : "#{side_name} [#{side_set_code}]"
+      }.join(" // ")
+    else
+      output << name
+      output << "[#{set_code}:#{number}]"
+    end
     output << "[foil]" if foil
     output << "[token]"
     output.join(" ")

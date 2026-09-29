@@ -61,6 +61,9 @@ class ExportDecksData
   end
 
   def export_token(count, name, set_code, number, foil)
+    # For double sided tokens, only keep set and number of the first side, but both names
+    set_code = set_code&.split(" // ")&.first
+    number = number&.split(" // ")&.first
     {
       name: name,
       set_code: set_code || "unknown",

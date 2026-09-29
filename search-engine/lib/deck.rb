@@ -9,6 +9,15 @@ class Deck
     @tokens = tokens
   end
 
+  # Double sided tokens have " // " separated name, set code and number, one per side
+  # Back side number is sometimes missing, in which case it's nil
+  def self.token_sides(name, set_code, number)
+    names = name.split(" // ")
+    set_codes = set_code.split(" // ")
+    numbers = number.to_s.split(" // ", -1).map{|n| n unless n.empty? }
+    names.zip(set_codes, numbers)
+  end
+
   def cards_in_all_zones
     result = Hash.new(0)
     [*@cards, *@sideboard, *@commander].each do |number, card|
@@ -140,7 +149,7 @@ class Deck
   end
 
   def all_token_set_codes
-    @tokens.map{|tok| tok[2]&.downcase }.compact.to_set
+    @tokens.flat_map{|tok| tok[2]&.split(" // ") || [] }.map(&:downcase).to_set
   end
 
   def all_cards

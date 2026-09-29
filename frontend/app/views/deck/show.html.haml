@@ -41,13 +41,16 @@
           - @tokens.each do |count, name, set, number, foil|
             .card_entry
               = count
-              = name
-              - if set and number
-                = "[#{set}:#{number}]"
-              - elsif set
-                = "[#{set}]"
-              - elsif number # not really supposed to be used
-                = "[#{number}]"
+              - if set&.include?(" // ")
+                = Deck.token_sides(name, set, number).map{|side_name, side_set, side_number| side_number ? "#{side_name} [#{side_set}:#{side_number}]" : "#{side_name} [#{side_set}]" }.join(" // ")
+              - else
+                = name
+                - if set and number
+                  = "[#{set}:#{number}]"
+                - elsif set
+                  = "[#{set}]"
+                - elsif number # not really supposed to be used
+                  = "[#{number}]"
               - if foil
                 = "[foil]"
 
