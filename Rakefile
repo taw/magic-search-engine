@@ -183,6 +183,11 @@ task "update:banlist" do
   sh "./bin/export_banlist_history index/banlist_history.json"
 end
 
+desc "Fetch MTGO ids"
+task "mtgo:update" do
+  sh "./bin/extract_mtgo_ids_from_mtgo_client"
+end
+
 desc "Full update"
 task "update" do
   Pathname("tmp").mkpath
@@ -192,6 +197,7 @@ task "update" do
   Rake::Task["xmage:update"].invoke
   Rake::Task["mtgjson:fetch"].invoke
   Rake::Task["import:decks"].invoke
+  Rake::Task["mtgo:update"].invoke
   # index
   Rake::Task["index"].invoke
   # export data

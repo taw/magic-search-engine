@@ -19,7 +19,9 @@
 # refreshed whenever MTGO patches.
 #
 # A build MTGO has not patched since has nothing new to say, so a plain run
-# stops after the 12kB manifest that names it. --force reruns it anyway.
+# stops silently after the 12kB manifest that names it. --force reruns it
+# anyway. Either way it prints one line when it saves, so it stays quiet
+# enough for the automated update; only real anomalies warn beyond that.
 
 require "csv"
 require "fileutils"
@@ -47,7 +49,11 @@ class ExtractMtgoIdsFromMtgoClient
     @force = force
   end
 
+  # The patch server's CDN keeps serving the previous build's manifest for a
+  # while after a patch, alternating with the new one from run to run, so a
+  # build older than the saved one is a stale copy, never a rollback
   def call
+    return if saved_build and Gem::Version.new(build) < Gem::Version.new(saved_build)
     return unless @force or build != saved_build
 
     save_ids
@@ -104,7 +110,6 @@ class ExtractMtgoIdsFromMtgoClient
   end
 
   def fetch(url, path)
-    warn "Fetching #{url}"
     FileUtils.mkdir_p(path.dirname)
     path.open("wb"){|out| URI.open(url){|remote| IO.copy_stream(remote, out) } }
     path
@@ -126,7 +131,7 @@ class ExtractMtgoIdsFromMtgoClient
   def save_ids
     objects = set_files.flat_map{|name| objects_of(download(name)) }
     rows = merge_foils(objects).sort_by{|row| [row[:set], row[:id].to_i] }
-    warn "#{objects.size} catalog ids on #{rows.size} printings in #{set_files.size} sets"
+    puts "MTGO build #{build}: #{objects.size} catalog ids on #{rows.size} printings in #{set_files.size} sets"
     csv_path.write(CSV.generate do |csv|
       csv << COLUMNS.keys
       rows.each{|row| csv << COLUMNS.values.map{|key| row[key] } }
