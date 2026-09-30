@@ -61,16 +61,21 @@ class ExportDecksData
   end
 
   def export_token(count, name, set_code, number, foil)
-    # For double sided tokens, only keep set and number of the first side, but both names
-    set_code = set_code&.split(" // ")&.first
-    number = number&.split(" // ")&.first
+    # For double sided tokens, name keeps both sides, set and number are split into front and back
+    if set_code&.include?(" // ")
+      (_, set_code, number), (_, back_set_code, back_number) = Deck.token_sides(name, set_code, number)
+      back_mtgjson_uuid = token_uuid_for(back_set_code, back_number)
+    end
     {
       name: name,
       set_code: set_code || "unknown",
       number: number || "unknown",
+      back_set_code: back_set_code,
+      back_number: back_number,
       foil: foil,
       count: count,
       mtgjson_uuid: token_uuid_for(set_code, number),
+      back_mtgjson_uuid: back_mtgjson_uuid,
     }.compact
   end
 
