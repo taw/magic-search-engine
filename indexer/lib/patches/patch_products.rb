@@ -44,7 +44,10 @@ class PatchProducts < Patch
         end
       when "card"
         val.each do |v|
+          etched = v["etched"] || v["finishes"] == ["etched"]
           foil = v["foil"] || v["finishes"] == ["foil"]
+          # Just merged them for now
+          foil = foil || etched
           set_code = v["set"]
           number = v["number"]
           # only take first part of a DFC
