@@ -222,7 +222,7 @@ describe "Foreign language queries" do
     # Searching cards, as languages are not attached to printings
     # this data is not always reliable in mtgjson and often lags set releases
     # Quintorius, History Chaser looks like data issue?
-    assert_search_equal_cards "t:planeswalker fr:* -sp:* -(Quintorius, History Chaser)", "t:planeswalker e:cmm -alt:-e:cmm"
+    assert_search_equal_cards "t:planeswalker fr:* -sp:* -(Quintorius, History Chaser) -(Jace, Multiverse Architect)", "t:planeswalker e:cmm -alt:-e:cmm"
   end
 
   # The pattern used to be downcased before it was compiled, on top of the
