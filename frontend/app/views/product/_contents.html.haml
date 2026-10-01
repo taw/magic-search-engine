@@ -16,7 +16,7 @@
         = "(#{item.code.upcase})"
       - elsif item.is_a?(PhysicalCard)
         = link_to_card(item.main_front) do
-          = "#{item.name} [#{item.set_code.upcase}:#{item.number}]#{ item.foil ? " [foil]": ""}"
+          = "#{item.name} [#{item.set_code.upcase}:#{item.number}]#{Product.finish_suffix(item.finish.to_s)}"
       - elsif item.is_a?(ProductVariableContents)
         Variable contents
         %ul

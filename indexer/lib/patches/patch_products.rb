@@ -44,32 +44,35 @@ class PatchProducts < Patch
         end
       when "card"
         val.each do |v|
-          etched = v["etched"] || v["finishes"] == ["etched"]
-          foil = v["foil"] || v["finishes"] == ["foil"]
-          # Just merged them for now
-          foil = foil || etched
+          finish = if v["etched"] || v["finishes"] == ["etched"]
+            "etched"
+          elsif v["foil"] || v["finishes"] == ["foil"]
+            "foil"
+          else
+            "nonfoil"
+          end
           set_code = v["set"]
           number = v["number"]
           # only take first part of a DFC
           name = v["name"].split(" // ").first
 
           if v["token"]
-            result << [1, "token", set_code, number, name, !!foil]
+            result << [1, "token", set_code, number, name, finish]
           elsif !@cards[name]
             # Fail, but allow for now
             warn "Product #{product_description(product)} has unknown card #{name} [#{set_code}:#{number}]"
-            result << [1, "card", set_code, number, name, !!foil]
+            result << [1, "card", set_code, number, name, finish]
           elsif @cards[name].find{|p| p["set_code"] == set_code and p["number"] == number}
-            result << [1, "card", set_code, number, name, !!foil]
+            result << [1, "card", set_code, number, name, finish]
           elsif @cards[name].find{|p| p["set_code"] == set_code and p["number"] == number + "a"}
             # DFC
-            result << [1, "card", set_code, number + "a", name, !!foil]
+            result << [1, "card", set_code, number + "a", name, finish]
           elsif @cards[name].find{|p| p["set_code"] == set_code and p["number"] == number.downcase}
-            result << [1, "card", set_code, number.downcase, name, !!foil]
+            result << [1, "card", set_code, number.downcase, name, finish]
           else
             # Fail, but allow for now
             warn "Product #{product_description(product)} has unknown card #{name} [#{set_code}:#{number}]"
-            result << [1, "card", set_code, number, name, !!foil]
+            result << [1, "card", set_code, number, name, finish]
           end
         end
       when "variable"

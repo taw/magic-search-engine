@@ -48,10 +48,9 @@ class Product
       when "card"
         card = cards[[content[0], content[1]]]
         if card
-          # no etched support
-          PhysicalCard.for(card, foil: content[3])
+          PhysicalCard.new(card.main_front, content[3].to_sym)
         else
-          "unknown card: #{content[2]} [#{content[0].upcase}:#{content[1]}]#{ content[3] ? " [foil]": ""}"
+          "unknown card: #{content[2]} [#{content[0].upcase}:#{content[1]}]#{finish_suffix(content[3])}"
         end
       when "deck"
         deck = decks[content]
@@ -77,7 +76,7 @@ class Product
       when "other"
         "other: #{content[0]}"
       when "token"
-        "token: #{content[2]} [#{content[0].upcase}:#{content[1]}]#{content[3] ? " [foil]" : ""}"
+        "token: #{content[2]} [#{content[0].upcase}:#{content[1]}]#{finish_suffix(content[3])}"
       when "unknown"
         "unknown contents"
       when "variable"
@@ -98,5 +97,9 @@ class Product
     end
 
     result
+  end
+
+  def self.finish_suffix(finish)
+    finish == "nonfoil" ? "" : " [#{finish}]"
   end
 end

@@ -16,10 +16,8 @@ describe "product queries" do
         # OK
       when PhysicalCard
         printing = item.main_front
-        if item.foil and printing.nonfoilonly?
-          warn "Product #{product_name} contains foil card #{item.set_code} #{item.number} #{item.name}, but it's only available nonfoil"
-        elsif (!item.foil) and printing.foilonly?
-          warn "Product #{product_name} contains nonfoil card #{item.set_code} #{item.number} #{item.name}, but it's only available foil"
+        unless printing.has_finish?(item.finish)
+          warn "Product #{product_name} contains #{item.finish} card #{item.set_code} #{item.number} #{item.name}, but it's not available #{item.finish}"
         end
       when String # other, variable, unknown contents, or unknown <type>
         if item.start_with?("unknown") and item != "unknown contents"
