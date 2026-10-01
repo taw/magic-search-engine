@@ -31,7 +31,7 @@ class Indexer
     @token_uuids_path = INDEX_ROOT + "token_uuids.txt"
     @scryfall_ids_path = INDEX_ROOT + "scryfall_ids.txt"
     @mtgo_ids_path = INDEX_ROOT + "mtgo_ids.txt"
-    @products_path = INDEX_ROOT + "products.json"
+    @products_path = INDEX_ROOT + "products.jsonl"
     @decks_path = INDEX_ROOT + "deck_index.json"
     @verbose = verbose
     @data = CardSetsData.new

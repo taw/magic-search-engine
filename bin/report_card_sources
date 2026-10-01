@@ -31,7 +31,7 @@ require "json"
 
 class ReportCardSources
   UUIDS_PATH = Pathname(__dir__) + "../index/uuids.txt"
-  PRODUCTS_PATH = Pathname(__dir__) + "../index/products.json"
+  PRODUCTS_PATH = Pathname(__dir__) + "../index/products.jsonl"
   # Where bin/compare_card_sources_with_mtgjson looks for it by default. 200MB
   # of JSON, so it goes to a file rather than down a pipe unless asked.
   DEFAULT_PATH = Pathname(__dir__) + "../tmp/card_sources.jsonl"
@@ -153,7 +153,7 @@ class ReportCardSources
   # It is only wanted for the mtgjson comparison, so read it back off disk here
   # instead of making every Product carry one.
   def product_uuids
-    @product_uuids ||= JSON.parse(PRODUCTS_PATH.read).to_h{|product|
+    @product_uuids ||= PRODUCTS_PATH.each_line.map{|line| JSON.parse(line) }.to_h{|product|
       [[product["set_code"], product["name"]], product["uuid"]]
     }
   end

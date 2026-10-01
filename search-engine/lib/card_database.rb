@@ -81,7 +81,7 @@ class CardDatabase
   SETS_PATH = INDEX_ROOT + "sets.json"
   CARDS_PATH = INDEX_ROOT + "cards.jsonl"
   BOOSTER_INDEX_PATH = INDEX_ROOT + "booster_index.json"
-  PRODUCTS_PATH = INDEX_ROOT + "products.json"
+  PRODUCTS_PATH = INDEX_ROOT + "products.jsonl"
   LIMITED_FORMATS_PATH = INDEX_ROOT + "limited_formats.json"
 
   # Arena has no code for an individual Alchemy set. It files all of them under
@@ -595,7 +595,7 @@ class CardDatabase
   end
 
   def products_data
-    JSON.parse(PRODUCTS_PATH.read)
+    PRODUCTS_PATH.each_line.map{|line| JSON.parse(line) }
   end
 
   def limited_formats_data

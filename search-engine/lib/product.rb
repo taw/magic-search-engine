@@ -15,7 +15,7 @@ class Product
   end
 
   # Linking is the only thing that ever reads the raw index entry, and
-  # products.json is 4MB of them. Hand it over and drop the reference so the
+  # products.jsonl is 2MB of them. Hand it over and drop the reference so the
   # parsed copy can be collected once every product has been linked.
   def take_data!
     data, @data = @data, nil
