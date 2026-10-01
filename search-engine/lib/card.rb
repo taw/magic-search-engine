@@ -29,6 +29,10 @@ class Card
   attr_reader :data, :printings
   attr_writer :printings # For db subset
 
+  def add_ruling(ruling)
+    (@rulings ||= []) << ruling
+  end
+
   attr_reader(
     :color_identity,
     :color_indicator_colors,
@@ -122,7 +126,7 @@ class Card
     @decklimit = data["dl"]
     @hand = data["hd"]
     @life = data["lf"]
-    @rulings = data["r"]&.flat_map{|date, texts| texts.map{|text| Ruling.new(date, text)}}
+    @rulings = nil # Filled in by CardDatabase from rulings.jsonl
     self.secondary = data["s"]
     self.partner = data["ip"]
     self.commander = data["cm"]

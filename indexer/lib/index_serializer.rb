@@ -16,15 +16,41 @@ class IndexSerializer
   # One card per line, so the database can parse them one at a time instead of
   # holding the whole index as parsed JSON before it builds anything
   def cards_jsonl
-    set_order = sets_data.keys.each_with_index.to_h
-    @cards
-      .map{|name, card_data| [name, json_normalize(index_card(name, card_data, set_order))] }
-      .sort_by(&:first)
-      .map{|entry| entry.to_json << "\n" }
+    indexed_cards
+      .map{|name, card_data| [name, card_data.except("r")].to_json << "\n" }
+      .join
+  end
+
+  # Most ruling text is mechanic boilerplate repeated on every card with that
+  # mechanic, so each ruling is stored once with the names of its cards.
+  # mtgjson sorts rulings by date then text anyway, so a card's rulings
+  # come back in the same order by reading this file in order.
+  # Sorting happens after text cleanup, as quote normalization reorders some.
+  def rulings_jsonl
+    rulings = Hash.new{|h, k| h[k] = []}
+    indexed_cards.each do |name, card_data|
+      card_data["r"]&.each do |date, texts|
+        texts.uniq.each do |text|
+          rulings[[date, text]] << name
+        end
+      end
+    end
+    rulings
+      .sort
+      .map{|(date, text), names| [date, text, names].to_json << "\n" }
       .join
   end
 
   private
+
+  def indexed_cards
+    @indexed_cards ||= begin
+      set_order = sets_data.keys.each_with_index.to_h
+      @cards
+        .map{|name, card_data| [name, json_normalize(index_card(name, card_data, set_order))] }
+        .sort_by(&:first)
+    end
+  end
 
   def sets_data
     @sets_data ||= @sets.map{|s| [s["code"], index_set(s)]}.to_h

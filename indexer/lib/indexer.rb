@@ -26,6 +26,7 @@ class Indexer
   def initialize(verbose=false)
     @sets_path = INDEX_ROOT + "sets.json"
     @cards_path = INDEX_ROOT + "cards.jsonl"
+    @rulings_path = INDEX_ROOT + "rulings.jsonl"
     @uuids_path = INDEX_ROOT + "uuids.txt"
     @token_uuids_path = INDEX_ROOT + "token_uuids.txt"
     @scryfall_ids_path = INDEX_ROOT + "scryfall_ids.txt"
@@ -49,6 +50,7 @@ class Indexer
     index = IndexSerializer.new(@sets, @cards, @products)
     @sets_path.write(index.sets_json)
     @cards_path.write(index.cards_jsonl)
+    @rulings_path.write(index.rulings_jsonl)
     @uuids_path.write(UuidsSerializer.new(@cards).to_s)
     @token_uuids_path.write(TokenUuidsSerializer.new(@tokens).to_s)
     @scryfall_ids_path.write(ScryfallIdsSerializer.new(@cards).to_s)

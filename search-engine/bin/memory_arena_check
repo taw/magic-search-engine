@@ -48,7 +48,7 @@ db.printings
 watcher.kill
 
 settled = rss_mb
-heap_slots = GC.stat(:heap_available_slots) * GC::INTERNAL_CONSTANTS[:RVALUE_SIZE] / 1024.0 / 1024
+heap_slots = GC.stat(:heap_available_slots) * GC::INTERNAL_CONSTANTS[:BASE_SLOT_SIZE] / 1024.0 / 1024
 live = ObjectSpace.memsize_of_all / 1024.0 / 1024
 
 puts "peak RSS during load   %6.0f MB" % peak
