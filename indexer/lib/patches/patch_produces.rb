@@ -65,11 +65,6 @@ class PatchProduces < Patch
           symbols += ["w", "u", "b", "r", "g", "c"]
         end
 
-        if line =~ /Add Colorless mana/
-          # The Waffle Restaurant (mtgjson error)
-          symbols += ["c"]
-        end
-
         produces += symbols
 
         if symbols.empty?

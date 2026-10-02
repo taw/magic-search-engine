@@ -29,16 +29,8 @@ class PatchMtgjsonBugs < Patch
   # pssc/sAnS mERcY ("pLAnE") and punk/That's Enough Slices ("Phenome-nom").
   INHERENTLY_BIG_LAYOUTS = %W[planar scheme vanguard].to_set.freeze
 
-  # Confirmed for Arena, but mtgjson only lists them as paper.
   # https://cardgamebase.com/reality-fracture-special-guests/
   REALITY_FRACTURE_SPG_NUMBERS = %W[159 160 161 162 163 164 165 166 167 168].to_set.freeze
-
-  INITIATIVE_TEXT = "Whenever one or more creatures a player controls deal " \
-    "combat damage to you, that player takes the initiative.\n" \
-    "Whenever you take the initiative and at the beginning of your upkeep, " \
-    "venture into Undercity. (If you're in a dungeon, advance to the next " \
-    "room. If you're not, enter Undercity. You can take the initiative even " \
-    "if you already have it.)".freeze
 
   def call
     fix_meld_availability
@@ -68,7 +60,6 @@ class PatchMtgjsonBugs < Patch
       end
 
       if set_code == "SPG" and REALITY_FRACTURE_SPG_NUMBERS.include?(card["number"])
-        card["availability"] = card["availability"].to_a | ["arena"]
         # mtgjson's originalReleaseDate is the paper street date, but these
         # release on Arena a few days earlier, per the historic banlist.
         card["originalReleaseDate"] = "2026-09-29"
@@ -96,14 +87,6 @@ class PatchMtgjsonBugs < Patch
       # so a permanent fix here
       if card["subtypes"]&.include?("Saga") and card["layout"] == "normal"
         card["layout"] = "saga"
-      end
-
-      # Scryfall mangled the Initiative face of CLB's dungeon token - "If you
-      # te not, enter Undercity" for "If you're not, enter Undercity." - and
-      # mtgjson copies whatever Scryfall says. PatchTokens has already split
-      # the two faces by the time we get here, so this is the whole card.
-      if card["name"] == "The Initiative" and set_code == "CLB"
-        card["text"] = INITIATIVE_TEXT
       end
 
       # Some cmb1/cmb2 cards not updated yet

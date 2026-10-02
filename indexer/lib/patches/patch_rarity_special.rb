@@ -2,28 +2,10 @@
 # (and now v5 has a lot of rarities back)
 class PatchRaritySpecial < Patch
   def call
-    vma_special = [
-      "Ancestral Recall",
-      "Black Lotus",
-      "Mox Emerald",
-      "Mox Jet",
-      "Mox Pearl",
-      "Mox Ruby",
-      "Mox Sapphire",
-      "Time Walk",
-      "Timetwister",
-    ]
-
     each_printing do |card|
-      case card["set_code"]
-      when "vma"
-        next unless vma_special.include?(card["name"])
-      when "unh"
-        next unless card["name"] == "Super Secret Tech"
-      else
-        next
+      if card["set_code"] == "unh" and card["name"] == "Super Secret Tech"
+        card["rarity"] = "special"
       end
-      card["rarity"] = "special"
     end
 
     each_printing do |card|
@@ -31,7 +13,7 @@ class PatchRaritySpecial < Patch
       when "common", "uncommon", "basic", "rare", "mythic", "special"
         # OK
       when "bonus"
-        # wtf now mtgjson...
+        # VMA power nine
         card["rarity"] = "special"
       else
         raise "Unknown rarity: #{card["rarity"]}"

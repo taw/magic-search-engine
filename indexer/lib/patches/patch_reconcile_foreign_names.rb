@@ -51,7 +51,7 @@ class PatchReconcileForeignNames < Patch
   def call
     each_card do |name, printings|
       ### Extract raw data
-      # delete foreignNames while we're at it
+      # delete foreignData while we're at it
       raw_data = extract_raw_data(printings)
 
       ### Reconcile data
@@ -70,7 +70,7 @@ class PatchReconcileForeignNames < Patch
     raw_data = {}
     printings.each do |printing|
       set_code = printing["set_code"]
-      foreign_names_data = printing.delete("foreignNames") || printing.delete("foreignData") || next
+      foreign_names_data = printing.delete("foreignData") or next
       foreign_names_data.each do |e|
         language_code = language_name_to_code[e["language"]]
         unless language_code

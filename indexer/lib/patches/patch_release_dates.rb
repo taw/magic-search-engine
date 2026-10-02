@@ -11,20 +11,14 @@ class PatchReleaseDates < Patch
       when "td2"
         set["releaseDate"] = "2013-01-11"
       # Some random tweaks
-      when "c18"
-        set["releaseDate"] = "2018-08-10"
       when "ddt"
         set["releaseDate"] = "2017-11-10"
       when "ppro"
         set["releaseDate"] = "2018-01-01"
-      when "p02"
-        set["releaseDate"] = "1998-06-24"
       when "pz2"
         set["releaseDate"] = "2018-08-10"
       when "prm"
         set["releaseDate"] = "2018-08-10"
-      when "c20"
-        set["releaseDate"] = "2020-04-17"
       end
     end
   end

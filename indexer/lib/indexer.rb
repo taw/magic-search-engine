@@ -70,9 +70,6 @@ class Indexer
       # Load data
       PatchTokens,
 
-      # Nothing should ever see the reverted Alchemy cards, not even PatchCardNames
-      PatchDropRebalanced,
-
       # Every card rename happens here, before anything indexes cards by name
       PatchCardNames,
 
@@ -202,7 +199,7 @@ class Indexer
         "type",
       ).merge(
         "official_code" => set_data["code"],
-        "online_only" => (set_data["onlineOnly"] || set_data["isOnlineOnly"]) ? true : nil,
+        "online_only" => set_data["isOnlineOnly"] ? true : nil,
         "base_set_size" => set_data["baseSetSize"],
         "partial_preview" => set_data["isPartialPreview"],
         "token_set_code" => set_data["tokenSetCode"]&.downcase,
