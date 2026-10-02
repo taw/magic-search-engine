@@ -1,8 +1,13 @@
 # Data from https://wpn.wizards.com/en/products/dominaria-united
 pack:
   prerelease_promo: 1
+  prerelease_legendary: 1
 sheets:
   prerelease_promo:
     filter: "e:p{set} promo:prerelease"
     use: rare_mythic
+    foil: true
+  prerelease_legendary:
+    filter: 'e:p{set} promo:prerelease t:"legendary creature"'
+    rawquery: 'e:p{set} t:"legendary creature"'
     foil: true
