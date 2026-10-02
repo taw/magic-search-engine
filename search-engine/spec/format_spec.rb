@@ -20,7 +20,7 @@ describe "Formats" do
     assert_search_results "f:extended" # We never supported it, see "unknown format warns"
     assert_search_equal_cards "f:standard",
       %[
-        e:woe,lci,mkm,otj,big,blb,dsk,fdn,dft,tdm,fin,eoe,spm,tla,ecl,tmt,sos,msh,hob
+        e:woe,lci,mkm,otj,big,blb,dsk,fdn,dft,tdm,fin,eoe,spm,tla,ecl,tmt,sos,msh,hob,fra
         -(Cori-Steel Cutter)
         -(Abuelo's Awakening)
         -(Monstrous Rage)

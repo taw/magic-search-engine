@@ -87,6 +87,7 @@ class FormatModern < Format
       "sos",
       "msh",
       "hob",
+      "fra",
     ]
   end
 end

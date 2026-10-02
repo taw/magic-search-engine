@@ -30,7 +30,7 @@ describe "Formats - Future Standard" do
     end
 
     it "includes sets which are not released yet" do
-      format.included_sets.should include("hob")
+      format.included_sets.should include("trk")
     end
 
     it "is a strict subset of the last known rotation plus new sets" do

@@ -63,6 +63,7 @@ class FormatPioneer < Format
       "sos",
       "msh",
       "hob",
+      "fra",
     ]
   end
 end
