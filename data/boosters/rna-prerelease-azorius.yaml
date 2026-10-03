@@ -2,9 +2,12 @@
 # Ravnica Allegiance prerelease kits were seeded by guild: a ~15-card guild-colored pile
 # (11 common + 3 uncommon) plus the folded, guild-colored foil year-stamped promo
 # (2:1 rare:mythic). Seeded via the wedge/guild idiom -- cards in the guild's colors carrying
-# the guild watermark or no watermark, excluding generic colorless. Matches the RTR/GTC model.
+# the guild watermark or no watermark, plus the observed Screaming Shield exception.
+# These independent sheets and rarity weights approximate unresolved physical collation.
 name: "{set_name} Seeded Prerelease Booster Azorius"
-filter: "e:{set} id<=wu is:baseset (w:azorius or -w:*) -(c:c -w:*)"
+# Screaming Shield (239) in the seeded pack at 7:03-7:05:
+# https://www.youtube.com/watch?v=ghkone_Q5NA&t=423s
+filter: "e:{set} is:baseset ((id<=wu (w:azorius or -w:*) -(c:c -w:*)) or cn:239)"
 pack:
   common: 11
   uncommon: 3
