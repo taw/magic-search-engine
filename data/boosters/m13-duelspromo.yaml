@@ -1,0 +1,16 @@
+# See notes/duels-2013-promo.md for openings and modeling assumptions.
+# Both observed layouts use equal estimated weights, following 3ed-starter.
+# The fixed platform promo is supplied by the sealed product.
+name: Duels of the Planeswalkers 2013 Base Booster
+packs:
+- common: 4
+  uncommon: 1
+- common: 3
+  uncommon: 2
+sheets:
+  common:
+    query: "r:c"
+    count: 101
+  uncommon:
+    query: "r:u"
+    count: 60
