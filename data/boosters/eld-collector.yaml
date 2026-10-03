@@ -4,8 +4,9 @@
 # No data for distribution of commons/uncommons
 # - assumed to follow distribution of Set boosters in https://mtg.wiki/wiki/Set_Booster
 # - with one extra guaranteed common and one guaranteed uncommon
-# No data for relative showcase rarity for showcase slot
-# - Showcase treatments tend to use 8/4/2/1 rarity
+# Nonfoil showcase rarity layouts follow the Collation Project observations.
+# Their sample frequencies estimate production odds; they are not official rates.
+# Within the rare/mythic sheet the existing 2:1 convention remains estimated.
 # No data for relative rarity of ancillary cards
 # - Cards are not nicely distributed, so used bonus sheet 8/4/2/1 rates
 # Languages, per https://magic.wizards.com/en/news/making-magic/project-booster-fun-2019-07-20:
@@ -32,22 +33,48 @@ pack:
   - foil_common: 2
     foil_uncommon: 7
     chance: 20
-  any_showcase: 3
+  showcase_layout:
+  - showcase_rare_mythic: 2
+    showcase_common: 1
+    chance: 1
+  - showcase_rare_mythic: 1
+    showcase_uncommon: 1
+    showcase_common: 1
+    chance: 1
+  - showcase_rare_mythic: 1
+    showcase_common: 2
+    chance: 3
+  - showcase_uncommon: 2
+    showcase_common: 1
+    chance: 4
+  - showcase_uncommon: 1
+    showcase_common: 2
+    chance: 4
+  - showcase_common: 3
+    chance: 7
   ancillary: 1
   rm_extended: 1
   foil_rare_mythic: 1
 sheets:
-  # Showcase foil availability is confirmed; 1/3 substitution uses the existing
-  # showcase-sheet convention, not a published Collector-specific rate.
+  # Reconstructed Collector sheets have one of each normal and showcase printing.
   foil_common:
     foil: true
     balanced: false
-    use: common_with_showcase
-    count: 14 + 14 + 87
+    rawquery: "e:{set} r:c (is:baseset or promo:boosterfun)"
+    count: 115
   foil_uncommon:
     foil: true
-    use: uncommon_with_showcase
-    count: 71 + 9 + 9
+    rawquery: "e:{set} r:u (is:baseset or promo:boosterfun)"
+    count: 89
+  showcase_common:
+    rawquery: "e:{set} r:c promo:boosterfun"
+    count: 14
+  showcase_uncommon:
+    rawquery: "e:{set} r:u promo:boosterfun"
+    count: 9
+  showcase_rare_mythic:
+    filter: "e:{set} promo:boosterfun -frame:extendedart"
+    use: rare_mythic
   ancillary:
     # C/U/R/M rates guessed to be at 8x/4x/2x/1x multiples
     filter: "e:{set} -promo:boosterfun number>=303 -frame:inverted"
