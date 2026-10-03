@@ -1,3 +1,5 @@
+# Sheet multiplicities: https://www.lethe.xyz/mtg/collation/ugl.html
+# Marginal card weights only; sequential runs and uncommon token draws remain unresolved.
 pack:
   basic: 1
   common: 6
@@ -6,5 +8,18 @@ pack:
 sheets:
   common:
     balanced: false
-    query: "r:c"
-    count: 33
+    any:
+    - query: 'r:c (name="Chaos Confetti" or name="Chicken Egg" or name="Elvish Impersonators" or name="Fowl Play" or name="Free-Range Chicken" or name="Goblin Bookie" or name="Growth Spurt" or name="Hurloon Wrangler" or name="Knight of the Hokey Pokey" or name="Mesa Chicken" or name="Poultrygeist")'
+      count: 11
+      rate: 4
+    - query: 'r:c -(name="Chaos Confetti" or name="Chicken Egg" or name="Elvish Impersonators" or name="Fowl Play" or name="Free-Range Chicken" or name="Goblin Bookie" or name="Growth Spurt" or name="Hurloon Wrangler" or name="Knight of the Hokey Pokey" or name="Mesa Chicken" or name="Poultrygeist")'
+      count: 22
+      rate: 3
+  rare:
+    any:
+    - query: 'r:r (name="Ashnod''s Coupon" or name="Strategy, Schmategy")'
+      count: 2
+      rate: 3
+    - query: 'r:r -(name="Ashnod''s Coupon" or name="Strategy, Schmategy")'
+      count: 26
+      rate: 4
