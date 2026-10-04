@@ -101,6 +101,8 @@ describe Deck do
       ["standard", "Bundle Land Pack"],
       ["modern", "Bundle Land Pack"],
       ["commander", "Bundle Land Pack"],
+      ["promo", "Bundle Land Pack"], # P15A
+      ["core", "Booster Battle Pack Packet"], # M12, M13
     ]
 
     db.sets.each do |set_code, set|
