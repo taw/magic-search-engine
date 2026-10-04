@@ -1,0 +1,25 @@
+# Multiverse Gift Box preview pool: 15 commons, 6 uncommons, 4 rares.
+# Ten printings differ from the later Visions cards and are indexed as MGB.
+# MGB's catalog rarity is uniformly rare; slot membership is listed explicitly.
+# https://www.magiclibrarities.net/145-rarities-multiverse-gift-box-cards-english-cards-index.html
+# Three complete openings confirm 11C/3U/1R:
+# https://www.youtube.com/watch?v=JL7AzF-P_WQ (2:03-20:49)
+# https://www.youtube.com/watch?v=0OLJL_yKO9A (8:29-14:57, 25:01-29:57)
+# Equal weights within each rarity are estimates. Observed common sequences
+# are correlated; this models the pool, not reconstructed physical print runs.
+name: "Visions Preview Printing Booster Pack"
+languages: en
+pack:
+  common: 11
+  uncommon: 3
+  rare: 1
+sheets:
+  common:
+    rawquery: "(e:mgb number:3,5,7,9,10) or (e:vis number:6,10,24,36,43,47,92,97,107,108)"
+    count: 15
+  uncommon:
+    rawquery: "(e:mgb number:1,2,6,8) or (e:vis number:80,139)"
+    count: 6
+  rare:
+    rawquery: "(e:mgb number:4) or (e:vis number:87,112,167)"
+    count: 4
