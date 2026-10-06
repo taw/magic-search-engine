@@ -82,6 +82,8 @@ sheets:
   rm_extended:
     filter: "e:{set} frame:extendedart"
     use: rare_mythic
+  # The alternate-art Bundle promo (392) is not part of the Collector pool.
+  # https://magic.wizards.com/en/news/card-preview/throne-eldraine-promos-2019-09-20
   foil_rare_mythic:
     foil: true
     any:
@@ -97,9 +99,6 @@ sheets:
     - rawquery: "e:{set} r:m promo:boosterfun"
       count: 15
       rate: 1
-    - rawquery: "e:{set} r:r -promo:boosterfun number>=304 -frame:inverted"
-      count: 1
-      rate: 4
     - rawquery: "e:{set} r:m -promo:boosterfun number>=304 -frame:inverted"
       count: 6
       rate: 2
