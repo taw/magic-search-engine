@@ -79,7 +79,7 @@ describe "CLI Frontend" do
         Loyalty: 3
 
         The Theorist, Jace Beleren {2}{u}{u}
-        [fra fra fra fra fra]
+        [fra fra fra fra pfra fra]
         Legendary Planeswalker - Jace
         At the beginning of each opponent's draw step, you draw a card.
         [+1]: Create a 1/1 blue Illusion creature token.

@@ -21,6 +21,9 @@ class PatchVariantMisprint < Patch
       number =~ /★/
     when "mkm"
       number =~ /★|†/
+    when "fra"
+      # Compel Brutality 101b is a non-booster variant of 101
+      number == "101b" or number =~ /†/
     else
       number =~ /†/
     end

@@ -7,7 +7,7 @@ describe "Variant spec" do
     # arn † are on same print sheets as regular versions and are in normal packs so they're not currently marked
     #   (they could be considered misprints)
     # mid and znr † are variant:arena
-    assert_search_equal "variant:misprint", "(number:/†/ -e:arn,mid,znr) or (e:gpt,stx,inv,mkm number:/★/)"
+    assert_search_equal "variant:misprint", "(number:/†/ -e:arn,mid,znr) or (e:gpt,stx,inv,mkm number:/★/) or (e:fra number:101b)"
   end
 
   it "variant:foreign" do
