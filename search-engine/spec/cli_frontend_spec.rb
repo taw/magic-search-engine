@@ -13,53 +13,14 @@ describe "CLI Frontend" do
       error: ""
     )
     assert_cli(
-      search: "t:forest",
+      search: "t:forest e:lea",
       verbose: false,
       output: <<-EOF,
-        Arctic Treeline
         Bayou
-        Breeding Pool
-        Canopy Vista
-        Cinder Glade
-        Commercial District
-        Dryad Arbor
-        Festering Thicket
-        Fetching Garden
         Forest
-        Gate to Manorborn
-        Gingerbread Cabin
-        Haunted Mire
-        Hedge Maze
-        Highland Forest
-        Indatha Triome
-        Jetmir's Garden
-        Ketria Triome
-        Lush Portico
-        Murmuring Bosk
-        Overgrown Tomb
-        Radiant Grove
-        Rain-Slicked Copse
-        Rimewood Falls
-        Sapseep Forest
         Savannah
-        Scattered Groves
-        Sheltered Thicket
-        Snow-Covered Forest
-        Sodden Verdure
-        Spara's Headquarters
-        Stomping Ground
         Taiga
-        Tangled Islet
-        Temple Garden
         Tropical Island
-        Turbulent Fen
-        Turbulent Wilderness
-        Underground Mortuary
-        Vernal Fen
-        Wooded Ridgeline
-        Woodland Chasm
-        Zagoth Triome
-        Ziatora's Proving Ground
         EOF
       error: ""
     )
@@ -67,38 +28,38 @@ describe "CLI Frontend" do
 
   it "verbose_all_sets" do
     assert_cli(
-      search: "jace beleren",
+      search: "is:ante t:sorcery c:b",
       verbose: true,
       output: <<-EOF,
-        Jace Beleren {1}{u}{u}
-        [lrw dd2 dd2 pmei m10 m11 prm jvc ss1 cmm sld sld sld sld mb2 pspl]
-        Legendary Planeswalker - Jace
-        [+2]: Each player draws a card.
-        [−1]: Target player draws a card.
-        [−10]: Target player mills twenty cards.
-        Loyalty: 3
+        Contract from Below {b}
+        [lea leb 2ed ced cei 3ed sum]
+        Sorcery
+        Remove this card from your deck before playing if you're not playing for ante.
+        Discard your hand, ante the top card of your library, then draw seven cards.
 
-        The Theorist, Jace Beleren {2}{u}{u}
-        [fra fra fra fra pfra fra]
-        Legendary Planeswalker - Jace
-        At the beginning of each opponent's draw step, you draw a card.
-        [+1]: Create a 1/1 blue Illusion creature token.
-        [−2]: For each opponent, return up to one target artifact or creature that player controls to its owner's hand.
-        [−6]: Draw three cards. Then put X +1/+1 counters on each creature you control, where X is the number of cards in your hand.
-        Loyalty: 3
+        Darkpact {b}{b}{b}
+        [lea leb 2ed ced cei 3ed sum]
+        Sorcery
+        Remove this card from your deck before playing if you're not playing for ante.
+        You own target card in the ante. Exchange that card with the top card of your library.
+
+        Demonic Attorney {1}{b}{b}
+        [lea leb 2ed ced cei 3ed sum]
+        Sorcery
+        Remove this card from your deck before playing if you're not playing for ante.
+        Each player antes the top card of their library.
         EOF
       error: ""
     )
     assert_cli(
-      search: "siege rhino",
+      search: "!Jeweled Bird",
       verbose: true,
       output: <<-EOF,
-        Siege Rhino {1}{w}{b}{g}
-        [ktk pktk cp3 prm ea1 slc]
-        Creature - Rhino
-        Trample
-        When this creature enters, each opponent loses 3 life and you gain 3 life.
-        4/5
+        Jeweled Bird {1}
+        [arn chr rin]
+        Artifact
+        Remove this card from your deck before playing if you're not playing for ante.
+        {T}: Ante this artifact. If you do, put all other cards you own from the ante into your graveyard, then draw a card.
         EOF
       error: ""
     )
@@ -106,44 +67,24 @@ describe "CLI Frontend" do
 
   it "verbose_linebreaks" do
     assert_cli(
-      search: "mana=4gg t:dragon",
+      search: "is:ante t:creature",
       verbose: true,
       output: <<-EOF,
-        Canopy Dragon {4}{g}{g}
-        [mir]
-        Creature - Dragon
-        Trample
-        {1}{G}: This creature gains flying and loses trample until end of turn.
-        4/4
+        Tempest Efreet {1}{r}{r}{r}
+        [leg 4ed ren]
+        Creature - Efreet
+        Remove this card from your deck before playing if you're not playing for ante.
+        {T}, Sacrifice this creature: Target opponent may pay 10 life. If that player doesn't, they reveal a card at random from their hand. Exchange ownership of the revealed card and Tempest Efreet. Put the revealed card into your hand and Tempest Efreet from anywhere into that player's graveyard. This change in ownership is permanent.
+        3/3
 
-        Destructor Dragon {4}{g}{g}
-        [frf plst]
-        Creature - Dragon
-        Flying
-        When this creature dies, destroy target noncreature permanent.
-        4/4
-
-        Emerald Dragon {4}{g}{g}
-        [clb hbg]
-        Creature - Dragon
-        Flying, trample
-        4/4
-
-        Green Dragon {4}{g}{g}
-        [afr afr prm]
-        Creature - Dragon
-        Flying
-        Poison Breath — When this creature enters, until end of turn, whenever a creature an opponent controls is dealt damage, destroy it.
-        4/4
-
-        Skanos, Green Dragon Vassal {4}{g}{g}
-        [hbg]
-        Legendary Creature - Dragon Ranger
-        Vigilance
-        Whenever Skanos, Green Dragon Vassal attacks, untap another target attacking creature. It gets +X/+0 until end of turn, where X is Skanos's power.
-        6/6
+        Timmerian Fiends {1}{b}{b}
+        [hml]
+        Creature - Horror
+        Remove this card from your deck before playing if you're not playing for ante.
+        {B}{B}{B}, Sacrifice this creature: The owner of target artifact may ante the top card of their library. If that player doesn't, exchange ownership of that artifact and Timmerian Fiends. Put the artifact card into your graveyard and Timmerian Fiends from anywhere into that player's graveyard. This change in ownership is permanent.
+        1/1
         EOF
-        error: ""
+      error: ""
     )
   end
 
@@ -164,18 +105,16 @@ describe "CLI Frontend" do
 
   it "verbose color indicator" do
     assert_cli(
-      search: "ind=3 bolas",
+      search: "!Gobland",
       verbose: true,
       output: <<-EOF,
-        Nicol Bolas, the Arisen
-        [m19 pm19 pj21 sld sld]
-        Legendary Planeswalker - Bolas
-        (Color indicator: Nicol Bolas, the Arisen is blue, black, and red)
-        [+2]: Draw two cards.
-        [−3]: Nicol Bolas deals 10 damage to target creature or planeswalker.
-        [−4]: Put target creature or planeswalker card from a graveyard onto the battlefield under your control.
-        [−12]: Exile all but the bottom card of target player's library.
-        Loyalty: 7
+        Gobland
+        [mb2]
+        Land Creature - Mountain Goblin
+        (Color indicator: Gobland is red)
+        (Gobland isn't a spell, it's affected by summoning sickness, and it has "{T}: Add {R}.")
+        Gobland can't block.
+        2/1
         EOF
       error: ""
     )
@@ -183,14 +122,13 @@ describe "CLI Frontend" do
 
   it "verbose reminder text" do
     assert_cli(
-      search: "steam vents",
+      search: "!Bayou",
       verbose: true,
       output: <<-EOF,
-        Steam Vents
-        [gpt rtr exp grn pgrn prm sld unf unf rvr rvr rvr rvr clu ecl ecl ecl pecl trk trk trk]
-        Land - Island Mountain
-        ({T}: Add {U} or {R}.)
-        As this land enters, you may pay 2 life. If you don't, it enters tapped.
+        Bayou
+        [lea leb 2ed ced cei 3ed sum me3 me4 prm vma olgc olgc 30a 30a]
+        Land - Swamp Forest
+        ({T}: Add {B} or {G}.)
         EOF
       error: ""
     )
@@ -198,15 +136,13 @@ describe "CLI Frontend" do
 
   it "verbose_some_sets" do
     assert_cli(
-      search: "bloodbraid elf a:steve",
+      search: "a:poole !crusade",
       verbose: true,
       output: <<-EOF,
-        Bloodbraid Elf {2}{r}{g}
-        [-arb +f10 +pc2 +prm -ema -c16 +pca +plst -tsr -clb -2x2 -2x2 -slc -prm -ha7 -m3c -j25]
-        Creature - Elf Berserker
-        Haste
-        Cascade
-        3/2
+        Crusade {w}{w}
+        [+lea +leb +2ed +ced +cei +3ed +sum +4ed -5ed -6ed +psus +me1 -ddf +prm]
+        Enchantment
+        White creatures get +1/+1.
         EOF
       error: ""
     )
@@ -214,34 +150,28 @@ describe "CLI Frontend" do
 
   it "error_reporting" do
     assert_cli(
-      search: "kolagan",
+      search: "timerian",
       verbose: false,
       output: <<-EOF,
-        Dragonlord Kolaghan
-        Kolaghan Aspirant
-        Kolaghan Forerunners
-        Kolaghan Monument
-        Kolaghan Skirmisher
-        Kolaghan Stormsinger
-        Kolaghan Warmonger
-        Kolaghan's Command
-        Kolaghan, the Storm's Fury
+        Timmerian Fiends
         EOF
       error: <<-EOF
-        Trying spelling "kolaghan" in addition to "kolagan"
+        Trying spelling "timmerian" in addition to "timerian"
         EOF
     )
     assert_cli(
-      search: %[time:"Battle for Homelands" t:ral],
+      search: %[time:"Battle for Homelands" is:ante],
       verbose: false,
       output: <<-EOF,
-        Ral Zarek
-        Ral Zarek, Guest Lecturer
-        Ral, Caller of Storms
-        Ral, Crackling Wit
-        Ral, Izzet Viceroy
-        Ral, Leyline Prodigy
-        Ral, Storm Conduit
+        Amulet of Quoz
+        Bronze Tablet
+        Contract from Below
+        Darkpact
+        Demonic Attorney
+        Jeweled Bird
+        Rebirth
+        Tempest Efreet
+        Timmerian Fiends
         EOF
       error: <<-EOF
         Doesn't look like correct date, ignored: "battle for homelands"
@@ -273,15 +203,16 @@ describe "CLI Frontend" do
 
   it "checklist view lists every printing, with set codes upcased" do
     assert_cli(
-      search: "view:checklist !Siege Rhino",
+      search: "view:checklist !Contract from Below",
       verbose: false,
       output: checklist(
-        "KTK\t200\tSiege Rhino",
-        "SLC\t2014\tSiege Rhino",
-        "CP3\t5\tSiege Rhino",
-        "PKTK\t200s\tSiege Rhino",
-        "EA1\t16\tSiege Rhino",
-        "PRM\t57602\tSiege Rhino",
+        "SUM\t97\tContract from Below",
+        "3ED\t97\tContract from Below",
+        "2ED\t97\tContract from Below",
+        "LEB\t97\tContract from Below",
+        "LEA\t96\tContract from Below",
+        "CED\t97\tContract from Below",
+        "CEI\t97\tContract from Below",
       ),
       error: ""
     )
@@ -307,15 +238,14 @@ describe "CLI Frontend" do
 
   it "verbose takes precedence over checklist view" do
     assert_cli(
-      search: "view:checklist siege rhino",
+      search: "view:checklist jeweled bird",
       verbose: true,
       output: <<-EOF,
-        Siege Rhino {1}{w}{b}{g}
-        [ktk pktk cp3 prm ea1 slc]
-        Creature - Rhino
-        Trample
-        When this creature enters, each opponent loses 3 life and you gain 3 life.
-        4/5
+        Jeweled Bird {1}
+        [arn chr rin]
+        Artifact
+        Remove this card from your deck before playing if you're not playing for ante.
+        {T}: Ante this artifact. If you do, put all other cards you own from the ante into your graveyard, then draw a card.
         EOF
       error: ""
     )
