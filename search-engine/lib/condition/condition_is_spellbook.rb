@@ -8,6 +8,6 @@ class ConditionIsSpellbook < ConditionSimple
   end
 
   def explain(negated: false)
-    "the card is #{negated ? "not " : ""}in a spellbook (Arena digital-only)"
+    "the card is #{negated ? "not " : ""}in a spellbook"
   end
 end

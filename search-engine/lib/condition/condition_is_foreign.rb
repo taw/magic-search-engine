@@ -8,6 +8,6 @@ class ConditionIsForeign < ConditionSimple
   end
 
   def explain(negated: false)
-    negated ? "the card has an English printing" : "the card is available only in a foreign-language printing, either a promo or a foreign-only variant"
+    negated ? "the card has an English printing" : "the card is only printed in foreign languages"
   end
 end

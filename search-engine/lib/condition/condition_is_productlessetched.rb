@@ -7,6 +7,6 @@ class ConditionIsProductlessetched < ConditionIsProductless
   end
 
   def explain(negated: false)
-    negated ? "the card has a known product source (booster, precon, or promo) in etched finish" : "the card has no known product source (booster, precon, or promo) in etched finish"
+    "the card has #{negated ? "a" : "no"} known product in etched"
   end
 end

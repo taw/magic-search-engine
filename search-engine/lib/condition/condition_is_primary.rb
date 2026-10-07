@@ -8,6 +8,6 @@ class ConditionIsPrimary < ConditionSimple
   end
 
   def explain(negated: false)
-    negated ? "the card is neither a regular card nor the directly playable part of a double-faced, meld, flip, or aftermath card" : "the card is a regular card, or the directly playable part of a double-faced, meld, flip, or aftermath card"
+    negated ? "the card is not directly playable" : "the card is directly playable"
   end
 end

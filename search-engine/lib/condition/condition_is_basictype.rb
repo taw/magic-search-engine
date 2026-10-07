@@ -8,6 +8,6 @@ class ConditionIsBasictype < ConditionSimple
   end
 
   def explain(negated: false)
-    negated ? "the card has no basic land type (Plains, Island, Swamp, Mountain, or Forest)" : "the card has a basic land type (Plains, Island, Swamp, Mountain, or Forest)"
+    negated ? "the card has no basic land type" : "the card has a basic land type"
   end
 end

@@ -13,6 +13,6 @@ class ConditionIsTraditional < ConditionSimple
   end
 
   def explain(negated: false)
-    negated ? "the card is not a traditional Magic card" : "the card is a traditional Magic card (normal size, thickness, back, and border)"
+    "the card is #{negated ? "not " : ""}a traditional Magic card"
   end
 end

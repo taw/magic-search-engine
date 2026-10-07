@@ -9,6 +9,6 @@ class ConditionIsSfc < ConditionSimple
   end
 
   def explain(negated: false)
-    negated ? "the card is double-faced (transform, meld, or modal)" : "the card is single-faced, not double-faced (transform, meld, or modal)"
+    "the card is #{negated ? "not " : ""}single-faced"
   end
 end

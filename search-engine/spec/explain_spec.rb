@@ -338,10 +338,10 @@ describe "Query#explain" do
     end
 
     it "a representative sample reads as English" do
-      assert_explains "is:vertical", "the card is vertical, not a Plane, Phenomenon, or Battle"
+      assert_explains "is:vertical", "the card is vertical"
       assert_explains "is:commander", "the card is playable as a Commander"
       assert_explains "is:foil", "the card has a foil version"
-      assert_explains "is:permanent", "the card is a permanent (artifact, battle, creature, enchantment, land, or planeswalker)"
+      assert_explains "is:permanent", "the card is a permanent"
       assert_explains "is:reprint", "the card is a reprint"
       assert_explains "is:unique", "the card has never been reprinted"
     end
@@ -424,7 +424,7 @@ describe "Query#explain" do
       assert_explains "-o:/dragon/", "the Oracle text doesn't match the regex `/dragon/`"
       assert_explains "-e:fra", %[the set is not "fra"]
       assert_explains "-number:117", "the collector number isn't 117"
-      assert_explains "-is:vertical", "the card is a Plane, Phenomenon, or Battle"
+      assert_explains "-is:vertical", "the card is horizontal"
       assert_explains "not:arena", "the card is not available on Arena"
       assert_explains "-legal:standard", "the card is not legal in Standard"
       assert_explains "-b:isd", %[the block is not "isd"]

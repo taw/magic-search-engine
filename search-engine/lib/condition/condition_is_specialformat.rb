@@ -12,6 +12,6 @@ class ConditionIsSpecialformat < ConditionSimple
   end
 
   def explain(negated: false)
-    negated ? "the card is not restricted to a special format (Planechase, Archenemy, vanguard, conspiracy, or a Theros Hero's Path/challenge deck)" : "the card is playable only in a special format (Planechase, Archenemy, vanguard, conspiracy, or a Theros Hero's Path/challenge deck)"
+    negated ? "the card is not limited to a special format" : "the card is playable only in a special format"
   end
 end

@@ -8,6 +8,6 @@ class ConditionIsMultipart < ConditionSimple
   end
 
   def explain(negated: false)
-    negated ? "the card has a single part, not split, flip, or double-faced" : "the card has multiple parts (split, flip, or double-faced)"
+    negated ? "the card has a single part" : "the card has multiple parts"
   end
 end

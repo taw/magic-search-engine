@@ -8,6 +8,6 @@ class ConditionIsMainfront < ConditionSimple
   end
 
   def explain(negated: false)
-    "the card is #{negated ? "not " : ""}the single face each physical card is filed under (the front of a double-faced card, the left half of a split card, or the creature half of an adventure)"
+    "the card is #{negated ? "not " : ""}the main front face"
   end
 end

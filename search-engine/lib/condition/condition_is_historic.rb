@@ -11,6 +11,6 @@ class ConditionIsHistoric < ConditionSimple
   end
 
   def explain(negated: false)
-    "the card is #{negated ? "not " : ""}historic (legendary, artifact, or Saga)"
+    "the card is #{negated ? "not " : ""}historic"
   end
 end
