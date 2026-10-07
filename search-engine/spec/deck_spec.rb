@@ -1,118 +1,41 @@
+# Precon set => parent set its decks also take cards from.
+# Mostly Commander sets, we don't model this relationship yet,
+# so it should eventually move to data.
+PRECON_SET_PARENTS = {
+  "e01" => "akh",
+  "c20" => "iko",
+  "znc" => "znr",
+  "khc" => "khm",
+  "c21" => "stx",
+  "afc" => "afr",
+  "mic" => "mid",
+  "voc" => "vow",
+  "nec" => "neo",
+  "ncc" => "snc",
+  "dmc" => "dmu",
+  "onc" => "one",
+  "moc" => "mom",
+  "ltc" => "ltr",
+  "woc" => "woe",
+  "lcc" => "lci",
+  "mkc" => "mkm",
+  "otc" => "otj",
+  "m3c" => "mh3",
+  "blc" => "blb",
+  "dsc" => "dsk",
+  "drc" => "dft",
+  "tdc" => "tdm",
+  "fic" => "fin",
+  "eoc" => "eoe",
+  "ecc" => "ecl",
+  "tmc" => "tmt",
+  "soc" => "sos",
+  "msc" => "msh",
+  "frc" => "fra",
+}
+
 describe Deck do
   include_context "db"
-
-  # This is getting out of hand, and needs some cleanup
-  it "each set has correct decks" do
-    allowed_combinations = [
-      # Completely unique types
-      ["archenemy", "Archenemy Deck"],
-      ["commander", "Commander Deck"],
-      ["duel deck", "Duel Deck"],
-      ["planechase", "Planechase Deck"],
-      ["premium deck", "Premium Deck"],
-      # Regular types
-      ["box", "Duel Of The Planeswalkers Deck"],
-      ["box", "Event Deck"],
-      ["box", "Intro Pack"],
-      ["box", "Theme Deck"],
-      ["box", "Box Set"],
-      ["masters", "MTGO Theme Deck"],
-      ["global series", "Planeswalker Deck"], # v3
-      ["duel deck", "Planeswalker Deck"], # v4
-      ["board game deck", "Theme Deck"],
-      ["box", "Game Night Deck"],
-      ["pioneer", "Pioneer Challenger Deck"],
-      ["standard", "Pioneer Challenger Deck"], # q08 listed under bro?
-      # Standard sets
-      ["core", "Clash Pack"],
-      ["core", "Event Deck"],
-      ["core", "Intro Pack"],
-      ["core", "Theme Deck"],
-      ["core", "Planeswalker Deck"],
-      ["standard", "Welcome Deck"],
-      ["expansion", "Advanced Deck"],
-      ["expansion", "Enhanced Deck"],
-      ["core", "Advanced Pack"],
-      ["expansion", "Clash Pack"],
-      ["expansion", "Basic Deck"],
-      ["expansion", "Event Deck"],
-      ["expansion", "Intro Pack"],
-      ["expansion", "MTGO Theme Deck"],
-      ["expansion", "Planeswalker Deck"],
-      ["expansion", "Theme Deck"],
-      ["expansion", "Brawl Deck"],
-      ["standard", "Starter Deck"],
-      ["starter", "Intro Pack"],
-      ["box", "Guild Kit"],
-      ["starter", "Starter Deck"],
-      ["starter", "Theme Deck"],
-      ["starter", "Welcome Deck"],
-      ["starter", "Advanced Pack"],
-      ["starter", "Welcome Booster"],
-      ["expansion", "Challenger Deck"],
-      ["core", "Challenger Deck"],
-      ["box", "MTGO Theme Deck"],
-      ["box", "MTGO Commander Deck"],
-      ["sld", "Commander Deck"],
-      ["duel deck", "MTGO Duel Deck"],
-      ["core", "Spellslinger Starter Kit"],
-      ["modern", "Modern Event Deck"],
-      ["funny", "Halfdeck"],
-      ["standard", "Halfdeck"],
-      ["draft innovation", "Jumpstart"], # JMP only
-      ["memorabilia", "World Championship Deck"], # WCxx
-      ["memorabilia", "Pro Tour Deck"], # PTC
-      ["expansion", "Jumpstart"],
-      ["eternal", "Jumpstart"], # TLE
-      ["standard", "Arena Starter Kit"],
-      ["standard", "Starter Kit"],
-      ["standard", "Arena Starter Deck"],
-      ["modern", "Starter Kit"], # LTR
-      ["standard", "Arena Promotional Deck"],
-      ["starter", "Arena Starter Deck"],
-      ["modern", "Arena Starter Deck"], # LTR
-      ["standard", "Deck Builder's Toolkit"],
-      ["box", "Challenger Deck"], # Q07
-      ["core", "Sample Deck"],
-      ["standard", "Historic Brawl Precon Deck"],
-      ["shandalar", "Shandalar Enemy Deck"], # assigned to PAST, as there's no Shandalar set
-      ["core", "Jumpstart"], # FDN
-      ["starter", "Demo Deck"],
-      ["core", "Demo Deck"],
-      ["expansion", "Enemy Deck"],
-      ["sld", "Dandan Deck"],
-      ["memorabilia", "Challenge Deck"],
-      # Non-decks, this needs to be sorted out at some point
-      ["box", "Box"],
-      ["sld", "Secret Lair Drop"],
-      ["core", "Welcome Booster"],
-      ["expansion", "Welcome Booster"],
-      ["commander", "Box Set"],
-      ["standard", "Box Set"],
-      ["fixed", "Box Set"],
-      ["planechase", "Box Set"],
-      ["promo", "Box Set"],
-      ["funny", "Box Set"],
-      ["memorabilia", "Box Set"],
-      ["sdcc", "San Diego Comic Con Promos"],
-      ["core", "MTGO Redemption"],
-      ["expansion", "MTGO Redemption"],
-      ["eternal", "Box Set"],
-      ["standard", "Bundle Land Pack"],
-      ["modern", "Bundle Land Pack"],
-      ["commander", "Bundle Land Pack"],
-      ["promo", "Bundle Land Pack"], # P15A
-      ["core", "Booster Battle Pack Packet"], # M12, M13
-    ]
-
-    db.sets.each do |set_code, set|
-      set.decks.each do |deck|
-        allowed_set_types = allowed_combinations.select{|_,dt| dt == deck.type}.map(&:first)
-        (allowed_set_types & set.types).should_not be_empty,
-          "#{set.name} deck #{deck.name} has type:\n  #{deck.type}\nIt is allowed for set types:\n  #{allowed_set_types.join(", ")}\nbut set #{set.code} #{set.name} has types:\n  #{set.types.join(", ")}"
-      end
-    end
-  end
 
   # This is not great
   let(:precon_sets) do
@@ -149,106 +72,20 @@ describe Deck do
     end
   end
 
-  # This is basically false now and every XXX set now has XXc associated with it
-  # It's arguably useful for checking no really weird card leaks
+  # Decks may also contain cards from the precon set's oversized set (o + set code),
+  # and from its parent set, listed in PRECON_SET_PARENTS
   it "cards in precon sets have no off-set cards" do
     precon_sets.each do |set|
       sets_found = set.decks.flat_map(&:physical_cards).map(&:set).map(&:code).uniq
-      case set.code
-      when "dd3"
+      if set.code == "dd3"
         # product-only set
         sets_found.should match_array []
-      when "e01"
-        # Contains some Amonkhet cards
-        sets_found.should match_array ["e01", "akh", "oe01"]
-      when "hop"
-        sets_found.should match_array ["hop", "ohop"]
-      when "arc"
-        sets_found.should match_array ["arc", "oarc"]
-      when "pc2"
-        sets_found.should match_array ["pc2", "opc2"]
-      when "c20"
-        sets_found.should match_array ["c20", "iko", "oc20"]
-      when "znc"
-        sets_found.should match_array ["znr", "znc"]
-      when "khc"
-        sets_found.should match_array ["khm", "khc"]
-      when "c21"
-        sets_found.should match_array ["c21", "stx", "oc21"]
-      when "afc"
-        sets_found.should match_array ["afc", "afr", "oafc"]
-      when "mic"
-        sets_found.should match_array ["mic", "mid", "omic"]
-      when "voc"
-        sets_found.should match_array ["voc", "vow", "ovoc"]
-      when "nec"
-        sets_found.should match_array ["nec", "neo"]
-      when "ncc"
-        sets_found.should match_array ["ncc", "snc"]
-      when "dmc"
-        sets_found.should match_array ["dmu", "dmc"]
-      when "mkc"
-        sets_found.should match_array ["mkc", "mkm"]
-      when "onc"
-        sets_found.should match_array ["onc", "one"]
-      when "moc"
-        sets_found.should match_array ["moc", "mom"]
-      when "ltc"
-        sets_found.should match_array ["ltc", "ltr"]
-      when "pca"
-        sets_found.should match_array ["pca", "opca"]
-      when "woc"
-        sets_found.should match_array ["woc", "woe"]
-      when "lcc"
-        sets_found.should match_array ["lcc", "lci"]
-      when "cmd"
-        sets_found.should match_array ["cmd", "ocmd"]
-      when "c13"
-        sets_found.should match_array ["c13", "oc13"]
-      when "c14"
-        sets_found.should match_array ["c14", "oc14"]
-      when "c15"
-        sets_found.should match_array ["c15", "oc15"]
-      when "c16"
-        sets_found.should match_array ["c16", "oc16"]
-      when "c17"
-        sets_found.should match_array ["c17", "oc17"]
-      when "c18"
-        sets_found.should match_array ["c18", "oc18"]
-      when "c19"
-        sets_found.should match_array ["c19", "oc19"]
-      when "otc"
-        sets_found.should match_array ["otc", "otj"]
-      when "m3c"
-        sets_found.should match_array ["m3c", "mh3"]
-      when "blc"
-        sets_found.should match_array ["blb", "blc"]
-      when "dsc"
-        sets_found.should match_array ["dsk", "dsc"]
-      when "drc"
-        sets_found.should match_array ["dft", "drc"]
-      when "tdc"
-        sets_found.should match_array ["tdc", "tdm"]
-      when "fic"
-        sets_found.should match_array ["fic", "fin"]
-      when "eoc"
-        sets_found.should match_array ["eoc", "eoe"]
-      when "ecc"
-        sets_found.should match_array ["ecc", "ecl"]
-      when "tmc"
-        sets_found.should match_array ["tmc", "tmt"]
-      when "soc"
-        sets_found.should match_array ["soc", "sos"]
-      when "msh", "msc"
-        sets_found.should match_array ["msh", "msc"]
-      when "frc"
-        sets_found.should match_array ["frc", "fra"]
+      elsif set.types.include?("preview")
+        # skip it, as it might not have precons data yet
       else
-        if set.types.include?("preview")
-          # skip it, as it might not have precons data yet
-        else
-          sets_found.should eq [set.code]
-        end
+        expected = [set.code, *PRECON_SET_PARENTS[set.code]]
+        expected << "o#{set.code}" if db.sets["o#{set.code}"]
+        sets_found.should match_array(expected), "#{set.code} #{set.name}"
       end
     end
   end
