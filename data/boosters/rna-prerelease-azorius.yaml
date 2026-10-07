@@ -9,7 +9,9 @@ name: "{set_name} Seeded Prerelease Booster Azorius"
 # https://www.youtube.com/watch?v=ghkone_Q5NA&t=423s
 # Junktroller (235) in the seeded pack at 3:07 (before ordinary boosters):
 # https://www.youtube.com/watch?v=8f_HAxXRWug&t=187s
-filter: "e:{set} is:baseset ((id<=wu (w:azorius or -w:*) -(c:c -w:*)) or cn:235 or cn:239)"
+# Sphinx of the Guildpact (241), explicitly in the Azorius booster before the other boosters:
+# https://www.mtg-forum.de/topic/158394-rna-ravnica-allegiance-prerelease-erfahrungsberichte-decklisten-anekdoten/#entry1492212
+filter: "e:{set} is:baseset ((id<=wu (w:azorius or -w:*) -(c:c -w:*)) or cn:235 or cn:239 or cn:241)"
 pack:
   common: 11
   uncommon: 3
