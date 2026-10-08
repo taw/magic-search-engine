@@ -1,0 +1,56 @@
+# https://media.wizards.com/2019/downloads/promo_packs/M20_Promo_Pack_08162019.pdf
+# Seasonal slot uses the conventional 2:1 per-card rare/mythic weights.
+# Other sheets use estimated equal per-card weights; exact collation is unpublished.
+# The Japanese planeswalker replacement is the documented 25%, in either finish.
+name: '{set_name} Foil Promo Pack'
+pack:
+  seasonal: 1
+  curated:
+  - curated: 1
+    chance: 3
+  - japanese_planeswalker: 1
+    chance: 1
+  dark_frame: 1
+  basic: 1
+sheets:
+  seasonal:
+    filter: e:pm20 promo:promopack r>=r
+    use: rare_mythic
+    foil: true
+  curated:
+    count: 121
+    any:
+    - rawquery: e:pdom number:1p,6p,21p,26p,35p,42p,68p,129p,143p,146p,172p,182p,211p,214p,215p,217p,238p,239p,240p,241p,247p,248p
+      count: 22
+      rate: 1
+    - rawquery: e:pgrn number:69p,99p,113p,115p,152p,153p,179p,183p,192p,233p
+      count: 10
+      rate: 1
+    - rawquery: e:pm19 number:9p,23p,33p,34p,69p,76p,90p,130p,135p,144p,179p,185p,186p,203p,208p
+      count: 15
+      rate: 1
+    - rawquery: e:prix number:18p,22p,30p,31p,45p,51p,60p,68p,77p,86p,90p,92p,99p,100p,111p,115p,121p,127p,130p,136p,142p,147p,150p,151p,171p,174p,180p,182p,185p
+      count: 29
+      rate: 1
+    - rawquery: e:prna number:32p,76p,114p,131p,221pa
+      count: 5
+      rate: 1
+    - rawquery: e:pwar number:50p,207p,249p
+      count: 3
+      rate: 1
+    - rawquery: e:pxln number:2p,19p,24p,34p,42p,46p,55p,59p,61p,71p,82p,99p,106p,117p,118p,120p,126p,129p,136p,137p,161p,165p,179p,184p,185p,203p,206p,213p,227p,232p,248p,251p,252p,253p,255p,256p,257p
+      count: 37
+      rate: 1
+    foil: true
+  dark_frame:
+    rawquery: e:pm20 number:206,95,139,69,197
+    count: 5
+    foil: true
+  japanese_planeswalker:
+    rawquery: e:war promo:jpwalker
+    count: 36
+    foil: true
+  basic:
+    rawquery: e:ppp1
+    count: 5
+    foil: true

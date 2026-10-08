@@ -1,0 +1,70 @@
+# https://media.wizards.com/2023/downloads/promo_packs/MOM_Promo_Pack_04122023.pdf
+# Seasonal rare/mythic weights use the 2:1 per-card convention where applicable.
+# Other sheets use estimated equal per-card weights; exact collation is unpublished.
+# The Arena code is not a gameplay card.
+name: '{set_name} Promo Pack'
+pack:
+  seasonal: 1
+  curated: 1
+  dark_frame: 1
+sheets:
+  seasonal:
+    filter: e:pmom promo:promopack r>=r -is:dfc -is:meld -number:226p,249p,250p,263p,6p,28p,134p,217p,219p,245p,255p,257p,258p,265p
+    use: rare_mythic
+    foil: false
+  curated:
+    count: 113
+    any:
+    - rawquery: e:pbfz number:217p
+      count: 1
+      rate: 1
+    - rawquery: e:pbro number:9p,38p,40p,51p,59p,70p,82p,95p,97p,105p,128p,130p,139p,141p,179p,194p,205p,217p,226p,265p
+      count: 20
+      rate: 1
+    - rawquery: e:pdmu number:32p,52p,87p,93p,97p,107p,243p,244p,250p,255p,256p,261p
+      count: 12
+      rate: 1
+    - rawquery: e:peld number:147p
+      count: 1
+      rate: 1
+    - rawquery: e:piko number:125p
+      count: 1
+      rate: 1
+    - rawquery: e:pkhm number:142p
+      count: 1
+      rate: 1
+    - rawquery: e:pkld number:15p
+      count: 1
+      rate: 1
+    - rawquery: e:pktk number:210p
+      count: 1
+      rate: 1
+    - rawquery: e:pmid number:1p,41p,112p,168p,206p,245p
+      count: 6
+      rate: 1
+    - rawquery: e:pmom number:6p,28p,134p,217p,219p,226p,245p,249p,250p,255p,257p,258p,263p,265p
+      count: 14
+      rate: 1
+    - rawquery: e:pneo number:28p,42p,74p,102p,255p,266p
+      count: 6
+      rate: 1
+    - rawquery: e:pone number:10p,11p,38p,43p,75p,84p,98p,118p,145p,149p,169p,186p,196p,201p,202p,219p,222p,227p,229p,242p,244p,254p,255p,256p,259p
+      count: 25
+      rate: 1
+    - rawquery: e:psnc number:46p,97p,116p,134p,230p,240p,246p
+      count: 7
+      rate: 1
+    - rawquery: e:pthb number:18p,221p
+      count: 2
+      rate: 1
+    - rawquery: e:pvow number:20p,46p,118p,195p,197p
+      count: 5
+      rate: 1
+    - rawquery: e:pwar number:1p,50p,54p,97p,169p,180p,191p,197p,217p,220p
+      count: 10
+      rate: 1
+    foil: false
+  dark_frame:
+    rawquery: e:mom promo:promopack
+    count: 5
+    foil: false

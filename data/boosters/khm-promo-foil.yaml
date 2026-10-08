@@ -1,0 +1,72 @@
+# Cinder Glade 235p supplements the PDF omission (Kaldheim catalog).
+# https://www.cardsphere.com/sets/1304
+# https://media.wizards.com/2021/downloads/promo_packs/KHM_Promo_Pack_02052020.pdf
+# Seasonal rare/mythic weights use the 2:1 per-card convention where applicable.
+# Other sheets use estimated equal per-card weights; exact collation is unpublished.
+# The Arena code is not a gameplay card.
+name: '{set_name} Foil Promo Pack'
+pack:
+  seasonal: 1
+  curated: 1
+  dark_frame: 1
+sheets:
+  seasonal:
+    filter: e:pkhm promo:promopack r>=r -is:dfc -is:meld
+    use: rare_mythic
+    foil: true
+  curated:
+    count: 121
+    any:
+    - rawquery: e:paer number:23p
+      count: 1
+      rate: 1
+    - rawquery: e:pbfz number:17p,234p,241p,247p,249p,235p
+      count: 6
+      rate: 1
+    - rawquery: e:pdom number:217p
+      count: 1
+      rate: 1
+    - rawquery: e:pdtk number:136p
+      count: 1
+      rate: 1
+    - rawquery: e:peld number:1p,8p,18p,20p,36p,43p,46p,48p,55p,75p,84p,97pa,110p,115pa,120p,147p,160p,161p,171p,172p,181p,186p,190p,199p,203p,235p,238p,239p,240p,241p,242p,244p
+      count: 32
+      rate: 1
+    - rawquery: e:pgrn number:192p,207p
+      count: 2
+      rate: 1
+    - rawquery: e:piko number:66p,67p,88p,125p,141p,155p,184p,185p,189p,191p,204p,210p,215p,220p,237p,248p,250p,251p,253p,259p
+      count: 20
+      rate: 1
+    - rawquery: e:pktk number:133p,210p
+      count: 2
+      rate: 1
+    - rawquery: e:pm19 number:90p
+      count: 1
+      rate: 1
+    - rawquery: e:pm21 number:45p,70p,106p,116p,162p,164p,183p,188p,191p,204p,208p,222p,224p,232p,239p
+      count: 15
+      rate: 1
+    - rawquery: e:pori number:90p
+      count: 1
+      rate: 1
+    - rawquery: e:prna number:83p
+      count: 1
+      rate: 1
+    - rawquery: e:pthb number:3p,13p,19p,24p,37p,94p,108p,157p,158p,169p,190p,198p,210p,214p,221p,222p,229p,235p,236p,244p,245p,246p,247p,248p
+      count: 24
+      rate: 1
+    - rawquery: e:pwar number:125p,187p
+      count: 2
+      rate: 1
+    - rawquery: e:pxln number:34p,82p
+      count: 2
+      rate: 1
+    - rawquery: e:pznr number:5p,44p,68p,108p,125p,159p,193p,207p,223p,226p
+      count: 10
+      rate: 1
+    foil: true
+  dark_frame:
+    rawquery: e:khm promo:promopack
+    count: 5
+    foil: true

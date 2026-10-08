@@ -1,0 +1,60 @@
+# https://media.wizards.com/2026/downloads/promo_packs/ECL_Promo_Pack_01162026.pdf
+# Seasonal rare/mythic weights use the 2:1 per-card convention where applicable.
+# Other sheets use estimated equal per-card weights; exact collation is unpublished.
+name: '{set_name} Promo Pack'
+pack:
+  seasonal: 1
+  curated: 1
+  dark_frame: 1
+sheets:
+  seasonal:
+    filter: e:pecl promo:promopack r:r
+    use: rare_mythic
+    foil: false
+  curated:
+    count: 121
+    any:
+    - rawquery: e:pbig number:2p,7p,20p,26p,27p
+      count: 5
+      rate: 1
+    - rawquery: e:pblb number:6p,9p,54p,75p,124p,133p,183p,252p
+      count: 8
+      rate: 1
+    - rawquery: e:pdft number:57p,68p,73p,77p,87p,121p,158p,173p,191p,219p,231p,237p
+      count: 12
+      rate: 1
+    - rawquery: e:pdsk number:51p,95p,113p,136p,157p,176p,248p
+      count: 7
+      rate: 1
+    - rawquery: e:pecl number:4p,12p,27p,52p,57p,59p,88p,110p,151p,156p,159p,165p,166p,170p,209p,212p,222p,249p,252p,253p
+      count: 20
+      rate: 1
+    - rawquery: e:peoe number:1p,9p,115p,132p,214p,215p,216p,217p,219p,222p,223p,224p,228p,229p,231p,238p,240p,241p,242p,247p
+      count: 20
+      rate: 1
+    - rawquery: e:pfdn number:1p,77p,106p,107p,129p,132p,137p,216p
+      count: 8
+      rate: 1
+    - rawquery: e:pmh3 number:11p,38p,110p,152p
+      count: 4
+      rate: 1
+    - rawquery: e:pmkm number:155p,187p,217p,224p
+      count: 4
+      rate: 1
+    - rawquery: e:pmom number:28p,40p,135p,222p,252p
+      count: 5
+      rate: 1
+    - rawquery: e:potj number:4p,146p,149p,180p
+      count: 4
+      rate: 1
+    - rawquery: e:ptdm number:1p,5p,33p,86p,90pa,103p,138p,187p,225p,235p,246p,260p
+      count: 12
+      rate: 1
+    - rawquery: e:pwoe number:21p,66p,73p,82p,148p,164pa,208p,215p,220pa,230pa,235pa,240pa
+      count: 12
+      rate: 1
+    foil: false
+  dark_frame:
+    rawquery: e:ecl promo:promopack
+    count: 5
+    foil: false

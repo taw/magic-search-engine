@@ -1,0 +1,69 @@
+# https://media.wizards.com/2025/downloads/promo_packs/DFT_Promo_Pack_02062025.pdf
+# Seasonal rare/mythic weights use the 2:1 per-card convention where applicable.
+# Other sheets use estimated equal per-card weights; exact collation is unpublished.
+name: '{set_name} Promo Pack'
+pack:
+  seasonal: 1
+  curated: 1
+  dark_frame: 1
+sheets:
+  seasonal:
+    filter: e:pdft promo:promopack r:r
+    use: rare_mythic
+    foil: false
+  curated:
+    count: 121
+    any:
+    - rawquery: e:pblb number:54p,204p,207p,212p,219p,221p,227p,242p
+      count: 8
+      rate: 1
+    - rawquery: e:pbro number:12p,18p,89p,237p
+      count: 4
+      rate: 1
+    - rawquery: e:pdft number:27p,35p,52p,94p,105p,116p,133p,169p,183p,191p,198p,209p,212p,214p,215p,216p,219p,221p,231p,240p
+      count: 20
+      rate: 1
+    - rawquery: e:pdmu number:24p,84p,239p,252p
+      count: 4
+      rate: 1
+    - rawquery: e:pdsk number:219p,220p,221p,223p,224p,240p,241p,253p
+      count: 8
+      rate: 1
+    - rawquery: e:pfdn number:115p,116p,119p,121p,122p,123p,126p,127p
+      count: 8
+      rate: 1
+    - rawquery: e:pkhm number:169p
+      count: 1
+      rate: 1
+    - rawquery: e:plci number:14p,80p,81p,92p,156p,171p,185p,258p
+      count: 8
+      rate: 1
+    - rawquery: e:pmkm number:94p,110p,137p,151p,188p,217p,220p,242p
+      count: 8
+      rate: 1
+    - rawquery: e:pmom number:58p,211p,222p,255p
+      count: 4
+      rate: 1
+    - rawquery: e:pneo number:13p,62p,74p,102p,199p,224p,249p,255p,260p
+      count: 9
+      rate: 1
+    - rawquery: e:pone number:23p,104p,192p,254p
+      count: 4
+      rate: 1
+    - rawquery: e:potj number:75p,109p,146p,157p,197p,220p,230p,236p
+      count: 8
+      rate: 1
+    - rawquery: e:psnc number:15p,41p,46p,97p,134p,193p,230p,237p,246p
+      count: 9
+      rate: 1
+    - rawquery: e:pvow number:6p,17p,50p,70p,100p,124p,148p,149p,191p,245p
+      count: 10
+      rate: 1
+    - rawquery: e:pwoe number:82p,97p,124p,223pa,231pa,234pa,242p,252p
+      count: 8
+      rate: 1
+    foil: false
+  dark_frame:
+    rawquery: e:dft promo:promopack
+    count: 5
+    foil: false

@@ -1,0 +1,61 @@
+# https://media.wizards.com/2024/downloads/promo_packs/DSK_Promo_Pack_09182024.pdf
+# Seasonal rare/mythic weights use the 2:1 per-card convention where applicable.
+# Other sheets use estimated equal per-card weights; exact collation is unpublished.
+# The Arena code is not a gameplay card.
+name: '{set_name} Foil Promo Pack'
+pack:
+  seasonal: 1
+  curated: 1
+  dark_frame: 1
+sheets:
+  seasonal:
+    filter: e:pdsk promo:promopack r:r
+    use: rare_mythic
+    foil: true
+  curated:
+    count: 121
+    any:
+    - rawquery: e:pblb number:54p,132p,204p,205p,207p,209p,212p,214p,219p,221p,223p,224p,227p,230p,239p,242p
+      count: 16
+      rate: 1
+    - rawquery: e:pbro number:30p,89p,95p,237p
+      count: 4
+      rate: 1
+    - rawquery: e:pdmu number:84p,87p,97p,252p
+      count: 4
+      rate: 1
+    - rawquery: e:pdsk number:4pa,23p,41p,42p,67pa,68p,100pa,108p,113p,120p,129pa,146p,155p,157p,182p,194p,202p,205pa,220p,224p
+      count: 20
+      rate: 1
+    - rawquery: e:plci number:14p,80p,81p,92p,113p,122p,156p,171p,185p,249p,258p,264p
+      count: 12
+      rate: 1
+    - rawquery: e:pmid number:1p,41p,112p,131p,177p,206p,234p,242p
+      count: 8
+      rate: 1
+    - rawquery: e:pmkm number:27p,48p,83p,86p,94p,123p,135p,137p,188p,220p,238p,242p
+      count: 12
+      rate: 1
+    - rawquery: e:pmom number:40p,134p,198p,225p
+      count: 4
+      rate: 1
+    - rawquery: e:pone number:23p,104p,192p,254p
+      count: 4
+      rate: 1
+    - rawquery: e:potj number:44p,109p,191p,197p,202p,206p,212p,220p,223p,225p,234p,236p
+      count: 12
+      rate: 1
+    - rawquery: e:pvow number:5p,17p,63p,103p,124p,255p,258p
+      count: 7
+      rate: 1
+    - rawquery: e:pwoe number:25p,82p,96p,115pa,176p,190p,200p,223pa,231pa,235pa,242p,252p
+      count: 12
+      rate: 1
+    - rawquery: e:pznr number:39p,67p,122p,125p,178p,244p
+      count: 6
+      rate: 1
+    foil: true
+  dark_frame:
+    rawquery: e:dsk promo:promopack
+    count: 5
+    foil: true

@@ -1,0 +1,73 @@
+# https://media.wizards.com/2022/downloads/promo_packs/SNC_Promo_Pack_04152022.pdf
+# Seasonal rare/mythic weights use the 2:1 per-card convention where applicable.
+# Other sheets use estimated equal per-card weights; exact collation is unpublished.
+# The Arena code is not a gameplay card.
+name: '{set_name} Foil Promo Pack'
+pack:
+  seasonal: 1
+  curated: 1
+  dark_frame: 1
+sheets:
+  seasonal:
+    filter: e:psnc promo:promopack r>=r
+    use: rare_mythic
+    foil: true
+  curated:
+    count: 121
+    any:
+    - rawquery: e:pafr number:197p
+      count: 1
+      rate: 1
+    - rawquery: e:pbfz number:119p
+      count: 1
+      rate: 1
+    - rawquery: e:pdom number:35p
+      count: 1
+      rate: 1
+    - rawquery: e:pemn number:41p
+      count: 1
+      rate: 1
+    - rawquery: e:pgrn number:152p
+      count: 1
+      rate: 1
+    - rawquery: e:piko number:204p,184p,250p,251p,248p,259p,253p
+      count: 7
+      rate: 1
+    - rawquery: e:pkhm number:139p,255p
+      count: 2
+      rate: 1
+    - rawquery: e:pkld number:84p
+      count: 1
+      rate: 1
+    - rawquery: e:pktk number:210p
+      count: 1
+      rate: 1
+    - rawquery: e:pm15 number:110p
+      count: 1
+      rate: 1
+    - rawquery: e:pm20 number:127p
+      count: 1
+      rate: 1
+    - rawquery: e:pm21 number:188p,239p,127p,6p
+      count: 4
+      rate: 1
+    - rawquery: e:pncc number:11p,12p,13p,14p,15p,16p,17p,18p,19p,20p,21p,22p,23p,24p,25p,26p,27p,28p,29p,30p,31p,32p,33p,34p,35p,36p,37p,38p,39p,40p,41p,42p,43p,44p,45p,46pa,47p,48p,49p,50p,51p,52p,53p,54p,55p,56p,57p,58p,59p,60p,61p,62p,63p,64p,65p,66p,67p,68p,69p,70p,71p,72p,73p,74p,75p,76p,77p,78p,79p,80p,81p,82p,83p,84p,85p
+      count: 75
+      rate: 1
+    - rawquery: e:prna number:22p
+      count: 1
+      rate: 1
+    - rawquery: e:psnc number:11p,15p,30p,34p,42p,67p,68p,101p,129p,134p,159p,162p,186p,193p,197p,202p,206p,213p,231p,240p
+      count: 20
+      rate: 1
+    - rawquery: e:pthb number:14p
+      count: 1
+      rate: 1
+    - rawquery: e:pznr number:178p,245p
+      count: 2
+      rate: 1
+    foil: true
+  dark_frame:
+    rawquery: e:snc promo:promopack
+    count: 5
+    foil: true
