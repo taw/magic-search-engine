@@ -14,21 +14,17 @@ pack:
   basic: 1
 sheets:
   seasonal:
-    filter: e:pm20 promo:promopack r>=r
-    use: rare_mythic
+    use: m20-promo.seasonal
     foil: true
   curated:
     use: m20-promo.curated
     foil: true
   dark_frame:
-    rawquery: e:pm20 number:206,95,139,69,197
-    count: 5
+    use: m20-promo.dark_frame
     foil: true
   japanese_planeswalker:
-    rawquery: e:war promo:jpwalker
-    count: 36
+    use: m20-promo.japanese_planeswalker
     foil: true
   basic:
-    rawquery: e:ppp1
-    count: 5
+    use: m20-promo.basic
     foil: true

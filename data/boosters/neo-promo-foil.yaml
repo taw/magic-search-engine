@@ -9,13 +9,11 @@ pack:
   dark_frame: 1
 sheets:
   seasonal:
-    filter: e:pneo promo:promopack r>=r -is:dfc -is:meld -number:404p
-    use: rare_mythic
+    use: neo-promo.seasonal
     foil: true
   curated:
     use: neo-promo.curated
     foil: true
   dark_frame:
-    rawquery: e:neo promo:promopack
-    count: 5
+    use: neo-promo.dark_frame
     foil: true

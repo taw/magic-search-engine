@@ -9,8 +9,7 @@ pack:
   dark_frame: 1
 sheets:
   seasonal:
-    filter: e:psnc promo:promopack r>=r
-    use: rare_mythic
+    use: snc-promo.seasonal
     foil: true
   curated:
     count: 121
@@ -68,6 +67,5 @@ sheets:
       rate: 1
     foil: true
   dark_frame:
-    rawquery: e:snc promo:promopack
-    count: 5
+    use: snc-promo.dark_frame
     foil: true

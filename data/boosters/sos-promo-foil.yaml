@@ -8,13 +8,11 @@ pack:
   dark_frame: 1
 sheets:
   seasonal:
-    filter: e:psos promo:promopack r:r
-    use: rare_mythic
+    use: sos-promo.seasonal
     foil: true
   curated:
     use: sos-promo.curated
     foil: true
   dark_frame:
-    rawquery: e:sos promo:promopack
-    count: 5
+    use: sos-promo.dark_frame
     foil: true

@@ -11,13 +11,11 @@ pack:
   dark_frame: 1
 sheets:
   seasonal:
-    filter: e:pkhm promo:promopack r>=r -is:dfc -is:meld
-    use: rare_mythic
+    use: khm-promo.seasonal
     foil: true
   curated:
     use: khm-promo.curated
     foil: true
   dark_frame:
-    rawquery: e:khm promo:promopack
-    count: 5
+    use: khm-promo.dark_frame
     foil: true

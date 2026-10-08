@@ -9,13 +9,11 @@ pack:
   dark_frame: 1
 sheets:
   seasonal:
-    filter: e:pdsk promo:promopack r:r
-    use: rare_mythic
+    use: dsk-promo.seasonal
     foil: true
   curated:
     use: dsk-promo.curated
     foil: true
   dark_frame:
-    rawquery: e:dsk promo:promopack
-    count: 5
+    use: dsk-promo.dark_frame
     foil: true

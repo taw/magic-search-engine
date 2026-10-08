@@ -9,13 +9,11 @@ pack:
   dark_frame: 1
 sheets:
   seasonal:
-    filter: e:pafr promo:promopack r>=r -number:28p,23p,60p,126p,121p,155p,190p,4p,53p,91p,143p,207p
-    use: rare_mythic
+    use: afr-promo.seasonal
     foil: true
   curated:
     use: afr-promo.curated
     foil: true
   dark_frame:
-    rawquery: e:afr promo:promopack
-    count: 5
+    use: afr-promo.dark_frame
     foil: true

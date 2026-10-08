@@ -8,13 +8,11 @@ pack:
   dark_frame: 1
 sheets:
   seasonal:
-    filter: e:pfra promo:promopack r>=r
-    use: rare_mythic
+    use: fra-promo.seasonal
     foil: true
   curated:
     use: fra-promo.curated
     foil: true
   dark_frame:
-    rawquery: e:fra promo:promopack
-    count: 5
+    use: fra-promo.dark_frame
     foil: true

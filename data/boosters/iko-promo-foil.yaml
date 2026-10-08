@@ -9,13 +9,11 @@ pack:
   dark_frame: 1
 sheets:
   seasonal:
-    filter: e:piko promo:promopack r>=r
-    use: rare_mythic
+    use: iko-promo.seasonal
     foil: true
   curated:
     use: iko-promo.curated
     foil: true
   dark_frame:
-    rawquery: e:iko promo:promopack
-    count: 5
+    use: iko-promo.dark_frame
     foil: true
