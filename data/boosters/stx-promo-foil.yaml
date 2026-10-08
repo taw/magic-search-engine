@@ -1,0 +1,70 @@
+# https://media.wizards.com/2021/downloads/promo_packs/STX_Promo_Pack_042221.pdf
+# Seasonal rare/mythic weights use the 2:1 per-card convention where applicable.
+# Other sheets use estimated equal per-card weights; exact collation is unpublished.
+# The Arena code is not a gameplay card.
+name: '{set_name} Foil Promo Pack'
+pack:
+  seasonal: 1
+  curated: 1
+  dark_frame: 1
+sheets:
+  seasonal:
+    filter: e:pstx promo:promopack r>=r -is:dfc -is:meld -t:lesson
+    use: rare_mythic
+    foil: true
+  curated:
+    count: 120
+    any:
+    - rawquery: e:pakh number:5p
+      count: 1
+      rate: 1
+    - rawquery: e:pdom number:172p
+      count: 1
+      rate: 1
+    - rawquery: e:peld number:8p,18p,20p,36p,39pa,43p,48p,55p,75p,97pa,110p,115pa,124p,147p,160p,161p,171p,172p,181p,185p,186p,190p,203p,235p,238p,239p,240p,241p,242p,244p
+      count: 30
+      rate: 1
+    - rawquery: e:pemn number:171p
+      count: 1
+      rate: 1
+    - rawquery: e:phou number:140p
+      count: 1
+      rate: 1
+    - rawquery: e:piko number:11p,21p,66p,67p,97p,141p,155p,162p,184p,201p,204p,215p,220p,237p,245p,248p,250p,251p,253p,259p
+      count: 20
+      rate: 1
+    - rawquery: e:pkhm number:9p,79p,120p,207p,225p,229p
+      count: 6
+      rate: 1
+    - rawquery: e:pm19 number:112p
+      count: 1
+      rate: 1
+    - rawquery: e:pm20 number:122p
+      count: 1
+      rate: 1
+    - rawquery: e:pm21 number:1p,73p,74p,103p,127p,139p,173p,188p,204p,239p,252p,253p,254p,255p
+      count: 14
+      rate: 1
+    - rawquery: e:prix number:94p,100p
+      count: 2
+      rate: 1
+    - rawquery: e:pstx number:5p,7p,57p,67p,108p,120p
+      count: 6
+      rate: 1
+    - rawquery: e:pthb number:3p,13p,19p,24p,37p,71p,108p,123p,169p,190p,198p,214p,221p,235p,236p,244p,245p,246p,247p,248p
+      count: 20
+      rate: 1
+    - rawquery: e:pwar number:2p,54p,62p
+      count: 3
+      rate: 1
+    - rawquery: e:pxln number:34p,59p,179p
+      count: 3
+      rate: 1
+    - rawquery: e:pznr number:5p,24p,44p,68p,115p,127p,159p,193p,223p,226p
+      count: 10
+      rate: 1
+    foil: true
+  dark_frame:
+    rawquery: e:stx promo:promopack
+    count: 5
+    foil: true

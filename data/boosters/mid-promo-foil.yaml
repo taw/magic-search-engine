@@ -1,0 +1,67 @@
+# https://media.wizards.com/2021/downloads/promo_packs/MID_Promo_Pack_09162021-2.pdf
+# Seasonal rare/mythic weights use the 2:1 per-card convention where applicable.
+# Other sheets use estimated equal per-card weights; exact collation is unpublished.
+# The Arena code is not a gameplay card.
+name: '{set_name} Foil Promo Pack'
+pack:
+  seasonal: 1
+  curated: 1
+  dark_frame: 1
+sheets:
+  seasonal:
+    filter: e:pmid promo:promopack r>=r -is:dfc -is:meld
+    use: rare_mythic
+    foil: true
+  curated:
+    count: 121
+    any:
+    - rawquery: e:paer number:109p,162p
+      count: 2
+      rate: 1
+    - rawquery: e:pafr number:4p,23p,39p,48p,53p,60p,86p,104p,121p,127p,143p,167p,176p,211p,216p,229p
+      count: 16
+      rate: 1
+    - rawquery: e:pdom number:35p,215p,217p
+      count: 3
+      rate: 1
+    - rawquery: e:pgrn number:77p,123p,152p
+      count: 3
+      rate: 1
+    - rawquery: e:phou number:140p
+      count: 1
+      rate: 1
+    - rawquery: e:pkhm number:9p,24p,43p,79p,90p,109p,125p,131p,139p,142p,145p,156p,167p,177p,185p,198p,199p,204p,210p,213p,214p,221p,229p,255p,275p
+      count: 25
+      rate: 1
+    - rawquery: e:pm20 number:200p
+      count: 1
+      rate: 1
+    - rawquery: e:pmh1 number:1p
+      count: 1
+      rate: 1
+    - rawquery: e:pori number:61p
+      count: 1
+      rate: 1
+    - rawquery: e:prix number:150p
+      count: 1
+      rate: 1
+    - rawquery: e:prna number:130p,131p,183p
+      count: 3
+      rate: 1
+    - rawquery: e:psoi number:242p
+      count: 1
+      rate: 1
+    - rawquery: e:pstx number:7p,14p,20p,33p,57p,58p,66p,86p,96p,108p,113p,127p,133p,181p,189p,191p,199p,214p,217p,230p,232p,234p,240p,245p,248p
+      count: 25
+      rate: 1
+    - rawquery: e:pwar number:62p,68p,79p
+      count: 3
+      rate: 1
+    - rawquery: e:pznr number:4p,16p,23p,24p,27p,39p,53p,54p,67p,72p,77p,85p,115p,118p,122p,125p,127p,145p,148p,150p,156p,175p,178p,179p,186p,193p,203p,234p,240p,241p,242p,244p,245p,252p,262p
+      count: 35
+      rate: 1
+    foil: true
+  dark_frame:
+    rawquery: e:mid promo:promopack
+    count: 5
+    foil: true

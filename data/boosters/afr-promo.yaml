@@ -1,0 +1,85 @@
+# https://media.wizards.com/2021/downloads/promo_packs/AFR_Promo_Pack_07122021.pdf
+# Seasonal rare/mythic weights use the 2:1 per-card convention where applicable.
+# Other sheets use estimated equal per-card weights; exact collation is unpublished.
+# The Arena code is not a gameplay card.
+name: '{set_name} Promo Pack'
+pack:
+  seasonal: 1
+  curated: 1
+  dark_frame: 1
+sheets:
+  seasonal:
+    filter: e:pafr promo:promopack r>=r -number:28p,23p,60p,126p,121p,155p,190p,4p,53p,91p,143p,207p
+    use: rare_mythic
+    foil: false
+  curated:
+    count: 114
+    any:
+    - rawquery: e:paer number:162p
+      count: 1
+      rate: 1
+    - rawquery: e:pafr number:4p,23p,28p,53p,60p,91p,121p,126p,143p,155p,190p,207p
+      count: 12
+      rate: 1
+    - rawquery: e:pbfz number:144p,174p,217p
+      count: 3
+      rate: 1
+    - rawquery: e:pdom number:35p,217p
+      count: 2
+      rate: 1
+    - rawquery: e:peld number:39pa,44pa,97pa,115pa,120p,124p,147p,152p,160p,161p,165pa,171p,181p,187p,189p,235p,239p,240p,241p,244p
+      count: 20
+      rate: 1
+    - rawquery: e:pgrn number:123p,233p
+      count: 2
+      rate: 1
+    - rawquery: e:phou number:77p,140p
+      count: 2
+      rate: 1
+    - rawquery: e:piko number:11p,21p,67p,88p,155p,175p,189p,220p,234p,245p,248p,250p,251p,253p,259p
+      count: 15
+      rate: 1
+    - rawquery: e:pkhm number:22p,52p,79p,142p,169p
+      count: 5
+      rate: 1
+    - rawquery: e:pktk number:34p
+      count: 1
+      rate: 1
+    - rawquery: e:pm20 number:226p
+      count: 1
+      rate: 1
+    - rawquery: e:pm21 number:1p,9p,38p,73p,125p,127p,179p,185p,197p,204p,232p,239p
+      count: 12
+      rate: 1
+    - rawquery: e:pori number:61p
+      count: 1
+      rate: 1
+    - rawquery: e:prix number:150p
+      count: 1
+      rate: 1
+    - rawquery: e:prna number:22p,130p
+      count: 2
+      rate: 1
+    - rawquery: e:psoi number:242p
+      count: 1
+      rate: 1
+    - rawquery: e:pstx number:33p,58p,96p,127p,167p
+      count: 5
+      rate: 1
+    - rawquery: e:pthb number:3p,13p,18p,37p,117p,118p,147p,148p,157p,169p,198p,214p,221p,235p,236p
+      count: 15
+      rate: 1
+    - rawquery: e:pwar number:62p,79p
+      count: 2
+      rate: 1
+    - rawquery: e:pxln number:165p
+      count: 1
+      rate: 1
+    - rawquery: e:pznr number:39p,53p,77p,115p,125p,145p,193p,203p,242p,244p
+      count: 10
+      rate: 1
+    foil: false
+  dark_frame:
+    rawquery: e:afr promo:promopack
+    count: 5
+    foil: false
