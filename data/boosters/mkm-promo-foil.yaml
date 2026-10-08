@@ -1,0 +1,67 @@
+# https://media.wizards.com/2024/downloads/promo_packs/MKM_Promo_Pack_02092024.pdf
+# Seasonal rare/mythic weights use the 2:1 per-card convention where applicable.
+# Other sheets use estimated equal per-card weights; exact collation is unpublished.
+# The Arena code is not a gameplay card.
+name: '{set_name} Foil Promo Pack'
+pack:
+  seasonal: 1
+  curated: 1
+  dark_frame: 1
+sheets:
+  seasonal:
+    filter: e:pmkm promo:promopack r>=r -number:4p,12p,47p,61p,94p,110p,123p,132p,172p,181p,184p,185p,186p,200p,211p,215p,224p,238p,240p,241p,259p,260p,262p,263p,264p,266p,268p,269p,270p,271p
+    use: rare_mythic
+    foil: true
+  curated:
+    count: 111
+    any:
+    - rawquery: e:pbro number:12p,62p,107p,128p,240p,265p
+      count: 6
+      rate: 1
+    - rawquery: e:pcmr number:27p,107p,141p,305p,349p,361p
+      count: 6
+      rate: 1
+    - rawquery: e:pdmu number:24p,84p,107p,160p,167p,252p
+      count: 6
+      rate: 1
+    - rawquery: e:plci number:14p,63p,115p,153p,222p,231pa
+      count: 6
+      rate: 1
+    - rawquery: e:pmat number:4p,9p,22p,23p,34p
+      count: 5
+      rate: 1
+    - rawquery: e:pmh2 number:23p,52p,80p,106p,129p,166p
+      count: 6
+      rate: 1
+    - rawquery: e:pmid number:1p,41p,112p,168p,206p,245p
+      count: 6
+      rate: 1
+    - rawquery: e:pmkm number:4p,12p,47p,61p,94p,110p,123p,132p,172p,181p,184p,185p,186p,200p,211p,215p,224p,238p,240p,241p,259p,260p,262p,263p,264p,266p,268p,269p,270p,271p
+      count: 30
+      rate: 1
+    - rawquery: e:pmom number:40p,58p,77p,94p,135p,265p
+      count: 6
+      rate: 1
+    - rawquery: e:pneo number:28p,42p,74p,102p,255p,266p
+      count: 6
+      rate: 1
+    - rawquery: e:pone number:33p,38p,104p,192p,196p,201p
+      count: 6
+      rate: 1
+    - rawquery: e:prna number:165p,186p,187p,212p
+      count: 4
+      rate: 1
+    - rawquery: e:psnc number:46p,97p,116p,134p,230p,240p,246p
+      count: 7
+      rate: 1
+    - rawquery: e:pvow number:20p,46p,118p,195p,197p
+      count: 5
+      rate: 1
+    - rawquery: e:pwoe number:34p,48p,87p,145p,190p,200p
+      count: 6
+      rate: 1
+    foil: true
+  dark_frame:
+    rawquery: e:mkm promo:promopack
+    count: 5
+    foil: true
