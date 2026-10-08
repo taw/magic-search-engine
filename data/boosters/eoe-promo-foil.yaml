@@ -8,13 +8,11 @@ pack:
   dark_frame: 1
 sheets:
   seasonal:
-    filter: e:peoe promo:promopack r:r
-    use: rare_mythic
+    use: eoe-promo.seasonal
     foil: true
   curated:
     use: eoe-promo.curated
     foil: true
   dark_frame:
-    rawquery: e:eoe promo:promopack
-    count: 5
+    use: eoe-promo.dark_frame
     foil: true

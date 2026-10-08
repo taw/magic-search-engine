@@ -8,13 +8,11 @@ pack:
   dark_frame: 1
 sheets:
   seasonal:
-    filter: e:ptdm promo:promopack r:r
-    use: rare_mythic
+    use: tdm-promo.seasonal
     foil: true
   curated:
     use: tdm-promo.curated
     foil: true
   dark_frame:
-    rawquery: e:tdm promo:promopack
-    count: 5
+    use: tdm-promo.dark_frame
     foil: true

@@ -11,13 +11,11 @@ pack:
   dark_frame: 1
 sheets:
   seasonal:
-    filter: e:pone promo:promopack r:r
-    use: rare_mythic
+    use: one-promo.seasonal
     foil: true
   curated:
     use: one-promo.curated
     foil: true
   dark_frame:
-    rawquery: e:one promo:promopack
-    count: 5
+    use: one-promo.dark_frame
     foil: true

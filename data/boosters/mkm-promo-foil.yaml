@@ -9,13 +9,11 @@ pack:
   dark_frame: 1
 sheets:
   seasonal:
-    filter: e:pmkm promo:promopack r>=r -number:4p,12p,47p,61p,94p,110p,123p,132p,172p,181p,184p,185p,186p,200p,211p,215p,224p,238p,240p,241p,259p,260p,262p,263p,264p,266p,268p,269p,270p,271p
-    use: rare_mythic
+    use: mkm-promo.seasonal
     foil: true
   curated:
     use: mkm-promo.curated
     foil: true
   dark_frame:
-    rawquery: e:mkm promo:promopack
-    count: 5
+    use: mkm-promo.dark_frame
     foil: true

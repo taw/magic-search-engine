@@ -9,13 +9,11 @@ pack:
   dark_frame: 1
 sheets:
   seasonal:
-    filter: e:plci promo:promopack r>=r
-    use: rare_mythic
+    use: lci-promo.seasonal
     foil: true
   curated:
     use: lci-promo.curated
     foil: true
   dark_frame:
-    rawquery: e:lci promo:promopack
-    count: 5
+    use: lci-promo.dark_frame
     foil: true

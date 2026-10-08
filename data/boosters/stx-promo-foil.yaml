@@ -9,13 +9,11 @@ pack:
   dark_frame: 1
 sheets:
   seasonal:
-    filter: e:pstx promo:promopack r>=r -is:dfc -is:meld -t:lesson
-    use: rare_mythic
+    use: stx-promo.seasonal
     foil: true
   curated:
     use: stx-promo.curated
     foil: true
   dark_frame:
-    rawquery: e:stx promo:promopack
-    count: 5
+    use: stx-promo.dark_frame
     foil: true

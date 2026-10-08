@@ -9,13 +9,11 @@ pack:
   dark_frame: 1
 sheets:
   seasonal:
-    filter: e:pmom promo:promopack r>=r -is:dfc -is:meld -number:226p,249p,250p,263p,6p,28p,134p,217p,219p,245p,255p,257p,258p,265p
-    use: rare_mythic
+    use: mom-promo.seasonal
     foil: true
   curated:
     use: mom-promo.curated
     foil: true
   dark_frame:
-    rawquery: e:mom promo:promopack
-    count: 5
+    use: mom-promo.dark_frame
     foil: true

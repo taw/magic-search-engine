@@ -9,13 +9,11 @@ pack:
   dark_frame: 1
 sheets:
   seasonal:
-    filter: e:peld promo:promopack r>=r
-    use: rare_mythic
+    use: eld-promo.seasonal
     foil: true
   curated:
     use: eld-promo.curated
     foil: true
   dark_frame:
-    rawquery: e:eld number:393-397
-    count: 5
+    use: eld-promo.dark_frame
     foil: true
