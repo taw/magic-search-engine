@@ -4,23 +4,23 @@ This folder is a repository of different YAML files, which are compiled into sea
 
 ## File naming convention
 
-File names should follow the following formatting:
+Files should be grouped in a directory named for the set, and follow this formatting:
 
-- `{set_code}.yaml` - default booster (This booster type designates non-draftable core packs, which only existed prior to 5ed)
-- `{set_code}-{variant}.yaml` - other variants
-  - `{set_code}-play.yaml` - play booster
-  - `{set_code}-collector.yaml` - collector booster
-  - `{set_code}-collector-sample.yaml` - collector booster sample pack
-  - `{set_code}-prerelease.yaml` - prerelease promo pack
-  - `{set_code}-arena.yaml` - arena booster
-  - `{set_code}-mtgo.yaml` - magic online booster
+- `{set_code}/default.yaml` - default booster (This booster type designates non-draftable core packs, which only existed prior to 5ed)
+- `{set_code}/{variant}.yaml` - other variants
+  - `{set_code}/play.yaml` - play booster
+  - `{set_code}/collector.yaml` - collector booster
+  - `{set_code}/collector-sample.yaml` - collector booster sample pack
+  - `{set_code}/prerelease.yaml` - prerelease promo pack
+  - `{set_code}/arena.yaml` - arena booster
+  - `{set_code}/mtgo.yaml` - magic online booster
 - common historical variants:
-  - `{set_code}-draft.yaml` - draft booster
-  - `{set_code}-set.yaml` - set booster
-  - `{set_code}-six.yaml` - six card booster
-- All codes can be appended with `-jp` to indicate Japanese booster variants
+  - `{set_code}/draft.yaml` - draft booster
+  - `{set_code}/set.yaml` - set booster
+  - `{set_code}/six.yaml` - six card booster
+- All types can be appended with `-jp` to indicate Japanese booster variants
 
-If you are using a non-standard variant, you can add a `name:` parameter to the top of your file to indicate what the booster name should be. For example, the file `2xm-vip.yaml` includes the line:
+If you are using a non-standard variant, you can add a `name:` parameter to the top of your file to indicate what the booster name should be. For example, the file `2xm/vip.yaml` includes the line:
 `name: "Double Masters VIP Edition"`
 
 ## Contents
@@ -99,7 +99,7 @@ Most boosters have some type of variation, whether that is the variable number o
 ```
 
 There are some useful features of variable slots:
-- The total number of slots does not need to be consistent across all variations. Examples like [afr-set.yaml](afr-set.yaml) use this feature to add The List cards.
+- The total number of slots does not need to be consistent across all variations. Examples like [afr/set.yaml](afr/set.yaml) use this feature to add The List cards.
 - Unlike sheets, variable slots can mix foil/non-foil cards. For slots that may or may not be foil, this is the proper way to indicate that variability.
 
 The `chance` parameter correlates to the relative rarity of each version. So for common draft foils, which appear in 1/3 packs, the `common` sheet would have `chance: 2` and the `foil` sheet would have `chance: 1`. The total number of variations is 3, and 1 of those variations is the `foil` sheet.
@@ -108,7 +108,7 @@ The `chance` parameter correlates to the relative rarity of each version. So for
 
 Variable slots work well when a booster varies one slot at a time. When a booster is really several completely different packs sharing one product, use `packs` instead, which takes a list of whole pack layouts rather than a single one.
 
-This suits things like Jumpstart, where each pack is a themed deck. Example from [dmu-jumpstart.yaml](dmu-jumpstart.yaml):
+This suits things like Jumpstart, where each pack is a themed deck. Example from [dmu/jumpstart.yaml](dmu/jumpstart.yaml):
 
 ```yaml
 packs:
@@ -149,7 +149,7 @@ Sheets and subsheets can always include a `count` variable to assist in troubles
 
 Parent sheets can also include a `foil` boolean to indicate if the sheet is foil. You cannot mix foil/non-foil cards in the same sheet. To achieve this, use a [Variable slot](#variable-slots)
 
-Sheets can also be marked `etched: true` for etched foils. Cards drawn from such a sheet carry the etched finish, and it follows them all the way into the exported sealed data. Etched is a kind of foiling, so `etched: true` on its own is enough; most sheets write `foil: true` next to it anyway, which is redundant rather than contradictory. As with `foil`, one sheet means one finish - a sheet whose query also returns premium cards that are not etched will call those etched too. Example from [cmr-collector.yaml](cmr-collector.yaml):
+Sheets can also be marked `etched: true` for etched foils. Cards drawn from such a sheet carry the etched finish, and it follows them all the way into the exported sealed data. Etched is a kind of foiling, so `etched: true` on its own is enough; most sheets write `foil: true` next to it anyway, which is redundant rather than contradictory. As with `foil`, one sheet means one finish - a sheet whose query also returns premium cards that are not etched will call those etched too. Example from [cmr/collector.yaml](cmr/collector.yaml):
 
 ```yaml
   etched_uncommon:
@@ -166,11 +166,11 @@ By default, a slot draws one card from its sheet, with every card equally likely
 
 `balanced: true` splits the sheet by color identity and draws so that the colors come out evenly, rather than letting chance clump them. This is how real commons slots work, so most `common` sheets in [common.yaml](common.yaml) set it.
 
-A balanced sheet needs enough slots in the pack to spread across five colors. The indexer warns if a balanced sheet is used in a slot of 6 cards or fewer, since that cannot be balanced in practice. Set `balanced: false` to opt a set out of a balanced common sheet it inherits from [common.yaml](common.yaml), as [ala-draft.yaml](ala-draft.yaml) does.
+A balanced sheet needs enough slots in the pack to spread across five colors. The indexer warns if a balanced sheet is used in a slot of 6 cards or fewer, since that cannot be balanced in practice. Set `balanced: false` to opt a set out of a balanced common sheet it inherits from [common.yaml](common.yaml), as [ala/draft.yaml](ala/draft.yaml) does.
 
 ##### Duplicates
 
-`duplicates: true` allows the same card to be drawn more than once from a single sheet. Old starter decks worked this way, since they were cut from print sheets with no dedup. Example from [2ed-starter.yaml](2ed-starter.yaml):
+`duplicates: true` allows the same card to be drawn more than once from a single sheet. Old starter decks worked this way, since they were cut from print sheets with no dedup. Example from [2ed/starter.yaml](2ed/starter.yaml):
 
 ```yaml
   common_with_duplicates:
@@ -182,7 +182,7 @@ A balanced sheet needs enough slots in the pack to spread across five colors. Th
 
 `fixed: true` means the sheet isn't random at all - every card on it appears, every time. Use it for guaranteed contents rather than a random draw. Here `count` is not just a check: it must equal the number of cards on the sheet.
 
-Example from [one-compleat.yaml](one-compleat.yaml), where all 5 oil slick basics are always present:
+Example from [one/compleat.yaml](one/compleat.yaml), where all 5 oil slick basics are always present:
 
 ```yaml
   oil_slick_basics_1:
@@ -200,7 +200,7 @@ Many sheets are predefined, and do not need to be specifically listed in the ind
 
 Simple sheets can be defined using a `query` tag. These queries only return standard-frame, core set cards from the set listed in the file name, and use the same formatting for the mtg.wtf search bar.
 
-Example from [war-draft.yaml](war-draft.yaml) that returns all core set uncommon planeswalkers:
+Example from [war/draft.yaml](war/draft.yaml) that returns all core set uncommon planeswalkers:
 
 ```yaml
   planeswalker_uncommon:
@@ -212,7 +212,7 @@ Example from [war-draft.yaml](war-draft.yaml) that returns all core set uncommon
 
 More complex sheets cam use `rawquery` to find cards outside the limitations of the `query` tag. The formatting for `rawquery` still matches the formatting of the mtg.wtf search bar.
 
-Example from [cmr-collector.yaml](cmr-collector.yaml) that returns uncommon or special rarity, etched frame cards that aren't reprints:
+Example from [cmr/collector.yaml](cmr/collector.yaml) that returns uncommon or special rarity, etched frame cards that aren't reprints:
 
 ```yaml
   etched_uncommon:
@@ -248,7 +248,7 @@ Sheets can use the `any` tag to combine different subsheets together. Each subsh
 
 By defining the `rate` for each sheet, you define the relative rarity of each card independent of the number of cards. Rare cards are often twice as common as mythic cards in the same sheet, so you can use `rate: 2` for the rare cards, and `rate: 1` for the mythic cards.
 
-Example from [dmu-draft.yaml](dmu-draft.yaml) to track the rare/mythic legendary cards:
+Example from [dmu/draft.yaml](dmu/draft.yaml) to track the rare/mythic legendary cards:
 
 ```yaml
   legendary_rare_mythic:
@@ -263,7 +263,7 @@ Example from [dmu-draft.yaml](dmu-draft.yaml) to track the rare/mythic legendary
 
 By defining the `chance` for each sheet, you define the relative rarity of that subsheet as a whole. Each card within that sheet is adjusted to match the total chance. You can also use math expressions to determine the chance of a specific sheet.
 
-Example from [tsr-draft.yaml](tsr-draft.yaml) to include the timeshifted cards in the foil sheet (the `use` parameter will be explained later):
+Example from [tsr/draft.yaml](tsr/draft.yaml) to include the timeshifted cards in the foil sheet (the `use` parameter will be explained later):
 
 ```yaml
   foil:
@@ -283,7 +283,7 @@ Example from [tsr-draft.yaml](tsr-draft.yaml) to include the timeshifted cards i
 
 Sheets can `use` a previously defined sheet to replicate all aspects of that sheet in a new context. Often this is used as a subsheet in a larger sheet, but can also replicate a previous query using new context.
 
-Example from [afr-draft.yaml](afr-draft.yaml) to define the rare/mythic slot with showcase cards:
+Example from [afr/draft.yaml](afr/draft.yaml) to define the rare/mythic slot with showcase cards:
 
 ```yaml
   rare_mythic_with_showcase:
@@ -310,7 +310,7 @@ The referenced booster is processed first, including its own `{set}` expansion, 
 
 Filters can be applied to `query` and `use` subsheets to adjust their context.
 
-Example from [2xm-vip.yaml](2xm-vip.yaml) to define the foil, borderless rare and mythic cards:
+Example from [2xm/vip.yaml](2xm/vip.yaml) to define the foil, borderless rare and mythic cards:
 
 ```yaml
   foil_rare_mythic_borderless:
@@ -319,7 +319,7 @@ Example from [2xm-vip.yaml](2xm-vip.yaml) to define the foil, borderless rare an
     use: rare_mythic
 ```
 
-The filter can also be applied to an entire file by putting it at the top of the file, such as in [por.yaml](por.yaml)
+The filter can also be applied to an entire file by putting it at the top of the file, such as in [por/default.yaml](por/default.yaml)
 
 #### Set/Code
 
@@ -335,7 +335,7 @@ Spaces are allowed in the card name, which should exactly match the scryfall nam
 
 To reference a sheet within the booster yaml, use `sheet` to reference which sheet document the cards are in, and `code` to determine which `SheetCode` to pull.
 
-An example from [znr-set.yaml](znr-set.yaml) to define The List cards:
+An example from [znr/set.yaml](znr/set.yaml) to define The List cards:
 
 ```yaml
   the_list:
@@ -347,7 +347,7 @@ An example from [znr-set.yaml](znr-set.yaml) to define The List cards:
 
 Where `set`/`code` pulls from a print sheet document, `deck` pulls from a decklist already in the card data. This is how Jumpstart-style products are built, where a pack is simply a preconstructed deck.
 
-The value is `{set_code}/{deck_name}`, and the name must match the deck exactly. Because a sheet cannot mix foil and non-foil, a deck that contains both is referenced twice, once per foiling. Example from [dmu-jumpstart.yaml](dmu-jumpstart.yaml):
+The value is `{set_code}/{deck_name}`, and the name must match the deck exactly. Because a sheet cannot mix foil and non-foil, a deck that contains both is referenced twice, once per foiling. Example from [dmu/jumpstart.yaml](dmu/jumpstart.yaml):
 
 ```yaml
   arcane_mischief:
@@ -367,7 +367,7 @@ Deck sheets always deliver their full contents, so `count` must match the number
 
 This is only used as last resort.
 
-Example from [ecl-play.yaml](ecl-play.yaml), keeping the backs of reversible cards out of every sheet:
+Example from [ecl/play.yaml](ecl/play.yaml), keeping the backs of reversible cards out of every sheet:
 
 ```yaml
 superfilter: "-is:reversibleback"

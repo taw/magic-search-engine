@@ -8,8 +8,7 @@ class PatchSetTypes < Patch
   end
 
   def has_own_boosters?(set_code)
-    boosters_root.glob("#{set_code}.yaml").any? or
-      boosters_root.glob("#{set_code}-*.yaml").any?
+    boosters_root.glob("#{set_code}/*.yaml").any?
   end
 
   def call

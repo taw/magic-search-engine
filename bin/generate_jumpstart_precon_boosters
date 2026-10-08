@@ -19,7 +19,7 @@ class GenerateBoosterForSet
   end
 
   def path
-    Pathname(__dir__).parent + "data/boosters/#{code}.yaml"
+    Pathname(__dir__).parent + "data/boosters/#{set.code}/jumpstart.yaml"
   end
 
   def pack_data
@@ -59,6 +59,7 @@ class GenerateBoosterForSet
   end
 
   def call
+    path.dirname.mkpath
     path.write pack_data
   end
 end

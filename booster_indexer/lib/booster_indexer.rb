@@ -331,17 +331,23 @@ class BoosterIndexer
   end
 
   def load_data
-    BOOSTER_DATA_ROOT.glob("*.yaml").each do |path|
-      basename = path.basename(".yaml").to_s.delete("_")
-      if basename == "common"
-        # common.yaml is a bare sheet map, with no top level keys of its own
-        @common = YAML.load_file(path)
-        @common.each do |sheet_name, sheet|
-          validate_sheet_keys(sheet, "common.yaml sheet #{sheet_name}")
-        end
-      else
-        @booster_data[basename] = YAML.load_file(path)
-      end
+    common_path = BOOSTER_DATA_ROOT + "common.yaml"
+    # common.yaml is a bare sheet map, with no top level keys of its own
+    @common = YAML.load_file(common_path)
+    @common.each do |sheet_name, sheet|
+      validate_sheet_keys(sheet, "common.yaml sheet #{sheet_name}")
+    end
+
+    booster_paths = BOOSTER_DATA_ROOT.glob("*/*.yaml").sort_by do |path|
+      set_code = path.dirname.basename.to_s
+      type = path.basename(".yaml").to_s
+      type == "default" ? "#{set_code}.yaml" : "#{set_code}-#{type}.yaml"
+    end
+    booster_paths.each do |path|
+      set_code = path.dirname.basename.to_s
+      type = path.basename(".yaml").to_s
+      code = type == "default" ? set_code : "#{set_code}-#{type}"
+      @booster_data[code.delete("_")] = YAML.load_file(path)
     end
   end
 
