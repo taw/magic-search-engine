@@ -13,12 +13,22 @@ sheets:
   common:
     query: "r:c"
     count: 33
+  # Wizards specifies eight promos per guild; the stamped inventory has 40 cards.
+  # Guild affiliation plus observed unwatermarked promos constrains the assignments.
+  # Assumes the 40-card inventory is complete and guild pools do not overlap.
+  # https://magic.wizards.com/en/news/feature/ravnica-allegiance-prerelease-primer
+  # https://www.youtube.com/watch?v=CojiP2Cs7sI&t=99s
+  # https://www.reddit.com/r/magicTCG/comments/hjaijf/
+  # Existing 2:1 per-card rare/mythic weights remain estimates.
+  # Unresolved: which of Font of Agonies, Gutterbones and Priest of Forgotten Gods
+  # belongs to Rakdos. Retain all three candidates here; this is a superset, not
+  # a claim that the physical guild pool contains 10 promos.
   promo:
     foil: true
     any:
-    - rawquery: "e:prna r:m (w:rakdos or (id<=br and -w:*)) promo:prerelease"
+    - rawquery: "e:prna promo:prerelease cn:199s"
       count: 1
       rate: 1
-    - rawquery: "e:prna r:r (w:rakdos or (id<=br and -w:*)) promo:prerelease"
-      count: 11
+    - rawquery: "e:prna promo:prerelease cn:61s,74s,76s,83s,108s,109s,157s,185s,213s"
+      count: 9
       rate: 2

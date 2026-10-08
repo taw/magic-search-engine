@@ -13,12 +13,18 @@ sheets:
   common:
     query: "r:c"
     count: 33
+  # Wizards specifies eight promos per guild; the stamped inventory has 40 cards.
+  # Guild affiliation plus observed unwatermarked promos constrains the assignments.
+  # Assumes the 40-card inventory is complete and guild pools do not overlap.
+  # https://magic.wizards.com/en/news/feature/ravnica-allegiance-prerelease-primer
+  # https://forum.metagame.info/t/rna-ravnica-allegiance-draft-sealed/17507/6
+  # Existing 2:1 per-card rare/mythic weights remain estimates.
   promo:
     foil: true
     any:
-    - rawquery: "e:prna r:m (w:simic or (id<=gu and -w:*)) promo:prerelease"
+    - rawquery: "e:prna promo:prerelease cn:183s"
       count: 1
       rate: 1
-    - rawquery: "e:prna r:r (w:simic or (id<=gu and -w:*)) promo:prerelease"
-      count: 10
+    - rawquery: "e:prna promo:prerelease cn:32s,128s,130s,131s,158s,207s,214s"
+      count: 7
       rate: 2
