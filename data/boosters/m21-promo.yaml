@@ -1,0 +1,70 @@
+# https://media.wizards.com/2020/downloads/promo_packs/M21_Promo_Pack_06202020.pdf
+# Seasonal rare/mythic weights use the 2:1 per-card convention where applicable.
+# Other sheets use estimated equal per-card weights; exact collation is unpublished.
+# The Arena code is not a gameplay card.
+name: '{set_name} Promo Pack'
+pack:
+  seasonal: 1
+  curated: 1
+  dark_frame: 1
+sheets:
+  seasonal:
+    filter: e:pm21 promo:promopack r>=r
+    use: rare_mythic
+    foil: false
+  curated:
+    count: 121
+    any:
+    - rawquery: e:paer number:74p,171p
+      count: 2
+      rate: 1
+    - rawquery: e:pakh number:170p
+      count: 1
+      rate: 1
+    - rawquery: e:pbfz number:119p,120p,144p
+      count: 3
+      rate: 1
+    - rawquery: e:peld number:39pa,43p,97pa,115pa,147p,160p,171p,235p,241p,244p
+      count: 10
+      rate: 1
+    - rawquery: e:pemn number:41p,65p
+      count: 2
+      rate: 1
+    - rawquery: e:pfrf number:65p,138p,149p
+      count: 3
+      rate: 1
+    - rawquery: e:pgrn number:8p,30p,39p,44p,51p,77p,84p,91p,99p,109p,113p,115p,123p,141p,152p,165p,179p,183p,192p,205p,212p,213p,233p,253p,254p,257p,258p,259p
+      count: 28
+      rate: 1
+    - rawquery: e:piko number:175p,189p,204p,224p,226p
+      count: 5
+      rate: 1
+    - rawquery: e:pkld number:5p,59p,84p,184p,216p
+      count: 5
+      rate: 1
+    - rawquery: e:pktk number:207p
+      count: 1
+      rate: 1
+    - rawquery: e:pm20 number:26p,39p,64p,105p,106p,107p,111p,126p,127p,185p,194p,199p,200p,233p,249p
+      count: 15
+      rate: 1
+    - rawquery: e:pori number:61p
+      count: 1
+      rate: 1
+    - rawquery: e:prix number:147p,151p
+      count: 2
+      rate: 1
+    - rawquery: e:prna number:22p,42p,76p,83p,85p,99p,130p,131p,151p,157p,161p,165p,179p,183p,187p,245p,246p,248p,251p,259p
+      count: 20
+      rate: 1
+    - rawquery: e:pthb number:14p,37p,72p,123p,157p
+      count: 5
+      rate: 1
+    - rawquery: e:pwar number:1p,2p,54p,62p,68p,79p,89p,97p,125p,169p,180p,191p,197p,207p,217p,220p,244p,248p
+      count: 18
+      rate: 1
+    foil: false
+  dark_frame:
+    rawquery: e:m21 promo:promopack
+    count: 5
+    foil: false
