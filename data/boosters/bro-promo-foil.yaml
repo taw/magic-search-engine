@@ -17,56 +17,7 @@ sheets:
     use: rare_mythic
     foil: true
   curated:
-    count: 121
-    any:
-    - rawquery: e:paer number:162p
-      count: 1
-      rate: 1
-    - rawquery: e:pafr number:4p,241p,261p
-      count: 3
-      rate: 1
-    - rawquery: e:pbro number:8p,18p,36p,40p,59p,66p,75p,81p,95p,121p,130p,165p,170p,203p,219p,220p,229p,230p,233p,240p
-      count: 20
-      rate: 1
-    - rawquery: e:pdmu number:3p,52p,65p,73p,91p,107p,110p,117p,143p,147p,165p,186p,194p,199p,201p,202p,204p,206p,209p,213p,215p,219p,221p,230p,239p
-      count: 25
-      rate: 1
-    - rawquery: e:pdom number:217p
-      count: 1
-      rate: 1
-    - rawquery: e:peld number:110p,120p,235p
-      count: 3
-      rate: 1
-    - rawquery: e:pgrn number:233p
-      count: 1
-      rate: 1
-    - rawquery: e:pkhm number:139p,240p
-      count: 2
-      rate: 1
-    - rawquery: e:pm20 number:226p
-      count: 1
-      rate: 1
-    - rawquery: e:pm21 number:239p
-      count: 1
-      rate: 1
-    - rawquery: e:pmid number:41p,112p,168p,206p,208p,260p,263p,265p,266p,267p
-      count: 10
-      rate: 1
-    - rawquery: e:pneo number:13p,42p,86p,88p,101p,153p,197p,199p,213p,222p,226p,250p,404p,266p,268p
-      count: 15
-      rate: 1
-    - rawquery: e:psnc number:10p,11p,38p,72p,116p,162p,165p,167p,191p,202p,206p,210p,215p,228p,237p,250p,254p,257p,260p,261p
-      count: 20
-      rate: 1
-    - rawquery: e:pthb number:18p,221p,235p,236p
-      count: 4
-      rate: 1
-    - rawquery: e:pvow number:17p,44p,46p,195p,261p,262p,264p,265p,266p,267p
-      count: 10
-      rate: 1
-    - rawquery: e:pznr number:27p,244p,245p,252p
-      count: 4
-      rate: 1
+    use: bro-promo.curated
     foil: true
   dark_frame:
     rawquery: e:bro promo:promopack

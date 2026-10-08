@@ -296,6 +296,16 @@ Example from [afr-draft.yaml](afr-draft.yaml) to define the rare/mythic slot wit
 
 It's best practice to avoid mixing `use` and `any-rate` because it can behave unintuitively. Better practice is to use either `query\rawquery` instead of `use`, or `any-chance` instead of `any-rate` when possible.
 
+To share a processed sheet from another booster, use `{booster_code}.{sheet_name}`. This is primarily for variants of the same product, such as a foil promo pack sharing a curated sheet with its non-foil counterpart:
+
+```yaml
+  curated:
+    use: m20-promo.curated
+    foil: true
+```
+
+The referenced booster is processed first, including its own `{set}` expansion, queries, filters, and superfilter. The reference can override sheet properties such as `foil`, but a `filter` on the referencing sheet does not change the already-processed query. References may be chained; cycles are rejected.
+
 #### Filter
 
 Filters can be applied to `query` and `use` subsheets to adjust their context.
