@@ -1,0 +1,13 @@
+# Source: https://wpn.wizards.com/en/news/amonkhet-video-guide
+# Rarity weights reuse the generic booster estimates, not measured Showdown odds.
+name: '{set_name} Standard Showdown Booster'
+filter: (e:bfz or e:ogw or e:soi or e:emn or e:kld or e:aer or e:akh) is:baseset -is:dfc -is:meld
+pack:
+  rare_mythic: 2
+  foil: 1
+  showdown_land: 1
+sheets:
+  showdown_land:
+    foil: false
+    rawquery: e:akh r:b is:fullart
+    count: 5

@@ -1,0 +1,15 @@
+# Source: https://wpn.wizards.com/en/news/xln-5-changes-know-you-schedule
+# Rarity weights reuse the generic booster estimates, not measured Showdown odds.
+# Use the four-card/any-rarity-foil specification above, also transcribed by Librarities.
+# The kit preview says common/uncommon instead; see sealed-content research notes.
+name: '{set_name} Standard Showdown Booster'
+filter: (e:kld or e:aer or e:akh or e:hou or e:xln) is:baseset -is:dfc -is:meld
+pack:
+  rare_mythic: 2
+  foil: 1
+  showdown_land: 1
+sheets:
+  showdown_land:
+    foil: true
+    rawquery: e:pss2
+    count: 5

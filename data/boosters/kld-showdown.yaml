@@ -1,0 +1,18 @@
+# Source: https://wpn.wizards.com/en/news/sign-standard-showdown-holiday-buy-box
+# Rarity weights reuse the generic booster estimates, not measured Showdown odds.
+# OGW and double-faced/meld cards are excluded. Only the first 30 Inventions existed.
+# WPN advertises approximately one Masterpiece per 33 boosters.
+name: '{set_name} Standard Showdown Booster'
+filter: (e:bfz or e:soi or e:emn or e:kld) is:baseset -is:dfc -is:meld
+pack:
+  rare_mythic: 2
+  premium:
+  - foil: 1
+    chance: 32
+  - masterpiece: 1
+    chance: 1
+sheets:
+  masterpiece:
+    foil: true
+    rawquery: e:exp or (e:mps number<=30)
+    count: 75
