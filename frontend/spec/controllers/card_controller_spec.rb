@@ -191,6 +191,7 @@ RSpec.describe CardController, type: :controller do
     assert_response 200
     assert_select ".cardinfo", 0
     assert_select %[.results_summary:contains("No cards found")]
+    assert_select ".results_summary", text: /No cards found where /
     assert_equal "italian spiderman - #{APP_NAME}", html_document.title
   end
 

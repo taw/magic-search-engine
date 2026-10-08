@@ -6,3 +6,5 @@
         = format_explanation(" where #{@query.explain}")
     - else
       No cards found
+      - if @query&.filtered?
+        = format_explanation(" where #{@query.explain}")
