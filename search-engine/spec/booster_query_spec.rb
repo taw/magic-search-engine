@@ -14,7 +14,7 @@ describe "booster:" do
 
   it "supports partial star" do
     assert_search_equal "booster:sir-*", "booster:sir-arena-1 or booster:sir-arena-2 or booster:sir-arena-3 or booster:sir-arena-4"
-    assert_search_equal "booster:one-*", "booster:one or booster:one-set or booster:one-collector or booster:one-arena or booster:one-jumpstart or booster:one-prerelease or booster:one-compleat or booster:one-collector-sample"
+    assert_search_equal "booster:one-*", "booster:one or booster:one-set or booster:one-collector or booster:one-arena or booster:one-jumpstart or booster:one-prerelease or booster:one-compleat or booster:one-collector-sample or booster:one-promo or booster:one-promo-foil"
   end
 
   it "supports star anywhere in the code" do
