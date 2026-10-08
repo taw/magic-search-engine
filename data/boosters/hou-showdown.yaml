@@ -1,0 +1,27 @@
+# Source: https://www.izzetmtgnews.com/archives/44982
+# Rarity weights reuse the generic booster estimates, not measured Showdown odds.
+# Five cards: two nonfoil rares/mythics, a nonfoil HOU full-art land,
+# a foil rare/mythic, and a foil common/uncommon or HOU full-art land.
+# Low-foil 12:5 common/uncommon weights are an estimate.
+name: '{set_name} Standard Showdown Booster'
+filter: (e:bfz or e:ogw or e:soi or e:emn or e:kld or e:aer or e:akh or e:hou) is:baseset -is:dfc -is:meld
+pack:
+  rare_mythic: 2
+  showdown_land: 1
+  foil_rare_mythic: 1
+  showdown_low_foil: 1
+sheets:
+  showdown_land:
+    foil: false
+    rawquery: e:hou r:b is:fullart
+    count: 5
+  showdown_low_foil:
+    foil: true
+    any:
+    - query: r:c or (e:hou r:b is:fullart)
+      chance: 12
+    - query: r:u
+      chance: 5
+  foil_rare_mythic:
+    foil: true
+    use: rare_mythic

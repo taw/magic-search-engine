@@ -1,0 +1,13 @@
+# Source: https://wpn.wizards.com/en/news/see-your-m19-promo-cards
+# Rarity weights reuse the generic booster estimates, not measured Showdown odds.
+name: '{set_name} Standard Showdown Booster'
+filter: (e:kld or e:aer or e:akh or e:hou or e:xln or e:rix or e:dom or e:m19) is:baseset -is:dfc -is:meld
+pack:
+  rare_mythic: 2
+  foil: 1
+  showdown_land: 1
+sheets:
+  showdown_land:
+    foil: true
+    rawquery: e:pss3
+    count: 5
