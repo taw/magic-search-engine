@@ -170,6 +170,11 @@ class DeckPrintingResolver
     printings = resolve_set
     raise if printings.empty? # Shouldn't happen
 
+    if @card["fullart"]
+      printings = printings.select{|c| c["fullart"]}
+      raise "No full-art printing found for #{card_name}" if printings.empty?
+    end
+
     if card_number and card_number != "*"
       specified_card = printings.find{|c| c["number"].downcase == card_number}
       return specified_card if specified_card
