@@ -88,6 +88,46 @@ sheets:
           count: 4
           rate: 1
       chance: 125
+  # Regular-frame LCC Set Booster exclusives also occur in traditional foil.
+  # Collector Boosters use their extended-art versions instead. Keep this local
+  # to Set Boosters; LCI Draft Boosters must not inherit Commander cards.
+  # Rates follow the existing regular-frame rare/mythic weights (6:3), not
+  # published insertion odds; retain the existing 12:5:3 foil rarity split.
+  foil_with_showcase:
+    foil: true
+    any:
+    - any:
+      - use: common_showcase
+        rate: 1
+      - use: common_has_showcase
+        rate: 2
+      - use: common_has_no_showcase
+        rate: 3
+      - use: basic
+        rate: 3
+      chance: 12
+    - use: uncommon_with_showcase
+      chance: 5
+    - any:
+      - use: rare_showcase
+        rate: 2
+      - use: rare_has_showcase
+        rate: 4
+      - use: rare_has_no_showcase
+        rate: 6
+      - rawquery: "e:lcc number:9-16a r:r is:front"
+        count: 6
+        rate: 6
+      - use: mythic_showcase
+        rate: 1
+      - use: mythic_has_showcase
+        rate: 2
+      - use: mythic_has_no_showcase
+        rate: 3
+      - rawquery: "e:lcc number:9-16a r:m is:front"
+        count: 2
+        rate: 3
+      chance: 3
   the_list:
     any:
     - set: plst
