@@ -149,6 +149,11 @@ sheets:
         rate: 16
       - use: rare_has_no_showcase
         rate: 24
+      # Regular-frame Set Booster exclusives; Collector Boosters use extended art.
+      # Match existing regular-frame weights, not published insertion odds.
+      - rawquery: "e:woc number:21-28 r:r"
+        count: 6
+        rate: 24
       - rawquery: "e:wot r:r -alt:(e:wot number:64-83) number<64"
         count: 25
         rate: 24
@@ -175,5 +180,8 @@ sheets:
       - use: mythic_has_showcase
         rate: 8
       - use: mythic_has_no_showcase
+        rate: 12
+      - rawquery: "e:woc number:21-28 r:m"
+        count: 2
         rate: 12
       chance: 3
