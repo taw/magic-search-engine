@@ -1,11 +1,35 @@
 # Sheet multiplicities: https://www.lethe.xyz/mtg/collation/ugl.html
-# Marginal card weights only; sequential runs and uncommon token draws remain unresolved.
+# Marginal weights only; common and uncommon runs are not simulated.
+# Estimate a token replacing one uncommon in 2/5 packs from the reconstructed sheet.
 pack:
-  basic: 1
+- basic: 1
   common: 6
   uncommon: 2
   rare: 1
+  chance: 3
+- basic: 1
+  common: 6
+  uncommon: 1
+  rare: 1
+  token: 1
+  chance: 2
 sheets:
+  # Record tokens separately; export is deferred until MTGJSON v6.
+  token:
+    ignore: true
+    any:
+    - token: Pegasus
+      chance: 4
+    - token: Soldier
+      chance: 4
+    - token: Zombie
+      chance: 4
+    - token: Goblin
+      chance: 4
+    - token: Sheep
+      chance: 3
+    - token: Squirrel
+      chance: 3
   common:
     balanced: false
     any:
