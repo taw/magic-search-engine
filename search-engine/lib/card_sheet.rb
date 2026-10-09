@@ -80,7 +80,7 @@ class CardSheet
         if element.is_a?(CardSheet)
           element.source_set_codes
         else
-          [element.set_code]
+          [element.is_a?(BoosterToken) ? element.parent_set_code : element.set_code]
         end
       end.uniq
     end

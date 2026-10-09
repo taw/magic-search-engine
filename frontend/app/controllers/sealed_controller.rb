@@ -53,6 +53,8 @@ class SealedController < ApplicationController
       if out_of_time
         @warnings += ["Opening packs took too long, this pool is incomplete"]
       end
+      # Tokens occupy physical slots but must not become playable deck cards.
+      @tokens, @cards = @cards.partition{|card, _count| card.is_a?(BoosterToken)}.map(&:to_h)
       # Still a multiset, now in the order the pool is shown and exported in
       @cards = @cards.sort_by{|card, _count|
         [

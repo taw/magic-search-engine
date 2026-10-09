@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 require_relative "../search-engine/lib/card_database"
-require "memoist"
 
 class String
   def camelize
@@ -147,7 +146,7 @@ class ExportFormatterExtended < ExportFormatter
         weight: w,
         foil: e.foil,
         etched: (true if e.etched),
-        uuid: uuid_for(e.set_code, e.number)
+        uuid: (e.is_a?(BoosterToken) ? e.uuid : uuid_for(e.set_code, e.number))
       }.compact
     end.sort_by{|x| [x[:set], x[:number].to_i, x[:number], x[:foil] ? 0 : 1, x[:etched] ? 0 : 1] }
 
@@ -200,7 +199,7 @@ class ExportFormatterExperimental < ExportFormatter
 
     cards = ev.map do |e, w|
       [
-        uuid_for(e.set_code, e.number),
+        (e.is_a?(BoosterToken) ? e.uuid : uuid_for(e.set_code, e.number)),
         w
       ]
     end.sort_by(&:first)
@@ -264,7 +263,6 @@ class ExportFormatterExperimental < ExportFormatter
 end
 
 class ExportSealedData
-  include Memoist
   attr_reader :db, :uuids
 
   def initialize(output_folder)
@@ -306,5 +304,7 @@ class ExportSealedData
   end
 end
 
-output_folder = ARGV[0] || "."
-ExportSealedData.new(output_folder).call
+if $PROGRAM_NAME == __FILE__
+  output_folder = ARGV[0] || "."
+  ExportSealedData.new(output_folder).call
+end

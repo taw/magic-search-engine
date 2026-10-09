@@ -3,6 +3,19 @@ require "rails_helper"
 RSpec.describe SealedController, type: :controller do
   render_views
 
+  it "shows tokens separately from the playable deck export" do
+    pack = $CardDatabase.supported_booster_types.fetch("ugl-draft")
+    variant = pack.packs.keys.find{|p| p.cards.any?{|c| c.is_a?(BoosterToken)}}
+    allow(pack).to receive(:open).and_return(variant.open)
+    get "index", params: {count: ["1"], set: ["ugl-draft"]}
+    assert_response 200
+    assert_select ".card_picture_container", count: 10
+    assert_select "h2", "Tokens"
+    assert_select %[.sealed_preview_form input[name="deck"]] do |nodes|
+      expect(nodes.first["value"]).not_to include("TUGL:")
+    end
+  end
+
   it "index" do
     get "index"
     assert_response 200

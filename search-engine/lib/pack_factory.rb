@@ -137,6 +137,10 @@ class PackFactory
       else
         raise_sheet_error "Incorrect subsheet data for any"
       end
+    when ["token"]
+      raise_sheet_error "No balanced support for tokens" if balanced
+      raise_sheet_error "Token sheet must have count 1" if count && count != 1
+      kind.new([@db.booster_token(data["token"], finish)])
     when ["deck"]
       raise_sheet_error "No balanced support for code" if balanced
       raise_sheet_error "No duplicates support for code" if duplicates

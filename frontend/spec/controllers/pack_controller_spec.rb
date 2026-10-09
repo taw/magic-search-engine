@@ -47,6 +47,13 @@ RSpec.describe PackController, type: :controller do
     assert_response 200
   end
 
+  it "renders explicit token sheets without linking to nonexistent card pages" do
+    get "show", params: {id: "ugl-draft"}
+    assert_response 200
+    assert_select %[*:contains("Pegasus Token")]
+    assert_select %[a[href^="/card/tugl/"]], 0
+  end
+
   it "set without packs" do
     get "show", params: {id: "c15"}
     assert_response 404

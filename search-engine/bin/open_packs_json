@@ -42,8 +42,8 @@ class OpenPacksJSON
         set: card.set_code,
         count: count,
         number: card.number,
-        uuid: uuid_for(card.set_code,
-        card.number),
+        uuid: card.is_a?(BoosterToken) ? card.uuid : uuid_for(card.set_code, card.number),
+        token: (true if card.is_a?(BoosterToken)),
         foil: card.foil,
         etched: (true if card.etched),
       }.compact

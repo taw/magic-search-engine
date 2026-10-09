@@ -206,6 +206,9 @@ class PreprocessBooster
       end
     elsif sheet["deck"]
       sheet
+    elsif sheet["token"].is_a?(String)
+      raise "In #{@code}, token must use token-set/number" unless sheet["token"].match?(%r{\A[a-z0-9]+/[^/ ]+\z})
+      sheet
     elsif sheet["ad"] or sheet["token"]
       # Recorded for documentation only, and only in sheets marked `ignore: true`,
       # which are dropped before we get here.

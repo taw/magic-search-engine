@@ -46,8 +46,11 @@
       .row.multicard_row
         - cards.each_with_index do |card, i|
           .col-3.col-sm-2.card_picture_cell
-            = link_to_card(card) do
-              = render 'card/picture', card: card, searchable: true
+            - if card.is_a?(BoosterToken)
+              = render "card/booster_token", card: card
+            - else
+              = link_to_card(card) do
+                = render 'card/picture', card: card, searchable: true
   - else
     - groups = sheet.probabilities.group_by(&:last).transform_values{|x| x.map(&:first).sort}.sort.reverse
     - groups.each do |weight, cards|
@@ -56,5 +59,8 @@
       .row.multicard_row
         - cards.each_with_index do |card, i|
           .col-3.col-sm-2.card_picture_cell
-            = link_to_card(card) do
-              = render 'card/picture', card: card, searchable: true
+            - if card.is_a?(BoosterToken)
+              = render "card/booster_token", card: card
+            - else
+              = link_to_card(card) do
+                = render 'card/picture', card: card, searchable: true

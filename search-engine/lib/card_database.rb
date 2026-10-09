@@ -33,6 +33,7 @@ require_relative "mtgo_ids"
 require_relative "pack"
 require_relative "pack_factory"
 require_relative "physical_card"
+require_relative "booster_token"
 require_relative "precon_deck"
 require_relative "product"
 require_relative "product_variable_contents"
@@ -449,6 +450,24 @@ class CardDatabase
   # whole database
   def inspect
     "CardDatabase"
+  end
+
+  def booster_token(selector, finish)
+    # The token UUID index does not carry finish metadata. Do not silently
+    # invent premium versions while adding the nonfoil Unglued slots.
+    raise "Premium token sheets require finish metadata" unless finish == :nonfoil
+    @booster_tokens ||= {}
+    @booster_tokens[[selector, finish]] ||= begin
+      path = INDEX_ROOT + "token_uuids.txt"
+      matches = []
+      path.each_line.with_index do |line, index|
+        parent, set_code, number, uuid, name = line.chomp.split("\t")
+        matches << [parent, set_code, number, uuid, name, index] if "#{set_code}/#{number}" == selector
+      end
+      raise "Token #{selector} must resolve to exactly one UUID" unless matches.size == 1 && matches[0][3]&.match?(/\A[0-9a-f-]{36}\z/)
+      parent, set_code, number, uuid, name, index = matches[0]
+      BoosterToken.new(parent, set_code, number, uuid, name, finish, index)
+    end
   end
 
   private

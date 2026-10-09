@@ -1,10 +1,39 @@
-# Sheet multiplicities: https://www.lethe.xyz/mtg/collation/ugl.html
-# Marginal card weights only; sequential runs and uncommon token draws remain unresolved.
-pack:
-  basic: 1
-  common: 6
-  uncommon: 2
-  rare: 1
+# Sheet multiplicities and reconstructed uncommon run:
+# https://www.lethe.xyz/mtg/collation/ugl.html
+# Two consecutive uncommon positions, including tokens. Each of the 110 start
+# positions is equally weighted; pack-to-pack and cross-rarity sequencing is
+# not modeled. Common and rare sheets retain marginal weights.
+packs:
+  - {chance: 4, basic: 1, common: 6, rare: 1, uncommon_1: 1, uncommon_13: 1}
+  - {chance: 4, basic: 1, common: 6, rare: 1, uncommon_1: 1, token_90: 1}
+  - {chance: 4, basic: 1, common: 6, rare: 1, uncommon_2: 1, uncommon_12: 1}
+  - {chance: 4, basic: 1, common: 6, rare: 1, uncommon_2: 1, uncommon_15: 1}
+  - {chance: 4, basic: 1, common: 6, rare: 1, uncommon_3: 1, uncommon_4: 1}
+  - {chance: 4, basic: 1, common: 6, rare: 1, uncommon_3: 1, token_92: 1}
+  - {chance: 4, basic: 1, common: 6, rare: 1, uncommon_4: 1, uncommon_14: 1}
+  - {chance: 4, basic: 1, common: 6, rare: 1, uncommon_5: 1, token_92: 1}
+  - {chance: 1, basic: 1, common: 6, rare: 1, uncommon_5: 1, uncommon_22: 1}
+  - {chance: 3, basic: 1, common: 6, rare: 1, uncommon_5: 1, token_94: 1}
+  - {chance: 4, basic: 1, common: 6, rare: 1, uncommon_6: 1, uncommon_9: 1}
+  - {chance: 4, basic: 1, common: 6, rare: 1, uncommon_6: 1, uncommon_27: 1}
+  - {chance: 4, basic: 1, common: 6, rare: 1, uncommon_7: 1, uncommon_24: 1}
+  - {chance: 4, basic: 1, common: 6, rare: 1, uncommon_7: 1, uncommon_25: 1}
+  - {chance: 4, basic: 1, common: 6, rare: 1, uncommon_8: 1, uncommon_18: 1}
+  - {chance: 4, basic: 1, common: 6, rare: 1, uncommon_8: 1, uncommon_26: 1}
+  - {chance: 4, basic: 1, common: 6, rare: 1, uncommon_9: 1, token_90: 1}
+  - {chance: 4, basic: 1, common: 6, rare: 1, uncommon_11: 1, uncommon_12: 1}
+  - {chance: 4, basic: 1, common: 6, rare: 1, uncommon_11: 1, uncommon_13: 1}
+  - {chance: 4, basic: 1, common: 6, rare: 1, uncommon_14: 1, uncommon_24: 1}
+  - {chance: 4, basic: 1, common: 6, rare: 1, uncommon_15: 1, token_89: 1}
+  - {chance: 4, basic: 1, common: 6, rare: 1, uncommon_16: 1, uncommon_21: 1}
+  - {chance: 4, basic: 1, common: 6, rare: 1, uncommon_16: 1, token_91: 1}
+  - {chance: 4, basic: 1, common: 6, rare: 1, token_89: 1, uncommon_25: 1}
+  - {chance: 4, basic: 1, common: 6, rare: 1, uncommon_18: 1, uncommon_27: 1}
+  - {chance: 3, basic: 1, common: 6, rare: 1, token_93: 1, uncommon_21: 1}
+  - {chance: 3, basic: 1, common: 6, rare: 1, token_93: 1, uncommon_22: 1}
+  - {chance: 1, basic: 1, common: 6, rare: 1, uncommon_21: 1, uncommon_22: 1}
+  - {chance: 3, basic: 1, common: 6, rare: 1, uncommon_22: 1, token_94: 1}
+  - {chance: 4, basic: 1, common: 6, rare: 1, uncommon_26: 1, token_91: 1}
 sheets:
   common:
     balanced: false
@@ -23,3 +52,87 @@ sheets:
     - query: 'r:r -(name="Ashnod''s Coupon" or name="Strategy, Schmategy")'
       count: 26
       rate: 4
+  uncommon_1:
+    query: "name=\"Bronze Calendar\""
+    count: 1
+  uncommon_2:
+    query: "name=\"Censorship\""
+    count: 1
+  uncommon_3:
+    query: "name=\"Charm School\""
+    count: 1
+  uncommon_4:
+    query: "name=\"Checks and Balances\""
+    count: 1
+  uncommon_5:
+    query: "name=\"Clay Pigeon\""
+    count: 1
+  uncommon_6:
+    query: "name=\"Common Courtesy\""
+    count: 1
+  uncommon_7:
+    query: "name=\"Flock of Rabid Sheep\""
+    count: 1
+  uncommon_8:
+    query: "name=\"Gerrymandering\""
+    count: 1
+  uncommon_9:
+    query: "name=\"Get a Life\""
+    count: 1
+  token_92:
+    token: tugl/92
+    count: 1
+  uncommon_11:
+    query: "name=\"Goblin Tutor\""
+    count: 1
+  uncommon_12:
+    query: "name=\"Handcuffs\""
+    count: 1
+  uncommon_13:
+    query: "name=\"Hungry Hungry Heifer\""
+    count: 1
+  uncommon_14:
+    query: "name=\"Jumbo Imp\""
+    count: 1
+  uncommon_15:
+    query: "name=\"Lexivore\""
+    count: 1
+  uncommon_16:
+    query: "name=\"Miss Demeanor\""
+    count: 1
+  token_89:
+    token: tugl/89
+    count: 1
+  uncommon_18:
+    query: "name=\"Ricochet\""
+    count: 1
+  token_93:
+    token: tugl/93
+    count: 1
+  token_90:
+    token: tugl/90
+    count: 1
+  uncommon_21:
+    query: "name=\"Sorry\""
+    count: 1
+  uncommon_22:
+    query: "name=\"Spatula of the Ages\""
+    count: 1
+  token_94:
+    token: tugl/94
+    count: 1
+  uncommon_24:
+    query: "name=\"The Ultimate Nightmare of Wizards of the Coast\u00ae Customer Service\""
+    count: 1
+  uncommon_25:
+    query: "name=\"Urza's Contact Lenses\""
+    count: 1
+  uncommon_26:
+    query: "name=\"Urza's Science Fair Project\""
+    count: 1
+  uncommon_27:
+    query: "name=\"Volrath's Motion Sensor\""
+    count: 1
+  token_91:
+    token: tugl/91
+    count: 1

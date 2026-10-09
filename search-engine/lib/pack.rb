@@ -1,4 +1,4 @@
-# Ignoring marketing/token cards completely
+# Explicit token sheets participate in the physical pack count; ignored inserts do not.
 class Pack
   def initialize(sheets)
     @sheets = sheets

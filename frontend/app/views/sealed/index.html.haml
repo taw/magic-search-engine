@@ -31,3 +31,11 @@
         .col-4.col-sm-3.card_picture_cell
           = link_to_card(card.main_front) do
             = render 'card/picture', card: card, searchable: true
+
+- if @tokens.present?
+  %h2 Tokens
+  .row.multicard_row
+    - @tokens.each do |card, count|
+      - count.times do
+        .col-4.col-sm-3.card_picture_cell
+          = render "card/booster_token", card: card

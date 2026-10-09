@@ -1,0 +1,8 @@
+.card_picture_container
+  .picture_missing
+    = "#{card.name} Token"
+    %br
+    = "#{card.set_code.upcase}:#{card.number}"
+    - if card.foil
+      %br
+      = card.finish.to_s.capitalize
