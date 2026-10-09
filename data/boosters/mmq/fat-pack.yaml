@@ -1,5 +1,11 @@
-# Data from https://mtg.wiki/wiki/Bundle
+# Two loose foils: Warmonger and a basic land (Forest in this opening).
+# https://www.youtube.com/watch?v=7ZySLubMU4M&t=184s (3:04-3:12)
 name: "{set_name} Fat Pack Promotional Cards"
 pack:
   foil_basic: 1
-  foil_common: 1
+  warmonger: 1
+sheets:
+  warmonger:
+    query: "Warmonger"
+    foil: true
+    count: 1
