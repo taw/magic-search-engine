@@ -50,12 +50,8 @@ describe Deck do
     if known_illegal_decks.include?([deck.set_code, deck.name])
       check.should(eq(false), "#{deck.set_code} #{deck.name} should be #{deck.format} illegal (as known exception)")
     else
-      check.should(eq(true), "#{deck.set_code} #{deck.name} should be #{deck.format} legal")
-      unless check
-        illegal_cards(deck).each do |card|
-          puts "* #{card}"
-        end
-      end
+      issues = format_for(deck).deck_issues(deck)
+      check.should(eq(true), "#{deck.set_code} #{deck.name} should be #{deck.format} legal:\n#{issues.join("\n")}")
     end
   end
 
@@ -71,11 +67,24 @@ describe Deck do
 
   def format_for(deck)
     date = deck.release_date
-    # Unplanned covid related release mess, IKO card became legal for Commander one week before their IKO printings
-    # https://magic.wizards.com/en/news/feature/ikoria-lair-behemoths-and-commander-2020-edition-release-notes-2020-04-10
-    date = Date.parse("2020-04-24") if deck.set_code == "c20"
-    # Intentional pre-print of Amonkhet cards two weeks early
-    date = Date.parse("2017-04-28") if deck.set_code == "w17"
+    case deck.set_code
+    when "c20"
+      # Unplanned covid related release mess, IKO card became legal for Commander one week before their IKO printings
+      # https://magic.wizards.com/en/news/feature/ikoria-lair-behemoths-and-commander-2020-edition-release-notes-2020-04-10
+      date = Date.parse("2020-04-24")
+    when "w17"
+      # Intentional pre-print of Amonkhet cards two weeks early
+      date = Date.parse("2017-04-28")
+    # WC* Standard should be when tournament happened, by the time decks hit retails, standard would have already rotated
+    when "wc01"
+      date = Date.parse("2001-08-08")
+    when "wc02"
+      date = Date.parse("2002-08-14")
+    when "wc03"
+      date = Date.parse("2003-08-06")
+    when "wc04"
+      date = Date.parse("2004-09-01")
+    end
 
     case deck.format
     when "commander"
