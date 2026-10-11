@@ -59,7 +59,7 @@ describe "Set Codes" do
     alchemy_sets = db.sets.values.select{|set| set.types.include?("alchemy") and set.code.start_with?("y")}
     listed = CardDatabase::ARENA_ALCHEMY_YEARS.values.flatten
     listed.tally.select{|_, count| count > 1}.should eq({})
-    listed.sort.should eq(alchemy_sets.map(&:code).sort)
+    listed.sort.should match_array(alchemy_sets.map(&:code).sort)
   end
 
   # An Arena year is not a calendar year - Alchemy: Innistrad is Y22 and came

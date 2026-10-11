@@ -101,12 +101,14 @@ class CardDatabase
   # out, and set_codes_spec pins what does hold: the year is the calendar year
   # of the last Alchemy set in it, years do not interleave, and every Alchemy
   # set is listed exactly once - so a new one fails the spec until it is added.
+  #
+  # TODO: figure out a way to make this update automatically from Arena data
   ARENA_ALCHEMY_YEARS = {
     "y22" => %W[ymid yneo ysnc],
     "y23" => %W[ydmu ybro yone],
     "y24" => %W[ywoe ylci ymkm yotj],
     "y25" => %W[yblb ydsk ydft ytdm yeoe],
-    "y26" => %W[yecl ysos],
+    "y26" => %W[yecl ysos yfra],
   }.freeze
 
   def initialize

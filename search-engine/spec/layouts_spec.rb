@@ -44,7 +44,7 @@ describe "Card layouts" do
     assert_search_equal "layout:leveler -e:unk", 'o:/level up \{/ -e:unk'
     assert_search_equal "layout:meld", "// (// o:meld)"
     assert_search_equal "layout:saga", "t:saga is:sfc" # DFC sagas have different layout
-    assert_search_equal "layout:adventure", "t:adventure or (// t:adventure) or t:omen or (// t:omen)"
+    assert_search_equal "layout:adventure", "t:adventure or (// t:adventure) or t:omen or (// t:omen) or t:vengeance or (// t:vengeance)"
     # Modal DFC backs can be cast or played, so they have a mana cost, or are lands the front doesn't transform into
     # Marvel MDFCs can also transform, so o:transform alone doesn't separate them from transforming DFCs
     # mb2 Plant a Sapling is a transforming playtest card with a mana cost on the back
