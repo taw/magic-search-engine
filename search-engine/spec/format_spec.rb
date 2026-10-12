@@ -454,7 +454,7 @@ describe "Formats" do
   end
 
   it "restricted:*" do
-    assert_search_equal "restricted:*", "restricted:vintage or restricted:duel or restricted:unsets or restricted:historic or restricted:timeless or restricted:alchemy or restricted:commander"
+    assert_search_equal "restricted:*", "restricted:vintage or restricted:duel or restricted:unsets or restricted:historic or restricted:timeless or restricted:alchemy or restricted:commander or restricted:\"Competitive Brawl\""
   end
 
   it "legal:*" do

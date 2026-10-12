@@ -54,21 +54,33 @@ describe "Formats - Competitive Brawl" do
 
   let(:today) { Date.today }
 
-  it "banned list is ten commanders" do
+  it "has one card banned and twelve cards banned as commander" do
     banned = db.cards.each_value.select{|card| Format["competitive brawl"].new.legality(card) == "banned" }
-    banned.map(&:name).sort.should eq([
+    banned.map(&:name).should eq(["Lutri, the Spellchaser"])
+
+    commander_banned = db.cards.each_value.select{|card| Format["competitive brawl"].new.legality(card) == "banned_as_commander" }
+    commander_banned.map(&:name).sort.should eq([
       "Ajani, Nacatl Pariah",
-      "Lutri, the Spellchaser",
+      "Light-Paws, Emperor's Voice",
       "Nadu, Winged Wisdom",
       "Oko, Thief of Crowns",
       "Old Stickfingers",
       "Ragavan, Nimble Pilferer",
       "Rusko, Clockmaker",
+      "Spider-Man 2099",
       "Tajic, Legion's Valor",
       "Tamiyo, Inquisitive Student",
       "Wrenn and Six",
+      "Yuriko, the Tiger's Shadow",
     ])
-    banned.each{|card| card.brawler?.should eq(true) } # they're all commander bans
+    commander_banned.each{|card| card.brawler?.should eq(true) }
+  end
+
+  it "keeps the launch bans in history" do
+    assert_legality "competitive brawl", Date.parse("2026-10-11"), "Ajani, Nacatl Pariah", "banned"
+    assert_legality "competitive brawl", Date.parse("2026-10-12"), "Ajani, Nacatl Pariah", "banned_as_commander"
+    assert_legality "competitive brawl", Date.parse("2026-10-11"), "Yuriko, the Tiger's Shadow", "legal"
+    assert_legality "competitive brawl", Date.parse("2026-10-12"), "Yuriko, the Tiger's Shadow", "banned_as_commander"
   end
 
   # The two lists are built on opposite principles, neither is a subset of the other

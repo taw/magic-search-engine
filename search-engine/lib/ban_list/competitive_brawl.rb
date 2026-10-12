@@ -1,8 +1,7 @@
 BanList.for_format("competitive brawl") do
-  # The format launched with this list and has not changed since, and everything on it
-  # was already true on day one, so it's all one undated block.
+  # The format launched with this list, and its commander bans changed on 2026-10-12.
   #
-  # The ten bans are not Brawl's list plus or minus anything - Competitive Brawl bans
+  # The bans are not Brawl's list plus or minus anything - Competitive Brawl bans
   # commanders only, and starts from "almost every card being legal to include in the
   # 99", so everything Brawl bans in the 99 is legal here. Nadu was the rebalanced
   # version at launch, as everything in Brawl was - "Brawl: Our Plans" spells it
@@ -19,8 +18,8 @@ BanList.for_format("competitive brawl") do
   # through YSOS, shipped one long before this format did.
   format_start(
     "https://magic.wizards.com/en/news/mtg-arena/introducing-ranked-brawl",
-    "Ajani, Nacatl Pariah" => "banned",
     "Lutri, the Spellchaser" => "banned",
+    "Ajani, Nacatl Pariah" => "banned",
     "Nadu, Winged Wisdom" => "banned",
     "Oko, Thief of Crowns" => "banned",
     "Old Stickfingers" => "banned",
@@ -153,5 +152,23 @@ BanList.for_format("competitive brawl") do
     "Wyll of the Elder Pact" => "specialized",
     "Wyll of the Fey Pact" => "specialized",
     "Wyll of the Fiend Pact" => "specialized",
+  )
+
+  # All commander bans are now commander-only. Lutri remains fully banned.
+  change(
+    "2026-10-12",
+    "https://magic.wizards.com/en/news/announcements/banned-and-restricted-october-12-2026",
+    "Ajani, Nacatl Pariah" => "banned_as_commander",
+    "Light-Paws, Emperor's Voice" => "banned_as_commander",
+    "Nadu, Winged Wisdom" => "banned_as_commander",
+    "Oko, Thief of Crowns" => "banned_as_commander",
+    "Old Stickfingers" => "banned_as_commander",
+    "Ragavan, Nimble Pilferer" => "banned_as_commander",
+    "Rusko, Clockmaker" => "banned_as_commander",
+    "Spider-Man 2099" => "banned_as_commander",
+    "Tajic, Legion's Valor" => "banned_as_commander",
+    "Tamiyo, Inquisitive Student" => "banned_as_commander",
+    "Wrenn and Six" => "banned_as_commander",
+    "Yuriko, the Tiger's Shadow" => "banned_as_commander",
   )
 end
