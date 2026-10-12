@@ -36,22 +36,22 @@ class GenerateSetRedemptionDecklists
   end
 
   def regular_query
-    DB.search("e:#{@set_code} is:baseset game:mtgo #{@query} is:nonfoil").printings
+    DB.search("e:#{@set_code} is:baseset game:mtgo #{@query} is:nonfoil is:mainfront").printings
   end
 
   def foil_query
-    DB.search("e:#{@set_code} is:baseset game:mtgo #{@query} is:foil").printings
+    DB.search("e:#{@set_code} is:baseset game:mtgo #{@query} is:foil is:mainfront").printings.sort
   end
 
   def regular_number_range
     set.printings.select{
-      @numbers.include?(_1.number.to_i) and _1.mtgo? and _1.has_finish?(:nonfoil) and !_1.variant_foreign and !_1.variant_misprint
+      @numbers.include?(_1.number.to_i) and _1.mtgo? and _1.has_finish?(:nonfoil) and !_1.variant_foreign and !_1.variant_misprint and _1.main_front?
     }
   end
 
   def foil_number_range
     set.printings.select{
-      @numbers.include?(_1.number.to_i) and _1.mtgo? and _1.any_foil? and !_1.variant_foreign and !_1.variant_misprint
+      @numbers.include?(_1.number.to_i) and _1.mtgo? and _1.any_foil? and !_1.variant_foreign and !_1.variant_misprint and _1.main_front?
     }
   end
 
