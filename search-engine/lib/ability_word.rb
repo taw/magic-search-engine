@@ -7,6 +7,7 @@ module AbilityWord
     "Aberrant Tinkering",
     "Abraxas",
     "Acid Breath",
+    "Actualize",
     "Adamant",
     "Addendum",
     "Advanced Species",

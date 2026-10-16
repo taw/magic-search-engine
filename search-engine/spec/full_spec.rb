@@ -44,6 +44,7 @@ describe "Full Database Test" do
       "Paradox Shaper", "Omit Variables (Prepared a)",
       "Pollen-Shield Hare", "Hare Raising",
       "Rimrock Knight", "Boulder Rush",
+      "Rootha, Ardent Artisan", "Next Iteration",
       "Shepherd of the Flock", "Usher to Safety",
       "Smelt (Playtest)", "Herd", "Saw (Playtest)",
       "Smitten Swordmaster", "Curry Favor",
