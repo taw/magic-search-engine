@@ -17,7 +17,9 @@ Search engine for Magic: The Gathering cards, running at https://mtg.wtf/.
 
 ```sh
 rake spec                                  # both suites (search-engine + frontend)
+# Gemfiles live in each app directory; run Bundler from the relevant directory.
 (cd search-engine; bundle exec rspec)      # library only
+(cd frontend; bundle exec rspec)           # frontend only
 rake index                                 # rebuild index/ (indexer + booster indexer)
 rake update                                # full data update
 ./search-engine/bin/find_cards -v "query"  # search from CLI
