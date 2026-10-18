@@ -85,6 +85,7 @@ describe "Regexp" do
       "Spinnerette, Arachnobat",
       "Sunken Hollow",
       "Suppressor Skyguard",
+      "Titanic Ultimatum",
       "Voyager Glidecar"
 
     assert_search_equal 'ft:/ajani/', 'FT:/ajani/'
