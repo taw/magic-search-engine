@@ -6,6 +6,7 @@ RSpec.describe SettingsController, type: :controller do
   it "index" do
     get "index"
     assert_response 200
+    assert_equal "Settings - #{APP_NAME}", html_document.title
     assert_select %[input[name="default_view"]]
   end
 
