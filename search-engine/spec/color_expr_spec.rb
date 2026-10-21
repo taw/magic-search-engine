@@ -54,6 +54,7 @@ describe "Color Expr Test" do
     assert_search_equal "c<3", "c=2 or c=1 or c=0"
     assert_search_results "c=w ci=5",
       "Bringer of the White Dawn",
+      "Captain Benjamin Sisko",
       "General Tazri",
       "Kenrith, the Returned King",
       "Kyodai, Soul of Kamigawa",

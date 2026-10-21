@@ -85,6 +85,7 @@ describe "Regexp" do
       "Spinnerette, Arachnobat",
       "Sunken Hollow",
       "Suppressor Skyguard",
+      "The Holodeck",
       "Titanic Ultimatum",
       "Voyager Glidecar"
 
