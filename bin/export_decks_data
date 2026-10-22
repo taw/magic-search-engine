@@ -25,14 +25,17 @@ class ExportDecksData
 
   def load_token_uuids
     @token_uuids = {}
+    @token_names = {}
     @token_uuids_path.each_line do |line|
-      _, s, n, u, _ = line.chomp.split("\t")
-      @token_uuids[s] ||= {}
-      if @token_uuids[s][n]
-        # not supported yet
-        @token_uuids[s][n] = :double_sided_token
+      _, token_set_code, number, uuid, name = line.chomp.split("\t")
+      @token_uuids[token_set_code] ||= {}
+      @token_names[token_set_code] ||= []
+      @token_names[token_set_code] << [name, number]
+      if @token_uuids[token_set_code][number]
+        # mtgjson changed how it encodes them
+        raise "Old style double sided token #{token_set_code} #{number} #{name}, it shouldn't happen anymore"
       else
-        @token_uuids[s][n] = u
+        @token_uuids[token_set_code][number] = uuid
       end
     end
   end
@@ -41,9 +44,23 @@ class ExportDecksData
     @uuids.fetch(set_code).fetch(number)
   end
 
-  def token_uuid_for(set_code, number)
-    @token_uuids.fetch(set_code&.downcase).fetch(number)
+  def token_uuid_for(name, set_code, number)
+    set_code = set_code&.downcase
+    @token_uuids.fetch(set_code).fetch(number)
   rescue
+    if set_code.nil?
+      message = "Set was not specified"
+    elsif @token_names[set_code].nil?
+      message = "Set has no token information"
+    else
+      options = @token_names[set_code].select{|n, | n == name}
+      if options&.empty?
+        message = "Set only has tokens: #{@token_names[set_code].map(&:first).uniq.sort.join(", ")}"
+      else
+        message = "Options are: #{options.map(&:last).sort.join(", ")}"
+      end
+    end
+    warn "Could not find token #{name} [#{set_code || "unknown"}:#{number || "unknown"}]. #{message}"
     "not_in_mtgjson"
   end
 
@@ -63,8 +80,8 @@ class ExportDecksData
   def export_token(count, name, set_code, number, foil)
     # For double sided tokens, name keeps both sides, set and number are split into front and back
     if set_code&.include?(" // ")
-      (_, set_code, number), (_, back_set_code, back_number) = Deck.token_sides(name, set_code, number)
-      back_mtgjson_uuid = token_uuid_for(back_set_code, back_number)
+      (name, set_code, number), (back_name, back_set_code, back_number) = Deck.token_sides(name, set_code, number)
+      back_mtgjson_uuid = token_uuid_for(back_name, back_set_code, back_number)
     end
     {
       name: name,
@@ -74,7 +91,7 @@ class ExportDecksData
       back_number: back_number,
       foil: foil,
       count: count,
-      mtgjson_uuid: token_uuid_for(set_code, number),
+      mtgjson_uuid: token_uuid_for(name, set_code, number),
       back_mtgjson_uuid: back_mtgjson_uuid,
     }.compact
   end
