@@ -106,7 +106,7 @@ class PatchMtgjsonFields < Patch
     card["mtgo"] = true if card["availability"]&.delete("mtgo")
 
     # This logic changed at some point, I like old logic better
-    if card["oversized"] or NONTRADITIONAL_SETS.include?(card["setCode"]) or card["border"] == "gold"
+    if card["oversized"] or NONTRADITIONAL_SETS.include?(card["setCode"]) or card["border"] == "gold" or card["promo_types"]&.include?("thick")
       card["nontraditional"] = true
       card.delete("arena")
       card.delete("paper")
