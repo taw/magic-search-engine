@@ -33,4 +33,10 @@ describe Deck do
       oversized_cards.map(&:name).should match_array(actual_display_commanders)
     end
   end
+
+  it "does not mark display commanders as paper legal" do
+    display_commanders = db.decks.flat_map{|deck| deck.section("Display Commander") }.map(&:last)
+
+    display_commanders.select(&:paper?).should be_empty
+  end
 end
