@@ -43,7 +43,9 @@ describe "Modal cards" do
     # cards that talk about modes without having any
     assert_search_results %q[fo:/\bmodes\b/ -is:modal],
       "Chira, All In",
+      "Elim Garak, Simple Tailor",
       "Far Out",
+      "Obsidian Order Operative",
       "Seven of Nine",
       "Your Wish Is My Command"
   end
