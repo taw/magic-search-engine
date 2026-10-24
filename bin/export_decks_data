@@ -84,15 +84,16 @@ class ExportDecksData
       back_mtgjson_uuid = token_uuid_for(back_name, back_set_code, back_number)
     end
     {
-      name: name,
-      set_code: set_code || "unknown",
-      number: number || "unknown",
-      back_set_code: back_set_code,
-      back_number: back_number,
-      foil: foil,
-      count: count,
-      mtgjson_uuid: token_uuid_for(name, set_code, number),
       back_mtgjson_uuid: back_mtgjson_uuid,
+      back_name: back_name,
+      back_number: back_number,
+      back_set_code: back_set_code,
+      count: count,
+      foil: foil,
+      mtgjson_uuid: token_uuid_for(name, set_code, number),
+      name: name,
+      number: number || "unknown",
+      set_code: set_code || "unknown",
     }.compact
   end
 
