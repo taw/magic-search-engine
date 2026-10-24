@@ -71,6 +71,12 @@ class PatchMtgjsonBugs < Patch
         card.delete("isOnlineOnly")
       end
 
+      # Flametongue Kavu was never added to Arena; this Planeshift printing
+      # has no mtgArenaId despite mtgjson marking it as available there.
+      if set_code == "PLS" and card["name"] == "Flametongue Kavu"
+        card["availability"].delete("arena")
+      end
+
       # Numbering conflict in mtgjson data
       # They have RZ15 (which we turn into RZ15a/RZ15b) and RZ15b
       # We need to move that RZ15b away to something else
