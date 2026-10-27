@@ -559,6 +559,7 @@ module AbilityWord
     "Tragic Backstory",
     "Trance",
     "Transdimensional Scout",
+    "Transfer Symbiont",
     "Translocation Protocols",
     "Trapped Entry",
     "Treasure Hunter",
