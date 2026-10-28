@@ -385,6 +385,7 @@ module AbilityWord
     "Pheromone Trail",
     "Photographic Reflexes",
     "Phyrexian Victory",
+    "Picard Maneuver",
     "Plasma Incinerator",
     "Play Arcanum",
     "Poison Breath",
