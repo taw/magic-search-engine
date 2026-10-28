@@ -55,8 +55,8 @@ class String
   # * everything is both upper and lower case,
   #   even if only one case is actually in print
   #   (except Turkish ı)
-  ACCENTS_FROM = "ÀÁÂÄẤÃĀàáâäãấãāĆČÇćčçÈËÊÉĖèéêëēėǵÍÏĪÎíïīîıŁłÑñńÓÖŌØõöóøōÛÜÚúûüŠšÝýŻżˣ’\u2212"
-  ACCENTS_TO   = "AAAAAAAaaaaaaaaCCCcccEEEEEeeeeeegIIIIiiiiiLlNnnOOOOoooooUUUuuuSsYyZzx'-"
+  ACCENTS_FROM = "ÀÁÂÄẤÃĀàáâäãấãāĆČÇćčçÈËÊÉĖèéêëēėǵÍÏĪÎíïīîıŁłÑñńÓÖŌÕØõöóøõōÛÜÚúûüŠšÝýŻżˣ’\u2212"
+  ACCENTS_TO   = "AAAAAAAaaaaaaaaCCCcccEEEEEeeeeeegIIIIiiiiiLlNnnOOOOOooooooUUUuuuSsYyZzx'-"
 
   # Almost everything that comes through here is plain ASCII, and comes back out
   # of gsub and tr byte for byte identical, having allocated two throwaway copies
