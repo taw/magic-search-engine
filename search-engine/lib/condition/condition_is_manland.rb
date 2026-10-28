@@ -44,6 +44,7 @@ class ConditionIsManland < ConditionNickname
       "restless vinestalk",
       "rising chicane",
       "shambling vent",
+      "shore leave planet",
       "soulstone sanctuary",
       "the goblin sparring grounds",
       "spawning pool",

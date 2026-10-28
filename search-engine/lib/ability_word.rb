@@ -534,6 +534,7 @@ module AbilityWord
     "Tempting offer",
     "Tempting Offer",
     "Terror from the Deep",
+    "That Is Irrelevant",
     "The Allagan Eye",
     "The Betrayer",
     "The Last Centurion",

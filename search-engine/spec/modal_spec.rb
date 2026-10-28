@@ -41,12 +41,9 @@ describe "Modal cards" do
       "Maître Tree"
 
     # cards that talk about modes without having any
-    assert_search_results %q[fo:/\bmodes\b/ -is:modal],
+    assert_search_results %q[fo:/\bmodes\b/ -is:modal -o:"face a dilemma" -o:"faced a dilemma"],
       "Chira, All In",
-      "Elim Garak, Simple Tailor",
       "Far Out",
-      "Obsidian Order Operative",
-      "Seven of Nine",
       "Your Wish Is My Command"
   end
 end

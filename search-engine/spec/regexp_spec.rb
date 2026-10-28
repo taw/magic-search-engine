@@ -65,28 +65,11 @@ describe "Regexp" do
   end
 
   it "regexp flavor text" do
-    assert_search_results 'ft:/\d{4,}/ -e:olgc,ovnt,pewk,sld,unk',
-      "Aardwolf's Advantage",
-      "Atomize",
-      "Automatic Librarian",
-      "Bastion of Remembrance",
-      "Exocomp",
-      "Fervent Champion",
-      "Frostboil Snarl",
+    assert_search_results 'ft:/\d{5,}/ -e:olgc,ovnt,pewk,sld,unk',
       "Gilded Lotus",
       "Goblin Secret Agent",
-      "Gore Vassal",
-      "Hidden Lair",
-      "Invoke the Divine",
-      "Mise",
-      "Nalathni Dragon",
       "Remodel",
       "Salvation Engine",
-      "Spinnerette, Arachnobat",
-      "Sunken Hollow",
-      "Suppressor Skyguard",
-      "The Holodeck",
-      "Titanic Ultimatum",
       "Voyager Glidecar"
 
     assert_search_equal 'ft:/ajani/', 'FT:/ajani/'

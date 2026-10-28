@@ -276,6 +276,7 @@ describe "Card nicknames" do
       "Restless Vinestalk",
       "Rising Chicane",
       "Shambling Vent",
+      "Shore Leave Planet",
       "Soulstone Sanctuary",
       "Spawning Pool",
       "Stalking Stones",
