@@ -104,6 +104,7 @@ describe "Deck types" do
       ["commander", "Bundle Land Pack"],
       ["promo", "Bundle Land Pack"], # P15A
       ["core", "Booster Battle Pack Packet"], # M12, M13
+      ["deck", "Addon"],
     ]
 
     db.sets.each do |set_code, set|

@@ -61,6 +61,7 @@ describe Deck do
       set.decks.each do |deck|
         # New weird product, so far the only such case
         next if deck.type == "Box Set" and set.code == "ltc"
+        next if deck.type == "Addon"
         deck.release_date.should eq(set.release_date), "#{deck.name} for #{set.name}"
       end
     end
@@ -85,6 +86,7 @@ describe Deck do
       else
         expected = [set.code, *PRECON_SET_PARENTS[set.code]]
         expected << "o#{set.code}" if db.sets["o#{set.code}"]
+        expected << "pmei" if set.code == "fic" # Addons
         sets_found.should match_array(expected), "#{set.code} #{set.name}"
       end
     end
