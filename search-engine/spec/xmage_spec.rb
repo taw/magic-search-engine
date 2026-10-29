@@ -11,9 +11,6 @@ describe "XMage" do
       "Spectral Shift",
       "Swirl the Mists",
       "Trait Doctoring",
-      # ACR, unimplemented since the set's 2024 release, open in https://github.com/magefree/mage/issues/11854
-      "Apple of Eden, Isu Relic",
-      "Auditore Ambush",
       # other
       "Heirloom Epic",
       "Lorehold, the Historian",
