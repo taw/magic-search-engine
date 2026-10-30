@@ -550,6 +550,7 @@ describe "Card nicknames" do
       "Runeclaw Bear"
     assert_search_results "is:bear -t:creature",
       "High-Speed Hoverbike",
+      "Oberth-Class Starship",
       "Shadowed Caravel",
       "Soul Shredder",
       "Wurmwall Sweeper"

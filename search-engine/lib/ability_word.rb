@@ -82,6 +82,7 @@ module AbilityWord
     "Cheer",
     "Chef's Knife",
     "Children of the Cult",
+    "ChoH'a'",
     "Chroma",
     "Circle of Death",
     "Circus of the Last Days",
@@ -364,6 +365,7 @@ module AbilityWord
     "Negative",
     "Neurotraumal Rod",
     "No Mercy",
+    "No",
     "Nosh",
     "Oblivion",
     "Old Companion",
@@ -615,6 +617,7 @@ module AbilityWord
     "Wraith Form",
     "Xenos Cunning",
     "Yawning Portal",
+    "Yes",
     "You can never leave",
     "Zantetsuken",
   ].sort
