@@ -107,6 +107,22 @@ class PatchMtgjsonBugs < Patch
         end
       end
     end
+
+    # Fix product names to use English
+    product_renames = {
+      "Secret Lair Drop Mahō Gakuin Seishun Hakusho — 魔法学院青春白書" => "Secret Lair Drop Mahō Gakuin Seishun Hakusho",
+      "Secret Lair Drop Mahō Gakuin Seishun Hakusho — 魔法学院青春白書 Foil" => "Secret Lair Drop Mahō Gakuin Seishun Hakusho Foil",
+    }
+    @products.each do |product|
+      name = product["name"]
+      next unless name =~ /\p{Han}/
+
+      if product_renames[]
+        product["name"] = product_renames[name]
+      else
+        warn "Don't know how to normalize product #{name} to English"
+      end
+    end
   end
 
   private
