@@ -117,7 +117,7 @@ class PatchMtgjsonBugs < Patch
       name = product["name"]
       next unless name =~ /\p{Han}/
 
-      if product_renames[]
+      if product_renames[name]
         product["name"] = product_renames[name]
       else
         warn "Don't know how to normalize product #{name} to English"
