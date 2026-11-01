@@ -1,0 +1,205 @@
+# Magic: The Gathering | Star Trek
+# Play Booster
+# Sources:
+# - https://magic.wizards.com/en/news/feature/collecting-star-trek
+# - https://scryfall.com/sets/trk
+# - https://scryfall.com/sets/sds
+
+# Preview-season mtgjson data has almost no frame/border tags, so Booster Fun sheets use collector number
+# ranges. Its baseSetSize (557) is patched to 306 in the indexer, so `query` means the draftable set 1-306.
+
+pack:
+  # "In 1 out of 25 Play Boosters, a Stardates card will replace a common."
+  common_stardates:
+  - common: 7
+    chance: 24
+  - common: 6
+    stardates: 1
+    chance: 1
+  uncommon: 3
+  wildcard: 1
+  rare_mythic: 1
+  foil: 1
+  land:
+  - non_foil_land: 1
+    chance: 80
+  - foil_land: 1
+    chance: 20
+
+queries:
+  dual_land: "e:{set} number:275,277,280,281,283,288,291,293,294,305" # Common Planet dual lands
+  klingon: "e:{set} number:426-435" # Klingon frame (1C, 6U, 3R); the 436-445 Klingon script copies are Collector-only
+  # Borderless lands 332-337, scenes 338-362, LCARS 363-391, LCARS shock lands 392-401, classic Enterprise 402-425,
+  # Klingon frame 426-435. Excludes Klingon script, extended art and all surge foils (Collector-only).
+  boosterfun: "e:{set} number:332-435"
+  classic: "e:{set} number:402-425" # Classic Enterprise (5U, 13R, 6M)
+  away_team_land: "e:{set} number:307-311" # Full-art away team basic lands
+  holodeck_land: "e:{set} number:312-316" # Full-art holodeck basic lands
+  basic_land: "e:{set} number:317-326" # Default frame basic lands
+
+sheets:
+  # 81 commons (80 spells + Unexplored Territory) plus the Klingon frame A Good Day to Die at 1/3 weight:
+  # 7 slots x 1/243 = 2.9% per pack, matching the article.
+  common:
+    any:
+    - rawquery: "{klingon} r:c"
+      rate: 1
+      count: 1
+    - query: "r:c alt:({klingon})"
+      rate: 2
+      count: 1
+    - query: "r:c -alt:({klingon}) -{dual_land}"
+      rate: 3
+      count: 80
+
+  # Every uncommon weighs 6. A card with Booster Fun puts 2 of it (1/3) on its Booster Fun printings, split
+  # evenly when it has two (Command Subadjunct, Resistance Is Futile, Locutus: scene + LCARS; Worf, Honor-Bound
+  # Warrior: LCARS + Klingon). Per pack (3 slots): 1/110 per card with Booster Fun, so scene 8.5/110 = 7.7%,
+  # LCARS 5/110 = 4.5%, classic 5/110 = 4.5%, Klingon 5.5/110 = 5.0% (article: 7.7 / 4.6 / 4.6 / 5).
+  uncommon:
+    any:
+    - rawquery: "{boosterfun} r:u prints=1:{boosterfun}"
+      rate: 2
+      count: 20
+    - rawquery: "{boosterfun} r:u prints=2:{boosterfun}"
+      rate: 1
+      count: 8
+    - query: "r:u alt:({boosterfun})"
+      rate: 4
+      count: 24
+    - query: "r:u -alt:({boosterfun})"
+      rate: 6
+      count: 86
+
+  # The article lists no classic Enterprise uncommons in the wildcard or foil slots, so this variant drops them
+  # and gives their 5 uncommons (all with no other Booster Fun version) full weight on the regular printing.
+  uncommon_no_classic:
+    any:
+    - rawquery: "{boosterfun} -{classic} r:u prints=1:{boosterfun}"
+      rate: 2
+      count: 15
+    - rawquery: "{boosterfun} r:u prints=2:{boosterfun}"
+      rate: 1
+      count: 8
+    - query: "r:u alt:({boosterfun} -{classic})"
+      rate: 4
+      count: 19
+    - query: "r:u -alt:({boosterfun} -{classic})"
+      rate: 6
+      count: 91
+
+  # Same fold as uncommons with a 1/8 Booster Fun share: every card weighs 16, a card with Booster Fun puts 2
+  # on its Booster Fun printings (1 each when it has two). Mythics at half weight through rare_mythic.
+  # Per pack: main R 80.1%, M 12.4%; per rare with Booster Fun 0.135%, so LCARS 13.5 cards = 1.8%,
+  # classic 11 = 1.5%, LCARS shock 10 = 1.4%, scene 5.5 = 0.7%, borderless land 4.5 = 0.6%, Klingon 2.5 = 0.3%
+  # (article: 80.1 / 12.4 / 1.8 / 1.5 / 1.4 / 1 / 1 / <1; all mythic Booster Fun <1%).
+  rare:
+    any:
+    - rawquery: "{boosterfun} r:r prints=1:{boosterfun}"
+      rate: 2
+      count: 41
+    - rawquery: "{boosterfun} r:r prints=2:{boosterfun}"
+      rate: 1
+      count: 12
+    - query: "r:r alt:({boosterfun})"
+      rate: 14
+      count: 47
+    - query: "r:r -alt:({boosterfun})"
+      rate: 16
+      count: 33
+
+  mythic:
+    any:
+    - rawquery: "{boosterfun} r:m prints=1:{boosterfun}"
+      rate: 2
+      count: 12
+    - rawquery: "{boosterfun} r:m prints=2:{boosterfun}"
+      rate: 1
+      count: 10
+    - query: "r:m alt:({boosterfun})"
+      rate: 14
+      count: 17
+    - query: "r:m -alt:({boosterfun})"
+      rate: 16
+      count: 8
+
+  rare_mythic:
+    any:
+    - use: rare
+      chance: 80 * 2
+    - use: mythic
+      chance: 25 * 1
+
+  # Each rarity's chance is the article's main-set % divided by its sheet's regular fraction, so the
+  # Booster Fun printings ride along at their folded weight:
+  # common 20.8% / (242/243), uncommon 54.1% / (622/660), rare+mythic (16.7 + 2.6)% / 0.925.
+  # Result: Klingon C 0.09%; scene U 1.5%, LCARS U 0.9%, Klingon U 1.0%; every R/M Booster Fun < 0.4%
+  # (article: <1 / 1.5 / 1 / 1 / all <1).
+  wildcard:
+    any:
+    - use: common
+      chance: 2089
+    - use: uncommon_no_classic
+      chance: 5741
+    - use: rare_mythic
+      chance: 2086
+
+  # The foil slot is not folded: the article's numbers fit a weight per printing, regular C:U:R:M = 16:8:2:1
+  # with every Booster Fun printing at half its rarity's weight, cards with two versions not split.
+  # Gives main C 51.3 / U 34.9 / R 6.3 / M 1.0%, scene U 1.6%, LCARS U 1.1%, Klingon U 0.95%, everything
+  # else < 0.6% (article: 51.2 / 34.7 / 6.3 / 1 / 1.6 / 1.1 / 1 / all <1). No classic Enterprise uncommons,
+  # as in the article. Folding instead would put scene U at 0.95%.
+  foil:
+    foil: true
+    any:
+    - query: "r:c -{dual_land}"
+      rate: 32
+      count: 81
+    - rawquery: "{boosterfun} r:c" # Klingon frame A Good Day to Die
+      rate: 16
+      count: 1
+    - query: "r:u"
+      rate: 16
+      count: 110
+    - rawquery: "{boosterfun} -{classic} r:u"
+      rate: 8
+      count: 23
+    - query: "r:r"
+      rate: 4
+      count: 80
+    - rawquery: "{boosterfun} r:r"
+      rate: 2
+      count: 53
+    - query: "r:m"
+      rate: 2
+      count: 25
+    - rawquery: "{boosterfun} r:m"
+      rate: 1
+      count: 22
+
+  # Per card dual 3 : basic 2 : holodeck 1 : away team 1 = 30:20:5:5, times 80/20 non-foil/foil:
+  # dual 40/10%, basic 26.7/6.7%, holodeck 6.7/1.7%, away team 6.7/1.7% (exactly the article).
+  # The article's away team section says traditional foil away team basics are only in Collector Boosters and
+  # Beam Me Up Bundles, but its Play Booster land slot lists them at 1.7% foil; this follows the slot list.
+  non_foil_land:
+    any:
+    - query: "{dual_land}"
+      rate: 3
+      count: 10
+    - rawquery: "{basic_land}"
+      rate: 2
+      count: 10
+    - rawquery: "{holodeck_land}"
+      rate: 1
+      count: 5
+    - rawquery: "{away_team_land}"
+      rate: 1
+      count: 5
+
+  foil_land:
+    foil: true
+    use: non_foil_land
+
+  stardates:
+    rawquery: "e:sds"
+    count: 30
