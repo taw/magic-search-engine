@@ -1,0 +1,201 @@
+# Magic: The Gathering | Star Trek
+# Collector Booster
+# Sources:
+# - https://magic.wizards.com/en/news/feature/collecting-star-trek
+# - https://scryfall.com/sets/trk
+# - https://scryfall.com/sets/trc
+# - https://scryfall.com/sets/sds
+#
+# The art card / token slot is not modelled.
+
+queries:
+  scene: "e:{set} number:338-362" # Borderless scene cards (10U, 8R, 7M)
+  lcars: "e:{set} number:363-391" # LCARS frame (7U, 14R, 8M)
+  classic: "e:{set} number:402-425" # Classic Enterprise (5U, 13R, 6M)
+  klingon: "e:{set} number:426-435" # Klingon frame (1C, 6U, 3R)
+  klingon_script: "e:{set} number:436-445" # Klingon script, same 10 cards, traditional foil only
+  surge_lcars: "e:{set} number:497-525" # Surge foil LCARS frame
+  surge_classic: "e:{set} number:526-549" # Surge foil classic Enterprise
+  surge_lcars_shock: "e:{set} number:487-496" # Surge foil LCARS shock lands
+  signed_headliner: "e:{set} number:1701-1706" # 7 signed headliners (1701, 1701D, 1702-1706), traditional foil only
+  away_team_land: "e:{set} number:307-311" # Full-art away team basic lands
+  holodeck_land: "e:{set} number:312-316" # Full-art holodeck basic lands
+  surge_away_team_land: "e:{set} number:482-486" # Surge foil away team basic lands
+  # Booster Fun versions of TRK rares/mythics in the non-foil R/M slots: borderless lands, scenes, LCARS,
+  # LCARS shock lands, classic Enterprise, Klingon frame 332-435 and extended art 446-481
+  rare_boosterfun: "e:{set} number:332-435,446-481"
+  trc_scene_box: "e:trc number:180-191" # Divergent Timeline + Enterprise-Q Scene Box cards (12R)
+  trc_face_commander: "e:trc number:1-4" # Borderless face commanders (4M)
+  trc_borderless: "e:trc number:202-211" # Borderless new-to-Magic Commander cards (6R, 4M)
+  trc_extended_art: "e:trc number:212-417" # Extended art (197R incl. reprints, 9M reprints)
+
+pack:
+  foil_common: 5
+  foil_uncommon: 3
+  foil_boosterfun_common_uncommon: 1
+  foil_land: 1
+  foil_rare_mythic: 1
+  commander_boosterfun: 1
+  boosterfun_rare_mythic:
+  - non_foil_boosterfun: 2
+    chance: 361
+  - non_foil_boosterfun: 1
+    foil_stardates: 1
+    chance: 38
+  - foil_stardates: 2
+    chance: 1
+  foil_boosterfun_rare_mythic: 1
+
+sheets:
+  foil_common:
+    foil: true
+    query: "r:c"
+    count: 81 + 10
+
+  foil_uncommon:
+    foil: true
+    query: "r:u"
+    count: 110
+
+  foil_boosterfun_common_uncommon:
+    foil: true
+    any:
+    - rawquery: "{klingon} r<=u"
+      rate: 26
+      count: 1 + 6
+    - rawquery: "{klingon_script} r<=u"
+      rate: 13
+      count: 1 + 6
+    - rawquery: "{scene} r:u"
+      rate: 26
+      count: 10
+    - rawquery: "{lcars} r:u"
+      rate: 26
+      count: 7
+    - rawquery: "{classic} r:u"
+      rate: 26
+      count: 5
+    - rawquery: "{surge_lcars} r:u"
+      rate: 10
+      count: 7
+    - rawquery: "{surge_classic} r:u"
+      rate: 10
+      count: 5
+
+  foil_land:
+    foil: true
+    any:
+    - rawquery: "{away_team_land}"
+      rate: 1
+      count: 5
+    - rawquery: "{surge_away_team_land}"
+      rate: 1
+      count: 5
+    - rawquery: "{holodeck_land}"
+      rate: 1
+      count: 5
+
+  foil_rare_mythic:
+    foil: true
+    any:
+    - query: "r:r"
+      rate: 2
+      count: 80
+    - query: "r:m"
+      rate: 1
+      count: 25
+
+  commander_boosterfun:
+    any:
+    - rawquery: "{trc_extended_art} r:r"
+      rate: 2
+      count: 197
+    - rawquery: "{trc_extended_art} r:m"
+      rate: 1
+      count: 9
+    - rawquery: "{trc_face_commander}"
+      rate: 1
+      count: 4
+    - rawquery: "{trc_borderless} r:r"
+      rate: 2
+      count: 6
+    - rawquery: "{trc_borderless} r:m"
+      rate: 1
+      count: 4
+
+  non_foil_boosterfun:
+    any:
+    - rawquery: "{rare_boosterfun} r:r prints=1:{rare_boosterfun}"
+      rate: 60
+      count: 41 + 28
+    - rawquery: "{rare_boosterfun} r:r prints=2:{rare_boosterfun}"
+      rate: 30
+      count: 12
+    - rawquery: "{rare_boosterfun} r:m prints=1:{rare_boosterfun}"
+      rate: 30
+      count: 12 + 8
+    - rawquery: "{rare_boosterfun} r:m prints=2:{rare_boosterfun}"
+      rate: 15
+      count: 10
+    - rawquery: "{trc_scene_box}"
+      rate: 30
+      count: 12
+    - rawquery: "e:sds"
+      rate: 60
+      count: 30
+
+  foil_stardates:
+    foil: true
+    rawquery: "e:sds"
+    count: 30
+
+  # Same split as non_foil_boosterfun for the traditional foil versions: every TRK rare weighs 92 split over
+  # its versions, mythics 46. Klingon script 92 per card (not split), TRC borderless Commander R 92 / M 46,
+  # surge foil LCARS and classic Enterprise R 24 / M 12 per printing, surge foil LCARS shock lands 48.
+  # The article omits traditional foil borderless lands here, but its lines sum to 96.0% and the scene rare
+  # rate only fits with Quark's Bar's scene version sharing its weight with its borderless land version, so
+  # they are included at the implied R 4.0% / M 0.4%. Every listed line then matches.
+  foil_boosterfun_no_headliner:
+    foil: true
+    any:
+    - rawquery: "{rare_boosterfun} r:r prints=1:{rare_boosterfun}"
+      rate: 92
+      count: 41 + 28
+    - rawquery: "{rare_boosterfun} r:r prints=2:{rare_boosterfun}"
+      rate: 46
+      count: 12
+    - rawquery: "{rare_boosterfun} r:m prints=1:{rare_boosterfun}"
+      rate: 46
+      count: 12 + 8
+    - rawquery: "{rare_boosterfun} r:m prints=2:{rare_boosterfun}"
+      rate: 23
+      count: 10
+    - rawquery: "{klingon_script} r:r"
+      rate: 92
+      count: 3
+    - rawquery: "{trc_borderless} r:r"
+      rate: 92
+      count: 6
+    - rawquery: "{trc_borderless} r:m"
+      rate: 46
+      count: 4
+    - rawquery: "({surge_lcars} or {surge_classic}) r:r"
+      rate: 24
+      count: 14 + 13
+    - rawquery: "({surge_lcars} or {surge_classic}) r:m"
+      rate: 12
+      count: 8 + 6
+    - rawquery: "{surge_lcars_shock}"
+      rate: 48
+      count: 10
+
+  # Assuming ~3,000,000 Collector Boosters (250,000 boxes; the same estimate behind the 1 in 6,000 rate for a
+  # 500-copy serialized card in hob, ecl and sos), that is 1 in 12,000 per card, 1 in 1,714 for any of the 7.
+  foil_boosterfun_rare_mythic:
+    foil: true
+    any:
+    - use: foil_boosterfun_no_headliner
+      chance: 12000 - 7
+    - rawquery: "{signed_headliner}"
+      chance: 7
+      count: 7
