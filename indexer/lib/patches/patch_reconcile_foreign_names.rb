@@ -41,6 +41,7 @@ class PatchReconcileForeignNames < Patch
       "Arabic",
       "Dwarvish",
       "Hebrew",
+      "Klingon",
       "Latin",
       "Phyrexian",
       "Quenya",
