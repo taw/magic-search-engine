@@ -23,6 +23,7 @@ class PatchSetLanguages < Patch
   IGNORE_LANGUAGES = [
     "Ancient Greek",
     "Dwarvish",
+    "Klingon",
     "Phyrexian",
     "Quenya",
   ]
