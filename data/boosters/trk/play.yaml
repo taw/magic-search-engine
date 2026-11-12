@@ -1,0 +1,178 @@
+# Magic: The Gathering | Star Trek
+# Play Booster
+# Sources:
+# - https://magic.wizards.com/en/news/feature/collecting-star-trek
+# - https://scryfall.com/sets/trk
+# - https://scryfall.com/sets/sds
+
+pack:
+  common_stardates:
+  - common: 7
+    chance: 24
+  - common: 6
+    stardates: 1
+    chance: 1
+  uncommon: 3
+  wildcard: 1
+  rare_mythic: 1
+  foil: 1
+  land:
+  - non_foil_land: 1
+    chance: 80
+  - foil_land: 1
+    chance: 20
+
+queries:
+  dual_land: "e:{set} number:275,277,280,281,283,288,291,293,294,305" # Common Planet dual lands
+  klingon: "e:{set} number:426-435" # Klingon frame (1C, 6U, 3R); the 436-445 Klingon script copies are Collector-only
+  # Borderless lands 332-337, scenes 338-362, LCARS 363-391, LCARS shock lands 392-401, classic Enterprise 402-425,
+  # Klingon frame 426-435. Excludes Klingon script, extended art and all surge foils (Collector-only).
+  boosterfun: "e:{set} number:332-435"
+  classic: "e:{set} number:402-425" # Classic Enterprise (5U, 13R, 6M)
+  away_team_land: "e:{set} number:307-311" # Full-art away team basic lands
+  holodeck_land: "e:{set} number:312-316" # Full-art holodeck basic lands
+  basic_land: "e:{set} number:317-326" # Default frame basic lands
+
+sheets:
+  common:
+    any:
+    - rawquery: "{klingon} r:c"
+      rate: 1
+      count: 1
+    - query: "r:c alt:({klingon})"
+      rate: 2
+      count: 1
+    - query: "r:c -alt:({klingon}) -{dual_land}"
+      rate: 3
+      count: 80
+
+  # Every uncommon weighs 6. A card with Booster Fun puts 2 of it (1/3) on its Booster Fun printings, split
+  # evenly when it has two.
+  uncommon:
+    any:
+    - rawquery: "{boosterfun} r:u prints=1:{boosterfun}"
+      rate: 2
+      count: 20
+    - rawquery: "{boosterfun} r:u prints=2:{boosterfun}"
+      rate: 1
+      count: 8
+    - query: "r:u alt:({boosterfun})"
+      rate: 4
+      count: 24
+    - query: "r:u -alt:({boosterfun})"
+      rate: 6
+      count: 86
+
+  uncommon_no_classic:
+    any:
+    - rawquery: "{boosterfun} -{classic} r:u prints=1:{boosterfun}"
+      rate: 2
+      count: 15
+    - rawquery: "{boosterfun} r:u prints=2:{boosterfun}"
+      rate: 1
+      count: 8
+    - query: "r:u alt:({boosterfun} -{classic})"
+      rate: 4
+      count: 19
+    - query: "r:u -alt:({boosterfun} -{classic})"
+      rate: 6
+      count: 91
+
+  rare:
+    any:
+    - rawquery: "{boosterfun} r:r prints=1:{boosterfun}"
+      rate: 2
+      count: 41
+    - rawquery: "{boosterfun} r:r prints=2:{boosterfun}"
+      rate: 1
+      count: 12
+    - query: "r:r alt:({boosterfun})"
+      rate: 14
+      count: 47
+    - query: "r:r -alt:({boosterfun})"
+      rate: 16
+      count: 33
+
+  mythic:
+    any:
+    - rawquery: "{boosterfun} r:m prints=1:{boosterfun}"
+      rate: 2
+      count: 12
+    - rawquery: "{boosterfun} r:m prints=2:{boosterfun}"
+      rate: 1
+      count: 10
+    - query: "r:m alt:({boosterfun})"
+      rate: 14
+      count: 17
+    - query: "r:m -alt:({boosterfun})"
+      rate: 16
+      count: 8
+
+  rare_mythic:
+    any:
+    - use: rare
+      chance: 80 * 2
+    - use: mythic
+      chance: 25 * 1
+
+  wildcard:
+    any:
+    - use: common
+      chance: 2089
+    - use: uncommon_no_classic
+      chance: 5741
+    - use: rare_mythic
+      chance: 2086
+
+  # The foil slot is not folded: the article's numbers fit a weight per printing, regular C:U:R:M = 16:8:2:1
+  # with every Booster Fun printing at half its rarity's weight, cards with two versions not split.
+  foil:
+    foil: true
+    any:
+    - query: "r:c -{dual_land}"
+      rate: 32
+      count: 81
+    - rawquery: "{boosterfun} r:c" # Klingon frame A Good Day to Die
+      rate: 16
+      count: 1
+    - query: "r:u"
+      rate: 16
+      count: 110
+    - rawquery: "{boosterfun} -{classic} r:u"
+      rate: 8
+      count: 23
+    - query: "r:r"
+      rate: 4
+      count: 80
+    - rawquery: "{boosterfun} r:r"
+      rate: 2
+      count: 53
+    - query: "r:m"
+      rate: 2
+      count: 25
+    - rawquery: "{boosterfun} r:m"
+      rate: 1
+      count: 22
+
+  non_foil_land:
+    any:
+    - query: "{dual_land}"
+      rate: 3
+      count: 10
+    - rawquery: "{basic_land}"
+      rate: 2
+      count: 10
+    - rawquery: "{holodeck_land}"
+      rate: 1
+      count: 5
+    - rawquery: "{away_team_land}"
+      rate: 1
+      count: 5
+
+  foil_land:
+    foil: true
+    use: non_foil_land
+
+  stardates:
+    rawquery: "e:sds"
+    count: 30
