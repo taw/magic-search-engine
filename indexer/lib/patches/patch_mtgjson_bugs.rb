@@ -73,9 +73,9 @@ class PatchMtgjsonBugs < Patch
 
       # Star Trek preview data: the most recently added TRK and TRC printings
       # have an empty availability. All of them are paper cards.
-      if %W[TRK TRC].include?(set_code) and card["availability"]&.empty?
-        card["availability"] = ["paper"]
-      end
+      # if %W[TRK TRC].include?(set_code) and card["availability"]&.empty?
+      #   card["availability"] = ["paper"]
+      # end
 
       # Flametongue Kavu was never added to Arena; this Planeshift printing
       # has no mtgArenaId despite mtgjson marking it as available there.
