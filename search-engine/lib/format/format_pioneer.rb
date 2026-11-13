@@ -64,6 +64,7 @@ class FormatPioneer < Format
       "msh",
       "hob",
       "fra",
+      "trk",
     ]
   end
 end

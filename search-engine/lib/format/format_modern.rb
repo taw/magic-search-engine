@@ -88,6 +88,7 @@ class FormatModern < Format
       "msh",
       "hob",
       "fra",
+      "trk",
     ]
   end
 end

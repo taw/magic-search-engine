@@ -35,6 +35,7 @@ class FormatAlchemy < FormatStandard
       "msh",
       "hob",
       "fra", "yfra",
+      "trk",
     ],
     "2024-08-02" => [ # rotation on BLB release?
       "anb",

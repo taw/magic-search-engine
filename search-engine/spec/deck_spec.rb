@@ -32,6 +32,7 @@ PRECON_SET_PARENTS = {
   "soc" => "sos",
   "msc" => "msh",
   "frc" => "fra",
+  "trc" => "trk",
 }
 
 describe Deck do
