@@ -90,10 +90,18 @@ describe "Regexp" do
   it "regexp name text" do
     assert_search_results "f:modern n:/.{32}/",
       "Aetherwing, Golden-Scale Flagship",
+      "Beckett Mariner, Impetuous Ensign",
       "Captain America, Wings of Freedom",
       "Captain Marvel, Earth's Protector",
+      "Culber and Stamets, Star-Crossed",
+      "David and Carol Marcus, Creators",
+      "H.M.S. Bounty, Unlikely Timeship",
       "Nick Fury, Agent of S.H.I.E.L.D.",
       "Okina, Temple to the Grandfathers",
+      "U.S.S. Discovery, at Black Alert",
+      "U.S.S. Enterprise-A, Free Spirit",
+      "U.S.S. Enterprise-D, Galaxy-Class",
+      "U.S.S. Reliant, From Hell's Heart",
       "World Champion, Celestial Weapon",
       "Yellowjacket, Heartless Marauder"
   end
