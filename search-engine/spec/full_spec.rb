@@ -241,6 +241,7 @@ describe "Full Database Test" do
       "Abyssal Harvester",
       "Abyssal Horror",
       "Abyssal Hunter",
+      "Abyssal Lotus",
       "Abyssal Nightstalker",
       "Abyssal Nocturnus",
       "Abyssal Persecutor",
