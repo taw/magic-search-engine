@@ -20,6 +20,9 @@ class SpellingSuggestions
     query = normalize_text(query)
     return [] if @words.include?(query)
 
+    # the algorithm takes forever and it won't find anything useful anyway
+    return [] if query.size > 64
+
     if query.size <= 2
       max_distance = 0
     elsif query.size <= 4
