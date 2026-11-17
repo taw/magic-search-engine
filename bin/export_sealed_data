@@ -240,6 +240,7 @@ class ExportFormatterExperimental < ExportFormatter
       # can't mix foil and nonfoil in this format
       next if booster_code == "slc"
       next if booster_code == "slc-encyclopedia"
+      next if booster_code == "slc-marvel"
       set_code = booster.set_code.upcase
       booster_type = booster.code.split("-", 2)[1] || "default"
       booster = flatten_pack(booster)
