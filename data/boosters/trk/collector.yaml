@@ -23,7 +23,7 @@ queries:
   surge_away_team_land: "e:{set} number:482-486" # Surge foil away team basic lands
   # Booster Fun versions of TRK rares/mythics in the non-foil R/M slots: borderless lands, scenes, LCARS,
   # LCARS shock lands, classic Enterprise, Klingon frame 332-435 and extended art 446-481
-  rare_boosterfun: "e:{set} number:332-435,446-481"
+  rare_boosterfun: "e:{set} number:332-435,446-481 -variant:misprint"
   trc_scene_box: "e:trc number:180-191" # Divergent Timeline + Enterprise-Q Scene Box cards (12R)
   trc_face_commander: "e:trc number:1-4" # Borderless face commanders (4M)
   trc_borderless: "e:trc number:202-211" # Borderless new-to-Magic Commander cards (6R, 4M)
