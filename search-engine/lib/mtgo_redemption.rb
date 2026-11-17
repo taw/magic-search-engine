@@ -44,6 +44,6 @@ class MtgoRedemption
     missing = missing_set_codes(db)
     return nil if missing.empty?
     "These sets should probably be redemable on MTGO: #{missing.join(" ")}" \
-      " - check https://www.mtgo.com/news/ and update data/mtgo_redemption.csv"
+      " - check https://www.mtgo.com/news/ and update data/mtgo_redemption.csv or data/mtgo_not_redeemable.yaml"
   end
 end
