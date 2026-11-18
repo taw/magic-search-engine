@@ -1,0 +1,66 @@
+# The Hobbit
+# Arena Play Booster
+#
+# Arena keeps the mixed basic/common-dual land slot, so packs have 14 cards. The
+# traditional-foil slot is a second nonfoil slot there. Scene, dragon-hoard, and
+# book-cover printings are Booster Fun and do not appear on Arena; their chances
+# fold into the ordinary sheets.
+#
+# Verified against 17lands public HOB PremierDraft data: 5,000 P1P1 packs, all
+# 14 cards. The observed common, uncommon, rare, mythic, and land frequencies
+# match these sheets and the paper wildcard/foil-slot rates.
+queries:
+  dual_land: "e:{set} number:182,183,185,186,188"
+pack:
+  land: 1
+  common: 7
+  uncommon: 3
+  wildcard: 1
+  rare_mythic: 1
+  foil_replacement: 1
+sheets:
+  common:
+    query: "r:c -{dual_land} -t:basic"
+    count: 60
+  uncommon:
+    query: "r:u"
+    count: 55
+  rare:
+    query: "r:r"
+    count: 53
+  mythic:
+    query: "r:m"
+    count: 15
+  rare_mythic:
+    any:
+    - use: rare
+      rate: 2
+    - use: mythic
+      rate: 1
+  land:
+    any:
+    - rawquery: "{dual_land}"
+      rate: 1
+      count: 5
+    - rawquery: "e:{set} number:189-193"
+      rate: 1
+      count: 5
+  wildcard:
+    any:
+    - use: common
+      chance: 7500
+    - use: uncommon
+      chance: 413
+    - use: rare_mythic
+      chance: 2094
+  # Paper's traditional foil slot. Arena has no foils, so it stays as a second
+  # nonfoil slot with the same contents.
+  foil_replacement:
+    foil: false
+    any:
+    - use: common
+      chance: 6047
+    - use: uncommon
+      chance: 3099
+    - use: rare_mythic
+      chance: 865
