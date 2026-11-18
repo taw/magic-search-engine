@@ -224,7 +224,7 @@ end
 desc "Export deck data"
 task "export:decks" do
   sh "./bin/export_decks_data --simple-sections ~/github/magic-preconstructed-decks-data/decks.json"
-  sh "./bin/export_decks_data ~/github/magic-preconstructed-decks-data/decks_v2.json"
+  sh "./bin/export_decks_data --warn ~/github/magic-preconstructed-decks-data/decks_v2.json"
 end
 
 desc "Update sealed only"

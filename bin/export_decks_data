@@ -4,8 +4,9 @@ require_relative "../search-engine/lib/card_database"
 require "optparse"
 
 class ExportDecksData
-  def initialize(simple_sections: false)
+  def initialize(simple_sections: false, warnings: false)
     @simple_sections = simple_sections
+    @warnings = warnings
     @db = CardDatabase.load
     @uuids_path = Pathname("#{__dir__}/../index/uuids.txt")
     @token_uuids_path = Pathname("#{__dir__}/../index/token_uuids.txt")
@@ -60,7 +61,9 @@ class ExportDecksData
         message = "Options are: #{options.map(&:last).sort.join(", ")}"
       end
     end
-    warn "Could not find token #{name} [#{set_code || "unknown"}:#{number || "unknown"}]. #{message}"
+    if @warnings
+      warn "Could not find token #{name} [#{set_code || "unknown"}:#{number || "unknown"}]. #{message}"
+    end
     "not_in_mtgjson"
   end
 
@@ -143,10 +146,12 @@ class ExportDecksData
 end
 
 simple_sections = false
+warnings = false
 OptionParser.new do |o|
   o.banner = "Usage: export_decks_data [--simple-sections] [OUTPUT_PATH]"
   o.on("--simple-sections", "merge commander and extra sections into sideboard") { simple_sections = true }
+  o.on("--warn", "print warnings") { warnings = true }
 end.parse!
 
 output_path = ARGV[0] || "export_decks.json"
-ExportDecksData.new(simple_sections: simple_sections).call(output_path)
+ExportDecksData.new(simple_sections: simple_sections, warnings: warnings).call(output_path)
