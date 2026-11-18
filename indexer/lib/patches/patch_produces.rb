@@ -41,6 +41,9 @@ class PatchProduces < Patch
 
       text = card["text"] || ""
 
+      # unk rainbow mana reminder text, not relevant for produces:
+      text = text.gsub(/source that could add two or more colors of mana/, "")
+
       # annoyingly ' is sometimes terminator and sometimes apostrophy 's or s'
       add_mana_lines = text.scan(/adds? [^\n\."]+/i)
 
@@ -68,7 +71,7 @@ class PatchProduces < Patch
         produces += symbols
 
         if symbols.empty?
-          warn "It looks like this produces mana, but indexer doesn't understand what type: #{line}"
+          warn "It looks like this produces mana, but indexer doesn't understand what type: #{line} in #{card["name"]}"
         end
       end
 
