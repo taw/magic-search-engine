@@ -1,0 +1,14 @@
+# one traditional-foil base-set rare or mythic.
+# Source: https://magic.wizards.com/en/news/feature/collecting-star-trek
+pack:
+  promo: 1
+sheets:
+  promo:
+    foil: true
+    any:
+    - rawquery: "e:{set} r:r is:baseset"
+      rate: 2
+      count: 80
+    - rawquery: "e:{set} r:m is:baseset"
+      rate: 1
+      count: 25
