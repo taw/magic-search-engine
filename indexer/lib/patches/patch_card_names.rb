@@ -73,7 +73,7 @@ class PatchCardNames < Patch
           card["name"] = "#{card["name"]} (Playtest)"
           card["names"] = ["Fast (Playtest)", "Furious (Playtest)"]
         end
-      when "PUNK"
+      when "PUNK", "OUNK"
         case card["number"]
         # planes conflict with UNK "Artist Alley" and MID/DBL "No Way Out"
         when "PLA001", "PLA001a"
