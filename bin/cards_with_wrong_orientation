@@ -44,9 +44,24 @@ class CheckCardOrientation
     "#{@card.set_code}/#{@card.number} #{@card.name}"
   end
 
+  def jpeg?
+    @path.binread(3) == "\xFF\xD8\xFF".b
+  end
+
+  def webp?
+    header = @path.binread(12)
+    header.size == 12 && header[0, 4] == "RIFF".b && header[8, 4] == "WEBP".b
+  end
+
   def rotate(deg=90)
-    system "jpegtran -rotate #{deg} -copy all #{@path} > #{@path}-out" or raise "Failed to rotate #{@path}"
-    FileUtils.mv("#{@path}-out", "#{@path}")
+    if jpeg?
+      system "jpegtran -rotate #{deg} -copy all #{@path} > #{@path}-out" or raise "Failed to rotate #{@path}"
+      FileUtils.mv("#{@path}-out", "#{@path}")
+    elsif webp?
+      warn "WEBP not supported yet: #{@path}"
+    else
+      warn "Unknown format: #{@path}"
+    end
   end
 
   def open

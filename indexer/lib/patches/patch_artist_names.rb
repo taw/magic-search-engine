@@ -26,11 +26,13 @@ class PatchArtistNames < Patch
   end
 
   def call
+    playtest_art_sets = %w[unk punk ounk]
+
     # Prevent slug conflicts
     each_printing do |card|
       unless card["artist"]
         # Missing artists are unavoidable for sets with only a partial spoiler available
-        unless card["set_code"] == "unk" or card["set_code"] == "punk" or partial_preview_sets.include?(card["set_code"]) or valid_no_art.include?([card["name"], card["set_code"], card["number"]])
+        unless playtest_art_sets.include?(card["set_code"]) or partial_preview_sets.include?(card["set_code"]) or valid_no_art.include?([card["name"], card["set_code"], card["number"]])
           warn "No artist for #{card["name"]} #{card["set_code"]} #{card["number"]}"
         end
         card["artist"] = "unknown"

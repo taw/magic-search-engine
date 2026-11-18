@@ -42,7 +42,7 @@ describe "Regexp" do
 
   it "regexp oracle text" do
     # This gets updated too much from SLD etc. so promos excluded
-    assert_search_results 'o:/\d{3,}/ -is:promo -e:unk',
+    assert_search_results 'o:/\d{3,}/ -is:promo -e:unk,punk,ounk',
       "A Good Thing",
       "Ajani, Mentor of Heroes",
       "As Luck Would Have It",
@@ -160,6 +160,7 @@ describe "Regexp" do
       "Door to Nothingness",
       "Meeting of the Five",
       "Ramos, Dragon Engine",
+      "The Lorwyn Lizard",
       "The World Tree"
   end
 

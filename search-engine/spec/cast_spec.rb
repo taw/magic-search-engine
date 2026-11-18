@@ -13,9 +13,10 @@ describe "cast: spec" do
   end
 
   it "lands cannot be cast" do # except mb2
-    assert_search_equal "cast:wubrg", "cast:wubrg -(t:land -(Glade of the Pump Spells))"
+    assert_search_equal "cast:wubrg", "cast:wubrg -(t:land -(Glade of the Pump Spells) -(The Bird Pool))"
     assert_search_results "cast:wubrg t:land",
-      "Glade of the Pump Spells"
+      "Glade of the Pump Spells",
+      "The Bird Pool"
   end
 
   it "count snow separately" do

@@ -130,6 +130,7 @@ describe "Spelling" do
   it "Urza lands" do
     assert_search_results %Q[related:"Urza's Tower"],
       "Golgothian Sylex",
+      "The Wonderous Architect",
       "Urza's Construction Drone",
       "Urza's Fun House",
       "Urza's Mine",

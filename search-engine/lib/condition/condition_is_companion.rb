@@ -1,6 +1,7 @@
 class ConditionIsCompanion < ConditionNickname
   # The 10 Ikoria ones have the companion frame effect, the other 3 are funny cards which don't
   # The Companion of the Wilds spells its keyword "Old Companion —"
+  # The Mystery Booster uses "Rulebreaker companion —"
   def names
     [
       "gyruda, doom of depths",
@@ -12,6 +13,7 @@ class ConditionIsCompanion < ConditionNickname
       "lutri, the spellchaser",
       "obosh, the preypiercer",
       "the companion of the wilds",
+      "the mystery booster",
       "treizeci, sun of serra",
       "umori, the collector",
       "yorion, sky nomad",

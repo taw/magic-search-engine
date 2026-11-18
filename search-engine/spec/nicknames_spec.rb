@@ -573,6 +573,7 @@ describe "Card nicknames" do
       "Lutri, the Spellchaser",
       "Obosh, the Preypiercer",
       "The Companion of the Wilds",
+      "The Mystery Booster",
       "Treizeci, Sun of Serra",
       "Umori, the Collector",
       "Yorion, Sky Nomad",

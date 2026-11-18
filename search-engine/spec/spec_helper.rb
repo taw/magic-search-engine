@@ -6,6 +6,7 @@ end
 # Every external library the specs use is required here, the same way lib/
 # requires everything it needs from card_database.
 require "pry"
+require "rspec/print_failures_eagerly"
 require "stringio"
 require_relative "../lib/card_database"
 require_relative "../lib/cli_frontend"

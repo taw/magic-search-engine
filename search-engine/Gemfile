@@ -5,6 +5,7 @@ gem "damerau-levenshtein"
 gem "nokogiri"
 gem "pry"
 gem "rspec", require: false, group: :test
+gem "rspec-print_failures_eagerly", require: false, group: :test
 gem "simplecov", require: false, group: :test
 gem "memory_profiler", require: false, group: :test
 gem "fastimage"
