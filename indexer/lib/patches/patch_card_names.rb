@@ -64,7 +64,7 @@ class PatchCardNames < Patch
         card["names"] = card["names"].map{|n| cmb_names[n]} if card["names"]
       when "UNK"
         # conflicts with MBC "Joven and Chandler"
-        if card["number"] == "UR05"
+        if card["name"] == "Joven and Chandler"
           card["name"] = "Joven and Chandler (Playtest)"
         end
         # "Fast // Furious" conflicts with the 40K card of the same name
