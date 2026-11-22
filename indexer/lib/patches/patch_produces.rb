@@ -25,6 +25,7 @@ class PatchProduces < Patch
     "Sole Performer" => nil, # {T}
     "The Salubrious Philosopher" => nil, # in remainder text only
     "Unglued Pea-Brained Dinosaur" => "c", # {2} that should have been Oracled into {C}{C}
+    "Jace's Zendikar" => "bgruw",
   }
 
   def call

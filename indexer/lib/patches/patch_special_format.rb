@@ -13,7 +13,7 @@ class PatchSpecialFormat < Patch
   # also not deck cards, but they are legal - Unfinity attractions and stickers are
   # Commander-legal today and were Legacy/Vintage/Pauper-legal until 2024-05-13, so
   # their legality has to come from the ban list, not from a flag.
-  Types = %W[plane phenomenon phenome-nom scheme vanguard conspiracy hero].to_set.freeze
+  Types = %W[plane phenomenon phenome-nom rank scheme vanguard conspiracy hero].to_set.freeze
 
   # Products that are the same idea without a card type to show for it, so only the
   # set code identifies them:
