@@ -6,7 +6,7 @@ describe "is:specialformat" do
   # decks and ppc1 have no card type of their own, so they come from the set instead.
   it "is card types no format can play, plus the challenge deck products" do
     assert_search_equal "is:specialformat",
-      "t:vanguard or t:plane or t:phenomenon or t:phenome-nom or t:scheme or t:conspiracy or is:hero or e:tbth,tfth,tdag,ppc1"
+      "t:vanguard or t:plane or t:phenomenon or t:phenome-nom or t:rank or t:scheme or t:conspiracy or is:hero or e:tbth,tfth,tdag,ppc1"
   end
 
   it "is legal in no format at any date" do

@@ -8,7 +8,7 @@ describe DeckParser do
   end
 
   def physical_by_best(name, foil=false, etched=false)
-    printing = db.cards[name].printings.min_by(&:default_sort_index)
+    printing = db.cards[name]&.printings&.min_by(&:default_sort_index)
     raise "No such printing #{name}" unless printing
     PhysicalCard.for(printing, foil: foil, etched: etched)
   end

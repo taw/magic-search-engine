@@ -34,7 +34,7 @@ describe "Card layouts" do
     # It's totally possible that a card will get printed which does not follow them
     # DA1/UNK is basically all BS
     assert_search_equal "layout:scheme", "t:scheme"
-    assert_search_equal "layout:planar", "t:plane or t:phenomenon or t:phenome-nom"
+    assert_search_equal "layout:planar", "t:plane or t:phenomenon or t:phenome-nom or t:rank"
     # flip templating used to be a lot easier to detect back when they used ~
     assert_search_equal "layout:flip", '// o:/flip (it|this creature|Sasaya|Rune-Tail|Kuon|Erayo)/ or o:"flip ~" or o:flipped or o:"Fire Penguin"'
     assert_search_equal "layout:vanguard", "t:vanguard"
