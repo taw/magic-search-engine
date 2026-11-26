@@ -1,0 +1,17 @@
+# Working pool shared across the five land drops and both boxed editions.
+# https://www.reddit.com/r/secretlair_collectors/comments/1x8nwfc/
+# https://www.reddit.com/r/secretlair_collectors/comments/1x8jbug/
+# The opening photo shows 817. Equal Zombie weights and 2% Dwarf replacement are estimates.
+name: SLD The Oddlands Bonus
+pack:
+  bonus: 1
+sheets:
+  bonus:
+    foil: true
+    any:
+    - rawquery: e:{set} number:834,851,853,857
+      count: 4
+      chance: 98
+    - rawquery: e:{set} number:817
+      count: 1
+      chance: 2
